@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1392380662 source:/info-nfs/users/osimalbranque/IUT Bordeaux 1/S2/PROJET/purupurudigger/Code/purpurudigger/purpurudigger/main.cpp
+	<iostream>
+	<SFML/System.hpp>
+	<SFML/Graphics.hpp>
+	<SFML/Window.hpp>
+
