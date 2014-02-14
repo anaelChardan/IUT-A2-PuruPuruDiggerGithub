@@ -8,7 +8,7 @@
 		<Build>
 			<Target title="Debug">
 				<Option output="CodeBlocksCompilation/bin/Debug/purupurudigger" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
+				<Option object_output="CodeBlocksCompilation/obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -17,7 +17,7 @@
 			</Target>
 			<Target title="Release">
 				<Option output="CodeBlocksCompilation/bin/Release/purupurudigger" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Release/" />
+				<Option object_output="CodeBlocksComilation/obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
