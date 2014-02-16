@@ -37,6 +37,14 @@
 			<Add option="-lsfml-graphics" />
 			<Add option="-lsfml-window" />
 		</Linker>
+		<Unit filename="purpurudigger/Game.cpp" />
+		<Unit filename="purpurudigger/Game.h" />
+		<Unit filename="purpurudigger/Grid.cpp" />
+		<Unit filename="purpurudigger/Grid.h" />
+		<Unit filename="purpurudigger/Level.cpp" />
+		<Unit filename="purpurudigger/Level.h" />
+		<Unit filename="purpurudigger/Score.cpp" />
+		<Unit filename="purpurudigger/Score.h" />
 		<Unit filename="purpurudigger/main.cpp" />
 		<Extensions>
 			<code_completion />
