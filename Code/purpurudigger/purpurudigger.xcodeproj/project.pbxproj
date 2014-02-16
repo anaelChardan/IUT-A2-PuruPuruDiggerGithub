@@ -30,6 +30,7 @@
 		0314B3F618AE230B00586B31 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		0314B3F818AE230B00586B31 /* purpurudigger.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = purpurudigger.1; sourceTree = "<group>"; };
 		0314B3FF18AE238400586B31 /* SFML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SFML.framework; path = ../../../../../../../Library/Frameworks/SFML.framework; sourceTree = "<group>"; };
+		0336442F18AE46B6008F9385 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +65,7 @@
 		0314B3F518AE230B00586B31 /* purpurudigger */ = {
 			isa = PBXGroup;
 			children = (
+				0336442F18AE46B6008F9385 /* Level.h */,
 				0314B3F618AE230B00586B31 /* main.cpp */,
 				0314B3F818AE230B00586B31 /* purpurudigger.1 */,
 			);
@@ -246,6 +248,7 @@
 				0314B3FE18AE230B00586B31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
