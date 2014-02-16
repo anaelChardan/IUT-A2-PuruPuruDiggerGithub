@@ -10,6 +10,10 @@
 		0314B3F718AE230B00586B31 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0314B3F618AE230B00586B31 /* main.cpp */; };
 		0314B3F918AE230B00586B31 /* purpurudigger.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0314B3F818AE230B00586B31 /* purpurudigger.1 */; };
 		0314B40018AE238400586B31 /* SFML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0314B3FF18AE238400586B31 /* SFML.framework */; };
+		0385173B18B15A3E00738E4C /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0385173918B15A3E00738E4C /* Level.cpp */; };
+		03E59DE918B1549900DDC31D /* Score.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E59DE718B1549900DDC31D /* Score.cpp */; };
+		03E59DEC18B1551100DDC31D /* Grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E59DEA18B1551100DDC31D /* Grid.cpp */; };
+		03E59DEF18B1565400DDC31D /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E59DED18B1565400DDC31D /* Game.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,7 +34,14 @@
 		0314B3F618AE230B00586B31 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		0314B3F818AE230B00586B31 /* purpurudigger.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = purpurudigger.1; sourceTree = "<group>"; };
 		0314B3FF18AE238400586B31 /* SFML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SFML.framework; path = ../../../../../../../Library/Frameworks/SFML.framework; sourceTree = "<group>"; };
-		0336442F18AE46B6008F9385 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
+		0385173918B15A3E00738E4C /* Level.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Level.cpp; sourceTree = "<group>"; };
+		0385173A18B15A3E00738E4C /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
+		03E59DE718B1549900DDC31D /* Score.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Score.cpp; sourceTree = "<group>"; };
+		03E59DE818B1549900DDC31D /* Score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Score.h; sourceTree = "<group>"; };
+		03E59DEA18B1551100DDC31D /* Grid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Grid.cpp; sourceTree = "<group>"; };
+		03E59DEB18B1551100DDC31D /* Grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Grid.h; sourceTree = "<group>"; };
+		03E59DED18B1565400DDC31D /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
+		03E59DEE18B1565400DDC31D /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,9 +76,16 @@
 		0314B3F518AE230B00586B31 /* purpurudigger */ = {
 			isa = PBXGroup;
 			children = (
-				0336442F18AE46B6008F9385 /* Level.h */,
 				0314B3F618AE230B00586B31 /* main.cpp */,
 				0314B3F818AE230B00586B31 /* purpurudigger.1 */,
+				03E59DE718B1549900DDC31D /* Score.cpp */,
+				03E59DE818B1549900DDC31D /* Score.h */,
+				03E59DEA18B1551100DDC31D /* Grid.cpp */,
+				03E59DEB18B1551100DDC31D /* Grid.h */,
+				03E59DED18B1565400DDC31D /* Game.cpp */,
+				03E59DEE18B1565400DDC31D /* Game.h */,
+				0385173918B15A3E00738E4C /* Level.cpp */,
+				0385173A18B15A3E00738E4C /* Level.h */,
 			);
 			path = purpurudigger;
 			sourceTree = "<group>";
@@ -124,6 +142,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0314B3F718AE230B00586B31 /* main.cpp in Sources */,
+				03E59DE918B1549900DDC31D /* Score.cpp in Sources */,
+				03E59DEC18B1551100DDC31D /* Grid.cpp in Sources */,
+				03E59DEF18B1565400DDC31D /* Game.cpp in Sources */,
+				0385173B18B15A3E00738E4C /* Level.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,11 +10,5 @@
 #define __purpurudigger__Level__
 
 #include <iostream>
-#include "Score.h"
-
-
-class Level {
-    Score my_score[];
-};
 
 #endif /* defined(__purpurudigger__Level__) */
