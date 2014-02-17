@@ -1,10 +1,10 @@
-//
-//  main.cpp
-//  purpurudigger
-//
-//  Created by Ananas-Mac on 14/02/2014.
-//  Copyright (c) 2014 Ananas-Mac. All rights reserved.
-//
+/// @file Score.h
+/// @brief Fichier principal du programme
+/// @author Anaël Chardan
+/// @author Jérémy Damey
+/// @author Osiris Malbranque
+/// @version 0.1
+/// @date 17/02/2014
 
 #include <iostream>
 #include <SFML/System.hpp>
