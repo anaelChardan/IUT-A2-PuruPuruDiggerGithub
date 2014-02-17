@@ -1,4 +1,4 @@
-/// @file Score.h
+/// @file Grid.h
 /// @brief Fichier relatif au plateau de jeu du Puru Puru Digger.
 /// @author Anaël Chardan
 /// @author Jérémy Damey
@@ -10,12 +10,13 @@
 #define __purpurudigger__Grid__
 
 #include <iostream>
+#include "CellBase.h"
 
-/// @class Score
+/// @class Grid
 /// @brief Modélisation du plateau de jeu
 
 class Grid {
-
+    CellBase my_tab[19][19];
 };
 
 #endif /* defined(__purpurudigger__Grid__) */

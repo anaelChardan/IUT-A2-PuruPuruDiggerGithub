@@ -7,3 +7,8 @@
 /// @date 17/02/2014
 
 #include "Game.h"
+using namespace std;
+
+Game::Game(){
+    cout << "Constructeur par défaut de Game " << endl;
+}

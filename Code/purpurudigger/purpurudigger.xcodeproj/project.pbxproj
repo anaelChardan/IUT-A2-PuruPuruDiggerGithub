@@ -10,6 +10,8 @@
 		0314B3F718AE230B00586B31 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0314B3F618AE230B00586B31 /* main.cpp */; };
 		0314B3F918AE230B00586B31 /* purpurudigger.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0314B3F818AE230B00586B31 /* purpurudigger.1 */; };
 		0314B40018AE238400586B31 /* SFML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0314B3FF18AE238400586B31 /* SFML.framework */; };
+		0383049218B28E4D00C5212E /* CellBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0383049018B28E4D00C5212E /* CellBase.cpp */; };
+		0383049518B28E6D00C5212E /* Digger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0383049318B28E6D00C5212E /* Digger.cpp */; };
 		0385173B18B15A3E00738E4C /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0385173918B15A3E00738E4C /* Level.cpp */; };
 		03E59DE918B1549900DDC31D /* Score.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E59DE718B1549900DDC31D /* Score.cpp */; };
 		03E59DEC18B1551100DDC31D /* Grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03E59DEA18B1551100DDC31D /* Grid.cpp */; };
@@ -34,6 +36,10 @@
 		0314B3F618AE230B00586B31 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		0314B3F818AE230B00586B31 /* purpurudigger.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = purpurudigger.1; sourceTree = "<group>"; };
 		0314B3FF18AE238400586B31 /* SFML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SFML.framework; path = ../../../../../../../Library/Frameworks/SFML.framework; sourceTree = "<group>"; };
+		0383049018B28E4D00C5212E /* CellBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellBase.cpp; sourceTree = "<group>"; };
+		0383049118B28E4D00C5212E /* CellBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellBase.h; sourceTree = "<group>"; };
+		0383049318B28E6D00C5212E /* Digger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Digger.cpp; sourceTree = "<group>"; };
+		0383049418B28E6D00C5212E /* Digger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Digger.h; sourceTree = "<group>"; };
 		0385173918B15A3E00738E4C /* Level.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Level.cpp; sourceTree = "<group>"; };
 		0385173A18B15A3E00738E4C /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
 		03E59DE718B1549900DDC31D /* Score.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Score.cpp; sourceTree = "<group>"; };
@@ -86,6 +92,10 @@
 				03E59DEE18B1565400DDC31D /* Game.h */,
 				0385173918B15A3E00738E4C /* Level.cpp */,
 				0385173A18B15A3E00738E4C /* Level.h */,
+				0383049018B28E4D00C5212E /* CellBase.cpp */,
+				0383049118B28E4D00C5212E /* CellBase.h */,
+				0383049318B28E6D00C5212E /* Digger.cpp */,
+				0383049418B28E6D00C5212E /* Digger.h */,
 			);
 			path = purpurudigger;
 			sourceTree = "<group>";
@@ -146,6 +156,8 @@
 				03E59DEC18B1551100DDC31D /* Grid.cpp in Sources */,
 				03E59DEF18B1565400DDC31D /* Game.cpp in Sources */,
 				0385173B18B15A3E00738E4C /* Level.cpp in Sources */,
+				0383049218B28E4D00C5212E /* CellBase.cpp in Sources */,
+				0383049518B28E6D00C5212E /* Digger.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

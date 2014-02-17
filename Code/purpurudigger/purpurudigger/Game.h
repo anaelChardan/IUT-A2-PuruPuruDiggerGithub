@@ -1,4 +1,4 @@
-/// @file Score.h
+/// @file Game.h
 /// @brief Fichier relatif à la gestion générale, du jeu Puru Puru Digger.
 /// @author Anaël Chardan
 /// @author Jérémy Damey
@@ -10,17 +10,22 @@
 #define __purpurudigger__Game__
 
 #include <iostream>
+#include <vector>
 #include "Level.h"
 #include "Score.h"
 
-/// @class Score
+/// @class Game
 /// @brief Modélisation de la gestion du jeu
 
 class Game {
-    //Un tableau de level je ne sais pas comment on l'alloue (55 pour tester la compilation)
-    Level my_lvl[55];
-    //Un tableau de score ( les scores réalisés par les joueurs dans chacun des level )
-    Score my_score[];
+    private :
+        //Un vecteur de level comme il doit y avoir un nombre infinie de level
+        std::vector<Level> my_levels;
+        //Un tableau de score ( les scores réalisés par les joueurs dans chacun des level )
+        std::vector<Score> my_Score;
+    public :
+        //Le constructeur
+        Game();
 };
 
 #endif /* defined(__purpurudigger__Game__) */

@@ -11,11 +11,13 @@
 
 #include <iostream>
 #include "Score.h"
+#include "Grid.h"
 
 /// @class Level
 /// @brief Modélisation des niveaux du jeu
 class Level {
-    Score my_score[];
+    Score my_score;
+    Grid my_grid;
 };
 
 #endif /* defined(__purpurudigger__Level__) */
