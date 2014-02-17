@@ -37,6 +37,10 @@
 			<Add option="-lsfml-graphics" />
 			<Add option="-lsfml-window" />
 		</Linker>
+		<Unit filename="purpurudigger/CellBase.cpp" />
+		<Unit filename="purpurudigger/CellBase.h" />
+		<Unit filename="purpurudigger/Digger.cpp" />
+		<Unit filename="purpurudigger/Digger.h" />
 		<Unit filename="purpurudigger/Game.cpp" />
 		<Unit filename="purpurudigger/Game.h" />
 		<Unit filename="purpurudigger/Grid.cpp" />
