@@ -23,6 +23,8 @@ class Game {
         std::vector<Level> my_levels;
         //Un tableau de score ( les scores réalisés par les joueurs dans chacun des level )
         std::vector<Score> my_Score;
+    
+        int my_life; //La vie d'un level
     public :
         //Le constructeur
         Game();
