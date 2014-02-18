@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>ABD79B05-E05C-4EEB-BA62-439ED6701B62</string>
+	<key>IDESourceControlProjectName</key>
+	<string>PuruPuruDigger</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>9B31366D-4302-47E3-BD7D-CE1D4ABAEF43</key>
+		<string>https://bitbucket.org/anaelChardan/purupurudigger.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>CodeCpp/PuruPuruDigger.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>9B31366D-4302-47E3-BD7D-CE1D4ABAEF43</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://bitbucket.org/anaelChardan/purupurudigger.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>9B31366D-4302-47E3-BD7D-CE1D4ABAEF43</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>9B31366D-4302-47E3-BD7D-CE1D4ABAEF43</string>
+			<key>IDESourceControlWCCName</key>
+			<string>purupurudigger</string>
+		</dict>
+	</array>
+</dict>
+</plist>
