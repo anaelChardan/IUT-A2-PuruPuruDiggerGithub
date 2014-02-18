@@ -16,7 +16,11 @@
 /// @brief Modélisation du plateau de jeu
 
 class Grid {
-    CellBase my_tab[19][19];
+    public :
+        CellBase my_tab[19][19];
+    
+    private :
+        Grid(); //Le constructeur par défaut
 };
 
 #endif /* defined(__purpurudigger__Grid__) */
