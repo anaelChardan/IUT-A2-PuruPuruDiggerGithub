@@ -39,6 +39,7 @@
 		</Linker>
 		<Unit filename="purpurudigger/CellBase.cpp" />
 		<Unit filename="purpurudigger/CellBase.h" />
+		<Unit filename="purpurudigger/Constantes.h" />
 		<Unit filename="purpurudigger/Digger.cpp" />
 		<Unit filename="purpurudigger/Digger.h" />
 		<Unit filename="purpurudigger/Game.cpp" />
