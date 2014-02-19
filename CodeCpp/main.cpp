@@ -10,13 +10,18 @@
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
+#include <vector>
+
+using namespace std;
 
 int main(int argc, const char * argv[])
 {
 
-    // insert code here...
+    //insert code here...
     sf::RenderWindow window(sf::VideoMode(640,480, 32), "Test");
     sf::Sleep(3.0F);
+    
+    
     return 0;
 }
 

@@ -1,5 +1,6 @@
 #include "Digger.h"
 
+using namespace std;
 void
 Digger::Deplacement( Grid &grid, int Delta_Y, int Delta_X ){
     
@@ -28,20 +29,25 @@ Digger::DeplacementOUEST( Grid & grid ) {
 
 void
 Digger::DeplacementSUDOUEST( Grid & grid ){ 
-    Deplacement( grid, -1, -1 );
+    this->Deplacement( grid, -1, -1 );
 }
 
 void
 Digger::DeplacementSUDEST( Grid &grid ) {
-    Deplacement( grid, -1, 1 );
+    this->Deplacement( grid, -1, 1 );
 }
 
 void
 Digger::DeplacementNORDOUEST( Grid &grid ) {
-    Deplacement( grid, 1, -1 );
+    this->Deplacement( grid, 1, -1 );
 }
 
 void
 Digger::DeplacementNORDEST( Grid &grid ) {
-    Deplacement( grid, 1, 1 );
+    this->Deplacement( grid, 1, 1 );
+}
+
+void
+Digger::affiche(){
+    cout << "$$$" << endl;
 }
