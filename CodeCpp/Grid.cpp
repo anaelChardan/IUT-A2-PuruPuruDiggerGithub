@@ -17,7 +17,8 @@ Grid::Grid() {
         my_tab[i].resize(COLONNE);
     
     //Mise en place du digger
-    
+  
+    my_tab[0][0] = new Digger;
     
     //Calcul du nombre de bomb
     

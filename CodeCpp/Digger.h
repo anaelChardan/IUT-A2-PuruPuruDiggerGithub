@@ -11,7 +11,7 @@ class Digger : public CellBase
     
     public :
         //Son constructeur
-        Digger(int x, int y);
+        //Digger(int x, int y);
         void DeplacementNORD( Grid &grid ); //Sucre de langage
         void DeplacementSUD( Grid &grid );
         void DeplacementEST( Grid &grid );
@@ -20,7 +20,7 @@ class Digger : public CellBase
         void DeplacementSUDEST( Grid &grid );
         void DeplacementNORDOUEST( Grid &grid );
         void DeplacementNORDEST( Grid &grid );
-        void affiche();
+        virtual void affiche() const;
     
     private :
         int my_x; //Utile uniquement si il n'hérite pas

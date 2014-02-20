@@ -1,6 +1,7 @@
 #include "Digger.h"
 
 using namespace std;
+
 void
 Digger::Deplacement( Grid &grid, int Delta_Y, int Delta_X ){
     
@@ -48,6 +49,6 @@ Digger::DeplacementNORDEST( Grid &grid ) {
 }
 
 void
-Digger::affiche(){
+Digger::affiche() const {
     cout << "$$$" << endl;
 }
