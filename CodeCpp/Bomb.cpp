@@ -8,7 +8,3 @@
 
 #include "Bomb.h"
 
-void
-Bomb::affiche(){
-    std::cout << " B " << std::endl;
-}

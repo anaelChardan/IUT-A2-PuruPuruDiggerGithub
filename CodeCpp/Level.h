@@ -16,9 +16,6 @@
 /// @class Level
 /// @brief Modélisation des niveaux du jeu
 class Level {
-    Score my_score;
-    Grid my_grid;
-    int my_target; //Objectif du level
 };
 
 #endif /* defined(__purpurudigger__Level__) */

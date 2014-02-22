@@ -15,8 +15,6 @@
 /// @class Score
 /// @brief Modélisation des scores du jeu
 class Score {
-    private:
-        int my_value;
 };
 
 #endif

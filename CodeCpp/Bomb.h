@@ -14,8 +14,6 @@
 
 class Bomb : public CellBase
 {
-    public :
-        void affiche();
 };
 
 #endif /* defined(__PuruPuruDigger__Bomb__) */
