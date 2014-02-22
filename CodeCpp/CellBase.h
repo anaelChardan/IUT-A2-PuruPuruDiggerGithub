@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-//Class dont héritera le digger, les cases vides, les cases numérotées, les trésors, les bombs
+//Class abstraite dont héritera le digger, les cases vides, les cases numérotées, les trésors, les bombs
 class CellBase {
     protected :
         int my_x; //Mon ordonné, attention et non pas ma ligne (ce qui est d'ailleurs beaucoup plus logique)
@@ -11,7 +11,7 @@ class CellBase {
     
     public :
         CellBase(); //Le constructeur d'une celulle
-    
+        virtual void affiche() const = 0;
     
 };
 

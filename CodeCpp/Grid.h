@@ -11,16 +11,20 @@
 
 #include <iostream>
 #include "CellBase.h"
+#include "Constantes.h"
+#include "Bomb.h"
+#include "vector.h"
 
 /// @class Grid
 /// @brief Modélisation du plateau de jeu
 
 class Grid {
-    public :
-        CellBase my_tab[19][19];
-    
     private :
+        vector<vector<CellBase*> > my_tab;
+    
+    public :
         Grid(); //Le constructeur par défaut
+        void shuffle();
 };
 
 #endif /* defined(__purpurudigger__Grid__) */

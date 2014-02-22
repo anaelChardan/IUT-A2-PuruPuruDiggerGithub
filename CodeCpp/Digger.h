@@ -3,12 +3,15 @@
 
 #include <iostream>
 #include "Grid.h"
+#include "CellBase.h"
 
 //Doit-il hériter de case base ???
-class Digger {
+class Digger : public CellBase
+{
     
     public :
         //Son constructeur
+        //Digger(int x, int y);
         void DeplacementNORD( Grid &grid ); //Sucre de langage
         void DeplacementSUD( Grid &grid );
         void DeplacementEST( Grid &grid );
@@ -17,6 +20,7 @@ class Digger {
         void DeplacementSUDEST( Grid &grid );
         void DeplacementNORDOUEST( Grid &grid );
         void DeplacementNORDEST( Grid &grid );
+        virtual void affiche() const;
     
     private :
         int my_x; //Utile uniquement si il n'hérite pas

@@ -1,0 +1,19 @@
+# xcode noise
+DerivedData/*
+build/*
+*.pbxuser
+*.xcuserdata
+xcuserdata
+*.mode1v3
+*.perspectivev3
+
+# osx noise
+.DS_Store
+
+#other
+*.coredataeditor
+
+PuruPuruDigger.depend
+PuruPuruDigger.layout
+
+CodeBlocksCompilation/*

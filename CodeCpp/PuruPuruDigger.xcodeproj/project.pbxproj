@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		031E007818B52B360045013D /* Bomb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031E007618B52B360045013D /* Bomb.cpp */; };
 		03ED314A18B385BA00CF8AA1 /* CellBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED313D18B385BA00CF8AA1 /* CellBase.cpp */; };
 		03ED314B18B385BA00CF8AA1 /* Digger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314018B385BA00CF8AA1 /* Digger.cpp */; };
 		03ED314C18B385BA00CF8AA1 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314218B385BA00CF8AA1 /* Game.cpp */; };
@@ -44,6 +45,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		031E007618B52B360045013D /* Bomb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bomb.cpp; sourceTree = SOURCE_ROOT; };
+		031E007718B52B360045013D /* Bomb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bomb.h; sourceTree = SOURCE_ROOT; };
 		03ED313D18B385BA00CF8AA1 /* CellBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellBase.cpp; sourceTree = SOURCE_ROOT; };
 		03ED313E18B385BA00CF8AA1 /* CellBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellBase.h; sourceTree = SOURCE_ROOT; };
 		03ED313F18B385BA00CF8AA1 /* Constantes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constantes.h; sourceTree = SOURCE_ROOT; };
@@ -144,6 +147,8 @@
 				934FF75718B3715B0015437F /* views */,
 				934FF75618B371470015437F /* models */,
 				936727F618B33B91009873DE /* main.cpp */,
+				031E007618B52B360045013D /* Bomb.cpp */,
+				031E007718B52B360045013D /* Bomb.h */,
 			);
 			path = PuruPuruDigger;
 			sourceTree = "<group>";
@@ -212,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03ED314E18B385BA00CF8AA1 /* Level.cpp in Sources */,
+				031E007818B52B360045013D /* Bomb.cpp in Sources */,
 				03ED314B18B385BA00CF8AA1 /* Digger.cpp in Sources */,
 				03ED314A18B385BA00CF8AA1 /* CellBase.cpp in Sources */,
 				936727F818B33B91009873DE /* main.cpp in Sources */,
