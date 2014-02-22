@@ -18,8 +18,10 @@ int main(int argc, const char * argv[])
 {
 
     //insert code here...
-    sf::RenderWindow window(sf::VideoMode(640,480, 32), "Test");
-    sf::Sleep(3.0F);
+   // sf::RenderWindow window(sf::VideoMode(640,480, 32), "Test");
+    //sf::Sleep(3.0F);
+    
+    
     
     
     return 0;
