@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		031E007818B52B360045013D /* Bomb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031E007618B52B360045013D /* Bomb.cpp */; };
+		0377340E18B9FFBC00D5AFA0 /* EmptyCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0377340C18B9FFBC00D5AFA0 /* EmptyCell.cpp */; };
+		0377341118B9FFCA00D5AFA0 /* GoldCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0377340F18B9FFCA00D5AFA0 /* GoldCell.cpp */; };
+		0377341418B9FFDF00D5AFA0 /* ValueCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0377341218B9FFDF00D5AFA0 /* ValueCell.cpp */; };
 		03ED314A18B385BA00CF8AA1 /* CellBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED313D18B385BA00CF8AA1 /* CellBase.cpp */; };
 		03ED314B18B385BA00CF8AA1 /* Digger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314018B385BA00CF8AA1 /* Digger.cpp */; };
 		03ED314C18B385BA00CF8AA1 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314218B385BA00CF8AA1 /* Game.cpp */; };
-		03ED314D18B385BA00CF8AA1 /* Grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314418B385BA00CF8AA1 /* Grid.cpp */; };
 		03ED314E18B385BA00CF8AA1 /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314618B385BA00CF8AA1 /* Level.cpp */; };
 		03ED314F18B385BA00CF8AA1 /* Score.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314818B385BA00CF8AA1 /* Score.cpp */; };
 		936727F818B33B91009873DE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 936727F618B33B91009873DE /* main.cpp */; };
@@ -47,6 +49,12 @@
 /* Begin PBXFileReference section */
 		031E007618B52B360045013D /* Bomb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bomb.cpp; sourceTree = SOURCE_ROOT; };
 		031E007718B52B360045013D /* Bomb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bomb.h; sourceTree = SOURCE_ROOT; };
+		0377340C18B9FFBC00D5AFA0 /* EmptyCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EmptyCell.cpp; sourceTree = SOURCE_ROOT; };
+		0377340D18B9FFBC00D5AFA0 /* EmptyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyCell.h; sourceTree = SOURCE_ROOT; };
+		0377340F18B9FFCA00D5AFA0 /* GoldCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GoldCell.cpp; sourceTree = SOURCE_ROOT; };
+		0377341018B9FFCA00D5AFA0 /* GoldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoldCell.h; sourceTree = SOURCE_ROOT; };
+		0377341218B9FFDF00D5AFA0 /* ValueCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ValueCell.cpp; sourceTree = SOURCE_ROOT; };
+		0377341318B9FFDF00D5AFA0 /* ValueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValueCell.h; sourceTree = SOURCE_ROOT; };
 		03ED313D18B385BA00CF8AA1 /* CellBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellBase.cpp; sourceTree = SOURCE_ROOT; };
 		03ED313E18B385BA00CF8AA1 /* CellBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellBase.h; sourceTree = SOURCE_ROOT; };
 		03ED313F18B385BA00CF8AA1 /* Constantes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constantes.h; sourceTree = SOURCE_ROOT; };
@@ -54,8 +62,6 @@
 		03ED314118B385BA00CF8AA1 /* Digger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Digger.h; sourceTree = SOURCE_ROOT; };
 		03ED314218B385BA00CF8AA1 /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = SOURCE_ROOT; };
 		03ED314318B385BA00CF8AA1 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = SOURCE_ROOT; };
-		03ED314418B385BA00CF8AA1 /* Grid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Grid.cpp; sourceTree = SOURCE_ROOT; };
-		03ED314518B385BA00CF8AA1 /* Grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Grid.h; sourceTree = SOURCE_ROOT; };
 		03ED314618B385BA00CF8AA1 /* Level.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Level.cpp; sourceTree = SOURCE_ROOT; };
 		03ED314718B385BA00CF8AA1 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = SOURCE_ROOT; };
 		03ED314818B385BA00CF8AA1 /* Score.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Score.cpp; sourceTree = SOURCE_ROOT; };
@@ -138,8 +144,6 @@
 				03ED314118B385BA00CF8AA1 /* Digger.h */,
 				03ED314218B385BA00CF8AA1 /* Game.cpp */,
 				03ED314318B385BA00CF8AA1 /* Game.h */,
-				03ED314418B385BA00CF8AA1 /* Grid.cpp */,
-				03ED314518B385BA00CF8AA1 /* Grid.h */,
 				03ED314618B385BA00CF8AA1 /* Level.cpp */,
 				03ED314718B385BA00CF8AA1 /* Level.h */,
 				03ED314818B385BA00CF8AA1 /* Score.cpp */,
@@ -149,6 +153,12 @@
 				936727F618B33B91009873DE /* main.cpp */,
 				031E007618B52B360045013D /* Bomb.cpp */,
 				031E007718B52B360045013D /* Bomb.h */,
+				0377340C18B9FFBC00D5AFA0 /* EmptyCell.cpp */,
+				0377340D18B9FFBC00D5AFA0 /* EmptyCell.h */,
+				0377340F18B9FFCA00D5AFA0 /* GoldCell.cpp */,
+				0377341018B9FFCA00D5AFA0 /* GoldCell.h */,
+				0377341218B9FFDF00D5AFA0 /* ValueCell.cpp */,
+				0377341318B9FFDF00D5AFA0 /* ValueCell.h */,
 			);
 			path = PuruPuruDigger;
 			sourceTree = "<group>";
@@ -216,14 +226,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0377341418B9FFDF00D5AFA0 /* ValueCell.cpp in Sources */,
 				03ED314E18B385BA00CF8AA1 /* Level.cpp in Sources */,
 				031E007818B52B360045013D /* Bomb.cpp in Sources */,
 				03ED314B18B385BA00CF8AA1 /* Digger.cpp in Sources */,
 				03ED314A18B385BA00CF8AA1 /* CellBase.cpp in Sources */,
 				936727F818B33B91009873DE /* main.cpp in Sources */,
+				0377340E18B9FFBC00D5AFA0 /* EmptyCell.cpp in Sources */,
 				03ED314C18B385BA00CF8AA1 /* Game.cpp in Sources */,
-				03ED314D18B385BA00CF8AA1 /* Grid.cpp in Sources */,
 				03ED314F18B385BA00CF8AA1 /* Score.cpp in Sources */,
+				0377341118B9FFCA00D5AFA0 /* GoldCell.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

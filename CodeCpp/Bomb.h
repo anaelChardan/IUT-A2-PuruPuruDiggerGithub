@@ -14,6 +14,8 @@
 
 class Bomb : public CellBase
 {
+    virtual int getValue() const;
+    virtual int getPoints() const;
 };
 
 #endif /* defined(__PuruPuruDigger__Bomb__) */

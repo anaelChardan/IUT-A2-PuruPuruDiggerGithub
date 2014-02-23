@@ -8,25 +8,15 @@
 //Doit-il hériter de case base ???
 class Digger : public CellBase
 {
+    private :
+        int my_life;
     
     public :
-        //Son constructeur
-        //Digger(int x, int y);
-        void DeplacementNORD( Grid &grid ); //Sucre de langage
-        void DeplacementSUD( Grid &grid );
-        void DeplacementEST( Grid &grid );
-        void DeplacementOUEST( Grid & grid );
-        void DeplacementSUDOUEST( Grid & grid );
-        void DeplacementSUDEST( Grid &grid );
-        void DeplacementNORDOUEST( Grid &grid );
-        void DeplacementNORDEST( Grid &grid );
-        virtual void affiche() const;
-    
-    private :
-        int my_x; //Utile uniquement si il n'hérite pas
-        int my_y; //Utile uniquement si elle n'hérite pas
-        //Cette méthode sera secrète
-        void Deplacement(Grid &grid, int Delta_Y, int Delta_X); // Modifie l'emplacement de notre digger dans une grille
+        Digger();
+        int getLife(); //Connaître la vie
+        virtual int getValue() const;
+        virtual int getPoints() const;
+
 };
 
 #endif /* defined(__purpurudigger__Digger__) */

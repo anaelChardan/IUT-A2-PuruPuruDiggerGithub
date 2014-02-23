@@ -11,11 +11,24 @@
 
 #include <iostream>
 #include "Score.h"
-#include "Grid.h"
+#include "Digger.h"
+#include "CellBase.h"
+#include "Bomb.h"
+#include "Constantes.h"
 
 /// @class Level
 /// @brief Modélisation des niveaux du jeu
 class Level {
+    vector<vector<CellBase*> > my_grid;
+    int my_goal;
+    void init();
+    Score* my_score;
+    string getCell(int x, int y);
+    CellBase* my_digger;
+    public:
+        Level(Score* score);
+        void shuffle();
+    
 };
 
 #endif /* defined(__purpurudigger__Level__) */

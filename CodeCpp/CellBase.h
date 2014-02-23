@@ -2,16 +2,24 @@
 #define __purpurudigger__CellBase__
 
 #include <iostream>
+#include <string>
 
 //Class abstraite dont héritera le digger, les cases vides, les cases numérotées, les trésors, les bombs
 class CellBase {
     protected :
-        int my_x; //Mon ordonné, attention et non pas ma ligne (ce qui est d'ailleurs beaucoup plus logique)
-        int my_y; //Mon abscisse, attention et non pas ma colonne (ce qui est d'ailleurs beaucoup plus logique)
+        std::string my_type;
+        int my_x;
+        int my_y;
     
     public :
         CellBase(); //Le constructeur d'une celulle
-        virtual void affiche() const = 0;
+        std::string getType() const;
+        virtual int getValue() const = 0;
+        virtual int getPoints() const = 0;
+        int getX() const; //Connaître le x de la case
+        int getY() const; //Connaître le y de la case
+        void setX( int x ); //Attribuer le x de la case
+        void setY( int y ); //Attribuer le y de la case
     
 };
 

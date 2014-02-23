@@ -9,5 +9,7 @@
 using namespace std;
 
 Game::Game(){
-    cout << "Constructeur par défaut de Game " << endl;
+    
+    my_score = new Score();
+    my_levels = new Level( my_score );
 }

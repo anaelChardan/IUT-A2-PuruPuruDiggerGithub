@@ -20,14 +20,16 @@
 class Game {
     private :
         //Un vecteur de level comme il doit y avoir un nombre infinie de level
-        std::vector<Level> my_levels;
+        Level* my_levels;
         //Un tableau de score ( les scores réalisés par les joueurs dans chacun des level )
-        std::vector<Score> my_Score;
+        Score* my_score;
     
-        int my_life; //La vie d'un level
     public :
         //Le constructeur
         Game();
+        int getScore();
+        int getLevel();
+        int gameOver();
 };
 
 #endif /* defined(__purpurudigger__Game__) */
