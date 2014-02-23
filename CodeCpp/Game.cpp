@@ -8,7 +8,7 @@
 #include "Game.h"
 using namespace std;
 
-Game::Game(){
+GameModel::GameModel(){
     
     my_score = new Score();
     my_levels = new Level( my_score );

@@ -2,7 +2,6 @@
 #define __purpurudigger__Digger__
 
 #include <iostream>
-#include "Grid.h"
 #include "CellBase.h"
 
 //Doit-il hériter de case base ???
@@ -13,7 +12,9 @@ class Digger : public CellBase
     
     public :
         Digger();
-        int getLife(); //Connaître la vie
+        int getLife() const; //Connaître la vie
+        void winLife();
+        void loseLife();
         virtual int getValue() const;
         virtual int getPoints() const;
 

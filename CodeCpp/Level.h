@@ -19,15 +19,16 @@
 /// @class Level
 /// @brief Modélisation des niveaux du jeu
 class Level {
-    vector<vector<CellBase*> > my_grid;
+    std::vector<std::vector<CellBase*> > my_grid;
     int my_goal;
     void init();
     Score* my_score;
-    string getCell(int x, int y);
+    std::string getCell(int x, int y);
     CellBase* my_digger;
     public:
         Level(Score* score);
         void shuffle();
+        void reset();
     
 };
 

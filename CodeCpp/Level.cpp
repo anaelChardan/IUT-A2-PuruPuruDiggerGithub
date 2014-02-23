@@ -9,11 +9,11 @@
 #include "Level.h"
 #include "Bomb.h"
 #include "GoldCell.h"
+#include <vector>
 
 Level::Level(Score* score) {
     //On fait pointé my_score sur l'adresse du score qu'on lui à donné
     my_score = score;
-    
     
     
     my_grid.resize( LIGNE );
@@ -21,7 +21,9 @@ Level::Level(Score* score) {
         my_grid[i].resize( COLONNE );
     }
     
+    //On alloue le digger
     my_grid[0][0] = new Digger();
+    
     //On fait pointé notre Digger dessus cette case;
     my_digger = my_grid[0][0];
     
@@ -35,7 +37,6 @@ Level::Level(Score* score) {
     }
     
     //On place les trésors en fonction du nombre de bomb
-    
     for ( unsigned long i = nbrB +1 ; i < COLONNE ; i++ ) {
         my_grid[0][i] = new GoldCell;
     }
@@ -53,7 +54,7 @@ Level::Level(Score* score) {
 void
 Level::shuffle() {
 
-    vector<CellBase*> tmp;
+    std::vector<CellBase*> tmp;
     int taille = LIGNE * COLONNE;
     tmp.resize( taille );
     unsigned long z = 0;
@@ -85,4 +86,10 @@ Level::shuffle() {
             }
         }
     }
+}
+
+//Quand on perd une partie
+void
+Level::reset() {
+    
 }

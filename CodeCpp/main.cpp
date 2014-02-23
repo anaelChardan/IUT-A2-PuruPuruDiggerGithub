@@ -31,16 +31,18 @@ int main(int argc, const char * argv[])
     for( unsigned long i = 0 ; i < 2 ; i++ )
         my_tab[i].resize(2);
     
-    my_tab[0][0] = new Digger(0,0);
+    my_tab[0][0] = new Digger;
     my_tab[0][1] = new ValueCell;
     my_tab[1][0] = new ValueCell;
     my_tab[1][1] = new ValueCell;
     
     for ( unsigned long i = 0 ; i < 2; i++ ) {
         for ( unsigned long j = 0 ; j < 2 ; j ++ ) {
-            cout << my_tab[i][j]->getType();
+            cout << my_tab[i][j]->getType() << "   " ;
             if ( my_tab[i][j]->getType() == "ValueCell" )
                 cout << my_tab[i][j]->getValue() << endl;
+            else
+                cout << endl;
         }
     }
     

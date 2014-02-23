@@ -17,7 +17,7 @@
 /// @class Game
 /// @brief Modélisation de la gestion du jeu
 
-class Game {
+class GameModel {
     private :
         //Un vecteur de level comme il doit y avoir un nombre infinie de level
         Level* my_levels;
@@ -26,7 +26,7 @@ class Game {
     
     public :
         //Le constructeur
-        Game();
+        GameModel();
         int getScore();
         int getLevel();
         int gameOver();
