@@ -39,3 +39,15 @@ std::ostream& operator<< ( std::ostream& O, const CellBase &b ) {
     b.toString(O);
     return O;
 }
+
+//Ce que les classes filles auront par défaut
+int
+CellBase::getPoints() const {
+    return -1;
+}
+
+//Ce que les classes filles auront apr défaut
+int
+CellBase::getValue() const {
+    return -1;
+}

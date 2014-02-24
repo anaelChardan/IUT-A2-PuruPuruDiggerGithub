@@ -19,11 +19,12 @@ class CellBase {
     
         CellBase(); //Le constructeur d'une celulle
                     //Le constructeur par copie ( pour manipuler correctement les vecteur)
-                    //Le constructeur paramétré
                     //L'opérateur d'affectation en virtuel pur ( pour manipuler correctement les vecteur )
     
-        virtual int getValue() const = 0; //Méthode virtual pure pour rendre cette classe abstraite
-        virtual int getPoints() const = 0; //Méhode virtual pure pour connaître les points
+        virtual ~CellBase();
+    
+        virtual int getValue() const = 0; //Méthode virtual pure pour rendre cette classe abstraite avec implémentation par défaut, ce qui évité de la redéfinir dans les classes filles qui n'en auront pas besoin.
+        virtual int getPoints() const = 0; //Méhode virtual pure pour connaître les points avec une implémentation par défaut, ce qui évite de la redéfinir dans les classes filles qui n'en auront pas besoin.
     
         virtual void toString( std::ostream& O) const; //Affichage terminal
     
