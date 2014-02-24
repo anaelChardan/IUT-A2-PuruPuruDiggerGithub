@@ -17,3 +17,8 @@ int
 Bomb::getPoints() const {
     return 0;
 };
+
+void
+Bomb::toString( std::ostream& O) const {
+    O << "BB";
+}

@@ -13,6 +13,7 @@
 #include "ValueCell.h"
 
 class GoldCell : public ValueCell {
+    
     private :
         int my_bonus;
     public :

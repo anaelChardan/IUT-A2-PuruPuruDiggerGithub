@@ -12,6 +12,7 @@ class Digger : public CellBase
     
     public :
         Digger();
+        Digger(const Digger &d );
         int getLife() const; //Connaître la vie
         void winLife();
         void loseLife();

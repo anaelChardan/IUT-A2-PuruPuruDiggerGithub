@@ -29,3 +29,13 @@ void
 CellBase::setY( int y ) {
     my_y = y;
 }
+
+void
+CellBase::toString(std::ostream &O ) const {
+    O << my_x << my_y;
+}
+
+std::ostream& operator<< ( std::ostream& O, const CellBase &b ) {
+    b.toString(O);
+    return O;
+}

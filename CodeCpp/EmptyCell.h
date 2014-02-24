@@ -10,5 +10,11 @@
 #define __PuruPuruDigger__EmptyCell__
 
 #include <iostream>
+#include "CellBase.h"
+
+class EmptyCell : public CellBase {
+    
+    virtual void toString( std::ostream& O) const;
+};
 
 #endif /* defined(__PuruPuruDigger__EmptyCell__) */

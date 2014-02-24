@@ -7,3 +7,9 @@
 //
 
 #include "EmptyCell.h"
+
+
+void
+EmptyCell::toString( std::ostream& O) const {
+    O << "  ";
+}
