@@ -14,9 +14,29 @@
 
 class Bomb : public CellBase
 {
-    virtual int getValue() const;
-    virtual int getPoints() const;
-    virtual void toString( std::ostream& O) const;
+    
+    public:
+        //Les constructeurs
+    
+        Bomb(); //Constructeur par défaut
+        Bomb( const Bomb &b); //Constructeur par copie
+    
+        //Le destructeur
+    
+        virtual ~Bomb(); //Destructeur
+    
+        //Les méthodes
+        virtual void toString( std::ostream& O) const;
+    
+        //Les opérateurs
+        virtual Bomb& operator=(const Bomb & b); //Opérateur d'affectation
+    
+    private :
+        //Eviter la classe abstraite
+    
+        virtual int getValue() const;
+        virtual int getPoints() const;
+
 };
 
 #endif /* defined(__PuruPuruDigger__Bomb__) */
