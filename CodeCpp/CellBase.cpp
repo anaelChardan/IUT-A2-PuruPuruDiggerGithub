@@ -77,20 +77,6 @@ CellBase::operator=(const CellBase &c) {
     return *this;
 }
 
-//Ce que les classes filles auront par défaut
-//Redéfinir dans ValueCell et GoldCell
-int
-CellBase::getPoints() const {
-    return -1;
-}
-
-//Ce que les classes filles auront par défaut
-//Redéfinir dans ValueCell et GoldCell
-int
-CellBase::getValue() const {
-    return -1;
-}
-
 //Il faudra mettre dans les classes filles mettre ce qu'elle devront afficher dans le terminal
 //Ici c'est débile mais c'est pour l'exemple d'implémentation
 void
