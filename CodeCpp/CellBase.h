@@ -18,6 +18,7 @@ class CellBase {
         //Les constructeurs
     
         CellBase(); //Le constructeur d'une celulle
+        CellBase( int x, int y ); //Le constructeur paramétré, on peut directement mettre les coordonnées
         CellBase(const CellBase &c);//Le constructeur par copie ( pour manipuler correctement les vecteur)
     
         //Le destructeurs en virtuel, comme la classe contient des fonctions virtuel
@@ -37,10 +38,21 @@ class CellBase {
     
         virtual CellBase& operator=(const CellBase &c); //Opérateur d'affectation
     
-        virtual int getValue() const = 0; //Savoir la valeur d'une ValueCell ou d'une GoldCell
+            //Pour les ValueCell et GoldCell
     
-        virtual int getPoints() const = 0; //Savoir les points rapoortés par une GoldCell ou une ValueCell
+        virtual int getValue() const = 0; //Savoir la valeur d'une ValueCell ou d'une GoldCell, sinon return -1 dans les autres et en privé
     
+        virtual int getPoints() const = 0; //Savoir les points rapoortés par une GoldCell ou une ValueCell, sinon return -1 dans les autres et en privé
+    
+            //Pour le digger
+        virtual int getLife() const = 0; //Savoir la vie de notre Digger, return - 1 dans les autres
+    
+        virtual void addLife() = 0; //Ajouter des vies à notre Digger
+    
+        virtual void lostLife() = 0; //Faire perdre des vies à notre Digger
+    
+    
+            //Pour toutes
         virtual void toString( std::ostream& O) const; //Affichage terminal
     
     
