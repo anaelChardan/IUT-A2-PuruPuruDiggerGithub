@@ -84,6 +84,10 @@ CellBase::toString(std::ostream &O ) const {
     O << my_x << my_y;
 }
 
+/*===========================
+Une fonction amie qui se fera héritée
+ =============================*/
+
 //Une fonction qui pourra peut être être utile, elle est déclarée en ami
 std::ostream& operator<<( std::ostream& O, const CellBase &b ) {
     b.toString(O);
