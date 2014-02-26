@@ -15,10 +15,33 @@
 class GoldCell : public ValueCell {
     
     private :
+    
         int my_bonus;
+    
     public :
-        GoldCell();
+    
+        //Les constructeurs
+    
+        GoldCell(); //Constructeurs par défaut
+        GoldCell( int x, int y ); //Constructeurs paramétré
+        GoldCell( const GoldCell &g); //Constructeur par copie
+    
+        //Le destructeur
+    
+        virtual ~GoldCell();
+    
+        //Méthodes redéfinie, pas besoin de redéfinir getValues
         virtual int getPoints() const;
+        virtual void toString( std::ostream& O ) const;
+        virtual GoldCell& operator=( const GoldCell &g ); //Opérateur d'affectation
+    
+    private :
+    
+        //Pour éviter la classe abstraite
+    
+        virtual int getLife() const;
+        virtual void addLife();
+        virtual void lostLife();
     
 };
 

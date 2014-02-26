@@ -6,6 +6,8 @@
 
 ValueCell::ValueCell() {
     my_type = "ValueCell";
+    my_x = 0;
+    my_y = 0;
     //Génération aléatoire de la valeur de la case entre 1 et 6
     my_value =  MINVAL + (rand() % (MAXVAL - MINVAL));
 }
