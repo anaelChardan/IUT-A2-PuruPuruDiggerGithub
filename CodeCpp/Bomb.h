@@ -19,6 +19,7 @@ class Bomb : public CellBase
         //Les constructeurs
     
         Bomb(); //Constructeur par défaut
+        Bomb( int x, int y ); //Le constructeur paramétré
         Bomb( const Bomb &b); //Constructeur par copie
     
         //Le destructeur
@@ -36,6 +37,9 @@ class Bomb : public CellBase
     
         virtual int getValue() const;
         virtual int getPoints() const;
+        virtual int getLife() const;
+        virtual void addLife();
+        virtual void lostLife();
 
 };
 
