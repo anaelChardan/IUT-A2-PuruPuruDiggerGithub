@@ -1,18 +1,39 @@
-//
-//  ValueCell.cpp
-//  PuruPuruDigger
-//
-//  Created by Ananas-Mac on 23/02/2014.
-//
-//
-
 #include "ValueCell.h"
+
+/*===========================
+ Les Constructeurs
+ =============================*/
 
 ValueCell::ValueCell() {
     my_type = "ValueCell";
     //Génération aléatoire de la valeur de la case entre 1 et 6
     my_value =  MINVAL + (rand() % (MAXVAL - MINVAL));
 }
+
+ValueCell::ValueCell( int x, int y ) {
+    my_type = "ValueCell";
+    my_value = MINVAL + (rand() % (MAXVAL - MINVAL));
+    my_x = x;
+    my_y = y;
+}
+
+ValueCell::ValueCell( const ValueCell &v ) {
+    my_type = v.my_type;
+    my_value = v.my_value;
+    my_x = v.my_x;
+    my_y = v.my_y;
+}
+
+/*===========================
+ Le Destructeur
+ =============================*/
+
+ValueCell::~ValueCell() { }
+
+
+/*===========================
+ Les méthodes
+ =============================*/
 
 int
 ValueCell::getValue() const {
@@ -23,3 +44,39 @@ int
 ValueCell::getPoints() const {
     return my_value * 10;
 }
+
+void
+ValueCell::toString( std::ostream& O) const {
+    O << " " << my_value;
+}
+
+/*===========================
+ Les opérateurs
+ =============================*/
+
+ValueCell&
+ValueCell::operator=(const ValueCell &v) {
+    if ( this != &v ){
+        my_type = v.my_type;
+        my_value = v.my_value;
+        my_x = v.my_x;
+        my_y = v.my_y;
+    }
+    return *this;
+}
+
+/*===========================
+ Pour éviter la classe abstraite
+ =============================*/
+
+int
+ValueCell::getLife() const {
+    return -1;
+}
+
+void
+ValueCell::addLife() { }
+
+void
+ValueCell::lostLife() { }
+
