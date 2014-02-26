@@ -13,6 +13,13 @@ CellBase::CellBase()
     my_y = 0;
 }
 
+//Constructeur paramétré
+CellBase::CellBase( int x, int y ) {
+    my_type = "CellBase";
+    my_x = x;
+    my_y = y;
+}
+
 
 //Constructeur par copie
 CellBase::CellBase(const CellBase &c ) {
