@@ -22,10 +22,10 @@ Level::Level(Score* score) {
     }
     
     //On alloue le digger
-    my_grid[0][0] = new Digger();
+    my_digger = new Digger();
     
     //On fait pointé notre Digger dessus cette case;
-    my_digger = my_grid[0][0];
+    my_grid[0][0] = my_digger;
     
     //Calcul du nombre de bombe
     
