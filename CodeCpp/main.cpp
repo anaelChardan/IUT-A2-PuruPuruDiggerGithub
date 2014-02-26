@@ -24,14 +24,20 @@ int main(int argc, const char * argv[])
     //insert code here...
    // sf::RenderWindow window(sf::VideoMode(640,480, 32), "Test");
     //sf::Sleep(3.0F);
+   
     
+    /*===========================
+     ZONE DE TEST
+     =============================*/
     CellBase* my_digger = new Digger;
     
-    vector<vector<CellBase*> > my_tab;
+    //vector<vector<CellBase*> > my_tab;
     
-    my_tab.resize(2);
-    for( unsigned long i = 0 ; i < 2 ; i++ )
-        my_tab[i].resize(2);
+    CellBase* my_tab[2][2];
+    
+    //my_tab.resize(2);
+    //for( unsigned long i = 0 ; i < 2 ; i++ )
+    //    my_tab[i].resize(2);
     
     my_tab[0][0] = my_digger;
     my_tab[0][1] = new ValueCell;
@@ -63,7 +69,14 @@ int main(int argc, const char * argv[])
     
     my_tab[0][1]->lostLife();
     
+    my_tab[0][1]->setX(12);
+    my_tab[0][1]->setY(1);
+    
+    cout << "Dans le tableau" << my_tab[0][1]->getX() << " " << my_tab[0][1]->getY() << endl;
+    cout << "Le digger à part " << my_digger->getX() << " " << my_digger->getY() << endl;
+    
     cout <<  " La vie du digger " << my_tab[0][1]->getLife() << endl;
+    cout << "La vie du pointeur " << my_digger->getLife() << endl;
     cout <<  " La vie d'une case quelconque " << my_tab[0][0]->getLife() << endl;
     
     for ( unsigned long i = 0; i < 2; i++ ) {
@@ -71,6 +84,7 @@ int main(int argc, const char * argv[])
             delete my_tab[i][j];
         }
     }
+    
     
     return 0;
 }
