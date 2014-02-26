@@ -23,8 +23,8 @@ class Digger : public CellBase
     
         //Les méthodes
         int getLife() const; //Connaître la vie
-        void winLife(); //Gagner de la vie
-        void loseLife(); //Perdre de la vie
+        void addLife(); //Gagner de la vie
+        void lostLife(); //Perdre de la vie
         virtual void toString( std::ostream& O ) const;
     
     

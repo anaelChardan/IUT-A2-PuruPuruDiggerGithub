@@ -43,13 +43,13 @@ Digger::getLife() const {
 }
 
 void
-Digger::winLife() {
+Digger::addLife() {
     if ( my_life < 3 )
         my_life++;
 }
 
 void
-Digger::loseLife() {
+Digger::lostLife() {
     if ( my_life > 0 ) {
         my_life--;
     }
