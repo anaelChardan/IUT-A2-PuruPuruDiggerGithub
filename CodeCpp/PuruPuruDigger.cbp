@@ -40,19 +40,27 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Bomb.cpp" />
+		<Unit filename="Bomb.h" />
 		<Unit filename="CellBase.cpp" />
 		<Unit filename="CellBase.h" />
 		<Unit filename="Constantes.h" />
 		<Unit filename="Digger.cpp" />
 		<Unit filename="Digger.h" />
-		<Unit filename="Game.cpp" />
-		<Unit filename="Game.h" />
-		<Unit filename="Grid.cpp" />
-		<Unit filename="Grid.h" />
+		<Unit filename="EmptyCell.cpp" />
+		<Unit filename="EmptyCell.h" />
+		<Unit filename="GameModel.cpp" />
+		<Unit filename="GameModel.h" />
+		<Unit filename="GameView.cpp" />
+		<Unit filename="GameView.h" />
+		<Unit filename="GoldCell.cpp" />
+		<Unit filename="GoldCell.h" />
 		<Unit filename="Level.cpp" />
 		<Unit filename="Level.h" />
 		<Unit filename="Score.cpp" />
 		<Unit filename="Score.h" />
+		<Unit filename="ValueCell.cpp" />
+		<Unit filename="ValueCell.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
