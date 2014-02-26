@@ -19,16 +19,28 @@
 /// @class Level
 /// @brief Modélisation des niveaux du jeu
 class Level {
-    std::vector<std::vector<CellBase*> > my_grid;
-    int my_goal;
-    void init();
-    Score* my_score;
-    std::string getCell(int x, int y);
-    CellBase* my_digger;
+    private :
+        CellBase* my_digger; //Le digger de notre partie
+        std::vector<std::vector<CellBase*> > my_grid; //La grille que nous allons utiliser
+        int my_goal; //L'objectif du level qui grossira à chaque fois que nous réussirons le level
+        Score* my_score; //Le score de la partie qui l'injectera
+    
+
     public:
-        Level(Score* score);
-        void shuffle();
+    
+        //Les constructeurs
+        Level(Score* score); //Constructeurs paramétré qui permet de prendre en compte le score injecté.
+    
+        void shuffle(); //Permet de mélanger un grille
         void reset();
+        std::string getCell(int x, int y);
+        void init();
+        void setCell( int x, int y, std::string type );
+        CellBase getCell() const;
+        void setGoal();
+        CellBase getDigger();
+        void move( int click_x, int click_y );
+        bool isCellClickable( int click_x, int click_y );
     
 };
 
