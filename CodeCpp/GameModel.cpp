@@ -5,7 +5,7 @@
 /// @version 0.1
 /// @date 17/02/2014
 
-#include "Game.h"
+#include "GameModel.h"
 using namespace std;
 
 GameModel::GameModel(){
