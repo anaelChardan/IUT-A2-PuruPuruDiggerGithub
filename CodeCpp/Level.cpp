@@ -11,6 +11,10 @@
 #include <vector>
 #include <algorithm>
 
+/*===========================
+ Le constructeur
+ =============================*/
+
 Level::Level(Score* score) {
     //On fait pointé my_score sur l'adresse du score qu'on lui à donné
     my_score = score;
@@ -46,9 +50,14 @@ Level::Level(Score* score) {
             my_grid[i][j] = new ValueCell;
         }
     }
+    
     //On mélange tout cela
     shuffle();
 }
+
+/*===========================
+ Le destructeur
+ =============================*/
 
 Level::~Level() {
     for ( unsigned long i = 0; i < LIGNE; i++ ) {
@@ -58,6 +67,11 @@ Level::~Level() {
     }
 }
 
+/*===========================
+ Les méthodes
+ =============================*/
+
+//Brasse un tableau
 void
 Level::shuffle() {
 
@@ -109,7 +123,7 @@ Level::isCellClickable( int click_x, int click_y ){
     int y = my_digger->getY();
     
     //Il faut d'abord vérifier que la case est juste à côté de notre digger
-    if ( ( ( click_x == x - 1 ) || ( click_x == x + 1 ) ) && ( ( click_y == y - 1 ) || ( click_y == y + 1 ) ) ) {
+    if ( ( ( click_x <= x - 1 ) || ( click_x <= x + 1 ) ) && ( ( click_y <= y - 1 ) || ( click_y <= y + 1 ) ) ) {
         //On vérifie son type
         if ( my_grid[click_x][click_y]->getType() == "ValueCell" || my_grid[click_x][click_y]->getType() == "GoldCell" ) {
             return true;
@@ -123,23 +137,6 @@ CellBase*
 Level::getDigger() {
     return my_digger;
 }
-
-void
-Level::moveWest(){}
-void
-Level::moveEast(){}
-void
-Level::moveNorth(){}
-void
-Level::moveSouth(){}
-void
-Level::moveNorthEast(){}
-void
-Level::moveNorthWest(){}
-void
-Level::moveSouthWest(){}
-void
-Level::moveSouthEast(){}
 
 
 void
@@ -158,3 +155,100 @@ Level::showTmp() const {
         std::cout << std::endl;
     }
 }
+
+void
+Level::move( int DeltaX, int DeltaY, int nbCoup ) { }
+
+/*===========================
+ Les sucres
+ =============================*/
+
+//On se déplace vers l'ouest ( gauche )
+void
+Level::moveWest(){
+    //Provisoire vu que dans le mode terminal, les clicks sont connus
+    if ( isCellClickable( ( my_digger->getX() ), ( my_digger->getY() - 1 ) ) ) {
+        //On veut savoir de combien de coup on veut se déplacer
+        int nbCoup = my_grid[ my_digger->getX() ][ (my_digger->getY() - 1 ) ]->getValue();
+        move( 0, -1, nbCoup );
+    }
+}
+
+//On se déplace vers l'est ( droite )
+void
+Level::moveEast() {
+    //Provisoire vu que dans le mode terminal, les clicks sont connus
+    if ( isCellClickable( ( my_digger->getX() ), ( my_digger->getY() + 1 ) ) ) {
+        //On veut savoir de combien de coup on veut se déplacer
+        int nbCoup = my_grid[ my_digger->getX() ][ ( my_digger->getY() + 1 ) ]->getValue();
+        move( 0, 1, nbCoup );
+    }
+}
+
+//On se déplace vers le nord ( en haut )
+void
+Level::moveNorth() {
+    //Provisoire vu que dans le mode terminal, les clicks sont connus
+    if ( isCellClickable( ( my_digger->getX() - 1 ), ( my_digger->getY() ) ) ) {
+        //On veut savoir de combien de coup on va se déplacer
+        int nbCoup = my_grid[ ( my_digger->getX() - 1 ) ][ my_digger->getY() ]->getValue();
+        move( -1, 0, nbCoup );
+    }
+}
+
+//On se déplace vers le sud ( en bas )
+void
+Level::moveSouth() {
+    //Provisoire vu que dans le mode terminal, les clicks sont connus
+    if ( isCellClickable( ( my_digger->getX() + 1 ), ( my_digger->getY() ) ) ) {
+        //On veut savoir de combien de coup on va se déplacer
+        int nbCoup = my_grid[ ( my_digger->getX() + 1 ) ][ my_digger->getY() ]->getValue();
+        move( 1, 0, nbCoup );
+    }
+}
+
+//On se déplace vers le nord est ( haut + droite )
+void
+Level::moveNorthEast() {
+    //Provisoire vu que dans le mode terminal, les clicks sont connus
+    if ( isCellClickable( ( my_digger->getX() - 1 ), ( my_digger->getY() + 1 ) ) ) {
+        //On veut savoir de combien de coup on va se déplacer
+        int nbCoup = my_grid[ ( my_digger->getX() - 1 ) ][ ( my_digger->getY() + 1 ) ]->getValue();
+        move( -1, +1, nbCoup );
+    }
+}
+
+// On se déplace vers le nord ouest ( haut + gauche )
+void
+Level::moveNorthWest() {
+    //Provisoire vu que dans le mode terminal, les clicks sont connus
+    if ( isCellClickable( ( my_digger->getX() - 1 ), ( my_digger->getY() - 1 ) ) ) {
+        //On veut savoir de combien de coup on va se déplacer
+        int nbCoup = my_grid[ ( my_digger->getX() - 1 ) ][ ( my_digger->getY() - 1 ) ]->getValue();
+        move( -1, -1, nbCoup );
+    }
+}
+
+// On se déplace vers le sud ouest ( bas + gauche )
+void
+Level::moveSouthWest() {
+    //Provisoire vu que dans le mode terminal, les clicks sont connus
+    if ( isCellClickable( ( my_digger->getX() + 1 ), ( my_digger->getY() - 1 ) ) ) {
+        //On veut savoir de combien de coup on va se déplacer
+        int nbCoup = my_grid[ ( my_digger->getX() + 1 ) ][ ( my_digger->getY() - 1 ) ]->getValue();
+        move( 1, -1, nbCoup );
+    }
+}
+
+// On se déplace vers le sud est ( bas + droite )
+void
+Level::moveSouthEast() {
+    //Provisoire vu que dans le mode terminal, les clicks sont connus
+    if ( isCellClickable( ( my_digger->getX() + 1 ), ( my_digger->getY() + 1 ) ) ) {
+        //On veut savoir de combien de coup on va se déplacer
+        int nbCoup = my_grid[ ( my_digger->getX() + 1 ) ][ ( my_digger->getY() + 1 ) ]->getValue();
+        move( 1, 1, nbCoup );
+    }
+}
+
+
