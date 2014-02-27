@@ -2,7 +2,6 @@
 /// @brief Fichier relatif à l'implémentation des niveaux du Puru Puru Digger.
 /// @author Anaël Chardan
 /// @author Jérémy Damey
-/// @author Osiris Malbranque
 /// @version 0.1
 /// @date 17/02/2014
 
@@ -16,14 +15,13 @@ Level::Level(Score* score) {
     //On fait pointé my_score sur l'adresse du score qu'on lui à donné
     my_score = score;
 
+    //On alloue le digger
+    my_digger = new Digger();
 
     my_grid.resize( LIGNE );
     for( unsigned long i = 0; i < LIGNE; i++ ) {
         my_grid[i].resize( COLONNE );
     }
-
-    //On alloue le digger
-    my_digger = new Digger();
 
     //On fait pointé notre Digger dessus cette case;
     my_grid[0][0] = my_digger;
@@ -50,6 +48,14 @@ Level::Level(Score* score) {
     }
     //On mélange tout cela
     shuffle();
+}
+
+Level::~Level() {
+    for ( unsigned long i = 0; i < LIGNE; i++ ) {
+        for ( unsigned long j = 0; j < COLONNE; j++ ) {
+            delete my_grid[i][j];
+        }
+    }
 }
 
 void
@@ -79,10 +85,10 @@ Level::shuffle() {
         for ( unsigned int i = 0 ; i < LIGNE ; i++ ) {
             //Parcours en longeur
             for ( unsigned int j = 0; j < COLONNE ; j++ ) {
-                //On peut maintenant set chaque case avec les bon x et les bon y dont le digger
-                my_grid[i][j]->setX(j);
-                my_grid[i][j]->setY(i);
                 my_grid[i][j] = tmp[z];
+                //On peut maintenant set chaque case avec les bon x et les bon y dont le digger
+                my_grid[i][j]->setX(i);
+                my_grid[i][j]->setY(j);
                 z++;
             }
         }
@@ -93,4 +99,62 @@ Level::shuffle() {
 void
 Level::reset() {
 
+}
+
+//Permet de vérifier sur une case est clickable
+bool
+Level::isCellClickable( int click_x, int click_y ){
+
+    int x = my_digger->getX();
+    int y = my_digger->getY();
+    
+    //Il faut d'abord vérifier que la case est juste à côté de notre digger
+    if ( ( ( click_x == x - 1 ) || ( click_x == x + 1 ) ) && ( ( click_y == y - 1 ) || ( click_y == y + 1 ) ) ) {
+        //On vérifie son type
+        if ( my_grid[click_x][click_y]->getType() == "ValueCell" || my_grid[click_x][click_y]->getType() == "GoldCell" ) {
+            return true;
+        }
+    }
+    return false;
+}
+
+//Retourne notre Digger
+CellBase*
+Level::getDigger() {
+    return my_digger;
+}
+
+void
+Level::moveWest(){}
+void
+Level::moveEast(){}
+void
+Level::moveNorth(){}
+void
+Level::moveSouth(){}
+void
+Level::moveNorthEast(){}
+void
+Level::moveNorthWest(){}
+void
+Level::moveSouthWest(){}
+void
+Level::moveSouthEast(){}
+
+
+void
+Level::showTmp() const {
+    for ( unsigned long z = 0; z < (COLONNE * 5 + 3); z++ )
+        std::cout << "-";
+    std::cout << std::endl;
+    for ( unsigned long i = 0; i < LIGNE; i++ ) {
+        std::cout << " | ";
+        for ( unsigned long j = 0; j < COLONNE; j++ ) {
+            std::cout << *my_grid[i][j] << " | ";
+        }
+        std::cout << std::endl;
+        for ( unsigned long z = 0; z < (COLONNE * 5 + 3); z++ )
+            std::cout << "-";
+        std::cout << std::endl;
+    }
 }

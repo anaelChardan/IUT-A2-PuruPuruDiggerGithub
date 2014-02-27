@@ -20,27 +20,41 @@
 /// @brief Modélisation des niveaux du jeu
 class Level {
     private :
+        //Les attributs privés
         CellBase* my_digger; //Le digger de notre partie
         std::vector<std::vector<CellBase*> > my_grid; //La grille que nous allons utiliser
         int my_goal; //L'objectif du level qui grossira à chaque fois que nous réussirons le level
         Score* my_score; //Le score de la partie qui l'injectera
-
+    
+        //Une méthode privé qui ne se fera appelé que par les fonctions public
+        void move( int deltaX, int deltaY, int nbCoup );
 
     public:
 
         //Les constructeurs
         Level(Score* score); //Constructeurs paramétré qui permet de prendre en compte le score injecté.
 
+        //Le destructeur
+        ~Level();
         void shuffle(); //Permet de mélanger un grille
-        void reset();
+        void reset(); // Permet de rebrasser notre grille quand on a gagné ou quand on a perdu sans perdre les attributs de notre digger
         std::string getCell(int x, int y);
-        void init();
         void setCell( int x, int y, std::string type );
         CellBase* getCell() const;
         void setGoal();
         CellBase* getDigger();
-        void move( int click_x, int click_y );
-        bool isCellClickable( int click_x, int click_y );
+        bool isCellClickable( int click_x, int click_y ); //Savoir si une case est clickable ( il faut que ce soit une valueCell ou une goldCell et qu'elle soit placé à côté du Digger ) Elle ne servira que quand on devra recueillir des clicks
+        void showTmp() const; //Permettra d'afficher le level en attendant le gameview
+    
+        //Tous nos sucres de languages, il appeleront la fonction move avec notre digger et les bons deltas et le nombre de coup
+        void moveWest();
+        void moveEast();
+        void moveNorth();
+        void moveSouth();
+        void moveNorthEast();
+        void moveNorthWest();
+        void moveSouthWest();
+        void moveSouthEast();
 
 };
 
