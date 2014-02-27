@@ -25,6 +25,7 @@ class Score {
         int getGlobale() const ; //Connaitre le score global
         void addSuccess(); //Ajoute une case
         void addPoints(const int &i); //Ajoute des points à la case courrante
+        void showTmpScore() const;
     
 };
 
