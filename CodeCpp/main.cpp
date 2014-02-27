@@ -87,13 +87,59 @@ int main(int argc, const char * argv[])
         }
     } */
     
+    //On simule une partie
+    
     Score* my_score = new Score;
     Level* my_level = new Level(my_score);
     my_level->showTmp();
     
-    cout << ((my_level->getDigger() )->getX()) <<  "   " << ((my_level->getDigger() )->getY()) ;
+    bool isRunning = true;
+    int dplt;
+    while (isRunning ) {
+        cout << " Ton score " << endl;
+        my_score->showTmpScore();
+        cout << endl;
+        cout << "Ton Digger est à la position " << ((my_level->getDigger() )->getX()) <<  "   " << ((my_level->getDigger() )->getY()) << endl ;
+        cout << "La vie de ton Digger " << (my_level->getDigger())->getLife() << endl << endl;
+        
+        cout << " Déplacement : " << endl << endl;
+        
+        cout << " 7 : NordOuest " << " 8 : Nord " << " 9 : NordEst" << endl;
+        cout << " 4 : Ouest     " << "          " << " 6 : Est    " << endl;
+        cout << " 1 : Sud Ouest " << " 2 : Sud  " << " 3 : SudEst " << endl << endl;
+       
+        cout << "               Pour arrêter : 5 " << endl;
+        
+        
+        cout << " Entrez votre Déplacement souhaité " << endl;
+        cin >> dplt;
+        switch ( dplt ) {
+            case 1 : my_level->moveSouthWest();
+                break;
+            case 2 : my_level->moveSouth();
+                break;
+            case 3 : my_level->moveSouthEast();
+                break;
+            case 4 : my_level->moveWest();
+                break;
+            case 5 : isRunning = false;
+                break;
+            case 6 : my_level->moveEast();
+                break;
+            case 7 : my_level->moveNorthWest();
+                break;
+            case 8 : my_level->moveNorth();
+                break;
+            case 9 : my_level->moveNorthEast();
+                break;
+        }
+        my_level->showTmp();
+    }
+    
+    
     delete my_score;
     delete my_level;
+    
     return 0;
 }
 
