@@ -15,6 +15,8 @@
 #include "Digger.h"
 #include "ValueCell.h"
 #include "EmptyCell.h"
+#include "Score.h"
+#include "Level.h"
 
 using namespace std;
 
@@ -29,7 +31,7 @@ int main(int argc, const char * argv[])
     /*===========================
      ZONE DE TEST
      =============================*/
-    CellBase* my_digger = new Digger;
+   /* CellBase* my_digger = new Digger;
     
     //vector<vector<CellBase*> > my_tab;
     
@@ -83,9 +85,15 @@ int main(int argc, const char * argv[])
         for ( unsigned long j = 0 ; j < 2 ; j++ ) {
             delete my_tab[i][j];
         }
-    }
+    } */
     
+    Score* my_score = new Score;
+    Level* my_level = new Level(my_score);
+    my_level->showTmp();
     
+    cout << ((my_level->getDigger() )->getX()) <<  "   " << ((my_level->getDigger() )->getY()) ;
+    delete my_score;
+    delete my_level;
     return 0;
 }
 
