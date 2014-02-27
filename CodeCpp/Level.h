@@ -27,7 +27,7 @@ class Level {
         Score* my_score; //Le score de la partie qui l'injectera
     
         //Une méthode privé qui ne se fera appelé que par les fonctions public, delta X et delta Y étant la direction
-        void move( int deltaX, int deltaY, int nbCoup );
+        void move( int deltaX, int deltaY, int nbStep, int pointInGame );
     
         void shuffle(); //Permet de mélanger un grille
 
@@ -44,7 +44,7 @@ class Level {
         void setCell( int x, int y, std::string type );
         void setGoal();
     
-        CellBase* getCell(  int click_x, int click_y ) const;
+        std::string getTypeCell(  int click_x, int click_y ) const;
         CellBase* getDigger();
         bool isCellClickable( int click_x, int click_y ); //Savoir si une case est clickable ( il faut que ce soit une valueCell ou une goldCell et qu'elle soit placé à côté du Digger ) Elle ne servira que quand on devra recueillir des clicks
         void showTmp() const; //Permettra d'afficher le level en attendant le gameview

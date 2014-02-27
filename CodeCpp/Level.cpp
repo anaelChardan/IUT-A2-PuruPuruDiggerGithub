@@ -8,6 +8,7 @@
 #include "Level.h"
 #include "Bomb.h"
 #include "GoldCell.h"
+#include "EmptyCell.h"
 #include <vector>
 #include <algorithm>
 
@@ -156,8 +157,31 @@ Level::showTmp() const {
     }
 }
 
+std::string
+Level::getTypeCell( int x, int y ) const {
+    return my_grid[x][y]->getType();
+}
+
 void
-Level::move( int DeltaX, int DeltaY, int nbCoup ) { }
+Level::move( int DeltaX, int DeltaY, int nbStep, int pointInGame ) {
+    int cpt = 0;
+    //Tant que l'on à pas fait le bon nombre de coup et que la case d'a côté est bien une gold ou une value
+    while ( cpt < nbStep && ( isCellClickable( ( my_digger->getX() + DeltaX ), ( my_digger->getY() + DeltaY ) ) ) ) {
+        //On delete la case suivante
+        delete my_grid[ ( my_digger->getX() + DeltaX ) ][ ( my_digger->getY() + DeltaY ) ];
+        //On y place notre digger
+        my_grid[ ( my_digger->getX() + DeltaX ) ][ ( my_digger->getY() + DeltaY ) ] = my_digger;
+        //On remplace notre ancienne case du digger par une case Vide
+        my_grid[ my_digger->getX() ][ my_digger->getY() ] = new EmptyCell( my_digger->getX(), my_digger->getY() );
+        //On set les case de notre digger
+        my_digger->setX( my_digger->getX() + DeltaX );
+        my_digger->setY( my_digger->getY() + DeltaY );
+        cpt++;
+    }
+    
+    //il faudra que l'on fasse les collisions et tout, peut être récupérer l'évenement que isCellClickable à renvoyé
+    my_score->addPoints(pointInGame);
+}
 
 /*===========================
  Les sucres
@@ -169,8 +193,10 @@ Level::moveWest(){
     //Provisoire vu que dans le mode terminal, les clicks sont connus
     if ( isCellClickable( ( my_digger->getX() ), ( my_digger->getY() - 1 ) ) ) {
         //On veut savoir de combien de coup on veut se déplacer
-        int nbCoup = my_grid[ my_digger->getX() ][ (my_digger->getY() - 1 ) ]->getValue();
-        move( 0, -1, nbCoup );
+        int nbStep = my_grid[ my_digger->getX() ][ (my_digger->getY() - 1 ) ]->getValue();
+        //On veut connaître les points en jeu
+        int pointInGame = my_grid[ my_digger->getX() ][ (my_digger->getY() - 1 ) ]->getPoints();
+        move( 0, -1, nbStep, pointInGame );
     }
 }
 
@@ -180,8 +206,10 @@ Level::moveEast() {
     //Provisoire vu que dans le mode terminal, les clicks sont connus
     if ( isCellClickable( ( my_digger->getX() ), ( my_digger->getY() + 1 ) ) ) {
         //On veut savoir de combien de coup on veut se déplacer
-        int nbCoup = my_grid[ my_digger->getX() ][ ( my_digger->getY() + 1 ) ]->getValue();
-        move( 0, 1, nbCoup );
+        int nbStep = my_grid[ my_digger->getX() ][ ( my_digger->getY() + 1 ) ]->getValue();
+        //On veut connaître les points en jeu
+        int pointInGame = my_grid[ my_digger->getX() ][ ( my_digger->getY() + 1 ) ]->getPoints();
+        move( 0, 1, nbStep, pointInGame );
     }
 }
 
@@ -191,8 +219,10 @@ Level::moveNorth() {
     //Provisoire vu que dans le mode terminal, les clicks sont connus
     if ( isCellClickable( ( my_digger->getX() - 1 ), ( my_digger->getY() ) ) ) {
         //On veut savoir de combien de coup on va se déplacer
-        int nbCoup = my_grid[ ( my_digger->getX() - 1 ) ][ my_digger->getY() ]->getValue();
-        move( -1, 0, nbCoup );
+        int nbStep = my_grid[ ( my_digger->getX() - 1 ) ][ my_digger->getY() ]->getValue();
+        //On veut connaître les points en jeu
+        int pointInGame = my_grid[ ( my_digger->getX() - 1 ) ][ my_digger->getY() ]->getPoints();
+        move( -1, 0, nbStep, pointInGame );
     }
 }
 
@@ -202,8 +232,10 @@ Level::moveSouth() {
     //Provisoire vu que dans le mode terminal, les clicks sont connus
     if ( isCellClickable( ( my_digger->getX() + 1 ), ( my_digger->getY() ) ) ) {
         //On veut savoir de combien de coup on va se déplacer
-        int nbCoup = my_grid[ ( my_digger->getX() + 1 ) ][ my_digger->getY() ]->getValue();
-        move( 1, 0, nbCoup );
+        int nbStep = my_grid[ ( my_digger->getX() + 1 ) ][ my_digger->getY() ]->getValue();
+        //On veut connaître les points en jeu
+        int pointInGame = my_grid[ ( my_digger->getX() + 1 ) ][ my_digger->getY() ]->getPoints();
+        move( 1, 0, nbStep, pointInGame );
     }
 }
 
@@ -213,8 +245,10 @@ Level::moveNorthEast() {
     //Provisoire vu que dans le mode terminal, les clicks sont connus
     if ( isCellClickable( ( my_digger->getX() - 1 ), ( my_digger->getY() + 1 ) ) ) {
         //On veut savoir de combien de coup on va se déplacer
-        int nbCoup = my_grid[ ( my_digger->getX() - 1 ) ][ ( my_digger->getY() + 1 ) ]->getValue();
-        move( -1, +1, nbCoup );
+        int nbStep = my_grid[ ( my_digger->getX() - 1 ) ][ ( my_digger->getY() + 1 ) ]->getValue();
+        //On veut connaître les points en jeu
+        int pointInGame = my_grid[ ( my_digger->getX() - 1 ) ][ ( my_digger->getY() + 1 ) ]->getPoints();
+        move( -1, +1, nbStep, pointInGame );
     }
 }
 
@@ -224,8 +258,9 @@ Level::moveNorthWest() {
     //Provisoire vu que dans le mode terminal, les clicks sont connus
     if ( isCellClickable( ( my_digger->getX() - 1 ), ( my_digger->getY() - 1 ) ) ) {
         //On veut savoir de combien de coup on va se déplacer
-        int nbCoup = my_grid[ ( my_digger->getX() - 1 ) ][ ( my_digger->getY() - 1 ) ]->getValue();
-        move( -1, -1, nbCoup );
+        int nbStep = my_grid[ ( my_digger->getX() - 1 ) ][ ( my_digger->getY() - 1 ) ]->getValue();
+        int pointInGame = my_grid[ ( my_digger->getX() - 1 ) ][ ( my_digger->getY() - 1 ) ]->getPoints();
+        move( -1, -1, nbStep, pointInGame );
     }
 }
 
@@ -235,8 +270,9 @@ Level::moveSouthWest() {
     //Provisoire vu que dans le mode terminal, les clicks sont connus
     if ( isCellClickable( ( my_digger->getX() + 1 ), ( my_digger->getY() - 1 ) ) ) {
         //On veut savoir de combien de coup on va se déplacer
-        int nbCoup = my_grid[ ( my_digger->getX() + 1 ) ][ ( my_digger->getY() - 1 ) ]->getValue();
-        move( 1, -1, nbCoup );
+        int nbStep = my_grid[ ( my_digger->getX() + 1 ) ][ ( my_digger->getY() - 1 ) ]->getValue();
+        int pointInGame = my_grid[ ( my_digger->getX() + 1 ) ][ ( my_digger->getY() - 1 ) ]->getPoints();
+        move( 1, -1, nbStep, pointInGame );
     }
 }
 
@@ -246,8 +282,10 @@ Level::moveSouthEast() {
     //Provisoire vu que dans le mode terminal, les clicks sont connus
     if ( isCellClickable( ( my_digger->getX() + 1 ), ( my_digger->getY() + 1 ) ) ) {
         //On veut savoir de combien de coup on va se déplacer
-        int nbCoup = my_grid[ ( my_digger->getX() + 1 ) ][ ( my_digger->getY() + 1 ) ]->getValue();
-        move( 1, 1, nbCoup );
+        int nbStep = my_grid[ ( my_digger->getX() + 1 ) ][ ( my_digger->getY() + 1 ) ]->getValue();
+        //On veut connaître les points en jeu
+        int pointInGame = my_grid[ ( my_digger->getX() + 1 ) ][ ( my_digger->getY() + 1 ) ]->getPoints();
+        move( 1, 1, nbStep, pointInGame );
     }
 }
 
