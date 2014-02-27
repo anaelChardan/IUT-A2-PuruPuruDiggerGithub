@@ -33,7 +33,7 @@ Level::Level(Score* score) {
 
     //Calcul du nombre de bombe
 
-    int nbrB = MINOBJ + ( rand() % ( MAXOBJ - MINOBJ ) );
+    unsigned int nbrB = MINOBJ + ( rand() % ( MAXOBJ - MINOBJ ) );
 
     //Remplissage du tableau avec des bombe
     for ( unsigned long i = 1 ; i <= nbrB; i++ ) {
@@ -51,7 +51,7 @@ Level::Level(Score* score) {
             my_grid[i][j] = new ValueCell;
         }
     }
-    
+
     //On mélange tout cela
     shuffle();
 }
@@ -122,7 +122,7 @@ Level::isCellClickable( int click_x, int click_y ){
 
     int x = my_digger->getX();
     int y = my_digger->getY();
-    
+
     //Il faut d'abord vérifier que la case est juste à côté de notre digger
     if ( ( ( click_x <= x - 1 ) || ( click_x <= x + 1 ) ) && ( ( click_y <= y - 1 ) || ( click_y <= y + 1 ) ) ) {
         //On vérifie son type
@@ -178,7 +178,7 @@ Level::move( int DeltaX, int DeltaY, int nbStep, int pointInGame ) {
         my_digger->setY( my_digger->getY() + DeltaY );
         cpt++;
     }
-    
+
     //il faudra que l'on fasse les collisions et tout, peut être récupérer l'évenement que isCellClickable à renvoyé
     my_score->addPoints(pointInGame);
 }

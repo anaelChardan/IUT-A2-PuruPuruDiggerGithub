@@ -36,7 +36,7 @@
 	"Level.h"
 	"Score.h"
 
-1393440946 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Level.h
+1393508439 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Level.h
 	<iostream>
 	"Score.h"
 	"Digger.h"
@@ -44,7 +44,7 @@
 	"Bomb.h"
 	"Constantes.h"
 
-1393435747 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Score.h
+1393508439 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Score.h
 	<iostream>
 	<vector>
 
@@ -69,7 +69,7 @@
 	"CellBase.h"
 	<cstdlib>
 
-1393435747 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/main.cpp
+1393508439 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/main.cpp
 	<iostream>
 	<SFML/System.hpp>
 	<SFML/Graphics.hpp>
@@ -79,10 +79,20 @@
 	"Digger.h"
 	"ValueCell.h"
 	"EmptyCell.h"
+	"Score.h"
+	"Level.h"
 
-1393435747 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Score.cpp
+1393508439 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Score.cpp
 	"Score.h"
 
 1393435747 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/ValueCell.cpp
 	"ValueCell.h"
+
+1393508994 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Level.cpp
+	"Level.h"
+	"Bomb.h"
+	"GoldCell.h"
+	"EmptyCell.h"
+	<vector>
+	<algorithm>
 
