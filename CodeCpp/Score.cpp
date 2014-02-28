@@ -6,7 +6,7 @@
 /// @date 17/02/2014
 
 #include "Score.h"
-
+#include <iomanip>
 using namespace std;
 
 Score::Score() {
@@ -50,8 +50,7 @@ Score::resetScore() {
 
 void
 Score::showTmpScore() const {
-    cout << " Level " << getCurrentStep() << endl;
-    cout << " Total Score "  << endl;
-    cout << "      " << getGlobale() << endl;
-    cout << " Score " << getCurrent() << endl;
+    cout << setw(15) << left << " Level :" << setw(5) << right << getCurrentStep() << endl;
+    cout << setw(15) << left << " Total Score :"  << setw(5) << right << getGlobale() << endl;
+    cout << setw(15) << left << " Score :" << setw(5) << right << getCurrent() << endl;
 }

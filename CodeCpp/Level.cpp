@@ -11,7 +11,9 @@
 #include "EmptyCell.h"
 #include <vector>
 #include <algorithm>
+#include <iomanip>
 
+using namespace std;
 /*===========================
  Le constructeur
  =============================*/
@@ -66,7 +68,7 @@ Level::~Level() {
 void
 Level::shuffle() {
 
-    std::vector<CellBase*> tmp;
+    vector<CellBase*> tmp;
     unsigned int taille = LIGNE * COLONNE;
     tmp.resize( taille );
     unsigned long z = 0;
@@ -278,28 +280,28 @@ Level::getDigger() {
 void
 Level::showTmp() const {
     for ( unsigned long z = 0; z < (COLONNE * 5 + 3); z++ )
-        std::cout << "-";
-    std::cout << std::endl;
-    for ( unsigned long i = 0; i < LIGNE; i++ ) {
-        std::cout << " | ";
-        for ( unsigned long j = 0; j < COLONNE; j++ ) {
-            std::cout << *my_grid[i][j] << " | ";
-        }
-        std::cout << std::endl;
-        for ( unsigned long z = 0; z < (COLONNE * 5 + 3); z++ )
-            std::cout << "-";
-        std::cout << std::endl;
-    }
+            cout << "-";
+    cout << endl;
     
-    std::cout << " Ton Score : " << std::endl;
+    for ( unsigned long i = 0; i < LIGNE; i++ ) {
+        cout << " | ";
+        for ( unsigned long j = 0; j < COLONNE; j++ ) {
+            cout << *my_grid[i][j] << " | ";
+        }
+        cout << endl;
+        for ( unsigned long z = 0; z < (COLONNE * 5 + 3); z++ )
+            cout << "-";
+        cout << endl;
+    }
+    cout << endl;
+    cout << " Ton Score : " << endl;
     my_score->showTmpScore();
-    std::cout << " Move  " << my_currentMove << std::endl;
-    std::cout << " Target " << std::endl;
-    std::cout << "   " << my_goal << std::endl;
+    cout << setw(15) << left << " Move  :" << setw(5) << right << my_currentMove << std::endl;
+    cout << setw(15) << left << " Target :" << setw(5) << right << my_goal << endl;
 }
 
 //Connaître le type d'une case
-std::string
+string
 Level::getTypeCell( int x, int y ) const {
     return my_grid[x][y]->getType();
 }

@@ -7,6 +7,7 @@
 /// @date 17/02/2014
 
 #include <iostream>
+#include <cstdlib>
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
@@ -17,13 +18,23 @@
 #include "EmptyCell.h"
 #include "Score.h"
 #include "Level.h"
-#include "couleurs.h"
 
 using namespace std;
 
 int main(int argc, const char * argv[])
 {
-
+    //GameModel * model = new GameModel(MODEL_WIDTH, MODEL_HEIGHT, 0, 0 );
+    //GameView * view = new GameView(VIEW_WIDTH, VIEW_HEIGHT, VIEWBPP);
+    //view->setModel(model);
+    
+    //while(view->treatEvents()){
+    //    view->synchronize();
+    //    model->nextStep();
+    //    view->draw();
+    //    sf::Sleep(0.01f);
+    //}
+   
+    
     //insert code here...
    // sf::RenderWindow window(sf::VideoMode(640,480, 32), "Test");
     //sf::Sleep(3.0F);
@@ -92,22 +103,49 @@ int main(int argc, const char * argv[])
     
     Score* my_score = new Score;
     Level* my_level = new Level(my_score);
-    my_level->showTmp();
     
-    bool isRunning = true;
+    cout << " -----------                           -----------                    " << endl ;
+    cout << "|           |      |           |      |           |      |           |" << endl ;
+    cout << "|           |      |           |      |           |      |           |" << endl ;
+    cout << "|           |      |           |      |           |      |           |" << endl ;
+    cout << "|-----------       |           |      |-----------       |           |" << endl ;
+    cout << "|                  |           |      |-                 |           |" << endl ;
+    cout << "|                  |           |      |  -               |           |" << endl ;
+    cout << "|                  |           |      |    -             |           |" << endl ;
+    cout << "|                  |           |      |      -           |           |" << endl ;
+    cout << "|                  |           |      |        -         |           |" << endl ;
+    cout << "|                  |___________|      |          -       |___________|" << endl << endl << endl;
+
+    
+    cout << "                        PURU                DIGGER                    " << endl << endl << endl;
+    
+    cout << "                  BY ANAEL CHARDAN    &     JEREMY DAMEY              " << endl << endl << endl;
+
+   
+    cout << " 1 : START " << endl;
+    cout << " 2 : QUIT  " << endl << endl;
+    
+    cout << " CHOIX : ";
+    
+    int choice;
+    cin >> choice;
+    bool isRunning = false;
     int dplt;
+    if ( choice == 1 )
+        isRunning = true;
     while (isRunning ) {
         cout << endl;
-        cout << "Ton Digger est à la position " << ((my_level->getDigger() )->getX()) <<  "   " << ((my_level->getDigger() )->getY()) << endl ;
-        cout << "La vie de ton Digger " << (my_level->getDigger())->getLife() << endl << endl;
+        my_level->showTmp();
+        cout << endl;
+        cout << " Ton Digger est à la position " << ((my_level->getDigger() )->getX()) <<  "   " << ((my_level->getDigger() )->getY()) << endl ;
+        cout << " La vie de ton Digger         " << (my_level->getDigger())->getLife() << endl << endl;
         
-        cout << " Déplacement : " << endl << endl;
-        
-        cout << " 7 : NordOuest " << " 8 : Nord " << " 9 : NordEst" << endl;
-        cout << " 4 : Ouest     " << "          " << " 6 : Est    " << endl;
-        cout << " 1 : Sud Ouest " << " 2 : Sud  " << " 3 : SudEst " << endl << endl;
+        cout << " Déplacement :      7 : NordOuest        8 : Nord        9 : NordEst" << endl;
+        cout << "                    4 : Ouest                            6 : Est    " << endl;
+        cout << "                    1 : Sud Ouest        2 : Sud         3 : SudEst " << endl << endl << endl;
        
-        cout << "               Pour arrêter : 5 " << endl;
+        
+        cout << "                                     Pour arrêter : 5               " << endl;
         
         
         cout << " Entrez votre Déplacement souhaité " << endl;
@@ -132,12 +170,14 @@ int main(int argc, const char * argv[])
             case 9 : my_level->moveNorthEast();
                 break;
         }
-        my_level->showTmp();
     }
     
     
     delete my_score;
     delete my_level;
+    
+    //delete view;
+    //delete model;
     
     return 0;
 }
