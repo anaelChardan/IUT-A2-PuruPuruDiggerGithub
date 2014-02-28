@@ -17,6 +17,7 @@
 #include "EmptyCell.h"
 #include "Score.h"
 #include "Level.h"
+#include "couleurs.h"
 
 using namespace std;
 
