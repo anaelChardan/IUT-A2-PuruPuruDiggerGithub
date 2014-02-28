@@ -45,7 +45,8 @@ Score::addPoints( const int &i ) {
 
 void
 Score::showTmpScore() const {
-    cout << " Votre Niveau Courant " << getCurrentStep() << endl;
-    cout << " Votre Score Global " << getGlobale() << endl;
-    cout << " Votre Score Courant " << getCurrent() << endl;
+    cout << " Level " << getCurrentStep() << endl;
+    cout << " Total Score "  << endl;
+    cout << "      " << getGlobale() << endl;
+    cout << " Score " << getCurrent() << endl;
 }

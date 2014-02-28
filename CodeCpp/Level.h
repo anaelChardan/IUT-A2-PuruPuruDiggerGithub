@@ -23,7 +23,9 @@ class Level {
         //Les attributs privés
         CellBase* my_digger; //Le digger de notre partie
         std::vector<std::vector<CellBase*> > my_grid; //La grille que nous allons utiliser
-        int my_goal; //L'objectif du level qui grossira à chaque fois que nous réussirons le level
+        int my_goal; //L'objectif du level en nombre de mouvement qui grossira à chaque fois que nous réussirons le level
+        int my_currentMove;
+        int my_bonus; // Ce que rapportera en point bonus notre level
         Score* my_score; //Le score de la partie qui l'injectera
     
         //Une méthode privé qui ne se fera appelé que par les fonctions public, delta X et delta Y étant la direction

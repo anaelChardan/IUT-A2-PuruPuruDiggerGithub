@@ -96,8 +96,6 @@ int main(int argc, const char * argv[])
     bool isRunning = true;
     int dplt;
     while (isRunning ) {
-        cout << " Ton score " << endl;
-        my_score->showTmpScore();
         cout << endl;
         cout << "Ton Digger est à la position " << ((my_level->getDigger() )->getX()) <<  "   " << ((my_level->getDigger() )->getY()) << endl ;
         cout << "La vie de ton Digger " << (my_level->getDigger())->getLife() << endl << endl;

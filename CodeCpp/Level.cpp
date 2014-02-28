@@ -19,7 +19,9 @@
 Level::Level(Score* score) {
     //On fait pointé my_score sur l'adresse du score qu'on lui à donné
     my_score = score;
-
+    my_currentMove = 0;
+    my_goal = 10;
+    my_bonus = 100;
     //On alloue le digger
     my_digger = new Digger();
 
@@ -157,6 +159,12 @@ Level::showTmp() const {
             std::cout << "-";
         std::cout << std::endl;
     }
+    
+    std::cout << " Ton Score : " << std::endl;
+    my_score->showTmpScore();
+    std::cout << " Move  " << my_currentMove << std::endl;
+    std::cout << " Target " << std::endl;
+    std::cout << "   " << my_goal << std::endl;
 }
 
 std::string
@@ -204,11 +212,9 @@ Level::move( int DeltaX, int DeltaY ) {
     //Les autres renvoient -1
     if ( cpt != 0 &&  cpt < nbStep ) {
         my_digger->lostLife();
-        // reset engage un nouveau level avec le même target et tout
         
-        //Seulement si la case suivante n'est pas une Bomb ou une case Vide xD
     } else if ( nbStep != -1 ){
-        //il faudra que l'on fasse les collisions et tout, peut être récupérer l'évenement que isCellClickable à renvoyé
+        my_currentMove += nbStep;
         my_score->addPoints(pointInGame);
     }
 
