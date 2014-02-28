@@ -44,6 +44,11 @@ Score::addPoints( const int &i ) {
 }
 
 void
+Score::resetScore() {
+    my_success[ my_success.size() - 1 ] = 0;
+}
+
+void
 Score::showTmpScore() const {
     cout << " Level " << getCurrentStep() << endl;
     cout << " Total Score "  << endl;
