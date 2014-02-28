@@ -123,6 +123,8 @@ Level::isCellClickable( int click_x, int click_y ){
     int x = my_digger->getX();
     int y = my_digger->getY();
 
+    // Il faut vérifier si l'on ne sort pas du tableau
+    
     //Il faut d'abord vérifier que la case est juste à côté de notre digger
     if ( ( ( click_x <= x - 1 ) || ( click_x <= x + 1 ) ) && ( ( click_y <= y - 1 ) || ( click_y <= y + 1 ) ) ) {
         //On vérifie son type
@@ -163,24 +165,53 @@ Level::getTypeCell( int x, int y ) const {
 }
 
 void
-Level::move( int DeltaX, int DeltaY, int nbStep, int pointInGame ) {
+Level::move( int DeltaX, int DeltaY ) {
+    //On veut savoir de combien de coup on veut se déplacer
+    int nbStep = my_grid[ (my_digger->getX() + DeltaX) ][ (my_digger->getY() + DeltaY ) ]->getValue();
+
+    //On veut connaître les points en jeu
+    int pointInGame = my_grid[ (my_digger->getX() + DeltaX) ][ (my_digger->getY() + DeltaY ) ]->getPoints();
+
     int cpt = 0;
+    
     //Tant que l'on à pas fait le bon nombre de coup et que la case d'a côté est bien une gold ou une value
     while ( cpt < nbStep && ( isCellClickable( ( my_digger->getX() + DeltaX ), ( my_digger->getY() + DeltaY ) ) ) ) {
+        //Si pendant que notre Digger se déplace, il passe sur une case de trésor
+        //Pour l'instant, on lui fait prendre des points supplémentaires, mais après, l'on pourra mettre aléatoirement, de la vie
+        //des points ou du temps avec le modulo TEMPSMAX ou MODULO VIEMAX
+        if ( my_grid[ ( my_digger->getX() + DeltaX ) ][ ( my_digger->getY() + DeltaY ) ]->getType() == "GoldCell" ) {
+            my_score->addPoints( my_grid[ ( my_digger->getX() + DeltaX ) ][ ( my_digger->getY() + DeltaY ) ]->getPoints() );
+        }
+        
         //On delete la case suivante
         delete my_grid[ ( my_digger->getX() + DeltaX ) ][ ( my_digger->getY() + DeltaY ) ];
+        
         //On y place notre digger
         my_grid[ ( my_digger->getX() + DeltaX ) ][ ( my_digger->getY() + DeltaY ) ] = my_digger;
+        
         //On remplace notre ancienne case du digger par une case Vide
         my_grid[ my_digger->getX() ][ my_digger->getY() ] = new EmptyCell( my_digger->getX(), my_digger->getY() );
+       
         //On set les case de notre digger
         my_digger->setX( my_digger->getX() + DeltaX );
         my_digger->setY( my_digger->getY() + DeltaY );
+        
+        //On passe au coup suivant
         cpt++;
     }
+    
+    //Si le déplacement s'est mal passé ( donc cpt a bougé et est différent de 0 )
+    //Les autres renvoient -1
+    if ( cpt != 0 &&  cpt < nbStep ) {
+        my_digger->lostLife();
+        // reset engage un nouveau level avec le même target et tout
+        
+        //Seulement si la case suivante n'est pas une Bomb ou une case Vide xD
+    } else if ( nbStep != -1 ){
+        //il faudra que l'on fasse les collisions et tout, peut être récupérer l'évenement que isCellClickable à renvoyé
+        my_score->addPoints(pointInGame);
+    }
 
-    //il faudra que l'on fasse les collisions et tout, peut être récupérer l'évenement que isCellClickable à renvoyé
-    my_score->addPoints(pointInGame);
 }
 
 /*===========================
@@ -190,103 +221,49 @@ Level::move( int DeltaX, int DeltaY, int nbStep, int pointInGame ) {
 //On se déplace vers l'ouest ( gauche )
 void
 Level::moveWest(){
-    //Provisoire vu que dans le mode terminal, les clicks sont connus
-    if ( isCellClickable( ( my_digger->getX() ), ( my_digger->getY() - 1 ) ) ) {
-        //On veut savoir de combien de coup on veut se déplacer
-        int nbStep = my_grid[ my_digger->getX() ][ (my_digger->getY() - 1 ) ]->getValue();
-        //On veut connaître les points en jeu
-        int pointInGame = my_grid[ my_digger->getX() ][ (my_digger->getY() - 1 ) ]->getPoints();
-        move( 0, -1, nbStep, pointInGame );
-    }
+    move( 0, -1 );
 }
 
 //On se déplace vers l'est ( droite )
 void
 Level::moveEast() {
-    //Provisoire vu que dans le mode terminal, les clicks sont connus
-    if ( isCellClickable( ( my_digger->getX() ), ( my_digger->getY() + 1 ) ) ) {
-        //On veut savoir de combien de coup on veut se déplacer
-        int nbStep = my_grid[ my_digger->getX() ][ ( my_digger->getY() + 1 ) ]->getValue();
-        //On veut connaître les points en jeu
-        int pointInGame = my_grid[ my_digger->getX() ][ ( my_digger->getY() + 1 ) ]->getPoints();
-        move( 0, 1, nbStep, pointInGame );
-    }
+    move( 0, 1 );
 }
 
 //On se déplace vers le nord ( en haut )
 void
 Level::moveNorth() {
-    //Provisoire vu que dans le mode terminal, les clicks sont connus
-    if ( isCellClickable( ( my_digger->getX() - 1 ), ( my_digger->getY() ) ) ) {
-        //On veut savoir de combien de coup on va se déplacer
-        int nbStep = my_grid[ ( my_digger->getX() - 1 ) ][ my_digger->getY() ]->getValue();
-        //On veut connaître les points en jeu
-        int pointInGame = my_grid[ ( my_digger->getX() - 1 ) ][ my_digger->getY() ]->getPoints();
-        move( -1, 0, nbStep, pointInGame );
-    }
+    move( -1, 0 );
 }
 
 //On se déplace vers le sud ( en bas )
 void
 Level::moveSouth() {
-    //Provisoire vu que dans le mode terminal, les clicks sont connus
-    if ( isCellClickable( ( my_digger->getX() + 1 ), ( my_digger->getY() ) ) ) {
-        //On veut savoir de combien de coup on va se déplacer
-        int nbStep = my_grid[ ( my_digger->getX() + 1 ) ][ my_digger->getY() ]->getValue();
-        //On veut connaître les points en jeu
-        int pointInGame = my_grid[ ( my_digger->getX() + 1 ) ][ my_digger->getY() ]->getPoints();
-        move( 1, 0, nbStep, pointInGame );
-    }
+    move( 1, 0 );
 }
 
 //On se déplace vers le nord est ( haut + droite )
 void
 Level::moveNorthEast() {
-    //Provisoire vu que dans le mode terminal, les clicks sont connus
-    if ( isCellClickable( ( my_digger->getX() - 1 ), ( my_digger->getY() + 1 ) ) ) {
-        //On veut savoir de combien de coup on va se déplacer
-        int nbStep = my_grid[ ( my_digger->getX() - 1 ) ][ ( my_digger->getY() + 1 ) ]->getValue();
-        //On veut connaître les points en jeu
-        int pointInGame = my_grid[ ( my_digger->getX() - 1 ) ][ ( my_digger->getY() + 1 ) ]->getPoints();
-        move( -1, +1, nbStep, pointInGame );
-    }
+    move( -1, +1 );
 }
 
 // On se déplace vers le nord ouest ( haut + gauche )
 void
 Level::moveNorthWest() {
-    //Provisoire vu que dans le mode terminal, les clicks sont connus
-    if ( isCellClickable( ( my_digger->getX() - 1 ), ( my_digger->getY() - 1 ) ) ) {
-        //On veut savoir de combien de coup on va se déplacer
-        int nbStep = my_grid[ ( my_digger->getX() - 1 ) ][ ( my_digger->getY() - 1 ) ]->getValue();
-        int pointInGame = my_grid[ ( my_digger->getX() - 1 ) ][ ( my_digger->getY() - 1 ) ]->getPoints();
-        move( -1, -1, nbStep, pointInGame );
-    }
+    move( -1, -1 );
 }
 
 // On se déplace vers le sud ouest ( bas + gauche )
 void
 Level::moveSouthWest() {
-    //Provisoire vu que dans le mode terminal, les clicks sont connus
-    if ( isCellClickable( ( my_digger->getX() + 1 ), ( my_digger->getY() - 1 ) ) ) {
-        //On veut savoir de combien de coup on va se déplacer
-        int nbStep = my_grid[ ( my_digger->getX() + 1 ) ][ ( my_digger->getY() - 1 ) ]->getValue();
-        int pointInGame = my_grid[ ( my_digger->getX() + 1 ) ][ ( my_digger->getY() - 1 ) ]->getPoints();
-        move( 1, -1, nbStep, pointInGame );
-    }
+    move( 1, -1 );
 }
 
 // On se déplace vers le sud est ( bas + droite )
 void
 Level::moveSouthEast() {
-    //Provisoire vu que dans le mode terminal, les clicks sont connus
-    if ( isCellClickable( ( my_digger->getX() + 1 ), ( my_digger->getY() + 1 ) ) ) {
-        //On veut savoir de combien de coup on va se déplacer
-        int nbStep = my_grid[ ( my_digger->getX() + 1 ) ][ ( my_digger->getY() + 1 ) ]->getValue();
-        //On veut connaître les points en jeu
-        int pointInGame = my_grid[ ( my_digger->getX() + 1 ) ][ ( my_digger->getY() + 1 ) ]->getPoints();
-        move( 1, 1, nbStep, pointInGame );
-    }
+    move( 1, 1 );
 }
 
 

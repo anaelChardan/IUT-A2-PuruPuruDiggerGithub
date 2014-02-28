@@ -27,7 +27,7 @@ class Level {
         Score* my_score; //Le score de la partie qui l'injectera
     
         //Une méthode privé qui ne se fera appelé que par les fonctions public, delta X et delta Y étant la direction
-        void move( int deltaX, int deltaY, int nbStep, int pointInGame );
+        void move( int deltaX, int deltaY );
     
         void shuffle(); //Permet de mélanger un grille
 
