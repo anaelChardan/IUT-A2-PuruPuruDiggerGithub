@@ -49,8 +49,26 @@ Score::resetScore() {
 }
 
 void
-Score::showTmpScore() const {
-    cout << setw(15) << left << " Level :" << setw(5) << right << getCurrentStep() << endl;
-    cout << setw(15) << left << " Total Score :"  << setw(5) << right << getGlobale() << endl;
-    cout << setw(15) << left << " Score :" << setw(5) << right << getCurrent() << endl;
+Score::showTmpScore( int langue ) const {
+    string Level;
+    string TScore;
+    string AScore;
+    
+    switch ( langue ) {
+        case 1 : Level = "Level";
+                 TScore = "Total Score ";
+                 AScore = "Current Score ";
+            break;
+        case 2 : Level = " Niveau ";
+                 TScore = " Score Total : ";
+                 AScore = " Score en cours ";
+            break;
+        case 3 : Level = " Nivel ";
+                 TScore = "Puntación total ";
+                 AScore = " Puntación actual ";
+    }
+    
+    cout << setw(15) << left << Level << setw(5) << right << getCurrentStep() << endl;
+    cout << setw(15) << left << TScore  << setw(5) << right << getGlobale() << endl;
+    cout << setw(15) << left << AScore << setw(5) << right << getCurrent() << endl;
 }

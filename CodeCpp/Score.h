@@ -26,7 +26,7 @@ class Score {
         void addSuccess(); //Ajoute une case
         void resetScore(); //Remet à zéro le score courant
         void addPoints(const int &i); //Ajoute des points à la case courrante
-        void showTmpScore() const;
+        void showTmpScore( int langue ) const;
     
 };
 

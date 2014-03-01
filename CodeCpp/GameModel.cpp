@@ -13,3 +13,21 @@ GameModel::GameModel(){
     my_score = new Score();
     my_levels = new Level( my_score );
 }
+
+GameModel::~GameModel() { }
+
+void
+GameModel::showTMP( int langue ) const {
+    my_levels->showTmp( langue );
+    my_score->showTmpScore(langue);
+    
+    cout << " Déplacement :      7 : NordOuest        8 : Nord        9 : NordEst" << endl;
+    cout << "                    4 : Ouest                            6 : Est    " << endl;
+    cout << "                    1 : Sud Ouest        2 : Sud         3 : SudEst " << endl << endl << endl;
+    
+    
+    cout << "                                     Pour arrêter : 5               " << endl;
+    
+    
+    cout << " Entrez votre Déplacement souhaité " << endl;
+}

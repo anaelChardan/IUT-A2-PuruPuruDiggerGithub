@@ -278,7 +278,12 @@ Level::getDigger() {
 
 //Affiche notre niveau temporairement, en attendant le GameView
 void
-Level::showTmp() const {
+Level::showTmp( int langue ) const {
+    string Move;
+    string Target;
+    string Life;
+    string Position;
+    
     for ( unsigned long z = 0; z < (COLONNE * 5 + 3); z++ )
             cout << "-";
     cout << endl;
@@ -294,10 +299,29 @@ Level::showTmp() const {
         cout << endl;
     }
     cout << endl;
-    cout << " Ton Score : " << endl;
-    my_score->showTmpScore();
-    cout << setw(15) << left << " Move  :" << setw(5) << right << my_currentMove << std::endl;
-    cout << setw(15) << left << " Target :" << setw(5) << right << my_goal << endl;
+    
+    switch ( langue ) {
+        case 1 : Move = " Move ";
+                 Target = " Target ";
+                 Life = " Life ";
+                 Position = " Position ";
+            break;
+        case 2 :  Move = " Déplacement ";
+                  Target = " Objectif ";
+                  Life = " Vie ";
+                  Position = " Position ";
+        case 3 :  Move = " Desplazamiento ";
+                 Target = " Objetivo ";
+                 Life = " Vida ";
+                 Position = " Posición ";
+    }
+    cout << setw(15) << left << Move << setw(5) << right << my_currentMove << endl;
+    cout << setw(15) << left << Target << setw(5) << right << my_goal << endl << endl;
+    cout << setw(15) << left << Life << setw(5) << right << my_digger->getLife() << endl << endl;
+    
+    cout << Position << " Digger  [ " << my_digger->getX() << " ]   [ " << my_digger->getY() << " ] " << endl;
+
+    
 }
 
 //Connaître le type d'une case

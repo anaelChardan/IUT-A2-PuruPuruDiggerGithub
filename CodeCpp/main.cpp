@@ -103,6 +103,12 @@ int main(int argc, const char * argv[])
     
     Score* my_score = new Score;
     Level* my_level = new Level(my_score);
+    int choice;
+    int langue;
+    int movement;
+    bool isRunning = false;
+    bool isPlaying = false;
+    
     
     cout << " -----------                           -----------                    " << endl ;
     cout << "|           |      |           |      |           |      |           |" << endl ;
@@ -127,30 +133,15 @@ int main(int argc, const char * argv[])
     
     cout << " CHOIX : ";
     
-    int choice;
     cin >> choice;
-    bool isRunning = false;
-    int dplt;
     if ( choice == 1 )
-        isRunning = true;
     while (isRunning ) {
         cout << endl;
-        my_level->showTmp();
         cout << endl;
-        cout << " Ton Digger est à la position " << ((my_level->getDigger() )->getX()) <<  "   " << ((my_level->getDigger() )->getY()) << endl ;
-        cout << " La vie de ton Digger         " << (my_level->getDigger())->getLife() << endl << endl;
         
-        cout << " Déplacement :      7 : NordOuest        8 : Nord        9 : NordEst" << endl;
-        cout << "                    4 : Ouest                            6 : Est    " << endl;
-        cout << "                    1 : Sud Ouest        2 : Sud         3 : SudEst " << endl << endl << endl;
-       
-        
-        cout << "                                     Pour arrêter : 5               " << endl;
-        
-        
-        cout << " Entrez votre Déplacement souhaité " << endl;
-        cin >> dplt;
-        switch ( dplt ) {
+
+        cin >> movement;
+        switch ( movement ) {
             case 1 : my_level->moveSouthWest();
                 break;
             case 2 : my_level->moveSouth();

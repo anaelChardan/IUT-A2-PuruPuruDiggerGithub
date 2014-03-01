@@ -55,7 +55,7 @@ class Level {
         CellBase* getDigger();
         bool isCellClickable( int click_x, int click_y ); //Savoir si une case est clickable ( il faut que ce soit une valueCell ou une goldCell et qu'elle soit placé à côté du Digger ) Elle ne servira que quand on devra recueillir des clicks
     
-        void showTmp() const; //Permettra d'afficher le level en attendant le gameview
+        void showTmp( int langue ) const; //Permettra d'afficher le level en attendant le gameview
     
         //Tous nos sucres de languages, il appeleront la fonction move avec notre digger et les bons deltas et le nombre de coup
         void moveWest();

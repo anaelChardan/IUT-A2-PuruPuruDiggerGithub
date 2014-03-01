@@ -27,9 +27,11 @@ class GameModel {
     public :
         //Le constructeur
         GameModel();
+        ~GameModel();
         int getScore();
         int getLevel();
         int gameOver();
+        void showTMP( int langue ) const;
 };
 
 #endif /* defined(__purpurudigger__Game__) */
