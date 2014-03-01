@@ -18,6 +18,7 @@
 #include "EmptyCell.h"
 #include "Score.h"
 #include "Level.h"
+#include "GameModel.h"
 
 using namespace std;
 
@@ -101,14 +102,11 @@ int main(int argc, const char * argv[])
     
     //On simule une partie
     
-    Score* my_score = new Score;
-    Level* my_level = new Level(my_score);
+    GameModel* model = new GameModel;
     int choice;
     int langue;
     int movement;
     bool isRunning = false;
-    bool isPlaying = false;
-    
     
     cout << " -----------                           -----------                    " << endl ;
     cout << "|           |      |           |      |           |      |           |" << endl ;
@@ -131,41 +129,35 @@ int main(int argc, const char * argv[])
     cout << " 1 : START " << endl;
     cout << " 2 : QUIT  " << endl << endl;
     
-    cout << " CHOIX : ";
+    cout << " CHOICE : ";
     
     cin >> choice;
-    if ( choice == 1 )
-    while (isRunning ) {
-        cout << endl;
-        cout << endl;
+    
+    
+    if ( choice == 1 ) {
+        isRunning = true;
+        cout << "Language :    1: English     2: French       3: Spanish " << endl << endl;
+        cout << " CHOICE " ;
         
-
-        cin >> movement;
-        switch ( movement ) {
-            case 1 : my_level->moveSouthWest();
-                break;
-            case 2 : my_level->moveSouth();
-                break;
-            case 3 : my_level->moveSouthEast();
-                break;
-            case 4 : my_level->moveWest();
-                break;
-            case 5 : isRunning = false;
-                break;
-            case 6 : my_level->moveEast();
-                break;
-            case 7 : my_level->moveNorthWest();
-                break;
-            case 8 : my_level->moveNorth();
-                break;
-            case 9 : my_level->moveNorthEast();
-                break;
+        cin >> langue;
+        
+        while (isRunning ) {
+            cout << endl;
+            cout << endl;
+            
+            model->showTMP(langue);
+            
+            cin >> movement;
+            if ( movement != 5 ) {
+                model->movement( movement );
+            }
+            else if ( movement == 5 )
+                isRunning = false;
+            
         }
     }
     
-    
-    delete my_score;
-    delete my_level;
+    delete model;
     
     //delete view;
     //delete model;

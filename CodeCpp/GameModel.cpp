@@ -11,14 +11,14 @@ using namespace std;
 GameModel::GameModel(){
     
     my_score = new Score();
-    my_levels = new Level( my_score );
+    my_level = new Level( my_score );
 }
 
 GameModel::~GameModel() { }
 
 void
 GameModel::showTMP( int langue ) const {
-    my_levels->showTmp( langue );
+    my_level->showTmp( langue );
     my_score->showTmpScore(langue);
     
     cout << " Déplacement :      7 : NordOuest        8 : Nord        9 : NordEst" << endl;
@@ -29,5 +29,27 @@ GameModel::showTMP( int langue ) const {
     cout << "                                     Pour arrêter : 5               " << endl;
     
     
-    cout << " Entrez votre Déplacement souhaité " << endl;
+    cout << " Entrez votre Déplacement souhaité  : ";
+}
+
+void
+GameModel::movement( int depl ) {
+    switch ( depl ) {
+        case 1 : my_level->moveSouthWest();
+            break;
+        case 2 : my_level->moveSouth();
+            break;
+        case 3 : my_level->moveSouthEast();
+            break;
+        case 4 : my_level->moveWest();
+            break;
+        case 6 : my_level->moveEast();
+            break;
+        case 7 : my_level->moveNorthWest();
+            break;
+        case 8 : my_level->moveNorth();
+            break;
+        case 9 : my_level->moveNorthEast();
+            break;
+    }
 }
