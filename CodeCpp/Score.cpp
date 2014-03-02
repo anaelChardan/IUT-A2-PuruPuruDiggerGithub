@@ -55,16 +55,16 @@ Score::showTmpScore( int langue ) const {
     string AScore;
     
     switch ( langue ) {
-        case 1 : Level = "Level ";
+        case 1 : Level =  "Level ";
                  TScore = "Total Score ";
                  AScore = "Current Score ";
             break;
-        case 2 : Level = " Niveau ";
+        case 2 : Level =  " Niveau ";
                  TScore = " Score Total : ";
                  AScore = " Score en cours ";
             break;
-        case 3 : Level = " Nivel : ";
-                 TScore = " Puntación total : ";
+        case 3 : Level =  " Nivel : ";
+                 TScore = " Puntación total  : ";
                  AScore = " Puntación actual : ";
     }
     

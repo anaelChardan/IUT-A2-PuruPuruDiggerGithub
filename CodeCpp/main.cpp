@@ -19,6 +19,7 @@
 #include "Score.h"
 #include "Level.h"
 #include "GameModel.h"
+#include <fstream>
 
 using namespace std;
 
@@ -107,6 +108,7 @@ int main(int argc, const char * argv[])
     int langue;
     int movement;
     bool isRunning = false;
+    string nom;
     
     cout << " -----------                           -----------                    " << endl ;
     cout << "|           |      |           |      |           |      |           |" << endl ;
@@ -135,13 +137,14 @@ int main(int argc, const char * argv[])
     
     
     if ( choice == 1 ) {
+        ifstream score("bestScores.txt", ios::in | ios::app );
         isRunning = true;
         cout << "Language :    1: English     2: French       3: Spanish " << endl << endl;
         cout << " CHOICE " ;
         
         cin >> langue;
         
-        while (isRunning ) {
+        while (isRunning && model->isFinish()==false ) {
             cout << endl;
             cout << endl;
             
@@ -154,6 +157,33 @@ int main(int argc, const char * argv[])
             else if ( movement == 5 )
                 isRunning = false;
             
+        }
+        
+        if ( model->isFinish()== true ) {
+            cout << endl;
+            cout << " Vous êtes mort, mort, mort et remort, le digger vous retient prisonnier dans sa mine " << endl;
+            cout << "Entrez votre nom (sans espaces) " ;
+            cin >> nom;
+            
+            if ( score ) {
+                string line;
+                int cpt = 0;
+                int scoreligne;
+                string nomligne;
+                map< int, string> Scores;
+                int scorePlayer = model->getScore();
+                while ( getline(score, line) ) {
+                    //On lit le score et on le stocke dans une map
+                    score >> scoreligne >> nomligne;
+                    Scores[scoreligne] = nomligne;
+                }
+                Scores[scorePlayer] = nom;
+                
+                for ( map<int, string>::const_iterator it = Scores.begin() ; ( cpt< 5); ++it) {
+                    score << it->first <<  " " <<  it->second << endl;
+                    cpt++;
+                }
+            }
         }
     }
     

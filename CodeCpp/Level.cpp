@@ -193,11 +193,16 @@ Level::reset() {
 
 void
 Level::move( int DeltaX, int DeltaY ) {
-    //On veut savoir de combien de coup on veut se déplacer
-    int nbStep = my_grid[ (my_digger->getX() + DeltaX) ][ (my_digger->getY() + DeltaY ) ]->getValue();
-
-    //On veut connaître les points en jeu
-    int pointInGame = my_grid[ (my_digger->getX() + DeltaX) ][ (my_digger->getY() + DeltaY ) ]->getPoints();
+    int nbStep = -1;
+    int pointInGame = -1;
+   
+    if ( isCellClickable( ( my_digger->getX() + DeltaX ), ( my_digger->getY() + DeltaY ) ) ) {
+        //On veut savoir de combien de coup on veut se déplacer
+        nbStep = my_grid[ (my_digger->getX() + DeltaX) ][ (my_digger->getY() + DeltaY ) ]->getValue();
+        
+        //On veut connaître les points en jeu
+        pointInGame = my_grid[ (my_digger->getX() + DeltaX) ][ (my_digger->getY() + DeltaY ) ]->getPoints();
+    }
 
     //On met notre compteur à 0
     int cpt = 0;
@@ -232,7 +237,7 @@ Level::move( int DeltaX, int DeltaY ) {
     //Les autres renvoient -1
     if ( cpt != 0 &&  cpt < nbStep ) {
         lostLevel();
-    } else if ( nbStep != -1 ){
+    } else if ( nbStep != -1 && cpt!=0 ){
         my_currentMove += nbStep;
         my_score->addPoints(pointInGame);
         
@@ -247,7 +252,13 @@ Level::move( int DeltaX, int DeltaY ) {
 /*===========================
  Les méthodes publics
  =============================*/
-
+bool
+Level::isDead() {
+    if ( my_digger->getLife() == -1 )
+        return true;
+    else
+        return false;
+}
 //Permet de vérifier sur une case est clickable
 bool
 Level::isCellClickable( int click_x, int click_y ){
@@ -316,10 +327,10 @@ Level::showTmp( int langue ) const {
                  Position = " Posición ";
     }
     cout << setw(15) << left << Move << setw(5) << right << my_currentMove << endl;
-    cout << setw(15) << left << Target << setw(5) << right << my_goal << endl << endl;
+    cout << setw(15) << left << Target << setw(5) << right << my_goal << endl;
     cout << setw(15) << left << Life << setw(5) << right << my_digger->getLife() << endl << endl;
     
-    cout << Position << " Digger  [ " << my_digger->getX() << " ]   [ " << my_digger->getY() << " ] " << endl;
+    cout << Position << " Digger  [ " << my_digger->getX() << " ]   [ " << my_digger->getY() << " ] " << endl << endl;
 
     
 }

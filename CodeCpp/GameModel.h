@@ -33,6 +33,7 @@ class GameModel {
         int gameOver();
         void showTMP( int langue ) const;
         void movement( int depl );
+        bool isFinish() const ;
 };
 
 #endif /* defined(__purpurudigger__Game__) */

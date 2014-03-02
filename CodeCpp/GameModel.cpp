@@ -20,7 +20,7 @@ void
 GameModel::showTMP( int langue ) const {
     my_level->showTmp( langue );
     my_score->showTmpScore(langue);
-    
+    cout << endl << endl;
     cout << " Déplacement :      7 : NordOuest        8 : Nord        9 : NordEst" << endl;
     cout << "                    4 : Ouest                            6 : Est    " << endl;
     cout << "                    1 : Sud Ouest        2 : Sud         3 : SudEst " << endl << endl << endl;
@@ -52,4 +52,17 @@ GameModel::movement( int depl ) {
         case 9 : my_level->moveNorthEast();
             break;
     }
+}
+
+bool
+GameModel::isFinish() const {
+    if ( my_level->isDead() )
+        return true;
+    else
+        return false;
+}
+
+int
+GameModel::getScore() {
+    return my_score->getGlobale();
 }

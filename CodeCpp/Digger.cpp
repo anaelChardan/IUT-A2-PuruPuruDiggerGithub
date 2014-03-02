@@ -50,7 +50,7 @@ Digger::addLife() {
 
 void
 Digger::lostLife() {
-    if ( my_life > 0 ) {
+    if ( my_life >= 0 ) {
         my_life--;
     }
 }
