@@ -137,7 +137,8 @@ int main(int argc, const char * argv[])
     
     
     if ( choice == 1 ) {
-        ifstream score("bestScores.txt", ios::in | ios::app );
+        
+        ifstream scoreLect("bestScores.txt", ios::in );
         isRunning = true;
         cout << "Language :    1: English     2: French       3: Spanish " << endl << endl;
         cout << " CHOICE " ;
@@ -165,24 +166,44 @@ int main(int argc, const char * argv[])
             cout << "Entrez votre nom (sans espaces) " ;
             cin >> nom;
             
-            if ( score ) {
+            if ( scoreLect ) {
                 string line;
                 int cpt = 0;
                 int scoreligne;
                 string nomligne;
                 map< int, string> Scores;
                 int scorePlayer = model->getScore();
-                while ( getline(score, line) ) {
+                
+                while ( getline(scoreLect, line) ) {
                     //On lit le score et on le stocke dans une map
-                    score >> scoreligne >> nomligne;
+                    scoreLect >> scoreligne >> nomligne;
                     Scores[scoreligne] = nomligne;
                 }
+                
+                
+                //On ajoute notre joueur à la map
                 Scores[scorePlayer] = nom;
                 
-                for ( map<int, string>::const_iterator it = Scores.begin() ; ( cpt< 5); ++it) {
-                    score << it->first <<  " " <<  it->second << endl;
+                scoreLect.close();
+                
+                ofstream scoreEcr("bestScores.txt", ios::out | ios::trunc );
+                for ( map<int, string>::iterator it = Scores.begin() ; ( cpt< 5); ++it) {
+                    scoreEcr << it->first <<  " " <<  it->second << endl;
                     cpt++;
                 }
+                
+                scoreEcr.close();
+                
+                ifstream scoreLect("bestScores.txt", ios::in );
+                
+                
+                cout << " Voici les meilleurs scores " << endl << endl;
+                
+                while ( getline(scoreLect, line) ) {
+                    cout << line << endl;
+                }
+                
+                scoreLect.close();
             }
         }
     }
