@@ -94,20 +94,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		934FF75618B371470015437F /* models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = models;
-			sourceTree = "<group>";
-		};
-		934FF75718B3715B0015437F /* views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = views;
-			sourceTree = "<group>";
-		};
 		936727AC18B33A9C009873DE = {
 			isa = PBXGroup;
 			children = (
@@ -162,8 +148,6 @@
 				03ED314018B385BA00CF8AA1 /* Digger.cpp */,
 				03ED314118B385BA00CF8AA1 /* Digger.h */,
 				936727F618B33B91009873DE /* main.cpp */,
-				934FF75718B3715B0015437F /* views */,
-				934FF75618B371470015437F /* models */,
 			);
 			path = PuruPuruDigger;
 			sourceTree = "<group>";
