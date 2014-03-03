@@ -116,9 +116,6 @@ Level::winLevel() {
     //On remet nos mouvements à 0
     my_currentMove = 0;
     //On reset le level
-    
-    std::cout << " BRAVO VOUS AVEZ GAGNE PASSEZ AU NIVEAU SUIVANT " << endl;
-    
     reset();
 }
 
@@ -132,9 +129,6 @@ Level::lostLevel() {
     //On remet nos mouvements à 0
     my_currentMove = 0;
     //On reset le level
-    
-    std::cout << " VOTRE MINEUR A PRIT UN COUP DE GRISOU " << endl;
-    
     reset();
 }
 
