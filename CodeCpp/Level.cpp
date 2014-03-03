@@ -21,22 +21,22 @@ using namespace std;
 Level::Level(Score* score) {
     //On fait pointé my_score sur l'adresse du score qu'on lui à donné
     my_score = score;
-    
+
     //On met nos mouvements courants à 0
     my_currentMove = 0;
-    
+
     //Comme c'est le premier niveau, l'objectif est 10
     my_goal = 10;
-    
+
     //Comme c'est le premier niveau, le bonus généré par le level est 500
     my_bonus = 500;
-    
+
     //On alloue le digger
     my_digger = new Digger();
 
     //On bloque la taille de notre vecteur
     my_grid.resize( LIGNE );
-    
+
     for( unsigned long i = 0; i < LIGNE; i++ ) {
         my_grid[i].resize( COLONNE );
     }
@@ -69,14 +69,14 @@ void
 Level::shuffle() {
 
     vector<CellBase*> tmp;
-    unsigned int taille = LIGNE * COLONNE;
+    unsigned long taille = LIGNE * COLONNE;
     tmp.resize( taille );
     unsigned long z = 0;
 
     //2D to 1D
     while ( z < ( taille ) ) {
-        for ( int i = 0 ; i < LIGNE ; i++ ){
-            for (int j = 0; j < COLONNE ; j++ ){
+        for ( unsigned long i = 0 ; i < LIGNE ; i++ ){
+            for (unsigned long j = 0; j < COLONNE ; j++ ){
                 tmp[z] = my_grid[i][j];
                 z++;
             }
@@ -89,9 +89,9 @@ Level::shuffle() {
     z=0;
     while ( z < taille ) {
         //Parcours en hauteur
-        for ( unsigned int i = 0 ; i < LIGNE ; i++ ) {
+        for ( unsigned long i = 0 ; i < LIGNE ; i++ ) {
             //Parcours en longeur
-            for ( unsigned int j = 0; j < COLONNE ; j++ ) {
+            for ( unsigned long j = 0; j < COLONNE ; j++ ) {
                 my_grid[i][j] = tmp[z];
                 //On peut maintenant set chaque case avec les bon x et les bon y dont le digger
                 my_grid[i][j]->setX(i);
@@ -136,26 +136,26 @@ Level::lostLevel() {
 void
 Level::initGrid() {
     //Calcul du nombre de bombe
-    
-    unsigned int nbrB = MINOBJ + ( rand() % ( MAXOBJ - MINOBJ ) );
-    
+
+    unsigned long nbrB = MINOBJ + ( rand() % ( MAXOBJ - MINOBJ ) );
+
     //Remplissage du tableau avec des bombe
     for ( unsigned long i = 1 ; i <= nbrB; i++ ) {
         my_grid[0][i] = new Bomb;
     }
-    
+
     //On place les trésors en fonction du nombre de bomb
     for ( unsigned long i = nbrB +1 ; i < COLONNE ; i++ ) {
         my_grid[0][i] = new GoldCell;
     }
-    
+
     //On rempli tout le reste avec des numéros
     for ( unsigned long i = 1; i < LIGNE; i++ ) {
         for ( unsigned long j = 0; j < COLONNE; j++ ) {
             my_grid[i][j] = new ValueCell;
         }
     }
-    
+
     //On mélange tout cela
     shuffle();
 }
@@ -166,25 +166,25 @@ void
 Level::reset() {
     //On efface la nouvelle place du digger
     delete my_grid[0][0];
-    
+
     //On la remplace par le digger
     my_grid[0][0] = my_digger;
-    
+
     //On remplace notre case du digger par une case vide
     my_grid[ my_digger->getX() ][ my_digger->getY() ] = new EmptyCell( my_digger->getX(), my_digger->getY() );
-    
+
     //On delete toutes la premmière ligne sauf le digger
     for ( unsigned int i = 1; i < COLONNE; i++ ) {
         delete my_grid[0][i];
     }
-    
+
     //On delete les autres lignes
     for ( unsigned long i = 1; i < LIGNE; i++ ) {
         for ( unsigned long j = 0; j < COLONNE; j++ ) {
             delete my_grid[i][j];
         }
     }
-    
+
     initGrid();
 
 }
@@ -195,44 +195,44 @@ void
 Level::move( int DeltaX, int DeltaY ) {
     int nbStep = -1;
     int pointInGame = -1;
-   
+
     if ( isCellClickable( ( my_digger->getX() + DeltaX ), ( my_digger->getY() + DeltaY ) ) ) {
         //On veut savoir de combien de coup on veut se déplacer
         nbStep = my_grid[ (my_digger->getX() + DeltaX) ][ (my_digger->getY() + DeltaY ) ]->getValue();
-        
+
         //On veut connaître les points en jeu
         pointInGame = my_grid[ (my_digger->getX() + DeltaX) ][ (my_digger->getY() + DeltaY ) ]->getPoints();
     }
 
     //On met notre compteur à 0
     int cpt = 0;
-    
+
     //Tant que l'on à pas fait le bon nombre de coup et que la case d'a côté est bien une gold ou une value
     while ( cpt < nbStep && ( isCellClickable( ( my_digger->getX() + DeltaX ), ( my_digger->getY() + DeltaY ) ) ) ) {
-        
+
         //Si l'on rencontre un trésor pendant un déplacement
         if ( my_grid[ ( my_digger->getX() + DeltaX ) ][ ( my_digger->getY() + DeltaY ) ]->getType() == "GoldCell" ) {
             //On prend les points du bonus
             my_score->addPoints( my_grid[ ( my_digger->getX() + DeltaX ) ][ ( my_digger->getY() + DeltaY ) ]->getPoints() );
         }
-        
+
         //On delete la case suivante
         delete my_grid[ ( my_digger->getX() + DeltaX ) ][ ( my_digger->getY() + DeltaY ) ];
-        
+
         //On y place notre digger
         my_grid[ ( my_digger->getX() + DeltaX ) ][ ( my_digger->getY() + DeltaY ) ] = my_digger;
-        
+
         //On remplace notre ancienne case du digger par une case Vide avec un autoSet
         my_grid[ my_digger->getX() ][ my_digger->getY() ] = new EmptyCell( my_digger->getX(), my_digger->getY() );
-       
+
         //On set les case de notre digger
         my_digger->setX( my_digger->getX() + DeltaX );
         my_digger->setY( my_digger->getY() + DeltaY );
-        
+
         //On passe au coup suivant
         cpt++;
     }
-    
+
     //Si le déplacement s'est mal passé ( donc cpt a bougé et est différent de 0 )
     //Les autres renvoient -1
     if ( cpt != 0 &&  cpt < nbStep ) {
@@ -240,7 +240,7 @@ Level::move( int DeltaX, int DeltaY ) {
     } else if ( nbStep != -1 && cpt!=0 ){
         my_currentMove += nbStep;
         my_score->addPoints(pointInGame);
-        
+
         //Si on a atteint l'objectif
         if ( my_currentMove >= my_goal ) {
             winLevel();
@@ -262,15 +262,15 @@ Level::isDead() {
 //Permet de vérifier sur une case est clickable
 bool
 Level::isCellClickable( int click_x, int click_y ){
-    
+
     int x = my_digger->getX();
     int y = my_digger->getY();
-    
+
     // Il faut vérifier si l'on ne sort pas du tableau
     if ( click_x == -1 || click_x == LIGNE || click_y == -1 || click_y == COLONNE ) {
         return false;
     }
-    
+
     //Il faut d'abord vérifier que la case est juste à côté de notre digger
     if ( ( ( click_x <= x - 1 ) || ( click_x <= x + 1 ) ) && ( ( click_y <= y - 1 ) || ( click_y <= y + 1 ) ) ) {
         //On vérifie son type
@@ -294,11 +294,11 @@ Level::showTmp( int langue ) const {
     string Target;
     string Life;
     string Position;
-    
+
     for ( unsigned long z = 0; z < (COLONNE * 5 + 3); z++ )
             cout << "-";
     cout << endl;
-    
+
     for ( unsigned long i = 0; i < LIGNE; i++ ) {
         cout << " | ";
         for ( unsigned long j = 0; j < COLONNE; j++ ) {
@@ -310,20 +310,20 @@ Level::showTmp( int langue ) const {
         cout << endl;
     }
     cout << endl;
-    
+
     switch ( langue ) {
         case 1 : Move     = " Move ";
                  Target   = " Target ";
                  Life     = " Life ";
                  Position = " Position ";
             break;
-       
+
         case 2 :  Move     = " Déplacement ";
                   Target   = " Objectif ";
                   Life     = " Vie ";
                   Position = " Position ";
             break;
-       
+
         case 3 :  Move     = " Desplazamiento ";
                   Target   = " Objetivo ";
                   Life     = " Vida ";
@@ -333,10 +333,10 @@ Level::showTmp( int langue ) const {
     cout << setw(15) << left << Move << setw(5) << right << my_currentMove << endl;
     cout << setw(15) << left << Target << setw(5) << right << my_goal << endl;
     cout << setw(15) << left << Life << setw(5) << right << my_digger->getLife() << endl << endl;
-    
+
     cout << Position << " Digger  [ " << my_digger->getX() << " ]   [ " << my_digger->getY() << " ] " << endl << endl;
 
-    
+
 }
 
 //Connaître le type d'une case
