@@ -312,19 +312,23 @@ Level::showTmp( int langue ) const {
     cout << endl;
     
     switch ( langue ) {
-        case 1 : Move = " Move ";
-                 Target = " Target ";
-                 Life = " Life ";
+        case 1 : Move     = " Move ";
+                 Target   = " Target ";
+                 Life     = " Life ";
                  Position = " Position ";
             break;
-        case 2 :  Move = " Déplacement ";
-                  Target = " Objectif ";
-                  Life = " Vie ";
+       
+        case 2 :  Move     = " Déplacement ";
+                  Target   = " Objectif ";
+                  Life     = " Vie ";
                   Position = " Position ";
-        case 3 :  Move = " Desplazamiento ";
-                 Target = " Objetivo ";
-                 Life = " Vida ";
-                 Position = " Posición ";
+            break;
+       
+        case 3 :  Move     = " Desplazamiento ";
+                  Target   = " Objetivo ";
+                  Life     = " Vida ";
+                  Position = " Posición ";
+            break;
     }
     cout << setw(15) << left << Move << setw(5) << right << my_currentMove << endl;
     cout << setw(15) << left << Target << setw(5) << right << my_goal << endl;
