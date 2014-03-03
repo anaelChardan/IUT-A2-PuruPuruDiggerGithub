@@ -135,10 +135,11 @@ int main(int argc, const char * argv[])
 
     cin >> choice;
 
+    string mon_fichier = "bestScores.txt";
 
     if ( choice == 1 ) {
 
-        ifstream scoreLect("bestScores.txt", ios::in );
+        ifstream scoreLect(mon_fichier.c_str(), ios::in );
         isRunning = true;
         cout << "Language :    1: English     2: French       3: Spanish " << endl << endl;
         cout << " CHOICE " ;
@@ -167,6 +168,7 @@ int main(int argc, const char * argv[])
             cin >> nom;
 
             if ( scoreLect ) {
+                scoreLect >> "TEST";
                 string line;
                 int cpt = 0;
                 int scoreligne;
@@ -181,20 +183,21 @@ int main(int argc, const char * argv[])
                 }
 
 
+
                 //On ajoute notre joueur à la map
                 Scores[scorePlayer] = nom;
 
                 scoreLect.close();
 
-                ofstream scoreEcr("bestScores.txt", ios::out | ios::trunc );
-                for ( map<int, string>::iterator it = Scores.begin() ; ( cpt< 5); ++it) {
+                ofstream scoreEcr(mon_fichier.c_str(), ios::out | ios::trunc );
+                for ( map<int, string>::iterator it = Scores.begin() ; Scores.end(); ++it) {
                     scoreEcr << it->first <<  " " <<  it->second << endl;
                     cpt++;
                 }
 
                 scoreEcr.close();
 
-                ifstream scoreLect("bestScores.txt", ios::in );
+                ifstream scoreLect(mon_fichier.c_str(), ios::in );
 
 
                 cout << " Voici les meilleurs scores " << endl << endl;
@@ -204,6 +207,10 @@ int main(int argc, const char * argv[])
                 }
 
                 scoreLect.close();
+            }
+            else
+            {
+                cerr << "impossible d'ouvrir le fichier" << endl;
             }
         }
     }

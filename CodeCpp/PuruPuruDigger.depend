@@ -202,3 +202,109 @@
 	"GameModel.h"
 	<fstream>
 
+1393868851 source:/home/jeremy/Documents/purupurudigger/CodeCpp/Bomb.cpp
+	"Bomb.h"
+
+1393868851 /home/jeremy/Documents/purupurudigger/CodeCpp/Bomb.h
+	<iostream>
+	"CellBase.h"
+
+1393868851 /home/jeremy/Documents/purupurudigger/CodeCpp/CellBase.h
+	<iostream>
+	<string>
+
+1393868851 source:/home/jeremy/Documents/purupurudigger/CodeCpp/CellBase.cpp
+	"CellBase.h"
+
+1393868851 source:/home/jeremy/Documents/purupurudigger/CodeCpp/Digger.cpp
+	"Digger.h"
+
+1393868851 /home/jeremy/Documents/purupurudigger/CodeCpp/Digger.h
+	<iostream>
+	"CellBase.h"
+
+1393868851 source:/home/jeremy/Documents/purupurudigger/CodeCpp/EmptyCell.cpp
+	"EmptyCell.h"
+
+1393868851 /home/jeremy/Documents/purupurudigger/CodeCpp/EmptyCell.h
+	<iostream>
+	"CellBase.h"
+
+1393868851 source:/home/jeremy/Documents/purupurudigger/CodeCpp/GameModel.cpp
+	"GameModel.h"
+
+1393868851 /home/jeremy/Documents/purupurudigger/CodeCpp/GameModel.h
+	<iostream>
+	<vector>
+	"Level.h"
+	"Score.h"
+
+1393868851 /home/jeremy/Documents/purupurudigger/CodeCpp/Level.h
+	<iostream>
+	"Score.h"
+	"Digger.h"
+	"CellBase.h"
+	"Bomb.h"
+	"Constantes.h"
+
+1393868851 /home/jeremy/Documents/purupurudigger/CodeCpp/Score.h
+	<iostream>
+	<vector>
+
+1393868851 /home/jeremy/Documents/purupurudigger/CodeCpp/Constantes.h
+
+1393868851 source:/home/jeremy/Documents/purupurudigger/CodeCpp/GameView.cpp
+	"GameView.h"
+
+1393868851 /home/jeremy/Documents/purupurudigger/CodeCpp/GameView.h
+	<iostream>
+	<SFML/System.hpp>
+	<SFML/Graphics.hpp>
+	<SFML/Window.hpp>
+	"GameModel.h"
+
+1393868851 source:/home/jeremy/Documents/purupurudigger/CodeCpp/GoldCell.cpp
+	"GoldCell.h"
+
+1393868851 /home/jeremy/Documents/purupurudigger/CodeCpp/GoldCell.h
+	<iostream>
+	"ValueCell.h"
+
+1393868851 /home/jeremy/Documents/purupurudigger/CodeCpp/ValueCell.h
+	<iostream>
+	"Constantes.h"
+	"CellBase.h"
+	<cstdlib>
+
+1393868851 source:/home/jeremy/Documents/purupurudigger/CodeCpp/Level.cpp
+	"Level.h"
+	"Bomb.h"
+	"GoldCell.h"
+	"EmptyCell.h"
+	<vector>
+	<algorithm>
+	<iomanip>
+
+1393868851 source:/home/jeremy/Documents/purupurudigger/CodeCpp/main.cpp
+	<iostream>
+	<cstdlib>
+	<SFML/System.hpp>
+	<SFML/Graphics.hpp>
+	<SFML/Window.hpp>
+	<vector>
+	"CellBase.h"
+	"Digger.h"
+	"ValueCell.h"
+	"EmptyCell.h"
+	"Score.h"
+	"Level.h"
+	"GameModel.h"
+	<fstream>
+
+1393868851 source:/home/jeremy/Documents/purupurudigger/CodeCpp/Score.cpp
+	"Score.h"
+	<iomanip>
+
+1393868851 source:/home/jeremy/Documents/purupurudigger/CodeCpp/ValueCell.cpp
+	"ValueCell.h"
+
