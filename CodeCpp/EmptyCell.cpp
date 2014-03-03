@@ -20,7 +20,7 @@ EmptyCell::EmptyCell() {
     my_y = 0;
 }
 
-EmptyCell::EmptyCell( int x, int y ) {
+EmptyCell::EmptyCell( unsigned long x, unsigned long y ) {
     my_type = "EmptyCell";
     my_x = x;
     my_y = y;

@@ -14,7 +14,7 @@ class Digger : public CellBase
     
         //Les contructeurs
         Digger(); //Constructeurs par défaut
-        Digger( int x, int y ); //Constructeurs paramétré
+        Digger( unsigned long x, unsigned long y ); //Constructeurs paramétré
         Digger(const Digger &d ); //Constructeurs par copie
     
         //Le destructeur

@@ -40,13 +40,13 @@ CellBase::~CellBase() {}
  =============================*/
 
 //Connaître la ligne de la case
-int
+unsigned long
 CellBase::getX() const {
     return my_x;
 }
 
 //Connaître la colonne de la case
-int
+unsigned long
 CellBase::getY() const {
     return my_y;
 }
@@ -59,13 +59,13 @@ CellBase::getType() const {
 
 //Renseigner la ligne de la case
 void
-CellBase::setX( int x ) {
+CellBase::setX( unsigned long x ) {
     my_x = x;
 }
 
 //Renseigner la colonne de la case
 void
-CellBase::setY( int y ) {
+CellBase::setY( unsigned long y ) {
     my_y = y;
 }
 

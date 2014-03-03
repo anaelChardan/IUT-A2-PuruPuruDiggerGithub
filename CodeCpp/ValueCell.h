@@ -16,7 +16,7 @@ class ValueCell : public CellBase {
         //Les constructeurs
     
         ValueCell(); //Constructeurs par défaut
-        ValueCell( int x, int y); //Constructeurs paramétré
+        ValueCell( unsigned long x, unsigned long y); //Constructeurs paramétré
         ValueCell( const ValueCell & v ); //Constructeur par copie
     
         //Le destructeurs

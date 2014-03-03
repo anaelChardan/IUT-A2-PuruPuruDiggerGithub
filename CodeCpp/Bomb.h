@@ -19,7 +19,7 @@ class Bomb : public CellBase
         //Les constructeurs
     
         Bomb(); //Constructeur par défaut
-        Bomb( int x, int y ); //Le constructeur paramétré
+        Bomb( unsigned long x, unsigned long y ); //Le constructeur paramétré
         Bomb( const Bomb &b); //Constructeur par copie
     
         //Le destructeur

@@ -13,7 +13,7 @@ Digger::Digger() {
     my_y = 0;
 }
 
-Digger::Digger( int x, int y ) {
+Digger::Digger( unsigned long x, unsigned long y ) {
     my_type = "Digger";
     my_x = x;
     my_y = y;

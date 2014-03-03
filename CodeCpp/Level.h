@@ -31,7 +31,7 @@ class Level {
     
     
         //Une méthode privé qui ne se fera appelé que par les fonctions public, delta X et delta Y étant la direction
-        void move( int deltaX, int deltaY );
+        void move( unsigned long deltaX, unsigned long deltaY );
     
         void shuffle(); //Permet de mélanger un grille
         void initGrid();
@@ -51,9 +51,9 @@ class Level {
         void setCell( int x, int y, std::string type );
         void setGoal();
     
-        std::string getTypeCell(  int click_x, int click_y ) const;
+        std::string getTypeCell(  unsigned long click_x, unsigned long click_y ) const;
         CellBase* getDigger();
-        bool isCellClickable( int click_x, int click_y ); //Savoir si une case est clickable ( il faut que ce soit une valueCell ou une goldCell et qu'elle soit placé à côté du Digger ) Elle ne servira que quand on devra recueillir des clicks
+        bool isCellClickable( unsigned long click_x, unsigned long click_y ); //Savoir si une case est clickable ( il faut que ce soit une valueCell ou une goldCell et qu'elle soit placé à côté du Digger ) Elle ne servira que quand on devra recueillir des clicks
     
         void showTmp( int langue ) const; //Permettra d'afficher le level en attendant le gameview
         bool isDead();

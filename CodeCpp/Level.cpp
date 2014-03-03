@@ -116,6 +116,8 @@ Level::winLevel() {
     //On remet nos mouvements à 0
     my_currentMove = 0;
     //On reset le level
+    std::cout << " Bravo, niveau suivant " << std::endl << std::endl;
+    
     reset();
 }
 
@@ -129,6 +131,8 @@ Level::lostLevel() {
     //On remet nos mouvements à 0
     my_currentMove = 0;
     //On reset le level
+    
+    std::cout << " Vous êtes mort, entrez dans un nouveau niveau " << std::endl << std::endl;
     reset();
 }
 
@@ -174,7 +178,7 @@ Level::reset() {
     my_grid[ my_digger->getX() ][ my_digger->getY() ] = new EmptyCell( my_digger->getX(), my_digger->getY() );
 
     //On delete toutes la premmière ligne sauf le digger
-    for ( unsigned int i = 1; i < COLONNE; i++ ) {
+    for ( unsigned long i = 1; i < COLONNE; i++ ) {
         delete my_grid[0][i];
     }
 
@@ -192,7 +196,7 @@ Level::reset() {
 
 
 void
-Level::move( int DeltaX, int DeltaY ) {
+Level::move( unsigned long DeltaX, unsigned long DeltaY ) {
     int nbStep = -1;
     int pointInGame = -1;
 
@@ -261,10 +265,10 @@ Level::isDead() {
 }
 //Permet de vérifier sur une case est clickable
 bool
-Level::isCellClickable( int click_x, int click_y ){
+Level::isCellClickable( unsigned long click_x, unsigned long click_y ){
 
-    int x = my_digger->getX();
-    int y = my_digger->getY();
+    unsigned long x = my_digger->getX();
+    unsigned long y = my_digger->getY();
 
     // Il faut vérifier si l'on ne sort pas du tableau
     if ( click_x == -1 || click_x == LIGNE || click_y == -1 || click_y == COLONNE ) {
@@ -341,7 +345,7 @@ Level::showTmp( int langue ) const {
 
 //Connaître le type d'une case
 string
-Level::getTypeCell( int x, int y ) const {
+Level::getTypeCell( unsigned long x, unsigned long y ) const {
     return my_grid[x][y]->getType();
 }
 

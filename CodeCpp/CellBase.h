@@ -10,8 +10,8 @@ class CellBase {
     protected :
     
         std::string my_type; //Elles ont toutes un type
-        int my_x;            //Elles ont toutes un x
-        int my_y;           //Elles ont toutes un y
+        unsigned long my_x;            //Elles ont toutes un x
+        unsigned long my_y;           //Elles ont toutes un y
     
     public :
     
@@ -27,11 +27,11 @@ class CellBase {
     
         //Les fonctions communes à toutes les cell non rédéfinie dans les classes filles
     
-        int getX() const; //Connaître le x de la case
-        int getY() const; //Connaître le y de la case
+        unsigned long getX() const; //Connaître le x de la case
+        unsigned long getY() const; //Connaître le y de la case
         std::string getType() const; //Renvoie le type de la case
-        void setX( int x ); //Attribuer le x de la case
-        void setY( int y ); //Attribuer le y de la case
+        void setX( unsigned long x ); //Attribuer le x de la case
+        void setY( unsigned long y ); //Attribuer le y de la case
     
     
         //Les fonctions destinés à être redéfinie dans les classes filles

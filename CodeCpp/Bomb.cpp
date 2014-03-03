@@ -10,7 +10,7 @@ Bomb::Bomb() {
     my_y = 0;
 }
 
-Bomb::Bomb( int x, int y ) {
+Bomb::Bomb( unsigned long x, unsigned long y ) {
     my_type = "Bomb";
     my_x = x;
     my_y = y;

@@ -18,7 +18,7 @@ class EmptyCell : public CellBase {
         //Les constructeurs
     
         EmptyCell(); //Constructeur par défaut
-        EmptyCell( int x, int y ); //Le constructeur paramétré
+        EmptyCell( unsigned long x, unsigned long y ); //Le constructeur paramétré
         EmptyCell( const EmptyCell &b); //Constructeur par copie
     
         //Le destructeur
