@@ -168,7 +168,7 @@ int main(int argc, const char * argv[])
             cin >> nom;
 
             if ( scoreLect ) {
-                scoreLect >> "TEST";
+                //scoreLect >> "TEST";
                 string line;
                 int cpt = 0;
                 int scoreligne;
@@ -190,7 +190,7 @@ int main(int argc, const char * argv[])
                 scoreLect.close();
 
                 ofstream scoreEcr(mon_fichier.c_str(), ios::out | ios::trunc );
-                for ( map<int, string>::iterator it = Scores.begin() ; Scores.end(); ++it) {
+                for ( map< int, string >::const_iterator it = Scores.begin() ; cpt < 5 || it!=Scores.end() ; ++it) {
                     scoreEcr << it->first <<  " " <<  it->second << endl;
                     cpt++;
                 }
