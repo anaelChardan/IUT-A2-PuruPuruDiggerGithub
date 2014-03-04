@@ -24,93 +24,7 @@
 
 using namespace std;
 
-int main(int argc, const char * argv[])
-{
-    //GameModel * model = new GameModel(MODEL_WIDTH, MODEL_HEIGHT, 0, 0 );
-    //GameView * view = new GameView(VIEW_WIDTH, VIEW_HEIGHT, VIEWBPP);
-    //view->setModel(model);
-
-    //while(view->treatEvents()){
-    //    view->synchronize();
-    //    model->nextStep();
-    //    view->draw();
-    //    sf::Sleep(0.01f);
-    //}
-
-
-    //insert code here...
-   // sf::RenderWindow window(sf::VideoMode(640,480, 32), "Test");
-    //sf::Sleep(3.0F);
-
-
-    /*===========================
-     ZONE DE TEST
-     =============================*/
-   /* CellBase* my_digger = new Digger;
-
-    //vector<vector<CellBase*> > my_tab;
-
-    CellBase* my_tab[2][2];
-
-    //my_tab.resize(2);
-    //for( unsigned long i = 0 ; i < 2 ; i++ )
-    //    my_tab[i].resize(2);
-
-    my_tab[0][0] = my_digger;
-    my_tab[0][1] = new ValueCell;
-    my_tab[1][0] = new ValueCell;
-    my_tab[1][1] = new ValueCell;
-
-    for ( unsigned long i = 0 ; i < 2; i++ ) {
-        for ( unsigned long j = 0 ; j < 2 ; j ++ ) {
-            cout << *my_tab[i][j] ;
-        }
-        cout << endl;
-    }
-
-    //On tente de déplacer le digger
-    delete my_tab[0][1];
-
-    my_tab[0][1] = my_digger;
-    my_tab[0][0] = new EmptyCell;
-
-
-    for ( unsigned long i = 0 ; i < 2; i++ ) {
-        for ( unsigned long j = 0 ; j < 2 ; j ++ ) {
-            cout << *my_tab[i][j] ;
-        }
-        cout << endl;
-    }
-
-    cout <<  " La vie du digger " << my_tab[0][1]->getLife() << endl;
-
-    my_tab[0][1]->lostLife();
-
-    my_tab[0][1]->setX(12);
-    my_tab[0][1]->setY(1);
-
-    cout << "Dans le tableau" << my_tab[0][1]->getX() << " " << my_tab[0][1]->getY() << endl;
-    cout << "Le digger à part " << my_digger->getX() << " " << my_digger->getY() << endl;
-
-    cout <<  " La vie du digger " << my_tab[0][1]->getLife() << endl;
-    cout << "La vie du pointeur " << my_digger->getLife() << endl;
-    cout <<  " La vie d'une case quelconque " << my_tab[0][0]->getLife() << endl;
-
-    for ( unsigned long i = 0; i < 2; i++ ) {
-        for ( unsigned long j = 0 ; j < 2 ; j++ ) {
-            delete my_tab[i][j];
-        }
-    } */
-
-    //On simule une partie
-
-    GameModel* model = new GameModel;
-    int choice;
-    int langue;
-    int movement;
-    bool isRunning = false;
-    string nom;
-
+void showPresentation() {
     cout << " -----------                           -----------                    " << endl ;
     cout << "|           |      |           |      |           |      |           |" << endl ;
     cout << "|           |      |           |      |           |      |           |" << endl ;
@@ -122,25 +36,114 @@ int main(int argc, const char * argv[])
     cout << "|                  |           |      |      -           |           |" << endl ;
     cout << "|                  |           |      |        -         |           |" << endl ;
     cout << "|                  |___________|      |          -       |___________|" << endl << endl << endl;
-
-
+    
+    
     cout << "                        PURU                DIGGER                    " << endl << endl << endl;
-
+    
     cout << "                  BY ANAEL CHARDAN    &     JEREMY DAMEY              " << endl << endl << endl;
-
-
+    
+    
     cout << " 1 : START " << endl;
-    cout << " 2 : QUIT  " << endl << endl;
-
+    cout << " 2 : MEILLEUR SCORE " << endl;
+    cout << " 3 : QUIT  " << endl << endl;
+    
     cout << " CHOICE : ";
+    
+}
+
+void enterScore( GameModel* model, string mon_fichier, string nom ) {
+    ifstream scoreLect(mon_fichier.c_str(), ios::in );
+    if ( scoreLect ) {
+        //scoreLect >> "TEST";
+        string line;
+        int scoreligne;
+        string nomligne;
+        map< int, string, DecFunctor> Scores;
+        int scorePlayer = model->getScore();
+        
+        while ( !scoreLect.eof() ) {
+            //On lit le score et on le stocke dans une map
+            scoreLect >> scoreligne >> nomligne;
+            Scores[scoreligne] = nomligne.c_str();
+        }
+        
+        
+        //On ajoute notre joueur à la map
+        Scores[scorePlayer] = nom;
+        
+        scoreLect.close();
+        
+        ofstream scoreEcr(mon_fichier.c_str(), ios::out | ios::trunc );
+        
+        map< int, string>::iterator i;
+        if ( Scores.size() < 5 ) {
+            i = Scores.end();
+        } else {
+            i = Scores.begin();
+            for ( int cpt = 0 ; cpt < 5; cpt ++ ) ++i;
+        }
+        
+        for ( map< int, string >::const_iterator it = Scores.begin() ; it!=i ; ++it) {
+            scoreEcr << it->first;
+            scoreEcr <<  " ";
+            scoreEcr <<  it->second;
+            scoreEcr << endl;
+        }
+        
+        scoreEcr.close();
+    } else {
+        cerr << " Erreur d'ouverture de fichier " << endl;
+    }
+}
+
+void showBestScore( string mon_fichier ) {
+    ifstream scoreLect(mon_fichier.c_str(), ios::in );
+    if ( scoreLect ) {
+        string line;
+        
+        cout << endl;
+        cout << endl;
+        
+        cout << " Voici les meilleurs scores " << endl << endl;
+        
+        while ( getline(scoreLect, line) ) {
+            cout << line << endl;
+        }
+        
+        scoreLect.close();
+    } else {
+        cerr << " Erreur d'ouverture de fichier " << endl;
+    }
+
+}
+
+int main(int argc, const char * argv[])
+{
+    /*===========================
+     ZONE DE TEST
+     =============================*/
+
+    //On simule une partie
+
+    GameModel* model = new GameModel;
+    int choice;
+    int langue;
+    int movement;
+    bool isRunning = false;
+    string nom;
+
+    showPresentation();
 
     cin >> choice;
 
     string mon_fichier = "bestScores.txt";
+    
+    if ( choice == 2 ) {
+        showBestScore(mon_fichier);
+    }
 
     if ( choice == 1 ) {
 
-        ifstream scoreLect(mon_fichier.c_str(), ios::in );
         isRunning = true;
         cout << "Language :    1: English     2: French       3: Spanish " << endl << endl;
         cout << " CHOICE " ;
@@ -167,70 +170,12 @@ int main(int argc, const char * argv[])
             cout << " Vous êtes mort, mort, mort et remort, le digger vous retient prisonnier dans sa mine " << endl;
             cout << "Entrez votre nom (sans espaces) " ;
             cin >> nom;
-
-            if ( scoreLect ) {
-                //scoreLect >> "TEST";
-                string line;
-                int scoreligne;
-                string nomligne;
-                map< int, string, DecFunctor> Scores;
-                int scorePlayer = model->getScore();
-
-                while ( !scoreLect.eof() ) {
-                    //On lit le score et on le stocke dans une map
-                    scoreLect >> scoreligne >> nomligne;
-                    Scores[scoreligne] = nomligne.c_str();
-                }
-
-
-
-                //On ajoute notre joueur à la map
-                Scores[scorePlayer] = nom;
-
-                scoreLect.close();
-
-                ofstream scoreEcr(mon_fichier.c_str(), ios::out | ios::trunc );
-                
-                map< int, string>::iterator i;
-                if ( Scores.size() < 5 ) {
-                    i = Scores.end();
-                } else {
-                    i = Scores.begin();
-                    for ( int cpt = 0 ; cpt < 5; cpt ++ ) ++i;
-                }
-                
-                for ( map< int, string >::const_iterator it = Scores.begin() ; it!=i ; ++it) {
-                    scoreEcr << it->first;
-                    scoreEcr <<  " ";
-                    scoreEcr <<  it->second;
-                    scoreEcr << endl;
-                }
-
-                scoreEcr.close();
-
-                ifstream scoreLect(mon_fichier.c_str(), ios::in );
-                cout << endl;
-                cout << endl;
-
-                cout << " Voici les meilleurs scores " << endl << endl;
-
-                while ( getline(scoreLect, line) ) {
-                    cout << line << endl;
-                }
-
-                scoreLect.close();
-            }
-            else
-            {
-                cerr << "impossible d'ouvrir le fichier" << endl;
-            }
+            enterScore(model, mon_fichier, nom);
+            showBestScore( mon_fichier );
         }
     }
 
     delete model;
-
-    //delete view;
-    //delete model;
 
     return 0;
 }
