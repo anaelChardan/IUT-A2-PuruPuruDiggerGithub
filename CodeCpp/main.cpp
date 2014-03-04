@@ -172,12 +172,11 @@ int main(int argc, const char * argv[])
                 string line;
                 int scoreligne;
                 string nomligne;
-                
                 map< int, string> Scores;
-                
                 int scorePlayer = model->getScore();
 
                 while ( !scoreLect.eof() ) {
+                    //On lit le score et on le stocke dans une map
                     scoreLect >> scoreligne >> nomligne;
                     Scores[scoreligne] = nomligne.c_str();
                 }
@@ -190,7 +189,6 @@ int main(int argc, const char * argv[])
                 scoreLect.close();
 
                 ofstream scoreEcr(mon_fichier.c_str(), ios::out | ios::trunc );
-                
                 for ( map< int, string >::const_iterator it = Scores.begin() ; it!=Scores.end() ; ++it) {
                     scoreEcr << it->first;
                     scoreEcr <<  " ";
