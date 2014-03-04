@@ -20,6 +20,7 @@
 #include "Level.h"
 #include "GameModel.h"
 #include <fstream>
+#include "IntDecFunctor.h"
 
 using namespace std;
 
@@ -172,7 +173,7 @@ int main(int argc, const char * argv[])
                 string line;
                 int scoreligne;
                 string nomligne;
-                map< int, string> Scores;
+                map< int, string, DecFunctor> Scores;
                 int scorePlayer = model->getScore();
 
                 while ( !scoreLect.eof() ) {
@@ -189,7 +190,16 @@ int main(int argc, const char * argv[])
                 scoreLect.close();
 
                 ofstream scoreEcr(mon_fichier.c_str(), ios::out | ios::trunc );
-                for ( map< int, string >::const_iterator it = Scores.begin() ; it!=Scores.end() ; ++it) {
+                
+                map< int, string>::iterator i;
+                if ( Scores.size() < 5 ) {
+                    i = Scores.end();
+                } else {
+                    i = Scores.begin();
+                    for ( int cpt = 0 ; cpt < 5; cpt ++ ) ++i;
+                }
+                
+                for ( map< int, string >::const_iterator it = Scores.begin() ; it!=i ; ++it) {
                     scoreEcr << it->first;
                     scoreEcr <<  " ";
                     scoreEcr <<  it->second;

@@ -13,6 +13,7 @@
 		0377340E18B9FFBC00D5AFA0 /* EmptyCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0377340C18B9FFBC00D5AFA0 /* EmptyCell.cpp */; };
 		0377341118B9FFCA00D5AFA0 /* GoldCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0377340F18B9FFCA00D5AFA0 /* GoldCell.cpp */; };
 		0377341418B9FFDF00D5AFA0 /* ValueCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0377341218B9FFDF00D5AFA0 /* ValueCell.cpp */; };
+		03A0EFC018C5D0B900F57E1A /* bestScores.txt in Resources */ = {isa = PBXBuildFile; fileRef = 03A0EFBF18C5D0B900F57E1A /* bestScores.txt */; };
 		03ED314A18B385BA00CF8AA1 /* CellBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED313D18B385BA00CF8AA1 /* CellBase.cpp */; };
 		03ED314B18B385BA00CF8AA1 /* Digger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314018B385BA00CF8AA1 /* Digger.cpp */; };
 		03ED314E18B385BA00CF8AA1 /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314618B385BA00CF8AA1 /* Level.cpp */; };
@@ -54,12 +55,14 @@
 		031D88DA18BE5B670001686A /* GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameView.h; sourceTree = SOURCE_ROOT; };
 		031E007618B52B360045013D /* Bomb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bomb.cpp; sourceTree = SOURCE_ROOT; };
 		031E007718B52B360045013D /* Bomb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bomb.h; sourceTree = SOURCE_ROOT; };
+		0328235818C5FBAF006F43CC /* IntDecFunctor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntDecFunctor.h; sourceTree = SOURCE_ROOT; };
 		0377340C18B9FFBC00D5AFA0 /* EmptyCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EmptyCell.cpp; sourceTree = SOURCE_ROOT; };
 		0377340D18B9FFBC00D5AFA0 /* EmptyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyCell.h; sourceTree = SOURCE_ROOT; };
 		0377340F18B9FFCA00D5AFA0 /* GoldCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GoldCell.cpp; sourceTree = SOURCE_ROOT; };
 		0377341018B9FFCA00D5AFA0 /* GoldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoldCell.h; sourceTree = SOURCE_ROOT; };
 		0377341218B9FFDF00D5AFA0 /* ValueCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ValueCell.cpp; sourceTree = SOURCE_ROOT; };
 		0377341318B9FFDF00D5AFA0 /* ValueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValueCell.h; sourceTree = SOURCE_ROOT; };
+		03A0EFBF18C5D0B900F57E1A /* bestScores.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bestScores.txt; sourceTree = SOURCE_ROOT; };
 		03ED313D18B385BA00CF8AA1 /* CellBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellBase.cpp; sourceTree = SOURCE_ROOT; };
 		03ED313E18B385BA00CF8AA1 /* CellBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellBase.h; sourceTree = SOURCE_ROOT; };
 		03ED313F18B385BA00CF8AA1 /* Constantes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constantes.h; sourceTree = SOURCE_ROOT; };
@@ -126,6 +129,7 @@
 		936727BE18B33A9C009873DE /* PuruPuruDigger */ = {
 			isa = PBXGroup;
 			children = (
+				03A0EFBF18C5D0B900F57E1A /* bestScores.txt */,
 				03ED313F18B385BA00CF8AA1 /* Constantes.h */,
 				031D88D618BE5B2B0001686A /* GameModel.cpp */,
 				031D88D718BE5B2B0001686A /* GameModel.h */,
@@ -148,6 +152,7 @@
 				03ED314018B385BA00CF8AA1 /* Digger.cpp */,
 				03ED314118B385BA00CF8AA1 /* Digger.h */,
 				936727F618B33B91009873DE /* main.cpp */,
+				0328235818C5FBAF006F43CC /* IntDecFunctor.h */,
 			);
 			path = PuruPuruDigger;
 			sourceTree = "<group>";
@@ -205,6 +210,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03A0EFC018C5D0B900F57E1A /* bestScores.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
