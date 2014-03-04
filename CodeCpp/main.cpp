@@ -176,10 +176,10 @@ int main(int argc, const char * argv[])
                 map< int, string> Scores;
                 int scorePlayer = model->getScore();
 
-                while ( getline(scoreLect, line) ) {
+                while ( !scoreLect.eof() ) {
                     //On lit le score et on le stocke dans une map
                     scoreLect >> scoreligne >> nomligne;
-                    Scores[scoreligne] = nomligne;
+                    Scores[scoreligne] = nomligne.c_str();
                 }
 
 
@@ -190,15 +190,19 @@ int main(int argc, const char * argv[])
                 scoreLect.close();
 
                 ofstream scoreEcr(mon_fichier.c_str(), ios::out | ios::trunc );
-                for ( map< int, string >::const_iterator it = Scores.begin() ; cpt < 5 || it!=Scores.end() ; ++it) {
-                    scoreEcr << it->first <<  " " <<  it->second << endl;
+                for ( map< int, string >::const_iterator it = Scores.begin() ; (cpt < 5) || it!=Scores.end() ; ++it) {
+                    scoreEcr << it->first;
+                    scoreEcr <<  " ";
+                    scoreEcr <<  it->second;
+                    scoreEcr << endl;
                     cpt++;
                 }
 
                 scoreEcr.close();
 
                 ifstream scoreLect(mon_fichier.c_str(), ios::in );
-
+                cout << endl;
+                cout << endl;
 
                 cout << " Voici les meilleurs scores " << endl << endl;
 
