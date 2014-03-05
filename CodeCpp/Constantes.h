@@ -18,4 +18,6 @@ const unsigned long MAXOBJ = 10;
 const unsigned long MINVALB = 10;
 const unsigned long MAXVALB = 100;
 
+const std::string FILEBESTSCORE = "bestScores.txt";
+
 #endif

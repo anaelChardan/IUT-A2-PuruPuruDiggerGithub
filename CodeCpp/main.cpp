@@ -51,8 +51,8 @@ void showPresentation() {
     
 }
 
-void enterScore( GameModel* model, string mon_fichier, string nom ) {
-    ifstream scoreLect(mon_fichier.c_str(), ios::in );
+void enterScore( GameModel* model, string nom ) {
+    ifstream scoreLect(FILEBESTSCORE.c_str(), ios::in );
     if ( scoreLect ) {
         //scoreLect >> "TEST";
         string line;
@@ -73,7 +73,7 @@ void enterScore( GameModel* model, string mon_fichier, string nom ) {
         
         scoreLect.close();
         
-        ofstream scoreEcr(mon_fichier.c_str(), ios::out | ios::trunc );
+        ofstream scoreEcr(FILEBESTSCORE.c_str(), ios::out | ios::trunc );
         
         map< int, string>::iterator i;
         if ( Scores.size() < 5 ) {
@@ -96,8 +96,8 @@ void enterScore( GameModel* model, string mon_fichier, string nom ) {
     }
 }
 
-void showBestScore( string mon_fichier ) {
-    ifstream scoreLect(mon_fichier.c_str(), ios::in );
+void showBestScore() {
+    ifstream scoreLect(FILEBESTSCORE.c_str(), ios::in );
     if ( scoreLect ) {
         string line;
         
@@ -135,11 +135,9 @@ int main(int argc, const char * argv[])
     showPresentation();
 
     cin >> choice;
-
-    string mon_fichier = "bestScores.txt";
     
     if ( choice == 2 ) {
-        showBestScore(mon_fichier);
+        showBestScore();
     }
 
     if ( choice == 1 ) {
@@ -170,8 +168,8 @@ int main(int argc, const char * argv[])
             cout << " Vous êtes mort, mort, mort et remort, le digger vous retient prisonnier dans sa mine " << endl;
             cout << "Entrez votre nom (sans espaces) " ;
             cin >> nom;
-            enterScore(model, mon_fichier, nom);
-            showBestScore( mon_fichier );
+            enterScore(model, nom);
+            showBestScore();
         }
     }
 

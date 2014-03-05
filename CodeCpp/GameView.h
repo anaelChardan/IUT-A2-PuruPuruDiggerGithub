@@ -20,6 +20,7 @@ class GameView {
     private :
         int my_w;
         int my_h;
+        int my_bpp;
     
         //sf::RenderWindow * _window;
         //sf::Font* _font;
@@ -37,6 +38,13 @@ class GameView {
     //std::map<Movable_Element * const, GraphicElement *> _elementToGraphicElement;
     
     //GameModel * _model;
+    
+        void showPresentation() const;
+        void showScore() const;
+        void showInstruction() const;
+        void showMenu() const;
+    void showBestScore() const;
+    
     
     public:
         GameView(int w, int h, int bpp);
