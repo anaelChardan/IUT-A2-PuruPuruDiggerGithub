@@ -22,17 +22,15 @@ class GameView {
     private :
         Language my_language;
         std::map< Language, std::map< Message, std::string > > LanguageMessage;
-    
-    
-       GameModel * my_model;
+        GameModel * my_model;
     
         void showPresentation() const;
-        void showScore() const;
-        void showInstruction() const;
+        void showScore( const std::map< Language, std::map< Message, std::string > >LanguageMessage ) const;
+    void showInstruction( const std::map< Language, std::map< Message, std::string > >LanguageMessage) const;
         void showMenu() const;
         void showBestScore() const;
         void enterScore(std::string nom) const;
-        void initMessage(std::map< Language, std::map< Message, std::string > > LanguageMessage);
+        void initMessage(std::map< Language, std::map< Message, std::string > > &LanguageMessage);
     
     
     public:

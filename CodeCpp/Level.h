@@ -39,6 +39,7 @@ class Level {
         void initGrid();
         void winLevel();
         void lostLevel();
+        void setGoal();
 
     public:
 
@@ -51,7 +52,7 @@ class Level {
         void reset(); // Permet de rebrasser notre grille quand on a gagné ou quand on a perdu sans perdre les attributs de notre digger
         std::string getCell(int x, int y);
         void setCell( int x, int y, std::string type );
-        void setGoal();
+        int getGoal() const;
     
         std::string getTypeCell(  unsigned long click_x, unsigned long click_y ) const;
         CellBase* getDigger();

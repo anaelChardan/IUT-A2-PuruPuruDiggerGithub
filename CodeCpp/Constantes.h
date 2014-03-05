@@ -44,9 +44,11 @@ enum Message {
     current,
     goal,
     life,
+    step,
     looselevel,
     loosegame,
-    win
+    win,
+    quit
 };
 
 #endif

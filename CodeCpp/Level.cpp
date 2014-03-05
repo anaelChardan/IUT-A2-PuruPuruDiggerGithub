@@ -256,6 +256,11 @@ Level::move( unsigned long DeltaX, unsigned long DeltaY ) {
 /*===========================
  Les méthodes publics
  =============================*/
+int
+Level::getGoal() const {
+    return my_goal;
+}
+
 bool
 Level::isDead() {
     if ( my_digger->getLife() == -1 )
