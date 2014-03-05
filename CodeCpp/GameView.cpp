@@ -9,6 +9,7 @@
 #include "GameView.h"
 #include "Constantes.h"
 #include <fstream>
+#include "IntDecFunctor.h"
 using namespace std;
 using namespace sf;
 
@@ -71,6 +72,52 @@ GameView::showBestScore() const {
         
         scoreLect.close();
     } else {
-        cerr << " Erreur d'ouverture de fichier " << endl;
+        cerr << " Error when program is openning text file " << endl;
+    }
+}
+
+void
+GameView::enterScore( string nom ) const{
+    ifstream scoreLect(FILEBESTSCORE.c_str(), ios::in );
+    if ( scoreLect ) {
+        //scoreLect >> "TEST";
+        string line;
+        int scoreligne;
+        string nomligne;
+        map< int, string, DecFunctor> Scores;
+        int scorePlayer = model->getScore();
+        
+        while ( !scoreLect.eof() ) {
+            //On lit le score et on le stocke dans une map
+            scoreLect >> scoreligne >> nomligne;
+            Scores[scoreligne] = nomligne.c_str();
+        }
+        
+        
+        //On ajoute notre joueur à la map
+        Scores[scorePlayer] = nom;
+        
+        scoreLect.close();
+        
+        ofstream scoreEcr(FILEBESTSCORE.c_str(), ios::out | ios::trunc );
+        
+        map< int, string>::iterator i;
+        if ( Scores.size() < 5 ) {
+            i = Scores.end();
+        } else {
+            i = Scores.begin();
+            for ( int cpt = 0 ; cpt < 5; cpt ++ ) ++i;
+        }
+        
+        for ( map< int, string >::const_iterator it = Scores.begin() ; it!=i ; ++it) {
+            scoreEcr << it->first;
+            scoreEcr <<  " ";
+            scoreEcr <<  it->second;
+            scoreEcr << endl;
+        }
+        
+        scoreEcr.close();
+    } else {
+        cerr << " Error when program is openning text file " << endl;
     }
 }

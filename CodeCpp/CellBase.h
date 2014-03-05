@@ -18,7 +18,7 @@ class CellBase {
         //Les constructeurs
     
         CellBase(); //Le constructeur d'une celulle
-        CellBase( int x, int y ); //Le constructeur paramétré, on peut directement mettre les coordonnées
+        CellBase( unsigned long x, unsigned long y ); //Le constructeur paramétré, on peut directement mettre les coordonnées
         CellBase(const CellBase &c);//Le constructeur par copie ( pour manipuler correctement les vecteur)
     
         //Le destructeurs en virtuel, comme la classe contient des fonctions virtuel

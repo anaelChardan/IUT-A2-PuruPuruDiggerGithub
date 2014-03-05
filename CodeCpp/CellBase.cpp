@@ -14,7 +14,7 @@ CellBase::CellBase()
 }
 
 //Constructeur paramétré
-CellBase::CellBase( int x, int y ) {
+CellBase::CellBase( unsigned long x, unsigned long y ) {
     my_type = "CellBase";
     my_x = x;
     my_y = y;
