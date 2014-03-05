@@ -13,6 +13,8 @@
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
+#include <map>
+#include <vector>
 
 #include "GameModel.h"
 
@@ -21,6 +23,7 @@ class GameView {
         int my_w;
         int my_h;
         int my_bpp;
+        std::map< Language, std::vector<std::string> > LanguageMessage;
     
         //sf::RenderWindow * _window;
         //sf::Font* _font;
@@ -37,7 +40,7 @@ class GameView {
     
     //std::map<Movable_Element * const, GraphicElement *> _elementToGraphicElement;
     
-    //GameModel * _model;
+       GameModel * my_model;
     
         void showPresentation() const;
         void showScore() const;
@@ -45,8 +48,7 @@ class GameView {
         void showMenu() const;
         void showBestScore() const;
         void enterScore(std::string nom) const;
-    
-        GameModel* model;
+        void initMessage(std::map< Language, std::vector<std::string> >LanguageMessage);
     
     
     public:

@@ -46,6 +46,12 @@ GameView::showPresentation() const {
 }
 
 void
+GameView::initMessage(std::map< Language, std::vector<std::string> >LanguageMessage) {
+    
+    LanguageMessage[french].push_back("zizi");
+}
+
+void
 GameView::showScore() const {
     
 }
@@ -85,7 +91,7 @@ GameView::enterScore( string nom ) const{
         int scoreligne;
         string nomligne;
         map< int, string, DecFunctor> Scores;
-        int scorePlayer = model->getScore();
+        int scorePlayer = ( my_model->getScore() )->getGlobale() ;
         
         while ( !scoreLect.eof() ) {
             //On lit le score et on le stocke dans une map

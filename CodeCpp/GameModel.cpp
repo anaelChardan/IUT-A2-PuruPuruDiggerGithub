@@ -62,7 +62,12 @@ GameModel::isFinish() const {
         return false;
 }
 
-int
+Score* const
 GameModel::getScore() {
-    return my_score->getGlobale();
+    return my_score;
+}
+
+Level* const
+GameModel::getLevel() {
+    return my_level;
 }

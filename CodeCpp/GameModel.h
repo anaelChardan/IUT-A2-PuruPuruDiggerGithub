@@ -28,8 +28,8 @@ class GameModel {
         //Le constructeur
         GameModel();
         ~GameModel();
-        int getScore();
-        int getLevel();
+        Score* const getScore();
+        Level* const getLevel();
         int gameOver();
         void showTMP( int langue ) const;
         void movement( int depl );
