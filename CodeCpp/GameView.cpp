@@ -10,6 +10,7 @@
 #include "Constantes.h"
 #include <fstream>
 #include "IntDecFunctor.h"
+#include <string>
 using namespace std;
 using namespace sf;
 
@@ -46,9 +47,9 @@ GameView::showPresentation() const {
 }
 
 void
-GameView::initMessage(std::map< Language, std::vector<std::string> >LanguageMessage) {
+GameView::initMessage(map< Language, map< string, string > >LanguageMessage) {
+;
     
-    LanguageMessage[french].push_back("zizi");
 }
 
 void

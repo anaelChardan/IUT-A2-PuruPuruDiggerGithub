@@ -23,7 +23,15 @@ const std::string FILEBESTSCORE = "bestScores.txt";
 enum Language {
     french,
     english,
-    german
+    german,
+    spanish,
+    italiano
+};
+
+enum Message {
+    move,
+    south,
+    
 };
 
 #endif

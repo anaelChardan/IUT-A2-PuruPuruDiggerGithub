@@ -23,7 +23,7 @@ class GameView {
         int my_w;
         int my_h;
         int my_bpp;
-        std::map< Language, std::vector<std::string> > LanguageMessage;
+    std::map< std::string, std::map< std::string, std::string > > LanguageMessage;
     
         //sf::RenderWindow * _window;
         //sf::Font* _font;
@@ -48,7 +48,7 @@ class GameView {
         void showMenu() const;
         void showBestScore() const;
         void enterScore(std::string nom) const;
-        void initMessage(std::map< Language, std::vector<std::string> >LanguageMessage);
+        void initMessage(std::map< Language, std::map< std::string, std::string > > LanguageMessage);
     
     
     public:
