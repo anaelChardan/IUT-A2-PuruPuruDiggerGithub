@@ -14,9 +14,8 @@
 using namespace std;
 using namespace sf;
 
-GameView::GameView( int w, int h, int bpp ) {
-    my_w = w;
-    my_h = h;
+GameView::GameView() {
+    initMessage( LanguageMessage );
 }
 
 void
@@ -40,15 +39,35 @@ GameView::showPresentation() const {
     
     
     cout << " 1 : START " << endl;
-    cout << " 2 : MEILLEUR SCORE " << endl;
+    cout << " 2 : BEST SCORE " << endl;
     cout << " 3 : QUIT  " << endl << endl;
     
     cout << " CHOICE : ";
 }
 
 void
-GameView::initMessage(map< Language, map< string, string > >LanguageMessage) {
-;
+GameView::initMessage(map< Language, map< Message, string > > LanguageMessage) {
+    //Les messages français
+    LanguageMessage[français][move] = " Déplacement ";
+    LanguageMessage[français][north] = " Nord ";
+    LanguageMessage[français][south] = " Sud ";
+    LanguageMessage[français][west] = " Ouest ";
+    LanguageMessage[français][east] = " Est ";
+    LanguageMessage[français][nwest] = " Déplacement ";
+    LanguageMessage[français][neast] = " Déplacement ";
+    LanguageMessage[français][swest] = " Déplacement ";
+    LanguageMessage[français][seast] = " Déplacement ";
+    LanguageMessage[français][looselevel] = " Vous perdez une vie, recommencez un niveau ";
+    LanguageMessage[français][win] = " Vous gagnez un niveau " ;
+    
+    
+    //Les messages anglais
+    
+    //Les messages espagnol
+    
+    //Les messages italien
+    
+    //Les message allemand
     
 }
 

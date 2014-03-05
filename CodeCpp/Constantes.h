@@ -31,7 +31,22 @@ enum Language {
 enum Message {
     move,
     south,
-    
+    north,
+    west,
+    east,
+    nwest,
+    neast,
+    swest,
+    seast,
+    score,
+    level,
+    global,
+    current,
+    goal,
+    life,
+    looselevel,
+    loosegame,
+    win
 };
 
 #endif

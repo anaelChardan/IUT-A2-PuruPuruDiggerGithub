@@ -20,25 +20,9 @@
 
 class GameView {
     private :
-        int my_w;
-        int my_h;
-        int my_bpp;
-    std::map< std::string, std::map< std::string, std::string > > LanguageMessage;
+        Language my_language;
+        std::map< Language, std::map< Message, std::string > > LanguageMessage;
     
-        //sf::RenderWindow * _window;
-        //sf::Font* _font;
-    
-        //sf::Image* _background_image;
-        //sf::Image* _ball_image;
-        //sf::Image* _bat_image;
-    
-    //  GraphicElement _background_graph;
-    //  GraphicElement _bomb_graph;
-    //  GraphicElement _digger_graph;
-    //  GraphicElement _gold_graph;
-    //  GraphicElement _value_graph;
-    
-    //std::map<Movable_Element * const, GraphicElement *> _elementToGraphicElement;
     
        GameModel * my_model;
     
@@ -48,11 +32,11 @@ class GameView {
         void showMenu() const;
         void showBestScore() const;
         void enterScore(std::string nom) const;
-        void initMessage(std::map< Language, std::map< std::string, std::string > > LanguageMessage);
+        void initMessage(std::map< Language, std::map< Message, std::string > > LanguageMessage);
     
     
     public:
-        GameView(int w, int h, int bpp);
+        GameView();
         ~GameView();
     
         void setModel(GameModel * model);
