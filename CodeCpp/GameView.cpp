@@ -8,14 +8,13 @@
 
 #include "GameView.h"
 #include "Constantes.h"
-
+#include <fstream>
 using namespace std;
 using namespace sf;
 
 GameView::GameView( int w, int h, int bpp ) {
     my_w = w;
     my_h = h;
-    my_bpp = bpp;
 }
 
 void
@@ -57,5 +56,21 @@ GameView::showInstruction() const {
 
 void
 GameView::showBestScore() const {
-    
+    ifstream scoreLect(FILEBESTSCORE.c_str(), ios::in );
+    if ( scoreLect ) {
+        string line;
+        
+        cout << endl;
+        cout << endl;
+        
+        cout << " Voici les meilleurs scores " << endl << endl;
+        
+        while ( getline(scoreLect, line) ) {
+            cout << line << endl;
+        }
+        
+        scoreLect.close();
+    } else {
+        cerr << " Erreur d'ouverture de fichier " << endl;
+    }
 }

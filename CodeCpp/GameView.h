@@ -43,7 +43,10 @@ class GameView {
         void showScore() const;
         void showInstruction() const;
         void showMenu() const;
-    void showBestScore() const;
+        void showBestScore() const;
+        void enterScore(std::string nom) const;
+    
+        GameModel* model;
     
     
     public:
