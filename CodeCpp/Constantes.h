@@ -21,10 +21,10 @@ const unsigned long MAXVALB = 100;
 const std::string FILEBESTSCORE = "bestScores.txt";
 
 enum Language {
-    french,
+    français,
     english,
-    german,
-    spanish,
+    deutsch,
+    español,
     italiano
 };
 
