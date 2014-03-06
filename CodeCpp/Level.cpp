@@ -279,7 +279,6 @@ Level::isCellClickable( unsigned long click_x, unsigned long click_y ){
 
     unsigned long x = my_digger->getX();
     unsigned long y = my_digger->getY();
-
     // Il faut vérifier si l'on ne sort pas du tableau
     if ( click_x == -1 || click_x == LIGNE || click_y == -1 || click_y == COLONNE ) {
         return false;
@@ -296,6 +295,11 @@ Level::isCellClickable( unsigned long click_x, unsigned long click_y ){
 }
 
 //Retourne notre Digger
+const Grid&
+Level::getGrid() const {
+    return my_grid;
+}
+
 CellBase*
 Level::getDigger() {
     return my_digger;

@@ -59,6 +59,7 @@ class Level {
         bool isCellClickable( unsigned long click_x, unsigned long click_y ); //Savoir si une case est clickable ( il faut que ce soit une valueCell ou une goldCell et qu'elle soit placé à côté du Digger ) Elle ne servira que quand on devra recueillir des clicks
     
         void showTmp( int langue ) const; //Permettra d'afficher le level en attendant le gameview
+        const Grid& getGrid() const;
         bool isDead();
         int getCurrentMove() const;
     

@@ -26,8 +26,9 @@ class GameView {
     
         void showPresentation() const;
         void showScore( const std::map< Language, std::map< Message, std::string > >LanguageMessage ) const;
-    void showInstruction( const std::map< Language, std::map< Message, std::string > >LanguageMessage) const;
+        void showInstruction( const std::map< Language, std::map< Message, std::string > >LanguageMessage) const;
         void showMenu() const;
+        void showGrid() const;
         void showBestScore() const;
         void enterScore(std::string nom) const;
         void initMessage(std::map< Language, std::map< Message, std::string > > &LanguageMessage);

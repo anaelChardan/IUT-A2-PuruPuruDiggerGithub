@@ -155,6 +155,26 @@ GameView::initMessage(map< Language, map< Message, string > > &LanguageMessage) 
 }
 
 void
+GameView::showGrid() const {
+    for ( unsigned long z = 0; z < (COLONNE * 5 + 3); z++ )
+        cout << "-";
+    cout << endl;
+    
+    for ( unsigned long i = 0; i < LIGNE; i++ ) {
+        cout << " | ";
+        for ( unsigned long j = 0; j < COLONNE; j++ ) {
+            cout << my_model->getLevel()->getGrid()[i][j] << " | ";
+        }
+        cout << endl;
+        for ( unsigned long z = 0; z < (COLONNE * 5 + 3); z++ )
+            cout << "-";
+        cout << endl;
+    }
+    cout << endl;
+
+}
+
+void
 GameView::showScore( map< Language, map< Message, string > > LanguageMessage ) const {
     cout << LanguageMessage[my_language][level] << ( my_model->getScore() )->getCurrentStep() << endl;
     cout << LanguageMessage[my_language][global] << ( my_model->getScore() )->getGlobale() << endl;
