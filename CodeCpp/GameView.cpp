@@ -171,7 +171,6 @@ GameView::showGrid() const {
         cout << endl;
     }
     cout << endl;
-
 }
 
 void
