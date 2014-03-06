@@ -29,26 +29,13 @@ enum Language {
 };
 
 enum Message {
-    move,
-    south,
-    north,
-    west,
-    east,
-    nwest,
-    neast,
-    swest,
-    seast,
-    score,
-    level,
-    global,
-    current,
-    goal,
-    life,
-    step,
-    looselevel,
-    loosegame,
-    win,
-    quit
+    choice,
+    
+    move, nwest, north, neast, west, east, swest, south, seast, stop,
+    score, level, global, current, goal, step, life, position,
+    winlevel, looselevel, loosegame, name,
+    
+    by
 };
 
 #endif

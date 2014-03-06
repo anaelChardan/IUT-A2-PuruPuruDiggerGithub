@@ -14,26 +14,13 @@ GameModel::GameModel(){
     my_level = new Level( my_score );
 }
 
-GameModel::~GameModel() { }
-
-void
-GameModel::showTMP( int langue ) const {
-    my_level->showTmp( langue );
-    my_score->showTmpScore(langue);
-    cout << endl << endl;
-    cout << " Déplacement :      7 : NordOuest        8 : Nord        9 : NordEst" << endl;
-    cout << "                    4 : Ouest                            6 : Est    " << endl;
-    cout << "                    1 : Sud Ouest        2 : Sud         3 : SudEst " << endl << endl << endl;
-    
-    
-    cout << "                                     Pour arrêter : 5               " << endl;
-    
-    
-    cout << " Entrez votre Déplacement souhaité  : ";
+GameModel::~GameModel() {
+    delete my_level;
+    delete my_score;
 }
 
 void
-GameModel::movement( int depl ) {
+GameModel::orderMovement( int depl ) {
     switch ( depl ) {
         case 1 : my_level->moveSouthWest();
             break;
@@ -55,7 +42,7 @@ GameModel::movement( int depl ) {
 }
 
 bool
-GameModel::isFinish() const {
+GameModel::gameOver() const {
     if ( my_level->isDead() )
         return true;
     else

@@ -15,7 +15,11 @@ using namespace std;
 using namespace sf;
 
 GameView::GameView() {
-    initMessage( LanguageMessage );
+    
+}
+
+void GameView::setModel(GameModel *model) {
+    my_model = model;
 }
 
 void
@@ -46,112 +50,9 @@ GameView::showPresentation() const {
 }
 
 void
-GameView::initMessage(map< Language, map< Message, string > > &LanguageMessage) {
-    //Les messages français
-    LanguageMessage[français][move] = " Déplacement ";
-    LanguageMessage[français][north] = " Nord ";
-    LanguageMessage[français][south] = " Sud ";
-    LanguageMessage[français][west] = " Ouest ";
-    LanguageMessage[français][east] = " Est ";
-    LanguageMessage[français][nwest] = " Nord Ouest ";
-    LanguageMessage[français][neast] = " Nord Est ";
-    LanguageMessage[français][swest] = " Sud Ouest ";
-    LanguageMessage[français][seast] = " Sud Est ";
-    LanguageMessage[français][looselevel] = " Vous perdez une vie, recommencez un niveau ";
-    LanguageMessage[français][win] = " Vous gagnez un niveau " ;
-    LanguageMessage[français][loosegame] = " Vous avez perdu la partie :";
-    LanguageMessage[français][global] = " Score Global ";
-    LanguageMessage[français][current] = " Score Courrant ";
-    LanguageMessage[français][step] = " En cours ";
-    LanguageMessage[français][goal] = " Objectif ";
-    LanguageMessage[français][level] = " Niveau ";
-    LanguageMessage[français][quit] = " Quitter ";
-    LanguageMessage[français][life] = "Vie ";
-
-    //Les messages anglais
-
-    LanguageMessage[english][move] = " Déplacement ";
-    LanguageMessage[english][north] = " Nord ";
-    LanguageMessage[english][south] = " Sud ";
-    LanguageMessage[english][west] = " Ouest ";
-    LanguageMessage[english][east] = " Est ";
-    LanguageMessage[english][nwest] = " Nord Ouest ";
-    LanguageMessage[english][neast] = " Nord Est ";
-    LanguageMessage[english][swest] = " Sud Ouest ";
-    LanguageMessage[english][seast] = " Sud Est ";
-    LanguageMessage[english][looselevel] = " Vous perdez une vie, recommencez un niveau ";
-    LanguageMessage[english][win] = " Vous gagnez un niveau " ;
-    LanguageMessage[english][loosegame] = " Vous avez perdu la partie :";
-    LanguageMessage[english][global] = " Score Global ";
-    LanguageMessage[english][current] = " Score Courrant ";
-    LanguageMessage[english][step] = " En cours ";
-    LanguageMessage[english][goal] = " Objectif ";
-    LanguageMessage[english][level] = " Niveau ";
-    LanguageMessage[english][quit] = " Quitter ";
-    LanguageMessage[english][life] = "Vie ";
-
-    //Les messages espagnol
-    LanguageMessage[español][move] = " Déplacement ";
-    LanguageMessage[español][north] = " Nord ";
-    LanguageMessage[español][south] = " Sud ";
-    LanguageMessage[español][west] = " Ouest ";
-    LanguageMessage[español][east] = " Est ";
-    LanguageMessage[español][nwest] = " Nord Ouest ";
-    LanguageMessage[español][neast] = " Nord Est ";
-    LanguageMessage[español][swest] = " Sud Ouest ";
-    LanguageMessage[español][seast] = " Sud Est ";
-    LanguageMessage[español][looselevel] = " Vous perdez une vie, recommencez un niveau ";
-    LanguageMessage[español][win] = " Vous gagnez un niveau " ;
-    LanguageMessage[español][loosegame] = " Vous avez perdu la partie :";
-    LanguageMessage[español][global] = " Score Global ";
-    LanguageMessage[español][current] = " Score Courrant ";
-    LanguageMessage[español][step] = " En cours ";
-    LanguageMessage[español][goal] = " Objectif ";
-    LanguageMessage[español][level] = " Niveau ";
-    LanguageMessage[español][quit] = " Quitter ";
-    LanguageMessage[español][life] = "Vie ";
-
-    //Les messages italien
-    LanguageMessage[italiano][move] = " Déplacement ";
-    LanguageMessage[italiano][north] = " Nord ";
-    LanguageMessage[italiano][south] = " Sud ";
-    LanguageMessage[italiano][west] = " Ouest ";
-    LanguageMessage[italiano][east] = " Est ";
-    LanguageMessage[italiano][nwest] = " Nord Ouest ";
-    LanguageMessage[italiano][neast] = " Nord Est ";
-    LanguageMessage[italiano][swest] = " Sud Ouest ";
-    LanguageMessage[italiano][seast] = " Sud Est ";
-    LanguageMessage[italiano][looselevel] = " Vous perdez une vie, recommencez un niveau ";
-    LanguageMessage[italiano][win] = " Vous gagnez un niveau " ;
-    LanguageMessage[italiano][loosegame] = " Vous avez perdu la partie :";
-    LanguageMessage[italiano][global] = " Score Global ";
-    LanguageMessage[italiano][current] = " Score Courrant ";
-    LanguageMessage[italiano][step] = " En cours ";
-    LanguageMessage[italiano][goal] = " Objectif ";
-    LanguageMessage[italiano][level] = " Niveau ";
-    LanguageMessage[italiano][quit] = " Quitter ";
-    LanguageMessage[italiano][life] = "Vie ";
-
-    //Les message allemand
-    LanguageMessage[deutsch][move] = " Déplacement ";
-    LanguageMessage[deutsch][north] = " Nord ";
-    LanguageMessage[deutsch][south] = " Sud ";
-    LanguageMessage[deutsch][west] = " Ouest ";
-    LanguageMessage[deutsch][east] = " Est ";
-    LanguageMessage[deutsch][nwest] = " Nord Ouest ";
-    LanguageMessage[deutsch][neast] = " Nord Est ";
-    LanguageMessage[deutsch][swest] = " Sud Ouest ";
-    LanguageMessage[deutsch][seast] = " Sud Est ";
-    LanguageMessage[deutsch][looselevel] = " Vous perdez une vie, recommencez un niveau ";
-    LanguageMessage[deutsch][win] = " Vous gagnez un niveau " ;
-    LanguageMessage[deutsch][loosegame] = " Vous avez perdu la partie :";
-    LanguageMessage[deutsch][global] = " Score Global ";
-    LanguageMessage[deutsch][current] = " Score Courrant ";
-    LanguageMessage[deutsch][step] = " En cours ";
-    LanguageMessage[deutsch][goal] = " Objectif ";
-    LanguageMessage[deutsch][level] = " Niveau ";
-    LanguageMessage[deutsch][quit] = " Quitter ";
-    LanguageMessage[deutsch][life] = "Vie ";
+GameView::showLanguage() {
+    cout << " 1 : Français  2 : English  3 : Deutsch  4 : Español  5 : Italiano " << endl << endl;
+    cout << " CHOICE : " ;
 }
 
 void
@@ -163,7 +64,7 @@ GameView::showGrid() const {
     for ( unsigned long i = 0; i < LIGNE; i++ ) {
         cout << " | ";
         for ( unsigned long j = 0; j < COLONNE; j++ ) {
-            cout << my_model->getLevel()->getGrid()[i][j] << " | ";
+            cout << *my_model->getLevel()->getGrid()[i][j] << " | ";
         }
         cout << endl;
         for ( unsigned long z = 0; z < (COLONNE * 5 + 3); z++ )
@@ -174,23 +75,28 @@ GameView::showGrid() const {
 }
 
 void
-GameView::showScore( map< Language, map< Message, string > > LanguageMessage ) const {
-    cout << LanguageMessage[my_language][level] << ( my_model->getScore() )->getCurrentStep() << endl;
-    cout << LanguageMessage[my_language][global] << ( my_model->getScore() )->getGlobale() << endl;
-    cout << LanguageMessage[my_language][current] << ( my_model->getScore() )->getCurrent() << endl;
-    cout << LanguageMessage[my_language][goal] << ( my_model->getLevel() )->getGoal() << endl;
-    cout << LanguageMessage[my_language][step] << ( my_model->getLevel() )->getCurrentMove() << endl;
-    cout << LanguageMessage[my_language][life] << " Digger : " <<  ( ( my_model->getLevel() )->getDigger() )->getLife() << endl;
+GameView::showScore() {
+    cout << my_messages[my_language][score] << " : " << endl << endl;
+    cout << my_messages[my_language][level] << ( my_model->getScore() )->getCurrentStep() << endl;
+    cout << my_messages[my_language][global] << ( my_model->getScore() )->getGlobale() << endl;
+    cout << my_messages[my_language][current] << ( my_model->getScore() )->getCurrent() << endl;
+    cout << my_messages[my_language][goal] << ( my_model->getLevel() )->getGoal() << endl;
+    cout << my_messages[my_language][step] << ( my_model->getLevel() )->getCurrentMove() << endl;
+    cout << my_messages[my_language][life] << " Digger : " <<  ( ( my_model->getLevel() )->getDigger() )->getLife() << endl;
+    cout << my_messages[my_language][position] << " Digger :  [ " << my_model->getLevel()->getDigger()->getX() << " ] [" << my_model->getLevel()->getDigger()->getY() << " ] " << endl << endl;
+    
 }
 
 void
-GameView::showInstruction( map< Language, map< Message, string > > LanguageMessage ) const {
-    cout << LanguageMessage[my_language][move] << " : " << endl << endl;
-    cout << " 7 : " << LanguageMessage[my_language][nwest] << " 8 : " << LanguageMessage[my_language][north] << " 9 : " << LanguageMessage[my_language][neast] << endl;
-    cout << " 4 : " << LanguageMessage[my_language][west] <<          "                      "               << " 6 : " << LanguageMessage[my_language][east] << endl;
-    cout << " 1 : " << LanguageMessage[my_language][swest] << " 2 : " << LanguageMessage[my_language][south] << " 3 : " << LanguageMessage[my_language][seast] << endl << endl;
+GameView::showInstruction( ) {
+    cout << my_messages[my_language][move] << " : " << endl << endl;
+    cout << " 7 : " << my_messages[my_language][nwest] << " 8 : " << my_messages[my_language][north] << " 9 : " << my_messages[my_language][neast] << endl;
+    cout << " 4 : " << my_messages[my_language][west] <<          "                      "               << " 6 : " << my_messages[my_language][east] << endl;
+    cout << " 1 : " << my_messages[my_language][swest] << " 2 : " << my_messages[my_language][south] << " 3 : " << my_messages[my_language][seast] << endl << endl;
 
-    cout << " 5 : " << LanguageMessage[my_language][quit] << endl;
+    cout << " 5 : " << my_messages[my_language][stop] << endl << endl;
+    
+    cout << my_messages[my_language][choice];
 }
 
 void
@@ -209,6 +115,8 @@ GameView::showBestScore() const {
         }
 
         scoreLect.close();
+        
+        cout << endl;
     } else {
         cerr << " Error when program is openning text file " << endl;
     }
@@ -258,4 +166,81 @@ GameView::enterScore( string nom ) const{
     } else {
         cerr << " Error when program is openning text file " << endl;
     }
+}
+
+void
+GameView::treatGame() {
+    bool isRunning = true;
+    bool isPlaying = false;
+    int menuChoice;
+    int languechoice;
+    int movechoice;
+    string nom;
+    while ( isRunning ) {
+        showPresentation();
+        cin >> menuChoice;
+        switch ( menuChoice ) {
+            case 1 : isPlaying = true;
+                break;
+            case 2 : showBestScore();
+                break;
+            case 3 : isRunning = false;
+                
+        }
+        
+        if ( isPlaying ) {
+            showLanguage();
+            cin >> languechoice;
+            cout << endl;
+            switch ( languechoice ) {
+                case 1 : my_language = français;
+                    break;
+                case 2 : my_language = english;
+                    break;
+                case 3 : my_language = deutsch;
+                    break;
+                case 4 : my_language = español;
+                    break;
+                case 5 : my_language = italiano;
+                    break;
+            }
+            
+            while (isPlaying) {
+                showGrid();
+                showScore();
+                showInstruction();
+                cin >> movechoice;
+                if ( movechoice == 5 ) {
+                    cout << my_messages[my_language][by] << endl;
+                    isPlaying = false;
+                } else {
+                    my_model->orderMovement(movechoice);
+                     //Si le digger gagne un level
+                    if ( my_model->getLevel()->win() ) {
+                        cout << my_messages[my_language][winlevel] << endl ;
+                    
+                     } else {
+                         //Si la partie est fini
+                         if ( my_model->gameOver() ) {
+                             cout << my_messages[my_language][loosegame] << endl;
+                             isPlaying = false;
+                         } else {
+                             //Si le digger perd un level
+                             if ( my_model->getLevel()->lose() ) {
+                                 cout << my_messages[my_language][looselevel] << endl;
+                             }
+                         }
+                     }
+                }
+            }
+            
+            //La partie est finie
+            cout << my_messages[my_language][name];
+            cin >> nom;
+            enterScore(nom);
+            showBestScore();
+        }
+    }
+    
+    cout << " GOOD BYE " << endl;
 }

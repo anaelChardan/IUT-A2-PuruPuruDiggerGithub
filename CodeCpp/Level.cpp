@@ -102,9 +102,12 @@ Level::shuffle() {
     }
 }
 
+
+
 //Gagner un level
 void
 Level::winLevel() {
+    my_win = true;
     //On additionne le bonus au score courant
     my_score->addPoints( my_bonus );
     //On dit que l'on fait un nouveau niveau
@@ -124,6 +127,7 @@ Level::winLevel() {
 //Perdre un level
 void
 Level::lostLevel() {
+    my_lose = true;
     //On fait perdre une vie au digger
     my_digger->lostLife();
     //On reset le score actuel
@@ -165,7 +169,7 @@ Level::initGrid() {
 }
 
 
-//Quand on perd une partie
+//Quand on change de level
 void
 Level::reset() {
     //On efface la nouvelle place du digger
@@ -199,7 +203,8 @@ void
 Level::move( unsigned long DeltaX, unsigned long DeltaY ) {
     int nbStep = -1;
     int pointInGame = -1;
-
+    my_lose = false;
+    my_win = false;
     if ( isCellClickable( ( my_digger->getX() + DeltaX ), ( my_digger->getY() + DeltaY ) ) ) {
         //On veut savoir de combien de coup on veut se déplacer
         nbStep = my_grid[ (my_digger->getX() + DeltaX) ][ (my_digger->getY() + DeltaY ) ]->getValue();
@@ -244,7 +249,6 @@ Level::move( unsigned long DeltaX, unsigned long DeltaY ) {
     } else if ( nbStep != -1 && cpt!=0 ){
         my_currentMove += nbStep;
         my_score->addPoints(pointInGame);
-
         //Si on a atteint l'objectif
         if ( my_currentMove >= my_goal ) {
             winLevel();
@@ -267,12 +271,14 @@ Level::getGoal() const {
 }
 
 bool
-Level::isDead() {
+Level::isDead() const {
     if ( my_digger->getLife() == -1 )
         return true;
     else
         return false;
 }
+
+
 //Permet de vérifier sur une case est clickable
 bool
 Level::isCellClickable( unsigned long click_x, unsigned long click_y ){
@@ -361,6 +367,16 @@ Level::showTmp( int langue ) const {
 string
 Level::getTypeCell( unsigned long x, unsigned long y ) const {
     return my_grid[x][y]->getType();
+}
+
+bool
+Level::lose() const {
+    return my_lose;
+}
+
+bool
+Level::win() const {
+    return my_win;
 }
 
 /*===========================

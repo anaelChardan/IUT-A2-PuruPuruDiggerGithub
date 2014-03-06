@@ -13,36 +13,29 @@
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
-#include <map>
-#include <vector>
 
 #include "GameModel.h"
+#include "LanguageMessage.h"
 
 class GameView {
     private :
         Language my_language;
-        std::map< Language, std::map< Message, std::string > > LanguageMessage;
+        LanguageMessage my_messages;
         GameModel * my_model;
     
         void showPresentation() const;
-        void showScore( const std::map< Language, std::map< Message, std::string > >LanguageMessage ) const;
-        void showInstruction( const std::map< Language, std::map< Message, std::string > >LanguageMessage) const;
-        void showMenu() const;
+        void showLanguage();
+        void showScore() ;
         void showGrid() const;
+        void showInstruction();
         void showBestScore() const;
-        void enterScore(std::string nom) const;
-        void initMessage(std::map< Language, std::map< Message, std::string > > &LanguageMessage);
     
-    
+        void enterScore(std::string nom) const ;
+
     public:
         GameView();
-        ~GameView();
-    
         void setModel(GameModel * model);
-        //void synchronize();
-        //void afficherScore();
-        //void draw();
-        bool treatEvents();
+        void treatGame();
 };
 
 #endif /* defined(__PuruPuruDigger__GameView__) */

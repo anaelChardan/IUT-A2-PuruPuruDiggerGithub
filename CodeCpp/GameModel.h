@@ -19,7 +19,7 @@
 
 class GameModel {
     private :
-        //Un vecteur de level comme il doit y avoir un nombre infinie de level
+        //Notre level, en vérité infini
         Level* my_level;
         //Un tableau de score ( les scores réalisés par les joueurs dans chacun des level )
         Score* my_score;
@@ -27,13 +27,13 @@ class GameModel {
     public :
         //Le constructeur
         GameModel();
+        //Le destructeur
         ~GameModel();
+        //Les getteurs
         Score* const getScore();
         Level* const getLevel();
-        int gameOver();
-        void showTMP( int langue ) const;
-        void movement( int depl );
-        bool isFinish() const ;
+        void orderMovement( int depl );
+        bool gameOver() const ;
 };
 
 #endif /* defined(__purpurudigger__Game__) */
