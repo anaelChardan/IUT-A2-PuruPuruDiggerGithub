@@ -60,6 +60,7 @@ class Level {
     
         void showTmp( int langue ) const; //Permettra d'afficher le level en attendant le gameview
         bool isDead();
+        int getCurrentMove() const;
     
         //Tous nos sucres de languages, il appeleront la fonction move avec notre digger et les bons deltas et le nombre de coup
         void moveWest();

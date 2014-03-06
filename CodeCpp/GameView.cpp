@@ -66,6 +66,7 @@ GameView::initMessage(map< Language, map< Message, string > > &LanguageMessage) 
     LanguageMessage[français][goal] = " Objectif ";
     LanguageMessage[français][level] = " Niveau ";
     LanguageMessage[français][quit] = " Quitter ";
+    LanguageMessage[français][life] = "Vie ";
     
     //Les messages anglais
     
@@ -83,7 +84,8 @@ GameView::showScore( map< Language, map< Message, string > > LanguageMessage ) c
     cout << LanguageMessage[my_language][global] << ( my_model->getScore() )->getGlobale() << endl;
     cout << LanguageMessage[my_language][current] << ( my_model->getScore() )->getCurrent() << endl;
     cout << LanguageMessage[my_language][goal] << ( my_model->getLevel() )->getGoal() << endl;
-
+    cout << LanguageMessage[my_language][step] << ( my_model->getLevel() )->getCurrentMove() << endl;
+    cout << LanguageMessage[my_language][life] << " Digger : " <<  ( ( my_model->getLevel() )->getDigger() )->getLife() << endl;
 }
 
 void

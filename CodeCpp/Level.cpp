@@ -257,6 +257,11 @@ Level::move( unsigned long DeltaX, unsigned long DeltaY ) {
  Les méthodes publics
  =============================*/
 int
+Level::getCurrentMove() const {
+    return my_currentMove;
+}
+
+int
 Level::getGoal() const {
     return my_goal;
 }
