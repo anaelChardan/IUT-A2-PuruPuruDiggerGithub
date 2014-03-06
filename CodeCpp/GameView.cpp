@@ -70,12 +70,88 @@ GameView::initMessage(map< Language, map< Message, string > > &LanguageMessage) 
     
     //Les messages anglais
     
+    LanguageMessage[english][move] = " Déplacement ";
+    LanguageMessage[english][north] = " Nord ";
+    LanguageMessage[english][south] = " Sud ";
+    LanguageMessage[english][west] = " Ouest ";
+    LanguageMessage[english][east] = " Est ";
+    LanguageMessage[français][nwest] = " Nord Ouest ";
+    LanguageMessage[français][neast] = " Nord Est ";
+    LanguageMessage[français][swest] = " Sud Ouest ";
+    LanguageMessage[français][seast] = " Sud Est ";
+    LanguageMessage[français][looselevel] = " Vous perdez une vie, recommencez un niveau ";
+    LanguageMessage[français][win] = " Vous gagnez un niveau " ;
+    LanguageMessage[français][loosegame] = " Vous avez perdu la partie :";
+    LanguageMessage[français][global] = " Score Global ";
+    LanguageMessage[français][current] = " Score Courrant ";
+    LanguageMessage[français][step] = " En cours ";
+    LanguageMessage[français][goal] = " Objectif ";
+    LanguageMessage[français][level] = " Niveau ";
+    LanguageMessage[français][quit] = " Quitter ";
+    LanguageMessage[français][life] = "Vie ";
+    
     //Les messages espagnol
+    LanguageMessage[français][move] = " Déplacement ";
+    LanguageMessage[français][north] = " Nord ";
+    LanguageMessage[français][south] = " Sud ";
+    LanguageMessage[français][west] = " Ouest ";
+    LanguageMessage[français][east] = " Est ";
+    LanguageMessage[français][nwest] = " Nord Ouest ";
+    LanguageMessage[français][neast] = " Nord Est ";
+    LanguageMessage[français][swest] = " Sud Ouest ";
+    LanguageMessage[français][seast] = " Sud Est ";
+    LanguageMessage[français][looselevel] = " Vous perdez une vie, recommencez un niveau ";
+    LanguageMessage[français][win] = " Vous gagnez un niveau " ;
+    LanguageMessage[français][loosegame] = " Vous avez perdu la partie :";
+    LanguageMessage[français][global] = " Score Global ";
+    LanguageMessage[français][current] = " Score Courrant ";
+    LanguageMessage[français][step] = " En cours ";
+    LanguageMessage[français][goal] = " Objectif ";
+    LanguageMessage[français][level] = " Niveau ";
+    LanguageMessage[français][quit] = " Quitter ";
+    LanguageMessage[français][life] = "Vie ";
     
     //Les messages italien
+    LanguageMessage[français][move] = " Déplacement ";
+    LanguageMessage[français][north] = " Nord ";
+    LanguageMessage[français][south] = " Sud ";
+    LanguageMessage[français][west] = " Ouest ";
+    LanguageMessage[français][east] = " Est ";
+    LanguageMessage[français][nwest] = " Nord Ouest ";
+    LanguageMessage[français][neast] = " Nord Est ";
+    LanguageMessage[français][swest] = " Sud Ouest ";
+    LanguageMessage[français][seast] = " Sud Est ";
+    LanguageMessage[français][looselevel] = " Vous perdez une vie, recommencez un niveau ";
+    LanguageMessage[français][win] = " Vous gagnez un niveau " ;
+    LanguageMessage[français][loosegame] = " Vous avez perdu la partie :";
+    LanguageMessage[français][global] = " Score Global ";
+    LanguageMessage[français][current] = " Score Courrant ";
+    LanguageMessage[français][step] = " En cours ";
+    LanguageMessage[français][goal] = " Objectif ";
+    LanguageMessage[français][level] = " Niveau ";
+    LanguageMessage[français][quit] = " Quitter ";
+    LanguageMessage[français][life] = "Vie ";
     
     //Les message allemand
-    
+    LanguageMessage[français][move] = " Déplacement ";
+    LanguageMessage[français][north] = " Nord ";
+    LanguageMessage[français][south] = " Sud ";
+    LanguageMessage[français][west] = " Ouest ";
+    LanguageMessage[français][east] = " Est ";
+    LanguageMessage[français][nwest] = " Nord Ouest ";
+    LanguageMessage[français][neast] = " Nord Est ";
+    LanguageMessage[français][swest] = " Sud Ouest ";
+    LanguageMessage[français][seast] = " Sud Est ";
+    LanguageMessage[français][looselevel] = " Vous perdez une vie, recommencez un niveau ";
+    LanguageMessage[français][win] = " Vous gagnez un niveau " ;
+    LanguageMessage[français][loosegame] = " Vous avez perdu la partie :";
+    LanguageMessage[français][global] = " Score Global ";
+    LanguageMessage[français][current] = " Score Courrant ";
+    LanguageMessage[français][step] = " En cours ";
+    LanguageMessage[français][goal] = " Objectif ";
+    LanguageMessage[français][level] = " Niveau ";
+    LanguageMessage[français][quit] = " Quitter ";
+    LanguageMessage[français][life] = "Vie ";
 }
 
 void
