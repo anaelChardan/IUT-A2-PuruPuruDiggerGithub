@@ -12,7 +12,7 @@ ValueCell::ValueCell() {
     my_value =  MINVAL + (rand() % (MAXVAL - MINVAL));
 }
 
-ValueCell::ValueCell( unsigned long x, unsigned long y ) {
+ValueCell::ValueCell( int x, int y ) {
     my_type = "ValueCell";
     my_value = MINVAL + (rand() % (MAXVAL - MINVAL));
     my_x = x;

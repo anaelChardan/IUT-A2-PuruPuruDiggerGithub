@@ -13,27 +13,27 @@
 #include "CellBase.h"
 
 class EmptyCell : public CellBase {
-    
+
     public:
         //Les constructeurs
-    
+
         EmptyCell(); //Constructeur par défaut
-        EmptyCell( unsigned long x, unsigned long y ); //Le constructeur paramétré
+        EmptyCell( int x, int  y ); //Le constructeur paramétré
         EmptyCell( const EmptyCell &b); //Constructeur par copie
-    
+
         //Le destructeur
-    
+
         virtual ~EmptyCell(); //Destructeur
-    
+
         //Les méthodes
         virtual void toString( std::ostream& O) const;
-    
+
         //Les opérateurs
         virtual EmptyCell& operator=(const EmptyCell & b); //Opérateur d'affectation
-    
+
     private :
         //Eviter la classe abstraite
-    
+
         virtual int getValue() const;
         virtual int getPoints() const;
         virtual int getLife() const;

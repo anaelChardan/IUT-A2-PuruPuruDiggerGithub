@@ -18,7 +18,7 @@ Score::getCurrent() const {
     return my_success[ my_success.size() - 1 ];
 }
 
-long
+int
 Score::getCurrentStep() const {
     return ( my_success.size() );
 }
@@ -26,7 +26,7 @@ Score::getCurrentStep() const {
 int
 Score::getGlobale() const {
     int sum = 0;
-    for ( unsigned long i = 0;  i < my_success.size(); ++i )
+    for ( int i = 0;  i < my_success.size(); ++i )
         sum += my_success[i];
     return sum;
 }
@@ -51,7 +51,7 @@ Score::showTmpScore( int langue ) const {
     string Level;
     string TScore;
     string AScore;
-    
+
     switch ( langue ) {
         case 1 : Level =  "Level ";
                  TScore = "Total Score ";
@@ -65,7 +65,7 @@ Score::showTmpScore( int langue ) const {
                  TScore = " Puntación total  : ";
                  AScore = " Puntación actual : ";
     }
-    
+
     cout << setw(20) << left << Level << setw(5) << right << getCurrentStep() << endl;
     cout << setw(20) << left << TScore  << setw(5) << right << getGlobale() << endl;
     cout << setw(20) << left << AScore << setw(5) << right << getCurrent() << endl;
