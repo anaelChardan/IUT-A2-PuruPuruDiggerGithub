@@ -16,10 +16,6 @@ using namespace std;
 
 int main(int argc, const char * argv[])
 {
-
-
-    //On simule une partie
-
     GameModel* model = new GameModel;
     GameView * view = new GameView;
     

@@ -83,7 +83,7 @@ Level::shuffle() {
         }
     }
 
-    random_shuffle( tmp.begin(), tmp.end());
+    random_shuffle( tmp.begin(), tmp.end() );
 
     //1D to 2D
     z=0;
@@ -119,8 +119,6 @@ Level::winLevel() {
     //On remet nos mouvements à 0
     my_currentMove = 0;
     //On reset le level
-    std::cout << " Bravo, niveau suivant " << std::endl << std::endl;
-
     reset();
 }
 
@@ -135,8 +133,6 @@ Level::lostLevel() {
     //On remet nos mouvements à 0
     my_currentMove = 0;
     //On reset le level
-
-    std::cout << " Vous êtes mort, entrez dans un nouveau niveau " << std::endl << std::endl;
     reset();
 }
 
@@ -272,7 +268,7 @@ Level::getGoal() const {
 
 bool
 Level::isDead() const {
-    if ( my_digger->getLife() == -1 )
+    if ( my_digger->getLife() < 0 )
         return true;
     else
         return false;
@@ -286,7 +282,7 @@ Level::isCellClickable( int click_x, int click_y ){
      int x = my_digger->getX();
      int y = my_digger->getY();
     // Il faut vérifier si l'on ne sort pas du tableau
-    if ( click_x == -1 || click_x == LIGNE || click_y == -1 || click_y == COLONNE ) {
+    if ( click_x < 0 || click_x == LIGNE || click_y < 0 || click_y == COLONNE ) {
         return false;
     }
 
@@ -334,7 +330,7 @@ Level::win() const {
 
 //On se déplace vers l'ouest ( gauche )
 void
-Level::moveWest(){
+Level::moveWest() {
     move( 0, -1 );
 }
 
