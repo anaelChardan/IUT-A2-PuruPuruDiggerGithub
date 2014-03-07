@@ -281,6 +281,8 @@ Level::isCellClickable( int click_x, int click_y ){
 
      int x = my_digger->getX();
      int y = my_digger->getY();
+    
+    
     // Il faut vérifier si l'on ne sort pas du tableau
     if ( click_x < 0 || click_x == LIGNE || click_y < 0 || click_y == COLONNE ) {
         return false;
