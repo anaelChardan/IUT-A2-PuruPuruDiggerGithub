@@ -47,7 +47,11 @@ GoldCell::getPoints() const {
 
 void
 GoldCell::toString( std::ostream& O) const {
+    #ifdef __linux__
+    O << "\E[" << PINK << ";1m"<< "* " << my_value << "\E[m";
+    #else
     O << "*" << my_value;
+    #endif
 }
 
 /*===========================

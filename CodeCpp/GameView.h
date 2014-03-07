@@ -22,18 +22,16 @@ class GameView {
         Language my_language;
         LanguageMessage my_messages;
         GameModel * my_model;
-    
+
         void showPresentation() const;
         void showLanguage();
         void showScore() ;
         void showGrid() const;
         void showInstruction();
         void showBestScore() const;
-    
         void enterScore(std::string nom) const ;
 
     public:
-        GameView();
         void setModel(GameModel * model);
         void treatGame();
 };

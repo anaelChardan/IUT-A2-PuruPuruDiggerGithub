@@ -84,12 +84,6 @@ CellBase::operator=(const CellBase &c) {
     return *this;
 }
 
-//Il faudra mettre dans les classes filles mettre ce qu'elle devront afficher dans le terminal
-//Ici c'est débile mais c'est pour l'exemple d'implémentation
-void
-CellBase::toString(std::ostream &O ) const {
-    O << my_x << my_y;
-}
 
 /*===========================
 Une fonction amie qui se fera héritée

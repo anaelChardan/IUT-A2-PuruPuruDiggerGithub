@@ -1,4 +1,5 @@
 #include "Bomb.h"
+#include "Constantes.h"
 
 /*===========================
  Les Constructeurs
@@ -36,7 +37,11 @@ Bomb::~Bomb() {}
 
 void
 Bomb::toString( std::ostream& O) const {
+    #ifdef __linux__
+    O << "\E[" << RED << ";1m"<< "B-B" << "\E[m";
+    #else
     O << "BB";
+    #endif
 }
 
 /*===========================

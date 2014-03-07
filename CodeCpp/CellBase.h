@@ -53,7 +53,7 @@ class CellBase {
 
 
             //Pour toutes
-        virtual void toString( std::ostream& O) const; //Affichage terminal
+        virtual void toString( std::ostream& O) const = 0; //Affichage terminal
 
 
         //Une fonction amie qui pourra servir

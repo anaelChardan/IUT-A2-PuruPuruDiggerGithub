@@ -55,6 +55,8 @@
 		<Unit filename="GameView.h" />
 		<Unit filename="GoldCell.cpp" />
 		<Unit filename="GoldCell.h" />
+		<Unit filename="LanguageMessage.cpp" />
+		<Unit filename="LanguageMessage.h" />
 		<Unit filename="Level.cpp" />
 		<Unit filename="Level.h" />
 		<Unit filename="Score.cpp" />

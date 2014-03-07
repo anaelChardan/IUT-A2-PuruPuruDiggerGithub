@@ -20,13 +20,15 @@ Score::getCurrent() const {
 
 int
 Score::getCurrentStep() const {
-    return (  static_cast<int>( my_success.size() ) );
+    int globale = static_cast<int>( my_success.size() );
+    return (  globale );
 }
 
 int
 Score::getGlobale() const {
     int sum = 0;
-    for ( int i = 0;  i < my_success.size(); ++i )
+    int size = static_cast<int>( my_success.size() );
+    for ( int i = 0;  i < size; ++i )
         sum += my_success[i];
     return sum;
 }

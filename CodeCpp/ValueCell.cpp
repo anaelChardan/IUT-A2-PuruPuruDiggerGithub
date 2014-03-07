@@ -49,7 +49,11 @@ ValueCell::getPoints() const {
 
 void
 ValueCell::toString( std::ostream& O) const {
-    O << " " << my_value;
+    #ifdef __linux__
+    O << "\E[" << BLUE << ";1m"<<  " " << my_value << " " << "\E[m";
+    #else
+    O << my_value;
+    #endif
 }
 
 /*===========================

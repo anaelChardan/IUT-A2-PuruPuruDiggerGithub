@@ -3,65 +3,86 @@
 #include <fstream>
 #include "IntDecFunctor.h"
 #include <string>
+#include <sstream>
+#include <cstdlib>
 using namespace std;
 using namespace sf;
 
-GameView::GameView() {
-
-}
 
 void GameView::setModel(GameModel *model) {
     my_model = model;
 }
 
+
+std::string colorMessage( const char* out , int color ) {
+    #ifdef __linux__
+    std::ostringstream o;
+    o << "\E[" << color << ";1m"<< out << "\E[m";
+    return o.str();
+    #else
+    return o.str();
+    #endif
+}
+
 void
 GameView::showPresentation() const {
-    cout << " -----------                           -----------                    " << endl ;
-    cout << "|           |      |           |      |           |      |           |" << endl ;
-    cout << "|           |      |           |      |           |      |           |" << endl ;
-    cout << "|           |      |           |      |           |      |           |" << endl ;
-    cout << "|-----------       |           |      |-----------       |           |" << endl ;
-    cout << "|                  |           |      |-                 |           |" << endl ;
-    cout << "|                  |           |      |  -               |           |" << endl ;
-    cout << "|                  |           |      |    -             |           |" << endl ;
-    cout << "|                  |           |      |      -           |           |" << endl ;
-    cout << "|                  |           |      |        -         |           |" << endl ;
-    cout << "|                  |___________|      |          -       |___________|" << endl << endl << endl;
+    cout << colorMessage( " -----------                           -----------                    ", CYAN ) << endl ;
+    cout << colorMessage( "|           |      |           |      |           |      |           |", BLUE ) << endl ;
+    cout << colorMessage( "|           |      |           |      |           |      |           |", CYAN ) << endl ;
+    cout << colorMessage( "|           |      |           |      |           |      |           |", BLUE ) << endl ;
+    cout << colorMessage( "|-----------       |           |      |-----------       |           |", CYAN ) << endl ;
+    cout << colorMessage( "|                  |           |      |-                 |           |", BLUE ) << endl ;
+    cout << colorMessage( "|                  |           |      |  -               |           |", CYAN ) << endl ;
+    cout << colorMessage( "|                  |           |      |    -             |           |", BLUE ) << endl ;
+    cout << colorMessage( "|                  |           |      |      -           |           |", CYAN ) << endl ;
+    cout << colorMessage( "|                  |           |      |        -         |           |", BLUE )<< endl ;
+    cout << colorMessage( "|                  |___________|      |          -       |___________|", CYAN ) << endl << endl << endl;
 
 
-    cout << "                        PURU                DIGGER                    " << endl << endl << endl;
+    cout << colorMessage( "                        PURU                DIGGER                    ", RED ) << endl << endl << endl;
 
-    cout << "                  BY ANAEL CHARDAN    &     JEREMY DAMEY              " << endl << endl << endl;
+    cout << colorMessage( "                  BY ANAEL CHARDAN    &     JEREMY DAMEY              ", GREEN ) << endl << endl << endl;
 
 
-    cout << " 1 : START " << endl;
-    cout << " 2 : BEST SCORE " << endl;
-    cout << " 3 : QUIT  " << endl << endl;
+    cout << colorMessage( " 1 : START ", YELLOW ) << endl;
+    cout << colorMessage( " 2 : BEST SCORE ", PINK ) << endl;
+    cout << colorMessage( " 3 : QUIT  ", WHITE ) << endl << endl;
 
-    cout << " CHOICE : ";
+    cout << colorMessage( " CHOICE : ", YELLOW );
 }
 
 void
 GameView::showLanguage() {
-    cout << " 1 : Francais  2 : English  3 : Deutsch  4 : Espanol  5 : Italiano " << endl << endl;
-    cout << " CHOICE : " ;
+    cout << colorMessage( " 1 : Francais  2 : English  3 : Deutsch  4 : Espanol  5 : Italiano ", WHITE ) << endl << endl;
+    cout << colorMessage( " CHOICE : ", YELLOW ) ;
 }
 
 void
 GameView::showGrid() const {
+    #ifdef __linux__
+    for ( int z = 0; z < (COLONNE * 6 + 3); z++ )
+        cout << colorMessage( "-", YELLOW );
+    #else
     for ( int z = 0; z < (COLONNE * 5 + 3); z++ )
-        cout << "-";
+        cout << colorMessage( "-", YELLOW );
+    #endif
     cout << endl;
 
     for ( int i = 0; i < LIGNE; i++ ) {
-        cout << " | ";
+        cout << colorMessage( " | ", YELLOW );
         for ( int j = 0; j < COLONNE; j++ ) {
-            cout << *my_model->getLevel()->getGrid()[i][j] << " | ";
+            cout << *my_model->getLevel()->getGrid()[i][j] << colorMessage( " | ", YELLOW );
         }
         cout << endl;
-        for ( int z = 0; z < (COLONNE * 5 + 3); z++ )
-            cout << "-";
+        #ifdef __linux
+        for ( int z = 0; z < (COLONNE * 6 + 3); z++ )
+            cout << colorMessage( "-", YELLOW );
         cout << endl;
+        #else
+        for ( int z = 0; z < (COLONNE * 5 + 3); z++ )
+            cout << colorMessage( "-", YELLOW );
+        cout << endl;
+        #endif
     }
     cout << endl;
 }
@@ -69,8 +90,8 @@ GameView::showGrid() const {
 void
 GameView::showScore() {
     cout << my_messages[my_language][score] << " : " << endl << endl;
-    cout << my_messages[my_language][level] << ( my_model->getScore() )->getCurrentStep() << endl;
-    cout << my_messages[my_language][global] << ( my_model->getScore() )->getGlobale() << endl;
+    cout << my_messages[my_language][level] << my_model->getScore()->getCurrentStep() << endl;
+    cout << my_messages[my_language][global] << my_model->getScore()->getGlobale() << endl;
     cout << my_messages[my_language][current] << ( my_model->getScore() )->getCurrent() << endl;
     cout << my_messages[my_language][goal] << ( my_model->getLevel() )->getGoal() << endl;
     cout << my_messages[my_language][step] << ( my_model->getLevel() )->getCurrentMove() << endl;
