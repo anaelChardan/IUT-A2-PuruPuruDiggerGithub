@@ -10,8 +10,6 @@
 using namespace std;
 
 Score::Score() {
-    cout << "Constructeur de score" << endl;
-
     my_success.resize(1);
 }
 
