@@ -20,7 +20,7 @@ Score::getCurrent() const {
 
 int
 Score::getCurrentStep() const {
-    return ( my_success.size() );
+    return (  static_cast<int>( my_success.size() ) );
 }
 
 int

@@ -51,7 +51,7 @@ GameView::showPresentation() const {
 
 void
 GameView::showLanguage() {
-    cout << " 1 : Français  2 : English  3 : Deutsch  4 : Español  5 : Italiano " << endl << endl;
+    cout << " 1 : Francais  2 : English  3 : Deutsch  4 : Espanol  5 : Italiano " << endl << endl;
     cout << " CHOICE : " ;
 }
 
