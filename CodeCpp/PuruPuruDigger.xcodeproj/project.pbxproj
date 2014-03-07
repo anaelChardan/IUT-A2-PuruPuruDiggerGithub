@@ -14,6 +14,32 @@
 		0377340E18B9FFBC00D5AFA0 /* EmptyCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0377340C18B9FFBC00D5AFA0 /* EmptyCell.cpp */; };
 		0377341118B9FFCA00D5AFA0 /* GoldCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0377340F18B9FFCA00D5AFA0 /* GoldCell.cpp */; };
 		0377341418B9FFDF00D5AFA0 /* ValueCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0377341218B9FFDF00D5AFA0 /* ValueCell.cpp */; };
+		0382DB3818C9A28400E93483 /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0382DB3718C9A28400E93483 /* test.cpp */; };
+		0382DB3F18C9A31000E93483 /* libboost_unit_test_framework.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0382DB3E18C9A31000E93483 /* libboost_unit_test_framework.dylib */; };
+		0382DB4018C9A36700E93483 /* Constantes.h in Sources */ = {isa = PBXBuildFile; fileRef = 03ED313F18B385BA00CF8AA1 /* Constantes.h */; };
+		0382DB4118C9A36700E93483 /* GameModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031D88D618BE5B2B0001686A /* GameModel.cpp */; };
+		0382DB4218C9A36700E93483 /* GameModel.h in Sources */ = {isa = PBXBuildFile; fileRef = 031D88D718BE5B2B0001686A /* GameModel.h */; };
+		0382DB4318C9A36700E93483 /* GameView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031D88D918BE5B670001686A /* GameView.cpp */; };
+		0382DB4418C9A36700E93483 /* GameView.h in Sources */ = {isa = PBXBuildFile; fileRef = 031D88DA18BE5B670001686A /* GameView.h */; };
+		0382DB4518C9A36700E93483 /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314618B385BA00CF8AA1 /* Level.cpp */; };
+		0382DB4618C9A36700E93483 /* Level.h in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314718B385BA00CF8AA1 /* Level.h */; };
+		0382DB4718C9A36700E93483 /* Score.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314818B385BA00CF8AA1 /* Score.cpp */; };
+		0382DB4818C9A36700E93483 /* Score.h in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314918B385BA00CF8AA1 /* Score.h */; };
+		0382DB4918C9A36700E93483 /* CellBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED313D18B385BA00CF8AA1 /* CellBase.cpp */; };
+		0382DB4A18C9A36700E93483 /* CellBase.h in Sources */ = {isa = PBXBuildFile; fileRef = 03ED313E18B385BA00CF8AA1 /* CellBase.h */; };
+		0382DB4B18C9A36700E93483 /* Bomb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031E007618B52B360045013D /* Bomb.cpp */; };
+		0382DB4C18C9A36700E93483 /* Bomb.h in Sources */ = {isa = PBXBuildFile; fileRef = 031E007718B52B360045013D /* Bomb.h */; };
+		0382DB4D18C9A36700E93483 /* EmptyCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0377340C18B9FFBC00D5AFA0 /* EmptyCell.cpp */; };
+		0382DB4E18C9A36700E93483 /* EmptyCell.h in Sources */ = {isa = PBXBuildFile; fileRef = 0377340D18B9FFBC00D5AFA0 /* EmptyCell.h */; };
+		0382DB4F18C9A36700E93483 /* GoldCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0377340F18B9FFCA00D5AFA0 /* GoldCell.cpp */; };
+		0382DB5018C9A36700E93483 /* GoldCell.h in Sources */ = {isa = PBXBuildFile; fileRef = 0377341018B9FFCA00D5AFA0 /* GoldCell.h */; };
+		0382DB5118C9A36700E93483 /* ValueCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0377341218B9FFDF00D5AFA0 /* ValueCell.cpp */; };
+		0382DB5218C9A36700E93483 /* ValueCell.h in Sources */ = {isa = PBXBuildFile; fileRef = 0377341318B9FFDF00D5AFA0 /* ValueCell.h */; };
+		0382DB5318C9A36700E93483 /* Digger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314018B385BA00CF8AA1 /* Digger.cpp */; };
+		0382DB5418C9A36700E93483 /* Digger.h in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314118B385BA00CF8AA1 /* Digger.h */; };
+		0382DB5518C9A36700E93483 /* IntDecFunctor.h in Sources */ = {isa = PBXBuildFile; fileRef = 0328235818C5FBAF006F43CC /* IntDecFunctor.h */; };
+		0382DB5618C9A36700E93483 /* LanguageMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 033D7D8318C8C6C400BA0091 /* LanguageMessage.cpp */; };
+		0382DB5718C9A36700E93483 /* LanguageMessage.h in Sources */ = {isa = PBXBuildFile; fileRef = 033D7D8418C8C6C400BA0091 /* LanguageMessage.h */; };
 		03A0EFC018C5D0B900F57E1A /* bestScores.txt in Resources */ = {isa = PBXBuildFile; fileRef = 03A0EFBF18C5D0B900F57E1A /* bestScores.txt */; };
 		03ED314A18B385BA00CF8AA1 /* CellBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED313D18B385BA00CF8AA1 /* CellBase.cpp */; };
 		03ED314B18B385BA00CF8AA1 /* Digger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314018B385BA00CF8AA1 /* Digger.cpp */; };
@@ -33,6 +59,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		0382DB3318C9A28400E93483 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		936727F918B33C8E009873DE /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -65,6 +100,9 @@
 		0377341018B9FFCA00D5AFA0 /* GoldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoldCell.h; sourceTree = SOURCE_ROOT; };
 		0377341218B9FFDF00D5AFA0 /* ValueCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ValueCell.cpp; sourceTree = SOURCE_ROOT; };
 		0377341318B9FFDF00D5AFA0 /* ValueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValueCell.h; sourceTree = SOURCE_ROOT; };
+		0382DB3518C9A28400E93483 /* UnitTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = UnitTest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0382DB3718C9A28400E93483 /* test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
+		0382DB3E18C9A31000E93483 /* libboost_unit_test_framework.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_unit_test_framework.dylib; path = ../../../../../../usr/local/Cellar/boost/1.55.0/lib/libboost_unit_test_framework.dylib; sourceTree = "<group>"; };
 		03A0EFBF18C5D0B900F57E1A /* bestScores.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bestScores.txt; sourceTree = SOURCE_ROOT; };
 		03ED313D18B385BA00CF8AA1 /* CellBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellBase.cpp; sourceTree = SOURCE_ROOT; };
 		03ED313E18B385BA00CF8AA1 /* CellBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellBase.h; sourceTree = SOURCE_ROOT; };
@@ -85,6 +123,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0382DB3218C9A28400E93483 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0382DB3F18C9A31000E93483 /* libboost_unit_test_framework.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		936727B218B33A9C009873DE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -100,10 +146,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0382DB3618C9A28400E93483 /* UnitTest */ = {
+			isa = PBXGroup;
+			children = (
+				0382DB3718C9A28400E93483 /* test.cpp */,
+			);
+			path = UnitTest;
+			sourceTree = "<group>";
+		};
 		936727AC18B33A9C009873DE = {
 			isa = PBXGroup;
 			children = (
 				936727BE18B33A9C009873DE /* PuruPuruDigger */,
+				0382DB3618C9A28400E93483 /* UnitTest */,
 				936727B718B33A9C009873DE /* Frameworks */,
 				936727B618B33A9C009873DE /* Products */,
 			);
@@ -113,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				936727B518B33A9C009873DE /* PuruPuruDigger.app */,
+				0382DB3518C9A28400E93483 /* UnitTest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -120,6 +176,7 @@
 		936727B718B33A9C009873DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0382DB3E18C9A31000E93483 /* libboost_unit_test_framework.dylib */,
 				936727FF18B35E81009873DE /* sfml-audio.framework */,
 				9367280018B35E81009873DE /* sfml-graphics.framework */,
 				9367280118B35E81009873DE /* sfml-system.framework */,
@@ -165,6 +222,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0382DB3418C9A28400E93483 /* UnitTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0382DB3D18C9A28400E93483 /* Build configuration list for PBXNativeTarget "UnitTest" */;
+			buildPhases = (
+				0382DB3118C9A28400E93483 /* Sources */,
+				0382DB3218C9A28400E93483 /* Frameworks */,
+				0382DB3318C9A28400E93483 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UnitTest;
+			productName = UnitTest;
+			productReference = 0382DB3518C9A28400E93483 /* UnitTest */;
+			productType = "com.apple.product-type.tool";
+		};
 		936727B418B33A9C009873DE /* PuruPuruDigger */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 936727E618B33A9D009873DE /* Build configuration list for PBXNativeTarget "PuruPuruDigger" */;
@@ -206,6 +280,7 @@
 			projectRoot = "";
 			targets = (
 				936727B418B33A9C009873DE /* PuruPuruDigger */,
+				0382DB3418C9A28400E93483 /* UnitTest */,
 			);
 		};
 /* End PBXProject section */
@@ -222,6 +297,38 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0382DB3118C9A28400E93483 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0382DB4018C9A36700E93483 /* Constantes.h in Sources */,
+				0382DB4118C9A36700E93483 /* GameModel.cpp in Sources */,
+				0382DB4218C9A36700E93483 /* GameModel.h in Sources */,
+				0382DB4318C9A36700E93483 /* GameView.cpp in Sources */,
+				0382DB4418C9A36700E93483 /* GameView.h in Sources */,
+				0382DB4518C9A36700E93483 /* Level.cpp in Sources */,
+				0382DB4618C9A36700E93483 /* Level.h in Sources */,
+				0382DB4718C9A36700E93483 /* Score.cpp in Sources */,
+				0382DB4818C9A36700E93483 /* Score.h in Sources */,
+				0382DB4918C9A36700E93483 /* CellBase.cpp in Sources */,
+				0382DB4A18C9A36700E93483 /* CellBase.h in Sources */,
+				0382DB4B18C9A36700E93483 /* Bomb.cpp in Sources */,
+				0382DB4C18C9A36700E93483 /* Bomb.h in Sources */,
+				0382DB4D18C9A36700E93483 /* EmptyCell.cpp in Sources */,
+				0382DB4E18C9A36700E93483 /* EmptyCell.h in Sources */,
+				0382DB4F18C9A36700E93483 /* GoldCell.cpp in Sources */,
+				0382DB5018C9A36700E93483 /* GoldCell.h in Sources */,
+				0382DB5118C9A36700E93483 /* ValueCell.cpp in Sources */,
+				0382DB5218C9A36700E93483 /* ValueCell.h in Sources */,
+				0382DB5318C9A36700E93483 /* Digger.cpp in Sources */,
+				0382DB5418C9A36700E93483 /* Digger.h in Sources */,
+				0382DB5518C9A36700E93483 /* IntDecFunctor.h in Sources */,
+				0382DB5618C9A36700E93483 /* LanguageMessage.cpp in Sources */,
+				0382DB5718C9A36700E93483 /* LanguageMessage.h in Sources */,
+				0382DB3818C9A28400E93483 /* test.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		936727B118B33A9C009873DE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -244,6 +351,42 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		0382DB3B18C9A28400E93483 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/local/Cellar/boost/1.55.0/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/boost/1.55.0/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0382DB3C18C9A28400E93483 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/local/Cellar/boost/1.55.0/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/boost/1.55.0/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		936727E418B33A9D009873DE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -347,6 +490,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0382DB3D18C9A28400E93483 /* Build configuration list for PBXNativeTarget "UnitTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0382DB3B18C9A28400E93483 /* Debug */,
+				0382DB3C18C9A28400E93483 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		936727B018B33A9C009873DE /* Build configuration list for PBXProject "PuruPuruDigger" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

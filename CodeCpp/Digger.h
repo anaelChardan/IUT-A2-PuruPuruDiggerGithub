@@ -4,7 +4,6 @@
 #include <iostream>
 #include "CellBase.h"
 
-//Doit-il hériter de case base ???
 class Digger : public CellBase
 {
     private :

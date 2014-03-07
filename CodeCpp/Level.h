@@ -30,8 +30,8 @@ class Level {
         int my_goal; //L'objectif du level en nombre de mouvement qui grossira à chaque fois que nous réussirons le level
         int my_currentMove;
         int my_bonus; // Ce que rapportera en point bonus notre level
-        bool my_win;
-        bool my_lose;
+        bool my_win; //Savoir si je viens de gagner un level
+        bool my_lose; //Savoir si je viens de perdre un level
 
 
         //Une méthode privé qui ne se fera appelé que par les fonctions public, delta X et delta Y étant la direction
@@ -60,7 +60,6 @@ class Level {
         CellBase* getDigger();
         bool isCellClickable( int click_x, int click_y ); //Savoir si une case est clickable ( il faut que ce soit une valueCell ou une goldCell et qu'elle soit placé à côté du Digger ) Elle ne servira que quand on devra recueillir des clicks
 
-        void showTmp( int langue ) const; //Permettra d'afficher le level en attendant le gameview
         const Grid& getGrid() const;
         bool isDead() const;
         bool win() const;

@@ -28,6 +28,7 @@ LanguageMessage::LanguageMessage() {
     my_languages[francais][loosegame] = " Vous avez perdu la partie ";
     my_languages[francais][name] = " Entrez votre nom ";
     my_languages[francais][by] = " Vous arrêtez la partie " ;
+    
 
 }
 
