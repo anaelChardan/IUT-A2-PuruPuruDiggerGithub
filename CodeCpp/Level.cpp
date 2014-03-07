@@ -37,7 +37,7 @@ Level::Level(Score* score) {
     //On bloque la taille de notre vecteur
     my_grid.resize( LIGNE );
 
-    for( unsigned long i = 0; i < LIGNE; i++ ) {
+    for(  int i = 0; i < LIGNE; i++ ) {
         my_grid[i].resize( COLONNE );
     }
 
@@ -53,8 +53,8 @@ Level::Level(Score* score) {
  =============================*/
 
 Level::~Level() {
-    for ( unsigned long i = 0; i < LIGNE; i++ ) {
-        for ( unsigned long j = 0; j < COLONNE; j++ ) {
+    for (  int i = 0; i < LIGNE; i++ ) {
+        for (  int j = 0; j < COLONNE; j++ ) {
             delete my_grid[i][j];
         }
     }
@@ -69,14 +69,14 @@ void
 Level::shuffle() {
 
     vector<CellBase*> tmp;
-    unsigned long taille = LIGNE * COLONNE;
+     int taille = LIGNE * COLONNE;
     tmp.resize( taille );
-    unsigned long z = 0;
+     int z = 0;
 
     //2D to 1D
     while ( z < ( taille ) ) {
-        for ( unsigned long i = 0 ; i < LIGNE ; i++ ){
-            for (unsigned long j = 0; j < COLONNE ; j++ ){
+        for (  int i = 0 ; i < LIGNE ; i++ ){
+            for ( int j = 0; j < COLONNE ; j++ ){
                 tmp[z] = my_grid[i][j];
                 z++;
             }
@@ -89,9 +89,9 @@ Level::shuffle() {
     z=0;
     while ( z < taille ) {
         //Parcours en hauteur
-        for ( unsigned long i = 0 ; i < LIGNE ; i++ ) {
-            //Parcours en longeur
-            for ( unsigned long j = 0; j < COLONNE ; j++ ) {
+        for (  int i = 0 ; i < LIGNE ; i++ ) {
+            //Parcours en inteur
+            for (  int j = 0; j < COLONNE ; j++ ) {
                 my_grid[i][j] = tmp[z];
                 //On peut maintenant set chaque case avec les bon x et les bon y dont le digger
                 my_grid[i][j]->setX(i);
@@ -120,7 +120,7 @@ Level::winLevel() {
     my_currentMove = 0;
     //On reset le level
     std::cout << " Bravo, niveau suivant " << std::endl << std::endl;
-    
+
     reset();
 }
 
@@ -135,7 +135,7 @@ Level::lostLevel() {
     //On remet nos mouvements à 0
     my_currentMove = 0;
     //On reset le level
-    
+
     std::cout << " Vous êtes mort, entrez dans un nouveau niveau " << std::endl << std::endl;
     reset();
 }
@@ -145,21 +145,21 @@ void
 Level::initGrid() {
     //Calcul du nombre de bombe
 
-    unsigned long nbrB = MINOBJ + ( rand() % ( MAXOBJ - MINOBJ ) );
+     int nbrB = MINOBJ + ( rand() % ( MAXOBJ - MINOBJ ) );
 
     //Remplissage du tableau avec des bombe
-    for ( unsigned long i = 1 ; i <= nbrB; i++ ) {
+    for (  int i = 1 ; i <= nbrB; i++ ) {
         my_grid[0][i] = new Bomb;
     }
 
     //On place les trésors en fonction du nombre de bomb
-    for ( unsigned long i = nbrB +1 ; i < COLONNE ; i++ ) {
+    for (  int i = nbrB +1 ; i < COLONNE ; i++ ) {
         my_grid[0][i] = new GoldCell;
     }
 
     //On rempli tout le reste avec des numéros
-    for ( unsigned long i = 1; i < LIGNE; i++ ) {
-        for ( unsigned long j = 0; j < COLONNE; j++ ) {
+    for (  int i = 1; i < LIGNE; i++ ) {
+        for (  int j = 0; j < COLONNE; j++ ) {
             my_grid[i][j] = new ValueCell;
         }
     }
@@ -182,13 +182,13 @@ Level::reset() {
     my_grid[ my_digger->getX() ][ my_digger->getY() ] = new EmptyCell( my_digger->getX(), my_digger->getY() );
 
     //On delete toutes la premmière ligne sauf le digger
-    for ( unsigned long i = 1; i < COLONNE; i++ ) {
+    for (  int i = 1; i < COLONNE; i++ ) {
         delete my_grid[0][i];
     }
 
     //On delete les autres lignes
-    for ( unsigned long i = 1; i < LIGNE; i++ ) {
-        for ( unsigned long j = 0; j < COLONNE; j++ ) {
+    for (  int i = 1; i < LIGNE; i++ ) {
+        for (  int j = 0; j < COLONNE; j++ ) {
             delete my_grid[i][j];
         }
     }
@@ -200,7 +200,7 @@ Level::reset() {
 
 
 void
-Level::move( unsigned long DeltaX, unsigned long DeltaY ) {
+Level::move(  int DeltaX,  int DeltaY ) {
     int nbStep = -1;
     int pointInGame = -1;
     my_lose = false;
@@ -281,10 +281,10 @@ Level::isDead() const {
 
 //Permet de vérifier sur une case est clickable
 bool
-Level::isCellClickable( unsigned long click_x, unsigned long click_y ){
+Level::isCellClickable( int click_x, int click_y ){
 
-    unsigned long x = my_digger->getX();
-    unsigned long y = my_digger->getY();
+     int x = my_digger->getX();
+     int y = my_digger->getY();
     // Il faut vérifier si l'on ne sort pas du tableau
     if ( click_x == -1 || click_x == LIGNE || click_y == -1 || click_y == COLONNE ) {
         return false;
@@ -319,17 +319,17 @@ Level::showTmp( int langue ) const {
     string Life;
     string Position;
 
-    for ( unsigned long z = 0; z < (COLONNE * 5 + 3); z++ )
+    for (  int z = 0; z < (COLONNE * 5 + 3); z++ )
             cout << "-";
     cout << endl;
 
-    for ( unsigned long i = 0; i < LIGNE; i++ ) {
+    for (  int i = 0; i < LIGNE; i++ ) {
         cout << " | ";
-        for ( unsigned long j = 0; j < COLONNE; j++ ) {
+        for (  int j = 0; j < COLONNE; j++ ) {
             cout << *my_grid[i][j] << " | ";
         }
         cout << endl;
-        for ( unsigned long z = 0; z < (COLONNE * 5 + 3); z++ )
+        for (  int z = 0; z < (COLONNE * 5 + 3); z++ )
             cout << "-";
         cout << endl;
     }
@@ -365,7 +365,7 @@ Level::showTmp( int langue ) const {
 
 //Connaître le type d'une case
 string
-Level::getTypeCell( unsigned long x, unsigned long y ) const {
+Level::getTypeCell(  int x,  int y ) const {
     return my_grid[x][y]->getType();
 }
 

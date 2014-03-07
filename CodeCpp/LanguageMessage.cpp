@@ -3,31 +3,31 @@
 using namespace std;
 
 LanguageMessage::LanguageMessage() {
-    //Les messages français
-    my_languages[français][choice] = " Choix ";
-    my_languages[français][move] = " Déplacement ";
-    my_languages[français][north] = " Nord ";
-    my_languages[français][south] = " Sud ";
-    my_languages[français][west] = " Ouest ";
-    my_languages[français][east] = " Est ";
-    my_languages[français][nwest] = " Nord Ouest ";
-    my_languages[français][neast] = " Nord Est ";
-    my_languages[français][swest] = " Sud Ouest ";
-    my_languages[français][seast] = " Sud Est ";
-    my_languages[français][stop] = " Quitter ";
-    my_languages[français][score] = " Score ";
-    my_languages[français][level] = " Niveau ";
-    my_languages[français][global] = " Score Global ";
-    my_languages[français][current] = " Score Courrant ";
-    my_languages[français][goal] = " Objectif ";
-    my_languages[français][step] = " En cours ";
-    my_languages[français][life] = " Vie ";
-    my_languages[français][position] = " Position ";
-    my_languages[français][winlevel] = " Vous gagnez un niveau " ;
-    my_languages[français][looselevel] = " Vous perdez une vie, recommencez un niveau ";
-    my_languages[français][loosegame] = " Vous avez perdu la partie ";
-    my_languages[français][name] = " Entrez votre nom ";
-    my_languages[français][by] = " Vous arrêtez la partie " ;
+    //Les messages francais
+    my_languages[francais][choice] = " Choix ";
+    my_languages[francais][move] = " Déplacement ";
+    my_languages[francais][north] = " Nord ";
+    my_languages[francais][south] = " Sud ";
+    my_languages[francais][west] = " Ouest ";
+    my_languages[francais][east] = " Est ";
+    my_languages[francais][nwest] = " Nord Ouest ";
+    my_languages[francais][neast] = " Nord Est ";
+    my_languages[francais][swest] = " Sud Ouest ";
+    my_languages[francais][seast] = " Sud Est ";
+    my_languages[francais][stop] = " Quitter ";
+    my_languages[francais][score] = " Score ";
+    my_languages[francais][level] = " Niveau ";
+    my_languages[francais][global] = " Score Global ";
+    my_languages[francais][current] = " Score Courrant ";
+    my_languages[francais][goal] = " Objectif ";
+    my_languages[francais][step] = " En cours ";
+    my_languages[francais][life] = " Vie ";
+    my_languages[francais][position] = " Position ";
+    my_languages[francais][winlevel] = " Vous gagnez un niveau " ;
+    my_languages[francais][looselevel] = " Vous perdez une vie, recommencez un niveau ";
+    my_languages[francais][loosegame] = " Vous avez perdu la partie ";
+    my_languages[francais][name] = " Entrez votre nom ";
+    my_languages[francais][by] = " Vous arrêtez la partie " ;
 
 }
 

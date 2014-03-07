@@ -14,7 +14,7 @@ CellBase::CellBase()
 }
 
 //Constructeur paramétré
-CellBase::CellBase( unsigned long x, unsigned long y ) {
+CellBase::CellBase( int x, int y ) {
     my_type = "CellBase";
     my_x = x;
     my_y = y;
@@ -40,13 +40,13 @@ CellBase::~CellBase() {}
  =============================*/
 
 //Connaître la ligne de la case
-unsigned long
+int
 CellBase::getX() const {
     return my_x;
 }
 
 //Connaître la colonne de la case
-unsigned long
+int
 CellBase::getY() const {
     return my_y;
 }
@@ -59,13 +59,13 @@ CellBase::getType() const {
 
 //Renseigner la ligne de la case
 void
-CellBase::setX( unsigned long x ) {
+CellBase::setX( int x ) {
     my_x = x;
 }
 
 //Renseigner la colonne de la case
 void
-CellBase::setY( unsigned long y ) {
+CellBase::setY( int y ) {
     my_y = y;
 }
 

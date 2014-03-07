@@ -21,7 +21,7 @@ typedef std::vector<std::vector<CellBase*> > Grid;
 /// @class Level
 /// @brief Modélisation des niveaux du jeu
 class Level {
-   
+
     private :
         //Les attributs privés
         Score* my_score; //Le score de la partie qui l'injectera
@@ -32,11 +32,11 @@ class Level {
         int my_bonus; // Ce que rapportera en point bonus notre level
         bool my_win;
         bool my_lose;
-    
-    
+
+
         //Une méthode privé qui ne se fera appelé que par les fonctions public, delta X et delta Y étant la direction
-        void move( unsigned long deltaX, unsigned long deltaY );
-    
+        void move(  int deltaX,  int deltaY );
+
         void shuffle(); //Permet de mélanger un grille
         void initGrid();
         void winLevel();
@@ -50,23 +50,23 @@ class Level {
 
         //Le destructeur
         ~Level();
-    
+
         void reset(); // Permet de rebrasser notre grille quand on a gagné ou quand on a perdu sans perdre les attributs de notre digger
         std::string getCell(int x, int y);
         void setCell( int x, int y, std::string type );
         int getGoal() const;
-    
-        std::string getTypeCell(  unsigned long click_x, unsigned long click_y ) const;
+
+        std::string getTypeCell(   int click_x,  int click_y ) const;
         CellBase* getDigger();
-        bool isCellClickable( unsigned long click_x, unsigned long click_y ); //Savoir si une case est clickable ( il faut que ce soit une valueCell ou une goldCell et qu'elle soit placé à côté du Digger ) Elle ne servira que quand on devra recueillir des clicks
-    
+        bool isCellClickable( int click_x, int click_y ); //Savoir si une case est clickable ( il faut que ce soit une valueCell ou une goldCell et qu'elle soit placé à côté du Digger ) Elle ne servira que quand on devra recueillir des clicks
+
         void showTmp( int langue ) const; //Permettra d'afficher le level en attendant le gameview
         const Grid& getGrid() const;
         bool isDead() const;
         bool win() const;
         bool lose() const;
         int getCurrentMove() const;
-    
+
         //Tous nos sucres de languages, il appeleront la fonction move avec notre digger et les bons deltas et le nombre de coup
         void moveWest();
         void moveEast();

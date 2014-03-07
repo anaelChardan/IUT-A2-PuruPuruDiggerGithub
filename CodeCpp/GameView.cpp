@@ -15,7 +15,7 @@ using namespace std;
 using namespace sf;
 
 GameView::GameView() {
-    
+
 }
 
 void GameView::setModel(GameModel *model) {
@@ -51,23 +51,23 @@ GameView::showPresentation() const {
 
 void
 GameView::showLanguage() {
-    cout << " 1 : FranÃ§ais  2 : English  3 : Deutsch  4 : EspaÃ±ol  5 : Italiano " << endl << endl;
+    cout << " 1 : Français  2 : English  3 : Deutsch  4 : Español  5 : Italiano " << endl << endl;
     cout << " CHOICE : " ;
 }
 
 void
 GameView::showGrid() const {
-    for ( unsigned long z = 0; z < (COLONNE * 5 + 3); z++ )
+    for ( int z = 0; z < (COLONNE * 5 + 3); z++ )
         cout << "-";
     cout << endl;
-    
-    for ( unsigned long i = 0; i < LIGNE; i++ ) {
+
+    for ( int i = 0; i < LIGNE; i++ ) {
         cout << " | ";
-        for ( unsigned long j = 0; j < COLONNE; j++ ) {
+        for ( int j = 0; j < COLONNE; j++ ) {
             cout << *my_model->getLevel()->getGrid()[i][j] << " | ";
         }
         cout << endl;
-        for ( unsigned long z = 0; z < (COLONNE * 5 + 3); z++ )
+        for ( int z = 0; z < (COLONNE * 5 + 3); z++ )
             cout << "-";
         cout << endl;
     }
@@ -84,7 +84,7 @@ GameView::showScore() {
     cout << my_messages[my_language][step] << ( my_model->getLevel() )->getCurrentMove() << endl;
     cout << my_messages[my_language][life] << " Digger : " <<  ( ( my_model->getLevel() )->getDigger() )->getLife() << endl;
     cout << my_messages[my_language][position] << " Digger :  [ " << my_model->getLevel()->getDigger()->getX() << " ] [" << my_model->getLevel()->getDigger()->getY() << " ] " << endl << endl;
-    
+
 }
 
 void
@@ -95,7 +95,7 @@ GameView::showInstruction( ) {
     cout << " 1 : " << my_messages[my_language][swest] << " 2 : " << my_messages[my_language][south] << " 3 : " << my_messages[my_language][seast] << endl << endl;
 
     cout << " 5 : " << my_messages[my_language][stop] << endl << endl;
-    
+
     cout << my_messages[my_language][choice];
 }
 
@@ -115,7 +115,7 @@ GameView::showBestScore() const {
         }
 
         scoreLect.close();
-        
+
         cout << endl;
     } else {
         cerr << " Error when program is openning text file " << endl;
@@ -140,7 +140,7 @@ GameView::enterScore( string nom ) const{
         }
 
 
-        //On ajoute notre joueur Ã  la map
+        //On ajoute notre joueur à la map
         Scores[scorePlayer] = nom;
 
         scoreLect.close();
@@ -185,26 +185,26 @@ GameView::treatGame() {
             case 2 : showBestScore();
                 break;
             case 3 : isRunning = false;
-                
+
         }
-        
+
         if ( isPlaying ) {
             showLanguage();
             cin >> languechoice;
             cout << endl;
             switch ( languechoice ) {
-                case 1 : my_language = franÃ§ais;
+                case 1 : my_language = francais;
                     break;
                 case 2 : my_language = english;
                     break;
                 case 3 : my_language = deutsch;
                     break;
-                case 4 : my_language = espaÃ±ol;
+                case 4 : my_language = espanol;
                     break;
                 case 5 : my_language = italiano;
                     break;
             }
-            
+
             while (isPlaying) {
                 showGrid();
                 showScore();
@@ -218,7 +218,7 @@ GameView::treatGame() {
                      //Si le digger gagne un level
                     if ( my_model->getLevel()->win() ) {
                         cout << my_messages[my_language][winlevel] << endl ;
-                    
+
                      } else {
                          //Si la partie est fini
                          if ( my_model->gameOver() ) {
@@ -233,7 +233,7 @@ GameView::treatGame() {
                      }
                 }
             }
-            
+
             //La partie est finie
             cout << my_messages[my_language][name];
             cin >> nom;
@@ -241,6 +241,6 @@ GameView::treatGame() {
             showBestScore();
         }
     }
-    
+
     cout << " GOOD BYE " << endl;
 }
