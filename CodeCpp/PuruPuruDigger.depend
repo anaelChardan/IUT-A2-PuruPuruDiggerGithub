@@ -333,3 +333,116 @@
 1394216598 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/LanguageMessage.cpp
 	"LanguageMessage.h"
 
+1394288534 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/Bomb.cpp
+	"Bomb.h"
+	"Constantes.h"
+
+1394288534 /home/jeremy/Bureau/purupurudigger/CodeCpp/Bomb.h
+	<iostream>
+	"CellBase.h"
+
+1394288534 /home/jeremy/Bureau/purupurudigger/CodeCpp/CellBase.h
+	<iostream>
+	<string>
+
+1394288534 /home/jeremy/Bureau/purupurudigger/CodeCpp/Constantes.h
+
+1394288534 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/CellBase.cpp
+	"CellBase.h"
+
+1394288534 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/Digger.cpp
+	"Digger.h"
+	"Constantes.h"
+
+1394288534 /home/jeremy/Bureau/purupurudigger/CodeCpp/Digger.h
+	<iostream>
+	"CellBase.h"
+
+1394288534 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/EmptyCell.cpp
+	"EmptyCell.h"
+
+1394288534 /home/jeremy/Bureau/purupurudigger/CodeCpp/EmptyCell.h
+	<iostream>
+	"CellBase.h"
+
+1394288534 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/GameModel.cpp
+	"GameModel.h"
+
+1394288534 /home/jeremy/Bureau/purupurudigger/CodeCpp/GameModel.h
+	<iostream>
+	<vector>
+	"Level.h"
+	"Score.h"
+
+1394288534 /home/jeremy/Bureau/purupurudigger/CodeCpp/Level.h
+	<iostream>
+	"Score.h"
+	"Digger.h"
+	"CellBase.h"
+	"Bomb.h"
+	"Constantes.h"
+
+1394288534 /home/jeremy/Bureau/purupurudigger/CodeCpp/Score.h
+	<iostream>
+	<vector>
+
+1394288534 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/GameView.cpp
+	"GameView.h"
+	"Constantes.h"
+	<fstream>
+	"IntDecFunctor.h"
+	<string>
+	<sstream>
+	<cstdlib>
+
+1394288534 /home/jeremy/Bureau/purupurudigger/CodeCpp/GameView.h
+	<iostream>
+	<SFML/System.hpp>
+	<SFML/Graphics.hpp>
+	<SFML/Window.hpp>
+	"GameModel.h"
+	"LanguageMessage.h"
+
+1394288534 /home/jeremy/Bureau/purupurudigger/CodeCpp/LanguageMessage.h
+	<iostream>
+	<map>
+	<string>
+	"Constantes.h"
+
+1394288534 /home/jeremy/Bureau/purupurudigger/CodeCpp/IntDecFunctor.h
+	<iostream>
+
+1394288534 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/GoldCell.cpp
+	"GoldCell.h"
+
+1394288534 /home/jeremy/Bureau/purupurudigger/CodeCpp/GoldCell.h
+	<iostream>
+	"ValueCell.h"
+
+1394288534 /home/jeremy/Bureau/purupurudigger/CodeCpp/ValueCell.h
+	<iostream>
+	"Constantes.h"
+	"CellBase.h"
+	<cstdlib>
+
+1394288534 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/Level.cpp
+	"Level.h"
+	"Bomb.h"
+	"GoldCell.h"
+	"EmptyCell.h"
+	<vector>
+	<algorithm>
+	<iomanip>
+
+1394288534 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/main.cpp
+	<iostream>
+	"GameModel.h"
+	"GameView.h"
+
+1394288534 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/Score.cpp
+	"Score.h"
+	<iomanip>
+
+1394288534 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/ValueCell.cpp
+	"ValueCell.h"
+
