@@ -30,6 +30,10 @@ Level::Level(Score* score) {
 
     //Comme c'est le premier niveau, le bonus généré par le level est 500
     my_bonus = 500;
+    
+    //On donne l'instant présent à notre départ
+    time(&my_depart);
+    timeGoal = 5;
 
     //On alloue le digger
     my_digger = new Digger();
@@ -188,7 +192,7 @@ Level::reset() {
             delete my_grid[i][j];
         }
     }
-
+    resetTime();
     initGrid();
 
 }
@@ -256,6 +260,29 @@ Level::move(  int DeltaX,  int DeltaY ) {
 /*===========================
  Les méthodes publics
  =============================*/
+void
+Level::resetTime() {
+    time(&my_depart);
+}
+
+bool
+Level::timeIsUp() const{
+    time_t dateActuelle;
+    time(&dateActuelle);
+    if ( difftime( dateActuelle, my_depart) > timeGoal )
+        return true;
+    else
+        return false;
+}
+
+float
+Level::leftTime() const {
+    time_t dateActuelle;
+    time(&dateActuelle);
+    
+    return ( timeGoal - difftime(dateActuelle, my_depart) );
+}
+
 int
 Level::getCurrentMove() const {
     return my_currentMove;

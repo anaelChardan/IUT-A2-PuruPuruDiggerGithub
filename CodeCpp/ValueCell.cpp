@@ -52,7 +52,7 @@ ValueCell::toString( std::ostream& O) const {
     #ifdef __linux__
     O << "\E[" << CYAN << ";1m"<<  " " << my_value << " " << "\E[m";
     #else
-    O << my_value;
+    O << " " << my_value;
     #endif
 }
 

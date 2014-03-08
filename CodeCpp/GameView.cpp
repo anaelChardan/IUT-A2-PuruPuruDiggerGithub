@@ -61,12 +61,13 @@ GameView::showLanguage() {
 void
 GameView::showGrid() const {
     #ifdef __linux__
-    for ( int z = 0; z < (COLONNE * 6 + 3); z++ )
-        cout << colorMessage( "-", YELLOW );
-    #else
-    for ( int z = 0; z < (COLONNE * 5 + 3); z++ )
-        cout << colorMessage( "-", YELLOW );
+        for ( int z = 0; z < (COLONNE * 6 + 3); z++ )
+            cout << colorMessage( "-", YELLOW );
+    #elif __APPLE__
+        for ( int z = 0; z < (COLONNE * 5 + 3); z++ )
+            cout << colorMessage( "-", YELLOW );
     #endif
+   
     cout << endl;
 
     for ( int i = 0; i < LIGNE; i++ ) {
@@ -75,6 +76,7 @@ GameView::showGrid() const {
             cout << *my_model->getLevel()->getGrid()[i][j] << colorMessage( " | ", YELLOW );
         }
         cout << endl;
+        
         #ifdef __linux
         for ( int z = 0; z < (COLONNE * 6 + 3); z++ )
             cout << colorMessage( "-", YELLOW );
@@ -98,6 +100,9 @@ GameView::showScore() {
     cout << my_messages[my_language][step] << ( my_model->getLevel() )->getCurrentMove() << endl;
     cout << my_messages[my_language][life] << " Digger : " <<  ( ( my_model->getLevel() )->getDigger() )->getLife() << endl;
     cout << my_messages[my_language][position] << " Digger :  [ " << my_model->getLevel()->getDigger()->getX() << " ] [" << my_model->getLevel()->getDigger()->getY() << " ] " << endl << endl;
+    
+    cout << my_messages[my_language][ltime];  for ( int i = 0; i < my_model->getLevel()->leftTime(); i++ ) { cout << colorMessage(":", CYAN ); }
+    cout << " " << my_model->getLevel()->leftTime() << endl << endl;
 
 }
 
@@ -218,16 +223,21 @@ GameView::treatGame() {
                 case 5 : my_language = italiano;
                     break;
             }
-
+            my_model->getLevel()->resetTime();
             while (isPlaying) {
                 showGrid();
                 showScore();
                 showInstruction();
+                while ( !(my_model->getLevel()->timeIsUp() ) && cin >> movechoice ) { }
+                if ( my_model->getLevel()->timeIsUp() ) {
+                    cout << " COUCOU " << endl;
+                }
                 cin >> movechoice;
                 if ( movechoice == 5 ) {
                     cout << my_messages[my_language][by] << endl;
                     isPlaying = false;
                 } else {
+                    //On fait le mouvment
                     my_model->orderMovement(movechoice);
                      //Si le digger gagne un level
                     if ( my_model->getLevel()->win() ) {

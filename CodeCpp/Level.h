@@ -33,7 +33,10 @@ class Level {
         bool my_win; //Savoir si je viens de gagner un level
         bool my_lose; //Savoir si je viens de perdre un level
 
-
+        //Function to know time
+        time_t my_depart;
+        float timeGoal;
+    
         //Une méthode privé qui ne se fera appelé que par les fonctions public, delta X et delta Y étant la direction
         void move(  int deltaX,  int deltaY );
 
@@ -55,7 +58,9 @@ class Level {
         std::string getCell(int x, int y);
         void setCell( int x, int y, std::string type );
         int getGoal() const;
-
+        bool timeIsUp() const;
+        float leftTime() const;
+        void resetTime();
         std::string getTypeCell(   int click_x,  int click_y ) const;
         CellBase* getDigger();
         bool isCellClickable( int click_x, int click_y ); //Savoir si une case est clickable ( il faut que ce soit une valueCell ou une goldCell et qu'elle soit placé à côté du Digger ) Elle ne servira que quand on devra recueillir des clicks

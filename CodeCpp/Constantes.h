@@ -36,7 +36,7 @@ enum Message{
 
     move, nwest, north, neast, west, east, swest, south, seast, stop,
     score, level, global, current, goal, step, life, position,
-    winlevel, looselevel, loosegame, name,
+    winlevel, looselevel, loosegame, name, ltime,
 
     by
 };
