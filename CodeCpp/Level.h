@@ -15,6 +15,7 @@
 #include "CellBase.h"
 #include "Bomb.h"
 #include "Constantes.h"
+#include <ctime>
 
 typedef std::vector<std::vector<CellBase*> > Grid;
 
