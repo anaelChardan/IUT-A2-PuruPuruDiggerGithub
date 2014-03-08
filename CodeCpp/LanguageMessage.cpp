@@ -29,6 +29,7 @@ LanguageMessage::LanguageMessage() {
     my_languages[francais][name] = " Entrez votre nom ";
     my_languages[francais][by] = " Vous arrêtez la partie " ;
     my_languages[francais][ltime] = " Temps restant ";
+    my_languages[francais][timeup] = " Vous avez mis trop de temps, vous perdez le niveau ";
     
 
     //les messages anglais
@@ -56,6 +57,8 @@ LanguageMessage::LanguageMessage() {
     my_languages[english][loosegame] = " You have lose a game ";
     my_languages[english][name] = " Enter your name ";
     my_languages[english][by] = " You stop the game " ;
+    my_languages[english][ltime] = " Left Time  ";
+    my_languages[english][timeup] = " You during too time, you left a level ";
 
     //les messages espagnol
     my_languages[espanol][choice] = " Eleccion ";
@@ -82,6 +85,8 @@ LanguageMessage::LanguageMessage() {
     my_languages[espanol][loosegame] = " Usted perdio el juego ";
     my_languages[espanol][name] = " Escriba su nombre ";
     my_languages[espanol][by] = " Dejas de parte " ;
+    my_languages[espanol][ltime] = " Tiempo restante ";
+    my_languages[espanol][timeup] = " Tomó demasiado tiempo, perder un nivel ";
 
     //les messages italien
     my_languages[italiano][choice] = " Scelta ";
@@ -108,6 +113,8 @@ LanguageMessage::LanguageMessage() {
     my_languages[italiano][loosegame] = " Hai perso la partita ";
     my_languages[italiano][name] = " Inserisci il tuo nome ";
     my_languages[italiano][by] = " Si smette di parte " ;
+    my_languages[italiano][ltime] = " Tempo rimanente  ";
+    my_languages[italiano][timeup] = " hai preso troppo a lungo, perdere un livello ";
 
     //les messages allemands
     my_languages[deutsch][choice] = " Walh ";
@@ -134,6 +141,8 @@ LanguageMessage::LanguageMessage() {
     my_languages[deutsch][loosegame] = " Sie verloren das spiel";
     my_languages[deutsch][name] = " Geben sie ihren namen ";
     my_languages[deutsch][by] = " Sie teil stoppen " ;
+    my_languages[deutsch][ltime] = " Restzeit  ";
+    my_languages[deutsch][timeup] = " Sie zu lange dauerte, verlieren eine Ebene ";
 
 }
 

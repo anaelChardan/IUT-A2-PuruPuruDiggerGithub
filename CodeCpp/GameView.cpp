@@ -228,33 +228,45 @@ GameView::treatGame() {
                 showGrid();
                 showScore();
                 showInstruction();
-                while ( !(my_model->getLevel()->timeIsUp() ) && cin >> movechoice ) { }
-                if ( my_model->getLevel()->timeIsUp() ) {
-                    cout << " COUCOU " << endl;
-                }
+                
                 cin >> movechoice;
-                if ( movechoice == 5 ) {
-                    cout << my_messages[my_language][by] << endl;
-                    isPlaying = false;
+                
+                //On vŽrifie le temps, s'il est ŽcoulŽ
+                if ( my_model->getLevel()->timeIsUp() ) {
+                    cout << endl << endl;
+                    cout << my_messages[my_language][timeup] << endl;
+                    //on fait perdre un niveau
+                    my_model->getLevel()->lostLevel();
+                    //On vŽrifie si ce n'est pas gameOver
+                    if ( my_model->gameOver() ) {
+                        cout << my_messages[my_language][loosegame] << endl;
+                        isPlaying = false;
+                    }
+                    
                 } else {
-                    //On fait le mouvment
-                    my_model->orderMovement(movechoice);
-                     //Si le digger gagne un level
-                    if ( my_model->getLevel()->win() ) {
-                        cout << my_messages[my_language][winlevel] << endl ;
+                    if ( movechoice == 5 ) {
+                        cout << my_messages[my_language][by] << endl;
+                        isPlaying = false;
+                    } else {
+                        //On fait le mouvment
+                        my_model->orderMovement(movechoice);
+                        //Si le digger gagne un level
+                        if ( my_model->getLevel()->win() ) {
+                            cout << my_messages[my_language][winlevel] << endl ;
 
-                     } else {
-                         //Si la partie est fini
-                         if ( my_model->gameOver() ) {
-                             cout << my_messages[my_language][loosegame] << endl;
-                             isPlaying = false;
-                         } else {
-                             //Si le digger perd un level
-                             if ( my_model->getLevel()->lose() ) {
-                                 cout << my_messages[my_language][looselevel] << endl;
-                             }
-                         }
-                     }
+                        } else {
+                            //Si la partie est fini
+                            if ( my_model->gameOver() ) {
+                                cout << my_messages[my_language][loosegame] << endl;
+                                isPlaying = false;
+                            } else {
+                                //Si le digger perd un level
+                                if ( my_model->getLevel()->lose() ) {
+                                    cout << my_messages[my_language][looselevel] << endl;
+                                }
+                            }
+                        }
+                    }
                 }
             }
 

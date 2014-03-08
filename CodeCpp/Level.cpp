@@ -33,7 +33,7 @@ Level::Level(Score* score) {
     
     //On donne l'instant présent à notre départ
     time(&my_depart);
-    timeGoal = 5;
+    timeGoal = 60;
 
     //On alloue le digger
     my_digger = new Digger();

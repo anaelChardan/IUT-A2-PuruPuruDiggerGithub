@@ -43,7 +43,6 @@ class Level {
         void shuffle(); //Permet de mélanger un grille
         void initGrid();
         void winLevel();
-        void lostLevel();
         void setGoal();
 
     public:
@@ -70,7 +69,7 @@ class Level {
         bool win() const;
         bool lose() const;
         int getCurrentMove() const;
-
+        void lostLevel();
         //Tous nos sucres de languages, il appeleront la fonction move avec notre digger et les bons deltas et le nombre de coup
         void moveWest();
         void moveEast();
