@@ -15,11 +15,12 @@ void GameView::setModel(GameModel *model) {
 
 
 std::string colorMessage( const char* out , int color ) {
-    #ifdef __linux__
     std::ostringstream o;
+    #ifdef __linux__
     o << "\E[" << color << ";1m"<< out << "\E[m";
     return o.str();
     #else
+    o << out;
     return o.str();
     #endif
 }
@@ -104,7 +105,7 @@ void
 GameView::showInstruction( ) {
     cout << my_messages[my_language][move] << " : " << endl << endl;
     cout << " 7 : " << my_messages[my_language][nwest] << " 8 : " << my_messages[my_language][north] << " 9 : " << my_messages[my_language][neast] << endl;
-    cout << " 4 : " << my_messages[my_language][west] <<          "                      "               << " 6 : " << my_messages[my_language][east] << endl;
+    cout << " 4 : " << my_messages[my_language][west] <<          "                         "               << " 6 : " << my_messages[my_language][east] << endl;
     cout << " 1 : " << my_messages[my_language][swest] << " 2 : " << my_messages[my_language][south] << " 3 : " << my_messages[my_language][seast] << endl << endl;
 
     cout << " 5 : " << my_messages[my_language][stop] << endl << endl;

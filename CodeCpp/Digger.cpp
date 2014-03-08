@@ -70,7 +70,7 @@ Digger::operator=( const Digger &d ) {
 void
 Digger::toString(std::ostream &O ) const {
     #ifdef __linux__
-    O << "\E[" << CYAN << ";1m"<< "D-D" << "\E[m";
+    O << "\E[" << BLUE << ";1m"<< "D-D" << "\E[m";
     #else
     O << "DD";
     #endif
