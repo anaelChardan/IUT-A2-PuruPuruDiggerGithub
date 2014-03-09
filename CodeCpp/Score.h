@@ -1,31 +1,68 @@
-/// @file Score.h
-/// @brief Fichier relatif aux scores du Puru Puru Digger.
-/// @author Anaël Chardan
-/// @author Jérémy Damey
-/// @version 0.1
-/// @date 17/02/2014
-
-
 #ifndef __purpurudigger__Score__
 #define __purpurudigger__Score__
+
+/**
+ * \file Score.h
+ * \brief Notre classe Score
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
 
 #include <iostream>
 #include <vector>
 
-/// @class Score
-/// @brief Modélisation des scores du jeu
+/*! \class Score
+ *  \brief Classe modélisant un score
+ */
 class Score {
     private :
-        std::vector<int> my_success; //Notre tableau contenant le score de tout nos level
-
+        std::vector<int> my_success; /*!<  Notre tableau de succès */
     public :
+        /*!
+         *  \brief Constructeur
+         *
+         *  Constructeur de la classe Score
+         */
         Score();
-        int getCurrent() const; //Connaitre le score courant
-        int getCurrentStep() const; //Connaitre le niveau
-        int getGlobale() const ; //Connaitre le score global
-        void addSuccess(); //Ajoute une case
-        void resetScore(); //Remet à zéro le score courant
-        void addPoints(const int &i); //Ajoute des points à la case courrante
+    
+        /*!
+         *  \brief Connaître le score courant
+         *
+         *  \return la valeur de la dernière case de notre tableau de score
+         */
+        int getCurrent() const;
+    
+        /*!
+         *  \brief Connaître le niveau
+         *
+         *  \return la taille de notre tableau de score
+         */
+        int getCurrentStep() const;
+    
+        /*!
+         *  \brief Connaître le score totale
+         *
+         *  \return la somme du contenu de notre tableau de score
+         */
+        int getGlobale() const ;
+    
+        /*!
+         *  \brief Ajoute une case à notre tableau
+         */
+        void addSuccess();
+    
+        /*!
+         *  \brief Remet à 0 la valeur de la dernière case de notre tableau
+         */
+        void resetScore();
+    
+        /*!
+         *  \brief Ajoute des points à notre case courante
+         *
+         *  \param i la valeur de ce que l'on doit ajouter à notre score courant
+         */
+        void addPoints(const int &i);
 };
 
 #endif

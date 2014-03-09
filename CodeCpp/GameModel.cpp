@@ -1,9 +1,10 @@
-/// @file Game.cpp
-/// @brief Fichier relatif à l'implémentation de la gestion du jeu Puru Puru Digger.
-/// @author Anaël Chardan
-/// @author Jérémy Damey
-/// @version 0.1
-/// @date 17/02/2014
+/**
+ * \file GameModel.cpp
+ * \brief Ce que représente une partie
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
 
 #include "GameModel.h"
 using namespace std;

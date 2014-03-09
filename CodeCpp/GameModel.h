@@ -1,38 +1,69 @@
-/// @file Game.h
-/// @brief Fichier relatif à la gestion générale, du jeu Puru Puru Digger.
-/// @author Anaël Chardan
-/// @author Jérémy Damey
-/// @author Osiris Malbranque
-/// @version 0.1
-/// @date 17/02/2014
-
 #ifndef __purpurudigger__Game__
 #define __purpurudigger__Game__
+
+/**
+ * \file GameModel.h
+ * \brief Ce que représente une partie
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
 
 #include <iostream>
 #include <vector>
 #include "Level.h"
 #include "Score.h"
 
-/// @class Game
-/// @brief Modélisation de la gestion du jeu
+/*! \class GameModel
+ *  \brief Classe modélisant une partie
+ */
 
 class GameModel {
     private :
-        //Notre level, en vérité infini
-        Level* my_level;
-        //Un tableau de score ( les scores réalisés par les joueurs dans chacun des level )
-        Score* my_score;
+        Level* my_level; /*!<  Nos Levels ( en vérité un mais infini ) */
+        Score* my_score; /*!<  Les scores de notre partie */
     
     public :
-        //Le constructeur
+        /*!
+         *  \brief Constructeur
+         *
+         *  Constructeur de la classe GameModel
+         */
         GameModel();
-        //Le destructeur
+    
+        /*!
+         *  \brief Destructeur
+         *
+         *  Destructeur de la classe GameModel
+         */
         ~GameModel();
-        //Les getteurs
+    
+        /*!
+         *  \brief Retourner notre score ( affichage )
+         *
+         * \return un pointeur constant sur le score
+         */
         Score* const getScore();
+    
+        /*!
+         *  \brief Retourner notre Level ( affichage )
+         *
+         * \return un pointeur constant sur le level
+         */
         Level* const getLevel();
+    
+        /*!
+         *  \brief Ordonner un mouvement à notre grille
+         *
+         *  \param[in] le mouvement
+         */
         void orderMovement( int depl );
+    
+        /*!
+         *  \brief Savoir si la partie est terminée
+         *
+         *  \return true si la partie est finie
+         */
         bool gameOver() const ;
 };
 

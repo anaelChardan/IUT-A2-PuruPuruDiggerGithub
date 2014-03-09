@@ -1,3 +1,11 @@
+/**
+ * \file GameView.cpp
+ * \brief Méthode liée à l'affichage de notre partie
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include "GameView.h"
 #include "Constantes.h"
 #include <fstream>
@@ -9,21 +17,24 @@ using namespace std;
 using namespace sf;
 
 
+//Fonctions indépendants qui met en couleurs ou non un message selon l'OS utilisé
+std::string
+colorMessage( const char* out , int color ) {
+    std::ostringstream o;
+#ifdef __linux__
+    o << "\E[" << color << ";1m"<< out << "\E[m";
+    return o.str();
+#else
+    o << out;
+    return o.str();
+#endif
+}
+
+
 void GameView::setModel(GameModel *model) {
     my_model = model;
 }
 
-
-std::string colorMessage( const char* out , int color ) {
-    std::ostringstream o;
-    #ifdef __linux__
-    o << "\E[" << color << ";1m"<< out << "\E[m";
-    return o.str();
-    #else
-    o << out;
-    return o.str();
-    #endif
-}
 
 void
 GameView::showPresentation() const {
@@ -53,7 +64,7 @@ GameView::showPresentation() const {
 }
 
 void
-GameView::showLanguage() {
+GameView::showLanguage() const {
     cout << colorMessage( " 1 : Francais  2 : English  3 : Deutsch  4 : Espanol  5 : Italiano ", WHITE ) << endl << endl;
     cout << colorMessage( " CHOICE : ", YELLOW ) ;
 }

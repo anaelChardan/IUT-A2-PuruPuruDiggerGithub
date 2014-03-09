@@ -69,7 +69,64 @@ Level::~Level() {
  Les méthodes privés
  =============================*/
 
-//Brasse un tableau
+void
+Level::move(  int DeltaX,  int DeltaY ) {
+    int nbStep = -1;
+    int pointInGame = -1;
+    my_lose = false;
+    my_win = false;
+    if ( isCellClickable( ( my_digger->getX() + DeltaX ), ( my_digger->getY() + DeltaY ) ) ) {
+        ///On veut savoir de combien de coup on veut se déplacer
+        nbStep = my_grid[ (my_digger->getX() + DeltaX) ][ (my_digger->getY() + DeltaY ) ]->getValue();
+        
+        ///On veut connaître les points en jeu
+        pointInGame = my_grid[ (my_digger->getX() + DeltaX) ][ (my_digger->getY() + DeltaY ) ]->getPoints();
+    }
+    
+    ///On met notre compteur à 0
+    int cpt = 0;
+    
+    ///Tant que l'on à pas fait le bon nombre de coup et que la case d'a côté est bien une gold ou une value
+    while ( cpt < nbStep && ( isCellClickable( ( my_digger->getX() + DeltaX ), ( my_digger->getY() + DeltaY ) ) ) ) {
+        
+        ///Si l'on rencontre un trésor pendant un déplacement
+        if ( my_grid[ ( my_digger->getX() + DeltaX ) ][ ( my_digger->getY() + DeltaY ) ]->getType() == "GoldCell" ) {
+            ///On prend les points du bonus
+            my_score->addPoints( my_grid[ ( my_digger->getX() + DeltaX ) ][ ( my_digger->getY() + DeltaY ) ]->getPoints() );
+        }
+        
+        ///On delete la case suivante
+        delete my_grid[ ( my_digger->getX() + DeltaX ) ][ ( my_digger->getY() + DeltaY ) ];
+        
+        ///On y place notre digger
+        my_grid[ ( my_digger->getX() + DeltaX ) ][ ( my_digger->getY() + DeltaY ) ] = my_digger;
+        
+        ///On remplace notre ancienne case du digger par une case Vide avec un autoSet
+        my_grid[ my_digger->getX() ][ my_digger->getY() ] = new EmptyCell( my_digger->getX(), my_digger->getY() );
+        
+        ///On set les case de notre digger
+        my_digger->setX( my_digger->getX() + DeltaX );
+        my_digger->setY( my_digger->getY() + DeltaY );
+        
+        ///On passe au coup suivant
+        cpt++;
+    }
+    
+    //Si le déplacement s'est mal passé ( donc cpt a bougé et est différent de 0 )
+    //Les autres renvoient -1
+    if ( cpt != 0 &&  cpt < nbStep ) {
+        lostLevel();
+    } else if ( nbStep != -1 && cpt!=0 ){
+        my_currentMove += nbStep;
+        my_score->addPoints(pointInGame);
+        //Si on a atteint l'objectif
+        if ( my_currentMove >= my_goal ) {
+            winLevel();
+        }
+    }
+    
+}
+
 void
 Level::shuffle() {
 
@@ -107,7 +164,32 @@ Level::shuffle() {
     }
 }
 
-
+void
+Level::initGrid() {
+    //Calcul du nombre de bombe
+    
+    int nbrB = MINOBJ + ( rand() % ( MAXOBJ - MINOBJ ) );
+    
+    //Remplissage du tableau avec des bombe
+    for (  int i = 1 ; i <= nbrB; i++ ) {
+        my_grid[0][i] = new Bomb;
+    }
+    
+    //On place les trésors en fonction du nombre de bomb
+    for (  int i = nbrB +1 ; i < COLONNE ; i++ ) {
+        my_grid[0][i] = new GoldCell;
+    }
+    
+    //On rempli tout le reste avec des numéros
+    for (  int i = 1; i < LIGNE; i++ ) {
+        for (  int j = 0; j < COLONNE; j++ ) {
+            my_grid[i][j] = new ValueCell;
+        }
+    }
+    
+    //On mélange tout cela
+    shuffle();
+}
 
 //Gagner un level
 void
@@ -127,7 +209,36 @@ Level::winLevel() {
     reset();
 }
 
-//Perdre un level
+void
+Level::reset() {
+    //On efface la nouvelle place du digger
+    delete my_grid[0][0];
+    
+    //On la remplace par le digger
+    my_grid[0][0] = my_digger;
+    
+    //On remplace notre case du digger par une case vide
+    my_grid[ my_digger->getX() ][ my_digger->getY() ] = new EmptyCell( my_digger->getX(), my_digger->getY() );
+    
+    //On delete toutes la premmière ligne sauf le digger
+    for (  int i = 1; i < COLONNE; i++ ) {
+        delete my_grid[0][i];
+    }
+    
+    //On delete les autres lignes
+    for (  int i = 1; i < LIGNE; i++ ) {
+        for (  int j = 0; j < COLONNE; j++ ) {
+            delete my_grid[i][j];
+        }
+    }
+    resetTime();
+    initGrid();
+    
+}
+
+/*===========================
+ Les méthodes publics
+ =============================*/
 void
 Level::lostLevel() {
     my_lose = true;
@@ -141,129 +252,14 @@ Level::lostLevel() {
     reset();
 }
 
-//Initialiser une grille
-void
-Level::initGrid() {
-    //Calcul du nombre de bombe
-
-     int nbrB = MINOBJ + ( rand() % ( MAXOBJ - MINOBJ ) );
-
-    //Remplissage du tableau avec des bombe
-    for (  int i = 1 ; i <= nbrB; i++ ) {
-        my_grid[0][i] = new Bomb;
-    }
-
-    //On place les trésors en fonction du nombre de bomb
-    for (  int i = nbrB +1 ; i < COLONNE ; i++ ) {
-        my_grid[0][i] = new GoldCell;
-    }
-
-    //On rempli tout le reste avec des numéros
-    for (  int i = 1; i < LIGNE; i++ ) {
-        for (  int j = 0; j < COLONNE; j++ ) {
-            my_grid[i][j] = new ValueCell;
-        }
-    }
-
-    //On mélange tout cela
-    shuffle();
+int
+Level::getGoal() const {
+    return my_goal;
 }
 
-
-//Quand on change de level
-void
-Level::reset() {
-    //On efface la nouvelle place du digger
-    delete my_grid[0][0];
-
-    //On la remplace par le digger
-    my_grid[0][0] = my_digger;
-
-    //On remplace notre case du digger par une case vide
-    my_grid[ my_digger->getX() ][ my_digger->getY() ] = new EmptyCell( my_digger->getX(), my_digger->getY() );
-
-    //On delete toutes la premmière ligne sauf le digger
-    for (  int i = 1; i < COLONNE; i++ ) {
-        delete my_grid[0][i];
-    }
-
-    //On delete les autres lignes
-    for (  int i = 1; i < LIGNE; i++ ) {
-        for (  int j = 0; j < COLONNE; j++ ) {
-            delete my_grid[i][j];
-        }
-    }
-    resetTime();
-    initGrid();
-
-}
-
-
-
-void
-Level::move(  int DeltaX,  int DeltaY ) {
-    int nbStep = -1;
-    int pointInGame = -1;
-    my_lose = false;
-    my_win = false;
-    if ( isCellClickable( ( my_digger->getX() + DeltaX ), ( my_digger->getY() + DeltaY ) ) ) {
-        //On veut savoir de combien de coup on veut se déplacer
-        nbStep = my_grid[ (my_digger->getX() + DeltaX) ][ (my_digger->getY() + DeltaY ) ]->getValue();
-
-        //On veut connaître les points en jeu
-        pointInGame = my_grid[ (my_digger->getX() + DeltaX) ][ (my_digger->getY() + DeltaY ) ]->getPoints();
-    }
-
-    //On met notre compteur à 0
-    int cpt = 0;
-
-    //Tant que l'on à pas fait le bon nombre de coup et que la case d'a côté est bien une gold ou une value
-    while ( cpt < nbStep && ( isCellClickable( ( my_digger->getX() + DeltaX ), ( my_digger->getY() + DeltaY ) ) ) ) {
-
-        //Si l'on rencontre un trésor pendant un déplacement
-        if ( my_grid[ ( my_digger->getX() + DeltaX ) ][ ( my_digger->getY() + DeltaY ) ]->getType() == "GoldCell" ) {
-            //On prend les points du bonus
-            my_score->addPoints( my_grid[ ( my_digger->getX() + DeltaX ) ][ ( my_digger->getY() + DeltaY ) ]->getPoints() );
-        }
-
-        //On delete la case suivante
-        delete my_grid[ ( my_digger->getX() + DeltaX ) ][ ( my_digger->getY() + DeltaY ) ];
-
-        //On y place notre digger
-        my_grid[ ( my_digger->getX() + DeltaX ) ][ ( my_digger->getY() + DeltaY ) ] = my_digger;
-
-        //On remplace notre ancienne case du digger par une case Vide avec un autoSet
-        my_grid[ my_digger->getX() ][ my_digger->getY() ] = new EmptyCell( my_digger->getX(), my_digger->getY() );
-
-        //On set les case de notre digger
-        my_digger->setX( my_digger->getX() + DeltaX );
-        my_digger->setY( my_digger->getY() + DeltaY );
-
-        //On passe au coup suivant
-        cpt++;
-    }
-
-    //Si le déplacement s'est mal passé ( donc cpt a bougé et est différent de 0 )
-    //Les autres renvoient -1
-    if ( cpt != 0 &&  cpt < nbStep ) {
-        lostLevel();
-    } else if ( nbStep != -1 && cpt!=0 ){
-        my_currentMove += nbStep;
-        my_score->addPoints(pointInGame);
-        //Si on a atteint l'objectif
-        if ( my_currentMove >= my_goal ) {
-            winLevel();
-        }
-    }
-
-}
-
-/*===========================
- Les méthodes publics
- =============================*/
-void
-Level::resetTime() {
-    time(&my_depart);
+int
+Level::getCurrentMove() const {
+    return my_currentMove;
 }
 
 bool
@@ -283,22 +279,14 @@ Level::leftTime() const {
     return ( timeGoal - difftime(dateActuelle, my_depart) );
 }
 
-int
-Level::getCurrentMove() const {
-    return my_currentMove;
+void
+Level::resetTime() {
+    time(&my_depart);
 }
 
-int
-Level::getGoal() const {
-    return my_goal;
-}
-
-bool
-Level::isDead() const {
-    if ( my_digger->getLife() < 0 )
-        return true;
-    else
-        return false;
+CellBase* const
+Level::getDigger() const {
+    return my_digger;
 }
 
 
@@ -329,20 +317,23 @@ Level::getGrid() const {
     return my_grid;
 }
 
-CellBase* const
-Level::getDigger() const {
-    return my_digger;
-}
-
 
 bool
-Level::lose() const {
-    return my_lose;
+Level::isDead() const {
+    if ( my_digger->getLife() < 0 )
+        return true;
+    else
+        return false;
 }
 
 bool
 Level::win() const {
     return my_win;
+}
+
+bool
+Level::lose() const {
+    return my_lose;
 }
 
 /*===========================
