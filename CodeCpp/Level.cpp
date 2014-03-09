@@ -1,9 +1,11 @@
-/// @file Score.h
-/// @brief Fichier relatif à l'implémentation des niveaux du Puru Puru Digger.
-/// @author Anaël Chardan
-/// @author Jérémy Damey
-/// @version 0.1
-/// @date 17/02/2014
+/**
+ * \file Level.cpp
+ * \brief Les méthodes liées à notre classe level
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 
 #include "Level.h"
 #include "Bomb.h"
@@ -11,7 +13,6 @@
 #include "EmptyCell.h"
 #include <vector>
 #include <algorithm>
-#include <iomanip>
 
 using namespace std;
 /*===========================
@@ -266,10 +267,10 @@ Level::resetTime() {
 }
 
 bool
-Level::timeIsUp() const{
+Level::timeIsUp() const {
     time_t dateActuelle;
     time(&dateActuelle);
-    if ( difftime( dateActuelle, my_depart) > timeGoal )
+    if ( difftime( dateActuelle, my_depart ) > timeGoal )
         return true;
     else
         return false;
@@ -279,7 +280,6 @@ float
 Level::leftTime() const {
     time_t dateActuelle;
     time(&dateActuelle);
-    
     return ( timeGoal - difftime(dateActuelle, my_depart) );
 }
 
@@ -302,22 +302,21 @@ Level::isDead() const {
 }
 
 
-//Permet de vérifier sur une case est clickable
 bool
-Level::isCellClickable( int click_x, int click_y ){
+Level::isCellClickable( int click_x, int click_y ) const {
 
      int x = my_digger->getX();
      int y = my_digger->getY();
     
     
-    // Il faut vérifier si l'on ne sort pas du tableau
+    /// Il faut vérifier si l'on ne sort pas du tableau
     if ( click_x < 0 || click_x == LIGNE || click_y < 0 || click_y == COLONNE ) {
         return false;
     }
 
-    //Il faut d'abord vérifier que la case est juste à côté de notre digger
+    ///Il faut d'abord vérifier que la case est juste à côté de notre digger
     if ( ( ( click_x <= x - 1 ) || ( click_x <= x + 1 ) ) && ( ( click_y <= y - 1 ) || ( click_y <= y + 1 ) ) ) {
-        //On vérifie son type
+        ///On vérifie son type
         if ( my_grid[click_x][click_y]->getType() == "ValueCell" || my_grid[click_x][click_y]->getType() == "GoldCell" ) {
             return true;
         }
@@ -325,23 +324,16 @@ Level::isCellClickable( int click_x, int click_y ){
     return false;
 }
 
-//Retourne notre Digger
 const Grid&
 Level::getGrid() const {
     return my_grid;
 }
 
-CellBase*
-Level::getDigger() {
+CellBase* const
+Level::getDigger() const {
     return my_digger;
 }
 
-
-//Connaître le type d'une case
-string
-Level::getTypeCell(  int x,  int y ) const {
-    return my_grid[x][y]->getType();
-}
 
 bool
 Level::lose() const {
@@ -357,49 +349,41 @@ Level::win() const {
  Les sucres
  =============================*/
 
-//On se déplace vers l'ouest ( gauche )
 void
 Level::moveWest() {
     move( 0, -1 );
 }
 
-//On se déplace vers l'est ( droite )
 void
 Level::moveEast() {
     move( 0, 1 );
 }
 
-//On se déplace vers le nord ( en haut )
 void
 Level::moveNorth() {
     move( -1, 0 );
 }
 
-//On se déplace vers le sud ( en bas )
 void
 Level::moveSouth() {
     move( 1, 0 );
 }
 
-//On se déplace vers le nord est ( haut + droite )
 void
 Level::moveNorthEast() {
     move( -1, 1 );
 }
 
-// On se déplace vers le nord ouest ( haut + gauche )
 void
 Level::moveNorthWest() {
     move( -1, -1 );
 }
 
-// On se déplace vers le sud ouest ( bas + gauche )
 void
 Level::moveSouthWest() {
     move( 1, -1 );
 }
 
-// On se déplace vers le sud est ( bas + droite )
 void
 Level::moveSouthEast() {
     move( 1, 1 );

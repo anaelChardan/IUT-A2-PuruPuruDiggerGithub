@@ -1,13 +1,13 @@
-/// @file Level.h
-/// @brief Fichier relatif aux niveaux du Puru Puru Digger.
-/// @author Anaël Chardan
-/// @author Jérémy Damey
-/// @author Osiris Malbranque
-/// @version 0.1
-/// @date 17/02/2014
-
 #ifndef __purpurudigger__Level__
 #define __purpurudigger__Level__
+
+/**
+ * \file Level.h
+ * \brief Les méthodes liées à notre classe level
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
 
 #include <iostream>
 #include "Score.h"
@@ -17,68 +17,218 @@
 #include "Constantes.h"
 #include <ctime>
 
-typedef std::vector<std::vector<CellBase*> > Grid;
+typedef std::vector<std::vector<CellBase*> > Grid; /*!<  Typedef pour faciliter l'écriture */
 
-/// @class Level
-/// @brief Modélisation des niveaux du jeu
+/*! \class Level
+ *  \brief Classe modélisant un level
+ */
 class Level {
 
     private :
-        //Les attributs privés
-        Score* my_score; //Le score de la partie qui l'injectera
-        CellBase* my_digger; //Le digger de notre partie
-        Grid my_grid; //La grille que nous allons utiliser
-        int my_goal; //L'objectif du level en nombre de mouvement qui grossira à chaque fois que nous réussirons le level
-        int my_currentMove;
-        int my_bonus; // Ce que rapportera en point bonus notre level
-        bool my_win; //Savoir si je viens de gagner un level
-        bool my_lose; //Savoir si je viens de perdre un level
-
-        //Function to know time
-        time_t my_depart;
-        float timeGoal;
     
-        //Une méthode privé qui ne se fera appelé que par les fonctions public, delta X et delta Y étant la direction
+        //La composition de notre Level
+        Score* my_score;        /*!<  Score de notre Level */
+        CellBase* my_digger;    /*!<  Digger de notre Level */
+        Grid my_grid;           /*!<  Grille de notre Level */
+    
+    
+        //Les objectifs de notre Level
+        int my_goal;            /*!<  Objectif en Point de notre Level */
+        int my_currentMove;     /*!<  Objectif en Point de notre Level */
+        int my_bonus;           /*!<  Bonus en Point de notre Level */
+    
+        //Les attributs temporels
+        time_t my_depart;       /*!<  Temps de commencencement du Level */
+        float timeGoal;         /*!<  Objectif en temps du Level */
+    
+        //La connaissance de ce qu'il se passe dans notre Level.
+        bool my_win;            /*!<  Savoir si je viens de gagner un Level */
+        bool my_lose;           /*!<  Savoir si je viens de perdre un Level */
+
+    
+        /*!
+         *  \brief Déplacement du Digger dans la grille
+         *
+         *  \param[in] DeltaX La direction vertical de déplacement du digger
+         *  \param[in] DeltaY La direction horizontal de déplacement du digger
+         */
         void move(  int deltaX,  int deltaY );
 
-        void shuffle(); //Permet de mélanger un grille
+    
+        /*!
+         * \brief Mélange d'un tableau en 2D
+         */
+        void shuffle();
+    
+        /*!
+         *  \brief Génération de la première grille
+         */
         void initGrid();
+    
+        /*!
+         * \brief Nouvelle grille après avoir gagné
+         */
         void winLevel();
-        void setGoal();
+    
+        /*!
+         * \brief Méthode pour regénerer une grille après avoir perdu ou gagné sans perdre les attributs de notre Digger
+         */
+        void reset();
 
     public:
 
-        //Les constructeurs
-        Level(Score* score); //Constructeurs paramétré qui permet de prendre en compte le score injecté.
+        /*!
+         *  \brief Constructeur
+         *
+         *  Constructeur de la classe Level
+         *
+         *  \param *score : score de notre partie (injection de dépendance )
+         */
+        Level(Score* score);
 
-        //Le destructeur
+        /*!
+         *  \brief Destructeur
+         *
+         *  Destructeur de la classe Level
+         */
         ~Level();
-
-        void reset(); // Permet de rebrasser notre grille quand on a gagné ou quand on a perdu sans perdre les attributs de notre digger
-        std::string getCell(int x, int y);
-        void setCell( int x, int y, std::string type );
-        int getGoal() const;
-        bool timeIsUp() const;
-        float leftTime() const;
-        void resetTime();
-        std::string getTypeCell(   int click_x,  int click_y ) const;
-        CellBase* getDigger();
-        bool isCellClickable( int click_x, int click_y ); //Savoir si une case est clickable ( il faut que ce soit une valueCell ou une goldCell et qu'elle soit placé à côté du Digger ) Elle ne servira que quand on devra recueillir des clicks
-
-        const Grid& getGrid() const;
-        bool isDead() const;
-        bool win() const;
-        bool lose() const;
-        int getCurrentMove() const;
+    
+        /*!
+         *  \brief Perdre le level
+         *
+         *  Faire perdre une vie et regénération d'un niveau
+         */
         void lostLevel();
+    
+        /*!
+         *  \brief Connaître l'objectif en point du Level
+         *
+         *  \return my_goal
+         */
+        int getGoal() const;
+    
+        /*!
+         *  \brief Connaître nos déplacements en cours
+         *
+         *  \return my_currentMove
+         */
+        int getCurrentMove() const;
+    
+        /*!
+         *  \brief Connaître si le temps est écoulé
+         *
+         *  \return true si le temps est écoulé
+         */
+        bool timeIsUp() const;
+    
+        /*!
+         *  \brief Connaître le temps restant
+         *
+         *  \return le temps restant
+         */
+        float leftTime() const;
+    
+        /*!
+         *  \brief Connaître le temps actuelle à jour
+         *
+         */
+        void resetTime();
+    
+        /*!
+         *  \brief Retourner notre digger pour avoir des informations sur lui
+         *
+         * \return un pointeur sur notre digger
+         */
+        CellBase* const getDigger() const ;
+    
+    
+        /*!
+         *  \brief Connaître si la case est franchissable ( de type numérique et à côté du Digger
+         * 
+         * param[in] click_x : la position verticale de notre click
+         * param[in] click_y : la position horizontale de notre click
+         *
+         *  \return true si la case est franchissable
+         */
+        bool isCellClickable( int click_x, int click_y ) const;
+
+        /*!
+         *  \brief Renvoyer notre grille ( affichage )
+         *
+         *  \return my_grid
+         */
+        const Grid& getGrid() const;
+    
+        /*!
+         *  \brief Connaître si notre Digger est définitivement mort
+         *
+         *  \return true si il est mort
+         */
+        bool isDead() const;
+    
+        /*!
+         *  \brief Connaître si l'on vient juste de gagner un niveau ( affichage )
+         *
+         *  \return true si l'on vient de gagner un niveau
+         */
+        bool win() const;
+    
+        /*!
+         *  \brief Connaître si l'on vient juste de perdre un niveau ( affichage )
+         *
+         *  \return true si l'on vient de perdre un niveau
+         */
+        bool lose() const;
+
+    
         //Tous nos sucres de languages, il appeleront la fonction move avec notre digger et les bons deltas et le nombre de coup
+    
+        /*!
+         * \brief Sucre pour se déplacer à gauche ( deltaX 0, deltaY -1, voir la methode move()
+         * \see deplacement
+         */
         void moveWest();
+    
+        /*!
+         * \brief Sucre pour se déplacer à droite ( deltaX 0, deltaY 1, voir la methode move()
+         * \see deplacement
+         */
         void moveEast();
+    
+        /*!
+         * \brief Sucre pour se déplacer en haut ( deltaX -1, deltaY 0, voir la methode move()
+         * \see deplacement
+         */
         void moveNorth();
+    
+        /*!
+         * \brief Sucre pour se déplacer en bas ( deltaX 1, deltaY 0, voir la methode move()
+         * \see deplacement
+         */
         void moveSouth();
+    
+        /*!
+         * \brief Sucre pour se déplacer en haut à droite ( deltaX -1, deltaY 1, voir la methode move()
+         * \see deplacement
+         */
         void moveNorthEast();
+    
+        /*!
+         * \brief Sucre pour se déplacer en haut à gauche ( deltaX -1, deltaY -1, voir la methode move()
+         * \see deplacement
+         */
         void moveNorthWest();
+    
+        /*!
+         * \brief Sucre pour se déplacer en bas à gauche ( deltaX 1, deltaY -1, voir la methode move()
+         * \see deplacement
+         */
         void moveSouthWest();
+    
+        /*!
+         * \brief Sucre pour se déplacer en bas à droite ( deltaX 1, deltaY 1, voir la methode move()
+         * \see deplacement
+         */
         void moveSouthEast();
 
 };
