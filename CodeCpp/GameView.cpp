@@ -65,7 +65,7 @@ GameView::showPresentation() const {
 
 void
 GameView::showLanguage() const {
-    cout << colorMessage( " 1 : Francais  2 : English  3 : Deutsch  4 : Espanol  5 : Italiano ", WHITE ) << endl << endl;
+    cout << endl << colorMessage( " 1 : Francais  2 : English  3 : Deutsch  4 : Espanol  5 : Italiano ", WHITE ) << endl << endl;
     cout << colorMessage( " CHOICE : ", YELLOW ) ;
 }
 
@@ -110,7 +110,7 @@ GameView::showScore() {
     cout << my_messages[my_language][goal] << ( my_model->getLevel() )->getGoal() << endl;
     cout << my_messages[my_language][step] << ( my_model->getLevel() )->getCurrentMove() << endl;
     cout << my_messages[my_language][life] << " Digger : " <<  ( ( my_model->getLevel() )->getDigger() )->getLife() << endl;
-    cout << my_messages[my_language][position] << " Digger :  [ " << my_model->getLevel()->getDigger()->getX() << " ] [" << my_model->getLevel()->getDigger()->getY() << " ] " << endl << endl;
+    cout << my_messages[my_language][position] << " Digger :  [ " << my_model->getLevel()->getDigger()->getX() << " ] [ " << my_model->getLevel()->getDigger()->getY() << " ] " << endl << endl;
     
     cout << my_messages[my_language][ltime];  for ( int i = 0; i < my_model->getLevel()->leftTime(); i++ ) { cout << colorMessage(":", CYAN ); }
     cout << " " << my_model->getLevel()->leftTime() << endl << endl;
@@ -121,8 +121,8 @@ void
 GameView::showInstruction( ) {
     cout << my_messages[my_language][move] << " : " << endl << endl;
     cout << " 7 : " << my_messages[my_language][nwest] << " 8 : " << my_messages[my_language][north] << " 9 : " << my_messages[my_language][neast] << endl;
-    cout << " 4 : " << my_messages[my_language][west] <<          "                         "               << " 6 : " << my_messages[my_language][east] << endl;
-    cout << " 1 : " << my_messages[my_language][swest] << " 2 : " << my_messages[my_language][south] << " 3 : " << my_messages[my_language][seast] << endl << endl;
+    cout << " 4 : " << my_messages[my_language][west] <<          "               "                 << "  6 : " << my_messages[my_language][east] << endl;
+    cout << " 1 : " << my_messages[my_language][swest] << "  2 : " << my_messages[my_language][south] << "  3 : " << my_messages[my_language][seast] << endl << endl;
 
     cout << " 5 : " << my_messages[my_language][stop] << endl << endl;
 
