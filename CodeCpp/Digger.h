@@ -1,18 +1,39 @@
 #ifndef __purpurudigger__Digger__
 #define __purpurudigger__Digger__
 
+/**
+ * \file CellBase.h
+ * \brief Notre classe CellBase
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include <iostream>
 #include "CellBase.h"
 
-class Digger : public CellBase
+
+/*! \class CellBase
+ *  \brief Classe modélisant ce qu'est un digger
+*/class Digger : public CellBase
 {
     private :
-        int my_life;
+        int my_life; /*!<  le nombre de vie du digger */
 
     public :
 
         //Les contructeurs
+        /*!
+          *  \brief Constructeur
+          *
+          *  Constructeur de la classe Digger
+          */
         Digger(); //Constructeurs par défaut
+        /*!
+          *  \brief Constructeur paramétré
+          *
+          *  Constructeur paramétré de la classe Digger
+          */
         Digger( int x, int y ); //Constructeurs paramétré
         Digger(const Digger &d ); //Constructeurs par copie
 
