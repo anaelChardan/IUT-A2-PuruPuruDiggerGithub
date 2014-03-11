@@ -73,16 +73,29 @@
           */
         std::string getType() const;
      
-     
+         /*!
+          *  \brief Pour positionner notre case dans la grille
+          *
+          * param[in] int x   : la position verticale de notre case
+          */
         void setX( int x );
-        void setY( int y ); //Attribuer le y de la case
+     
+         /*!
+          *  \brief Pour positionner notre case dans la grille
+          *
+          * param[in] int x   : la position horizontale de notre case
+          */
+        void setY( int y );
 
 
-        //Les fonctions destinés à être redéfinie dans les classes filles
+         /*!
+          *  \brief Opérateur d'affectation pour recopier une case
+          *
+          * param[c] CellBase c   : opérateur d'affectation pour recopier une case
+          */
+        virtual CellBase& operator=(const CellBase &c);
 
-        virtual CellBase& operator=(const CellBase &c); //Opérateur d'affectation
-
-            //Pour les ValueCell et GoldCell
+     
 
         virtual int getValue() const = 0; //Savoir la valeur d'une ValueCell ou d'une GoldCell, sinon return -1 dans les autres et en privé
 
