@@ -1,36 +1,80 @@
 #ifndef __purpurudigger__CellBase__
 #define __purpurudigger__CellBase__
 
+/**
+ * \file CellBase.h
+ * \brief Notre classe CellBase
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include <iostream>
 #include <string>
 
-//Class abstraite dont héritera le digger, les cases vides, les cases numérotées, les trésors, les bombs
-class CellBase {
+/*! \class CellBase
+ *  \brief Classe modélisant ce qu'est une case
+ */class CellBase {
 
     protected :
 
-        std::string my_type; //Elles ont toutes un type
-        int my_x;            //Elles ont toutes un x
-        int my_y;           //Elles ont toutes un y
+        std::string my_type;        /*!<  le type de ma case */
+        int my_x;                   /*!<  Le x de ma case */
+        int my_y;                   /*!<  Le y de ma case */
 
     public :
 
-        //Les constructeurs
-
-        CellBase(); //Le constructeur d'une celulle
-        CellBase( int x, int y ); //Le constructeur paramétré, on peut directement mettre les coordonnées
-        CellBase(const CellBase &c);//Le constructeur par copie ( pour manipuler correctement les vecteur)
-
-        //Le destructeurs en virtuel, comme la classe contient des fonctions virtuel
-
+         /*!
+          *  \brief Constructeur
+          *
+          *  Constructeur de la classe CellBase
+          */
+        CellBase();
+     
+         /*!
+          *  \brief Constructeur paramétré
+          *
+          *  Constructeur paramétré de la classe CellBase
+          */
+        CellBase( int x, int y );
+     
+         /*!
+          *  \brief Constructeur par copie
+          *
+          *  Constructeur par copie de la classe CellBase
+          */
+        CellBase(const CellBase &c);
+     
+         /*!
+          *  \brief Destructeur
+          *
+          *  Destructeur de la classe mère CellBase
+          */
         virtual ~CellBase();
 
-        //Les fonctions communes à toutes les cell non rédéfinie dans les classes filles
-
-        int getX() const; //Connaître le x de la case
-        int getY() const; //Connaître le y de la case
-        std::string getType() const; //Renvoie le type de la case
-        void setX( int x ); //Attribuer le x de la case
+         /*!
+          *  \brief retourne la position en X de la case
+          *
+          *  \return l'entier positionnant notre case en X
+          */
+        int getX() const;
+     
+         /*!
+          *  \brief retourne la position en Y de la case
+          *
+          *  \return l'entier positionnant notre case en Y
+          */
+        int getY() const;
+     
+         /*!
+          *  \brief Le type de notre case
+          *
+          *  \return un string pour le type de notre case
+          */
+        std::string getType() const;
+     
+     
+        void setX( int x );
         void setY( int y ); //Attribuer le y de la case
 
 

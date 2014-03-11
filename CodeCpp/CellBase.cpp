@@ -1,3 +1,11 @@
+/**
+ * \file CellBase.cpp
+ * \brief Notre classe CellBase
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include "CellBase.h"
 
 
