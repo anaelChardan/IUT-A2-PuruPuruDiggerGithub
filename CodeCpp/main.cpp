@@ -1,10 +1,10 @@
-/// @file Score.h
-/// @brief Fichier principal du programme
-/// @author Anaël Chardan
-/// @author Jérémy Damey
-/// @author Osiris Malbranque
-/// @version 0.1
-/// @date 17/02/2014
+/**
+ * \file main.cpp
+ * \brief Notre main
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
 
 #include <iostream>
 #include "GameModel.h"

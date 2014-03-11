@@ -1,3 +1,11 @@
+/**
+ * \file GoldCell.cpp
+ * \brief Notre classe GoldCell
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include "GoldCell.h"
 
 /*===========================

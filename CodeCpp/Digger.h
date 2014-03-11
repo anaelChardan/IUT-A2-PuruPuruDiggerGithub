@@ -2,8 +2,8 @@
 #define __purpurudigger__Digger__
 
 /**
- * \file CellBase.h
- * \brief Notre classe CellBase
+ * \file Digger.h
+ * \brief Notre classe Digger
  * \author CHARDAN Anaël
  * \author DAMEY Jérémy
  * \date 09/03/2014
@@ -28,31 +28,77 @@
           *
           *  Constructeur de la classe Digger
           */
-        Digger(); //Constructeurs par défaut
+        Digger();
+    
         /*!
           *  \brief Constructeur paramétré
           *
           *  Constructeur paramétré de la classe Digger
+          *  \param[in] x
+          *  \param[in] y
           */
-        Digger( int x, int y ); //Constructeurs paramétré
-        Digger(const Digger &d ); //Constructeurs par copie
+        Digger( int x, int y );
+    
+        /*!
+         *  \brief Constructeur par copie
+         *
+         *  \param[in] Digger d
+         *  \param[out] Digger d
+         */
+        Digger(const Digger &d );
 
-        //Le destructeur
-
+        /*!
+         *  \brief Destructeur
+         *
+         *  Destructeur de la classe fille DiggerCell
+         */
         virtual ~Digger();
 
-        //Les méthodes
-        int getLife() const; //Connaître la vie
-        void addLife(); //Gagner de la vie
-        void lostLife(); //Perdre de la vie
+        /*!
+         *  \brief Retourne la vie du Digger
+         *
+         *  \return my_life, la vie du digger pour éviter l'abstraction de la classe
+         */
+        int getLife() const;
+    
+        /*!
+         *  \brief Ajouter une vie au digger
+         *
+         */
+        void addLife();
+    
+        /*!
+         *  \brief Enlever une vie au digger
+         *
+         */
+        void lostLife();
+    
+        /*!
+         *  \brief Avoir la représentation console de la case
+         *
+         */
         virtual void toString( std::ostream& O ) const;
 
 
-        //Opérateur
+        /*!
+         *  \brief Opérateur d'affectation pour recopier une Digger
+         *
+         *  \param[in] Digger d : opérateur d'affectation pour recopier un Digger
+         */
         virtual Digger& operator=( const Digger &d );
 
-        //Eviter la classe abstraite
+        /*!
+         *  \brief Retourne les points que va ajouter la case dans les scores
+         *
+         *  \return my_value, retourne la valeur de la case
+         */
         virtual int getValue() const;
+    
+        /*!
+         *  \brief Retourne les points que va ajouter la case dans les scores
+         *
+         *  \return my_points, retourne la valeur de la case
+         */
         virtual int getPoints() const;
 
 };

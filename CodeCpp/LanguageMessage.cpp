@@ -1,3 +1,11 @@
+/**
+ * \file LanguageMessage.cpp
+ * \brief Notre classe LanguageMessage
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include "LanguageMessage.h"
 
 using namespace std;
