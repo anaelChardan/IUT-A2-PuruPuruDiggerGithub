@@ -1,44 +1,105 @@
-//
-//  Bomb.h
-//  PuruPuruDigger
-//
-//  Created by Ananas-Mac on 19/02/2014.
-//
-//
-
 #ifndef __PuruPuruDigger__Bomb__
 #define __PuruPuruDigger__Bomb__
 
+/**
+ * \file Bomb.h
+ * \brief Notre classe Bomb
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
+
 #include <iostream>
 #include "CellBase.h"
+
+/*! \class Bomb
+ *  \brief Classe modélisant ce qu'est une Bomb
+ */
 
 class Bomb : public CellBase
 {
 
     public:
-        //Les constructeurs
 
-        Bomb(); //Constructeur par défaut
-        Bomb( int x, int y ); //Le constructeur paramétré
-        Bomb( const Bomb &b); //Constructeur par copie
+        /*!
+         *  \brief Constructeur
+         *
+         *  Constructeur de la classe Bomb
+         */
+        Bomb();
+    
+        /*!
+         *  \brief Constructeur paramétré
+         *
+         *  Constructeur paramétré de la classe Bomb
+         */
+        Bomb( int x, int y );
+    
+        /*!
+         *  \brief Constructeur par copie
+         *
+         *  Constructeur par copie de la classe Bomb
+         *  \param[in] Bomb b
+         *  \param[out] Bomb b
+         */
+        Bomb( const Bomb &b); 
 
-        //Le destructeur
+        /*!
+         *  \brief Destructeur
+         *
+         *  Destructeur de la classe fille Bomb
+         */
+        virtual ~Bomb();
 
-        virtual ~Bomb(); //Destructeur
-
-        //Les méthodes
+        /*!
+         *  \brief Avoir la représentation console de la case
+         *
+         */
         virtual void toString( std::ostream& O) const;
 
-        //Les opérateurs
-        virtual Bomb& operator=(const Bomb & b); //Opérateur d'affectation
+        /*!
+         *  \brief Opérateur d'affectation pour recopier une case
+         *
+         *  \param[b] Bomb c   : opérateur d'affectation pour recopier une Bomb
+         */
+        virtual Bomb& operator=(const Bomb & b); 
 
     private :
-        //Eviter la classe abstraite
 
+        /*!
+         *  \brief Retourne les points que va ajouter la case dans les scores
+         *
+         *  \return my_value, retourne la valeur de la case
+         */
         virtual int getValue() const;
+    
+        /*!
+         *  \brief Retourne les points que va ajouter la case dans les scores
+         *
+         *  \return my_points, retourne la valeur de la case
+         */
         virtual int getPoints() const;
+    
+        /*!
+         *  \brief Retourne la vie du Digger
+         *
+         *  \return my_life, la vie du digger pour éviter l'abstraction de la classe
+         */
         virtual int getLife() const;
+    
+        /*!
+         *  \brief Ajouter une vie au digger
+         *  Pour éviter la classe abstraite
+         *
+         */
         virtual void addLife();
+    
+        /*!
+         *  \brief Enlever une vie au digger
+         *  Pour éviter la classe abstraite
+         *
+         */
         virtual void lostLife();
 
 };

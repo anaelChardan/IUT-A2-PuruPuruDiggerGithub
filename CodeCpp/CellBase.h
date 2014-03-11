@@ -14,7 +14,9 @@
 
 /*! \class CellBase
  *  \brief Classe modélisant ce qu'est une case
- */class CellBase {
+ */
+
+class CellBase {
 
     protected :
 
@@ -96,24 +98,50 @@
         virtual CellBase& operator=(const CellBase &c);
 
      
+         /*!
+          *  \brief Retourne la valeur de la case si c'est un goldCell ou une ValueCell
+          *   
+          *  \return my_value, retourne la valeur de la case
+          */
+        virtual int getValue() const = 0;
+     
+         /*!
+          *  \brief Retourne les points que va ajouter la case dans les scores
+          *
+          *  \return my_points, retourne la valeur de la case
+          */
+        virtual int getPoints() const = 0;
 
-        virtual int getValue() const = 0; //Savoir la valeur d'une ValueCell ou d'une GoldCell, sinon return -1 dans les autres et en privé
-
-        virtual int getPoints() const = 0; //Savoir les points rapoortés par une GoldCell ou une ValueCell, sinon return -1 dans les autres et en privé
-
-            //Pour le digger
+         /*!
+          *  \brief Retourne la vie du Digger
+          *
+          *  \return my_life, la vie du digger
+          */
         virtual int getLife() const = 0; //Savoir la vie de notre Digger, return - 1 dans les autres
 
-        virtual void addLife() = 0; //Ajouter des vies à notre Digger
+         /*!
+          *  \brief Ajouter une vie au digger
+          *
+          */
+        virtual void addLife() = 0;
+     
+         /*!
+          *  \brief Faire perdre une vie au Digger
+          *
+          */
+        virtual void lostLife() = 0;
 
-        virtual void lostLife() = 0; //Faire perdre des vies à notre Digger
+         /*!
+          *  \brief Avoir la représentation console de la case
+          *
+          */
+        virtual void toString( std::ostream& O) const = 0;
 
 
-            //Pour toutes
-        virtual void toString( std::ostream& O) const = 0; //Affichage terminal
-
-
-        //Une fonction amie qui pourra servir
+         /*!
+          *  \brief Pour pouvoir utiliser l'opérateur de redirection de flux
+          *
+          */
         friend std::ostream& operator<<(std::ostream& O, const CellBase& B);
 };
 

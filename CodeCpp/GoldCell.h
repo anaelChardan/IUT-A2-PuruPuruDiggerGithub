@@ -1,46 +1,100 @@
-//
-//  GoldCell.h
-//  PuruPuruDigger
-//
-//  Created by Ananas-Mac on 23/02/2014.
-//
-//
-
 #ifndef __PuruPuruDigger__GoldCell__
 #define __PuruPuruDigger__GoldCell__
 
+/**
+ * \file GoldCell.h
+ * \brief Notre classe GoldCell
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include <iostream>
 #include "ValueCell.h"
+
+/*! \class GoldCell
+ *  \brief Classe modélisant ce qu'est une GoldCell
+ */
 
 class GoldCell : public ValueCell {
     
     private :
     
-        int my_bonus;
+    int my_bonus; /*!<  Notre bonus */
     
     public :
     
-        //Les constructeurs
+        /*!
+         *  \brief Constructeur
+         *
+         *  Constructeur de la classe GoldCell
+         */
+        GoldCell();
     
-        GoldCell(); //Constructeurs par défaut
-        GoldCell( int x, int y ); //Constructeurs paramétré
-        GoldCell( const GoldCell &g); //Constructeur par copie
+        /*!
+         *  \brief Constructeur paramétré
+         *
+         *  Constructeur paramétré de la classe GoldCell
+         */
+        GoldCell( int x, int y );
     
-        //Le destructeur
+        /*!
+         *  \brief Constructeur par copie
+         *
+         *  \param[in] GoldCell g
+         *  \param[out] GoldCell g
+         */
+        GoldCell( const GoldCell &g);
     
+        /*!
+         *  \brief Destructeur
+         *
+         *  Destructeur de la classe fille GoldCell
+         */
         virtual ~GoldCell();
     
-        //Méthodes redéfinie, pas besoin de redéfinir getValues
+        /*!
+         *  \brief Retourne les points que va ajouter la case dans les scores
+         *
+         *  \return my_points, retourne la valeur de la case
+         */
         virtual int getPoints() const;
+    
+        /*!
+         *  \brief Avoir la représentation console de la case
+         *
+         */
         virtual void toString( std::ostream& O ) const;
-        virtual GoldCell& operator=( const GoldCell &g ); //Opérateur d'affectation
+    
+        /*!
+         *  \brief Opérateur d'affectation pour recopier une GoldCell
+         *
+         *  \param[in] GoldCell g : opérateur d'affectation pour recopier une GoldCell
+         */
+        virtual GoldCell& operator=( const GoldCell &g );
     
     private :
     
-        //Pour éviter la classe abstraite
-    
+        /*!
+         *  \brief Retourne la vie du Digger
+         *
+         *  \return my_life, la vie du digger pour éviter l'abstraction de la classe
+         */
         virtual int getLife() const;
+    
+        /*!
+         *  \brief Ajouter une vie au digger
+         *  Pour éviter la classe abstraite
+         *
+         */
         virtual void addLife();
+    
+    
+        /*!
+         *  \brief Enlever une vie au digger
+         *  Pour éviter la classe abstraite
+         *
+         */
         virtual void lostLife();
     
 };
