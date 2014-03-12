@@ -13,7 +13,7 @@
 const int COLONNE = 19;
 const int LIGNE = 19;
 const int MINVAL = 1;
-const int MAXVAL = 6;
+const int MAXVAL = 7;
 const int MINOBJ = 8;
 const int MAXOBJ = 10;
 const int MINVALB = 10;
