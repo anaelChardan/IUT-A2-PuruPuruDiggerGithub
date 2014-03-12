@@ -14,7 +14,6 @@
 #include <sstream>
 #include <cstdlib>
 using namespace std;
-using namespace sf;
 
 
 /* DŽbut de l'Žcriture des fonctions pour la SFML

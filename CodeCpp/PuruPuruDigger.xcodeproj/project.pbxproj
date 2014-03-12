@@ -41,21 +41,39 @@
 		0382DB5618C9A36700E93483 /* LanguageMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 033D7D8318C8C6C400BA0091 /* LanguageMessage.cpp */; };
 		0382DB5718C9A36700E93483 /* LanguageMessage.h in Sources */ = {isa = PBXBuildFile; fileRef = 033D7D8418C8C6C400BA0091 /* LanguageMessage.h */; };
 		03A0EFC018C5D0B900F57E1A /* bestScores.txt in Resources */ = {isa = PBXBuildFile; fileRef = 03A0EFBF18C5D0B900F57E1A /* bestScores.txt */; };
+		03D7839918D097E100A1B8AE /* ValueCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0377341218B9FFDF00D5AFA0 /* ValueCell.cpp */; };
+		03D7839A18D097E100A1B8AE /* LanguageMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 033D7D8318C8C6C400BA0091 /* LanguageMessage.cpp */; };
+		03D7839B18D097E100A1B8AE /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314618B385BA00CF8AA1 /* Level.cpp */; };
+		03D7839C18D097E100A1B8AE /* Bomb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031E007618B52B360045013D /* Bomb.cpp */; };
+		03D7839D18D097E100A1B8AE /* Digger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314018B385BA00CF8AA1 /* Digger.cpp */; };
+		03D7839E18D097E100A1B8AE /* CellBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED313D18B385BA00CF8AA1 /* CellBase.cpp */; };
+		03D783A018D097E100A1B8AE /* EmptyCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0377340C18B9FFBC00D5AFA0 /* EmptyCell.cpp */; };
+		03D783A118D097E100A1B8AE /* Score.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314818B385BA00CF8AA1 /* Score.cpp */; };
+		03D783A218D097E100A1B8AE /* GoldCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0377340F18B9FFCA00D5AFA0 /* GoldCell.cpp */; };
+		03D783A318D097E100A1B8AE /* GameModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031D88D618BE5B2B0001686A /* GameModel.cpp */; };
+		03D783A618D097E100A1B8AE /* sfml-window.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9367280218B35E81009873DE /* sfml-window.framework */; };
+		03D783A718D097E100A1B8AE /* sfml-system.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9367280118B35E81009873DE /* sfml-system.framework */; };
+		03D783A818D097E100A1B8AE /* sfml-audio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 936727FF18B35E81009873DE /* sfml-audio.framework */; };
+		03D783A918D097E100A1B8AE /* SFML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9367280318B35E81009873DE /* SFML.framework */; };
+		03D783AA18D097E100A1B8AE /* sfml-graphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9367280018B35E81009873DE /* sfml-graphics.framework */; };
+		03D783AC18D097E100A1B8AE /* bestScores.txt in Resources */ = {isa = PBXBuildFile; fileRef = 03A0EFBF18C5D0B900F57E1A /* bestScores.txt */; };
+		03D783AE18D097E100A1B8AE /* sfml-audio.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 936727FF18B35E81009873DE /* sfml-audio.framework */; };
+		03D783AF18D097E100A1B8AE /* sfml-graphics.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9367280018B35E81009873DE /* sfml-graphics.framework */; };
+		03D783B018D097E100A1B8AE /* sfml-system.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9367280118B35E81009873DE /* sfml-system.framework */; };
+		03D783B118D097E100A1B8AE /* sfml-window.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9367280218B35E81009873DE /* sfml-window.framework */; };
+		03D783B218D097E100A1B8AE /* SFML.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9367280318B35E81009873DE /* SFML.framework */; };
+		03D783B918D09DCD00A1B8AE /* GameViewSFML.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D783B718D09DCD00A1B8AE /* GameViewSFML.cpp */; };
+		03D783BE18D0A07800A1B8AE /* mainSFML.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D783BC18D0A07800A1B8AE /* mainSFML.cpp */; };
 		03ED314A18B385BA00CF8AA1 /* CellBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED313D18B385BA00CF8AA1 /* CellBase.cpp */; };
 		03ED314B18B385BA00CF8AA1 /* Digger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314018B385BA00CF8AA1 /* Digger.cpp */; };
 		03ED314E18B385BA00CF8AA1 /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314618B385BA00CF8AA1 /* Level.cpp */; };
 		03ED314F18B385BA00CF8AA1 /* Score.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314818B385BA00CF8AA1 /* Score.cpp */; };
 		936727F818B33B91009873DE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 936727F618B33B91009873DE /* main.cpp */; };
-		9367280418B35E81009873DE /* sfml-audio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 936727FF18B35E81009873DE /* sfml-audio.framework */; };
-		9367280518B35E81009873DE /* sfml-graphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9367280018B35E81009873DE /* sfml-graphics.framework */; };
-		9367280618B35E81009873DE /* sfml-system.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9367280118B35E81009873DE /* sfml-system.framework */; };
-		9367280718B35E81009873DE /* sfml-window.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9367280218B35E81009873DE /* sfml-window.framework */; };
-		9367280818B35E81009873DE /* SFML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9367280318B35E81009873DE /* SFML.framework */; };
-		9367280918B35E8B009873DE /* sfml-audio.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 936727FF18B35E81009873DE /* sfml-audio.framework */; };
-		9367280A18B35E8B009873DE /* sfml-graphics.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9367280018B35E81009873DE /* sfml-graphics.framework */; };
-		9367280B18B35E8B009873DE /* sfml-system.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9367280118B35E81009873DE /* sfml-system.framework */; };
-		9367280C18B35E8B009873DE /* sfml-window.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9367280218B35E81009873DE /* sfml-window.framework */; };
-		9367280D18B35E8B009873DE /* SFML.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9367280318B35E81009873DE /* SFML.framework */; };
+		9367280918B35E8B009873DE /* sfml-audio.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 936727FF18B35E81009873DE /* sfml-audio.framework */; };
+		9367280A18B35E8B009873DE /* sfml-graphics.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 9367280018B35E81009873DE /* sfml-graphics.framework */; };
+		9367280B18B35E8B009873DE /* sfml-system.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 9367280118B35E81009873DE /* sfml-system.framework */; };
+		9367280C18B35E8B009873DE /* sfml-window.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 9367280218B35E81009873DE /* sfml-window.framework */; };
+		9367280D18B35E8B009873DE /* SFML.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 9367280318B35E81009873DE /* SFML.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -68,18 +86,33 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
-		936727F918B33C8E009873DE /* CopyFiles */ = {
+		03D783AD18D097E100A1B8AE /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				9367280918B35E8B009873DE /* sfml-audio.framework in CopyFiles */,
-				9367280A18B35E8B009873DE /* sfml-graphics.framework in CopyFiles */,
-				9367280B18B35E8B009873DE /* sfml-system.framework in CopyFiles */,
-				9367280C18B35E8B009873DE /* sfml-window.framework in CopyFiles */,
-				9367280D18B35E8B009873DE /* SFML.framework in CopyFiles */,
+				03D783AE18D097E100A1B8AE /* sfml-audio.framework in CopyFiles */,
+				03D783AF18D097E100A1B8AE /* sfml-graphics.framework in CopyFiles */,
+				03D783B018D097E100A1B8AE /* sfml-system.framework in CopyFiles */,
+				03D783B118D097E100A1B8AE /* sfml-window.framework in CopyFiles */,
+				03D783B218D097E100A1B8AE /* SFML.framework in CopyFiles */,
 			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		936727F918B33C8E009873DE /* Copy Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9367280918B35E8B009873DE /* sfml-audio.framework in Copy Files */,
+				9367280A18B35E8B009873DE /* sfml-graphics.framework in Copy Files */,
+				9367280B18B35E8B009873DE /* sfml-system.framework in Copy Files */,
+				9367280C18B35E8B009873DE /* sfml-window.framework in Copy Files */,
+				9367280D18B35E8B009873DE /* SFML.framework in Copy Files */,
+			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -104,6 +137,10 @@
 		0382DB3718C9A28400E93483 /* test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
 		0382DB3E18C9A31000E93483 /* libboost_unit_test_framework.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_unit_test_framework.dylib; path = ../../../../../../usr/local/Cellar/boost/1.55.0/lib/libboost_unit_test_framework.dylib; sourceTree = "<group>"; };
 		03A0EFBF18C5D0B900F57E1A /* bestScores.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bestScores.txt; sourceTree = SOURCE_ROOT; };
+		03D783B618D097E100A1B8AE /* PuruPuruDiggerConsole copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PuruPuruDiggerConsole copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		03D783B718D09DCD00A1B8AE /* GameViewSFML.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameViewSFML.cpp; sourceTree = SOURCE_ROOT; };
+		03D783B818D09DCD00A1B8AE /* GameViewSFML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewSFML.h; sourceTree = SOURCE_ROOT; };
+		03D783BC18D0A07800A1B8AE /* mainSFML.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mainSFML.cpp; sourceTree = SOURCE_ROOT; };
 		03ED313D18B385BA00CF8AA1 /* CellBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellBase.cpp; sourceTree = SOURCE_ROOT; };
 		03ED313E18B385BA00CF8AA1 /* CellBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellBase.h; sourceTree = SOURCE_ROOT; };
 		03ED313F18B385BA00CF8AA1 /* Constantes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constantes.h; sourceTree = SOURCE_ROOT; };
@@ -131,15 +168,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		03D783A518D097E100A1B8AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03D783A618D097E100A1B8AE /* sfml-window.framework in Frameworks */,
+				03D783A718D097E100A1B8AE /* sfml-system.framework in Frameworks */,
+				03D783A818D097E100A1B8AE /* sfml-audio.framework in Frameworks */,
+				03D783A918D097E100A1B8AE /* SFML.framework in Frameworks */,
+				03D783AA18D097E100A1B8AE /* sfml-graphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		936727B218B33A9C009873DE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9367280718B35E81009873DE /* sfml-window.framework in Frameworks */,
-				9367280618B35E81009873DE /* sfml-system.framework in Frameworks */,
-				9367280418B35E81009873DE /* sfml-audio.framework in Frameworks */,
-				9367280818B35E81009873DE /* SFML.framework in Frameworks */,
-				9367280518B35E81009873DE /* sfml-graphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,6 +213,7 @@
 			children = (
 				936727B518B33A9C009873DE /* PuruPuruDigger.app */,
 				0382DB3518C9A28400E93483 /* UnitTest */,
+				03D783B618D097E100A1B8AE /* PuruPuruDiggerConsole copy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -215,6 +260,9 @@
 				0328235818C5FBAF006F43CC /* IntDecFunctor.h */,
 				033D7D8318C8C6C400BA0091 /* LanguageMessage.cpp */,
 				033D7D8418C8C6C400BA0091 /* LanguageMessage.h */,
+				03D783B718D09DCD00A1B8AE /* GameViewSFML.cpp */,
+				03D783B818D09DCD00A1B8AE /* GameViewSFML.h */,
+				03D783BC18D0A07800A1B8AE /* mainSFML.cpp */,
 			);
 			path = PuruPuruDigger;
 			sourceTree = "<group>";
@@ -239,20 +287,38 @@
 			productReference = 0382DB3518C9A28400E93483 /* UnitTest */;
 			productType = "com.apple.product-type.tool";
 		};
-		936727B418B33A9C009873DE /* PuruPuruDigger */ = {
+		03D7839718D097E100A1B8AE /* PuruPuruDiggerSFML */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 936727E618B33A9D009873DE /* Build configuration list for PBXNativeTarget "PuruPuruDigger" */;
+			buildConfigurationList = 03D783B318D097E100A1B8AE /* Build configuration list for PBXNativeTarget "PuruPuruDiggerSFML" */;
 			buildPhases = (
-				936727B118B33A9C009873DE /* Sources */,
-				936727B218B33A9C009873DE /* Frameworks */,
-				936727B318B33A9C009873DE /* Resources */,
-				936727F918B33C8E009873DE /* CopyFiles */,
+				03D7839818D097E100A1B8AE /* Sources */,
+				03D783A518D097E100A1B8AE /* Frameworks */,
+				03D783AB18D097E100A1B8AE /* Resources */,
+				03D783AD18D097E100A1B8AE /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = PuruPuruDigger;
+			name = PuruPuruDiggerSFML;
+			productName = PuruPuruDigger;
+			productReference = 03D783B618D097E100A1B8AE /* PuruPuruDiggerConsole copy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		936727B418B33A9C009873DE /* PuruPuruDiggerConsole */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 936727E618B33A9D009873DE /* Build configuration list for PBXNativeTarget "PuruPuruDiggerConsole" */;
+			buildPhases = (
+				936727B118B33A9C009873DE /* Sources */,
+				936727B218B33A9C009873DE /* Frameworks */,
+				936727B318B33A9C009873DE /* Resources */,
+				936727F918B33C8E009873DE /* Copy Files */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PuruPuruDiggerConsole;
 			productName = PuruPuruDigger;
 			productReference = 936727B518B33A9C009873DE /* PuruPuruDigger.app */;
 			productType = "com.apple.product-type.application";
@@ -279,13 +345,22 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				936727B418B33A9C009873DE /* PuruPuruDigger */,
+				936727B418B33A9C009873DE /* PuruPuruDiggerConsole */,
 				0382DB3418C9A28400E93483 /* UnitTest */,
+				03D7839718D097E100A1B8AE /* PuruPuruDiggerSFML */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		03D783AB18D097E100A1B8AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03D783AC18D097E100A1B8AE /* bestScores.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		936727B318B33A9C009873DE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -326,6 +401,25 @@
 				0382DB5618C9A36700E93483 /* LanguageMessage.cpp in Sources */,
 				0382DB5718C9A36700E93483 /* LanguageMessage.h in Sources */,
 				0382DB3818C9A28400E93483 /* test.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03D7839818D097E100A1B8AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03D783BE18D0A07800A1B8AE /* mainSFML.cpp in Sources */,
+				03D7839918D097E100A1B8AE /* ValueCell.cpp in Sources */,
+				03D7839A18D097E100A1B8AE /* LanguageMessage.cpp in Sources */,
+				03D7839B18D097E100A1B8AE /* Level.cpp in Sources */,
+				03D7839C18D097E100A1B8AE /* Bomb.cpp in Sources */,
+				03D7839D18D097E100A1B8AE /* Digger.cpp in Sources */,
+				03D7839E18D097E100A1B8AE /* CellBase.cpp in Sources */,
+				03D783A018D097E100A1B8AE /* EmptyCell.cpp in Sources */,
+				03D783B918D09DCD00A1B8AE /* GameViewSFML.cpp in Sources */,
+				03D783A118D097E100A1B8AE /* Score.cpp in Sources */,
+				03D783A218D097E100A1B8AE /* GoldCell.cpp in Sources */,
+				03D783A318D097E100A1B8AE /* GameModel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +478,38 @@
 					/usr/local/Cellar/boost/1.55.0/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		03D783B418D097E100A1B8AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++98";
+				CLANG_CXX_LIBRARY = "libstdc++";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				PRODUCT_NAME = "PuruPuruDiggerConsole copy";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		03D783B518D097E100A1B8AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++98";
+				CLANG_CXX_LIBRARY = "libstdc++";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				PRODUCT_NAME = "PuruPuruDiggerConsole copy";
+				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
@@ -497,6 +623,16 @@
 				0382DB3C18C9A28400E93483 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03D783B318D097E100A1B8AE /* Build configuration list for PBXNativeTarget "PuruPuruDiggerSFML" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03D783B418D097E100A1B8AE /* Debug */,
+				03D783B518D097E100A1B8AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		936727B018B33A9C009873DE /* Build configuration list for PBXProject "PuruPuruDigger" */ = {
 			isa = XCConfigurationList;
@@ -507,7 +643,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		936727E618B33A9D009873DE /* Build configuration list for PBXNativeTarget "PuruPuruDigger" */ = {
+		936727E618B33A9D009873DE /* Build configuration list for PBXNativeTarget "PuruPuruDiggerConsole" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				936727E718B33A9D009873DE /* Debug */,
