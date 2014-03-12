@@ -1,3 +1,11 @@
+/**
+ * \file Digger.cpp
+ * \brief Notre classe Digger
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include "Digger.h"
 #include "Constantes.h"
 

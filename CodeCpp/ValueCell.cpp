@@ -1,3 +1,11 @@
+/**
+ * \file ValueCell.cpp
+ * \brief Notre classe ValueCell
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include "ValueCell.h"
 
 /*===========================

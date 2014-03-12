@@ -1,10 +1,11 @@
-//
-//  EmptyCell.cpp
-//  PuruPuruDigger
-//
-//  Created by Ananas-Mac on 23/02/2014.
-//
-//
+/**
+ * \file EmptyCell.cpp
+ * \brief Notre classe EmptyCell
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 
 #include "EmptyCell.h"
 

@@ -1,3 +1,11 @@
+/**
+ * \file GoldCell.cpp
+ * \brief Notre classe GoldCell
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include "GoldCell.h"
 
 /*===========================
@@ -8,8 +16,8 @@ GoldCell::GoldCell() {
     my_type = "GoldCell";
     my_x  = 0;
     my_y = 0;
-    my_value = MINVAL + (rand() % (MAXVAL - MINVAL));
     //Génération aléatoire de la valeur de la case entre 1 et 6
+    my_value = MINVAL + (rand() % (MAXVAL - MINVAL));
     my_bonus =  MINVALB + (rand() % (MAXVALB - MINVALB));
 }
 

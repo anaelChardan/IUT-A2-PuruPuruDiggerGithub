@@ -60,7 +60,7 @@ class Score {
         /*!
          *  \brief Ajoute des points à notre case courante
          *
-         *  \param i la valeur de ce que l'on doit ajouter à notre score courant
+         *  \param[in] la valeur de ce que l'on doit ajouter à notre score courant
          */
         void addPoints(const int &i);
 };

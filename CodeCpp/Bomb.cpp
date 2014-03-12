@@ -1,3 +1,11 @@
+/**
+ * \file Bomb.cpp
+ * \brief Notre classe Bomb
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include "Bomb.h"
 #include "Constantes.h"
 

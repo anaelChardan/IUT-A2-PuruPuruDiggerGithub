@@ -1,25 +1,33 @@
+/**
+ * \file LanguageMessage.cpp
+ * \brief Notre classe LanguageMessage
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include "LanguageMessage.h"
 
 using namespace std;
 
 LanguageMessage::LanguageMessage() {
     //Les messages français
-    my_languages[francais][choice] = " Choix ";
-    my_languages[francais][move] = " Déplacement ";
-    my_languages[francais][north] = " Nord ";
-    my_languages[francais][south] = " Sud ";
-    my_languages[francais][west] = " Ouest ";
-    my_languages[francais][east] = " Est ";
-    my_languages[francais][nwest] = " Nord Ouest ";
-    my_languages[francais][neast] = " Nord Est ";
-    my_languages[francais][swest] = " Sud Ouest ";
-    my_languages[francais][seast] = " Sud Est ";
-    my_languages[francais][stop] = " Quitter ";
-    my_languages[francais][score] = " Score ";
-    my_languages[francais][level] = " Niveau ";
-    my_languages[francais][global] = " Score Global ";
-    my_languages[francais][current] = " Score Courrant ";
-    my_languages[francais][goal] = " Objectif ";
+    my_languages[francais][choice] = " Choix ";                     //7
+    my_languages[francais][move] = " Déplacement ";                 //13
+    my_languages[francais][north] = " Nord ";                       //6
+    my_languages[francais][south] = " Sud ";                        //5
+    my_languages[francais][west] = " Ouest ";                       //7
+    my_languages[francais][east] = " Est ";                         //4
+    my_languages[francais][nwest] = " Nord Ouest ";                 //12
+    my_languages[francais][neast] = " Nord Est ";                   //10
+    my_languages[francais][swest] = " Sud Ouest ";                  //11
+    my_languages[francais][seast] = " Sud Est ";                    //9
+    my_languages[francais][stop] = " Quitter ";                     //9
+    my_languages[francais][score] = " Score ";                      //8
+    my_languages[francais][level] = " Niveau ";                     //8
+    my_languages[francais][global] = " Score Global ";              //14
+    my_languages[francais][current] = " Score Courant ";            //15
+    my_languages[francais][goal] = " Objectif ";                    //10
     my_languages[francais][step] = " En cours ";
     my_languages[francais][life] = " Vie ";
     my_languages[francais][position] = " Position ";
@@ -52,7 +60,7 @@ LanguageMessage::LanguageMessage() {
     my_languages[english][step] = " Step ";
     my_languages[english][life] = " Life ";
     my_languages[english][position] = " Position ";
-    my_languages[english][winlevel] = " You win alevel " ;
+    my_languages[english][winlevel] = " You win a level " ;
     my_languages[english][looselevel] = " You lost a life, try again ";
     my_languages[english][loosegame] = " You have lose a game ";
     my_languages[english][name] = " Enter your name ";

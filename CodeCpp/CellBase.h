@@ -1,62 +1,147 @@
 #ifndef __purpurudigger__CellBase__
 #define __purpurudigger__CellBase__
 
+/**
+ * \file CellBase.h
+ * \brief Notre classe CellBase
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include <iostream>
 #include <string>
 
-//Class abstraite dont héritera le digger, les cases vides, les cases numérotées, les trésors, les bombs
+/*! \class CellBase
+ *  \brief Classe modélisant ce qu'est une case
+ */
+
 class CellBase {
 
     protected :
 
-        std::string my_type; //Elles ont toutes un type
-        int my_x;            //Elles ont toutes un x
-        int my_y;           //Elles ont toutes un y
+        std::string my_type;        /*!<  le type de ma case */
+        int my_x;                   /*!<  Le x de ma case */
+        int my_y;                   /*!<  Le y de ma case */
 
     public :
 
-        //Les constructeurs
-
-        CellBase(); //Le constructeur d'une celulle
-        CellBase( int x, int y ); //Le constructeur paramétré, on peut directement mettre les coordonnées
-        CellBase(const CellBase &c);//Le constructeur par copie ( pour manipuler correctement les vecteur)
-
-        //Le destructeurs en virtuel, comme la classe contient des fonctions virtuel
-
+         /*!
+          *  \brief Constructeur
+          *
+          *  Constructeur de la classe CellBase
+          */
+        CellBase();
+     
+         /*!
+          *  \brief Constructeur paramétré
+          *
+          *  Constructeur paramétré de la classe CellBase
+          */
+        CellBase( int x, int y );
+     
+         /*!
+          *  \brief Constructeur par copie
+          *
+          *  Constructeur par copie de la classe CellBase
+          */
+        CellBase(const CellBase &c);
+     
+         /*!
+          *  \brief Destructeur
+          *
+          *  Destructeur de la classe mère CellBase
+          */
         virtual ~CellBase();
 
-        //Les fonctions communes à toutes les cell non rédéfinie dans les classes filles
+         /*!
+          *  \brief retourne la position en X de la case
+          *
+          *  \return l'entier positionnant notre case en X
+          */
+        int getX() const;
+     
+         /*!
+          *  \brief retourne la position en Y de la case
+          *
+          *  \return l'entier positionnant notre case en Y
+          */
+        int getY() const;
+     
+         /*!
+          *  \brief Le type de notre case
+          *
+          *  \return un string pour le type de notre case
+          */
+        std::string getType() const;
+     
+         /*!
+          *  \brief Pour positionner notre case dans la grille
+          *
+          * param[in] int x   : la position verticale de notre case
+          */
+        void setX( int x );
+     
+         /*!
+          *  \brief Pour positionner notre case dans la grille
+          *
+          * param[in] int x   : la position horizontale de notre case
+          */
+        void setY( int y );
 
-        int getX() const; //Connaître le x de la case
-        int getY() const; //Connaître le y de la case
-        std::string getType() const; //Renvoie le type de la case
-        void setX( int x ); //Attribuer le x de la case
-        void setY( int y ); //Attribuer le y de la case
 
+         /*!
+          *  \brief Opérateur d'affectation pour recopier une case
+          *
+          * param[c] CellBase c   : opérateur d'affectation pour recopier une case
+          */
+        virtual CellBase& operator=(const CellBase &c);
 
-        //Les fonctions destinés à être redéfinie dans les classes filles
+     
+         /*!
+          *  \brief Retourne la valeur de la case si c'est un goldCell ou une ValueCell
+          *   
+          *  \return my_value, retourne la valeur de la case
+          */
+        virtual int getValue() const = 0;
+     
+         /*!
+          *  \brief Retourne les points que va ajouter la case dans les scores
+          *
+          *  \return my_points, retourne la valeur de la case
+          */
+        virtual int getPoints() const = 0;
 
-        virtual CellBase& operator=(const CellBase &c); //Opérateur d'affectation
-
-            //Pour les ValueCell et GoldCell
-
-        virtual int getValue() const = 0; //Savoir la valeur d'une ValueCell ou d'une GoldCell, sinon return -1 dans les autres et en privé
-
-        virtual int getPoints() const = 0; //Savoir les points rapoortés par une GoldCell ou une ValueCell, sinon return -1 dans les autres et en privé
-
-            //Pour le digger
+         /*!
+          *  \brief Retourne la vie du Digger
+          *
+          *  \return my_life, la vie du digger
+          */
         virtual int getLife() const = 0; //Savoir la vie de notre Digger, return - 1 dans les autres
 
-        virtual void addLife() = 0; //Ajouter des vies à notre Digger
+         /*!
+          *  \brief Ajouter une vie au digger
+          *
+          */
+        virtual void addLife() = 0;
+     
+         /*!
+          *  \brief Faire perdre une vie au Digger
+          *
+          */
+        virtual void lostLife() = 0;
 
-        virtual void lostLife() = 0; //Faire perdre des vies à notre Digger
+         /*!
+          *  \brief Avoir la représentation console de la case
+          *
+          */
+        virtual void toString( std::ostream& O) const = 0;
 
 
-            //Pour toutes
-        virtual void toString( std::ostream& O) const = 0; //Affichage terminal
-
-
-        //Une fonction amie qui pourra servir
+         /*!
+          *  \brief Pour pouvoir utiliser l'opérateur de redirection de flux
+          *
+          */
         friend std::ostream& operator<<(std::ostream& O, const CellBase& B);
 };
 
