@@ -11,6 +11,8 @@
 		031D88DB18BE5B670001686A /* GameView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031D88D918BE5B670001686A /* GameView.cpp */; };
 		031E007818B52B360045013D /* Bomb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031E007618B52B360045013D /* Bomb.cpp */; };
 		033D7D8518C8C6C400BA0091 /* LanguageMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 033D7D8318C8C6C400BA0091 /* LanguageMessage.cpp */; };
+		0371150518D1889000EE9282 /* scoreFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0371150318D1889000EE9282 /* scoreFont.ttf */; };
+		0371150618D1889000EE9282 /* titleFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0371150418D1889000EE9282 /* titleFont.ttf */; };
 		0377340E18B9FFBC00D5AFA0 /* EmptyCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0377340C18B9FFBC00D5AFA0 /* EmptyCell.cpp */; };
 		0377341118B9FFCA00D5AFA0 /* GoldCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0377340F18B9FFCA00D5AFA0 /* GoldCell.cpp */; };
 		0377341418B9FFDF00D5AFA0 /* ValueCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0377341218B9FFDF00D5AFA0 /* ValueCell.cpp */; };
@@ -127,6 +129,8 @@
 		0328235818C5FBAF006F43CC /* IntDecFunctor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntDecFunctor.h; sourceTree = SOURCE_ROOT; };
 		033D7D8318C8C6C400BA0091 /* LanguageMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LanguageMessage.cpp; sourceTree = SOURCE_ROOT; };
 		033D7D8418C8C6C400BA0091 /* LanguageMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageMessage.h; sourceTree = SOURCE_ROOT; };
+		0371150318D1889000EE9282 /* scoreFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = scoreFont.ttf; sourceTree = "<group>"; };
+		0371150418D1889000EE9282 /* titleFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = titleFont.ttf; sourceTree = "<group>"; };
 		0377340C18B9FFBC00D5AFA0 /* EmptyCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EmptyCell.cpp; sourceTree = SOURCE_ROOT; };
 		0377340D18B9FFBC00D5AFA0 /* EmptyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyCell.h; sourceTree = SOURCE_ROOT; };
 		0377340F18B9FFCA00D5AFA0 /* GoldCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GoldCell.cpp; sourceTree = SOURCE_ROOT; };
@@ -150,7 +154,7 @@
 		03ED314718B385BA00CF8AA1 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = SOURCE_ROOT; };
 		03ED314818B385BA00CF8AA1 /* Score.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Score.cpp; sourceTree = SOURCE_ROOT; };
 		03ED314918B385BA00CF8AA1 /* Score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Score.h; sourceTree = SOURCE_ROOT; };
-		936727B518B33A9C009873DE /* PuruPuruDigger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PuruPuruDigger.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		936727B518B33A9C009873DE /* PuruPuruDigger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = PuruPuruDigger.app; path = PuruPuruDiggerConsole.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		936727F618B33B91009873DE /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
 		936727FF18B35E81009873DE /* sfml-audio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-audio.framework"; path = "/Library/Frameworks/sfml-audio.framework"; sourceTree = "<absolute>"; };
 		9367280018B35E81009873DE /* sfml-graphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-graphics.framework"; path = "/Library/Frameworks/sfml-graphics.framework"; sourceTree = "<absolute>"; };
@@ -190,6 +194,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0371150218D1889000EE9282 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				0371150318D1889000EE9282 /* scoreFont.ttf */,
+				0371150418D1889000EE9282 /* titleFont.ttf */,
+			);
+			path = Font;
+			sourceTree = SOURCE_ROOT;
+		};
 		0382DB3618C9A28400E93483 /* UnitTest */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,6 +247,7 @@
 		936727BE18B33A9C009873DE /* PuruPuruDigger */ = {
 			isa = PBXGroup;
 			children = (
+				0371150218D1889000EE9282 /* Font */,
 				03A0EFBF18C5D0B900F57E1A /* bestScores.txt */,
 				03ED313F18B385BA00CF8AA1 /* Constantes.h */,
 				031D88D618BE5B2B0001686A /* GameModel.cpp */,
@@ -357,7 +371,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0371150518D1889000EE9282 /* scoreFont.ttf in Resources */,
 				03D783AC18D097E100A1B8AE /* bestScores.txt in Resources */,
+				0371150618D1889000EE9282 /* titleFont.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

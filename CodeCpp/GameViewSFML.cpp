@@ -39,11 +39,11 @@ using namespace sf;
      my_backgroundGraph = new Sprite();
  
      //On charge la font pour les scores
-     _fontScore->LoadFromFile("scoreFont.ttf");
+     _fontScore->LoadFromFile("Font/scoreFont.ttf");
  
  
      //On charge la font pour le titre du jeu
-     _fontTitle->LoadFromFile( "titleFont.ttf" );
+     _fontTitle->LoadFromFile( "Font/titleFont.ttf" );
  
      //Si les deux images n'ont pas encore réussies à charger
      if (!my_backgroundImage->LoadFromFile("background.png") || !my_caseImage->LoadFromFile("case.png") {
@@ -64,11 +64,5 @@ using namespace sf;
 
                             
  }
- 
- GameView::~GameView() {
- delete _Digger_image;
- delete _Bomb_image;
- delete _EmptyCell_image;
- delete
- }
+
  
