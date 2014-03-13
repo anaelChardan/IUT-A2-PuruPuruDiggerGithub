@@ -97,3 +97,8 @@ int
 Digger::getPoints() const {
     return -1;
 };
+
+std::string
+Digger::getStringValue() const {
+    return "-1";
+}

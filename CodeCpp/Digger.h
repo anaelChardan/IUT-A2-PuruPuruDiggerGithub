@@ -100,6 +100,8 @@
          *  \return my_points, retourne la valeur de la case
          */
         virtual int getPoints() const;
+    
+        virtual std::string getStringValue() const;
 
 };
 

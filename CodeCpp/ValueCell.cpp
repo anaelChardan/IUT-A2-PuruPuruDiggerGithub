@@ -7,6 +7,7 @@
  */
 
 #include "ValueCell.h"
+#include <sstream>
 
 /*===========================
  Les Constructeurs
@@ -62,6 +63,13 @@ ValueCell::toString( std::ostream& O) const {
     #else
     O << " " << my_value;
     #endif
+}
+
+std::string
+ValueCell::getStringValue() const {
+    std::ostringstream value;
+    value << my_value;
+    return value.str();
 }
 
 /*===========================

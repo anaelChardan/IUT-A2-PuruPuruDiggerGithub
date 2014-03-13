@@ -7,20 +7,31 @@
 //
 
 #include "GameViewSFML.h"
+#include "Constantes.h"
 
 using namespace std;
 using namespace sf;
 
 //Building in progress
+int convertIndiceXToPixel( int i ) {
+    return CASEWITDH * i + MARGINLEFT + PADDINGRIGHT * i ;
+}
+
+int convertIndiceYToPixel ( int j ) {
+    return CASEHEIGHT * j + MARGINTOP + PADDINGBOTTOM * j ;
+}
+
 
 //Début de l'écriture des fonctions pour la SFML
  GameView::GameView(int w, int h, int bpp): _w(w), _h(h) {
      //Le style de la fenêtres
-     _window = new RenderWindow(sf::VideoMode(w, h, bpp), "PuruPuruDigger", sf::Style::Close);
+     my_window = new RenderWindow(sf::VideoMode(w, h, bpp), "PuruPuruDigger", sf::Style::Close);
  
      //La font pour les scores
      my_fontScore=  new Font();
      my_fontTitle = new Font();
+     
+     my_valueString = new String;
  
      my_backgroundImage = new Image();
  
@@ -31,38 +42,78 @@ using namespace sf;
      //On affecte les sprite, je décide de ne pas faire de classe GraphicElement, que je n'ai pas forcément bien compris...
  
      my_DiggerSprite = new Sprite();
-     _ValueSprite = new Sprite();
-     _GoldSprite = new Sprite();
-     _BombSprite = new Sprite();
+     my_ValueSprite = new Sprite();
+     my_GoldSprite = new Sprite();
+     my_BombSprite = new Sprite();
      
      //On affecte les sprites de fond
-     my_backgroundGraph = new Sprite();
+     my_backgroundSprite = new Sprite();
  
      //On charge la font pour les scores
-     _fontScore->LoadFromFile("Font/scoreFont.ttf");
+     my_fontScore->LoadFromFile("Font/scoreFont.ttf");
  
  
      //On charge la font pour le titre du jeu
-     _fontTitle->LoadFromFile( "Font/titleFont.ttf" );
+     my_fontTitle->LoadFromFile( "Font/titleFont.ttf" );
+     my_fontValue->LoadFromFile("Font/valueFont.ttf" );
  
      //Si les deux images n'ont pas encore réussies à charger
-     if (!my_backgroundImage->LoadFromFile("background.png") || !my_caseImage->LoadFromFile("case.png") {
+     if (!my_backgroundImage->LoadFromFile("Image/background.png") || !my_caseImage->LoadFromFile("Image/case.png") {
         cout << "Error when loading image" << endl;
          RETURN EXIT_SUCCESS;
      } else {
          //On set les sprites de nos images
-         my_DiggerSprite->SetImage(my_caseImage);
-         my_ValueSprite->SetImage(my_caseImage);
-         my_GoldSprite->SetImage(my_caseImage);
-         my_BombSprite->SetImage(my_caseImage);
+         my_diggerSprite->SetImage(my_caseImage);
+         my_valueSprite->SetImage(my_caseImage);
+         my_goldSprite->SetImage(my_caseImage);
+         my_bombSprite->SetImage(my_caseImage);
      }
  
+    my_valueString->SetFont(*my_fontValue);
     //On set les rectangles de lecture de chacune de nos cases !
-    my_DiggerSprite->SetSubRect(IntRect();
-    my_ValueSprite->SetSubRect(IntRect();
+    my_DiggerSprite->SetSubRect(IntRect(DIGGEREX,0,DIGGERSX,1024);
+    my_ValueSprite->SetSubRect(IntRect(VALUEEX, 0, VALUESX, 1024);
     my_GoldSprite->SetSubRect(IntRect();
 
                             
- }
-
- 
+}
+  
+void showGrid() {
+    for ( int i = 0; i < LIGNE ; i++ ) {
+        for ( int j = 0; j < COLONNE; j++ ) {
+            if ( *my_model->getLevel()->getGrid()[i][j]->getType() == "Digger" ) {
+                my_diggerSprite->SetPosition( convertIndiceXToPixel( i ), convertIndiceYToPixel( j ) );
+                my_window->Draw(my_diggerSprite);
+            } else if ( *my_model->getLevel()->getGrid()[i][j]->getType() == "Bomb" ) {
+                my_bombSprite->SetPosition( convertIndiceXToPixel( i ), convertIndiceYToPixel( j ) );
+                my_window->Draw( my_bombSprite );
+            } else if ( *my_model->getLevel()->getGrid()[i][j]->getType() == "EmptyCell") {
+                my_emptySprite->SetPosition( convertIndiceXToPixel( i ), convertIndiceYToPixel( j ) );
+                my_window->Draw( my_emptySprite );
+            } else if ( *my_model->getLevel()->getGrid()[i][j]->getType() == "ValueCell" ) {
+                my_valueSprite->SetPosition( convertIndiceXToPixel( i ), convertIndiceYToPixel( j ) );
+                my_window->Draw( my_valueSprite );
+                my_valueString->SetText( *my_model->getLevel()->getGrid()[i][j]->getStringValue() );
+                my_valueString->SetPosition( convertIndiceXToPixel( i ) / 2, convertIndiceYToPixel( j ) / 2 );
+                my_window->Draw( my_valueString );
+            } else if ( *my_model->getLevel()->getGrid()[i][j]->getType() == "GoldCell" ) {
+                my_goldSprite->SetPosition( convertIndiceXToPixel( i ), convertIndiceYToPixel( j ) );
+                my_window->Draw( my_goldSprite );
+                my_valueString->SetText( *my_model->getLevel()->getGrid()[i][j]->getStringValue() );
+                my_valueString->SetPosition( convertIndiceXToPixel( i ) / 2, convertIndiceYToPixel( j ) / 2 );
+                my_window->Draw( my_valueString );
+            }
+        }
+    }
+}
+                              
+void
+GameView::treatGame() {
+    while ( my_window->IsOpened ) {
+        Event event;
+        while ( my_window->GetEvent( event ) ) {
+            
+        }
+        app.Display;
+    }
+}

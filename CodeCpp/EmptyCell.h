@@ -96,6 +96,8 @@ class EmptyCell : public CellBase {
          *
          */
         virtual void lostLife();
+    
+        virtual std::string getStringValue() const;
 };
 
 #endif /* defined(__PuruPuruDigger__EmptyCell__) */

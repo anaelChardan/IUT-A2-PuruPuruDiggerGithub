@@ -29,6 +29,32 @@ const int PINK =  35;
 const int CYAN = 36;
 const int WHITE = 37;
 
+//Relatif à tout ce qui est affichage
+const int WINDOWWITDH = 1000;
+const int WINDOWHEIGHT = 1000;
+const int BPP = 32;
+
+//Pour la grille
+const int MARGINLEFT = 500;
+const int MARGINTOP = 500;
+const int PADDINGRIGHT = 3;
+const int PADDINGBOTTOM = 3;
+const int CASEWITDH = 25;
+const int CASEHEIGHT = 25;
+
+//Pour nos feuilles de sprite
+const int DIGGERSX; //Début de la position en X
+const int DIGGEREX; //Début de la position en Y
+const int BOMBSX;
+const int BOMBEX;
+const int GOLDSX;
+const int GOLDEX;
+const int EMPTYSX;
+const int EMPTYEX;
+const int VALUESX;
+const int VALUEEX;
+
+
 //Relatif à notre fichier de meilleurs scores
 const std::string FILEBESTSCORE = "bestScores.txt";
 

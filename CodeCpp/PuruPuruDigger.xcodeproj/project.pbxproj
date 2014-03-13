@@ -11,6 +11,7 @@
 		031D88DB18BE5B670001686A /* GameView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031D88D918BE5B670001686A /* GameView.cpp */; };
 		031E007818B52B360045013D /* Bomb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031E007618B52B360045013D /* Bomb.cpp */; };
 		033D7D8518C8C6C400BA0091 /* LanguageMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 033D7D8318C8C6C400BA0091 /* LanguageMessage.cpp */; };
+		033F710B18D2213A0064FAF5 /* valueFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 033F710A18D2213A0064FAF5 /* valueFont.ttf */; };
 		0371150518D1889000EE9282 /* scoreFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0371150318D1889000EE9282 /* scoreFont.ttf */; };
 		0371150618D1889000EE9282 /* titleFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0371150418D1889000EE9282 /* titleFont.ttf */; };
 		0377340E18B9FFBC00D5AFA0 /* EmptyCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0377340C18B9FFBC00D5AFA0 /* EmptyCell.cpp */; };
@@ -129,6 +130,7 @@
 		0328235818C5FBAF006F43CC /* IntDecFunctor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntDecFunctor.h; sourceTree = SOURCE_ROOT; };
 		033D7D8318C8C6C400BA0091 /* LanguageMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LanguageMessage.cpp; sourceTree = SOURCE_ROOT; };
 		033D7D8418C8C6C400BA0091 /* LanguageMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageMessage.h; sourceTree = SOURCE_ROOT; };
+		033F710A18D2213A0064FAF5 /* valueFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = valueFont.ttf; sourceTree = "<group>"; };
 		0371150318D1889000EE9282 /* scoreFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = scoreFont.ttf; sourceTree = "<group>"; };
 		0371150418D1889000EE9282 /* titleFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = titleFont.ttf; sourceTree = "<group>"; };
 		0377340C18B9FFBC00D5AFA0 /* EmptyCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EmptyCell.cpp; sourceTree = SOURCE_ROOT; };
@@ -197,6 +199,7 @@
 		0371150218D1889000EE9282 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				033F710A18D2213A0064FAF5 /* valueFont.ttf */,
 				0371150318D1889000EE9282 /* scoreFont.ttf */,
 				0371150418D1889000EE9282 /* titleFont.ttf */,
 			);
@@ -372,6 +375,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0371150518D1889000EE9282 /* scoreFont.ttf in Resources */,
+				033F710B18D2213A0064FAF5 /* valueFont.ttf in Resources */,
 				03D783AC18D097E100A1B8AE /* bestScores.txt in Resources */,
 				0371150618D1889000EE9282 /* titleFont.ttf in Resources */,
 			);

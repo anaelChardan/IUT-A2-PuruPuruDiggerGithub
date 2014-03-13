@@ -77,6 +77,12 @@ Bomb::addLife() { }
 void
 Bomb::lostLife() { }
 
+std::string
+Bomb::getStringValue() const {
+    return "-1";
+}
+
+
 /*===========================
  Les opérateurs
  =============================*/

@@ -79,6 +79,11 @@ EmptyCell::addLife() { }
 void
 EmptyCell::lostLife() { }
 
+std::string
+EmptyCell::getStringValue() const {
+    return "-1";
+}
+
 /*===========================
  Les opérateurs
  =============================*/
