@@ -43,6 +43,7 @@ const int CASEWITDH = 25;
 const int CASEHEIGHT = 25;
 
 //Pour nos feuilles de sprite
+const int SPRITECASEHEIGHT;
 const int DIGGERSX; //Début de la position en X
 const int DIGGEREX; //Début de la position en Y
 const int BOMBSX;

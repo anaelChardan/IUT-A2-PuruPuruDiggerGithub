@@ -32,6 +32,8 @@ class GameView {
     sf::Font* my_fontValue;
     
     sf::String* my_valueString;
+    sf::String* my_scoreString;
+    sf::String* my_titleString;
     
     sf::Image* my_backgroundImage;
     sf::Image* my_caseImage;

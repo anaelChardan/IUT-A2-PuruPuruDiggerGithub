@@ -31,7 +31,9 @@ int convertIndiceYToPixel ( int j ) {
      my_fontScore=  new Font();
      my_fontTitle = new Font();
      
-     my_valueString = new String;
+     my_valueString = new String();
+     my_scoreString = new String();
+     my_titleString = new String();
  
      my_backgroundImage = new Image();
  
@@ -67,13 +69,18 @@ int convertIndiceYToPixel ( int j ) {
          my_valueSprite->SetImage(my_caseImage);
          my_goldSprite->SetImage(my_caseImage);
          my_bombSprite->SetImage(my_caseImage);
+         my_emptySprite->SetImage(my_caseImage)
      }
  
+    //On set les font pour pouvoir afficher plus facilement ensuite
     my_valueString->SetFont(*my_fontValue);
+    my_scoreString->SetFont(*my_fontScore);
+    my_titleString->SetFont(*my_titleString);
     //On set les rectangles de lecture de chacune de nos cases !
-    my_DiggerSprite->SetSubRect(IntRect(DIGGEREX,0,DIGGERSX,1024);
-    my_ValueSprite->SetSubRect(IntRect(VALUEEX, 0, VALUESX, 1024);
-    my_GoldSprite->SetSubRect(IntRect();
+    my_DiggerSprite->SetSubRect(IntRect(DIGGERSX,0,DIGGEREX,SPRITECASEHEIGHT);
+    my_ValueSprite->SetSubRect(IntRect(VALUESX, 0, VALUEEX, SPRITECASEHEIGHT);
+    my_GoldSprite->SetSubRect(IntRect(GOLDSX, 0, GOLDEX, SPRITECASEHEIGHT);
+    my_
 
                             
 }
@@ -94,13 +101,13 @@ void showGrid() {
                 my_valueSprite->SetPosition( convertIndiceXToPixel( i ), convertIndiceYToPixel( j ) );
                 my_window->Draw( my_valueSprite );
                 my_valueString->SetText( *my_model->getLevel()->getGrid()[i][j]->getStringValue() );
-                my_valueString->SetPosition( convertIndiceXToPixel( i ) / 2, convertIndiceYToPixel( j ) / 2 );
+                my_valueString->SetPosition( ( convertIndiceXToPixel( i ) + CASEWITDH / 2 ), ( convertIndiceYToPixel( j ) + CASEHEIGHT / 4 ) );
                 my_window->Draw( my_valueString );
             } else if ( *my_model->getLevel()->getGrid()[i][j]->getType() == "GoldCell" ) {
                 my_goldSprite->SetPosition( convertIndiceXToPixel( i ), convertIndiceYToPixel( j ) );
                 my_window->Draw( my_goldSprite );
                 my_valueString->SetText( *my_model->getLevel()->getGrid()[i][j]->getStringValue() );
-                my_valueString->SetPosition( convertIndiceXToPixel( i ) / 2, convertIndiceYToPixel( j ) / 2 );
+                my_valueString->SetPosition( convertIndiceXToPixel( i ) , convertIndiceYToPixel( j ) / 2 );
                 my_window->Draw( my_valueString );
             }
         }
