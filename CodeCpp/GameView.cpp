@@ -250,6 +250,7 @@ GameView::treatGame() {
                         my_model->orderMovement(movechoice);
                         //Si le digger gagne un level
                         if ( my_model->getLevel()->win() ) {
+                            my_model->getLevel()->resetWin();
                             cout << my_messages[my_language][winlevel] << endl ;
 
                         } else {
@@ -260,6 +261,7 @@ GameView::treatGame() {
                             } else {
                                 //Si le digger perd un level
                                 if ( my_model->getLevel()->lose() ) {
+                                    my_model->getLevel()->resetLose();
                                     cout << my_messages[my_language][looselevel] << endl;
                                 }
                             }

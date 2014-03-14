@@ -15,5 +15,7 @@ std::string colorMessage( const char* out , int color );
 std::string intToString(  int i );
 int convertIndiceXToPixel( int i );
 int convertIndiceYToPixel( int j );
+int convertXPixel( int xpixel );
+int convertYPixel( int ypixel );
 
 #endif /* defined(__PuruPuruDigger__Utils__) */

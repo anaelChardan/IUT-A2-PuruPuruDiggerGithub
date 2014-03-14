@@ -73,8 +73,7 @@ void
 Level::move(  int DeltaX,  int DeltaY ) {
     int nbStep = -1;
     int pointInGame = -1;
-    my_lose = false;
-    my_win = false;
+
     if ( isCellClickable( ( my_digger->getX() + DeltaX ), ( my_digger->getY() + DeltaY ) ) ) {
         ///On veut savoir de combien de coup on veut se déplacer
         nbStep = my_grid[ (my_digger->getX() + DeltaX) ][ (my_digger->getY() + DeltaY ) ]->getValue();
@@ -241,6 +240,15 @@ Level::reset() {
 /*===========================
  Les méthodes publics
  =============================*/
+void
+Level::resetWin() {
+    my_win = false;
+}
+
+void Level::resetLose() {
+    my_lose = false;
+}
+
 void
 Level::lostLevel() {
     my_lose = true;

@@ -92,6 +92,7 @@ class GameView {
 public:
     
     GameView();
+    ~GameView();
     /*!
      *  \brief Injection du modèle à la vue
      *

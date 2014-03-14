@@ -83,7 +83,28 @@ using namespace sf;
          my_titleString->SetFont( *my_fontTitle );
      }
 }
-  
+
+GameView::~GameView() {
+    delete my_window;
+    delete my_diggerSprite;
+    delete my_valueSprite;
+    delete my_goldSprite;
+    delete my_bombSprite;
+    delete my_backgroundSprite;
+    delete my_emptySprite;
+    delete my_fontScore;
+    delete my_fontTitle;
+    delete my_fontValue;
+    
+    delete my_valueString;
+    delete my_scoreString;
+    delete my_titleString;
+    
+    delete my_backgroundImage;
+    
+    delete my_caseImage;
+}
+
 void
 GameView::showGrid() {
     my_window->Clear();
@@ -121,7 +142,15 @@ void
 GameView::showLoseLevel() {
     my_window->Clear();
     my_window->Draw( *my_backgroundSprite );
+    my_titleString->SetSize(40);
+    my_titleString->SetColor(Color(0,0,0));
+    my_titleString->SetText( my_messages[my_language][looselevel] );
+    my_titleString->SetPosition(  ( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) ), WINDOWHEIGHT / 2 );
+    my_window->Draw(*my_titleString);
+    my_model->getLevel()->resetLose();
+    my_window->Display(); //Provisoirement
     Sleep(5);
+    my_model->getLevel()->resetTime();
 }
 void
 GameView::showScore() {
@@ -298,13 +327,20 @@ GameView::treatGame() {
                     }
                 }
                     break;
+                case Event::MouseButtonPressed :
+                    cout << " Souris case : " << convertYPixel(event.MouseButton.Y) << " " << convertXPixel(event.MouseButton.X) <<  " "  << endl;
+                    break;
                     
                 default :
                     break;
-                }
+            }
         }
-        showGrid();
-        showScore();
+        if ( my_model->getLevel()->lose() ) {
+            showLoseLevel();
+        } else {
+            showGrid();
+            showScore();
+        }
         // Affichage du contenu de la fenêtre à l'écran
         my_window->Display();
     }

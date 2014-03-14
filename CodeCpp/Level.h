@@ -100,6 +100,9 @@ class Level {
          */
         void lostLevel();
     
+        void resetWin();
+        void resetLose();
+    
         /*!
          *  \brief Connaître l'objectif en point du Level
          *

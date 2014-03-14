@@ -12,6 +12,7 @@
 #include <cstdlib>
 #include <string>
 #include "Constantes.h"
+#include <cmath>
 
 using namespace std;
 
@@ -39,4 +40,12 @@ int convertIndiceXToPixel( int i ) {
 
 int convertIndiceYToPixel ( int j ) {
     return CASEHEIGHT * j + MARGINTOP + PADDINGBOTTOM * j ;
+}
+
+int convertXPixel( int xpixel ) {
+    return  ceil( ( xpixel - MARGINLEFT ) / ( CASEWITDH  + PADDINGRIGHT ) );
+}
+
+int convertYPixel( int ypixel ) {
+    return  ceil( ( ypixel - MARGINTOP ) / ( CASEHEIGHT  + PADDINGBOTTOM ) );
 }
