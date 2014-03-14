@@ -21,7 +21,7 @@ using namespace sf;
      my_window = new RenderWindow( VideoMode(WINDOWWITDH, WINDOWHEIGHT, BPP), "PuruPuruDigger", sf::Style::Close  );
      my_window->SetFramerateLimit(60);
  
-     my_language = deutsch;
+     my_language = francais;
      //La font pour les scores
      my_fontScore = new Font();
      my_fontTitle = new Font();
@@ -117,84 +117,101 @@ GameView::showGrid() {
         }
     }
 }
-
+void
+GameView::showLoseLevel() {
+    my_window->Clear();
+    my_window->Draw( *my_backgroundSprite );
+    Sleep(5);
+}
 void
 GameView::showScore() {
-    my_scoreString->SetSize(20);
-    my_scoreString->SetColor(Color(251,210,98));
-    my_scoreString->SetPosition(20, 15);
+    my_scoreString->SetSize(40);
+    my_scoreString->SetStyle(String::Underlined | String::Bold | String::Italic );
+    my_scoreString->SetColor(Color(50,50,150));
+    my_scoreString->SetPosition(100, 80);
     my_scoreString->SetText(  my_messages[my_language][score] + " : " );
     my_window->Draw( *my_scoreString );
     
     //Level et son num
+    my_scoreString->SetColor(Color(251,210,98));
+    my_scoreString->SetSize(30);
+    my_scoreString->SetStyle(String::Regular);
     my_scoreString->SetText(  my_messages[my_language][level] );
-    my_scoreString->SetPosition( 20, 35 );
+    my_scoreString->SetPosition( 20, 140 );
     my_window->Draw( *my_scoreString );
     
-    my_scoreString->SetPosition( my_scoreString->GetRect().GetWidth() + 20, 35 );
+    my_scoreString->SetColor(Color(251,100,100));
+    my_scoreString->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 140 );
     my_scoreString->SetText( intToString(my_model->getScore()->getCurrentStep() ) );
     my_window->Draw( *my_scoreString);
     
     //Score Total
+    my_scoreString->SetColor(Color(251,210,98));
     my_scoreString->SetText(  my_messages[my_language][global] );
-    my_scoreString->SetPosition( 20, 50 );
+    my_scoreString->SetPosition( 20, 180 );
     my_window->Draw( *my_scoreString );
     
-    my_scoreString->SetPosition( my_scoreString->GetRect().GetWidth() + 20, 50 );
+    my_scoreString->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 180 );
     my_scoreString->SetText( intToString(my_model->getScore()->getGlobale() ) );
     my_window->Draw( *my_scoreString);
     
     //Score en cours
+    my_scoreString->SetColor(Color(251,210,98));
     my_scoreString->SetText(  my_messages[my_language][current] );
-    my_scoreString->SetPosition( 20, 65 );
+    my_scoreString->SetPosition( 20, 220 );
     my_window->Draw( *my_scoreString );
     
-    my_scoreString->SetPosition( my_scoreString->GetRect().GetWidth() + 20, 65 );
+    my_scoreString->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 220 );
     my_scoreString->SetText( intToString(my_model->getScore()->getCurrent() ) );
     my_window->Draw( *my_scoreString);
     
     //Objectif
+    my_scoreString->SetColor(Color(251,210,98));
     my_scoreString->SetText(  my_messages[my_language][goal] );
-    my_scoreString->SetPosition( 20, 80 );
+    my_scoreString->SetPosition( 20, 260 );
     my_window->Draw( *my_scoreString );
     
-    my_scoreString->SetPosition( my_scoreString->GetRect().GetWidth() + 20, 80 );
+    my_scoreString->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 260 );
     my_scoreString->SetText( intToString( my_model->getLevel()->getGoal() ) );
     my_window->Draw( *my_scoreString);
     
     //En cours
+    my_scoreString->SetColor(Color(251,210,98));
     my_scoreString->SetText(  my_messages[my_language][step] );
-    my_scoreString->SetPosition( 20, 95 );
+    my_scoreString->SetPosition( 20, 300 );
     my_window->Draw( *my_scoreString );
     
-    my_scoreString->SetPosition( my_scoreString->GetRect().GetWidth() + 20, 95 );
+    my_scoreString->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 300 );
     my_scoreString->SetText( intToString( my_model->getLevel()->getCurrentMove() ) );
     my_window->Draw( *my_scoreString);
     
     //La vie
+    my_scoreString->SetColor(Color(251,210,98));
     my_scoreString->SetText(  my_messages[my_language][life] );
-    my_scoreString->SetPosition( 20, 110 );
+    my_scoreString->SetPosition( 20, 340 );
     my_window->Draw( *my_scoreString );
     
-    my_scoreString->SetPosition( my_scoreString->GetRect().GetWidth() + 20, 110 );
+    my_scoreString->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 340 );
     my_scoreString->SetText( intToString( my_model->getLevel()->getDigger()->getLife() ) );
     my_window->Draw( *my_scoreString);
     
     //Le temps
+    my_scoreString->SetColor(Color(251,210,98));
     my_scoreString->SetText(  my_messages[my_language][ltime] );
-    my_scoreString->SetPosition( 20, 125 );
+    my_scoreString->SetPosition( 20, 380 );
     my_window->Draw( *my_scoreString );
     
-    my_scoreString->SetPosition( my_scoreString->GetRect().GetWidth() + 20, 125 );
+    my_scoreString->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 380 );
     my_scoreString->SetText( intToString( my_model->getLevel()->leftTime() ) );
     my_window->Draw( *my_scoreString);
     
     //La position
+    my_scoreString->SetColor(Color(251,210,98));
     my_scoreString->SetText(  my_messages[my_language][position] );
-    my_scoreString->SetPosition( 20, 140 );
+    my_scoreString->SetPosition( 20, 420 );
     my_window->Draw( *my_scoreString );
     
-    my_scoreString->SetPosition( my_scoreString->GetRect().GetWidth() + 20, 140 );
+    my_scoreString->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 420 );
     my_scoreString->SetText( "[ " + intToString( my_model->getLevel()->getDigger()->getX() ) + " ] [ " +  intToString( my_model->getLevel()->getDigger()->getY() )  + " ] " );
     my_window->Draw( *my_scoreString);
     
