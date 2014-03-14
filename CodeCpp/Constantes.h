@@ -30,19 +30,19 @@ const int CYAN = 36;
 const int WHITE = 37;
 
 //Relatif à tout ce qui est affichage
-const int WINDOWWITDH = 1000;
-const int WINDOWHEIGHT = 1000;
+const int WINDOWWITDH = 1128;
+const int WINDOWHEIGHT = 828;
 const int BPP = 32;
 
 //Pour la grille
-const int MARGINLEFT =;
-const int MARGINTOP =;
-const int PADDINGRIGHT =;
-const int PADDINGBOTTOM =;
+const int MARGINLEFT = 400 ;
+const int MARGINTOP = 198;
+const int PADDINGRIGHT = 3;
+const int PADDINGBOTTOM = 3;
 
 
-const int CASEWITDH =;
-const int CASEHEIGHT =;
+const int CASEWITDH = 30;
+const int CASEHEIGHT = 30;
 
 //Pour nos feuilles de sprite ANANAS
 const int SPRITECASEHEIGHT = 1024 ;

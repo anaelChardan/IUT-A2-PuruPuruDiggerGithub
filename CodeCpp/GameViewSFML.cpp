@@ -23,9 +23,9 @@ int convertIndiceYToPixel ( int j ) {
 
 
 //Début de l'écriture des fonctions pour la SFML
- GameView::GameView(int w, int h, int bpp): _w(w), _h(h) {
+ GameView::GameView(): {
      //Le style de la fenêtres
-     my_window = new RenderWindow( VideoMode(w, h, bpp), "PuruPuruDigger", sf::Style::Close );
+     my_window = new RenderWindow( VideoMode(WINDOWWITDH, WINDOWHEIGHT, BPP), "PuruPuruDigger", sf::Style::Close );
  
      //La font pour les scores
      my_fontScore=  new Font();
@@ -54,7 +54,8 @@ int convertIndiceYToPixel ( int j ) {
          RETURN EXIT_SUCCESS;
      } else {
          //On set les sprites de nos images
-         my_backgroundSprite->SetImage( *my_backgroundImage )
+         my_backgroundSprite->SetImage( *my_backgroundImage );
+         my_backgroundSprite->Resize( WINDOWWITDH, WINDOWHEIGHT );
          
          my_diggerSprite->SetImage( *my_caseImage );
          my_diggerSprite->SetSubRect( IntRect( DIGGERSX, 0, DIGGEREX, SPRITECASEHEIGHT ) );
@@ -77,13 +78,19 @@ int convertIndiceYToPixel ( int j ) {
          my_emptySprite->SetSubRect( IntRect( EMPTYSX, 0, EMPTYEX, SPRITECASEHEIGHT ) )
          my_emptySprite->Resize( CASEWITDH, CASEHEIGHT );
          
+         //Les affichages de valeurs seront toujours identiques, du coup on les set direct
          my_valueString->SetFont( *my_fontValue );
+         my_valueString->SetColor(Color(255,255,255) );
+         my_valueString->SetSize(20);
+         
          my_scoreString->SetFont( *my_fontScore );
          my_titleString->SetFont( *my_titleString );
      }
 }
   
-void showGrid() {
+void
+GameView::showGrid() {
+    my_window->Clear();
     for ( int i = 0; i < LIGNE ; i++ ) {
         for ( int j = 0; j < COLONNE; j++ ) {
             if ( *my_model->getLevel()->getGrid()[i][j]->getType() == "Digger" ) {
@@ -117,10 +124,7 @@ void showGrid() {
 void
 GameView::treatGame() {
     while ( my_window->IsOpened ) {
-        Event event;
-        while ( my_window->GetEvent( event ) ) {
-            
-        }
+        showGrid();
         app.Display;
     }
 }
