@@ -48,36 +48,39 @@ int convertIndiceYToPixel ( int j ) {
      my_BombSprite = new Sprite();
      my_backgroundSprite = new Sprite();
  
-     //On charge les fontes
-     my_fontScore->LoadFromFile( "Font/scoreFont.ttf" );
-     my_fontTitle->LoadFromFile( "Font/titleFont.ttf" );
-     my_fontValue->LoadFromFile( "Font/valueFont.ttf" );
- 
-     //Si les deux images n'ont pas encore réussies à charger
-     if (!my_backgroundImage->LoadFromFile("Image/background.png") || !my_caseImage->LoadFromFile("Image/case.png") {
-        cout << "Error when loading image" << endl;
+     //Si les deux images ou les sprites n'ont pas encore réussies à charger
+     if (!my_backgroundImage->LoadFromFile("Image/background.png") || !my_caseImage->LoadFromFile("Image/case.png" || !my_fontScore->LoadFromFile( "Font/scoreFont.ttf" ) || my_fontTitle->LoadFromFile( "Font/titleFont.ttf" ) || my_fontValue->LoadFromFile( "Font/valueFont.ttf" ) ) {
+        cout << "Error when loading image or font" << endl;
          RETURN EXIT_SUCCESS;
      } else {
          //On set les sprites de nos images
-         my_diggerSprite->SetImage( my_caseImage );
-         my_valueSprite->SetImage( my_caseImage );
-         my_goldSprite->SetImage( my_caseImage );
-         my_bombSprite->SetImage( my_caseImage );
-         my_emptySprite->SetImage( my_caseImage )
-     }
- 
-    //On set les font pour pouvoir afficher plus facilement ensuite
-    my_valueString->SetFont( *my_fontValue );
-    my_scoreString->SetFont( *my_fontScore );
-    my_titleString->SetFont( *my_titleString );
+         my_backgroundSprite->SetImage( *my_backgroundImage )
          
-    //On set les rectangles de lecture de chacune de nos cases !
-    my_diggerSprite->SetSubRect( IntRect( DIGGERSX,0,DIGGEREX,SPRITECASEHEIGHT ) );
-    my_valueSprite->SetSubRect( IntRect(VALUESX, 0, VALUEEX, SPRITECASEHEIGHT ) );
-    my_goldSprite->SetSubRect( IntRect(GOLDSX, 0, GOLDEX, SPRITECASEHEIGHT ) );
-    my_emptySprite->SetSubRect( IntRect( EMPTYSX, 0, EMPTYEX, SPRITECASEHEIGHT ) )
-
-                            
+         my_diggerSprite->SetImage( *my_caseImage );
+         my_diggerSprite->SetSubRect( IntRect( DIGGERSX, 0, DIGGEREX, SPRITECASEHEIGHT ) );
+         my_diggerSprite->Resize( CASEWITDH, CASEHEIGHT );
+         
+         my_valueSprite->SetImage( *my_caseImage );
+         my_valueSprite->SetSubRect( IntRect(VALUESX, 0, VALUEEX, SPRITECASEHEIGHT ) );
+         my_valueSprite->Resize( CASEWITDH, CASEHEIGHT );
+         
+         
+         my_goldSprite->SetImage( *my_caseImage );
+         my_goldSprite->SetSubRect( IntRect(GOLDSX, 0, GOLDEX, SPRITECASEHEIGHT ) );
+         my_goldSprite->Resize( CASEWITDH, CASEHEIGHT );
+         
+         my_bombSprite->SetImage( *my_caseImage );
+         my_bombSprite->SetSubRect( IntRect( BOMBSX, 0, BOMBEX, SPRITECASEHEIGHT ) )
+         my_bombSprite->Resize( CASEWITDH, CASEHEIGHT );
+         
+         my_emptySprite->SetImage( *my_caseImage );
+         my_emptySprite->SetSubRect( IntRect( EMPTYSX, 0, EMPTYEX, SPRITECASEHEIGHT ) )
+         my_emptySprite->Resize( CASEWITDH, CASEHEIGHT );
+         
+         my_valueString->SetFont( *my_fontValue );
+         my_scoreString->SetFont( *my_fontScore );
+         my_titleString->SetFont( *my_titleString );
+     }
 }
   
 void showGrid() {

@@ -39,21 +39,23 @@ const int MARGINLEFT =;
 const int MARGINTOP =;
 const int PADDINGRIGHT =;
 const int PADDINGBOTTOM =;
+
+
 const int CASEWITDH =;
 const int CASEHEIGHT =;
 
-//Pour nos feuilles de sprite
-const int SPRITECASEHEIGHT;
-const int DIGGERSX; //Début de la position en X
-const int DIGGEREX; //Début de la position en Y
-const int BOMBSX;
-const int BOMBEX;
-const int GOLDSX;
-const int GOLDEX;
-const int EMPTYSX;
-const int EMPTYEX;
-const int VALUESX;
-const int VALUEEX;
+//Pour nos feuilles de sprite ANANAS
+const int SPRITECASEHEIGHT = 1024 ;
+const int DIGGERSX = 2048 ; //Début de la position en X
+const int DIGGEREX = 3072 ; //Fin de la position en X
+const int BOMBSX = 5110 ;
+const int BOMBEX = 4096 ;
+const int GOLDSX = 3072 ;
+const int GOLDEX = 4096 ;
+const int EMPTYSX = 0;
+const int EMPTYEX = 1025 ;
+const int VALUESX = 1025 ;
+const int VALUEEX = 2048 ;
 
 
 //Relatif à notre fichier de meilleurs scores
