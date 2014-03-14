@@ -10,6 +10,7 @@
 #include <iostream>
 #include "GameModel.h"
 #include "GameViewSFML.h"
+#include <cstdlib>
 
 using namespace std;
 
@@ -17,6 +18,8 @@ using namespace std;
 
 int main(int argc, const char * argv[])
 {
+    std::srand ( unsigned ( std::time(0) ) );
+    
     GameModel* model = new GameModel;
     GameView* view = new GameView;
     
