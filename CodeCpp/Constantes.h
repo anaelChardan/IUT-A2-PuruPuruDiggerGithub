@@ -35,12 +35,12 @@ const int WINDOWHEIGHT = 1000;
 const int BPP = 32;
 
 //Pour la grille
-const int MARGINLEFT = 500;
-const int MARGINTOP = 500;
-const int PADDINGRIGHT = 3;
-const int PADDINGBOTTOM = 3;
-const int CASEWITDH = 25;
-const int CASEHEIGHT = 25;
+const int MARGINLEFT =;
+const int MARGINTOP =;
+const int PADDINGRIGHT =;
+const int PADDINGBOTTOM =;
+const int CASEWITDH =;
+const int CASEHEIGHT =;
 
 //Pour nos feuilles de sprite
 const int SPRITECASEHEIGHT;
