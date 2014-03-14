@@ -67,7 +67,8 @@ class GameView {
     /*!
      *  \brief Affichage de la grille
      */
-    void showGrid() const;
+    void showGrid();
+    void showCGrid();
     
     /*!
      *  \brief Affichage des instructions de déplacement
@@ -88,6 +89,7 @@ class GameView {
     
 public:
     
+    GameView();
     /*!
      *  \brief Injection du modèle à la vue
      *

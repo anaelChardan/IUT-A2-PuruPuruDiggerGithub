@@ -18,7 +18,7 @@ using namespace std;
 int main(int argc, const char * argv[])
 {
     GameModel* model = new GameModel;
-    GameView * view = new GameView;
+    GameView* view = new GameView;
     
     //Injection de dépendance
     view->setModel(model);

@@ -10,6 +10,9 @@
 		031D88D818BE5B2B0001686A /* GameModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031D88D618BE5B2B0001686A /* GameModel.cpp */; };
 		031D88DB18BE5B670001686A /* GameView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031D88D918BE5B670001686A /* GameView.cpp */; };
 		031E007818B52B360045013D /* Bomb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031E007618B52B360045013D /* Bomb.cpp */; };
+		03229D1B18D35E8A00027190 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03229D1918D35E8A00027190 /* Utils.cpp */; };
+		03229D1C18D35E8A00027190 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03229D1918D35E8A00027190 /* Utils.cpp */; };
+		03229D1D18D35E8A00027190 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03229D1918D35E8A00027190 /* Utils.cpp */; };
 		033D7D8518C8C6C400BA0091 /* LanguageMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 033D7D8318C8C6C400BA0091 /* LanguageMessage.cpp */; };
 		033F710B18D2213A0064FAF5 /* valueFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 033F710A18D2213A0064FAF5 /* valueFont.ttf */; };
 		0371150518D1889000EE9282 /* scoreFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0371150318D1889000EE9282 /* scoreFont.ttf */; };
@@ -67,6 +70,9 @@
 		03D783B218D097E100A1B8AE /* SFML.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9367280318B35E81009873DE /* SFML.framework */; };
 		03D783B918D09DCD00A1B8AE /* GameViewSFML.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D783B718D09DCD00A1B8AE /* GameViewSFML.cpp */; };
 		03D783BE18D0A07800A1B8AE /* mainSFML.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D783BC18D0A07800A1B8AE /* mainSFML.cpp */; };
+		03E6822618D300BA004E125C /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 03E6822418D300BA004E125C /* background.png */; };
+		03E6822718D300BA004E125C /* case.png in Resources */ = {isa = PBXBuildFile; fileRef = 03E6822518D300BA004E125C /* case.png */; };
+		03E6822918D306F9004E125C /* wallpapper.png in Resources */ = {isa = PBXBuildFile; fileRef = 03E6822818D306F9004E125C /* wallpapper.png */; };
 		03ED314A18B385BA00CF8AA1 /* CellBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED313D18B385BA00CF8AA1 /* CellBase.cpp */; };
 		03ED314B18B385BA00CF8AA1 /* Digger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314018B385BA00CF8AA1 /* Digger.cpp */; };
 		03ED314E18B385BA00CF8AA1 /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314618B385BA00CF8AA1 /* Level.cpp */; };
@@ -127,6 +133,8 @@
 		031D88DA18BE5B670001686A /* GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameView.h; sourceTree = SOURCE_ROOT; };
 		031E007618B52B360045013D /* Bomb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bomb.cpp; sourceTree = SOURCE_ROOT; };
 		031E007718B52B360045013D /* Bomb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bomb.h; sourceTree = SOURCE_ROOT; };
+		03229D1918D35E8A00027190 /* Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = SOURCE_ROOT; };
+		03229D1A18D35E8A00027190 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = SOURCE_ROOT; };
 		0328235818C5FBAF006F43CC /* IntDecFunctor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntDecFunctor.h; sourceTree = SOURCE_ROOT; };
 		033D7D8318C8C6C400BA0091 /* LanguageMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LanguageMessage.cpp; sourceTree = SOURCE_ROOT; };
 		033D7D8418C8C6C400BA0091 /* LanguageMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageMessage.h; sourceTree = SOURCE_ROOT; };
@@ -147,6 +155,9 @@
 		03D783B718D09DCD00A1B8AE /* GameViewSFML.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameViewSFML.cpp; sourceTree = SOURCE_ROOT; };
 		03D783B818D09DCD00A1B8AE /* GameViewSFML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewSFML.h; sourceTree = SOURCE_ROOT; };
 		03D783BC18D0A07800A1B8AE /* mainSFML.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mainSFML.cpp; sourceTree = SOURCE_ROOT; };
+		03E6822418D300BA004E125C /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		03E6822518D300BA004E125C /* case.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = case.png; sourceTree = "<group>"; };
+		03E6822818D306F9004E125C /* wallpapper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wallpapper.png; sourceTree = "<group>"; };
 		03ED313D18B385BA00CF8AA1 /* CellBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellBase.cpp; sourceTree = SOURCE_ROOT; };
 		03ED313E18B385BA00CF8AA1 /* CellBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellBase.h; sourceTree = SOURCE_ROOT; };
 		03ED313F18B385BA00CF8AA1 /* Constantes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constantes.h; sourceTree = SOURCE_ROOT; };
@@ -214,6 +225,16 @@
 			path = UnitTest;
 			sourceTree = "<group>";
 		};
+		03E6822318D300BA004E125C /* Pictures */ = {
+			isa = PBXGroup;
+			children = (
+				03E6822818D306F9004E125C /* wallpapper.png */,
+				03E6822418D300BA004E125C /* background.png */,
+				03E6822518D300BA004E125C /* case.png */,
+			);
+			path = Pictures;
+			sourceTree = SOURCE_ROOT;
+		};
 		936727AC18B33A9C009873DE = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +271,7 @@
 		936727BE18B33A9C009873DE /* PuruPuruDigger */ = {
 			isa = PBXGroup;
 			children = (
+				03E6822318D300BA004E125C /* Pictures */,
 				0371150218D1889000EE9282 /* Font */,
 				03A0EFBF18C5D0B900F57E1A /* bestScores.txt */,
 				03ED313F18B385BA00CF8AA1 /* Constantes.h */,
@@ -280,6 +302,8 @@
 				03D783B718D09DCD00A1B8AE /* GameViewSFML.cpp */,
 				03D783B818D09DCD00A1B8AE /* GameViewSFML.h */,
 				03D783BC18D0A07800A1B8AE /* mainSFML.cpp */,
+				03229D1918D35E8A00027190 /* Utils.cpp */,
+				03229D1A18D35E8A00027190 /* Utils.h */,
 			);
 			path = PuruPuruDigger;
 			sourceTree = "<group>";
@@ -375,9 +399,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0371150518D1889000EE9282 /* scoreFont.ttf in Resources */,
+				03E6822618D300BA004E125C /* background.png in Resources */,
 				033F710B18D2213A0064FAF5 /* valueFont.ttf in Resources */,
+				03E6822918D306F9004E125C /* wallpapper.png in Resources */,
 				03D783AC18D097E100A1B8AE /* bestScores.txt in Resources */,
 				0371150618D1889000EE9282 /* titleFont.ttf in Resources */,
+				03E6822718D300BA004E125C /* case.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +432,7 @@
 				0382DB4618C9A36700E93483 /* Level.h in Sources */,
 				0382DB4718C9A36700E93483 /* Score.cpp in Sources */,
 				0382DB4818C9A36700E93483 /* Score.h in Sources */,
+				03229D1C18D35E8A00027190 /* Utils.cpp in Sources */,
 				0382DB4918C9A36700E93483 /* CellBase.cpp in Sources */,
 				0382DB4A18C9A36700E93483 /* CellBase.h in Sources */,
 				0382DB4B18C9A36700E93483 /* Bomb.cpp in Sources */,
@@ -437,6 +465,7 @@
 				03D7839E18D097E100A1B8AE /* CellBase.cpp in Sources */,
 				03D783A018D097E100A1B8AE /* EmptyCell.cpp in Sources */,
 				03D783B918D09DCD00A1B8AE /* GameViewSFML.cpp in Sources */,
+				03229D1D18D35E8A00027190 /* Utils.cpp in Sources */,
 				03D783A118D097E100A1B8AE /* Score.cpp in Sources */,
 				03D783A218D097E100A1B8AE /* GoldCell.cpp in Sources */,
 				03D783A318D097E100A1B8AE /* GameModel.cpp in Sources */,
@@ -456,6 +485,7 @@
 				936727F818B33B91009873DE /* main.cpp in Sources */,
 				0377340E18B9FFBC00D5AFA0 /* EmptyCell.cpp in Sources */,
 				03ED314F18B385BA00CF8AA1 /* Score.cpp in Sources */,
+				03229D1B18D35E8A00027190 /* Utils.cpp in Sources */,
 				0377341118B9FFCA00D5AFA0 /* GoldCell.cpp in Sources */,
 				031D88D818BE5B2B0001686A /* GameModel.cpp in Sources */,
 				031D88DB18BE5B670001686A /* GameView.cpp in Sources */,

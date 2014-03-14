@@ -172,18 +172,18 @@ Level::initGrid() {
     
     //Remplissage du tableau avec des bombe
     for (  int i = 1 ; i <= nbrB; i++ ) {
-        my_grid[0][i] = new Bomb;
+        my_grid[0][i] = new Bomb();
     }
     
     //On place les trésors en fonction du nombre de bomb
     for (  int i = nbrB +1 ; i < COLONNE ; i++ ) {
-        my_grid[0][i] = new GoldCell;
+        my_grid[0][i] = new GoldCell();
     }
     
     //On rempli tout le reste avec des numéros
     for (  int i = 1; i < LIGNE; i++ ) {
         for (  int j = 0; j < COLONNE; j++ ) {
-            my_grid[i][j] = new ValueCell;
+            my_grid[i][j] = new ValueCell();
         }
     }
     
