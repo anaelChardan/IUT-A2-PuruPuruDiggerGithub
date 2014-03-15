@@ -38,6 +38,7 @@ class GameView {
     sf::Image* my_backgroundImage;
     sf::Image* my_caseImage;
     sf::Image* my_buttonImage;
+    sf::Image* my_languageImage;
     
     sf::Sprite* my_diggerSprite;
     sf::Sprite* my_valueSprite;
@@ -45,19 +46,26 @@ class GameView {
     sf::Sprite* my_emptySprite;
     sf::Sprite* my_bombSprite;
     sf::Sprite* my_backgroundSprite;
+    sf::Sprite* my_languageSprite;
     sf::Sprite* my_playButtonSprite;
+    sf::Sprite* my_quitButtonSprite;
+    sf::Sprite* my_optionButtonSprite;
+    sf::Sprite* my_bestScoreButtonSprite;
     
     
     
     /*!
      *  \brief Affichage Menu principal
      */
-    void showPresentation() const;
+    void showPresentation();
+    void showButton();
     
     /*!
      *  \brief Affichage choix des langes
      */
-    void showLanguage() const ;
+    void showLanguage();
+    void showSpriteChoice();
+    void showOption();
     
     /*!
      *  \brief Affichage des scores

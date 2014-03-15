@@ -32,6 +32,8 @@ using namespace sf;
      my_titleString = new String();
  
      my_backgroundImage = new Image();
+     my_languageImage = new Image();
+     my_languageImage->CreateMaskFromColor(Color(234,20,140));
  
      my_caseImage = new Image();
      
@@ -52,6 +54,8 @@ using namespace sf;
          //On set les sprites de nos images
          my_backgroundSprite->SetImage( *my_backgroundImage );
          my_backgroundSprite->Resize( WINDOWWITDH, WINDOWHEIGHT );
+         
+         //my_languageSprite->SetImage(*my_languageImage);
          
          my_diggerSprite->SetImage( *my_caseImage );
          my_diggerSprite->SetSubRect( IntRect( DIGGERSX, 6, DIGGEREX, SPRITECASEHEIGHT ) );
@@ -104,6 +108,38 @@ GameView::~GameView() {
     
     delete my_caseImage;
 }
+
+void
+GameView::showPresentation() {
+    my_window->Clear();
+    my_window->Draw(*my_backgroundSprite);
+    showButton();
+}
+
+void
+GameView::showButton() {
+    
+}
+
+
+void
+GameView::showOption() {
+    my_window->Clear();
+    showSpriteChoice();
+    showLanguage();
+}
+
+void
+GameView::showLanguage() {
+    my_languageSprite->SetPosition( ( ( WINDOWWITDH / 2 ) - ( my_languageSprite->GetSize().x / 2)  ) , 300 );
+    my_window->Draw( *my_languageSprite );
+}
+
+void
+GameView::showSpriteChoice() {
+}
+
+
 
 void
 GameView::showGrid() {
@@ -293,7 +329,11 @@ void GameView::setModel(GameModel *model) {
 void
 GameView::treatGame() {
 
-    bool isPlaying = false;
+    //bool isInPresentation = true;
+    //bool isPlaying = false;
+    //bool isChoosingOption = false;
+    //bool isInBestScore = false;
+    
     // Boucle principale
     while (my_window->IsOpened())
     {
@@ -352,6 +392,7 @@ GameView::treatGame() {
         }
         // Affichage du contenu de la fenêtre à l'écran
         my_window->Display();
+        
         //Pour gérer l'affichage durant quelque seconde
         if ( my_model->getLevel()->lose() || my_model->getLevel()->win() ) {
             my_model->getLevel()->resetLose();
