@@ -65,6 +65,7 @@ class GameView {
     void showScore()  ;
     
     void showLoseLevel();
+    void showWinLevel();
     
     /*!
      *  \brief Affichage de la grille

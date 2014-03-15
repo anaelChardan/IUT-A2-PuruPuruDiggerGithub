@@ -147,11 +147,19 @@ GameView::showLoseLevel() {
     my_titleString->SetText( my_messages[my_language][looselevel] );
     my_titleString->SetPosition(  ( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) ), WINDOWHEIGHT / 2 );
     my_window->Draw(*my_titleString);
-    my_model->getLevel()->resetLose();
-    my_window->Display(); //Provisoirement
-    Sleep(5);
-    my_model->getLevel()->resetTime();
 }
+
+void
+GameView::showWinLevel() {
+    my_window->Clear();
+    my_window->Draw( *my_backgroundSprite );
+    my_titleString->SetSize(40);
+    my_titleString->SetColor(Color(0,0,0));
+    my_titleString->SetText( my_messages[my_language][winlevel] );
+    my_titleString->SetPosition(  ( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) ), WINDOWHEIGHT / 2 );
+    my_window->Draw(*my_titleString);
+}
+
 void
 GameView::showScore() {
     my_scoreString->SetSize(40);
@@ -285,9 +293,7 @@ void GameView::setModel(GameModel *model) {
 void
 GameView::treatGame() {
 
-    cout << my_model->getLevel()->getDigger()->getX() << endl;
-    showCGrid();
-
+    bool isPlaying = false;
     // Boucle principale
     while (my_window->IsOpened())
     {
@@ -335,13 +341,23 @@ GameView::treatGame() {
                     break;
             }
         }
+        
         if ( my_model->getLevel()->lose() ) {
             showLoseLevel();
+        } else if ( my_model->getLevel()->win()  ) {
+            showWinLevel();
         } else {
             showGrid();
             showScore();
         }
         // Affichage du contenu de la fenêtre à l'écran
         my_window->Display();
+        //Pour gérer l'affichage durant quelque seconde
+        if ( my_model->getLevel()->lose() || my_model->getLevel()->win() ) {
+            my_model->getLevel()->resetLose();
+            my_model->getLevel()->resetWin();
+            Sleep(3);
+            my_model->getLevel()->resetTime();
+        }
     }
 }
