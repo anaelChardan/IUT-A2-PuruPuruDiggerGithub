@@ -210,28 +210,28 @@ Level::winLevel() {
 
 void
 Level::reset() {
-    //On efface la nouvelle place du digger sauf si elle est déjà 0 0
-    if ( my_digger->getX() != 0 && my_digger->getY() != 0 ) {
-        delete my_grid[0][0];
-        
-        //On la remplace par le digger
-        my_grid[0][0] = my_digger;
-        
-        //On remplace notre case du digger par une case vide
-        my_grid[ my_digger->getX() ][ my_digger->getY() ] = new EmptyCell( my_digger->getX(), my_digger->getY() );
-    }
-
-    //On delete toutes la premmière ligne sauf le digger
-    for (  int i = 1; i < COLONNE; i++ ) {
-        delete my_grid[0][i];
+    CellBase* temp = new Digger();
+    
+    while ( temp->getLife() != my_digger->getLife() ) {
+        temp->lostLife();
     }
     
-    //On delete les autres lignes
-    for (  int i = 1; i < LIGNE; i++ ) {
+    
+    //On delete tout !!
+    for (  int i = 0; i < LIGNE; i++ ) {
         for (  int j = 0; j < COLONNE; j++ ) {
             delete my_grid[i][j];
         }
     }
+    
+    my_digger = new Digger();
+    
+    while ( temp->getLife() != my_digger->getLife() ) {
+        my_digger->lostLife();
+    }
+    
+    my_grid[0][0] = my_digger;
+    delete temp;
     resetTime();
     initGrid();
     
