@@ -45,6 +45,7 @@ const int CASEWITDH = 30;
 const int CASEHEIGHT = 30;
 
 //Pour nos feuilles de sprite ANANAS
+const int SPRITECASEBEGIN = 6;
 const int SPRITECASEHEIGHT = 56 ;
 const int DIGGERSX = 0 ; //Début de la position en X
 const int DIGGEREX = 50 ; //Fin de la position en X

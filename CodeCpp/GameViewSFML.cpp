@@ -19,27 +19,28 @@ using namespace sf;
  GameView::GameView() {
      //Le style de la fenêtres
      my_window = new RenderWindow( VideoMode(WINDOWWITDH, WINDOWHEIGHT, BPP), "PuruPuruDigger", Style::Close);
+     
+     //On bloque le rafraichissement à 60 par seconde
      my_window->SetFramerateLimit(60);
  
-     my_language = deutsch;
+     my_language = francais;
      
      //La font pour les scores
      my_fontScore = new Font();
      my_fontTitle = new Font();
      my_fontValue = new Font();
+     my_fontButton = new Font();
      
      my_valueString = new String();
      my_scoreString = new String();
+     my_titleScoreString = new String();
+     my_scoreNum = new String();
      my_titleString = new String();
+     my_buttonString = new String();
  
      my_backgroundImage = new Image();
-     
      my_languageImage = new Image();
-     my_languageImage->CreateMaskFromColor(Color(234,20,140));
- 
      my_caseImage = new Image();
-     
-     my_caseImage->CreateMaskFromColor( Color(196, 115, 116 ) );
      
      //On set les sprites
      my_diggerSprite = new Sprite();
@@ -49,50 +50,60 @@ using namespace sf;
      my_backgroundSprite = new Sprite();
      my_emptySprite = new Sprite();
  
-     //Si les deux images ou les sprites n'ont pas encore réussies à charger
-     if (!my_backgroundImage->LoadFromFile("wallpapper.png") || !my_caseImage->LoadFromFile("case.png") || !my_fontScore->LoadFromFile("scoreFont.ttf") || !my_fontTitle->LoadFromFile("titleFont.ttf") || !my_fontValue->LoadFromFile("valueFont.ttf") ) {
-         cout << "Error when loading image or font" << endl;
-     } else {
-         //On set les sprites de nos images
-         my_backgroundSprite->SetImage( *my_backgroundImage );
-         my_backgroundSprite->Resize( WINDOWWITDH, WINDOWHEIGHT );
-         
-         //Mise en places des sprites case
-         
-         my_diggerSprite->SetImage( *my_caseImage );
-         my_diggerSprite->SetSubRect( IntRect( DIGGERSX, 6, DIGGEREX, SPRITECASEHEIGHT ) );
-         my_diggerSprite->Resize( CASEWITDH, CASEHEIGHT );
-         
-         my_valueSprite->SetImage( *my_caseImage );
-         my_valueSprite->SetSubRect( IntRect(VALUESX, 6, VALUEEX, SPRITECASEHEIGHT ) );
-         my_valueSprite->Resize( CASEWITDH, CASEHEIGHT );
-         
-         
-         my_goldSprite->SetImage( *my_caseImage );
-         my_goldSprite->SetSubRect( IntRect(GOLDSX, 6, GOLDEX, SPRITECASEHEIGHT ) );
-         my_goldSprite->Resize( CASEWITDH, CASEHEIGHT );
-         
-         my_bombSprite->SetImage( *my_caseImage );
-         my_bombSprite->SetSubRect( IntRect( BOMBSX, 6, BOMBEX, SPRITECASEHEIGHT ) );
-         my_bombSprite->Resize( CASEWITDH, CASEHEIGHT );
-         
-         my_emptySprite->SetImage( *my_caseImage );
-         my_emptySprite->SetSubRect( IntRect( EMPTYSX, 6, EMPTYEX, SPRITECASEHEIGHT ) );
-         my_emptySprite->Resize( CASEWITDH, CASEHEIGHT );
-         
-          my_stringToSprite["Digger"] = *my_diggerSprite;
-          my_stringToSprite["EmptyCell"] = *my_emptySprite;
-          my_stringToSprite["GoldCell"] = *my_goldSprite;
-          my_stringToSprite["Bomb"] = *my_bombSprite;
-          my_stringToSprite["ValueCell" ] = *my_valueSprite;
+     setAnanasMode();
+    
+     my_languageImage->CreateMaskFromColor(Color(234,20,140));
+     my_caseImage->CreateMaskFromColor( Color(0, 55, 97) );
+     
+     //On set les sprites de nos images
+     my_backgroundSprite->SetImage( *my_backgroundImage );
+     my_backgroundSprite->Resize( WINDOWWITDH, WINDOWHEIGHT );
+     
+     //Mise en places des sprites case
+     
+     my_diggerSprite->SetImage( *my_caseImage );
+     my_diggerSprite->SetSubRect( IntRect( DIGGERSX, SPRITECASEBEGIN, DIGGEREX, SPRITECASEHEIGHT ) );
+     my_diggerSprite->Resize( CASEWITDH, CASEHEIGHT );
+     
+     my_valueSprite->SetImage( *my_caseImage );
+     my_valueSprite->SetSubRect( IntRect(VALUESX, SPRITECASEBEGIN, VALUEEX, SPRITECASEHEIGHT ) );
+     my_valueSprite->Resize( CASEWITDH, CASEHEIGHT );
+     
+     
+     my_goldSprite->SetImage( *my_caseImage );
+     my_goldSprite->SetSubRect( IntRect(GOLDSX, SPRITECASEBEGIN, GOLDEX, SPRITECASEHEIGHT ) );
+     my_goldSprite->Resize( CASEWITDH, CASEHEIGHT );
+     
+     my_bombSprite->SetImage( *my_caseImage );
+     my_bombSprite->SetSubRect( IntRect( BOMBSX, SPRITECASEBEGIN, BOMBEX, SPRITECASEHEIGHT ) );
+     my_bombSprite->Resize( CASEWITDH, CASEHEIGHT );
+     
+     my_emptySprite->SetImage( *my_caseImage );
+     my_emptySprite->SetSubRect( IntRect( EMPTYSX, SPRITECASEBEGIN, EMPTYEX, SPRITECASEHEIGHT ) );
+     my_emptySprite->Resize( CASEWITDH, CASEHEIGHT );
+     
+     my_stringToSprite["Digger"] = *my_diggerSprite;
+     my_stringToSprite["EmptyCell"] = *my_emptySprite;
+     my_stringToSprite["GoldCell"] = *my_goldSprite;
+     my_stringToSprite["Bomb"] = *my_bombSprite;
+     my_stringToSprite["ValueCell" ] = *my_valueSprite;
           
         /*
           
           my_frenchSprite->setImage( *my_languageImage );
-          my_deutschSprite->setImage( *my_languageImage ):
+          my_frenchSprite->setSubRect( IntRect( FRENCHSX, ..., FRENCHEX, SPRITELANGUAGEHEIGHT );
+         
+          my_deutschSprite->setImage( *my_languageImage );
+          my_frenchSprite->setSubRect( IntRect( FRENCHSX, ..., FRENCHEX, SPRITELANGUAGEHEIGHT );
+         
           my_spanishSprite->setImage( *my_languageImage );
+          my_frenchSprite->setSubRect( IntRect( FRENCHSX, ..., FRENCHEX, SPRITELANGUAGEHEIGHT );
+         
           my_italianoSprite->setImage( *my_languageImage );
+          my_frenchSprite->setSubRect( IntRect( FRENCHSX, ..., FRENCHEX, SPRITELANGUAGEHEIGHT );
+         
           my_englishSprite->setImage( *my_languageImage );
+          my_frenchSprite->setSubRect( IntRect( FRENCHSX, ..., FRENCHEX, SPRITELANGUAGEHEIGHT );
           
           
           */
@@ -100,15 +111,8 @@ using namespace sf;
          
          
         //my_languageSprite->SetImage(*my_languageImage);
-         
-         //Les affichages de valeurs seront toujours identiques, du coup on les set direct
-         my_valueString->SetFont( *my_fontValue );
-         my_valueString->SetColor(Color(255,255,255) );
-         my_valueString->SetSize(20);
-         
-         my_scoreString->SetFont( *my_fontScore );
-         my_titleString->SetFont( *my_fontTitle );
-     }
+     
+
 }
 
 GameView::~GameView() {
@@ -132,6 +136,34 @@ GameView::~GameView() {
     delete my_caseImage;
 }
 
+void GameView::setAnanasMode() {
+    //Si les deux images ou les sprites n'ont pas encore réussies à charger
+    if (!my_backgroundImage->LoadFromFile("wallpapper.png") || !my_caseImage->LoadFromFile("case.png") || !my_fontScore->LoadFromFile("scoreFont.ttf") || !my_fontTitle->LoadFromFile("titleFont.ttf") || !my_fontValue->LoadFromFile("valueFont.ttf") )
+        cout << "Error when loading image or font" << endl;
+    
+    //Les affichages de valeurs seront toujours identiques, du coup on les set direct
+    my_valueString->SetFont( *my_fontValue );
+    my_valueString->SetColor(Color(255,255,255) );
+    my_valueString->SetSize(20);
+    
+    my_titleScoreString->SetFont( *my_fontScore );
+    my_titleScoreString->SetSize(40);
+    my_titleScoreString->SetStyle(String::Underlined | String::Bold | String::Italic );
+    my_titleScoreString->SetColor(Color(50,50,150));
+    
+    my_scoreString->SetFont( *my_fontScore );
+    my_scoreString->SetColor(Color(251,210,98));
+    my_scoreString->SetStyle(String::Underlined);
+    
+    my_scoreNum->SetFont( * my_fontScore );
+    my_scoreNum->SetColor(Color(255,100,100));
+    
+    my_titleScoreString->SetFont( *my_fontScore );
+    my_scoreString->SetSize(30);
+    my_titleString->SetFont( *my_fontTitle );
+    
+}
+
 void
 GameView::showPresentation() {
     my_window->Clear();
@@ -149,16 +181,16 @@ void
 GameView::showOption() {
     my_window->Clear();
     showSpriteChoice();
-    //showLanguage();
+    showLanguage();
 }
 
-/*
+
 void
 GameView::showLanguage() {
 
 }
 
- */
+
 void
 GameView::showSpriteChoice() {
 }
@@ -206,98 +238,90 @@ GameView::showWinLevel() {
 
 void
 GameView::showScore() {
-    my_scoreString->SetSize(40);
-    my_scoreString->SetStyle(String::Underlined | String::Bold | String::Italic );
-    my_scoreString->SetColor(Color(50,50,150));
-    my_scoreString->SetPosition(100, 80);
-    my_scoreString->SetText(  my_messages[my_language][score] + " : " );
-    my_window->Draw( *my_scoreString );
+    //Le titre
+    my_titleScoreString->SetPosition(100, 80);
+    my_titleScoreString->SetText(  my_messages[my_language][score] + " : " );
+    my_window->Draw( *my_titleScoreString );
     
     //Level et son num
-    my_scoreString->SetColor(Color(251,210,98));
-    my_scoreString->SetSize(30);
-    my_scoreString->SetStyle(String::Regular);
     my_scoreString->SetText(  my_messages[my_language][level] );
     my_scoreString->SetPosition( 20, 140 );
     my_window->Draw( *my_scoreString );
     
-    my_scoreString->SetColor(Color(251,100,100));
-    my_scoreString->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 140 );
-    my_scoreString->SetText( intToString(my_model->getScore()->getCurrentStep() ) );
-    my_window->Draw( *my_scoreString);
+    my_scoreNum->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 140 );
+    my_scoreNum->SetText( intToString(my_model->getScore()->getCurrentStep() ) );
+    my_window->Draw( *my_scoreNum);
     
     //Score Total
-    my_scoreString->SetColor(Color(251,210,98));
     my_scoreString->SetText(  my_messages[my_language][global] );
     my_scoreString->SetPosition( 20, 180 );
     my_window->Draw( *my_scoreString );
     
-    my_scoreString->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 180 );
-    my_scoreString->SetText( intToString(my_model->getScore()->getGlobale() ) );
-    my_window->Draw( *my_scoreString);
+    my_scoreNum->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 180 );
+    my_scoreNum->SetText( intToString(my_model->getScore()->getGlobale() ) );
+    my_window->Draw( *my_scoreNum);
     
     //Score en cours
-    my_scoreString->SetColor(Color(251,210,98));
     my_scoreString->SetText(  my_messages[my_language][current] );
     my_scoreString->SetPosition( 20, 220 );
     my_window->Draw( *my_scoreString );
     
-    my_scoreString->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 220 );
-    my_scoreString->SetText( intToString(my_model->getScore()->getCurrent() ) );
-    my_window->Draw( *my_scoreString);
+    my_scoreNum->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 220 );
+    my_scoreNum->SetText( intToString(my_model->getScore()->getCurrent() ) );
+    my_window->Draw( *my_scoreNum);
     
     //Objectif
-    my_scoreString->SetColor(Color(251,210,98));
     my_scoreString->SetText(  my_messages[my_language][goal] );
     my_scoreString->SetPosition( 20, 260 );
     my_window->Draw( *my_scoreString );
     
-    my_scoreString->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 260 );
-    my_scoreString->SetText( intToString( my_model->getLevel()->getGoal() ) );
-    my_window->Draw( *my_scoreString);
+    my_scoreNum->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 260 );
+    my_scoreNum->SetText( intToString( my_model->getLevel()->getGoal() ) );
+    my_window->Draw( *my_scoreNum);
     
     //En cours
-    my_scoreString->SetColor(Color(251,210,98));
     my_scoreString->SetText(  my_messages[my_language][step] );
     my_scoreString->SetPosition( 20, 300 );
     my_window->Draw( *my_scoreString );
     
-    my_scoreString->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 300 );
-    my_scoreString->SetText( intToString( my_model->getLevel()->getCurrentMove() ) );
-    my_window->Draw( *my_scoreString);
+    my_scoreNum->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 300 );
+    my_scoreNum->SetText( intToString( my_model->getLevel()->getCurrentMove() ) );
+    my_window->Draw( *my_scoreNum);
     
     //La vie
-    my_scoreString->SetColor(Color(251,210,98));
     my_scoreString->SetText(  my_messages[my_language][life] );
     my_scoreString->SetPosition( 20, 340 );
     my_window->Draw( *my_scoreString );
     
-    my_scoreString->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 340 );
-    my_scoreString->SetText( intToString( my_model->getLevel()->getDigger()->getLife() ) );
-    my_window->Draw( *my_scoreString);
+    my_scoreNum->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 340 );
+    my_scoreNum->SetText( intToString( my_model->getLevel()->getDigger()->getLife() ) );
+    my_window->Draw( *my_scoreNum);
     
     //Le temps
-    my_scoreString->SetColor(Color(251,210,98));
     my_scoreString->SetText(  my_messages[my_language][ltime] );
     my_scoreString->SetPosition( 20, 380 );
     my_window->Draw( *my_scoreString );
     
-    my_scoreString->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 380 );
-    my_scoreString->SetText( intToString( my_model->getLevel()->leftTime() ) );
-    my_window->Draw( *my_scoreString);
+    my_scoreNum->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 380 );
+    my_scoreNum->SetText( intToString( my_model->getLevel()->leftTime() ) );
+    my_window->Draw( *my_scoreNum);
     
     //La position
-    my_scoreString->SetColor(Color(251,210,98));
     my_scoreString->SetText(  my_messages[my_language][position] );
     my_scoreString->SetPosition( 20, 420 );
     my_window->Draw( *my_scoreString );
     
-    my_scoreString->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 420 );
-    my_scoreString->SetText( "[ " + intToString( my_model->getLevel()->getDigger()->getX() ) + " ] [ " +  intToString( my_model->getLevel()->getDigger()->getY() )  + " ] " );
-    my_window->Draw( *my_scoreString);
+    my_scoreNum->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 420 );
+    my_scoreNum->SetText( "[ " + intToString( my_model->getLevel()->getDigger()->getX() ) + " ] [ " +  intToString( my_model->getLevel()->getDigger()->getY() )  + " ] " );
+    my_window->Draw( *my_scoreNum);
     
 }
 
+void
+GameView::showLevel() {
+    showGrid();
+    showScore();
+}
 
 void
 GameView::showCGrid() {
@@ -341,6 +365,7 @@ GameView::treatGame() {
     //bool isPlaying = false;
     //bool isChoosingOption = false;
     //bool isInBestScore = false;
+    bool isInBreak = false;
     
     // Boucle principale
     while (my_window->IsOpened())
@@ -363,16 +388,20 @@ GameView::treatGame() {
                             my_window->Close();
                             break;
                         case Key::Right :
-                            my_model->orderMovement(6);
+                            if ( !isInBreak )
+                                my_model->orderMovement(6);
                             break;
                         case Key::Up:
-                            my_model->orderMovement(8);
+                            if ( !isInBreak )
+                                my_model->orderMovement(8);
                             break;
                         case Key::Left :
-                            my_model->orderMovement(4);
+                            if ( !isInBreak )
+                                my_model->orderMovement(4);
                             break;
                         case Key::Down:
-                            my_model->orderMovement(2);
+                            if ( !isInBreak )
+                                my_model->orderMovement(2);
                             break;
                         default :
                             break;
@@ -390,11 +419,12 @@ GameView::treatGame() {
         
         if ( my_model->getLevel()->lose() ) {
             showLoseLevel();
+            isInBreak = true;
         } else if ( my_model->getLevel()->win()  ) {
             showWinLevel();
+            isInBreak = true;
         } else {
-            showGrid();
-            showScore();
+            showLevel();
         }
         // Affichage du contenu de la fenêtre à l'écran
         my_window->Display();
@@ -405,6 +435,7 @@ GameView::treatGame() {
             my_model->getLevel()->resetWin();
             Sleep(3);
             my_model->getLevel()->resetTime();
+            isInBreak = false;
         }
     }
 }

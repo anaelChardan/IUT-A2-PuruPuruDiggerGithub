@@ -45,6 +45,9 @@ Level::Level(Score* score) {
     for(  int i = 0; i < LIGNE; i++ ) {
         my_grid[i].resize( COLONNE );
     }
+    
+    my_win = false;
+    my_lose = false;
 
     //On fait pointé notre Digger dessus cette case;
     my_grid[0][0] = my_digger;

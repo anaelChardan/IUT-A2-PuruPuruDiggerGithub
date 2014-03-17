@@ -27,17 +27,22 @@ class GameView {
         GameModel * my_model; /*!<  La modèle de notre vue */
     
         std::map< std::string, sf::Sprite > my_stringToSprite;
-        std::map< Language, sf::Sprite > my_languagetoSprite;
+        std::map< Language, sf::Sprite > my_languageToSprite;
+        std::map< std::string, sf::Sprite > my_spriteToSprite;
     
         sf::RenderWindow* my_window;
     
         sf::Font* my_fontScore;
         sf::Font* my_fontTitle;
         sf::Font* my_fontValue;
+        sf::Font* my_fontButton;
     
         sf::String* my_valueString;
+        sf::String* my_titleScoreString;
         sf::String* my_scoreString;
+        sf::String* my_scoreNum;
         sf::String* my_titleString;
+        sf::String* my_buttonString;
     
         sf::Image* my_backgroundImage;
         sf::Image* my_caseImage;
@@ -69,6 +74,7 @@ class GameView {
      */
     void showPresentation();
     void showButton();
+    void showLanguage();
     
     /*!
      *  \brief Affichage choix des langes
@@ -76,12 +82,14 @@ class GameView {
     //void showLanguage();
     void showSpriteChoice();
     void showOption();
+    void setTeacherMode();
+    void setAnanasMode();
     
     /*!
      *  \brief Affichage des scores
      */
     void showScore()  ;
-    
+    void showLevel();
     void showLoseLevel();
     void showWinLevel();
     
