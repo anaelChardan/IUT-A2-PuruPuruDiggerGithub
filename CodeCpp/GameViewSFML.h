@@ -26,7 +26,7 @@ class GameView {
         LanguageMessage my_messages; /*!<  La bibliothèque de message de notre partie */
         GameModel * my_model; /*!<  La modèle de notre vue */
     
-        std::map< std::string, sf::Sprite > my_stringtoSprite;
+        std::map< std::string, sf::Sprite > my_stringToSprite;
         std::map< Language, sf::Sprite > my_languagetoSprite;
     
         sf::RenderWindow* my_window;

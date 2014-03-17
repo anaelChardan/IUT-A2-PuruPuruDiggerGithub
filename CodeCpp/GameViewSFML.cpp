@@ -21,7 +21,7 @@ using namespace sf;
      my_window = new RenderWindow( VideoMode(WINDOWWITDH, WINDOWHEIGHT, BPP), "PuruPuruDigger", Style::Close);
      my_window->SetFramerateLimit(60);
  
-     my_language = francais;
+     my_language = deutsch;
      
      //La font pour les scores
      my_fontScore = new Font();
@@ -80,12 +80,13 @@ using namespace sf;
          my_emptySprite->SetSubRect( IntRect( EMPTYSX, 6, EMPTYEX, SPRITECASEHEIGHT ) );
          my_emptySprite->Resize( CASEWITDH, CASEHEIGHT );
          
-         /*
-          my_stringToSprite["Digger"] = my_diggerSprite;
-          my_stringToSprite["EmptyCell"] = my_emptySprite;
-          my_stringToSprite["GoldCell"] = my_goldSprite;
-          my_stringToSprite["Bomb"] = my_bombSprite;
-          my_stringToSprite["ValueCell" ] = my_valueSprite;
+          my_stringToSprite["Digger"] = *my_diggerSprite;
+          my_stringToSprite["EmptyCell"] = *my_emptySprite;
+          my_stringToSprite["GoldCell"] = *my_goldSprite;
+          my_stringToSprite["Bomb"] = *my_bombSprite;
+          my_stringToSprite["ValueCell" ] = *my_valueSprite;
+          
+        /*
           
           my_frenchSprite->setImage( *my_languageImage );
           my_deutschSprite->setImage( *my_languageImage ):
@@ -170,28 +171,12 @@ GameView::showGrid() {
     my_window->Draw(*my_backgroundSprite);
     for ( int i = 0; i < LIGNE ; i++ ) {
         for ( int j = 0; j < COLONNE; j++ ) {
-            if ( my_model->getLevel()->getGrid()[i][j]->getType() == "Digger" ) {
-                my_diggerSprite->SetPosition( convertIndiceXToPixel( j ), convertIndiceYToPixel( i ) );
-                my_window->Draw( *my_diggerSprite);
-            } else if ( my_model->getLevel()->getGrid()[i][j]->getType() == "Bomb" ) {
-                my_bombSprite->SetPosition( convertIndiceXToPixel( j ), convertIndiceYToPixel( i ) );
-                my_window->Draw( *my_bombSprite );
-            } else if ( my_model->getLevel()->getGrid()[i][j]->getType() == "EmptyCell") {
-                my_emptySprite->SetPosition( convertIndiceXToPixel( j ), convertIndiceYToPixel( i ) );
-                my_window->Draw( *my_emptySprite );
-            } else if ( my_model->getLevel()->getGrid()[i][j]->getType() == "ValueCell" ) {
-                my_valueSprite->SetPosition( convertIndiceXToPixel( j ), convertIndiceYToPixel( i ) );
-                my_window->Draw( *my_valueSprite );
-               
+            my_stringToSprite[ my_model->getLevel()->getGrid()[i][j]->getType() ].SetPosition( convertIndiceXToPixel( j ), convertIndiceYToPixel( i ) );
+            my_window->Draw( my_stringToSprite[ my_model->getLevel()->getGrid()[i][j]->getType() ] );
+            
+            if ( my_model->getLevel()->getGrid()[i][j]->getType() == "ValueCell" || my_model->getLevel()->getGrid()[i][j]->getType() == "GoldCell") {
                 my_valueString->SetText( intToString( my_model->getLevel()->getGrid()[i][j]->getValue() ) );
                 my_valueString->SetPosition( ( convertIndiceXToPixel( j ) + CASEWITDH / 3 ), ( convertIndiceYToPixel( i ) + CASEHEIGHT / 6 ) );
-               my_window->Draw( *my_valueString );
-            } else if ( my_model->getLevel()->getGrid()[i][j]->getType() == "GoldCell" ) {
-                my_goldSprite->SetPosition( convertIndiceXToPixel( j ), convertIndiceYToPixel( i ) );
-                my_window->Draw( *my_goldSprite );
-                
-                my_valueString->SetText( intToString( my_model->getLevel()->getGrid()[i][j]->getValue() ) );
-                my_valueString->SetPosition( ( convertIndiceXToPixel( j ) + CASEWITDH / 3 ),  ( convertIndiceYToPixel( i ) + CASEHEIGHT / 6 ) );
                 my_window->Draw( *my_valueString );
             }
         }
