@@ -102,7 +102,6 @@ class Bomb : public CellBase
          */
         virtual void lostLife();
     
-        virtual std::string getStringValue() const;
 
 };
 

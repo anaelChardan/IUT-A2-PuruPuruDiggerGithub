@@ -73,7 +73,6 @@ class ValueCell : public CellBase {
          */
         virtual void toString( std::ostream& O ) const;
     
-        virtual std::string getStringValue() const;
 
         /*!
          *  \brief Opérateur d'affectation pour recopier une ValueCell

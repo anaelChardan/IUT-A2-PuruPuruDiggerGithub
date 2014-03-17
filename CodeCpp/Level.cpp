@@ -210,6 +210,7 @@ Level::winLevel() {
 
 void
 Level::reset() {
+    Digger tempo;
     CellBase* temp = new Digger();
     
     while ( temp->getLife() != my_digger->getLife() ) {

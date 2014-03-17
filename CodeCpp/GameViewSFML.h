@@ -21,38 +21,48 @@
 
 class GameView {
     private :
-    Language my_language; /*!<  La langue de notre partie */
-    LanguageMessage my_messages; /*!<  La bibliothèque de message de notre partie */
-    GameModel * my_model; /*!<  La modèle de notre vue */
     
-    sf::RenderWindow* my_window;
+        Language my_language; /*!<  La langue de notre partie */
+        LanguageMessage my_messages; /*!<  La bibliothèque de message de notre partie */
+        GameModel * my_model; /*!<  La modèle de notre vue */
     
-    sf::Font* my_fontScore;
-    sf::Font* my_fontTitle;
-    sf::Font* my_fontValue;
+        std::map< std::string, sf::Sprite > my_stringtoSprite;
+        std::map< Language, sf::Sprite > my_languagetoSprite;
     
-    sf::String* my_valueString;
-    sf::String* my_scoreString;
-    sf::String* my_titleString;
+        sf::RenderWindow* my_window;
     
-    sf::Image* my_backgroundImage;
-    sf::Image* my_caseImage;
-    sf::Image* my_buttonImage;
-    sf::Image* my_languageImage;
+        sf::Font* my_fontScore;
+        sf::Font* my_fontTitle;
+        sf::Font* my_fontValue;
     
-    sf::Sprite* my_diggerSprite;
-    sf::Sprite* my_valueSprite;
-    sf::Sprite* my_goldSprite;
-    sf::Sprite* my_emptySprite;
-    sf::Sprite* my_bombSprite;
-    sf::Sprite* my_backgroundSprite;
-    sf::Sprite* my_languageSprite;
-    sf::Sprite* my_playButtonSprite;
-    sf::Sprite* my_quitButtonSprite;
-    sf::Sprite* my_optionButtonSprite;
-    sf::Sprite* my_bestScoreButtonSprite;
+        sf::String* my_valueString;
+        sf::String* my_scoreString;
+        sf::String* my_titleString;
     
+        sf::Image* my_backgroundImage;
+        sf::Image* my_caseImage;
+        sf::Image* my_buttonImage;
+        sf::Image* my_languageImage;
     
+        //Mes sprites pour les cases
+        sf::Sprite* my_diggerSprite;
+        sf::Sprite* my_valueSprite;
+        sf::Sprite* my_goldSprite;
+        sf::Sprite* my_emptySprite;
+        sf::Sprite* my_bombSprite;
+    
+        //Mon sprite pour le background
+        sf::Sprite* my_backgroundSprite;
+    
+        //Mes sprites pour les langues
+        sf::Sprite* my_frenchSprite;
+        sf::Sprite* my_englishSprite;
+        sf::Sprite* my_deutschSprite;
+        sf::Sprite* my_italianoSprite;
+        sf::Sprite* my_spanishSprite;
+    
+        //Mes sprites pour les bouton
+        sf::Sprite* my_buttonSprite;
     
     /*!
      *  \brief Affichage Menu principal
@@ -63,7 +73,7 @@ class GameView {
     /*!
      *  \brief Affichage choix des langes
      */
-    void showLanguage();
+    //void showLanguage();
     void showSpriteChoice();
     void showOption();
     

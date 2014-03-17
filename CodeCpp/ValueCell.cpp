@@ -65,12 +65,6 @@ ValueCell::toString( std::ostream& O) const {
     #endif
 }
 
-std::string
-ValueCell::getStringValue() const {
-    std::ostringstream value;
-    value << my_value;
-    return value.str();
-}
 
 /*===========================
  Les opérateurs

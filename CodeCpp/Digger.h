@@ -101,8 +101,6 @@
          */
         virtual int getPoints() const;
     
-        virtual std::string getStringValue() const;
-
 };
 
 #endif /* defined(__purpurudigger__Digger__) */

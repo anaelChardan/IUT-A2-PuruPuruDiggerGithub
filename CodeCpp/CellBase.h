@@ -104,9 +104,7 @@ class CellBase {
           *  \return my_value, retourne la valeur de la case
           */
         virtual int getValue() const = 0;
-    
-        virtual std::string getStringValue() const = 0;
-    
+        
          /*!
           *  \brief Retourne les points que va ajouter la case dans les scores
           *

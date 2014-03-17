@@ -18,10 +18,11 @@ using namespace sf;
 //Début de l'écriture des fonctions pour la SFML
  GameView::GameView() {
      //Le style de la fenêtres
-     my_window = new RenderWindow( VideoMode(WINDOWWITDH, WINDOWHEIGHT, BPP), "PuruPuruDigger", sf::Style::Close  );
+     my_window = new RenderWindow( VideoMode(WINDOWWITDH, WINDOWHEIGHT, BPP), "PuruPuruDigger", Style::Close);
      my_window->SetFramerateLimit(60);
  
      my_language = francais;
+     
      //La font pour les scores
      my_fontScore = new Font();
      my_fontTitle = new Font();
@@ -32,6 +33,7 @@ using namespace sf;
      my_titleString = new String();
  
      my_backgroundImage = new Image();
+     
      my_languageImage = new Image();
      my_languageImage->CreateMaskFromColor(Color(234,20,140));
  
@@ -55,7 +57,7 @@ using namespace sf;
          my_backgroundSprite->SetImage( *my_backgroundImage );
          my_backgroundSprite->Resize( WINDOWWITDH, WINDOWHEIGHT );
          
-         //my_languageSprite->SetImage(*my_languageImage);
+         //Mise en places des sprites case
          
          my_diggerSprite->SetImage( *my_caseImage );
          my_diggerSprite->SetSubRect( IntRect( DIGGERSX, 6, DIGGEREX, SPRITECASEHEIGHT ) );
@@ -77,6 +79,26 @@ using namespace sf;
          my_emptySprite->SetImage( *my_caseImage );
          my_emptySprite->SetSubRect( IntRect( EMPTYSX, 6, EMPTYEX, SPRITECASEHEIGHT ) );
          my_emptySprite->Resize( CASEWITDH, CASEHEIGHT );
+         
+         /*
+          my_stringToSprite["Digger"] = my_diggerSprite;
+          my_stringToSprite["EmptyCell"] = my_emptySprite;
+          my_stringToSprite["GoldCell"] = my_goldSprite;
+          my_stringToSprite["Bomb"] = my_bombSprite;
+          my_stringToSprite["ValueCell" ] = my_valueSprite;
+          
+          my_frenchSprite->setImage( *my_languageImage );
+          my_deutschSprite->setImage( *my_languageImage ):
+          my_spanishSprite->setImage( *my_languageImage );
+          my_italianoSprite->setImage( *my_languageImage );
+          my_englishSprite->setImage( *my_languageImage );
+          
+          
+          */
+         
+         
+         
+        //my_languageSprite->SetImage(*my_languageImage);
          
          //Les affichages de valeurs seront toujours identiques, du coup on les set direct
          my_valueString->SetFont( *my_fontValue );
@@ -126,15 +148,16 @@ void
 GameView::showOption() {
     my_window->Clear();
     showSpriteChoice();
-    showLanguage();
+    //showLanguage();
 }
 
+/*
 void
 GameView::showLanguage() {
-    my_languageSprite->SetPosition( ( ( WINDOWWITDH / 2 ) - ( my_languageSprite->GetSize().x / 2)  ) , 300 );
-    my_window->Draw( *my_languageSprite );
+
 }
 
+ */
 void
 GameView::showSpriteChoice() {
 }
@@ -160,14 +183,14 @@ GameView::showGrid() {
                 my_valueSprite->SetPosition( convertIndiceXToPixel( j ), convertIndiceYToPixel( i ) );
                 my_window->Draw( *my_valueSprite );
                
-                my_valueString->SetText( my_model->getLevel()->getGrid()[i][j]->getStringValue() );
+                my_valueString->SetText( intToString( my_model->getLevel()->getGrid()[i][j]->getValue() ) );
                 my_valueString->SetPosition( ( convertIndiceXToPixel( j ) + CASEWITDH / 3 ), ( convertIndiceYToPixel( i ) + CASEHEIGHT / 6 ) );
                my_window->Draw( *my_valueString );
             } else if ( my_model->getLevel()->getGrid()[i][j]->getType() == "GoldCell" ) {
                 my_goldSprite->SetPosition( convertIndiceXToPixel( j ), convertIndiceYToPixel( i ) );
                 my_window->Draw( *my_goldSprite );
                 
-                my_valueString->SetText( my_model->getLevel()->getGrid()[i][j]->getStringValue() );
+                my_valueString->SetText( intToString( my_model->getLevel()->getGrid()[i][j]->getValue() ) );
                 my_valueString->SetPosition( ( convertIndiceXToPixel( j ) + CASEWITDH / 3 ),  ( convertIndiceYToPixel( i ) + CASEHEIGHT / 6 ) );
                 my_window->Draw( *my_valueString );
             }
@@ -345,6 +368,8 @@ GameView::treatGame() {
                 case Event::Closed : // Bouton de fermeture
                     my_window->Close();
                     break;
+                case Event::MouseMoved :
+                    break;
                 case Event::KeyPressed : // Appui sur une touche du clavier
                 {
                     switch (event.Key.Code) // La touche qui a été appuyée
@@ -354,19 +379,15 @@ GameView::treatGame() {
                             break;
                         case Key::Right :
                             my_model->orderMovement(6);
-                            
                             break;
                         case Key::Up:
                             my_model->orderMovement(8);
-                            showCGrid();
                             break;
                         case Key::Left :
                             my_model->orderMovement(4);
-                            showCGrid();
                             break;
                         case Key::Down:
                             my_model->orderMovement(2);
-                            showCGrid();
                             break;
                         default :
                             break;
