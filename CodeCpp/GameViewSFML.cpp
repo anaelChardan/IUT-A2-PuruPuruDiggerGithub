@@ -50,10 +50,7 @@ using namespace sf;
      my_backgroundSprite = new Sprite();
      my_emptySprite = new Sprite();
  
-     setAnanasMode();
-    
-     my_languageImage->CreateMaskFromColor(Color(234,20,140));
-     my_caseImage->CreateMaskFromColor( Color(0, 55, 97) );
+     setTeacherMode();
      
      //On set les sprites de nos images
      my_backgroundSprite->SetImage( *my_backgroundImage );
@@ -138,30 +135,67 @@ GameView::~GameView() {
 
 void GameView::setAnanasMode() {
     //Si les deux images ou les sprites n'ont pas encore réussies à charger
-    if (!my_backgroundImage->LoadFromFile("wallpapper.png") || !my_caseImage->LoadFromFile("case.png") || !my_fontScore->LoadFromFile("scoreFont.ttf") || !my_fontTitle->LoadFromFile("titleFont.ttf") || !my_fontValue->LoadFromFile("valueFont.ttf") )
+    if (!my_backgroundImage->LoadFromFile("wallpapper.png") || !my_caseImage->LoadFromFile("case.png") || !my_fontScore->LoadFromFile("scoreFont.ttf") || !my_fontTitle->LoadFromFile("titleFont.ttf") || !my_fontValue->LoadFromFile("valueFont.ttf") ) {
         cout << "Error when loading image or font" << endl;
+    } else {
     
-    //Les affichages de valeurs seront toujours identiques, du coup on les set direct
-    my_valueString->SetFont( *my_fontValue );
-    my_valueString->SetColor(Color(255,255,255) );
-    my_valueString->SetSize(20);
-    
-    my_titleScoreString->SetFont( *my_fontScore );
-    my_titleScoreString->SetSize(40);
-    my_titleScoreString->SetStyle(String::Underlined | String::Bold | String::Italic );
-    my_titleScoreString->SetColor(Color(50,50,150));
-    
-    my_scoreString->SetFont( *my_fontScore );
-    my_scoreString->SetColor(Color(251,210,98));
-    my_scoreString->SetStyle(String::Underlined);
-    
-    my_scoreNum->SetFont( * my_fontScore );
-    my_scoreNum->SetColor(Color(255,100,100));
-    
-    my_titleScoreString->SetFont( *my_fontScore );
-    my_scoreString->SetSize(30);
-    my_titleString->SetFont( *my_fontTitle );
-    
+        //Les affichages de valeurs seront toujours identiques, du coup on les set direct
+        my_valueString->SetFont( *my_fontValue );
+        my_valueString->SetColor(Color(255,255,255) );
+        my_valueString->SetSize(20);
+        
+        my_titleScoreString->SetFont( *my_fontScore );
+        my_titleScoreString->SetSize(40);
+        my_titleScoreString->SetStyle(String::Underlined | String::Bold | String::Italic );
+        my_titleScoreString->SetColor(Color(50,50,150));
+        
+        my_scoreString->SetFont( *my_fontScore );
+        my_scoreString->SetColor(Color(251,210,98));
+        my_scoreString->SetStyle(String::Underlined);
+        
+        my_scoreNum->SetFont( * my_fontScore );
+        my_scoreNum->SetColor(Color(255,100,100));
+        
+        my_titleScoreString->SetFont( *my_fontScore );
+        my_scoreString->SetSize(30);
+        my_titleString->SetFont( *my_fontTitle );
+        
+        my_languageImage->CreateMaskFromColor(Color(234,20,140));
+        my_caseImage->CreateMaskFromColor( Color(0, 55, 97) );
+    }
+}
+
+void
+GameView::setTeacherMode() {
+    //Si les deux images ou les sprites n'ont pas encore réussies à charger
+    if (!my_backgroundImage->LoadFromFile("wallpapperTeach.png") || !my_caseImage->LoadFromFile("caseTeach.png") || !my_fontScore->LoadFromFile("arial.ttf") || !my_fontTitle->LoadFromFile("arial.ttf") || !my_fontValue->LoadFromFile("arial.ttf") ) {
+        cout << "Error when loading image or font" << endl;
+    } else {
+        
+        //Les affichages de valeurs seront toujours identiques, du coup on les set direct
+        my_titleString->SetFont( *my_fontTitle );
+        
+        my_valueString->SetFont( *my_fontValue );
+        my_valueString->SetColor(Color(0,0,0) );
+        my_valueString->SetSize(20);
+        my_valueString->SetStyle( String::Bold );
+        
+        my_titleScoreString->SetFont( *my_fontScore );
+        my_titleScoreString->SetSize(40);
+        my_titleScoreString->SetStyle(String::Underlined | String::Bold | String::Italic );
+        my_titleScoreString->SetColor(Color(255,255,255));
+        
+        my_scoreString->SetSize(30);
+        my_scoreString->SetFont( *my_fontScore );
+        my_scoreString->SetColor(Color(255, 255,255));
+        my_scoreString->SetStyle(String::Underlined);
+        
+        my_scoreNum->SetFont( * my_fontScore );
+        my_scoreNum->SetColor(Color(255,255,255));
+        
+        my_languageImage->CreateMaskFromColor(Color(234,20,140));
+        my_caseImage->CreateMaskFromColor( Color(0, 55, 97) );
+    }
 }
 
 void
@@ -365,6 +399,7 @@ GameView::treatGame() {
     //bool isPlaying = false;
     //bool isChoosingOption = false;
     //bool isInBestScore = false;
+    sf::Clock pause;
     bool isInBreak = false;
     
     // Boucle principale
@@ -418,9 +453,14 @@ GameView::treatGame() {
         }
         
         if ( my_model->getLevel()->lose() ) {
+            if ( !isInBreak )
+                pause.Reset();
             showLoseLevel();
             isInBreak = true;
+            
         } else if ( my_model->getLevel()->win()  ) {
+            if ( !isInBreak )
+                pause.Reset();
             showWinLevel();
             isInBreak = true;
         } else {
@@ -431,11 +471,13 @@ GameView::treatGame() {
         
         //Pour gérer l'affichage durant quelque seconde
         if ( my_model->getLevel()->lose() || my_model->getLevel()->win() ) {
-            my_model->getLevel()->resetLose();
-            my_model->getLevel()->resetWin();
-            Sleep(3);
-            my_model->getLevel()->resetTime();
-            isInBreak = false;
+            if ( pause.GetElapsedTime() > 1.5 ) {
+                my_model->getLevel()->resetLose();
+                my_model->getLevel()->resetWin();
+                my_model->getLevel()->resetTime();
+                isInBreak = false;
+                pause.Reset();
+            }
         }
     }
 }

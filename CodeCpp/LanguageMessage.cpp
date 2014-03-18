@@ -12,22 +12,22 @@ using namespace std;
 
 LanguageMessage::LanguageMessage() {
     //Les messages français
-    my_languages[francais][choice] = " Choix ";                     //7
-    my_languages[francais][move] = " Déplacement ";                 //13
-    my_languages[francais][north] = " Nord ";                       //6
-    my_languages[francais][south] = " Sud ";                        //5
-    my_languages[francais][west] = " Ouest ";                       //7
-    my_languages[francais][east] = " Est ";                         //4
-    my_languages[francais][nwest] = " Nord Ouest ";                 //12
-    my_languages[francais][neast] = " Nord Est ";                   //10
-    my_languages[francais][swest] = " Sud Ouest ";                  //11
-    my_languages[francais][seast] = " Sud Est ";                    //9
-    my_languages[francais][stop] = " Quitter ";                     //9
-    my_languages[francais][score] = " Score ";                      //8
-    my_languages[francais][level] = " Niveau ";                     //8
-    my_languages[francais][global] = " Score Global ";              //14
-    my_languages[francais][current] = " Score Courant ";            //15
-    my_languages[francais][goal] = " Objectif ";                    //10
+    my_languages[francais][choice] = " Choix ";
+    my_languages[francais][move] = " Déplacement ";
+    my_languages[francais][north] = " Nord ";
+    my_languages[francais][south] = " Sud ";
+    my_languages[francais][west] = " Ouest ";
+    my_languages[francais][east] = " Est ";
+    my_languages[francais][nwest] = " Nord Ouest ";
+    my_languages[francais][neast] = " Nord Est ";
+    my_languages[francais][swest] = " Sud Ouest ";
+    my_languages[francais][seast] = " Sud Est ";
+    my_languages[francais][stop] = " Quitter ";
+    my_languages[francais][score] = " Score ";
+    my_languages[francais][level] = " Niveau ";
+    my_languages[francais][global] = " Score Global ";
+    my_languages[francais][current] = " Score Courant ";
+    my_languages[francais][goal] = " Objectif ";                    
     my_languages[francais][step] = " En cours ";
     my_languages[francais][life] = " Vie ";
     my_languages[francais][position] = " Position ";
@@ -144,7 +144,7 @@ LanguageMessage::LanguageMessage() {
     my_languages[deutsch][step] = " Laufend ";
     my_languages[deutsch][life] = " Leben ";
     my_languages[deutsch][position] = " Position ";
-    my_languages[deutsch][winlevel] = " Sie eine ebene gewonnen " ;
+    my_languages[deutsch][winlevel] = " Sie hat eine ebene gewonnen " ;
     my_languages[deutsch][looselevel] = " Sie verlieren ein leben, starten sie ine ebene ";
     my_languages[deutsch][loosegame] = " Sie verloren das spiel";
     my_languages[deutsch][name] = " Geben sie ihren namen ";

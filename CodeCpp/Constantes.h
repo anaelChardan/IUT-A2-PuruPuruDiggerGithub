@@ -10,8 +10,8 @@
  */
 
 //Relatif aux objets de notre grille
-const int COLONNE = 19;
-const int LIGNE = 19;
+const int COLONNE = 18;
+const int LIGNE = 18;
 const int MINVAL = 1;
 const int MAXVAL = 7;
 const int MINOBJ = 8;
@@ -41,8 +41,8 @@ const int PADDINGRIGHT = 3;
 const int PADDINGBOTTOM = 3;
 
 
-const int CASEWITDH = 30;
-const int CASEHEIGHT = 30;
+const int CASEWITDH = 35;
+const int CASEHEIGHT = 35;
 
 //Pour nos feuilles de sprite ANANAS
 const int SPRITECASEBEGIN = 6;
@@ -83,13 +83,11 @@ enum Language{ francais, english, deutsch, espanol, italiano };
  *
  */
 enum Message{
-    choice,
-
-    move, nwest, north, neast, west, east, swest, south, seast, stop,
+    choice, move, nwest, north, neast, west, east, swest, south, seast, stop,
     score, level, global, current, goal, step, life, position,
-    winlevel, looselevel, loosegame, name, ltime, timeup,
-
-    by
+    winlevel, looselevel, loosegame, name, ltime, timeup, by
 };
+
+
 
 #endif
