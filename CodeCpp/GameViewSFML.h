@@ -44,6 +44,7 @@ class GameView {
         sf::String* my_titleString;
         sf::String* my_buttonString;
     
+        //Les images
         sf::Image* my_backgroundImage;
         sf::Image* my_caseImage;
         sf::Image* my_buttonImage;
@@ -56,6 +57,13 @@ class GameView {
         sf::Sprite* my_emptySprite;
         sf::Sprite* my_bombSprite;
     
+        //Les boutons
+        sf::Sprite* my_optionButtonSprite;
+        sf::Sprite* my_playButtonSprite;
+        sf::Sprite* my_bestButtonSprite;
+        sf::Sprite* my_buttonQuitSprite;
+        sf::Sprite* my_levelButtonQuitSprite;
+    
         //Mon sprite pour le background
         sf::Sprite* my_backgroundSprite;
     
@@ -66,14 +74,13 @@ class GameView {
         sf::Sprite* my_italianoSprite;
         sf::Sprite* my_spanishSprite;
     
-        //Mes sprites pour les bouton
-        sf::Sprite* my_buttonSprite;
-    
     /*!
      *  \brief Affichage Menu principal
      */
     void showPresentation();
-    void showButton();
+    void setButtonHover( sf::Sprite* buttonToHover );
+    void resetButtonNorm();
+    void setClassicButton();
     void showLanguage();
     
     /*!

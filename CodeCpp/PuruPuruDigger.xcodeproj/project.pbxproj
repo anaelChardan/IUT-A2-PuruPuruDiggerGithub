@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		031BE64A18D8E06B00476CBB /* buttonAnanas.png in Resources */ = {isa = PBXBuildFile; fileRef = 031BE64818D8E06B00476CBB /* buttonAnanas.png */; };
+		031BE64B18D8E06B00476CBB /* buttonTeach.png in Resources */ = {isa = PBXBuildFile; fileRef = 031BE64918D8E06B00476CBB /* buttonTeach.png */; };
 		031D88D818BE5B2B0001686A /* GameModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031D88D618BE5B2B0001686A /* GameModel.cpp */; };
 		031D88DB18BE5B670001686A /* GameView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031D88D918BE5B670001686A /* GameView.cpp */; };
 		031E007818B52B360045013D /* Bomb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031E007618B52B360045013D /* Bomb.cpp */; };
@@ -129,6 +131,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		031BE64818D8E06B00476CBB /* buttonAnanas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonAnanas.png; sourceTree = "<group>"; };
+		031BE64918D8E06B00476CBB /* buttonTeach.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonTeach.png; sourceTree = "<group>"; };
 		031D88D618BE5B2B0001686A /* GameModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameModel.cpp; sourceTree = SOURCE_ROOT; };
 		031D88D718BE5B2B0001686A /* GameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameModel.h; sourceTree = SOURCE_ROOT; };
 		031D88D918BE5B670001686A /* GameView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameView.cpp; sourceTree = SOURCE_ROOT; };
@@ -233,6 +237,8 @@
 		03E6822318D300BA004E125C /* Pictures */ = {
 			isa = PBXGroup;
 			children = (
+				031BE64818D8E06B00476CBB /* buttonAnanas.png */,
+				031BE64918D8E06B00476CBB /* buttonTeach.png */,
 				03F388E518D78E03003A08BC /* wallpapperTeach.png */,
 				03F388E618D78E03003A08BC /* caseTeach.png */,
 				03E6822818D306F9004E125C /* wallpapper.png */,
@@ -407,10 +413,12 @@
 				0371150518D1889000EE9282 /* scoreFont.ttf in Resources */,
 				03F388E818D78E03003A08BC /* caseTeach.png in Resources */,
 				033F710B18D2213A0064FAF5 /* valueFont.ttf in Resources */,
+				031BE64A18D8E06B00476CBB /* buttonAnanas.png in Resources */,
 				03E6822918D306F9004E125C /* wallpapper.png in Resources */,
 				0368878B18D8228F00E63AFD /* arial.ttf in Resources */,
 				03D783AC18D097E100A1B8AE /* bestScores.txt in Resources */,
 				03F388E718D78E03003A08BC /* wallpapperTeach.png in Resources */,
+				031BE64B18D8E06B00476CBB /* buttonTeach.png in Resources */,
 				0371150618D1889000EE9282 /* titleFont.ttf in Resources */,
 				03E6822718D300BA004E125C /* case.png in Resources */,
 			);

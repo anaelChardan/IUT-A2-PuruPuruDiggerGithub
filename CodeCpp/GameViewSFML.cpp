@@ -1,11 +1,3 @@
-//
-//  GameViewSFML.cpp
-//  PuruPuruDigger
-//
-//  Created by Ananas-Mac on 12/03/2014.
-//
-//
-
 #include "GameViewSFML.h"
 #include "Constantes.h"
 #include <sstream>
@@ -41,6 +33,7 @@ using namespace sf;
      my_backgroundImage = new Image();
      my_languageImage = new Image();
      my_caseImage = new Image();
+     my_buttonImage = new Image();
      
      //On set les sprites
      my_diggerSprite = new Sprite();
@@ -49,15 +42,26 @@ using namespace sf;
      my_bombSprite = new Sprite();
      my_backgroundSprite = new Sprite();
      my_emptySprite = new Sprite();
+     
+     //Les boutons
+     my_buttonQuitSprite = new Sprite();
+     my_optionButtonSprite = new Sprite();
+     my_playButtonSprite = new Sprite();
+     my_bestButtonSprite = new Sprite();
+     my_levelButtonQuitSprite = new Sprite();
  
+     //Chargement des images selon le mode
      setTeacherMode();
+     
+     my_languageImage->CreateMaskFromColor(Color(234,20,140));
+     my_caseImage->CreateMaskFromColor( Color(0, 55, 97) );
+     my_buttonImage->CreateMaskFromColor( Color(0, 55, 97) );
      
      //On set les sprites de nos images
      my_backgroundSprite->SetImage( *my_backgroundImage );
      my_backgroundSprite->Resize( WINDOWWITDH, WINDOWHEIGHT );
      
      //Mise en places des sprites case
-     
      my_diggerSprite->SetImage( *my_caseImage );
      my_diggerSprite->SetSubRect( IntRect( DIGGERSX, SPRITECASEBEGIN, DIGGEREX, SPRITECASEHEIGHT ) );
      my_diggerSprite->Resize( CASEWITDH, CASEHEIGHT );
@@ -78,6 +82,16 @@ using namespace sf;
      my_emptySprite->SetImage( *my_caseImage );
      my_emptySprite->SetSubRect( IntRect( EMPTYSX, SPRITECASEBEGIN, EMPTYEX, SPRITECASEHEIGHT ) );
      my_emptySprite->Resize( CASEWITDH, CASEHEIGHT );
+     
+     //On set les boutons
+     my_buttonQuitSprite->SetImage( *my_buttonImage );
+     my_buttonQuitSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
+     my_buttonQuitSprite->Resize(BUTTONWIDTH, BUTTONHEIGHT);
+     
+     my_playButtonSprite->SetImage( *my_buttonImage );
+     my_playButtonSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
+     my_playButtonSprite->Resize( BUTTONWIDTH, BUTTONHEIGHT );
+     
      
      my_stringToSprite["Digger"] = *my_diggerSprite;
      my_stringToSprite["EmptyCell"] = *my_emptySprite;
@@ -134,15 +148,14 @@ GameView::~GameView() {
 }
 
 void GameView::setAnanasMode() {
-    //Si les deux images ou les sprites n'ont pas encore réussies à charger
-    if (!my_backgroundImage->LoadFromFile("wallpapper.png") || !my_caseImage->LoadFromFile("case.png") || !my_fontScore->LoadFromFile("scoreFont.ttf") || !my_fontTitle->LoadFromFile("titleFont.ttf") || !my_fontValue->LoadFromFile("valueFont.ttf") ) {
+    if (!my_backgroundImage->LoadFromFile("wallpapper.png") || !my_caseImage->LoadFromFile("case.png") || !my_buttonImage->LoadFromFile("buttonAnanas.png") || !my_fontScore->LoadFromFile("scoreFont.ttf") || !my_fontTitle->LoadFromFile("titleFont.ttf") || !my_fontValue->LoadFromFile("valueFont.ttf") ) {
         cout << "Error when loading image or font" << endl;
     } else {
     
         //Les affichages de valeurs seront toujours identiques, du coup on les set direct
         my_valueString->SetFont( *my_fontValue );
         my_valueString->SetColor(Color(255,255,255) );
-        my_valueString->SetSize(20);
+        my_valueString->SetSize(23);
         
         my_titleScoreString->SetFont( *my_fontScore );
         my_titleScoreString->SetSize(40);
@@ -156,60 +169,71 @@ void GameView::setAnanasMode() {
         my_scoreNum->SetFont( * my_fontScore );
         my_scoreNum->SetColor(Color(255,100,100));
         
-        my_titleScoreString->SetFont( *my_fontScore );
         my_scoreString->SetSize(30);
+        
         my_titleString->SetFont( *my_fontTitle );
         
-        my_languageImage->CreateMaskFromColor(Color(234,20,140));
-        my_caseImage->CreateMaskFromColor( Color(0, 55, 97) );
     }
 }
 
+
 void
 GameView::setTeacherMode() {
-    //Si les deux images ou les sprites n'ont pas encore réussies à charger
-    if (!my_backgroundImage->LoadFromFile("wallpapperTeach.png") || !my_caseImage->LoadFromFile("caseTeach.png") || !my_fontScore->LoadFromFile("arial.ttf") || !my_fontTitle->LoadFromFile("arial.ttf") || !my_fontValue->LoadFromFile("arial.ttf") ) {
+    if (!my_backgroundImage->LoadFromFile("wallpapperTeach.png") || !my_caseImage->LoadFromFile("caseTeach.png") || !my_buttonImage->LoadFromFile("buttonTeach.png") ||!my_fontScore->LoadFromFile("arial.ttf") || !my_fontTitle->LoadFromFile("arial.ttf") || !my_fontValue->LoadFromFile("arial.ttf") ) {
         cout << "Error when loading image or font" << endl;
     } else {
         
-        //Les affichages de valeurs seront toujours identiques, du coup on les set direct
+        //Le string pour la page de présentation
         my_titleString->SetFont( *my_fontTitle );
         
+        //Le string pour les cases numérotées
         my_valueString->SetFont( *my_fontValue );
         my_valueString->SetColor(Color(0,0,0) );
         my_valueString->SetSize(20);
         my_valueString->SetStyle( String::Bold );
         
+        //Le string pour le titre des scores
         my_titleScoreString->SetFont( *my_fontScore );
         my_titleScoreString->SetSize(40);
         my_titleScoreString->SetStyle(String::Underlined | String::Bold | String::Italic );
         my_titleScoreString->SetColor(Color(255,255,255));
         
+        //Le string pour l'énoncé des scores de la classe language message
         my_scoreString->SetSize(30);
         my_scoreString->SetFont( *my_fontScore );
         my_scoreString->SetColor(Color(255, 255,255));
         my_scoreString->SetStyle(String::Underlined);
         
+        //Le string pour le intToString
         my_scoreNum->SetFont( * my_fontScore );
         my_scoreNum->SetColor(Color(255,255,255));
         
-        my_languageImage->CreateMaskFromColor(Color(234,20,140));
-        my_caseImage->CreateMaskFromColor( Color(0, 55, 97) );
+
     }
+}
+
+void
+GameView::setButtonHover( sf::Sprite* buttonToHover ) {
+    buttonToHover->SetSubRect( IntRect( BUTTONHOVESX, BUTTONCASEBEGIN, BUTTONHOVEEX, BUTTONCASEHEIGHT ) );
+}
+
+void
+GameView::resetButtonNorm() {
+     my_playButtonSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
 }
 
 void
 GameView::showPresentation() {
     my_window->Clear();
     my_window->Draw(*my_backgroundSprite);
-    showButton();
+    my_titleString->SetText("PURU PURU DIGGER");
+    my_titleString->SetColor(Color(255,255,255));
+    my_titleString->SetSize(60);
+    my_titleString->SetPosition( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) , 100 );
+    my_window->Draw( *my_titleString );
+    my_playButtonSprite->SetPosition(PLAYX, PLAYY);
+    my_window->Draw( *my_playButtonSprite );
 }
-
-void
-GameView::showButton() {
-    
-}
-
 
 void
 GameView::showOption() {
@@ -233,8 +257,6 @@ GameView::showSpriteChoice() {
 
 void
 GameView::showGrid() {
-    my_window->Clear();
-    my_window->Draw(*my_backgroundSprite);
     for ( int i = 0; i < LIGNE ; i++ ) {
         for ( int j = 0; j < COLONNE; j++ ) {
             my_stringToSprite[ my_model->getLevel()->getGrid()[i][j]->getType() ].SetPosition( convertIndiceXToPixel( j ), convertIndiceYToPixel( i ) );
@@ -353,8 +375,19 @@ GameView::showScore() {
 
 void
 GameView::showLevel() {
+    my_window->Clear();
+    my_window->Draw( *my_backgroundSprite );
+    my_titleString->SetColor(Color(255,255,255));
+    my_titleString->SetSize(60);
+    my_titleString->SetText( " PURU PURU DIGGER " );
+    my_titleString->SetPosition( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) , 10 );
+    my_window->Draw( *my_titleString );
     showGrid();
     showScore();
+
+    
+    my_buttonQuitSprite->SetPosition( 50, 50);
+    my_window->Draw( *my_buttonQuitSprite );
 }
 
 void
@@ -414,6 +447,9 @@ GameView::treatGame() {
                     my_window->Close();
                     break;
                 case Event::MouseMoved :
+                    if ( event.MouseMove.X > PLAYX && event.MouseMove.X < PLAYX + BUTTONWIDTH && event.MouseMove.Y > PLAYY && event.MouseMove.Y < PLAYY + BUTTONHEIGHT )
+                        setButtonHover( my_playButtonSprite );
+                    else resetButtonNorm();
                     break;
                 case Event::KeyPressed : // Appui sur une touche du clavier
                 {
@@ -464,7 +500,7 @@ GameView::treatGame() {
             showWinLevel();
             isInBreak = true;
         } else {
-            showLevel();
+            showPresentation();
         }
         // Affichage du contenu de la fenêtre à l'écran
         my_window->Display();
