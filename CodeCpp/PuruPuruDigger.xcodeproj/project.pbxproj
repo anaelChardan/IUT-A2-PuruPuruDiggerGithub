@@ -158,7 +158,7 @@
 		0382DB3718C9A28400E93483 /* test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
 		0382DB3E18C9A31000E93483 /* libboost_unit_test_framework.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_unit_test_framework.dylib; path = ../../../../../../usr/local/Cellar/boost/1.55.0/lib/libboost_unit_test_framework.dylib; sourceTree = "<group>"; };
 		03A0EFBF18C5D0B900F57E1A /* bestScores.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bestScores.txt; sourceTree = SOURCE_ROOT; };
-		03D783B618D097E100A1B8AE /* PuruPuruDiggerConsole copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PuruPuruDiggerConsole copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		03D783B618D097E100A1B8AE /* PuruPuruDiggerSFML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PuruPuruDiggerSFML.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03D783B718D09DCD00A1B8AE /* GameViewSFML.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameViewSFML.cpp; sourceTree = SOURCE_ROOT; };
 		03D783B818D09DCD00A1B8AE /* GameViewSFML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewSFML.h; sourceTree = SOURCE_ROOT; };
 		03D783BC18D0A07800A1B8AE /* mainSFML.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mainSFML.cpp; sourceTree = SOURCE_ROOT; };
@@ -175,7 +175,7 @@
 		03ED314918B385BA00CF8AA1 /* Score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Score.h; sourceTree = SOURCE_ROOT; };
 		03F388E518D78E03003A08BC /* wallpapperTeach.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wallpapperTeach.png; sourceTree = "<group>"; };
 		03F388E618D78E03003A08BC /* caseTeach.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = caseTeach.png; sourceTree = "<group>"; };
-		936727B518B33A9C009873DE /* PuruPuruDigger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = PuruPuruDigger.app; path = PuruPuruDiggerConsole.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		936727B518B33A9C009873DE /* PuruPuruDiggerConsole.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PuruPuruDiggerConsole.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		936727F618B33B91009873DE /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
 		936727FF18B35E81009873DE /* sfml-audio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-audio.framework"; path = "/Library/Frameworks/sfml-audio.framework"; sourceTree = "<absolute>"; };
 		9367280018B35E81009873DE /* sfml-graphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-graphics.framework"; path = "/Library/Frameworks/sfml-graphics.framework"; sourceTree = "<absolute>"; };
@@ -260,9 +260,9 @@
 		936727B618B33A9C009873DE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				936727B518B33A9C009873DE /* PuruPuruDigger.app */,
+				936727B518B33A9C009873DE /* PuruPuruDiggerConsole.app */,
 				0382DB3518C9A28400E93483 /* UnitTest */,
-				03D783B618D097E100A1B8AE /* PuruPuruDiggerConsole copy.app */,
+				03D783B618D097E100A1B8AE /* PuruPuruDiggerSFML.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -355,7 +355,7 @@
 			);
 			name = PuruPuruDiggerSFML;
 			productName = PuruPuruDigger;
-			productReference = 03D783B618D097E100A1B8AE /* PuruPuruDiggerConsole copy.app */;
+			productReference = 03D783B618D097E100A1B8AE /* PuruPuruDiggerSFML.app */;
 			productType = "com.apple.product-type.application";
 		};
 		936727B418B33A9C009873DE /* PuruPuruDiggerConsole */ = {
@@ -373,7 +373,7 @@
 			);
 			name = PuruPuruDiggerConsole;
 			productName = PuruPuruDigger;
-			productReference = 936727B518B33A9C009873DE /* PuruPuruDigger.app */;
+			productReference = 936727B518B33A9C009873DE /* PuruPuruDiggerConsole.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -558,7 +558,7 @@
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
-				PRODUCT_NAME = "PuruPuruDiggerConsole copy";
+				PRODUCT_NAME = PuruPuruDiggerSFML;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -574,7 +574,7 @@
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
-				PRODUCT_NAME = "PuruPuruDiggerConsole copy";
+				PRODUCT_NAME = PuruPuruDiggerSFML;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

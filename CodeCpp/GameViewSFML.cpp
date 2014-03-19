@@ -386,7 +386,7 @@ GameView::showLevel() {
     showScore();
 
     
-    my_buttonQuitSprite->SetPosition( 50, 50);
+    my_buttonQuitSprite->SetPosition( QUITONX, QUITONY);
     my_window->Draw( *my_buttonQuitSprite );
 }
 
@@ -428,16 +428,18 @@ void GameView::setModel(GameModel *model) {
 void
 GameView::treatGame() {
 
-    //bool isInPresentation = true;
-    //bool isPlaying = false;
-    //bool isChoosingOption = false;
-    //bool isInBestScore = false;
-    sf::Clock pause;
-    bool isInBreak = false;
+    bool isInPresentation = true; //Pour savoir si il est sur le menu de départ
+    bool isPlaying = false; // Pour savoir si il est sur le jeu
+    bool isChoosingOption = false; //Pour savoir si il est le menu du choix des options
+    bool isInBestScore = false; //Pour savoir si il est sur le menu des meilleurs scores
+    
+    sf::Clock pause;        //La clock pour la pause
+    bool isInBreak = false; //Pour savoir quand on est en pause
     
     // Boucle principale
     while (my_window->IsOpened())
     {
+        //Gestion de tous les événements
         Event event;
         while (my_window->GetEvent(event)) // Boucle des évènements en attente
         {
@@ -488,6 +490,7 @@ GameView::treatGame() {
             }
         }
         
+        //Gestion de tout l'affichage
         if ( my_model->getLevel()->lose() ) {
             if ( !isInBreak )
                 pause.Reset();
@@ -500,8 +503,9 @@ GameView::treatGame() {
             showWinLevel();
             isInBreak = true;
         } else {
-            showPresentation();
+            showLevel();
         }
+        
         // Affichage du contenu de la fenêtre à l'écran
         my_window->Display();
         

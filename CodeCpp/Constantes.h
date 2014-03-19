@@ -60,7 +60,7 @@ const int VALUEEX = 274 ;
 
 
 //Pour les boutons
-const int BUTTONWIDTH = 150;
+const int BUTTONWIDTH = 220;
 const int BUTTONHEIGHT = 60;
 
 const int BUTTONCASEBEGIN = 3;
@@ -73,6 +73,9 @@ const int BUTTONHOVEEX = 298;
 //L'emplacement des boutons à l'écran pour gérer les évent
 const int PLAYX = 10;
 const int PLAYY = 10;
+
+const int QUITONX = 100;
+const int QUITONY = 600;
 
 
 //Relatif à notre fichier de meilleurs scores
