@@ -71,12 +71,22 @@ const int BUTTONHOVESX = 157;
 const int BUTTONHOVEEX = 298;
 
 //L'emplacement des boutons à l'écran pour gérer les évent
-const int PLAYX = 10;
-const int PLAYY = 10;
+const int PLAYX = 150;
+const int PLAYY = 300;
+
+
+const int OPTIONX = PLAYX + 200;
+const int OPTIONY = PLAYY + 120;
+
+const int BESTX  = OPTIONX + 200;
+const int BESTY = OPTIONY + 120;
+
+const int QUITX = BESTX + 200;
+const int QUITY = BESTY + 120;
+
 
 const int QUITONX = 100;
 const int QUITONY = 600;
-
 
 //Relatif à notre fichier de meilleurs scores
 const std::string FILEBESTSCORE = "bestScores.txt";
@@ -98,7 +108,7 @@ enum Language{ francais, english, deutsch, espanol, italiano };
 enum Message{
     choice, move, nwest, north, neast, west, east, swest, south, seast, stop,
     score, level, global, current, goal, step, life, position,
-    winlevel, looselevel, loosegame, name, ltime, timeup, by
+    winlevel, looselevel, loosegame, name, ltime, timeup, by, play, best, setting
 };
 
 

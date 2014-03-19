@@ -48,7 +48,7 @@ using namespace sf;
      my_optionButtonSprite = new Sprite();
      my_playButtonSprite = new Sprite();
      my_bestButtonSprite = new Sprite();
-     my_levelButtonQuitSprite = new Sprite();
+     my_quitButtonSprite = new Sprite();
  
      //Chargement des images selon le mode
      setAnanasMode();
@@ -91,6 +91,18 @@ using namespace sf;
      my_playButtonSprite->SetImage( *my_buttonImage );
      my_playButtonSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
      my_playButtonSprite->Resize( BUTTONWIDTH, BUTTONHEIGHT );
+     
+     my_optionButtonSprite->SetImage( *my_buttonImage );
+     my_optionButtonSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
+     my_optionButtonSprite->Resize( BUTTONWIDTH, BUTTONHEIGHT );
+     
+     my_bestButtonSprite->SetImage( *my_buttonImage );
+     my_bestButtonSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
+     my_bestButtonSprite->Resize( BUTTONWIDTH, BUTTONHEIGHT );
+     
+     my_quitButtonSprite->SetImage( *my_buttonImage );
+     my_quitButtonSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
+     my_quitButtonSprite->Resize( BUTTONWIDTH, BUTTONHEIGHT );
      
      
      my_stringToSprite["Digger"] = *my_diggerSprite;
@@ -149,11 +161,11 @@ GameView::~GameView() {
 
 void GameView::setAnanasMode() {
 #ifdef __linux__
-    if (!my_backgroundImage->LoadFromFile("Pictures/wallpapper.png") || !my_caseImage->LoadFromFile("Pictures/case.png") || !my_buttonImage->LoadFromFile("Pictures/buttonAnanas.png") || !my_fontScore->LoadFromFile("Font/scoreFont.ttf") || !my_fontTitle->LoadFromFile("Font/titleFont.ttf") || !my_fontValue->LoadFromFile("Font/valueFont.ttf") ) {
+    if (!my_backgroundImage->LoadFromFile("Pictures/wallpapper.png") || !my_caseImage->LoadFromFile("Pictures/case.png") || !my_buttonImage->LoadFromFile("Pictures/buttonAnanas.png") || !my_fontScore->LoadFromFile("Font/scoreFont.ttf") || !my_fontTitle->LoadFromFile("Font/titleFont.ttf") || !my_fontValue->LoadFromFile("Font/valueFont.ttf") || !my_fontButton->LoadFromFile("Font/buttonFont.ttf") ) {
         cout << "Error when loading image or font" << endl;
     }
 #else
-    if (!my_backgroundImage->LoadFromFile("wallpapper.png") || !my_caseImage->LoadFromFile("case.png") || !my_buttonImage->LoadFromFile("buttonAnanas.png") || !my_fontScore->LoadFromFile("scoreFont.ttf") || !my_fontTitle->LoadFromFile("titleFont.ttf") || !my_fontValue->LoadFromFile("valueFont.ttf") ) {
+    if (!my_backgroundImage->LoadFromFile("wallpapper.png") || !my_caseImage->LoadFromFile("case.png") || !my_buttonImage->LoadFromFile("buttonAnanas.png") || !my_fontScore->LoadFromFile("scoreFont.ttf") || !my_fontTitle->LoadFromFile("titleFont.ttf") || !my_fontValue->LoadFromFile("valueFont.ttf") || !my_fontButton->LoadFromFile("buttonFont.ttf") ) {
         cout << "Error when loading image or font" << endl;
     }
 #endif
@@ -180,6 +192,10 @@ void GameView::setAnanasMode() {
         
         my_titleString->SetFont( *my_fontTitle );
         
+        my_buttonString->SetFont( *my_fontButton );
+        my_buttonString->SetSize(30);
+        my_buttonString->SetColor(Color(251,210,98));
+        
     }
 }
 
@@ -187,16 +203,16 @@ void GameView::setAnanasMode() {
 void
 GameView::setTeacherMode() {
 #ifdef __linux__
-    if (!my_backgroundImage->LoadFromFile("Pictures/wallpapperTeach.png") || !my_caseImage->LoadFromFile("Pictures/caseTeach.png") || !my_buttonImage->LoadFromFile("Pictures/buttonTeach.png") ||!my_fontScore->LoadFromFile("Font/arial.ttf") || !my_fontTitle->LoadFromFile("Font/arial.ttf") || !my_fontValue->LoadFromFile("Font/arial.ttf") ) {
+    if (!my_backgroundImage->LoadFromFile("Pictures/wallpapperTeach.png") || !my_caseImage->LoadFromFile("Pictures/caseTeach.png") || !my_buttonImage->LoadFromFile("Pictures/buttonTeach.png") ||!my_fontScore->LoadFromFile("Font/arial.ttf") || !my_fontTitle->LoadFromFile("Font/arial.ttf") || !my_fontValue->LoadFromFile("Font/arial.ttf") || !my_fontButton->LoadFromFile("Font/arial.ttf")) {
         cout << "Error when loading image or font" << endl;
     }
 #else
-    if (!my_backgroundImage->LoadFromFile("wallpapperTeach.png") || !my_caseImage->LoadFromFile("caseTeach.png") || !my_buttonImage->LoadFromFile("buttonTeach.png") ||!my_fontScore->LoadFromFile("arial.ttf") || !my_fontTitle->LoadFromFile("arial.ttf") || !my_fontValue->LoadFromFile("arial.ttf") ) {
+    if (!my_backgroundImage->LoadFromFile("wallpapperTeach.png") || !my_caseImage->LoadFromFile("caseTeach.png") || !my_buttonImage->LoadFromFile("buttonTeach.png") ||!my_fontScore->LoadFromFile("arial.ttf") || !my_fontTitle->LoadFromFile("arial.ttf") || !my_fontValue->LoadFromFile("arial.ttf") || !my_fontButton->LoadFromFile("arial.ttf")) {
         cout << "Error when loading image or font" << endl;
     }
 #endif
     
-else {
+    else {
         
         //Le string pour la page de présentation
         my_titleString->SetFont( *my_fontTitle );
@@ -222,7 +238,10 @@ else {
         //Le string pour le intToString
         my_scoreNum->SetFont( * my_fontScore );
         my_scoreNum->SetColor(Color(255,255,255));
-        
+    
+        my_buttonString->SetFont( *my_fontButton );
+        my_buttonString->SetSize(30);
+        my_buttonString->SetColor(Color(251,210,98));
 
     }
 }
@@ -235,6 +254,9 @@ GameView::setButtonHover( sf::Sprite* buttonToHover ) {
 void
 GameView::resetButtonNorm() {
     my_playButtonSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
+    my_quitButtonSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
+    my_optionButtonSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
+    my_bestButtonSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
     my_buttonQuitSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
 }
 
@@ -247,8 +269,42 @@ GameView::showPresentation() {
     my_titleString->SetSize(60);
     my_titleString->SetPosition( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) , 100 );
     my_window->Draw( *my_titleString );
-    my_playButtonSprite->SetPosition(PLAYX, PLAYY);
+    
+    my_quitButtonSprite->SetPosition(QUITX, QUITY);
+    my_playButtonSprite->SetPosition( PLAYX, PLAYY );
+    my_optionButtonSprite->SetPosition(OPTIONX, OPTIONY);
+    my_bestButtonSprite->SetPosition(BESTX, BESTY);
+    
+
     my_window->Draw( *my_playButtonSprite );
+    
+    
+    my_window->Draw( *my_optionButtonSprite );
+    
+    
+    my_window->Draw( *my_bestButtonSprite);
+    
+
+    my_window->Draw( *my_quitButtonSprite);
+    
+    my_buttonString->SetText( my_messages[my_language][best] ) ;
+    my_buttonString->SetPosition( BESTX , (BESTY + (BUTTONHEIGHT / 5)) );
+    my_window->Draw( *my_buttonString );
+    
+    my_buttonString->SetText( my_messages[my_language][play] ) ;
+    my_buttonString->SetPosition(  PLAYX , PLAYY + (BUTTONHEIGHT / 5) );
+    my_window->Draw( *my_buttonString );
+    
+    my_buttonString->SetText( my_messages[my_language][stop] ) ;
+    my_buttonString->SetPosition(  QUITX, (QUITY + (BUTTONHEIGHT * 0.2 )) );
+    my_window->Draw( *my_buttonString );
+    
+    my_buttonString->SetText( my_messages[my_language][setting] ) ;
+    my_buttonString->SetPosition(  OPTIONX    , OPTIONY + (BUTTONHEIGHT * 0.2) );
+    my_window->Draw( *my_buttonString );
+    
+    
+    
 }
 
 void
@@ -404,6 +460,10 @@ GameView::showLevel() {
     
     my_buttonQuitSprite->SetPosition( QUITONX, QUITONY);
     my_window->Draw( *my_buttonQuitSprite );
+    
+    my_buttonString->SetText( my_messages[my_language][stop] );
+    my_buttonString->SetPosition( ( ( ( QUITONX + BUTTONWIDTH ) / 2.5 )  ), (QUITONY + (BUTTONHEIGHT / 5)) );
+    my_window->Draw( *my_buttonString );
 }
 
 void
@@ -444,8 +504,8 @@ void GameView::setModel(GameModel *model) {
 void
 GameView::treatGame() {
 
-    bool isInPresentation = false; //Pour savoir si il est sur le menu de départ
-    bool isPlaying = true; // Pour savoir si il est sur le jeu
+    bool isInPresentation = true; //Pour savoir si il est sur le menu de départ
+    bool isPlaying = false; // Pour savoir si il est sur le jeu
     //bool isChoosingOption = false; //Pour savoir si il est le menu du choix des options
     //bool isInBestScore = false; //Pour savoir si il est sur le menu des meilleurs scores
     
@@ -469,6 +529,17 @@ GameView::treatGame() {
                         if ( event.MouseMove.X > PLAYX && event.MouseMove.X < PLAYX + BUTTONWIDTH && event.MouseMove.Y > PLAYY && event.MouseMove.Y < PLAYY + BUTTONHEIGHT )
                             
                             setButtonHover( my_playButtonSprite );
+                        else if ( event.MouseMove.X > OPTIONX && event.MouseMove.X < OPTIONX + BUTTONWIDTH && event.MouseMove.Y > OPTIONY && event.MouseMove.Y < OPTIONY + BUTTONHEIGHT)
+                            setButtonHover( my_optionButtonSprite );
+
+                        else if (event.MouseMove.X > BESTX && event.MouseMove.X < BESTX + BUTTONWIDTH && event.MouseMove.Y > BESTY && event.MouseMove.Y < BESTY + BUTTONHEIGHT)
+                            setButtonHover( my_bestButtonSprite );
+
+                        else if (event.MouseMove.X > QUITX && event.MouseMove.X < QUITX + BUTTONWIDTH && event.MouseMove.Y > QUITY && event.MouseMove.Y < QUITY + BUTTONHEIGHT)
+                            setButtonHover( my_quitButtonSprite );
+
+                        else
+                            resetButtonNorm();
                         
                     } else if ( isPlaying  ) {
                         if ( event.MouseMove.X > QUITONX && event.MouseMove.X < QUITONX + BUTTONWIDTH && event.MouseMove.Y > QUITONY && event.MouseMove.Y < QUITONY + BUTTONHEIGHT )
@@ -507,7 +578,24 @@ GameView::treatGame() {
                 }
                     break;
                 case Event::MouseButtonPressed :
-                    cout << " Souris case : " << convertYPixel(event.MouseButton.Y) << " " << convertXPixel(event.MouseButton.X) <<  " "  << endl;
+                    if ( isInPresentation ) {
+                        if ( event.MouseButton.X > PLAYX && event.MouseButton.X < PLAYX + BUTTONWIDTH && event.MouseButton.Y > PLAYY && event.MouseButton.Y < PLAYY + BUTTONHEIGHT ) {
+                            my_model->getLevel()->reset();
+                            my_model->getLevel()->getDigger()->resetLife();
+                            isInPresentation = false;
+                            isPlaying = true;
+                            
+                        } else if ( event.MouseButton.X > QUITX && event.MouseButton.X < QUITX + BUTTONWIDTH && event.MouseButton.Y > QUITY && event.MouseButton.Y < QUITY + BUTTONHEIGHT ) {
+                            my_window->Close();
+                            
+                        }
+                    } else if ( isPlaying ) {
+                        cout << " Souris case : " << convertYPixel(event.MouseButton.Y) << " " << convertXPixel(event.MouseButton.X) <<  " "  << endl;
+                        if ( event.MouseButton.X > QUITONX && event.MouseButton.X < QUITONX + BUTTONWIDTH && event.MouseButton.Y > QUITONY && event.MouseButton.Y < QUITONY + BUTTONHEIGHT ) {
+                            isPlaying = false;
+                            isInPresentation = true;
+                        }
+                    }
                     break;
                     
                 default :
@@ -517,6 +605,9 @@ GameView::treatGame() {
         
         
         //Gestion de tout l'affichage
+        if ( isInPresentation )
+            showPresentation();
+        
         if ( isPlaying ) {
             if ( my_model->getLevel()->lose() ) {
                 if ( !isInBreak )

@@ -38,6 +38,9 @@ LanguageMessage::LanguageMessage() {
     my_languages[francais][by] = " Vous arrêtez la partie " ;
     my_languages[francais][ltime] = " Temps restant ";
     my_languages[francais][timeup] = " Vous avez mis trop de temps, vous perdez le niveau ";
+    my_languages[francais][best] = " Scores ";
+    my_languages[francais][play] = " Jouer ";
+    my_languages[francais][setting] = " Options ";
     
 
     //les messages anglais
@@ -67,6 +70,10 @@ LanguageMessage::LanguageMessage() {
     my_languages[english][by] = " You stop the game " ;
     my_languages[english][ltime] = " Left Time  ";
     my_languages[english][timeup] = " You during too time, you left a level ";
+    my_languages[english][best] = " Score ";
+    my_languages[english][play] = " Play ";
+    my_languages[english][setting] = " Settings ";
+    
 
     //les messages espagnol
     my_languages[espanol][choice] = " Eleccion ";
@@ -95,6 +102,9 @@ LanguageMessage::LanguageMessage() {
     my_languages[espanol][by] = " Dejas de parte " ;
     my_languages[espanol][ltime] = " Tiempo restante ";
     my_languages[espanol][timeup] = " Tomó demasiado tiempo, perder un nivel ";
+    my_languages[espanol][best] = " Puntaje ";
+    my_languages[espanol][play] = " Jugar ";
+    my_languages[espanol][setting] = " Opcion ";
 
     //les messages italien
     my_languages[italiano][choice] = " Scelta ";
@@ -123,6 +133,9 @@ LanguageMessage::LanguageMessage() {
     my_languages[italiano][by] = " Si smette di parte " ;
     my_languages[italiano][ltime] = " Tempo rimanente  ";
     my_languages[italiano][timeup] = " hai preso troppo a lungo, perdere un livello ";
+    my_languages[italiano][best] = " Punteggio ";
+    my_languages[italiano][play] = " Giocare ";
+    my_languages[italiano][setting] = " Opzione ";
 
     //les messages allemands
     my_languages[deutsch][choice] = " Walh ";
@@ -151,6 +164,9 @@ LanguageMessage::LanguageMessage() {
     my_languages[deutsch][by] = " Sie teil stoppen " ;
     my_languages[deutsch][ltime] = " Restzeit  ";
     my_languages[deutsch][timeup] = " Sie zu lange dauerte, verlieren eine Ebene ";
+    my_languages[deutsch][best] = " Ergebnis";
+    my_languages[deutsch][play] = " Spieler ";
+    my_languages[deutsch][setting] = " Optionen ";
 
 }
 

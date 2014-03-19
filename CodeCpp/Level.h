@@ -70,13 +70,13 @@ class Level {
          */
         void winLevel();
     
+    
+
+    public:
         /*!
          * \brief Méthode pour regénerer une grille après avoir perdu ou gagné sans perdre les attributs de notre Digger
          */
         void reset();
-
-    public:
-
         /*!
          *  \brief Constructeur
          *

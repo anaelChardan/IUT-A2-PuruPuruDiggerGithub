@@ -62,7 +62,7 @@ class GameView {
         sf::Sprite* my_playButtonSprite;
         sf::Sprite* my_bestButtonSprite;
         sf::Sprite* my_buttonQuitSprite;
-        sf::Sprite* my_levelButtonQuitSprite;
+        sf::Sprite* my_quitButtonSprite;
     
         //Mon sprite pour le background
         sf::Sprite* my_backgroundSprite;
