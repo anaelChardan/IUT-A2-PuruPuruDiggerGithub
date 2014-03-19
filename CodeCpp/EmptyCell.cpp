@@ -79,6 +79,8 @@ EmptyCell::addLife() { }
 void
 EmptyCell::lostLife() { }
 
+void
+EmptyCell::resetLife() { }
 
 
 /*===========================

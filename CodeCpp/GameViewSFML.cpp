@@ -149,7 +149,7 @@ GameView::~GameView() {
 
 void GameView::setAnanasMode() {
 #ifdef __linux__
-    if (!my_backgroundImage->LoadFromFile("Pictures/wallpapper.png") || !my_caseImage->LoadFromFile("Prictures/case.png") || !my_buttonImage->LoadFromFile("Pictures/buttonAnanas.png") || !my_fontScore->LoadFromFile("Font/scoreFont.ttf") || !my_fontTitle->LoadFromFile("Font/titleFont.ttf") || !my_fontValue->LoadFromFile("Font/valueFont.ttf") ) {
+    if (!my_backgroundImage->LoadFromFile("Pictures/wallpapper.png") || !my_caseImage->LoadFromFile("Pictures/case.png") || !my_buttonImage->LoadFromFile("Pictures/buttonAnanas.png") || !my_fontScore->LoadFromFile("Font/scoreFont.ttf") || !my_fontTitle->LoadFromFile("Font/titleFont.ttf") || !my_fontValue->LoadFromFile("Font/valueFont.ttf") ) {
         cout << "Error when loading image or font" << endl;
     }
 #else
@@ -186,9 +186,17 @@ void GameView::setAnanasMode() {
 
 void
 GameView::setTeacherMode() {
+#ifdef __linux__
+    if (!my_backgroundImage->LoadFromFile("Pictures/wallpapperTeach.png") || !my_caseImage->LoadFromFile("Pictures/caseTeach.png") || !my_buttonImage->LoadFromFile("Pictures/buttonTeach.png") ||!my_fontScore->LoadFromFile("Font/arial.ttf") || !my_fontTitle->LoadFromFile("Font/arial.ttf") || !my_fontValue->LoadFromFile("Font/arial.ttf") ) {
+        cout << "Error when loading image or font" << endl;
+    }
+#else
     if (!my_backgroundImage->LoadFromFile("wallpapperTeach.png") || !my_caseImage->LoadFromFile("caseTeach.png") || !my_buttonImage->LoadFromFile("buttonTeach.png") ||!my_fontScore->LoadFromFile("arial.ttf") || !my_fontTitle->LoadFromFile("arial.ttf") || !my_fontValue->LoadFromFile("arial.ttf") ) {
         cout << "Error when loading image or font" << endl;
-    } else {
+    }
+#endif
+    
+else {
         
         //Le string pour la page de présentation
         my_titleString->SetFont( *my_fontTitle );
@@ -438,8 +446,8 @@ GameView::treatGame() {
 
     bool isInPresentation = false; //Pour savoir si il est sur le menu de départ
     bool isPlaying = true; // Pour savoir si il est sur le jeu
-    bool isChoosingOption = false; //Pour savoir si il est le menu du choix des options
-    bool isInBestScore = false; //Pour savoir si il est sur le menu des meilleurs scores
+    //bool isChoosingOption = false; //Pour savoir si il est le menu du choix des options
+    //bool isInBestScore = false; //Pour savoir si il est sur le menu des meilleurs scores
     
     sf::Clock pause;        //La clock pour la pause
     bool isInBreak = false; //Pour savoir quand on est en pause
@@ -462,7 +470,7 @@ GameView::treatGame() {
                             
                             setButtonHover( my_playButtonSprite );
                         
-                    } else if ( isPlaying && !isInPresentation ) {
+                    } else if ( isPlaying  ) {
                         if ( event.MouseMove.X > QUITONX && event.MouseMove.X < QUITONX + BUTTONWIDTH && event.MouseMove.Y > QUITONY && event.MouseMove.Y < QUITONY + BUTTONHEIGHT )
                             
                             setButtonHover(my_buttonQuitSprite);
@@ -507,20 +515,23 @@ GameView::treatGame() {
             }
         }
         
+        
         //Gestion de tout l'affichage
-        if ( my_model->getLevel()->lose() ) {
-            if ( !isInBreak )
-                pause.Reset();
-            showLoseLevel();
-            isInBreak = true;
-            
-        } else if ( my_model->getLevel()->win()  ) {
-            if ( !isInBreak )
-                pause.Reset();
-            showWinLevel();
-            isInBreak = true;
-        } else {
-            showLevel();
+        if ( isPlaying ) {
+            if ( my_model->getLevel()->lose() ) {
+                if ( !isInBreak )
+                    pause.Reset();
+                showLoseLevel();
+                isInBreak = true;
+                
+            } else if ( my_model->getLevel()->win()  ) {
+                if ( !isInBreak )
+                    pause.Reset();
+                showWinLevel();
+                isInBreak = true;
+            } else {
+                showLevel();
+            }
         }
         
         // Affichage du contenu de la fenêtre à l'écran

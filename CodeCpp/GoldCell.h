@@ -97,6 +97,8 @@ class GoldCell : public ValueCell {
          */
         virtual void lostLife();
     
+     virtual void resetLife();
+    
 };
 
 #endif /* defined(__PuruPuruDigger__GoldCell__) */

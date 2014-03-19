@@ -64,6 +64,11 @@ Digger::lostLife() {
     }
 }
 
+void
+Digger::resetLife() {
+    my_life = 3;
+}
+
 Digger&
 Digger::operator=( const Digger &d ) {
     if ( this != &d ) {

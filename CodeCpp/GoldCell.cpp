@@ -92,3 +92,6 @@ GoldCell::addLife() { }
 
 void
 GoldCell::lostLife() { }
+
+void
+GoldCell::resetLife() { }

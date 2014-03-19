@@ -104,6 +104,8 @@ class ValueCell : public CellBase {
          *
          */
         virtual void lostLife();
+    
+        virtual void resetLife();
 
 
 };

@@ -102,6 +102,8 @@ class Bomb : public CellBase
          */
         virtual void lostLife();
     
+        virtual void resetLife();
+    
 
 };
 

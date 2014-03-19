@@ -77,6 +77,9 @@ Bomb::addLife() { }
 void
 Bomb::lostLife() { }
 
+void
+Bomb::resetLife() { }
+
 
 
 /*===========================

@@ -222,6 +222,7 @@ GameView::treatGame() {
                     break;
             }
             my_model->getLevel()->resetTime();
+            my_model->getLevel()->getDigger()->resetLife();
             while (isPlaying) {
                 showGrid();
                 showScore();

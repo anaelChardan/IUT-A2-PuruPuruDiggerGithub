@@ -96,3 +96,6 @@ ValueCell::addLife() { }
 void
 ValueCell::lostLife() { }
 
+void
+ValueCell::resetLife() { }
+

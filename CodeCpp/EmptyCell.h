@@ -97,6 +97,8 @@ class EmptyCell : public CellBase {
          */
         virtual void lostLife();
     
+        virtual void resetLife();
+    
 };
 
 #endif /* defined(__PuruPuruDigger__EmptyCell__) */

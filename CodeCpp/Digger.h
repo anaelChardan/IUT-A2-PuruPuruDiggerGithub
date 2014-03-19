@@ -101,6 +101,8 @@
          */
         virtual int getPoints() const;
     
+        virtual void resetLife();
+    
 };
 
 #endif /* defined(__purpurudigger__Digger__) */
