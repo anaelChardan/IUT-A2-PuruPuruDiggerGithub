@@ -51,7 +51,7 @@ using namespace sf;
      my_levelButtonQuitSprite = new Sprite();
  
      //Chargement des images selon le mode
-     setTeacherMode();
+     setAnanasMode();
      
      my_languageImage->CreateMaskFromColor(Color(234,20,140));
      my_caseImage->CreateMaskFromColor( Color(0, 55, 97) );
@@ -148,10 +148,17 @@ GameView::~GameView() {
 }
 
 void GameView::setAnanasMode() {
+#ifdef __linux__
+    if (!my_backgroundImage->LoadFromFile("Pictures/wallpapper.png") || !my_caseImage->LoadFromFile("Prictures/case.png") || !my_buttonImage->LoadFromFile("Pictures/buttonAnanas.png") || !my_fontScore->LoadFromFile("Font/scoreFont.ttf") || !my_fontTitle->LoadFromFile("Font/titleFont.ttf") || !my_fontValue->LoadFromFile("Font/valueFont.ttf") ) {
+        cout << "Error when loading image or font" << endl;
+    }
+#else
     if (!my_backgroundImage->LoadFromFile("wallpapper.png") || !my_caseImage->LoadFromFile("case.png") || !my_buttonImage->LoadFromFile("buttonAnanas.png") || !my_fontScore->LoadFromFile("scoreFont.ttf") || !my_fontTitle->LoadFromFile("titleFont.ttf") || !my_fontValue->LoadFromFile("valueFont.ttf") ) {
         cout << "Error when loading image or font" << endl;
-    } else {
-    
+    }
+#endif
+    else {
+        
         //Les affichages de valeurs seront toujours identiques, du coup on les set direct
         my_valueString->SetFont( *my_fontValue );
         my_valueString->SetColor(Color(255,255,255) );
@@ -219,7 +226,8 @@ GameView::setButtonHover( sf::Sprite* buttonToHover ) {
 
 void
 GameView::resetButtonNorm() {
-     my_playButtonSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
+    my_playButtonSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
+    my_buttonQuitSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
 }
 
 void
@@ -428,8 +436,8 @@ void GameView::setModel(GameModel *model) {
 void
 GameView::treatGame() {
 
-    bool isInPresentation = true; //Pour savoir si il est sur le menu de départ
-    bool isPlaying = false; // Pour savoir si il est sur le jeu
+    bool isInPresentation = false; //Pour savoir si il est sur le menu de départ
+    bool isPlaying = true; // Pour savoir si il est sur le jeu
     bool isChoosingOption = false; //Pour savoir si il est le menu du choix des options
     bool isInBestScore = false; //Pour savoir si il est sur le menu des meilleurs scores
     
@@ -449,9 +457,18 @@ GameView::treatGame() {
                     my_window->Close();
                     break;
                 case Event::MouseMoved :
-                    if ( event.MouseMove.X > PLAYX && event.MouseMove.X < PLAYX + BUTTONWIDTH && event.MouseMove.Y > PLAYY && event.MouseMove.Y < PLAYY + BUTTONHEIGHT )
-                        setButtonHover( my_playButtonSprite );
-                    else resetButtonNorm();
+                    if ( isInPresentation ) {
+                        if ( event.MouseMove.X > PLAYX && event.MouseMove.X < PLAYX + BUTTONWIDTH && event.MouseMove.Y > PLAYY && event.MouseMove.Y < PLAYY + BUTTONHEIGHT )
+                            
+                            setButtonHover( my_playButtonSprite );
+                        
+                    } else if ( isPlaying && !isInPresentation ) {
+                        if ( event.MouseMove.X > QUITONX && event.MouseMove.X < QUITONX + BUTTONWIDTH && event.MouseMove.Y > QUITONY && event.MouseMove.Y < QUITONY + BUTTONHEIGHT )
+                            
+                            setButtonHover(my_buttonQuitSprite);
+                        else
+                            resetButtonNorm();
+                    }
                     break;
                 case Event::KeyPressed : // Appui sur une touche du clavier
                 {
