@@ -17,8 +17,8 @@
 		03229D1D18D35E8A00027190 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03229D1918D35E8A00027190 /* Utils.cpp */; };
 		033D7D8518C8C6C400BA0091 /* LanguageMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 033D7D8318C8C6C400BA0091 /* LanguageMessage.cpp */; };
 		033F710B18D2213A0064FAF5 /* valueFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 033F710A18D2213A0064FAF5 /* valueFont.ttf */; };
+		0366A59218DAC42A00BF3C02 /* buttonFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0366A59118DAC42A00BF3C02 /* buttonFont.ttf */; };
 		0368878B18D8228F00E63AFD /* arial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0368878A18D8228F00E63AFD /* arial.ttf */; };
-		036AF67C18DA10A200927C50 /* buttonFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 036AF67B18DA10A200927C50 /* buttonFont.ttf */; };
 		0371150518D1889000EE9282 /* scoreFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0371150318D1889000EE9282 /* scoreFont.ttf */; };
 		0371150618D1889000EE9282 /* titleFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0371150418D1889000EE9282 /* titleFont.ttf */; };
 		0377340E18B9FFBC00D5AFA0 /* EmptyCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0377340C18B9FFBC00D5AFA0 /* EmptyCell.cpp */; };
@@ -146,8 +146,8 @@
 		033D7D8318C8C6C400BA0091 /* LanguageMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LanguageMessage.cpp; sourceTree = SOURCE_ROOT; };
 		033D7D8418C8C6C400BA0091 /* LanguageMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageMessage.h; sourceTree = SOURCE_ROOT; };
 		033F710A18D2213A0064FAF5 /* valueFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = valueFont.ttf; sourceTree = "<group>"; };
+		0366A59118DAC42A00BF3C02 /* buttonFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = buttonFont.ttf; sourceTree = "<group>"; };
 		0368878A18D8228F00E63AFD /* arial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = arial.ttf; sourceTree = "<group>"; };
-		036AF67B18DA10A200927C50 /* buttonFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = buttonFont.ttf; sourceTree = "<group>"; };
 		0371150318D1889000EE9282 /* scoreFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = scoreFont.ttf; sourceTree = "<group>"; };
 		0371150418D1889000EE9282 /* titleFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = titleFont.ttf; sourceTree = "<group>"; };
 		0377340C18B9FFBC00D5AFA0 /* EmptyCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EmptyCell.cpp; sourceTree = SOURCE_ROOT; };
@@ -220,7 +220,7 @@
 		0371150218D1889000EE9282 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				036AF67B18DA10A200927C50 /* buttonFont.ttf */,
+				0366A59118DAC42A00BF3C02 /* buttonFont.ttf */,
 				0368878A18D8228F00E63AFD /* arial.ttf */,
 				033F710A18D2213A0064FAF5 /* valueFont.ttf */,
 				0371150318D1889000EE9282 /* scoreFont.ttf */,
@@ -414,7 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0371150518D1889000EE9282 /* scoreFont.ttf in Resources */,
-				036AF67C18DA10A200927C50 /* buttonFont.ttf in Resources */,
+				0366A59218DAC42A00BF3C02 /* buttonFont.ttf in Resources */,
 				03F388E818D78E03003A08BC /* caseTeach.png in Resources */,
 				033F710B18D2213A0064FAF5 /* valueFont.ttf in Resources */,
 				031BE64A18D8E06B00476CBB /* buttonAnanas.png in Resources */,
