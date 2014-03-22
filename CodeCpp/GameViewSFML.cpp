@@ -15,7 +15,7 @@ using namespace sf;
      //On bloque le rafraichissement à 60 par seconde
      my_window->SetFramerateLimit(60);
  
-     my_language = francais;
+     my_language = italiano;
      
      //La font pour les scores
      my_fontScore = new Font();
@@ -42,6 +42,11 @@ using namespace sf;
      my_bombSprite = new Sprite();
      my_backgroundSprite = new Sprite();
      my_emptySprite = new Sprite();
+     my_frenchSprite = new Sprite();
+     my_englishSprite = new Sprite();
+     my_deutschSprite = new Sprite();
+     my_italianoSprite = new Sprite();
+     my_spanishSprite = new Sprite();
      
      //Les boutons
      my_buttonQuitSprite = new Sprite();
@@ -53,7 +58,7 @@ using namespace sf;
      //Chargement des images selon le mode
      setAnanasMode();
      
-     my_languageImage->CreateMaskFromColor(Color(234,20,140));
+     my_languageImage->CreateMaskFromColor(Color(0, 55, 97));
      my_caseImage->CreateMaskFromColor( Color(0, 55, 97) );
      my_buttonImage->CreateMaskFromColor( Color(0, 55, 97) );
      
@@ -111,31 +116,32 @@ using namespace sf;
      my_stringToSprite["Bomb"] = *my_bombSprite;
      my_stringToSprite["ValueCell" ] = *my_valueSprite;
           
-        /*
-          
-          my_frenchSprite->setImage( *my_languageImage );
-          my_frenchSprite->setSubRect( IntRect( FRENCHSX, ..., FRENCHEX, SPRITELANGUAGEHEIGHT );
-         
-          my_deutschSprite->setImage( *my_languageImage );
-          my_frenchSprite->setSubRect( IntRect( FRENCHSX, ..., FRENCHEX, SPRITELANGUAGEHEIGHT );
-         
-          my_spanishSprite->setImage( *my_languageImage );
-          my_frenchSprite->setSubRect( IntRect( FRENCHSX, ..., FRENCHEX, SPRITELANGUAGEHEIGHT );
-         
-          my_italianoSprite->setImage( *my_languageImage );
-          my_frenchSprite->setSubRect( IntRect( FRENCHSX, ..., FRENCHEX, SPRITELANGUAGEHEIGHT );
-         
-          my_englishSprite->setImage( *my_languageImage );
-          my_frenchSprite->setSubRect( IntRect( FRENCHSX, ..., FRENCHEX, SPRITELANGUAGEHEIGHT );
-          
-          
-          */
-         
-         
-         
-        //my_languageSprite->SetImage(*my_languageImage);
-     
+     my_englishSprite->SetImage( *my_languageImage );
+     my_englishSprite->SetSubRect( IntRect( ENGLISHSX, SPRITELANGUEBEGIN, ENGLISHEX, SPRITELANGUEHEIGHT ) );
+     my_englishSprite->Resize( LANGUEWIDTH, LANGUEHEIGHT );
+                                  
+     my_frenchSprite->SetImage( *my_languageImage );
+     my_frenchSprite->SetSubRect( IntRect( FRENCHSX, SPRITELANGUEBEGIN, FRENCHEX, SPRITELANGUEHEIGHT ) );
+     my_frenchSprite->Resize( LANGUEWIDTH, LANGUEHEIGHT );
 
+     my_italianoSprite->SetImage( *my_languageImage );
+     my_italianoSprite->SetSubRect( IntRect( ITALIANOSX, SPRITELANGUEBEGIN, ITALIANOEX, SPRITELANGUEHEIGHT ) );
+     my_italianoSprite->Resize( LANGUEWIDTH, LANGUEHEIGHT );
+     
+     my_spanishSprite->SetImage( *my_languageImage );
+     my_spanishSprite->SetSubRect( IntRect( SPANISHSX, SPRITELANGUEBEGIN, SPANISHEX, SPRITELANGUEHEIGHT ) );
+     my_spanishSprite->Resize( LANGUEWIDTH, LANGUEHEIGHT );
+     
+     my_deutschSprite->SetImage( *my_languageImage );
+     my_deutschSprite->SetSubRect( IntRect( DEUTSCHSX, SPRITELANGUEBEGIN, DEUTSCHEX, SPRITELANGUEHEIGHT ) );
+     my_deutschSprite->Resize( LANGUEWIDTH, LANGUEHEIGHT );
+     
+     my_languageToSprite[english] = *my_englishSprite;
+     my_languageToSprite[francais] = *my_frenchSprite;
+     my_languageToSprite[italiano] = *my_italianoSprite;
+     my_languageToSprite[deutsch] = *my_deutschSprite;
+     my_languageToSprite[espanol] = *my_spanishSprite;
+         
 }
 
 GameView::~GameView() {
@@ -161,11 +167,11 @@ GameView::~GameView() {
 
 void GameView::setAnanasMode() {
 #ifdef __linux__
-    if (!my_backgroundImage->LoadFromFile("Pictures/wallpapper.png") || !my_caseImage->LoadFromFile("Pictures/case.png") || !my_buttonImage->LoadFromFile("Pictures/buttonAnanas.png") || !my_fontScore->LoadFromFile("Font/scoreFont.ttf") || !my_fontTitle->LoadFromFile("Font/titleFont.ttf") || !my_fontValue->LoadFromFile("Font/valueFont.ttf") || !my_fontButton->LoadFromFile("Font/buttonFont.ttf") ) {
+    if (!my_backgroundImage->LoadFromFile("Pictures/wallpapper.png") || !my_caseImage->LoadFromFile("Pictures/case.png") || !my_buttonImage->LoadFromFile("Pictures/buttonAnanas.png") || !my_languageImage->LoadFromFile("Pictures/languages.png") || !my_fontScore->LoadFromFile("Font/scoreFont.ttf") || !my_fontTitle->LoadFromFile("Font/titleFont.ttf") || !my_fontValue->LoadFromFile("Font/valueFont.ttf") || !my_fontButton->LoadFromFile("Font/buttonFont.ttf") ) {
         cout << "Error when loading image or font" << endl;
     }
 #else
-    if (!my_backgroundImage->LoadFromFile("wallpapper.png") || !my_caseImage->LoadFromFile("case.png") || !my_buttonImage->LoadFromFile("buttonAnanas.png") || !my_fontScore->LoadFromFile("scoreFont.ttf") || !my_fontTitle->LoadFromFile("titleFont.ttf") || !my_fontValue->LoadFromFile("valueFont.ttf") || !my_fontButton->LoadFromFile("buttonFont.ttf") ) {
+    if (!my_backgroundImage->LoadFromFile("wallpapper.png") || !my_caseImage->LoadFromFile("case.png") || !my_buttonImage->LoadFromFile("buttonAnanas.png") || !my_languageImage->LoadFromFile("languages.png") || !my_fontScore->LoadFromFile("scoreFont.ttf") || !my_fontTitle->LoadFromFile("titleFont.ttf") || !my_fontValue->LoadFromFile("valueFont.ttf") || !my_fontButton->LoadFromFile("buttonFont.ttf") ) {
         cout << "Error when loading image or font" << endl;
     }
 #endif
@@ -203,11 +209,11 @@ void GameView::setAnanasMode() {
 void
 GameView::setTeacherMode() {
 #ifdef __linux__
-    if (!my_backgroundImage->LoadFromFile("Pictures/wallpapperTeach.png") || !my_caseImage->LoadFromFile("Pictures/caseTeach.png") || !my_buttonImage->LoadFromFile("Pictures/buttonTeach.png") ||!my_fontScore->LoadFromFile("Font/arial.ttf") || !my_fontTitle->LoadFromFile("Font/arial.ttf") || !my_fontValue->LoadFromFile("Font/arial.ttf") || !my_fontButton->LoadFromFile("Font/arial.ttf")) {
+    if (!my_backgroundImage->LoadFromFile("Pictures/wallpapperTeach.png") || !my_caseImage->LoadFromFile("Pictures/caseTeach.png") || !my_buttonImage->LoadFromFile("Pictures/buttonTeach.png") || !my_languageImage->LoadFromFile("Pictures/languages.png") ||!my_fontScore->LoadFromFile("Font/arial.ttf") || !my_fontTitle->LoadFromFile("Font/arial.ttf") || !my_fontValue->LoadFromFile("Font/arial.ttf") || !my_fontButton->LoadFromFile("Font/arial.ttf")) {
         cout << "Error when loading image or font" << endl;
     }
 #else
-    if (!my_backgroundImage->LoadFromFile("wallpapperTeach.png") || !my_caseImage->LoadFromFile("caseTeach.png") || !my_buttonImage->LoadFromFile("buttonTeach.png") ||!my_fontScore->LoadFromFile("arial.ttf") || !my_fontTitle->LoadFromFile("arial.ttf") || !my_fontValue->LoadFromFile("arial.ttf") || !my_fontButton->LoadFromFile("arial.ttf")) {
+    if (!my_backgroundImage->LoadFromFile("wallpapperTeach.png") || !my_caseImage->LoadFromFile("caseTeach.png") || !my_buttonImage->LoadFromFile("buttonTeach.png") || !my_languageImage->LoadFromFile("languages.png") ||!my_fontScore->LoadFromFile("arial.ttf") || !my_fontTitle->LoadFromFile("arial.ttf") || !my_fontValue->LoadFromFile("arial.ttf") || !my_fontButton->LoadFromFile("arial.ttf")) {
         cout << "Error when loading image or font" << endl;
     }
 #endif
@@ -241,7 +247,7 @@ GameView::setTeacherMode() {
     
         my_buttonString->SetFont( *my_fontButton );
         my_buttonString->SetSize(30);
-        my_buttonString->SetColor(Color(251,210,98));
+        my_buttonString->SetColor(Color(0,0,0));
 
     }
 }
@@ -288,41 +294,55 @@ GameView::showPresentation() {
     my_window->Draw( *my_quitButtonSprite);
     
     my_buttonString->SetText( my_messages[my_language][best] ) ;
-    my_buttonString->SetPosition( BESTX , (BESTY + (BUTTONHEIGHT / 5)) );
+    my_buttonString->SetPosition( BESTX + 40, (BESTY + (BUTTONHEIGHT / 5)) );
     my_window->Draw( *my_buttonString );
     
     my_buttonString->SetText( my_messages[my_language][play] ) ;
-    my_buttonString->SetPosition(  PLAYX , PLAYY + (BUTTONHEIGHT / 5) );
+    my_buttonString->SetPosition(  PLAYX  + 40, PLAYY + (BUTTONHEIGHT / 5) );
     my_window->Draw( *my_buttonString );
     
     my_buttonString->SetText( my_messages[my_language][stop] ) ;
-    my_buttonString->SetPosition(  QUITX, (QUITY + (BUTTONHEIGHT * 0.2 )) );
+    my_buttonString->SetPosition(  QUITX + 40, (QUITY + (BUTTONHEIGHT * 0.2 )) );
     my_window->Draw( *my_buttonString );
     
     my_buttonString->SetText( my_messages[my_language][setting] ) ;
-    my_buttonString->SetPosition(  OPTIONX    , OPTIONY + (BUTTONHEIGHT * 0.2) );
+    my_buttonString->SetPosition(  OPTIONX + 40   , OPTIONY + (BUTTONHEIGHT * 0.2) );
     my_window->Draw( *my_buttonString );
     
-    
-    
 }
+
 
 void
 GameView::showOption() {
     my_window->Clear();
+    my_window->Draw(*my_backgroundSprite);
     showSpriteChoice();
     showLanguage();
+    
+    my_languageToSprite[my_language].SetPosition(MYLANGUEX, MYLANGUEY);
+    my_window->Draw(my_languageToSprite[my_language]);
 }
 
 
 void
 GameView::showLanguage() {
-
+    my_languageToSprite[english].SetPosition(ENGLISHX, ENGLISHY);
+    my_languageToSprite[francais].SetPosition(FRENCHX, FRENCHY);
+    my_languageToSprite[italiano].SetPosition(ITALIANOX, ITALIANOY);
+    my_languageToSprite[deutsch].SetPosition(DEUTSCHX, DEUTSCHY);
+    my_languageToSprite[espanol].SetPosition(SPANISHX, SPANISHY);
+    
+    my_window->Draw(my_languageToSprite[english]);
+    my_window->Draw(my_languageToSprite[francais]);
+    my_window->Draw(my_languageToSprite[italiano]);
+    my_window->Draw(my_languageToSprite[deutsch]);
+    my_window->Draw(my_languageToSprite[espanol]);
 }
 
 
 void
 GameView::showSpriteChoice() {
+    
 }
 
 
@@ -506,7 +526,7 @@ GameView::treatGame() {
 
     bool isInPresentation = true; //Pour savoir si il est sur le menu de départ
     bool isPlaying = false; // Pour savoir si il est sur le jeu
-    //bool isChoosingOption = false; //Pour savoir si il est le menu du choix des options
+    bool isChoosingOption = false; //Pour savoir si il est le menu du choix des options
     //bool isInBestScore = false; //Pour savoir si il est sur le menu des meilleurs scores
     
     sf::Clock pause;        //La clock pour la pause
@@ -588,7 +608,23 @@ GameView::treatGame() {
                         } else if ( event.MouseButton.X > QUITX && event.MouseButton.X < QUITX + BUTTONWIDTH && event.MouseButton.Y > QUITY && event.MouseButton.Y < QUITY + BUTTONHEIGHT ) {
                             my_window->Close();
                             
+                        } else if ( event.MouseButton.X > OPTIONX && event.MouseButton.X < OPTIONX + BUTTONWIDTH && event.MouseButton.Y > OPTIONY && event.MouseButton.Y < OPTIONY + BUTTONHEIGHT ) {
+                            isInPresentation = false;
+                            isChoosingOption = true;
                         }
+                    } else if ( isChoosingOption ) {
+                        
+                        if ( event.MouseButton.X > ENGLISHX && event.MouseButton.X < ENGLISHX + LANGUEWIDTH && event.MouseButton.Y > ENGLISHY && event.MouseButton.Y < ENGLISHY + LANGUEHEIGHT )
+                            my_language = english;
+                        if ( event.MouseButton.X > FRENCHX && event.MouseButton.X < FRENCHX + LANGUEWIDTH && event.MouseButton.Y > FRENCHY && event.MouseButton.Y < FRENCHY + LANGUEHEIGHT )
+                            my_language = francais;
+                        if ( event.MouseButton.X > ITALIANOX && event.MouseButton.X < ITALIANOX + LANGUEWIDTH && event.MouseButton.Y > ITALIANOY && event.MouseButton.Y < ITALIANOY + LANGUEHEIGHT )
+                            my_language = italiano;
+                        if ( event.MouseButton.X > SPANISHX && event.MouseButton.X < SPANISHX + LANGUEWIDTH && event.MouseButton.Y > SPANISHY && event.MouseButton.Y < SPANISHY + LANGUEHEIGHT )
+                            my_language = espanol;
+                        if ( event.MouseButton.X > DEUTSCHX && event.MouseButton.X < DEUTSCHX + LANGUEWIDTH && event.MouseButton.Y > DEUTSCHY && event.MouseButton.Y < DEUTSCHY + LANGUEHEIGHT )
+                            my_language = deutsch;
+                        
                     } else if ( isPlaying ) {
                         cout << " Souris case : " << convertYPixel(event.MouseButton.Y) << " " << convertXPixel(event.MouseButton.X) <<  " "  << endl;
                         if ( event.MouseButton.X > QUITONX && event.MouseButton.X < QUITONX + BUTTONWIDTH && event.MouseButton.Y > QUITONY && event.MouseButton.Y < QUITONY + BUTTONHEIGHT ) {
@@ -605,10 +641,11 @@ GameView::treatGame() {
         
         
         //Gestion de tout l'affichage
-        if ( isInPresentation )
+        if ( isInPresentation ) {
             showPresentation();
-        
-        if ( isPlaying ) {
+        } else if ( isChoosingOption ) {
+            showOption();
+        } else if ( isPlaying ) {
             if ( my_model->getLevel()->lose() ) {
                 if ( !isInBreak )
                     pause.Reset();

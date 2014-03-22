@@ -28,7 +28,6 @@ class GameView {
     
         std::map< std::string, sf::Sprite > my_stringToSprite;
         std::map< Language, sf::Sprite > my_languageToSprite;
-        std::map< std::string, sf::Sprite > my_spriteToSprite;
     
         sf::RenderWindow* my_window;
     

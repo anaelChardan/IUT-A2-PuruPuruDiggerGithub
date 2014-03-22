@@ -47,8 +47,8 @@ const int CASEHEIGHT = 35;
 //Pour nos feuilles de sprite ANANAS
 const int SPRITECASEBEGIN = 6;
 const int SPRITECASEHEIGHT = 56 ;
-const int DIGGERSX = 0 ; //Début de la position en X
-const int DIGGEREX = 50 ; //Fin de la position en X
+const int DIGGERSX = 0 ; //Début de la position en X, S pour Start
+const int DIGGEREX = 50 ; //Fin de la position en X, E pour End
 const int GOLDSX = 56 ;
 const int GOLDEX = 106 ;
 const int EMPTYSX = 112;
@@ -57,6 +57,42 @@ const int BOMBSX = 168 ;
 const int BOMBEX = 218 ;
 const int VALUESX = 224 ;
 const int VALUEEX = 274 ;
+
+
+//Pour la gestion des langues
+const int SPRITELANGUEBEGIN = 12;
+const int SPRITELANGUEHEIGHT = 122 ;
+
+const int LANGUEWIDTH = 100;
+const int LANGUEHEIGHT = 100;
+
+const int MYLANGUEX = 300;
+const int MYLANGUEY = 300;
+
+const int ENGLISHX = 100;
+const int ENGLISHY = 100;
+const int ENGLISHSX = 7;
+const int ENGLISHEX = 114;
+
+const int FRENCHX = 300;
+const int FRENCHY = 100;
+const int FRENCHSX = 123;
+const int FRENCHEX = 230;
+
+const int ITALIANOX = 500;
+const int ITALIANOY = 100;
+const int ITALIANOSX = 240;
+const int ITALIANOEX = 346;
+
+const int SPANISHX = 700;
+const int SPANISHY = 100;
+const int SPANISHSX = 360;
+const int SPANISHEX = 463;
+
+const int DEUTSCHX = 900;
+const int DEUTSCHY = 100;
+const int DEUTSCHSX = 472;
+const int DEUTSCHEX = 578;
 
 
 //Pour les boutons
