@@ -15,7 +15,7 @@ using namespace sf;
      //On bloque le rafraichissement à 60 par seconde
      my_window->SetFramerateLimit(60);
  
-     my_language = italiano;
+     my_language = english;
      
      //La font pour les scores
      my_fontScore = new Font();
@@ -321,14 +321,32 @@ void
 GameView::showOption() {
     my_window->Clear();
     my_window->Draw(*my_backgroundSprite);
-    showSpriteChoice();
     showLanguage();
+    showSpriteChoice();
+
     
     my_languageToSprite[my_language].SetPosition(MYLANGUEX, MYLANGUEY);
     my_window->Draw(my_languageToSprite[my_language]);
+    
+    my_buttonQuitSprite->SetPosition( QUITONX, QUITONY);
+    my_window->Draw( *my_buttonQuitSprite );
+    
+    my_buttonString->SetText( my_messages[my_language][stop] );
+    my_buttonString->SetPosition( ( ( ( QUITONX + BUTTONWIDTH ) / 2.5 )  ), (QUITONY + (BUTTONHEIGHT / 5)) );
+    my_window->Draw( *my_buttonString );
 }
 
+void
+GameView::setHoverLanguage( Language hover ) {
+    my_languageToSprite[hover].SetColor(Color(255,255,255,128));
+}
 
+void GameView::resetLanguageNorm() {
+    for ( map<Language, Sprite>::const_iterator it = my_languageToSprite.begin() ; it!=my_languageToSprite.end(); ++it) {
+        my_languageToSprite[ it->first ].SetColor(Color(255,255,255,255));
+    }
+    
+}
 void
 GameView::showLanguage() {
     my_languageToSprite[english].SetPosition(ENGLISHX, ENGLISHY);
@@ -566,6 +584,19 @@ GameView::treatGame() {
                         else
                             resetButtonNorm();
                         
+                    } else if ( isChoosingOption ) {
+                        if ( event.MouseMove.X > ENGLISHX && event.MouseMove.X < ENGLISHX + LANGUEWIDTH && event.MouseMove.Y > ENGLISHY && event.MouseMove.Y < ENGLISHY + LANGUEHEIGHT )
+                            setHoverLanguage( english );
+                        else if ( event.MouseMove.X > FRENCHX && event.MouseMove.X < FRENCHX + LANGUEWIDTH && event.MouseMove.Y > FRENCHY && event.MouseMove.Y < FRENCHY + LANGUEHEIGHT )
+                            setHoverLanguage( francais );
+                        else if ( event.MouseMove.X > SPANISHX && event.MouseMove.X < SPANISHX + LANGUEWIDTH && event.MouseMove.Y > SPANISHY && event.MouseMove.Y < SPANISHY + LANGUEHEIGHT )
+                            setHoverLanguage( espanol );
+                        else if ( event.MouseMove.X > DEUTSCHX && event.MouseMove.X < DEUTSCHX + LANGUEWIDTH && event.MouseMove.Y > DEUTSCHY && event.MouseMove.Y < DEUTSCHY + LANGUEHEIGHT )
+                            setHoverLanguage( deutsch );
+                        else if ( event.MouseMove.X > ITALIANOX && event.MouseMove.X < ITALIANOX + LANGUEWIDTH && event.MouseMove.Y > ITALIANOY && event.MouseMove.Y < ITALIANOY + LANGUEHEIGHT )
+                            setHoverLanguage( italiano );
+                        else
+                            resetLanguageNorm();
                     } else if ( isPlaying  ) {
                         if ( event.MouseMove.X > QUITONX && event.MouseMove.X < QUITONX + BUTTONWIDTH && event.MouseMove.Y > QUITONY && event.MouseMove.Y < QUITONY + BUTTONHEIGHT )
                             

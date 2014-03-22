@@ -81,7 +81,8 @@ class GameView {
     void showPresentation();
     void setButtonHover( sf::Sprite* buttonToHover );
     void resetButtonNorm();
-    void setClassicButton();
+    void setHoverLanguage( Language hover );
+    void resetLanguageNorm();
     void showLanguage();
     
     /*!
