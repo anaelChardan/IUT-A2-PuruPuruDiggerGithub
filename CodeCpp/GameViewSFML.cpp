@@ -57,91 +57,6 @@ using namespace sf;
  
      //Chargement des images selon le mode
      setAnanasMode();
-     
-     my_languageImage->CreateMaskFromColor(Color(0, 55, 97));
-     my_caseImage->CreateMaskFromColor( Color(0, 55, 97) );
-     my_buttonImage->CreateMaskFromColor( Color(0, 55, 97) );
-     
-     //On set les sprites de nos images
-     my_backgroundSprite->SetImage( *my_backgroundImage );
-     my_backgroundSprite->Resize( WINDOWWITDH, WINDOWHEIGHT );
-     
-     //Mise en places des sprites case
-     my_diggerSprite->SetImage( *my_caseImage );
-     my_diggerSprite->SetSubRect( IntRect( DIGGERSX, SPRITECASEBEGIN, DIGGEREX, SPRITECASEHEIGHT ) );
-     my_diggerSprite->Resize( CASEWITDH, CASEHEIGHT );
-     
-     my_valueSprite->SetImage( *my_caseImage );
-     my_valueSprite->SetSubRect( IntRect(VALUESX, SPRITECASEBEGIN, VALUEEX, SPRITECASEHEIGHT ) );
-     my_valueSprite->Resize( CASEWITDH, CASEHEIGHT );
-     
-     
-     my_goldSprite->SetImage( *my_caseImage );
-     my_goldSprite->SetSubRect( IntRect(GOLDSX, SPRITECASEBEGIN, GOLDEX, SPRITECASEHEIGHT ) );
-     my_goldSprite->Resize( CASEWITDH, CASEHEIGHT );
-     
-     my_bombSprite->SetImage( *my_caseImage );
-     my_bombSprite->SetSubRect( IntRect( BOMBSX, SPRITECASEBEGIN, BOMBEX, SPRITECASEHEIGHT ) );
-     my_bombSprite->Resize( CASEWITDH, CASEHEIGHT );
-     
-     my_emptySprite->SetImage( *my_caseImage );
-     my_emptySprite->SetSubRect( IntRect( EMPTYSX, SPRITECASEBEGIN, EMPTYEX, SPRITECASEHEIGHT ) );
-     my_emptySprite->Resize( CASEWITDH, CASEHEIGHT );
-     
-     //On set les boutons
-     my_buttonQuitSprite->SetImage( *my_buttonImage );
-     my_buttonQuitSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
-     my_buttonQuitSprite->Resize(BUTTONWIDTH, BUTTONHEIGHT);
-     
-     my_playButtonSprite->SetImage( *my_buttonImage );
-     my_playButtonSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
-     my_playButtonSprite->Resize( BUTTONWIDTH, BUTTONHEIGHT );
-     
-     my_optionButtonSprite->SetImage( *my_buttonImage );
-     my_optionButtonSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
-     my_optionButtonSprite->Resize( BUTTONWIDTH, BUTTONHEIGHT );
-     
-     my_bestButtonSprite->SetImage( *my_buttonImage );
-     my_bestButtonSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
-     my_bestButtonSprite->Resize( BUTTONWIDTH, BUTTONHEIGHT );
-     
-     my_quitButtonSprite->SetImage( *my_buttonImage );
-     my_quitButtonSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
-     my_quitButtonSprite->Resize( BUTTONWIDTH, BUTTONHEIGHT );
-     
-     
-     my_stringToSprite["Digger"] = *my_diggerSprite;
-     my_stringToSprite["EmptyCell"] = *my_emptySprite;
-     my_stringToSprite["GoldCell"] = *my_goldSprite;
-     my_stringToSprite["Bomb"] = *my_bombSprite;
-     my_stringToSprite["ValueCell" ] = *my_valueSprite;
-          
-     my_englishSprite->SetImage( *my_languageImage );
-     my_englishSprite->SetSubRect( IntRect( ENGLISHSX, SPRITELANGUEBEGIN, ENGLISHEX, SPRITELANGUEHEIGHT ) );
-     my_englishSprite->Resize( LANGUEWIDTH, LANGUEHEIGHT );
-                                  
-     my_frenchSprite->SetImage( *my_languageImage );
-     my_frenchSprite->SetSubRect( IntRect( FRENCHSX, SPRITELANGUEBEGIN, FRENCHEX, SPRITELANGUEHEIGHT ) );
-     my_frenchSprite->Resize( LANGUEWIDTH, LANGUEHEIGHT );
-
-     my_italianoSprite->SetImage( *my_languageImage );
-     my_italianoSprite->SetSubRect( IntRect( ITALIANOSX, SPRITELANGUEBEGIN, ITALIANOEX, SPRITELANGUEHEIGHT ) );
-     my_italianoSprite->Resize( LANGUEWIDTH, LANGUEHEIGHT );
-     
-     my_spanishSprite->SetImage( *my_languageImage );
-     my_spanishSprite->SetSubRect( IntRect( SPANISHSX, SPRITELANGUEBEGIN, SPANISHEX, SPRITELANGUEHEIGHT ) );
-     my_spanishSprite->Resize( LANGUEWIDTH, LANGUEHEIGHT );
-     
-     my_deutschSprite->SetImage( *my_languageImage );
-     my_deutschSprite->SetSubRect( IntRect( DEUTSCHSX, SPRITELANGUEBEGIN, DEUTSCHEX, SPRITELANGUEHEIGHT ) );
-     my_deutschSprite->Resize( LANGUEWIDTH, LANGUEHEIGHT );
-     
-     my_languageToSprite[english] = *my_englishSprite;
-     my_languageToSprite[francais] = *my_frenchSprite;
-     my_languageToSprite[italiano] = *my_italianoSprite;
-     my_languageToSprite[deutsch] = *my_deutschSprite;
-     my_languageToSprite[espanol] = *my_spanishSprite;
-         
 }
 
 GameView::~GameView() {
@@ -163,6 +78,92 @@ GameView::~GameView() {
     delete my_backgroundImage;
     
     delete my_caseImage;
+}
+
+void GameView::setImageToSprite() {
+    my_languageImage->CreateMaskFromColor(Color(0, 55, 97));
+    my_caseImage->CreateMaskFromColor( Color(0, 55, 97) );
+    my_buttonImage->CreateMaskFromColor( Color(0, 55, 97) );
+    
+    //On set les sprites de nos images
+    my_backgroundSprite->SetImage( *my_backgroundImage );
+    my_backgroundSprite->Resize( WINDOWWITDH, WINDOWHEIGHT );
+    
+    //Mise en places des sprites case
+    my_diggerSprite->SetImage( *my_caseImage );
+    my_diggerSprite->SetSubRect( IntRect( DIGGERSX, SPRITECASEBEGIN, DIGGEREX, SPRITECASEHEIGHT ) );
+    my_diggerSprite->Resize( CASEWITDH, CASEHEIGHT );
+    
+    my_valueSprite->SetImage( *my_caseImage );
+    my_valueSprite->SetSubRect( IntRect(VALUESX, SPRITECASEBEGIN, VALUEEX, SPRITECASEHEIGHT ) );
+    my_valueSprite->Resize( CASEWITDH, CASEHEIGHT );
+    
+    
+    my_goldSprite->SetImage( *my_caseImage );
+    my_goldSprite->SetSubRect( IntRect(GOLDSX, SPRITECASEBEGIN, GOLDEX, SPRITECASEHEIGHT ) );
+    my_goldSprite->Resize( CASEWITDH, CASEHEIGHT );
+    
+    my_bombSprite->SetImage( *my_caseImage );
+    my_bombSprite->SetSubRect( IntRect( BOMBSX, SPRITECASEBEGIN, BOMBEX, SPRITECASEHEIGHT ) );
+    my_bombSprite->Resize( CASEWITDH, CASEHEIGHT );
+    
+    my_emptySprite->SetImage( *my_caseImage );
+    my_emptySprite->SetSubRect( IntRect( EMPTYSX, SPRITECASEBEGIN, EMPTYEX, SPRITECASEHEIGHT ) );
+    my_emptySprite->Resize( CASEWITDH, CASEHEIGHT );
+    
+    //On set les boutons
+    my_buttonQuitSprite->SetImage( *my_buttonImage );
+    my_buttonQuitSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
+    my_buttonQuitSprite->Resize(BUTTONWIDTH, BUTTONHEIGHT);
+    
+    my_playButtonSprite->SetImage( *my_buttonImage );
+    my_playButtonSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
+    my_playButtonSprite->Resize( BUTTONWIDTH, BUTTONHEIGHT );
+    
+    my_optionButtonSprite->SetImage( *my_buttonImage );
+    my_optionButtonSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
+    my_optionButtonSprite->Resize( BUTTONWIDTH, BUTTONHEIGHT );
+    
+    my_bestButtonSprite->SetImage( *my_buttonImage );
+    my_bestButtonSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
+    my_bestButtonSprite->Resize( BUTTONWIDTH, BUTTONHEIGHT );
+    
+    my_quitButtonSprite->SetImage( *my_buttonImage );
+    my_quitButtonSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
+    my_quitButtonSprite->Resize( BUTTONWIDTH, BUTTONHEIGHT );
+    
+    
+    my_stringToSprite["Digger"] = *my_diggerSprite;
+    my_stringToSprite["EmptyCell"] = *my_emptySprite;
+    my_stringToSprite["GoldCell"] = *my_goldSprite;
+    my_stringToSprite["Bomb"] = *my_bombSprite;
+    my_stringToSprite["ValueCell" ] = *my_valueSprite;
+    
+    my_englishSprite->SetImage( *my_languageImage );
+    my_englishSprite->SetSubRect( IntRect( ENGLISHSX, SPRITELANGUEBEGIN, ENGLISHEX, SPRITELANGUEHEIGHT ) );
+    my_englishSprite->Resize( LANGUEWIDTH, LANGUEHEIGHT );
+    
+    my_frenchSprite->SetImage( *my_languageImage );
+    my_frenchSprite->SetSubRect( IntRect( FRENCHSX, SPRITELANGUEBEGIN, FRENCHEX, SPRITELANGUEHEIGHT ) );
+    my_frenchSprite->Resize( LANGUEWIDTH, LANGUEHEIGHT );
+    
+    my_italianoSprite->SetImage( *my_languageImage );
+    my_italianoSprite->SetSubRect( IntRect( ITALIANOSX, SPRITELANGUEBEGIN, ITALIANOEX, SPRITELANGUEHEIGHT ) );
+    my_italianoSprite->Resize( LANGUEWIDTH, LANGUEHEIGHT );
+    
+    my_spanishSprite->SetImage( *my_languageImage );
+    my_spanishSprite->SetSubRect( IntRect( SPANISHSX, SPRITELANGUEBEGIN, SPANISHEX, SPRITELANGUEHEIGHT ) );
+    my_spanishSprite->Resize( LANGUEWIDTH, LANGUEHEIGHT );
+    
+    my_deutschSprite->SetImage( *my_languageImage );
+    my_deutschSprite->SetSubRect( IntRect( DEUTSCHSX, SPRITELANGUEBEGIN, DEUTSCHEX, SPRITELANGUEHEIGHT ) );
+    my_deutschSprite->Resize( LANGUEWIDTH, LANGUEHEIGHT );
+    
+    my_languageToSprite[english] = *my_englishSprite;
+    my_languageToSprite[francais] = *my_frenchSprite;
+    my_languageToSprite[italiano] = *my_italianoSprite;
+    my_languageToSprite[deutsch] = *my_deutschSprite;
+    my_languageToSprite[espanol] = *my_spanishSprite;
 }
 
 void GameView::setAnanasMode() {
@@ -203,6 +204,8 @@ void GameView::setAnanasMode() {
         my_buttonString->SetColor(Color(251,210,98));
         
     }
+    
+    setImageToSprite();
 }
 
 
@@ -250,6 +253,8 @@ GameView::setTeacherMode() {
         my_buttonString->SetColor(Color(0,0,0));
 
     }
+    
+    setImageToSprite();
 }
 
 void

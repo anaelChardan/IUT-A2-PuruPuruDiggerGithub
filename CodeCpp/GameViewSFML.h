@@ -72,7 +72,9 @@ class GameView {
         sf::Sprite* my_deutschSprite;
         sf::Sprite* my_italianoSprite;
         sf::Sprite* my_spanishSprite;
+   
     
+    void setImageToSprite();
     /*!
      *  \brief Affichage Menu principal
      */
