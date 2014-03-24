@@ -63,34 +63,36 @@ const int VALUEEX = 274 ;
 const int SPRITELANGUEBEGIN = 12;
 const int SPRITELANGUEHEIGHT = 122 ;
 
-const int LANGUEWIDTH = 100;
-const int LANGUEHEIGHT = 100;
+const int LANGUEWIDTH = 50;
+const int LANGUEHEIGHT = 50;
 
-const int MYLANGUEX = 300;
-const int MYLANGUEY = 300;
+const int CHOICELANGUEHIGH = 130;
 
-const int ENGLISHX = 100;
-const int ENGLISHY = 100;
+const int MYLANGUEX = 400;
+const int MYLANGUEY = 220;
+
+const int ENGLISHX = 400;
+const int ENGLISHY = 130;
 const int ENGLISHSX = 7;
 const int ENGLISHEX = 114;
 
-const int FRENCHX = 300;
-const int FRENCHY = 100;
+const int FRENCHX = ENGLISHX + 100;
+const int FRENCHY = 130;
 const int FRENCHSX = 123;
 const int FRENCHEX = 230;
 
-const int ITALIANOX = 500;
-const int ITALIANOY = 100;
+const int ITALIANOX = FRENCHX + 100;
+const int ITALIANOY = 130;
 const int ITALIANOSX = 240;
 const int ITALIANOEX = 346;
 
-const int SPANISHX = 700;
-const int SPANISHY = 100;
+const int SPANISHX = ITALIANOX + 100;
+const int SPANISHY = 130;
 const int SPANISHSX = 360;
 const int SPANISHEX = 463;
 
-const int DEUTSCHX = 900;
-const int DEUTSCHY = 100;
+const int DEUTSCHX = SPANISHX + 100;
+const int DEUTSCHY = 130;
 const int DEUTSCHSX = 472;
 const int DEUTSCHEX = 578;
 
@@ -144,7 +146,8 @@ enum Language{ francais, english, deutsch, espanol, italiano };
 enum Message{
     choice, move, nwest, north, neast, west, east, swest, south, seast, stop,
     score, level, global, current, goal, step, life, position,
-    winlevel, looselevel, loosegame, name, ltime, timeup, by, play, best, setting
+    winlevel, looselevel, loosegame, name, ltime, timeup, by, play, best, setting, language, actual,
+    theme
 };
 
 

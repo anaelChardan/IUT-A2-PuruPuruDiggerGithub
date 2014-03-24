@@ -50,6 +50,7 @@
 		0382DB5518C9A36700E93483 /* IntDecFunctor.h in Sources */ = {isa = PBXBuildFile; fileRef = 0328235818C5FBAF006F43CC /* IntDecFunctor.h */; };
 		0382DB5618C9A36700E93483 /* LanguageMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 033D7D8318C8C6C400BA0091 /* LanguageMessage.cpp */; };
 		0382DB5718C9A36700E93483 /* LanguageMessage.h in Sources */ = {isa = PBXBuildFile; fileRef = 033D7D8418C8C6C400BA0091 /* LanguageMessage.h */; };
+		039F92B118E0A7FD008D3F85 /* gridMusic.wav in Resources */ = {isa = PBXBuildFile; fileRef = 039F92B018E0A7FD008D3F85 /* gridMusic.wav */; };
 		03A0EFC018C5D0B900F57E1A /* bestScores.txt in Resources */ = {isa = PBXBuildFile; fileRef = 03A0EFBF18C5D0B900F57E1A /* bestScores.txt */; };
 		03AF1FAE18DDC8880063D142 /* languages.png in Resources */ = {isa = PBXBuildFile; fileRef = 03AF1FAD18DDC8880063D142 /* languages.png */; };
 		03D7839918D097E100A1B8AE /* ValueCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0377341218B9FFDF00D5AFA0 /* ValueCell.cpp */; };
@@ -160,6 +161,7 @@
 		0382DB3518C9A28400E93483 /* UnitTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = UnitTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0382DB3718C9A28400E93483 /* test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
 		0382DB3E18C9A31000E93483 /* libboost_unit_test_framework.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_unit_test_framework.dylib; path = ../../../../../../usr/local/Cellar/boost/1.55.0/lib/libboost_unit_test_framework.dylib; sourceTree = "<group>"; };
+		039F92B018E0A7FD008D3F85 /* gridMusic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gridMusic.wav; sourceTree = "<group>"; };
 		03A0EFBF18C5D0B900F57E1A /* bestScores.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bestScores.txt; sourceTree = SOURCE_ROOT; };
 		03AF1FAD18DDC8880063D142 /* languages.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = languages.png; sourceTree = "<group>"; };
 		03D783B618D097E100A1B8AE /* PuruPuruDiggerSFML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PuruPuruDiggerSFML.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -239,6 +241,14 @@
 			path = UnitTest;
 			sourceTree = "<group>";
 		};
+		039F92AF18E0A7FD008D3F85 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				039F92B018E0A7FD008D3F85 /* gridMusic.wav */,
+			);
+			path = Music;
+			sourceTree = SOURCE_ROOT;
+		};
 		03E6822318D300BA004E125C /* Pictures */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,6 +299,7 @@
 		936727BE18B33A9C009873DE /* PuruPuruDigger */ = {
 			isa = PBXGroup;
 			children = (
+				039F92AF18E0A7FD008D3F85 /* Music */,
 				03E6822318D300BA004E125C /* Pictures */,
 				0371150218D1889000EE9282 /* Font */,
 				03A0EFBF18C5D0B900F57E1A /* bestScores.txt */,
@@ -420,6 +431,7 @@
 				0366A59218DAC42A00BF3C02 /* buttonFont.ttf in Resources */,
 				03F388E818D78E03003A08BC /* caseTeach.png in Resources */,
 				033F710B18D2213A0064FAF5 /* valueFont.ttf in Resources */,
+				039F92B118E0A7FD008D3F85 /* gridMusic.wav in Resources */,
 				031BE64A18D8E06B00476CBB /* buttonAnanas.png in Resources */,
 				03E6822918D306F9004E125C /* wallpapper.png in Resources */,
 				0368878B18D8228F00E63AFD /* arial.ttf in Resources */,

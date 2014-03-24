@@ -54,6 +54,8 @@ using namespace sf;
      my_playButtonSprite = new Sprite();
      my_bestButtonSprite = new Sprite();
      my_quitButtonSprite = new Sprite();
+     
+     my_musicLevel = new Music();
  
      //Chargement des images selon le mode
      setAnanasMode();
@@ -172,7 +174,7 @@ void GameView::setAnanasMode() {
         cout << "Error when loading image or font" << endl;
     }
 #else
-    if (!my_backgroundImage->LoadFromFile("wallpapper.png") || !my_caseImage->LoadFromFile("case.png") || !my_buttonImage->LoadFromFile("buttonAnanas.png") || !my_languageImage->LoadFromFile("languages.png") || !my_fontScore->LoadFromFile("scoreFont.ttf") || !my_fontTitle->LoadFromFile("titleFont.ttf") || !my_fontValue->LoadFromFile("valueFont.ttf") || !my_fontButton->LoadFromFile("buttonFont.ttf") ) {
+    if (!my_backgroundImage->LoadFromFile("wallpapper.png") || !my_caseImage->LoadFromFile("case.png") || !my_buttonImage->LoadFromFile("buttonAnanas.png") || !my_languageImage->LoadFromFile("languages.png") || !my_fontScore->LoadFromFile("scoreFont.ttf") || !my_fontTitle->LoadFromFile("titleFont.ttf") || !my_fontValue->LoadFromFile("valueFont.ttf") || !my_fontButton->LoadFromFile("buttonFont.ttf") || !my_musicLevel->OpenFromFile("gridMusic.wav") ) {
         cout << "Error when loading image or font" << endl;
     }
 #endif
@@ -202,6 +204,10 @@ void GameView::setAnanasMode() {
         my_buttonString->SetFont( *my_fontButton );
         my_buttonString->SetSize(30);
         my_buttonString->SetColor(Color(251,210,98));
+        
+        my_musicLevel->SetLoop(true);
+        
+        
         
     }
     
@@ -321,6 +327,19 @@ void
 GameView::showOption() {
     my_window->Clear();
     my_window->Draw(*my_backgroundSprite);
+    
+    my_titleString->SetText(my_messages[my_language][setting]);
+    my_titleString->SetPosition( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) , 10 );
+    my_window->Draw( *my_titleString );
+    
+    my_scoreString->SetText( my_messages[my_language][language]);
+    my_scoreString->SetPosition( QUITONX + 50, CHOICELANGUEHIGH );
+    my_window->Draw( * my_scoreString );
+    
+    my_scoreString->SetText( my_messages[my_language][actual]);
+    my_scoreString->SetPosition( QUITONX + 50, MYLANGUEY );
+    my_window->Draw( * my_scoreString );
+    
     showLanguage();
     showSpriteChoice();
 
@@ -349,11 +368,11 @@ void GameView::resetLanguageNorm() {
 }
 void
 GameView::showLanguage() {
-    my_languageToSprite[english].SetPosition(ENGLISHX, ENGLISHY);
-    my_languageToSprite[francais].SetPosition(FRENCHX, FRENCHY);
-    my_languageToSprite[italiano].SetPosition(ITALIANOX, ITALIANOY);
-    my_languageToSprite[deutsch].SetPosition(DEUTSCHX, DEUTSCHY);
-    my_languageToSprite[espanol].SetPosition(SPANISHX, SPANISHY);
+    my_languageToSprite[english].SetPosition(ENGLISHX, CHOICELANGUEHIGH);
+    my_languageToSprite[francais].SetPosition(FRENCHX, CHOICELANGUEHIGH);
+    my_languageToSprite[italiano].SetPosition(ITALIANOX, CHOICELANGUEHIGH);
+    my_languageToSprite[deutsch].SetPosition(DEUTSCHX, CHOICELANGUEHIGH);
+    my_languageToSprite[espanol].SetPosition(SPANISHX, CHOICELANGUEHIGH);
     
     my_window->Draw(my_languageToSprite[english]);
     my_window->Draw(my_languageToSprite[francais]);
@@ -585,15 +604,15 @@ GameView::treatGame() {
                             resetButtonNorm();
                         
                     } else if ( isChoosingOption ) {
-                        if ( event.MouseMove.X > ENGLISHX && event.MouseMove.X < ENGLISHX + LANGUEWIDTH && event.MouseMove.Y > ENGLISHY && event.MouseMove.Y < ENGLISHY + LANGUEHEIGHT )
+                        if ( event.MouseMove.X > ENGLISHX && event.MouseMove.X < ENGLISHX + LANGUEWIDTH && event.MouseMove.Y > CHOICELANGUEHIGH && event.MouseMove.Y < CHOICELANGUEHIGH + LANGUEHEIGHT )
                             setHoverLanguage( english );
-                        else if ( event.MouseMove.X > FRENCHX && event.MouseMove.X < FRENCHX + LANGUEWIDTH && event.MouseMove.Y > FRENCHY && event.MouseMove.Y < FRENCHY + LANGUEHEIGHT )
+                        else if ( event.MouseMove.X > FRENCHX && event.MouseMove.X < FRENCHX + LANGUEWIDTH && event.MouseMove.Y > CHOICELANGUEHIGH && event.MouseMove.Y < CHOICELANGUEHIGH + LANGUEHEIGHT )
                             setHoverLanguage( francais );
-                        else if ( event.MouseMove.X > SPANISHX && event.MouseMove.X < SPANISHX + LANGUEWIDTH && event.MouseMove.Y > SPANISHY && event.MouseMove.Y < SPANISHY + LANGUEHEIGHT )
+                        else if ( event.MouseMove.X > SPANISHX && event.MouseMove.X < SPANISHX + LANGUEWIDTH && event.MouseMove.Y > CHOICELANGUEHIGH && event.MouseMove.Y < CHOICELANGUEHIGH + LANGUEHEIGHT )
                             setHoverLanguage( espanol );
-                        else if ( event.MouseMove.X > DEUTSCHX && event.MouseMove.X < DEUTSCHX + LANGUEWIDTH && event.MouseMove.Y > DEUTSCHY && event.MouseMove.Y < DEUTSCHY + LANGUEHEIGHT )
+                        else if ( event.MouseMove.X > DEUTSCHX && event.MouseMove.X < DEUTSCHX + LANGUEWIDTH && event.MouseMove.Y > CHOICELANGUEHIGH && event.MouseMove.Y < CHOICELANGUEHIGH + LANGUEHEIGHT )
                             setHoverLanguage( deutsch );
-                        else if ( event.MouseMove.X > ITALIANOX && event.MouseMove.X < ITALIANOX + LANGUEWIDTH && event.MouseMove.Y > ITALIANOY && event.MouseMove.Y < ITALIANOY + LANGUEHEIGHT )
+                        else if ( event.MouseMove.X > ITALIANOX && event.MouseMove.X < ITALIANOX + LANGUEWIDTH && event.MouseMove.Y > CHOICELANGUEHIGH && event.MouseMove.Y < CHOICELANGUEHIGH + LANGUEHEIGHT )
                             setHoverLanguage( italiano );
                         else
                             resetLanguageNorm();
@@ -640,6 +659,7 @@ GameView::treatGame() {
                             my_model->getLevel()->getDigger()->resetLife();
                             isInPresentation = false;
                             isPlaying = true;
+                            my_musicLevel->Play();
                             
                         } else if ( event.MouseButton.X > QUITX && event.MouseButton.X < QUITX + BUTTONWIDTH && event.MouseButton.Y > QUITY && event.MouseButton.Y < QUITY + BUTTONHEIGHT ) {
                             my_window->Close();

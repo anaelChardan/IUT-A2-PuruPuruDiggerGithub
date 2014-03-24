@@ -41,6 +41,10 @@ LanguageMessage::LanguageMessage() {
     my_languages[francais][best] = " Scores ";
     my_languages[francais][play] = " Jouer ";
     my_languages[francais][setting] = " Options ";
+    my_languages[francais][language] = " Langues ";
+    my_languages[francais][actual] = " En cours ";
+    my_languages[francais][theme] = " Thèmes ";
+    
     
 
     //les messages anglais
@@ -73,6 +77,9 @@ LanguageMessage::LanguageMessage() {
     my_languages[english][best] = " Score ";
     my_languages[english][play] = " Play ";
     my_languages[english][setting] = " Settings ";
+    my_languages[english][language] = " Languages ";
+    my_languages[english][actual] = " Ongoing ";
+    my_languages[english][theme] = " Theme " ;
     
 
     //les messages espagnol
@@ -105,6 +112,9 @@ LanguageMessage::LanguageMessage() {
     my_languages[espanol][best] = " Puntaje ";
     my_languages[espanol][play] = " Jugar ";
     my_languages[espanol][setting] = " Opcion ";
+    my_languages[espanol][language] = " Idiomas ";
+    my_languages[espanol][actual] = " En marcha ";
+    my_languages[espanol][theme] = " Tema " ;
 
     //les messages italien
     my_languages[italiano][choice] = " Scelta ";
@@ -136,6 +146,9 @@ LanguageMessage::LanguageMessage() {
     my_languages[italiano][best] = " Punteggio ";
     my_languages[italiano][play] = " Giocare ";
     my_languages[italiano][setting] = " Opzione ";
+    my_languages[italiano][language] = " Lingue ";
+    my_languages[italiano][actual] = " In corso ";
+    my_languages[italiano][theme] = " Tema" ;
 
     //les messages allemands
     my_languages[deutsch][choice] = " Walh ";
@@ -167,6 +180,9 @@ LanguageMessage::LanguageMessage() {
     my_languages[deutsch][best] = " Ergebnis";
     my_languages[deutsch][play] = " Spieler ";
     my_languages[deutsch][setting] = " Optionen ";
+    my_languages[deutsch][language] = " Sprachen ";
+    my_languages[deutsch][actual] = " Laufend ";
+    my_languages[deutsch][theme] = " Thema ";
 
 }
 

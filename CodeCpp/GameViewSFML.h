@@ -15,6 +15,7 @@
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
+#include <SFML/Audio.hpp>
 
 #include "GameModel.h"
 #include "LanguageMessage.h"
@@ -36,12 +37,12 @@ class GameView {
         sf::Font* my_fontValue;
         sf::Font* my_fontButton;
     
-        sf::String* my_valueString;
-        sf::String* my_titleScoreString;
-        sf::String* my_scoreString;
-        sf::String* my_scoreNum;
-        sf::String* my_titleString;
-        sf::String* my_buttonString;
+        sf::String* my_valueString; // Valeurs dans la grille
+        sf::String* my_titleScoreString; // Titre des scores
+        sf::String* my_scoreString; // Enoncé dans la grille
+        sf::String* my_scoreNum; // Les scores en numéro
+        sf::String* my_titleString; // Les titres de pages
+        sf::String* my_buttonString; // Pour les boutons
     
         //Les images
         sf::Image* my_backgroundImage;
@@ -72,6 +73,9 @@ class GameView {
         sf::Sprite* my_deutschSprite;
         sf::Sprite* my_italianoSprite;
         sf::Sprite* my_spanishSprite;
+    
+        //Pour les sons
+        sf::Music *my_musicLevel;
    
     
     void setImageToSprite();
