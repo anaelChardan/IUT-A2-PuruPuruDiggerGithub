@@ -15,7 +15,7 @@ using namespace sf;
      //On bloque le rafraichissement à 60 par seconde
      my_window->SetFramerateLimit(60);
  
-     my_language = english;
+     my_language = francais;
      
      //La font pour les scores
      my_fontScore = new Font();
@@ -34,6 +34,7 @@ using namespace sf;
      my_languageImage = new Image();
      my_caseImage = new Image();
      my_buttonImage = new Image();
+     my_spriteImage = new Image();
      
      //On set les sprites
      my_diggerSprite = new Sprite();
@@ -47,6 +48,8 @@ using namespace sf;
      my_deutschSprite = new Sprite();
      my_italianoSprite = new Sprite();
      my_spanishSprite = new Sprite();
+     my_ananasSprite = new Sprite();
+     my_teacherSprite = new Sprite();
      
      //Les boutons
      my_buttonQuitSprite = new Sprite();
@@ -58,7 +61,7 @@ using namespace sf;
      my_musicLevel = new Music();
  
      //Chargement des images selon le mode
-     setAnanasMode();
+     setTeacherMode();
 }
 
 GameView::~GameView() {
@@ -86,10 +89,21 @@ void GameView::setImageToSprite() {
     my_languageImage->CreateMaskFromColor(Color(0, 55, 97));
     my_caseImage->CreateMaskFromColor( Color(0, 55, 97) );
     my_buttonImage->CreateMaskFromColor( Color(0, 55, 97) );
+    my_spriteImage->CreateMaskFromColor( Color(0, 55, 97) );
     
     //On set les sprites de nos images
     my_backgroundSprite->SetImage( *my_backgroundImage );
     my_backgroundSprite->Resize( WINDOWWITDH, WINDOWHEIGHT );
+    
+    //On set les choix des sprites
+    my_ananasSprite->SetImage( *my_spriteImage );
+    my_ananasSprite->SetSubRect( IntRect ( SPRITEANANASSX, SPRITECHOICEBEGIN, SPRITEANANASEX, SPRITECHOICEHEIGHT));
+    my_ananasSprite->Resize( SPRITECHOICEWIDTH, SPRITECHOICEHEIGHT );
+    
+    my_teacherSprite->SetImage( *my_spriteImage );
+    my_teacherSprite->SetSubRect( IntRect ( SPRITETEACHERSX, SPRITECHOICEBEGIN, SPRITETEACHEREX, SPRITECHOICEHEIGHT ) );
+    my_teacherSprite->Resize( SPRITECHOICEWIDTH, SPRITECHOICEHEIGHT );
+    
     
     //Mise en places des sprites case
     my_diggerSprite->SetImage( *my_caseImage );
@@ -170,11 +184,11 @@ void GameView::setImageToSprite() {
 
 void GameView::setAnanasMode() {
 #ifdef __linux__
-    if (!my_backgroundImage->LoadFromFile("Pictures/wallpapper.png") || !my_caseImage->LoadFromFile("Pictures/case.png") || !my_buttonImage->LoadFromFile("Pictures/buttonAnanas.png") || !my_languageImage->LoadFromFile("Pictures/languages.png") || !my_fontScore->LoadFromFile("Font/scoreFont.ttf") || !my_fontTitle->LoadFromFile("Font/titleFont.ttf") || !my_fontValue->LoadFromFile("Font/valueFont.ttf") || !my_fontButton->LoadFromFile("Font/buttonFont.ttf") ) {
+    if (!my_backgroundImage->LoadFromFile("Pictures/wallpapper.png") || !my_caseImage->LoadFromFile("Pictures/case.png") || !my_buttonImage->LoadFromFile("Pictures/buttonAnanas.png") || !my_languageImage->LoadFromFile("Pictures/languages.png") || !my_spriteImage->LoadFromFile("Pictures/choiceSprite.png") || !my_fontScore->LoadFromFile("Font/scoreFont.ttf") || !my_fontTitle->LoadFromFile("Font/titleFont.ttf") || !my_fontValue->LoadFromFile("Font/valueFont.ttf") || !my_fontButton->LoadFromFile("Font/buttonFont.ttf") || !my_musicLevel->OpenFromFile("Music/gridMusic.wav")) {
         cout << "Error when loading image or font" << endl;
     }
 #else
-    if (!my_backgroundImage->LoadFromFile("wallpapper.png") || !my_caseImage->LoadFromFile("case.png") || !my_buttonImage->LoadFromFile("buttonAnanas.png") || !my_languageImage->LoadFromFile("languages.png") || !my_fontScore->LoadFromFile("scoreFont.ttf") || !my_fontTitle->LoadFromFile("titleFont.ttf") || !my_fontValue->LoadFromFile("valueFont.ttf") || !my_fontButton->LoadFromFile("buttonFont.ttf") || !my_musicLevel->OpenFromFile("gridMusic.wav") ) {
+    if (!my_backgroundImage->LoadFromFile("wallpapper.png") || !my_caseImage->LoadFromFile("case.png") || !my_buttonImage->LoadFromFile("buttonAnanas.png") || !my_languageImage->LoadFromFile("languages.png") || !my_spriteImage->LoadFromFile("choiceSprite.png") || !my_fontScore->LoadFromFile("scoreFont.ttf") || !my_fontTitle->LoadFromFile("titleFont.ttf") || !my_fontValue->LoadFromFile("valueFont.ttf") || !my_fontButton->LoadFromFile("buttonFont.ttf") || !my_musicLevel->OpenFromFile("gridMusic.wav") ) {
         cout << "Error when loading image or font" << endl;
     }
 #endif
@@ -218,11 +232,11 @@ void GameView::setAnanasMode() {
 void
 GameView::setTeacherMode() {
 #ifdef __linux__
-    if (!my_backgroundImage->LoadFromFile("Pictures/wallpapperTeach.png") || !my_caseImage->LoadFromFile("Pictures/caseTeach.png") || !my_buttonImage->LoadFromFile("Pictures/buttonTeach.png") || !my_languageImage->LoadFromFile("Pictures/languages.png") ||!my_fontScore->LoadFromFile("Font/arial.ttf") || !my_fontTitle->LoadFromFile("Font/arial.ttf") || !my_fontValue->LoadFromFile("Font/arial.ttf") || !my_fontButton->LoadFromFile("Font/arial.ttf")) {
+    if (!my_backgroundImage->LoadFromFile("Pictures/wallpapperTeach.png") || !my_caseImage->LoadFromFile("Pictures/caseTeach.png") || !my_buttonImage->LoadFromFile("Pictures/buttonTeach.png") || !my_languageImage->LoadFromFile("Pictures/languages.png") || !my_spriteImage->LoadFromFile("Pictures/choiceSprite.png") ||!my_fontScore->LoadFromFile("Font/arial.ttf") || !my_fontTitle->LoadFromFile("Font/arial.ttf") || !my_fontValue->LoadFromFile("Font/arial.ttf") || !my_fontButton->LoadFromFile("Font/arial.ttf") || !my_musicLevel->OpenFromFile("Music/gridMusic.wav")) {
         cout << "Error when loading image or font" << endl;
     }
 #else
-    if (!my_backgroundImage->LoadFromFile("wallpapperTeach.png") || !my_caseImage->LoadFromFile("caseTeach.png") || !my_buttonImage->LoadFromFile("buttonTeach.png") || !my_languageImage->LoadFromFile("languages.png") ||!my_fontScore->LoadFromFile("arial.ttf") || !my_fontTitle->LoadFromFile("arial.ttf") || !my_fontValue->LoadFromFile("arial.ttf") || !my_fontButton->LoadFromFile("arial.ttf")) {
+    if (!my_backgroundImage->LoadFromFile("wallpapperTeach.png") || !my_caseImage->LoadFromFile("caseTeach.png") || !my_buttonImage->LoadFromFile("buttonTeach.png") || !my_languageImage->LoadFromFile("languages.png") || !my_spriteImage->LoadFromFile("choiceSprite.png") ||!my_fontScore->LoadFromFile("arial.ttf") || !my_fontTitle->LoadFromFile("arial.ttf") || !my_fontValue->LoadFromFile("arial.ttf") || !my_fontButton->LoadFromFile("arial.ttf") || !my_musicLevel->OpenFromFile("gridMusic.wav")) {
         cout << "Error when loading image or font" << endl;
     }
 #endif
@@ -340,12 +354,18 @@ GameView::showOption() {
     my_scoreString->SetPosition( QUITONX + 50, MYLANGUEY );
     my_window->Draw( * my_scoreString );
     
+    my_scoreString->SetText( my_messages[my_language][theme] );
+    my_scoreString->SetPosition( QUITONX + 50, CHOICESPRITEY );
+    my_window->Draw( *my_scoreString );
+    
+    
     showLanguage();
-    showSpriteChoice();
-
     
     my_languageToSprite[my_language].SetPosition(MYLANGUEX, MYLANGUEY);
     my_window->Draw(my_languageToSprite[my_language]);
+    
+    showSpriteChoice();
+    
     
     my_buttonQuitSprite->SetPosition( QUITONX, QUITONY);
     my_window->Draw( *my_buttonQuitSprite );
@@ -384,7 +404,10 @@ GameView::showLanguage() {
 
 void
 GameView::showSpriteChoice() {
-    
+    my_ananasSprite->SetPosition( CHOICEANANASX, CHOICESPRITEY);
+    my_teacherSprite->SetPosition( CHOICETEACHERX, CHOICESPRITEY);
+    my_window->Draw(*my_ananasSprite);
+    my_window->Draw(*my_teacherSprite);
 }
 
 
@@ -614,8 +637,12 @@ GameView::treatGame() {
                             setHoverLanguage( deutsch );
                         else if ( event.MouseMove.X > ITALIANOX && event.MouseMove.X < ITALIANOX + LANGUEWIDTH && event.MouseMove.Y > CHOICELANGUEHIGH && event.MouseMove.Y < CHOICELANGUEHIGH + LANGUEHEIGHT )
                             setHoverLanguage( italiano );
-                        else
+                        else if ( event.MouseMove.X > QUITONX && event.MouseMove.X < QUITONX + BUTTONWIDTH && event.MouseMove.Y > QUITONY && event.MouseMove.Y < QUITONY + BUTTONHEIGHT )
+                            setButtonHover(my_buttonQuitSprite);
+                        else {
+                            resetButtonNorm();
                             resetLanguageNorm();
+                        }
                     } else if ( isPlaying  ) {
                         if ( event.MouseMove.X > QUITONX && event.MouseMove.X < QUITONX + BUTTONWIDTH && event.MouseMove.Y > QUITONY && event.MouseMove.Y < QUITONY + BUTTONHEIGHT )
                             
@@ -670,22 +697,31 @@ GameView::treatGame() {
                         }
                     } else if ( isChoosingOption ) {
                         
-                        if ( event.MouseButton.X > ENGLISHX && event.MouseButton.X < ENGLISHX + LANGUEWIDTH && event.MouseButton.Y > ENGLISHY && event.MouseButton.Y < ENGLISHY + LANGUEHEIGHT )
+                        if ( event.MouseButton.X > ENGLISHX && event.MouseButton.X < ENGLISHX + LANGUEWIDTH && event.MouseButton.Y > CHOICELANGUEHIGH && event.MouseButton.Y < CHOICELANGUEHIGH+ LANGUEHEIGHT )
                             my_language = english;
-                        if ( event.MouseButton.X > FRENCHX && event.MouseButton.X < FRENCHX + LANGUEWIDTH && event.MouseButton.Y > FRENCHY && event.MouseButton.Y < FRENCHY + LANGUEHEIGHT )
+                        if ( event.MouseButton.X > FRENCHX && event.MouseButton.X < FRENCHX + LANGUEWIDTH && event.MouseButton.Y > CHOICELANGUEHIGH && event.MouseButton.Y < CHOICELANGUEHIGH + LANGUEHEIGHT )
                             my_language = francais;
-                        if ( event.MouseButton.X > ITALIANOX && event.MouseButton.X < ITALIANOX + LANGUEWIDTH && event.MouseButton.Y > ITALIANOY && event.MouseButton.Y < ITALIANOY + LANGUEHEIGHT )
+                        if ( event.MouseButton.X > ITALIANOX && event.MouseButton.X < ITALIANOX + LANGUEWIDTH && event.MouseButton.Y > CHOICELANGUEHIGH && event.MouseButton.Y < CHOICELANGUEHIGH + LANGUEHEIGHT )
                             my_language = italiano;
-                        if ( event.MouseButton.X > SPANISHX && event.MouseButton.X < SPANISHX + LANGUEWIDTH && event.MouseButton.Y > SPANISHY && event.MouseButton.Y < SPANISHY + LANGUEHEIGHT )
+                        if ( event.MouseButton.X > SPANISHX && event.MouseButton.X < SPANISHX + LANGUEWIDTH && event.MouseButton.Y > CHOICELANGUEHIGH && event.MouseButton.Y < CHOICELANGUEHIGH + LANGUEHEIGHT )
                             my_language = espanol;
-                        if ( event.MouseButton.X > DEUTSCHX && event.MouseButton.X < DEUTSCHX + LANGUEWIDTH && event.MouseButton.Y > DEUTSCHY && event.MouseButton.Y < DEUTSCHY + LANGUEHEIGHT )
+                        if ( event.MouseButton.X > DEUTSCHX && event.MouseButton.X < DEUTSCHX + LANGUEWIDTH && event.MouseButton.Y > CHOICELANGUEHIGH && event.MouseButton.Y < CHOICELANGUEHIGH + LANGUEHEIGHT )
                             my_language = deutsch;
+                        if ( event.MouseButton.X > CHOICEANANASX && event.MouseButton.X < CHOICEANANASX + SPRITECHOICEWIDTH && event.MouseButton.Y > CHOICESPRITEY && event.MouseButton.Y < CHOICESPRITEY + SPRITECHOICEHEIGHT )
+                            setAnanasMode();
+                        if ( event.MouseButton.X > CHOICETEACHERX && event.MouseButton.X < CHOICETEACHERX + SPRITECHOICEWIDTH && event.MouseButton.Y > CHOICESPRITEY && event.MouseButton.Y < CHOICESPRITEY + SPRITECHOICEHEIGHT )
+                            setTeacherMode();
+                        if ( event.MouseButton.X > QUITONX && event.MouseButton.X < QUITONX + BUTTONWIDTH && event.MouseButton.Y > QUITONY && event.MouseButton.Y < QUITONY + BUTTONHEIGHT ) {
+                            isChoosingOption = false;
+                            isInPresentation = true;
+                        }
                         
                     } else if ( isPlaying ) {
                         cout << " Souris case : " << convertYPixel(event.MouseButton.Y) << " " << convertXPixel(event.MouseButton.X) <<  " "  << endl;
                         if ( event.MouseButton.X > QUITONX && event.MouseButton.X < QUITONX + BUTTONWIDTH && event.MouseButton.Y > QUITONY && event.MouseButton.Y < QUITONY + BUTTONHEIGHT ) {
                             isPlaying = false;
                             isInPresentation = true;
+                            my_musicLevel->Stop();
                         }
                     }
                     break;

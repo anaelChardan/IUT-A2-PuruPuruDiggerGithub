@@ -43,7 +43,7 @@ LanguageMessage::LanguageMessage() {
     my_languages[francais][setting] = " Options ";
     my_languages[francais][language] = " Langues ";
     my_languages[francais][actual] = " En cours ";
-    my_languages[francais][theme] = " Thèmes ";
+    my_languages[francais][theme] = " Themes ";
     
     
 

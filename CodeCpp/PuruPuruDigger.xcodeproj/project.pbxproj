@@ -15,6 +15,7 @@
 		03229D1B18D35E8A00027190 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03229D1918D35E8A00027190 /* Utils.cpp */; };
 		03229D1C18D35E8A00027190 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03229D1918D35E8A00027190 /* Utils.cpp */; };
 		03229D1D18D35E8A00027190 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03229D1918D35E8A00027190 /* Utils.cpp */; };
+		033174D018E16B2700F2E406 /* choiceSprite.png in Resources */ = {isa = PBXBuildFile; fileRef = 033174CF18E16B2700F2E406 /* choiceSprite.png */; };
 		033D7D8518C8C6C400BA0091 /* LanguageMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 033D7D8318C8C6C400BA0091 /* LanguageMessage.cpp */; };
 		033F710B18D2213A0064FAF5 /* valueFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 033F710A18D2213A0064FAF5 /* valueFont.ttf */; };
 		0366A59218DAC42A00BF3C02 /* buttonFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0366A59118DAC42A00BF3C02 /* buttonFont.ttf */; };
@@ -145,6 +146,7 @@
 		03229D1918D35E8A00027190 /* Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = SOURCE_ROOT; };
 		03229D1A18D35E8A00027190 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = SOURCE_ROOT; };
 		0328235818C5FBAF006F43CC /* IntDecFunctor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntDecFunctor.h; sourceTree = SOURCE_ROOT; };
+		033174CF18E16B2700F2E406 /* choiceSprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = choiceSprite.png; sourceTree = "<group>"; };
 		033D7D8318C8C6C400BA0091 /* LanguageMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LanguageMessage.cpp; sourceTree = SOURCE_ROOT; };
 		033D7D8418C8C6C400BA0091 /* LanguageMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageMessage.h; sourceTree = SOURCE_ROOT; };
 		033F710A18D2213A0064FAF5 /* valueFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = valueFont.ttf; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 		03E6822318D300BA004E125C /* Pictures */ = {
 			isa = PBXGroup;
 			children = (
+				033174CF18E16B2700F2E406 /* choiceSprite.png */,
 				03AF1FAD18DDC8880063D142 /* languages.png */,
 				031BE64818D8E06B00476CBB /* buttonAnanas.png */,
 				031BE64918D8E06B00476CBB /* buttonTeach.png */,
@@ -434,6 +437,7 @@
 				039F92B118E0A7FD008D3F85 /* gridMusic.wav in Resources */,
 				031BE64A18D8E06B00476CBB /* buttonAnanas.png in Resources */,
 				03E6822918D306F9004E125C /* wallpapper.png in Resources */,
+				033174D018E16B2700F2E406 /* choiceSprite.png in Resources */,
 				0368878B18D8228F00E63AFD /* arial.ttf in Resources */,
 				03D783AC18D097E100A1B8AE /* bestScores.txt in Resources */,
 				03AF1FAE18DDC8880063D142 /* languages.png in Resources */,

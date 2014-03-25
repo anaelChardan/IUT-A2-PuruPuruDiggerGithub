@@ -49,6 +49,7 @@ class GameView {
         sf::Image* my_caseImage;
         sf::Image* my_buttonImage;
         sf::Image* my_languageImage;
+        sf::Image* my_spriteImage;
     
         //Mes sprites pour les cases
         sf::Sprite* my_diggerSprite;
@@ -73,6 +74,10 @@ class GameView {
         sf::Sprite* my_deutschSprite;
         sf::Sprite* my_italianoSprite;
         sf::Sprite* my_spanishSprite;
+    
+        //Les sprites pour les choix de sprite
+        sf::Sprite* my_ananasSprite;
+        sf::Sprite* my_teacherSprite;
     
         //Pour les sons
         sf::Music *my_musicLevel;

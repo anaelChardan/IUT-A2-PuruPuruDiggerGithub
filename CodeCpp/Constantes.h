@@ -44,6 +44,8 @@ const int PADDINGBOTTOM = 3;
 const int CASEWITDH = 35;
 const int CASEHEIGHT = 35;
 
+
+
 //Pour nos feuilles de sprite ANANAS
 const int SPRITECASEBEGIN = 6;
 const int SPRITECASEHEIGHT = 56 ;
@@ -60,41 +62,52 @@ const int VALUEEX = 274 ;
 
 
 //Pour la gestion des langues
+const int TEXTPLACEX = 150;
+
 const int SPRITELANGUEBEGIN = 12;
 const int SPRITELANGUEHEIGHT = 122 ;
 
 const int LANGUEWIDTH = 50;
 const int LANGUEHEIGHT = 50;
 
-const int CHOICELANGUEHIGH = 130;
+const int CHOICELANGUEHIGH = 150;
 
 const int MYLANGUEX = 400;
-const int MYLANGUEY = 220;
+const int MYLANGUEY = CHOICELANGUEHIGH + 120;
 
 const int ENGLISHX = 400;
-const int ENGLISHY = 130;
 const int ENGLISHSX = 7;
 const int ENGLISHEX = 114;
 
 const int FRENCHX = ENGLISHX + 100;
-const int FRENCHY = 130;
 const int FRENCHSX = 123;
 const int FRENCHEX = 230;
 
 const int ITALIANOX = FRENCHX + 100;
-const int ITALIANOY = 130;
 const int ITALIANOSX = 240;
 const int ITALIANOEX = 346;
 
 const int SPANISHX = ITALIANOX + 100;
-const int SPANISHY = 130;
 const int SPANISHSX = 360;
 const int SPANISHEX = 463;
 
 const int DEUTSCHX = SPANISHX + 100;
-const int DEUTSCHY = 130;
 const int DEUTSCHSX = 472;
 const int DEUTSCHEX = 578;
+
+//Pour le choix des sprites
+const int CHOICESPRITEY = MYLANGUEY + 120;
+
+const int CHOICEANANASX = 400;
+const int CHOICETEACHERX = 700;
+
+const int SPRITECHOICEBEGIN = 0;
+const int SPRITECHOICEHEIGHT = 150;
+const int SPRITECHOICEWIDTH = 150;
+const int SPRITEANANASSX = 0;
+const int SPRITEANANASEX = 285;
+const int SPRITETEACHERSX = 344;
+const int SPRITETEACHEREX = 600;
 
 
 //Pour les boutons
@@ -107,6 +120,7 @@ const int BUTTONNORMSX = 2;
 const int BUTTONNORMEX = 143;
 const int BUTTONHOVESX = 157;
 const int BUTTONHOVEEX = 298;
+
 
 //L'emplacement des boutons à l'écran pour gérer les évent
 const int PLAYX = 150;
