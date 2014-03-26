@@ -65,6 +65,8 @@ class GameModel {
          *  \return true si la partie est finie
          */
         bool gameOver() const ;
+    
+    void reset() ;
 };
 
 #endif /* defined(__purpurudigger__Game__) */

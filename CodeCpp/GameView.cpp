@@ -221,8 +221,8 @@ GameView::treatGame() {
                 case 5 : my_language = italiano;
                     break;
             }
-            my_model->getLevel()->reset();
-            my_model->getLevel()->getDigger()->resetLife();
+            my_model->reset();
+            
             while (isPlaying) {
                 showGrid();
                 showScore();

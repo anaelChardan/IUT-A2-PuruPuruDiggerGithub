@@ -59,3 +59,9 @@ Level* const
 GameModel::getLevel() {
     return my_level;
 }
+
+void
+GameModel::reset() {
+    my_score = new Score();
+    my_level = new Level( my_score);
+}

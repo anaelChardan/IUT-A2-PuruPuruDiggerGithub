@@ -27,8 +27,8 @@ class GameView {
         LanguageMessage my_messages; /*!<  La bibliothèque de message de notre partie */
         GameModel * my_model; /*!<  La modèle de notre vue */
     
-        std::map< std::string, sf::Sprite > my_stringToSprite;
-        std::map< Language, sf::Sprite > my_languageToSprite;
+        std::map< std::string, sf::Sprite* > my_stringToSprite;
+        std::map< Language, sf::Sprite* > my_languageToSprite;
     
         sf::RenderWindow* my_window;
     
@@ -94,6 +94,10 @@ class GameView {
     void resetLanguageNorm();
     void showLanguage();
     
+    void setTextAndDraw( sf::String* s, std::string text, int x, int y );
+    
+    void configureSpriteAndDraw( sf::Sprite* s, int x, int y );
+    void setSprite( sf::Sprite* s, sf::Image* i, int subsX, int subsY, int subeX, int subeY, int w, int h );
     /*!
      *  \brief Affichage choix des langes
      */
@@ -116,6 +120,8 @@ class GameView {
      */
     void showGrid();
     void showCGrid();
+    
+    void newScreen();
     
     /*!
      *  \brief Affichage des instructions de déplacement

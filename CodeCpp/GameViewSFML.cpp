@@ -86,104 +86,86 @@ GameView::~GameView() {
     delete my_caseImage;
 }
 
+void GameView::setSprite( sf::Sprite* s, sf::Image* i, int subsX, int subsY, int subeX, int subeY, int w, int h ) {
+    s->SetImage( *i );
+    s->SetSubRect( IntRect ( subsX, subsY, subeX, subeY ) );
+    s->Resize( w, h);
+}
+
 void GameView::setImageToSprite() {
+    
     my_languageImage->CreateMaskFromColor(Color(0, 55, 97));
     my_caseImage->CreateMaskFromColor( Color(0, 55, 97) );
     my_buttonImage->CreateMaskFromColor( Color(0, 55, 97) );
     my_spriteImage->CreateMaskFromColor( Color(0, 55, 97) );
     
     //On set les sprites de nos images
-    my_backgroundSprite->SetImage( *my_backgroundImage );
-    my_backgroundSprite->Resize( WINDOWWITDH, WINDOWHEIGHT );
+    setSprite( my_backgroundSprite, my_backgroundImage, 0, 0, WINDOWWITDH, WINDOWHEIGHT, WINDOWWITDH, WINDOWHEIGHT );
     
     //On set les choix des sprites
-    my_ananasSprite->SetImage( *my_spriteImage );
-    my_ananasSprite->SetSubRect( IntRect ( SPRITEANANASSX, SPRITECHOICEBEGIN, SPRITEANANASEX, SPRITECHOICEHEIGHT));
-    my_ananasSprite->Resize( SPRITECHOICEWIDTH, SPRITECHOICEHEIGHT );
     
-    my_teacherSprite->SetImage( *my_spriteImage );
-    my_teacherSprite->SetSubRect( IntRect ( SPRITETEACHERSX, SPRITECHOICEBEGIN, SPRITETEACHEREX, SPRITECHOICEHEIGHT ) );
-    my_teacherSprite->Resize( SPRITECHOICEWIDTH, SPRITECHOICEHEIGHT );
+    setSprite( my_ananasSprite, my_spriteImage, SPRITEANANASSX, SPRITECHOICEBEGIN, SPRITEANANASEX,SPRITECHOICEHEIGHT, SPRITECHOICEWIDTH,  SPRITECHOICEHEIGHT );
+    my_ananasSprite->SetPosition( CHOICEANANASX, CHOICESPRITEY);
     
+    setSprite( my_teacherSprite ,my_spriteImage , SPRITETEACHERSX, SPRITECHOICEBEGIN, SPRITETEACHEREX, SPRITECHOICEHEIGHT, SPRITECHOICEWIDTH, SPRITECHOICEHEIGHT );
+    my_teacherSprite->SetPosition( CHOICETEACHERX, CHOICESPRITEY);
     
     //Mise en places des sprites case
-    my_diggerSprite->SetImage( *my_caseImage );
-    my_diggerSprite->SetSubRect( IntRect( DIGGERSX, SPRITECASEBEGIN, DIGGEREX, SPRITECASEHEIGHT ) );
-    my_diggerSprite->Resize( CASEWITDH, CASEHEIGHT );
+    setSprite( my_diggerSprite, my_caseImage , DIGGERSX, SPRITECASEBEGIN, DIGGEREX, SPRITECASEHEIGHT, CASEWITDH, CASEHEIGHT );
     
-    my_valueSprite->SetImage( *my_caseImage );
-    my_valueSprite->SetSubRect( IntRect(VALUESX, SPRITECASEBEGIN, VALUEEX, SPRITECASEHEIGHT ) );
-    my_valueSprite->Resize( CASEWITDH, CASEHEIGHT );
+    setSprite( my_valueSprite, my_caseImage, VALUESX, SPRITECASEBEGIN, VALUEEX, SPRITECASEHEIGHT,CASEWITDH, CASEHEIGHT );
     
+    setSprite( my_goldSprite, my_caseImage, GOLDSX, SPRITECASEBEGIN, GOLDEX, SPRITECASEHEIGHT,CASEWITDH, CASEHEIGHT );
     
-    my_goldSprite->SetImage( *my_caseImage );
-    my_goldSprite->SetSubRect( IntRect(GOLDSX, SPRITECASEBEGIN, GOLDEX, SPRITECASEHEIGHT ) );
-    my_goldSprite->Resize( CASEWITDH, CASEHEIGHT );
+    setSprite( my_bombSprite, my_caseImage, BOMBSX, SPRITECASEBEGIN, BOMBEX, SPRITECASEHEIGHT,CASEWITDH, CASEHEIGHT );
     
-    my_bombSprite->SetImage( *my_caseImage );
-    my_bombSprite->SetSubRect( IntRect( BOMBSX, SPRITECASEBEGIN, BOMBEX, SPRITECASEHEIGHT ) );
-    my_bombSprite->Resize( CASEWITDH, CASEHEIGHT );
+    setSprite( my_emptySprite, my_caseImage, EMPTYSX, SPRITECASEBEGIN, EMPTYEX, SPRITECASEHEIGHT,CASEWITDH, CASEHEIGHT );
     
-    my_emptySprite->SetImage( *my_caseImage );
-    my_emptySprite->SetSubRect( IntRect( EMPTYSX, SPRITECASEBEGIN, EMPTYEX, SPRITECASEHEIGHT ) );
-    my_emptySprite->Resize( CASEWITDH, CASEHEIGHT );
+    my_stringToSprite["Digger"] = my_diggerSprite;
+    my_stringToSprite["EmptyCell"] = my_emptySprite;
+    my_stringToSprite["GoldCell"] = my_goldSprite;
+    my_stringToSprite["Bomb"] = my_bombSprite;
+    my_stringToSprite["ValueCell" ] = my_valueSprite;
     
     //On set les boutons
-    my_buttonQuitSprite->SetImage( *my_buttonImage );
-    my_buttonQuitSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
-    my_buttonQuitSprite->Resize(BUTTONWIDTH, BUTTONHEIGHT);
+    setSprite( my_buttonQuitSprite, my_buttonImage, BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT, BUTTONWIDTH, BUTTONHEIGHT);
+    my_buttonQuitSprite->SetPosition( QUITONX, QUITONY);
     
-    my_playButtonSprite->SetImage( *my_buttonImage );
-    my_playButtonSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
-    my_playButtonSprite->Resize( BUTTONWIDTH, BUTTONHEIGHT );
+    setSprite( my_playButtonSprite, my_buttonImage, BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT, BUTTONWIDTH, BUTTONHEIGHT );
+    my_playButtonSprite->SetPosition( PLAYX, PLAYY );
     
-    my_optionButtonSprite->SetImage( *my_buttonImage );
-    my_optionButtonSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
-    my_optionButtonSprite->Resize( BUTTONWIDTH, BUTTONHEIGHT );
+    setSprite( my_optionButtonSprite, my_buttonImage, BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT, BUTTONWIDTH, BUTTONHEIGHT );
+    my_optionButtonSprite->SetPosition(OPTIONX, OPTIONY);
     
-    my_bestButtonSprite->SetImage( *my_buttonImage );
-    my_bestButtonSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
-    my_bestButtonSprite->Resize( BUTTONWIDTH, BUTTONHEIGHT );
+    setSprite( my_bestButtonSprite, my_buttonImage, BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT, BUTTONWIDTH, BUTTONHEIGHT );
+    my_bestButtonSprite->SetPosition(BESTX, BESTY);
     
-    my_quitButtonSprite->SetImage( *my_buttonImage );
-    my_quitButtonSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
-    my_quitButtonSprite->Resize( BUTTONWIDTH, BUTTONHEIGHT );
+    setSprite( my_quitButtonSprite, my_buttonImage, BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT, BUTTONWIDTH, BUTTONHEIGHT );
+    my_quitButtonSprite->SetPosition(QUITX, QUITY);
     
+    //Pour les langues.
     
-    my_stringToSprite["Digger"] = *my_diggerSprite;
-    my_stringToSprite["EmptyCell"] = *my_emptySprite;
-    my_stringToSprite["GoldCell"] = *my_goldSprite;
-    my_stringToSprite["Bomb"] = *my_bombSprite;
-    my_stringToSprite["ValueCell" ] = *my_valueSprite;
+    setSprite( my_englishSprite, my_languageImage, ENGLISHSX, SPRITELANGUEBEGIN, ENGLISHEX, SPRITELANGUEHEIGHT, LANGUEWIDTH, LANGUEHEIGHT );
     
-    my_englishSprite->SetImage( *my_languageImage );
-    my_englishSprite->SetSubRect( IntRect( ENGLISHSX, SPRITELANGUEBEGIN, ENGLISHEX, SPRITELANGUEHEIGHT ) );
-    my_englishSprite->Resize( LANGUEWIDTH, LANGUEHEIGHT );
+    setSprite( my_frenchSprite, my_languageImage, FRENCHSX, SPRITELANGUEBEGIN, FRENCHEX, SPRITELANGUEHEIGHT, LANGUEWIDTH, LANGUEHEIGHT );
     
-    my_frenchSprite->SetImage( *my_languageImage );
-    my_frenchSprite->SetSubRect( IntRect( FRENCHSX, SPRITELANGUEBEGIN, FRENCHEX, SPRITELANGUEHEIGHT ) );
-    my_frenchSprite->Resize( LANGUEWIDTH, LANGUEHEIGHT );
+    setSprite( my_italianoSprite, my_languageImage, ITALIANOSX, SPRITELANGUEBEGIN, ITALIANOEX, SPRITELANGUEHEIGHT, LANGUEWIDTH, LANGUEHEIGHT );
     
-    my_italianoSprite->SetImage( *my_languageImage );
-    my_italianoSprite->SetSubRect( IntRect( ITALIANOSX, SPRITELANGUEBEGIN, ITALIANOEX, SPRITELANGUEHEIGHT ) );
-    my_italianoSprite->Resize( LANGUEWIDTH, LANGUEHEIGHT );
+    setSprite( my_spanishSprite, my_languageImage, SPANISHSX, SPRITELANGUEBEGIN, SPANISHEX, SPRITELANGUEHEIGHT, LANGUEWIDTH, LANGUEHEIGHT );
     
-    my_spanishSprite->SetImage( *my_languageImage );
-    my_spanishSprite->SetSubRect( IntRect( SPANISHSX, SPRITELANGUEBEGIN, SPANISHEX, SPRITELANGUEHEIGHT ) );
-    my_spanishSprite->Resize( LANGUEWIDTH, LANGUEHEIGHT );
+    setSprite( my_deutschSprite, my_languageImage, DEUTSCHSX, SPRITELANGUEBEGIN, DEUTSCHEX, SPRITELANGUEHEIGHT, LANGUEWIDTH, LANGUEHEIGHT );
     
-    my_deutschSprite->SetImage( *my_languageImage );
-    my_deutschSprite->SetSubRect( IntRect( DEUTSCHSX, SPRITELANGUEBEGIN, DEUTSCHEX, SPRITELANGUEHEIGHT ) );
-    my_deutschSprite->Resize( LANGUEWIDTH, LANGUEHEIGHT );
+    my_languageToSprite[english] = my_englishSprite;
+    my_languageToSprite[francais] = my_frenchSprite;
+    my_languageToSprite[italiano] = my_italianoSprite;
+    my_languageToSprite[deutsch] = my_deutschSprite;
+    my_languageToSprite[espanol] = my_spanishSprite;
     
-    my_languageToSprite[english] = *my_englishSprite;
-    my_languageToSprite[francais] = *my_frenchSprite;
-    my_languageToSprite[italiano] = *my_italianoSprite;
-    my_languageToSprite[deutsch] = *my_deutschSprite;
-    my_languageToSprite[espanol] = *my_spanishSprite;
 }
 
-void GameView::setAnanasMode() {
+//Pour mettre en place le thème ananas
+void
+GameView::setAnanasMode() {
 #ifdef __linux__
     if (!my_backgroundImage->LoadFromFile("Pictures/wallpapper.png") || !my_caseImage->LoadFromFile("Pictures/case.png") || !my_buttonImage->LoadFromFile("Pictures/buttonAnanas.png") || !my_languageImage->LoadFromFile("Pictures/languages.png") || !my_spriteImage->LoadFromFile("Pictures/choiceSprite.png") || !my_fontScore->LoadFromFile("Font/scoreFont.ttf") || !my_fontTitle->LoadFromFile("Font/titleFont.ttf") || !my_fontValue->LoadFromFile("Font/valueFont.ttf") || !my_fontButton->LoadFromFile("Font/buttonFont.ttf") || !my_musicLevel->OpenFromFile("Music/gridMusic.wav")) {
         cout << "Error when loading image or font" << endl;
@@ -197,22 +179,22 @@ void GameView::setAnanasMode() {
         
         //Les affichages de valeurs seront toujours identiques, du coup on les set direct
         my_valueString->SetFont( *my_fontValue );
-        my_valueString->SetColor(Color(255,255,255) );
         my_valueString->SetSize(23);
+        my_valueString->SetColor(Color(255,255,255) );
+        
         
         my_titleScoreString->SetFont( *my_fontScore );
         my_titleScoreString->SetSize(40);
-        my_titleScoreString->SetStyle(String::Underlined | String::Bold | String::Italic );
         my_titleScoreString->SetColor(Color(50,50,150));
+        my_titleScoreString->SetStyle(String::Underlined | String::Bold | String::Italic );
         
         my_scoreString->SetFont( *my_fontScore );
+        my_scoreString->SetSize(30);
         my_scoreString->SetColor(Color(251,210,98));
         my_scoreString->SetStyle(String::Underlined);
         
         my_scoreNum->SetFont( * my_fontScore );
         my_scoreNum->SetColor(Color(255,100,100));
-        
-        my_scoreString->SetSize(30);
         
         my_titleString->SetFont( *my_fontTitle );
         
@@ -227,6 +209,21 @@ void GameView::setAnanasMode() {
     }
     
     setImageToSprite();
+}
+
+//Cette méthode sert à mettre un text à un string, le positionner, et le dessiner
+void
+GameView::setTextAndDraw( sf::String* s, string text, int x, int y ) {
+    s->SetText(text);
+    s->SetPosition(x, y);
+    my_window->Draw(*s);
+}
+
+//Cette méthode sert à configurer à positionner un sprite et la dessiner
+void
+GameView::configureSpriteAndDraw( sf::Sprite* s, int x, int y) {
+    s->SetPosition(x, y);
+    my_window->Draw(*s);
 }
 
 void
@@ -292,19 +289,20 @@ GameView::resetButtonNorm() {
 }
 
 void
-GameView::showPresentation() {
+GameView::newScreen() {
     my_window->Clear();
     my_window->Draw(*my_backgroundSprite);
-    my_titleString->SetText("PURU PURU DIGGER");
+}
+void
+GameView::showPresentation() {
+    newScreen();
+    
     my_titleString->SetColor(Color(255,255,255));
     my_titleString->SetSize(60);
-    my_titleString->SetPosition( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) , 100 );
-    my_window->Draw( *my_titleString );
     
-    my_quitButtonSprite->SetPosition(QUITX, QUITY);
-    my_playButtonSprite->SetPosition( PLAYX, PLAYY );
-    my_optionButtonSprite->SetPosition(OPTIONX, OPTIONY);
-    my_bestButtonSprite->SetPosition(BESTX, BESTY);
+    setTextAndDraw( my_titleString, "PURU PURU DIGGER ", ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) , 100 );
+    
+    
     
 
     my_window->Draw( *my_playButtonSprite );
@@ -338,109 +336,83 @@ GameView::showPresentation() {
 
 void
 GameView::showOption() {
-    my_window->Clear();
-    my_window->Draw(*my_backgroundSprite);
+    newScreen();
     
-    my_titleString->SetText(my_messages[my_language][setting]);
-    my_titleString->SetPosition( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) , 10 );
-    my_window->Draw( *my_titleString );
+    //Le titre de la page
+    setTextAndDraw( my_titleString, my_messages[my_language][setting], ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) , 10);
     
-    my_scoreString->SetText( my_messages[my_language][language]);
-    my_scoreString->SetPosition( QUITONX + 50, CHOICELANGUEHIGH );
-    my_window->Draw( * my_scoreString );
+    //L'énoncé langue
+    setTextAndDraw( my_scoreString, my_messages[my_language][language], QUITONX + 50, CHOICELANGUEHIGH);
     
-    my_scoreString->SetText( my_messages[my_language][actual]);
-    my_scoreString->SetPosition( QUITONX + 50, MYLANGUEY );
-    my_window->Draw( * my_scoreString );
+    setTextAndDraw( my_scoreString, my_messages[my_language][actual], QUITONX + 50, MYLANGUEY );
     
-    my_scoreString->SetText( my_messages[my_language][theme] );
-    my_scoreString->SetPosition( QUITONX + 50, CHOICESPRITEY );
-    my_window->Draw( *my_scoreString );
+    setTextAndDraw( my_scoreString, my_messages[my_language][theme], QUITONX + 50, CHOICESPRITEY );
     
     
     showLanguage();
     
     //On place notre langue en cours
-    my_languageToSprite[my_language].SetPosition(MYLANGUEX, MYLANGUEY);
-    my_window->Draw(my_languageToSprite[my_language]);
+    configureSpriteAndDraw( my_languageToSprite[my_language], MYLANGUEX, MYLANGUEY );
     
     showSpriteChoice();
     
     
-    my_buttonQuitSprite->SetPosition( QUITONX, QUITONY);
+    //Le bouton pour quitter et son text
     my_window->Draw( *my_buttonQuitSprite );
     
-    my_buttonString->SetText( my_messages[my_language][stop] );
-    my_buttonString->SetPosition( ( ( ( QUITONX + BUTTONWIDTH ) / 2.5 )  ), (QUITONY + (BUTTONHEIGHT / 5)) );
-    my_window->Draw( *my_buttonString );
+    setTextAndDraw( my_buttonString, my_messages[my_language][stop], ( ( ( QUITONX + BUTTONWIDTH ) / 2.5 )  ), (QUITONY + (BUTTONHEIGHT / 5))  );
 }
 
 void
 GameView::setHoverLanguage( Language hover ) {
-    my_languageToSprite[hover].SetColor(Color(255,255,255,128));
+    my_languageToSprite[hover]->SetColor(Color(255,255,255,128));
 }
 
 void GameView::resetLanguageNorm() {
-    for ( map<Language, Sprite>::const_iterator it = my_languageToSprite.begin() ; it!=my_languageToSprite.end(); ++it) {
-        my_languageToSprite[ it->first ].SetColor(Color(255,255,255,255));
+    for ( map<Language, Sprite*>::const_iterator it = my_languageToSprite.begin() ; it!=my_languageToSprite.end(); ++it) {
+        my_languageToSprite[ it->first ]->SetColor(Color(255,255,255,255));
     }
     
 }
 
 void
 GameView::showLanguage() {
-    my_languageToSprite[english].SetPosition(ENGLISHX, CHOICELANGUEHIGH);
-    my_languageToSprite[francais].SetPosition(FRENCHX, CHOICELANGUEHIGH);
-    my_languageToSprite[italiano].SetPosition(ITALIANOX, CHOICELANGUEHIGH);
-    my_languageToSprite[deutsch].SetPosition(DEUTSCHX, CHOICELANGUEHIGH);
-    my_languageToSprite[espanol].SetPosition(SPANISHX, CHOICELANGUEHIGH);
-    
-    my_window->Draw(my_languageToSprite[english]);
-    my_window->Draw(my_languageToSprite[francais]);
-    my_window->Draw(my_languageToSprite[italiano]);
-    my_window->Draw(my_languageToSprite[deutsch]);
-    my_window->Draw(my_languageToSprite[espanol]);
+    configureSpriteAndDraw( my_languageToSprite[english], ENGLISHX, CHOICELANGUEHIGH );
+    configureSpriteAndDraw( my_languageToSprite[francais], FRENCHX, CHOICELANGUEHIGH );
+    configureSpriteAndDraw( my_languageToSprite[italiano], ITALIANOX, CHOICELANGUEHIGH );
+    configureSpriteAndDraw( my_languageToSprite[deutsch], DEUTSCHX, CHOICELANGUEHIGH );
+    configureSpriteAndDraw( my_languageToSprite[espanol], SPANISHX, CHOICELANGUEHIGH );
 }
 
 void
 GameView::showSpriteChoice() {
-    my_ananasSprite->SetPosition( CHOICEANANASX, CHOICESPRITEY);
-    my_teacherSprite->SetPosition( CHOICETEACHERX, CHOICESPRITEY);
     my_window->Draw(*my_ananasSprite);
     my_window->Draw(*my_teacherSprite);
 }
 
 void
 GameView::showBestScore() {
-    my_window->Clear();
-    my_window->Draw(*my_backgroundSprite);
+    newScreen();
     
     ifstream scoreLect(FILEBESTSCORE.c_str(), ios::in );
     if ( scoreLect ) {
         string line;
         
         //Le titre de la page
-        my_titleString->SetText(my_messages[my_language][setting]);
-        my_titleString->SetPosition( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) , 10 );
-        my_window->Draw( *my_titleString );
-        
+        setTextAndDraw( my_titleString, my_messages[my_language][score], ( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) ), 10 ) ;
         
         int i = 200;
         
+        //Le contenu de notre fichier
         while ( getline(scoreLect, line) ) {
-            my_valueString->SetText( line );
-            my_valueString->SetPosition( ( WINDOWWITDH / 2 ) - ( my_valueString->GetRect().GetWidth() / 2 ), i );
-            my_window->Draw(*my_valueString);
+            setTextAndDraw(my_valueString, line, ( WINDOWWITDH / 2 ) - ( my_valueString->GetRect().GetWidth() / 2 ), i );
             i += 100;
         }
         
         //On affiche le bouton quitter avec son string
-        my_buttonQuitSprite->SetPosition( QUITONX, QUITONY);
         my_window->Draw( *my_buttonQuitSprite );
         
-        my_buttonString->SetText( my_messages[my_language][stop] );
-        my_buttonString->SetPosition( ( ( ( QUITONX + BUTTONWIDTH ) / 2.5 )  ), (QUITONY + (BUTTONHEIGHT / 5)) );
-        my_window->Draw( *my_buttonString );
+        setTextAndDraw( my_buttonString, my_messages[my_language][stop], ( ( ( QUITONX + BUTTONWIDTH ) / 2.5 )  ), (QUITONY + (BUTTONHEIGHT / 5))  );
         
         scoreLect.close();
         
@@ -454,13 +426,12 @@ void
 GameView::showGrid() {
     for ( int i = 0; i < LIGNE ; i++ ) {
         for ( int j = 0; j < COLONNE; j++ ) {
-            my_stringToSprite[ my_model->getLevel()->getGrid()[i][j]->getType() ].SetPosition( convertIndiceXToPixel( j ), convertIndiceYToPixel( i ) );
-            my_window->Draw( my_stringToSprite[ my_model->getLevel()->getGrid()[i][j]->getType() ] );
-            
+            //On dessine le contenu de la case
+            configureSpriteAndDraw( my_stringToSprite[ my_model->getLevel()->getGrid()[i][j]->getType() ] ,  convertIndiceXToPixel( j ), convertIndiceYToPixel( i ) );
+            //Si c'est une case numérotée, on met son numéro
             if ( my_model->getLevel()->getGrid()[i][j]->getType() == "ValueCell" || my_model->getLevel()->getGrid()[i][j]->getType() == "GoldCell") {
-                my_valueString->SetText( intToString( my_model->getLevel()->getGrid()[i][j]->getValue() ) );
-                my_valueString->SetPosition( ( convertIndiceXToPixel( j ) + CASEWITDH / 3 ), ( convertIndiceYToPixel( i ) + CASEHEIGHT / 6 ) );
-                my_window->Draw( *my_valueString );
+                
+                setTextAndDraw( my_valueString, intToString( my_model->getLevel()->getGrid()[i][j]->getValue() ), ( convertIndiceXToPixel( j ) + CASEWITDH / 3 ), ( convertIndiceYToPixel( i ) + CASEHEIGHT / 6 ) );
             }
         }
     }
@@ -468,126 +439,99 @@ GameView::showGrid() {
 
 void
 GameView::showLoseLevel() {
-    my_window->Clear();
-    my_window->Draw( *my_backgroundSprite );
+    newScreen();
     my_titleString->SetSize(40);
+    
     my_titleString->SetColor(Color(0,0,0));
-    my_titleString->SetText( my_messages[my_language][looselevel] );
-    my_titleString->SetPosition(  ( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) ), WINDOWHEIGHT / 2 );
-    my_window->Draw(*my_titleString);
+    
+    setTextAndDraw( my_titleString, my_messages[my_language][looselevel], ( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) ), WINDOWHEIGHT / 2 ) ;
 }
 
 void
 GameView::showWinLevel() {
-    my_window->Clear();
-    my_window->Draw( *my_backgroundSprite );
+    newScreen();
+    
     my_titleString->SetSize(40);
     my_titleString->SetColor(Color(0,0,0));
-    my_titleString->SetText( my_messages[my_language][winlevel] );
-    my_titleString->SetPosition(  ( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) ), WINDOWHEIGHT / 2 );
-    my_window->Draw(*my_titleString);
+    
+    setTextAndDraw( my_titleString, my_messages[my_language][winlevel], ( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) ), WINDOWHEIGHT / 2 ) ;
 }
 
 void
 GameView::showScore() {
     //Le titre
-    my_titleScoreString->SetPosition(100, 80);
-    my_titleScoreString->SetText(  my_messages[my_language][score] + " : " );
-    my_window->Draw( *my_titleScoreString );
+    setTextAndDraw( my_titleString, my_messages[my_language][score] + " : ", 100, 80);
     
     //Level et son num
-    my_scoreString->SetText(  my_messages[my_language][level] );
-    my_scoreString->SetPosition( 20, 140 );
-    my_window->Draw( *my_scoreString );
+    setTextAndDraw( my_scoreString, my_messages[my_language][level] + " : ", 20, 140);
+
     
-    my_scoreNum->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 140 );
-    my_scoreNum->SetText( intToString(my_model->getScore()->getCurrentStep() ) );
-    my_window->Draw( *my_scoreNum);
+    setTextAndDraw( my_scoreNum, intToString(my_model->getScore()->getCurrentStep() ), my_scoreString->GetRect().GetWidth() + 40, 140 );
     
     //Score Total
-    my_scoreString->SetText(  my_messages[my_language][global] );
-    my_scoreString->SetPosition( 20, 180 );
-    my_window->Draw( *my_scoreString );
+    setTextAndDraw( my_scoreString, my_messages[my_language][global] + " : ", 20, 180);
     
-    my_scoreNum->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 180 );
-    my_scoreNum->SetText( intToString(my_model->getScore()->getGlobale() ) );
-    my_window->Draw( *my_scoreNum);
+    
+    setTextAndDraw( my_scoreNum, intToString(my_model->getScore()->getGlobale() ), my_scoreString->GetRect().GetWidth() + 40, 180 );
     
     //Score en cours
-    my_scoreString->SetText(  my_messages[my_language][current] );
-    my_scoreString->SetPosition( 20, 220 );
-    my_window->Draw( *my_scoreString );
+    setTextAndDraw( my_scoreString, my_messages[my_language][current] + " : ", 20, 220);
     
-    my_scoreNum->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 220 );
-    my_scoreNum->SetText( intToString(my_model->getScore()->getCurrent() ) );
-    my_window->Draw( *my_scoreNum);
+    
+    setTextAndDraw( my_scoreNum, intToString(my_model->getScore()->getCurrent() ), my_scoreString->GetRect().GetWidth() + 40, 220 );
+    
     
     //Objectif
-    my_scoreString->SetText(  my_messages[my_language][goal] );
-    my_scoreString->SetPosition( 20, 260 );
-    my_window->Draw( *my_scoreString );
+    setTextAndDraw( my_scoreString, my_messages[my_language][goal] + " : ", 20, 260);
     
-    my_scoreNum->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 260 );
-    my_scoreNum->SetText( intToString( my_model->getLevel()->getGoal() ) );
-    my_window->Draw( *my_scoreNum);
     
+    setTextAndDraw( my_scoreNum, intToString(my_model->getLevel()->getGoal() ), my_scoreString->GetRect().GetWidth() + 40, 260 );
+    
+
     //En cours
-    my_scoreString->SetText(  my_messages[my_language][step] );
-    my_scoreString->SetPosition( 20, 300 );
-    my_window->Draw( *my_scoreString );
+    setTextAndDraw( my_scoreString, my_messages[my_language][step] + " : ", 20, 300);
     
-    my_scoreNum->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 300 );
-    my_scoreNum->SetText( intToString( my_model->getLevel()->getCurrentMove() ) );
-    my_window->Draw( *my_scoreNum);
+    
+    setTextAndDraw( my_scoreNum, intToString(my_model->getLevel()->getCurrentMove() ), my_scoreString->GetRect().GetWidth() + 40, 300 );
     
     //La vie
-    my_scoreString->SetText(  my_messages[my_language][life] );
-    my_scoreString->SetPosition( 20, 340 );
-    my_window->Draw( *my_scoreString );
+    setTextAndDraw( my_scoreString, my_messages[my_language][life] + " : ", 20, 340);
     
-    my_scoreNum->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 340 );
-    my_scoreNum->SetText( intToString( my_model->getLevel()->getDigger()->getLife() ) );
-    my_window->Draw( *my_scoreNum);
+    
+    setTextAndDraw( my_scoreNum, intToString(my_model->getLevel()->getDigger()->getLife() ), my_scoreString->GetRect().GetWidth() + 40, 340 );
     
     //Le temps
-    my_scoreString->SetText(  my_messages[my_language][ltime] );
-    my_scoreString->SetPosition( 20, 380 );
-    my_window->Draw( *my_scoreString );
+    setTextAndDraw( my_scoreString, my_messages[my_language][ltime] + " : ", 20, 380);
     
-    my_scoreNum->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 380 );
-    my_scoreNum->SetText( intToString( my_model->getLevel()->leftTime() ) );
-    my_window->Draw( *my_scoreNum);
+    
+    setTextAndDraw( my_scoreNum, intToString( my_model->getLevel()->leftTime() ) , my_scoreString->GetRect().GetWidth() + 40, 380 );
     
     //La position
-    my_scoreString->SetText(  my_messages[my_language][position] );
-    my_scoreString->SetPosition( 20, 420 );
-    my_window->Draw( *my_scoreString );
+    setTextAndDraw( my_scoreString, my_messages[my_language][position] + " : ", 20, 420);
     
-    my_scoreNum->SetPosition( my_scoreString->GetRect().GetWidth() + 40, 420 );
-    my_scoreNum->SetText( "[ " + intToString( my_model->getLevel()->getDigger()->getX() ) + " ] [ " +  intToString( my_model->getLevel()->getDigger()->getY() )  + " ] " );
-    my_window->Draw( *my_scoreNum);
+    
+    setTextAndDraw( my_scoreNum, "[ " + intToString( my_model->getLevel()->getDigger()->getX() ) + " ] [ " +  intToString( my_model->getLevel()->getDigger()->getY() )  + " ] " , my_scoreString->GetRect().GetWidth() + 40, 420 );
     
 }
 
 void
 GameView::showLevel() {
-    my_window->Clear();
-    my_window->Draw( *my_backgroundSprite );
+    newScreen();
+    
     my_titleString->SetColor(Color(255,255,255));
     my_titleString->SetSize(60);
-    my_titleString->SetText( " PURU PURU DIGGER " );
-    my_titleString->SetPosition( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) , 10 );
-    my_window->Draw( *my_titleString );
+    
+    setTextAndDraw( my_titleString, " PURU PURU DIGGER " , ( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) ), 10 ) ;
+
+    //On dessine la grille
     showGrid();
+    
+    //On dessine le score
     showScore();
 
-    
-    my_buttonQuitSprite->SetPosition( QUITONX, QUITONY);
     my_window->Draw( *my_buttonQuitSprite );
     
-    my_buttonString->SetText( my_messages[my_language][stop] );
-    my_buttonString->SetPosition( ( ( ( QUITONX + BUTTONWIDTH ) / 2.5 )  ), (QUITONY + (BUTTONHEIGHT / 5)) );
-    my_window->Draw( *my_buttonString );
+    setTextAndDraw( my_buttonString, my_messages[my_language][stop], ( ( ( QUITONX + BUTTONWIDTH ) / 2.5 )  ), (QUITONY + (BUTTONHEIGHT / 5))  );
 }
 
 void
@@ -728,10 +672,9 @@ GameView::treatGame() {
                 case Event::MouseButtonPressed :
                     if ( isInPresentation ) {
                         if ( event.MouseButton.X > PLAYX && event.MouseButton.X < PLAYX + BUTTONWIDTH && event.MouseButton.Y > PLAYY && event.MouseButton.Y < PLAYY + BUTTONHEIGHT ) {
-                            my_model->getLevel()->reset();
-                            my_model->getLevel()->getDigger()->resetLife();
                             isInPresentation = false;
                             isPlaying = true;
+                            my_model->reset();
                             my_musicLevel->Play();
                             
                         } else if ( event.MouseButton.X > QUITX && event.MouseButton.X < QUITX + BUTTONWIDTH && event.MouseButton.Y > QUITY && event.MouseButton.Y < QUITY + BUTTONHEIGHT ) {
