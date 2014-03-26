@@ -631,8 +631,6 @@ GameView::treatGame() {
     bool isInPresentation = true; //Pour savoir si il est sur le menu de départ
     bool isPlaying = false; // Pour savoir si il est sur le jeu
     bool isChoosingOption = false; //Pour savoir si il est le menu du choix des options
-    bool musicIsActive = true;
-    bool soundIsActive = true;
     bool isViewingBestScore = false;
     //bool isInBestScore = false; //Pour savoir si il est sur le menu des meilleurs scores
     
