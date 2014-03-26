@@ -125,7 +125,7 @@ class GameView {
     /*!
      *  \brief Affichage des meilleurs scores
      */
-    void showBestScore() const;
+    void showBestScore();
     
     /*!
      *  \brief Entrée d'un nouveau score

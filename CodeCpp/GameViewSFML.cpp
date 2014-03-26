@@ -1,6 +1,7 @@
 #include "GameViewSFML.h"
 #include "Constantes.h"
 #include <sstream>
+#include <fstream>
 #include "Utils.h"
 
 using namespace std;
@@ -8,7 +9,7 @@ using namespace sf;
 
 
 //Début de l'écriture des fonctions pour la SFML
- GameView::GameView() {
+GameView::GameView() {
      //Le style de la fenêtres
      my_window = new RenderWindow( VideoMode(WINDOWWITDH, WINDOWHEIGHT, BPP), "PuruPuruDigger", Style::Close);
      
@@ -228,7 +229,6 @@ void GameView::setAnanasMode() {
     setImageToSprite();
 }
 
-
 void
 GameView::setTeacherMode() {
 #ifdef __linux__
@@ -336,7 +336,6 @@ GameView::showPresentation() {
     
 }
 
-
 void
 GameView::showOption() {
     my_window->Clear();
@@ -361,6 +360,7 @@ GameView::showOption() {
     
     showLanguage();
     
+    //On place notre langue en cours
     my_languageToSprite[my_language].SetPosition(MYLANGUEX, MYLANGUEY);
     my_window->Draw(my_languageToSprite[my_language]);
     
@@ -386,6 +386,7 @@ void GameView::resetLanguageNorm() {
     }
     
 }
+
 void
 GameView::showLanguage() {
     my_languageToSprite[english].SetPosition(ENGLISHX, CHOICELANGUEHIGH);
@@ -401,7 +402,6 @@ GameView::showLanguage() {
     my_window->Draw(my_languageToSprite[espanol]);
 }
 
-
 void
 GameView::showSpriteChoice() {
     my_ananasSprite->SetPosition( CHOICEANANASX, CHOICESPRITEY);
@@ -410,7 +410,45 @@ GameView::showSpriteChoice() {
     my_window->Draw(*my_teacherSprite);
 }
 
+void
+GameView::showBestScore() {
+    my_window->Clear();
+    my_window->Draw(*my_backgroundSprite);
+    
+    ifstream scoreLect(FILEBESTSCORE.c_str(), ios::in );
+    if ( scoreLect ) {
+        string line;
+        
+        //Le titre de la page
+        my_titleString->SetText(my_messages[my_language][setting]);
+        my_titleString->SetPosition( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) , 10 );
+        my_window->Draw( *my_titleString );
+        
+        
+        int i = 200;
+        
+        while ( getline(scoreLect, line) ) {
+            my_valueString->SetText( line );
+            my_valueString->SetPosition( ( WINDOWWITDH / 2 ) - ( my_valueString->GetRect().GetWidth() / 2 ), i );
+            my_window->Draw(*my_valueString);
+            i += 100;
+        }
+        
+        //On affiche le bouton quitter avec son string
+        my_buttonQuitSprite->SetPosition( QUITONX, QUITONY);
+        my_window->Draw( *my_buttonQuitSprite );
+        
+        my_buttonString->SetText( my_messages[my_language][stop] );
+        my_buttonString->SetPosition( ( ( ( QUITONX + BUTTONWIDTH ) / 2.5 )  ), (QUITONY + (BUTTONHEIGHT / 5)) );
+        my_window->Draw( *my_buttonString );
+        
+        scoreLect.close();
+        
 
+    } else {
+        cerr << " Error when program is openning text file " << endl;
+    }
+}
 
 void
 GameView::showGrid() {
@@ -427,6 +465,7 @@ GameView::showGrid() {
         }
     }
 }
+
 void
 GameView::showLoseLevel() {
     my_window->Clear();
@@ -592,6 +631,9 @@ GameView::treatGame() {
     bool isInPresentation = true; //Pour savoir si il est sur le menu de départ
     bool isPlaying = false; // Pour savoir si il est sur le jeu
     bool isChoosingOption = false; //Pour savoir si il est le menu du choix des options
+    bool musicIsActive = true;
+    bool soundIsActive = true;
+    bool isViewingBestScore = false;
     //bool isInBestScore = false; //Pour savoir si il est sur le menu des meilleurs scores
     
     sf::Clock pause;        //La clock pour la pause
@@ -612,7 +654,7 @@ GameView::treatGame() {
                 case Event::MouseMoved :
                     if ( isInPresentation ) {
                         if ( event.MouseMove.X > PLAYX && event.MouseMove.X < PLAYX + BUTTONWIDTH && event.MouseMove.Y > PLAYY && event.MouseMove.Y < PLAYY + BUTTONHEIGHT )
-                            
+                        
                             setButtonHover( my_playButtonSprite );
                         else if ( event.MouseMove.X > OPTIONX && event.MouseMove.X < OPTIONX + BUTTONWIDTH && event.MouseMove.Y > OPTIONY && event.MouseMove.Y < OPTIONY + BUTTONHEIGHT)
                             setButtonHover( my_optionButtonSprite );
@@ -649,6 +691,12 @@ GameView::treatGame() {
                             setButtonHover(my_buttonQuitSprite);
                         else
                             resetButtonNorm();
+                    } else if ( isViewingBestScore ) {
+                        if ( event.MouseMove.X > QUITONX && event.MouseMove.X < QUITONX + BUTTONWIDTH && event.MouseMove.Y > QUITONY && event.MouseMove.Y < QUITONY + BUTTONHEIGHT )
+                            
+                            setButtonHover(my_buttonQuitSprite);
+                        else
+                            resetButtonNorm();
                     }
                     break;
                 case Event::KeyPressed : // Appui sur une touche du clavier
@@ -659,19 +707,19 @@ GameView::treatGame() {
                             my_window->Close();
                             break;
                         case Key::Right :
-                            if ( !isInBreak )
+                            if ( !isInBreak && isPlaying )
                                 my_model->orderMovement(6);
                             break;
                         case Key::Up:
-                            if ( !isInBreak )
+                            if ( !isInBreak && isPlaying )
                                 my_model->orderMovement(8);
                             break;
                         case Key::Left :
-                            if ( !isInBreak )
+                            if ( !isInBreak  && isPlaying)
                                 my_model->orderMovement(4);
                             break;
                         case Key::Down:
-                            if ( !isInBreak )
+                            if ( !isInBreak && isPlaying )
                                 my_model->orderMovement(2);
                             break;
                         default :
@@ -694,6 +742,9 @@ GameView::treatGame() {
                         } else if ( event.MouseButton.X > OPTIONX && event.MouseButton.X < OPTIONX + BUTTONWIDTH && event.MouseButton.Y > OPTIONY && event.MouseButton.Y < OPTIONY + BUTTONHEIGHT ) {
                             isInPresentation = false;
                             isChoosingOption = true;
+                        } else if ( event.MouseButton.X > BESTX && event.MouseButton.X < BESTX + BUTTONWIDTH && event.MouseButton.Y > BESTY && event.MouseButton.Y < BESTY + BUTTONHEIGHT ) {
+                            isInPresentation = false;
+                            isViewingBestScore = true;
                         }
                     } else if ( isChoosingOption ) {
                         
@@ -715,7 +766,11 @@ GameView::treatGame() {
                             isChoosingOption = false;
                             isInPresentation = true;
                         }
-                        
+                    } else if ( isViewingBestScore ) {
+                        if ( event.MouseButton.X > QUITONX && event.MouseButton.X < QUITONX + BUTTONWIDTH && event.MouseButton.Y > QUITONY && event.MouseButton.Y < QUITONY + BUTTONHEIGHT ) {
+                            isViewingBestScore = false;
+                            isInPresentation = true;
+                        }
                     } else if ( isPlaying ) {
                         cout << " Souris case : " << convertYPixel(event.MouseButton.Y) << " " << convertXPixel(event.MouseButton.X) <<  " "  << endl;
                         if ( event.MouseButton.X > QUITONX && event.MouseButton.X < QUITONX + BUTTONWIDTH && event.MouseButton.Y > QUITONY && event.MouseButton.Y < QUITONY + BUTTONHEIGHT ) {
@@ -737,6 +792,8 @@ GameView::treatGame() {
             showPresentation();
         } else if ( isChoosingOption ) {
             showOption();
+        } else if ( isViewingBestScore ) {
+            showBestScore();
         } else if ( isPlaying ) {
             if ( my_model->getLevel()->lose() ) {
                 if ( !isInBreak )
