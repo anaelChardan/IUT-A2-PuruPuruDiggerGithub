@@ -8,7 +8,7 @@ using namespace std;
 using namespace sf;
 
 
-//Début de l'écriture des fonctions pour la SFML
+//Constructeur
 GameView::GameView() {
      //Le style de la fenêtres
      my_window = new RenderWindow( VideoMode(WINDOWWITDH, WINDOWHEIGHT, BPP), "PuruPuruDigger", Style::Close);
@@ -65,6 +65,7 @@ GameView::GameView() {
      setTeacherMode();
 }
 
+//Destructeur
 GameView::~GameView() {
     delete my_window;
     delete my_diggerSprite;
@@ -86,12 +87,15 @@ GameView::~GameView() {
     delete my_caseImage;
 }
 
-void GameView::setSprite( sf::Sprite* s, sf::Image* i, int subsX, int subsY, int subeX, int subeY, int w, int h ) {
+//Attribut une image à un sprite, avec rectangle de lecture et redimensionnement
+void
+GameView::setSprite( sf::Sprite* s, sf::Image* i, int subsX, int subsY, int subeX, int subeY, int w, int h ) {
     s->SetImage( *i );
     s->SetSubRect( IntRect ( subsX, subsY, subeX, subeY ) );
     s->Resize( w, h);
 }
 
+//Attribut chaque image à un sprite
 void GameView::setImageToSprite() {
     
     my_languageImage->CreateMaskFromColor(Color(0, 55, 97));
@@ -293,6 +297,7 @@ GameView::newScreen() {
     my_window->Clear();
     my_window->Draw(*my_backgroundSprite);
 }
+
 void
 GameView::showPresentation() {
     newScreen();
@@ -550,7 +555,9 @@ GameView::showCGrid() {
     }
 }
 
-void GameView::setModel(GameModel *model) {
+//Injection de dépendance model
+void
+GameView::setModel(GameModel *model) {
     my_model = model;
 }
 
@@ -563,32 +570,33 @@ GameView::isInZone( int x, int y, int px, int py, int w, int h ) {
         return false;
 }
 
+//Boucle d'événement
 void
-GameView::treatGame() {
+GameView::treatGame( ) {
 
-    bool isInPresentation = true; //Pour savoir si il est sur le menu de départ
-    bool isPlaying = false; // Pour savoir si il est sur le jeu
-    bool isChoosingOption = false; //Pour savoir si il est le menu du choix des options
+    bool isInPresentation = true;  // Pour savoir si il est sur le menu de départ
+    bool isPlaying = false;        // Pour savoir si il est sur le jeu
+    bool isChoosingOption = false; // Pour savoir si il est le menu du choix des options
     bool isViewingBestScore = false;
-    //bool isInBestScore = false; //Pour savoir si il est sur le menu des meilleurs scores
     
     sf::Clock pause;        //La clock pour la pause
     bool isInBreak = false; //Pour savoir quand on est en pause
     
-    // Boucle principale
-    while (my_window->IsOpened())
-    {
-        //Gestion de tous les événements
+    while ( my_window->IsOpened( ) ) {
+        
         Event event;
-        while (my_window->GetEvent(event)) // Boucle des évènements en attente
-        {
-            switch (event.Type) // Type de l'évènement
-            {
-                case Event::Closed : // Bouton de fermeture
+        
+        while ( my_window->GetEvent( event ) ) {
+            switch (event.Type) {
+                    
+                case Event::Closed :
                     my_window->Close();
                     break;
+                    
                 case Event::MouseMoved :
+                    
                     if ( isInPresentation ) {
+                        
                         if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, PLAYX, PLAYY, BUTTONWIDTH, BUTTONHEIGHT ) )
                             
                             setButtonHover( my_playButtonSprite );
@@ -629,8 +637,9 @@ GameView::treatGame() {
                             resetButtonNorm();
                             resetLanguageNorm();
                         }
+                        
                     } else if ( isPlaying  ) {
-                        if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, QUITONX, QUITONY, BUTTONWIDTH, BUTTONHEIGHT ))
+                        if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, QUITONX, QUITONY, BUTTONWIDTH, BUTTONHEIGHT ) )
                             
                             setButtonHover(my_buttonQuitSprite);
                         else
@@ -642,7 +651,9 @@ GameView::treatGame() {
                         else
                             resetButtonNorm();
                     }
+                    
                     break;
+                    
                 case Event::KeyPressed : // Appui sur une touche du clavier
                 {
                     switch (event.Key.Code) // La touche qui a été appuyée
@@ -671,7 +682,9 @@ GameView::treatGame() {
                     }
                 }
                     break;
+                    
                 case Event::MouseButtonPressed :
+                    
                     if ( isInPresentation ) {
                         if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, PLAYX, PLAYY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
                             isInPresentation = false;
@@ -690,6 +703,7 @@ GameView::treatGame() {
                             isInPresentation = false;
                             isViewingBestScore = true;
                         }
+                        
                     } else if ( isChoosingOption ) {
                         
                         if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, ENGLISHX, CHOICELANGUEHIGH, LANGUEWIDTH, LANGUEHEIGHT ) )
@@ -707,22 +721,29 @@ GameView::treatGame() {
                         if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, DEUTSCHX, CHOICELANGUEHIGH, LANGUEWIDTH, LANGUEHEIGHT ) )
                             my_language = deutsch;
                         
-                        if ( event.MouseButton.X > CHOICEANANASX && event.MouseButton.X < CHOICEANANASX + SPRITECHOICEWIDTH && event.MouseButton.Y > CHOICESPRITEY && event.MouseButton.Y < CHOICESPRITEY + SPRITECHOICEHEIGHT )
+                        if ( isInZone( event.MouseButton.X, event.MouseButton.Y, CHOICEANANASX, CHOICESPRITEY, SPRITECHOICEWIDTH, SPRITECHOICEHEIGHT ) )
                             setAnanasMode();
-                        if ( event.MouseButton.X > CHOICETEACHERX && event.MouseButton.X < CHOICETEACHERX + SPRITECHOICEWIDTH && event.MouseButton.Y > CHOICESPRITEY && event.MouseButton.Y < CHOICESPRITEY + SPRITECHOICEHEIGHT )
+                        
+                        if ( isInZone( event.MouseButton.X, event.MouseButton.Y, CHOICETEACHERX, CHOICESPRITEY, SPRITECHOICEWIDTH, SPRITECHOICEHEIGHT ) )
                             setTeacherMode();
-                        if ( event.MouseButton.X > QUITONX && event.MouseButton.X < QUITONX + BUTTONWIDTH && event.MouseButton.Y > QUITONY && event.MouseButton.Y < QUITONY + BUTTONHEIGHT ) {
+                        
+                        if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, QUITONX, QUITONY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
                             isChoosingOption = false;
                             isInPresentation = true;
                         }
+                        
                     } else if ( isViewingBestScore ) {
-                        if ( event.MouseButton.X > QUITONX && event.MouseButton.X < QUITONX + BUTTONWIDTH && event.MouseButton.Y > QUITONY && event.MouseButton.Y < QUITONY + BUTTONHEIGHT ) {
+                        
+                        if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, QUITONX, QUITONY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
                             isViewingBestScore = false;
                             isInPresentation = true;
                         }
+                        
                     } else if ( isPlaying ) {
+                        
                         cout << " Souris case : " << convertYPixel(event.MouseButton.Y) << " " << convertXPixel(event.MouseButton.X) <<  " "  << endl;
-                        if ( event.MouseButton.X > QUITONX && event.MouseButton.X < QUITONX + BUTTONWIDTH && event.MouseButton.Y > QUITONY && event.MouseButton.Y < QUITONY + BUTTONHEIGHT ) {
+                        
+                        if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, QUITONX, QUITONY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
                             isPlaying = false;
                             isInPresentation = true;
                             my_musicLevel->Stop();
@@ -765,7 +786,9 @@ GameView::treatGame() {
         
         //Pour gérer l'affichage durant quelque seconde
         if ( my_model->getLevel()->lose() || my_model->getLevel()->win() ) {
+            
             if ( pause.GetElapsedTime() > 1.5 ) {
+                
                 my_model->getLevel()->resetLose();
                 my_model->getLevel()->resetWin();
                 my_model->getLevel()->resetTime();
