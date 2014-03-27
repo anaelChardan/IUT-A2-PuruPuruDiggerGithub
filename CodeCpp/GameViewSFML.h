@@ -84,6 +84,9 @@ class GameView {
    
     
     void setImageToSprite();
+    
+    //Savoir si un point est dans une zone donnée
+    bool isInZone( int x, int y, int px, int py, int w, int h );
     /*!
      *  \brief Affichage Menu principal
      */

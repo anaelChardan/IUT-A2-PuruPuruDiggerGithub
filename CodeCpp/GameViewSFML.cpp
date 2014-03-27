@@ -302,36 +302,21 @@ GameView::showPresentation() {
     
     setTextAndDraw( my_titleString, "PURU PURU DIGGER ", ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) , 100 );
     
-    
-    
-
     my_window->Draw( *my_playButtonSprite );
-    
     
     my_window->Draw( *my_optionButtonSprite );
     
-    
     my_window->Draw( *my_bestButtonSprite);
     
-
     my_window->Draw( *my_quitButtonSprite);
     
-    my_buttonString->SetText( my_messages[my_language][best] ) ;
-    my_buttonString->SetPosition( BESTX + 40, (BESTY + (BUTTONHEIGHT / 5)) );
-    my_window->Draw( *my_buttonString );
+    setTextAndDraw( my_buttonString, my_messages[my_language][best], BESTX + 40, (BESTY + (BUTTONHEIGHT / 5)) );
     
-    my_buttonString->SetText( my_messages[my_language][play] ) ;
-    my_buttonString->SetPosition(  PLAYX  + 40, PLAYY + (BUTTONHEIGHT / 5) );
-    my_window->Draw( *my_buttonString );
+    setTextAndDraw( my_buttonString, my_messages[my_language][play], PLAYX  + 40, PLAYY + (BUTTONHEIGHT / 5) );
+
+    setTextAndDraw( my_buttonString, my_messages[my_language][stop], QUITX + 40, (QUITY + (BUTTONHEIGHT * 0.2 )) );
     
-    my_buttonString->SetText( my_messages[my_language][stop] ) ;
-    my_buttonString->SetPosition(  QUITX + 40, (QUITY + (BUTTONHEIGHT * 0.2 )) );
-    my_window->Draw( *my_buttonString );
-    
-    my_buttonString->SetText( my_messages[my_language][setting] ) ;
-    my_buttonString->SetPosition(  OPTIONX + 40   , OPTIONY + (BUTTONHEIGHT * 0.2) );
-    my_window->Draw( *my_buttonString );
-    
+    setTextAndDraw( my_buttonString, my_messages[my_language][setting], OPTIONX + 40   , OPTIONY + (BUTTONHEIGHT * 0.2) );
 }
 
 void
@@ -568,7 +553,16 @@ GameView::showCGrid() {
 void GameView::setModel(GameModel *model) {
     my_model = model;
 }
-                              
+
+//Pour savoir si c'est dans une zone
+bool
+GameView::isInZone( int x, int y, int px, int py, int w, int h ) {
+    if ( x > px && x < px + w && y > py && y < py + h )
+        return true;
+    else
+        return false;
+}
+
 void
 GameView::treatGame() {
 
@@ -595,34 +589,42 @@ GameView::treatGame() {
                     break;
                 case Event::MouseMoved :
                     if ( isInPresentation ) {
-                        if ( event.MouseMove.X > PLAYX && event.MouseMove.X < PLAYX + BUTTONWIDTH && event.MouseMove.Y > PLAYY && event.MouseMove.Y < PLAYY + BUTTONHEIGHT )
-                        
+                        if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, PLAYX, PLAYY, BUTTONWIDTH, BUTTONHEIGHT ) )
+                            
                             setButtonHover( my_playButtonSprite );
-                        else if ( event.MouseMove.X > OPTIONX && event.MouseMove.X < OPTIONX + BUTTONWIDTH && event.MouseMove.Y > OPTIONY && event.MouseMove.Y < OPTIONY + BUTTONHEIGHT)
+                        
+                        else if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, OPTIONX, OPTIONY, BUTTONWIDTH, BUTTONHEIGHT ) )
                             setButtonHover( my_optionButtonSprite );
 
-                        else if (event.MouseMove.X > BESTX && event.MouseMove.X < BESTX + BUTTONWIDTH && event.MouseMove.Y > BESTY && event.MouseMove.Y < BESTY + BUTTONHEIGHT)
+                        else if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, BESTX, BESTY, BUTTONWIDTH, BUTTONHEIGHT ) )
                             setButtonHover( my_bestButtonSprite );
 
-                        else if (event.MouseMove.X > QUITX && event.MouseMove.X < QUITX + BUTTONWIDTH && event.MouseMove.Y > QUITY && event.MouseMove.Y < QUITY + BUTTONHEIGHT)
+                        else if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, QUITX, QUITY, BUTTONWIDTH, BUTTONHEIGHT ) )
                             setButtonHover( my_quitButtonSprite );
 
                         else
                             resetButtonNorm();
                         
                     } else if ( isChoosingOption ) {
-                        if ( event.MouseMove.X > ENGLISHX && event.MouseMove.X < ENGLISHX + LANGUEWIDTH && event.MouseMove.Y > CHOICELANGUEHIGH && event.MouseMove.Y < CHOICELANGUEHIGH + LANGUEHEIGHT )
+                        
+                        if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, ENGLISHX, CHOICELANGUEHIGH, LANGUEWIDTH, LANGUEHEIGHT ) )
                             setHoverLanguage( english );
-                        else if ( event.MouseMove.X > FRENCHX && event.MouseMove.X < FRENCHX + LANGUEWIDTH && event.MouseMove.Y > CHOICELANGUEHIGH && event.MouseMove.Y < CHOICELANGUEHIGH + LANGUEHEIGHT )
+                        
+                        else if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, FRENCHX, CHOICELANGUEHIGH, LANGUEWIDTH, LANGUEHEIGHT ) )
                             setHoverLanguage( francais );
-                        else if ( event.MouseMove.X > SPANISHX && event.MouseMove.X < SPANISHX + LANGUEWIDTH && event.MouseMove.Y > CHOICELANGUEHIGH && event.MouseMove.Y < CHOICELANGUEHIGH + LANGUEHEIGHT )
+                        
+                        else if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, SPANISHX, CHOICELANGUEHIGH, LANGUEWIDTH,LANGUEHEIGHT ))
                             setHoverLanguage( espanol );
-                        else if ( event.MouseMove.X > DEUTSCHX && event.MouseMove.X < DEUTSCHX + LANGUEWIDTH && event.MouseMove.Y > CHOICELANGUEHIGH && event.MouseMove.Y < CHOICELANGUEHIGH + LANGUEHEIGHT )
+                        
+                        else if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, DEUTSCHX, CHOICELANGUEHIGH, LANGUEWIDTH, LANGUEHEIGHT ) )
                             setHoverLanguage( deutsch );
-                        else if ( event.MouseMove.X > ITALIANOX && event.MouseMove.X < ITALIANOX + LANGUEWIDTH && event.MouseMove.Y > CHOICELANGUEHIGH && event.MouseMove.Y < CHOICELANGUEHIGH + LANGUEHEIGHT )
+                        
+                        else if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, ITALIANOX, CHOICELANGUEHIGH, LANGUEWIDTH, LANGUEHEIGHT ) )
                             setHoverLanguage( italiano );
-                        else if ( event.MouseMove.X > QUITONX && event.MouseMove.X < QUITONX + BUTTONWIDTH && event.MouseMove.Y > QUITONY && event.MouseMove.Y < QUITONY + BUTTONHEIGHT )
+                        
+                        else if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, QUITONX, QUITONY, BUTTONWIDTH, BUTTONHEIGHT )  )
                             setButtonHover(my_buttonQuitSprite);
+                        
                         else {
                             resetButtonNorm();
                             resetLanguageNorm();
