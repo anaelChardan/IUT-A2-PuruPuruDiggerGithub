@@ -613,7 +613,7 @@ GameView::treatGame() {
                         else if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, FRENCHX, CHOICELANGUEHIGH, LANGUEWIDTH, LANGUEHEIGHT ) )
                             setHoverLanguage( francais );
                         
-                        else if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, SPANISHX, CHOICELANGUEHIGH, LANGUEWIDTH,LANGUEHEIGHT ))
+                        else if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, SPANISHX, CHOICELANGUEHIGH, LANGUEWIDTH,LANGUEHEIGHT ) )
                             setHoverLanguage( espanol );
                         
                         else if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, DEUTSCHX, CHOICELANGUEHIGH, LANGUEWIDTH, LANGUEHEIGHT ) )
@@ -630,13 +630,13 @@ GameView::treatGame() {
                             resetLanguageNorm();
                         }
                     } else if ( isPlaying  ) {
-                        if ( event.MouseMove.X > QUITONX && event.MouseMove.X < QUITONX + BUTTONWIDTH && event.MouseMove.Y > QUITONY && event.MouseMove.Y < QUITONY + BUTTONHEIGHT )
+                        if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, QUITONX, QUITONY, BUTTONWIDTH, BUTTONHEIGHT ))
                             
                             setButtonHover(my_buttonQuitSprite);
                         else
                             resetButtonNorm();
                     } else if ( isViewingBestScore ) {
-                        if ( event.MouseMove.X > QUITONX && event.MouseMove.X < QUITONX + BUTTONWIDTH && event.MouseMove.Y > QUITONY && event.MouseMove.Y < QUITONY + BUTTONHEIGHT )
+                        if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, QUITONX, QUITONY, BUTTONWIDTH, BUTTONHEIGHT ) )
                             
                             setButtonHover(my_buttonQuitSprite);
                         else
@@ -673,34 +673,40 @@ GameView::treatGame() {
                     break;
                 case Event::MouseButtonPressed :
                     if ( isInPresentation ) {
-                        if ( event.MouseButton.X > PLAYX && event.MouseButton.X < PLAYX + BUTTONWIDTH && event.MouseButton.Y > PLAYY && event.MouseButton.Y < PLAYY + BUTTONHEIGHT ) {
+                        if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, PLAYX, PLAYY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
                             isInPresentation = false;
                             isPlaying = true;
                             my_model->reset();
                             my_musicLevel->Play();
                             
-                        } else if ( event.MouseButton.X > QUITX && event.MouseButton.X < QUITX + BUTTONWIDTH && event.MouseButton.Y > QUITY && event.MouseButton.Y < QUITY + BUTTONHEIGHT ) {
+                        } else if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, QUITX, QUITY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
                             my_window->Close();
                             
-                        } else if ( event.MouseButton.X > OPTIONX && event.MouseButton.X < OPTIONX + BUTTONWIDTH && event.MouseButton.Y > OPTIONY && event.MouseButton.Y < OPTIONY + BUTTONHEIGHT ) {
+                        } else if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, OPTIONX, OPTIONY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
                             isInPresentation = false;
                             isChoosingOption = true;
-                        } else if ( event.MouseButton.X > BESTX && event.MouseButton.X < BESTX + BUTTONWIDTH && event.MouseButton.Y > BESTY && event.MouseButton.Y < BESTY + BUTTONHEIGHT ) {
+                            
+                        } else if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, BESTX, BESTY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
                             isInPresentation = false;
                             isViewingBestScore = true;
                         }
                     } else if ( isChoosingOption ) {
                         
-                        if ( event.MouseButton.X > ENGLISHX && event.MouseButton.X < ENGLISHX + LANGUEWIDTH && event.MouseButton.Y > CHOICELANGUEHIGH && event.MouseButton.Y < CHOICELANGUEHIGH+ LANGUEHEIGHT )
+                        if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, ENGLISHX, CHOICELANGUEHIGH, LANGUEWIDTH, LANGUEHEIGHT ) )
                             my_language = english;
-                        if ( event.MouseButton.X > FRENCHX && event.MouseButton.X < FRENCHX + LANGUEWIDTH && event.MouseButton.Y > CHOICELANGUEHIGH && event.MouseButton.Y < CHOICELANGUEHIGH + LANGUEHEIGHT )
+                        
+                        if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, FRENCHX, CHOICELANGUEHIGH, LANGUEWIDTH, LANGUEHEIGHT ) )
                             my_language = francais;
-                        if ( event.MouseButton.X > ITALIANOX && event.MouseButton.X < ITALIANOX + LANGUEWIDTH && event.MouseButton.Y > CHOICELANGUEHIGH && event.MouseButton.Y < CHOICELANGUEHIGH + LANGUEHEIGHT )
+                        
+                        if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, ITALIANOX, CHOICELANGUEHIGH, LANGUEWIDTH, LANGUEHEIGHT ) )
                             my_language = italiano;
-                        if ( event.MouseButton.X > SPANISHX && event.MouseButton.X < SPANISHX + LANGUEWIDTH && event.MouseButton.Y > CHOICELANGUEHIGH && event.MouseButton.Y < CHOICELANGUEHIGH + LANGUEHEIGHT )
+                        
+                        if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, SPANISHX, CHOICELANGUEHIGH, LANGUEWIDTH,LANGUEHEIGHT ) )
                             my_language = espanol;
-                        if ( event.MouseButton.X > DEUTSCHX && event.MouseButton.X < DEUTSCHX + LANGUEWIDTH && event.MouseButton.Y > CHOICELANGUEHIGH && event.MouseButton.Y < CHOICELANGUEHIGH + LANGUEHEIGHT )
+                        
+                        if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, DEUTSCHX, CHOICELANGUEHIGH, LANGUEWIDTH, LANGUEHEIGHT ) )
                             my_language = deutsch;
+                        
                         if ( event.MouseButton.X > CHOICEANANASX && event.MouseButton.X < CHOICEANANASX + SPRITECHOICEWIDTH && event.MouseButton.Y > CHOICESPRITEY && event.MouseButton.Y < CHOICESPRITEY + SPRITECHOICEHEIGHT )
                             setAnanasMode();
                         if ( event.MouseButton.X > CHOICETEACHERX && event.MouseButton.X < CHOICETEACHERX + SPRITECHOICEWIDTH && event.MouseButton.Y > CHOICESPRITEY && event.MouseButton.Y < CHOICESPRITEY + SPRITECHOICEHEIGHT )
