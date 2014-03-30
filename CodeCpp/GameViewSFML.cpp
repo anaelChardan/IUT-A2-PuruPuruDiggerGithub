@@ -96,7 +96,8 @@ GameView::setSprite( sf::Sprite* s, sf::Image* i, int subsX, int subsY, int sube
 }
 
 //Attribut chaque image à un sprite
-void GameView::setImageToSprite() {
+void
+GameView::setImageToSprite() {
     
     my_languageImage->CreateMaskFromColor(Color(0, 55, 97));
     my_caseImage->CreateMaskFromColor( Color(0, 55, 97) );
@@ -358,7 +359,8 @@ GameView::setHoverLanguage( Language hover ) {
     my_languageToSprite[hover]->SetColor(Color(255,255,255,128));
 }
 
-void GameView::resetLanguageNorm() {
+void
+GameView::resetLanguageNorm() {
     for ( map<Language, Sprite*>::const_iterator it = my_languageToSprite.begin() ; it!=my_languageToSprite.end(); ++it) {
         my_languageToSprite[ it->first ]->SetColor(Color(255,255,255,255));
     }
@@ -524,37 +526,6 @@ GameView::showLevel() {
     setTextAndDraw( my_buttonString, my_messages[my_language][stop], ( ( ( QUITONX + BUTTONWIDTH ) / 2.5 )  ), (QUITONY + (BUTTONHEIGHT / 5))  );
 }
 
-void
-GameView::showCGrid() {
-#ifdef __linux__
-    for ( int z = 0; z < (COLONNE * 6 + 3); z++ )
-        cout << colorMessage( "-", YELLOW );
-#elif __APPLE__
-    for ( int z = 0; z < (COLONNE * 5 + 3); z++ )
-        cout << colorMessage( "-", YELLOW );
-#endif
-    
-    cout << endl;
-    
-    for ( int i = 0; i < LIGNE; i++ ) {
-        cout << colorMessage( " | ", YELLOW );
-        for ( int j = 0; j < COLONNE; j++ ) {
-            cout << *my_model->getLevel()->getGrid()[i][j] << colorMessage( " | ", YELLOW );
-        }
-        cout << endl;
-        
-#ifdef __linux
-        for ( int z = 0; z < (COLONNE * 6 + 3); z++ )
-            cout << colorMessage( "-", YELLOW );
-        cout << endl;
-#else
-        for ( int z = 0; z < (COLONNE * 5 + 3); z++ )
-            cout << colorMessage( "-", YELLOW );
-        cout << endl;
-#endif
-    }
-}
-
 //Injection de dépendance model
 void
 GameView::setModel(GameModel *model) {
@@ -686,39 +657,39 @@ GameView::treatGame( ) {
                 case Event::MouseButtonPressed :
                     
                     if ( isInPresentation ) {
-                        if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, PLAYX, PLAYY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
+                        if ( isInZone ( event.MouseButton.X, event.MouseButton.Y, PLAYX, PLAYY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
                             isInPresentation = false;
                             isPlaying = true;
                             my_model->reset();
                             my_musicLevel->Play();
                             
-                        } else if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, QUITX, QUITY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
+                        } else if ( isInZone ( event.MouseButton.X, event.MouseButton.Y, QUITX, QUITY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
                             my_window->Close();
                             
-                        } else if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, OPTIONX, OPTIONY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
+                        } else if ( isInZone ( event.MouseButton.X, event.MouseButton.Y, OPTIONX, OPTIONY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
                             isInPresentation = false;
                             isChoosingOption = true;
                             
-                        } else if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, BESTX, BESTY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
+                        } else if ( isInZone ( event.MouseButton.X, event.MouseButton.Y, BESTX, BESTY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
                             isInPresentation = false;
                             isViewingBestScore = true;
                         }
                         
                     } else if ( isChoosingOption ) {
                         
-                        if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, ENGLISHX, CHOICELANGUEHIGH, LANGUEWIDTH, LANGUEHEIGHT ) )
+                        if ( isInZone ( event.MouseButton.X, event.MouseButton.Y, ENGLISHX, CHOICELANGUEHIGH, LANGUEWIDTH, LANGUEHEIGHT ) )
                             my_language = english;
                         
-                        if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, FRENCHX, CHOICELANGUEHIGH, LANGUEWIDTH, LANGUEHEIGHT ) )
+                        if ( isInZone ( event.MouseButton.X, event.MouseButton.Y, FRENCHX, CHOICELANGUEHIGH, LANGUEWIDTH, LANGUEHEIGHT ) )
                             my_language = francais;
                         
-                        if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, ITALIANOX, CHOICELANGUEHIGH, LANGUEWIDTH, LANGUEHEIGHT ) )
+                        if ( isInZone ( event.MouseButton.X, event.MouseButton.Y, ITALIANOX, CHOICELANGUEHIGH, LANGUEWIDTH, LANGUEHEIGHT ) )
                             my_language = italiano;
                         
-                        if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, SPANISHX, CHOICELANGUEHIGH, LANGUEWIDTH,LANGUEHEIGHT ) )
+                        if ( isInZone ( event.MouseButton.X, event.MouseButton.Y, SPANISHX, CHOICELANGUEHIGH, LANGUEWIDTH,LANGUEHEIGHT ) )
                             my_language = espanol;
                         
-                        if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, DEUTSCHX, CHOICELANGUEHIGH, LANGUEWIDTH, LANGUEHEIGHT ) )
+                        if ( isInZone ( event.MouseButton.X, event.MouseButton.Y, DEUTSCHX, CHOICELANGUEHIGH, LANGUEWIDTH, LANGUEHEIGHT ) )
                             my_language = deutsch;
                         
                         if ( isInZone( event.MouseButton.X, event.MouseButton.Y, CHOICEANANASX, CHOICESPRITEY, SPRITECHOICEWIDTH, SPRITECHOICEHEIGHT ) )
@@ -727,14 +698,14 @@ GameView::treatGame( ) {
                         if ( isInZone( event.MouseButton.X, event.MouseButton.Y, CHOICETEACHERX, CHOICESPRITEY, SPRITECHOICEWIDTH, SPRITECHOICEHEIGHT ) )
                             setTeacherMode();
                         
-                        if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, QUITONX, QUITONY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
+                        if ( isInZone ( event.MouseButton.X, event.MouseButton.Y, QUITONX, QUITONY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
                             isChoosingOption = false;
                             isInPresentation = true;
                         }
                         
                     } else if ( isViewingBestScore ) {
                         
-                        if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, QUITONX, QUITONY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
+                        if ( isInZone ( event.MouseButton.X, event.MouseButton.Y, QUITONX, QUITONY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
                             isViewingBestScore = false;
                             isInPresentation = true;
                         }
@@ -743,7 +714,7 @@ GameView::treatGame( ) {
                         
                         cout << " Souris case : " << convertYPixel(event.MouseButton.Y) << " " << convertXPixel(event.MouseButton.X) <<  " "  << endl;
                         
-                        if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, QUITONX, QUITONY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
+                        if ( isInZone ( event.MouseButton.X, event.MouseButton.Y, QUITONX, QUITONY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
                             isPlaying = false;
                             isInPresentation = true;
                             my_musicLevel->Stop();
@@ -765,6 +736,10 @@ GameView::treatGame( ) {
         } else if ( isViewingBestScore ) {
             showBestScore();
         } else if ( isPlaying ) {
+            //On check le temps, et l'on peut perdre à cause de lui.
+            if ( my_model->getLevel()->timeIsUp() ) {
+                my_model->getLevel()->lostLevel();
+            }
             if ( my_model->getLevel()->lose() ) {
                 if ( !isInBreak )
                     pause.Reset();

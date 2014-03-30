@@ -196,6 +196,10 @@ GameView::treatGame() {
     while ( isRunning ) {
         showPresentation();
         cin >> menuChoice;
+        while ( !(menuChoice>= 1 && menuChoice<=3 ) ) {
+            showPresentation();
+            cin >> menuChoice;
+        }
         switch ( menuChoice ) {
             case 1 : isPlaying = true;
                 break;
@@ -208,6 +212,10 @@ GameView::treatGame() {
         if ( isPlaying ) {
             showLanguage();
             cin >> languechoice;
+            while ( !(languechoice >= 1 && languechoice<=5 ) ) {
+                showLanguage();
+                cin>>languechoice;
+            }
             cout << endl;
             switch ( languechoice ) {
                 case 1 : my_language = francais;
@@ -230,6 +238,11 @@ GameView::treatGame() {
                 
                 cin >> movechoice;
                 
+                //Pour ne pas rentrer des choses fausses
+                while ( !(movechoice >= 0 && movechoice <= 9) ) {
+                    showInstruction();
+                    cin >>movechoice;
+                }
                 //On vŽrifie le temps, s'il est ŽcoulŽ
                 if ( my_model->getLevel()->timeIsUp() ) {
                     cout << endl << endl;

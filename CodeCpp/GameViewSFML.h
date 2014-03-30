@@ -122,7 +122,6 @@ class GameView {
      *  \brief Affichage de la grille
      */
     void showGrid();
-    void showCGrid();
     
     void newScreen();
     
