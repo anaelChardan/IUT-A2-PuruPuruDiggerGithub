@@ -44,10 +44,24 @@ GameModel::orderMovement( int depl ) {
 
 void
 GameModel::orderMovement( int xclick, int yclick ) {
-    /*
-    if ( my_level->isCellClickable( xclick, yclick ) )
-        //Maintenant faire les tests de l'emplacement du click
-     */
+    if ( my_level->isCellClickable( xclick, yclick ) ) {
+        if ( xclick - my_level->getDigger()->getX() == 1 &&  yclick - my_level->getDigger()->getY() == -1 )
+            my_level->moveSouthWest();
+        else if ( xclick - my_level->getDigger()->getX() == 1 &&  yclick - my_level->getDigger()->getY() == 0 )
+            my_level->moveSouth();
+        else if ( xclick - my_level->getDigger()->getX() == 1 &&  yclick - my_level->getDigger()->getY() == 1 )
+            my_level->moveSouthEast();
+        else if ( xclick - my_level->getDigger()->getX() == 0 &&  yclick - my_level->getDigger()->getY() == 1 )
+            my_level->moveEast();
+        else if ( xclick - my_level->getDigger()->getX() == -1 &&  yclick - my_level->getDigger()->getY() == 1 )
+            my_level->moveNorthEast();
+        else if ( xclick - my_level->getDigger()->getX() == -1 &&  yclick - my_level->getDigger()->getY() == 0 )
+            my_level->moveNorth();
+        else if ( xclick - my_level->getDigger()->getX() == -1 &&  yclick - my_level->getDigger()->getY() == -1 )
+            my_level->moveNorthWest();
+        else if ( xclick - my_level->getDigger()->getX() == 0 &&  yclick - my_level->getDigger()->getY() == -1 )
+            my_level->moveWest();
+    }
 }
 
 bool
