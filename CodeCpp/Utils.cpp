@@ -43,11 +43,21 @@ int convertIndiceYToPixel ( int j ) {
 }
 
 int convertXPixel( int xpixel ) {
-    return  ceil( ( xpixel - MARGINLEFT ) / ( CASEWITDH  + PADDINGRIGHT ) );
+    int convertX = ceil( ( xpixel - MARGINLEFT ) / ( CASEWITDH  + PADDINGRIGHT ) );
+    
+    if ( convertX >= 0 && convertX <= LIGNE )
+        return convertX;
+    else
+        return -1;
 }
 
 int convertYPixel( int ypixel ) {
-    return  ceil( ( ypixel - MARGINTOP ) / ( CASEHEIGHT  + PADDINGBOTTOM ) );
+    int convertY = ceil( ( ypixel - MARGINTOP ) / ( CASEHEIGHT  + PADDINGBOTTOM ) );
+    
+    if ( convertY >= 0 && convertY <= COLONNE )
+        return convertY;
+    else
+        return -1;
 }
 
 
