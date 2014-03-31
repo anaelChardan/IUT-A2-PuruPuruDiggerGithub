@@ -59,6 +59,8 @@ class GameModel {
          */
         void orderMovement( int depl );
     
+        void orderMovement( int xclick , int yclick );
+    
         /*!
          *  \brief Savoir si la partie est terminée
          *

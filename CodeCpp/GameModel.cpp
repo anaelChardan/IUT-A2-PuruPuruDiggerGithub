@@ -42,6 +42,14 @@ GameModel::orderMovement( int depl ) {
     }
 }
 
+void
+GameModel::orderMovement( int xclick, int yclick ) {
+    /*
+    if ( my_level->isCellClickable( xclick, yclick ) )
+        //Maintenant faire les tests de l'emplacement du click
+     */
+}
+
 bool
 GameModel::gameOver() const {
     if ( my_level->isDead() )
