@@ -16,34 +16,35 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
+#include <string>
 
 #include "GameModel.h"
 #include "LanguageMessage.h"
 
 class GameView {
     private :
-    
+
         Language my_language; /*!<  La langue de notre partie */
         LanguageMessage my_messages; /*!<  La bibliothèque de message de notre partie */
         GameModel * my_model; /*!<  La modèle de notre vue */
-    
+
         std::map< std::string, sf::Sprite* > my_stringToSprite;
         std::map< Language, sf::Sprite* > my_languageToSprite;
-    
+
         sf::RenderWindow* my_window;
-    
+
         sf::Font* my_fontScore;
         sf::Font* my_fontTitle;
         sf::Font* my_fontValue;
         sf::Font* my_fontButton;
-    
+
         sf::String* my_valueString; // Valeurs dans la grille
         sf::String* my_titleScoreString; // Titre des scores
         sf::String* my_scoreString; // Enoncé dans la grille
         sf::String* my_scoreNum; // Les scores en numéro
         sf::String* my_titleString; // Les titres de pages
         sf::String* my_buttonString; // Pour les boutons
-    
+
         //Les images
         sf::Image* my_backgroundImage;
         sf::Image* my_caseImage;
@@ -51,45 +52,45 @@ class GameView {
         sf::Image* my_languageImage;
         sf::Image* my_spriteImage;
         sf::Image* my_iconImage;
-    
+
         //Mes sprites pour les cases
         sf::Sprite* my_diggerSprite;
         sf::Sprite* my_valueSprite;
         sf::Sprite* my_goldSprite;
         sf::Sprite* my_emptySprite;
         sf::Sprite* my_bombSprite;
-    
+
         //Les boutons
         sf::Sprite* my_optionButtonSprite;
         sf::Sprite* my_playButtonSprite;
         sf::Sprite* my_bestButtonSprite;
         sf::Sprite* my_buttonQuitSprite;
         sf::Sprite* my_quitButtonSprite;
-    
+
         //Mon sprite pour le background
         sf::Sprite* my_backgroundSprite;
-    
+
         //Mes sprites pour les langues
         sf::Sprite* my_frenchSprite;
         sf::Sprite* my_englishSprite;
         sf::Sprite* my_deutschSprite;
         sf::Sprite* my_italianoSprite;
         sf::Sprite* my_spanishSprite;
-    
+
         //Les sprites pour les choix de sprite
         sf::Sprite* my_ananasSprite;
         sf::Sprite* my_teacherSprite;
-    
+
         //Les sprites pour les icones
         sf::Sprite* my_musicIcon;
         sf::Sprite* my_soundIcon;
-    
+
         //Pour les sons
         sf::Music *my_musicLevel;
-   
-    
+
+
     void setImageToSprite();
-    
+
     //Savoir si un point est dans une zone donnée
     bool isInZone( int x, int y, int px, int py, int w, int h );
     /*!
@@ -101,9 +102,9 @@ class GameView {
     void setHoverLanguage( Language hover );
     void resetLanguageNorm();
     void showLanguage();
-    
+
     void setTextAndDraw( sf::String* s, std::string text, int x, int y );
-    
+
     void configureSpriteAndDraw( sf::Sprite* s, int x, int y );
     void setSprite( sf::Sprite* s, sf::Image* i, int subsX, int subsY, int subeX, int subeY, int w, int h );
     /*!
@@ -114,8 +115,8 @@ class GameView {
     void showOption();
     void setTeacherMode();
     void setAnanasMode();
-    void showIsEnteringABestScore( string player );
-    
+    void showIsEnteringABestScore( std::string player );
+
     /*!
      *  \brief Affichage des scores
      */
@@ -123,36 +124,36 @@ class GameView {
     void showLevel();
     void showLoseLevel();
     void showWinLevel();
-    
+
     /*!
      *  \brief Affichage de la grille
      */
     void showGrid();
-    
+
     void newScreen();
-    
+
     /*!
      *  \brief Affichage des instructions de déplacement
      */
     void showInstruction() ;
-    
+
     /*!
      *  \brief Affichage des meilleurs scores
      */
     void showBestScore();
-    
+
     /*!
      *  \brief Entrée d'un nouveau score
      *
      *  \param[in] nom le nom du joueur
      */
     void enterScore(std::string nom) const ;
-    
+
     void reverseMusic( bool music );
     void reverseSound( bool sound );
-    
+
 public:
-    
+
     GameView();
     ~GameView();
     /*!
@@ -160,7 +161,7 @@ public:
      *
      * param[in] model : le modèle à interpréter  */
     void setModel(GameModel * model);
-    
+
     /*!
      *  \brief La boucle de jeu
      */
