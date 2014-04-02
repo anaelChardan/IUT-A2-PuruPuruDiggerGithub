@@ -291,7 +291,6 @@ GameView::setTeacherMode() {
     setImageToSprite();
 }
 
-
 void
 GameView::reverseMusic( bool music ) {
     if ( music )
@@ -300,14 +299,13 @@ GameView::reverseMusic( bool music ) {
         my_musicIcon->SetSubRect( IntRect( MUSICOFFSX, ICONSPRITEBEGIN, MUSICOFFEX, ICONSPRITEHEIGHT ) );
 }
 
- void
- GameView::reverseSound( bool sound ) {
+void
+GameView::reverseSound( bool sound ) {
     if ( sound )
         my_soundIcon->SetSubRect( IntRect( SOUNDSX, ICONSPRITEBEGIN, SOUNDONEX, ICONSPRITEHEIGHT ) );
     else
         my_soundIcon->SetSubRect( IntRect( SOUNDSX, ICONSPRITEBEGIN, SOUNDOFFEX, ICONSPRITEHEIGHT ) );
  }
-
 
 void
 GameView::setButtonHover( sf::Sprite* buttonToHover ) {
@@ -581,8 +579,13 @@ GameView::treatGame( ) {
     bool isPlaying = false;        // Pour savoir si il est sur le jeu
     bool isChoosingOption = false; // Pour savoir si il est le menu du choix des options
     bool isViewingBestScore = false;
+    bool isEnterABestScore = false;
     bool music = true;
     bool sound = true;
+    
+    string player = "";
+    
+    
     sf::Clock pause;        //La clock pour la pause
     bool isInBreak = false; //Pour savoir quand on est en pause
 

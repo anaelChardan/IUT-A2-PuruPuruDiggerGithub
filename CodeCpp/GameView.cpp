@@ -143,7 +143,6 @@ void
 GameView::enterScore( string nom ) const{
     ifstream scoreLect(FILEBESTSCORE.c_str(), ios::in );
     if ( scoreLect ) {
-        //scoreLect >> "TEST";
         string line;
         int scoreligne;
         string nomligne;

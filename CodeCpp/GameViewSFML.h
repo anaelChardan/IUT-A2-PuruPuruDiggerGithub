@@ -114,6 +114,7 @@ class GameView {
     void showOption();
     void setTeacherMode();
     void setAnanasMode();
+    void showIsEnteringABestScore( string player );
     
     /*!
      *  \brief Affichage des scores
