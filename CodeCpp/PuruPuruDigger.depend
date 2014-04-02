@@ -453,3 +453,35 @@
 1396281074 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/LanguageMessage.cpp
 	"LanguageMessage.h"
 
+1395507424 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/mainSFML.cpp
+	<iostream>
+	"GameModel.h"
+	"GameViewSFML.h"
+	<cstdlib>
+
+1396431260 /home/jeremy/Bureau/purupurudigger/CodeCpp/GameViewSFML.h
+	<iostream>
+	<iostream>
+	<SFML/System.hpp>
+	<SFML/Graphics.hpp>
+	<SFML/Window.hpp>
+	<SFML/Audio.hpp>
+	"GameModel.h"
+	"LanguageMessage.h"
+
+1396281074 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/Utils.cpp
+	"Utils.h"
+	<iostream>
+	<sstream>
+	<cstdlib>
+	<string>
+	"Constantes.h"
+	<cmath>
+
+1396434357 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/GameViewSFML.cpp
+	"GameViewSFML.h"
+	"Constantes.h"
+	<sstream>
+	<fstream>
+	"Utils.h"
+
