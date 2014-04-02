@@ -50,6 +50,7 @@ class GameView {
         sf::Image* my_buttonImage;
         sf::Image* my_languageImage;
         sf::Image* my_spriteImage;
+        sf::Image* my_iconImage;
     
         //Mes sprites pour les cases
         sf::Sprite* my_diggerSprite;
@@ -78,6 +79,10 @@ class GameView {
         //Les sprites pour les choix de sprite
         sf::Sprite* my_ananasSprite;
         sf::Sprite* my_teacherSprite;
+    
+        //Les sprites pour les icones
+        sf::Sprite* my_musicIcon;
+        sf::Sprite* my_soundIcon;
     
         //Pour les sons
         sf::Music *my_musicLevel;
@@ -141,6 +146,9 @@ class GameView {
      *  \param[in] nom le nom du joueur
      */
     void enterScore(std::string nom) const ;
+    
+    void reverseMusic( bool music );
+    void reverseSound( bool sound );
     
 public:
     

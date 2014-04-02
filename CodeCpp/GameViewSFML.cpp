@@ -31,12 +31,14 @@ GameView::GameView() {
      my_titleString = new String();
      my_buttonString = new String();
  
+    //Les images
      my_backgroundImage = new Image();
      my_languageImage = new Image();
      my_caseImage = new Image();
      my_buttonImage = new Image();
      my_spriteImage = new Image();
-     
+     my_iconImage = new Image();
+    
      //On set les sprites
      my_diggerSprite = new Sprite();
      my_valueSprite = new Sprite();
@@ -58,7 +60,11 @@ GameView::GameView() {
      my_playButtonSprite = new Sprite();
      my_bestButtonSprite = new Sprite();
      my_quitButtonSprite = new Sprite();
-     
+    
+     //Les icones
+     my_musicIcon = new Sprite();
+     my_soundIcon = new Sprite();
+    
      my_musicLevel = new Music();
  
      //Chargement des images selon le mode
@@ -103,6 +109,7 @@ GameView::setImageToSprite() {
     my_caseImage->CreateMaskFromColor( Color(0, 55, 97) );
     my_buttonImage->CreateMaskFromColor( Color(0, 55, 97) );
     my_spriteImage->CreateMaskFromColor( Color(0, 55, 97) );
+   // my_iconImage->CreateMaskFromColor( Color(0, 55, 97) );
     
     //On set les sprites de nos images
     setSprite( my_backgroundSprite, my_backgroundImage, 0, 0, WINDOWWITDH, WINDOWHEIGHT, WINDOWWITDH, WINDOWHEIGHT );
@@ -165,6 +172,10 @@ GameView::setImageToSprite() {
     my_languageToSprite[italiano] = my_italianoSprite;
     my_languageToSprite[deutsch] = my_deutschSprite;
     my_languageToSprite[espanol] = my_spanishSprite;
+    
+    //Pour les icones
+    //setSprite( my_musicIcon, my_iconImage, 
+    
     
 }
 
@@ -278,6 +289,24 @@ GameView::setTeacherMode() {
     
     setImageToSprite();
 }
+
+/*
+void
+GameView::reverseMusic( bool music ) {
+    if ( music )
+        my_musicIcon->SetSubRect( IntRect( xd, yd, xf, yf ) );
+    else
+        my_musicIcon->SetSubRect( IntRect( xd, yd, xf, yf ) );
+}
+ 
+ void
+ GameView::reverseSound( bool sound ) {
+    if ( sound )
+        my_soundIcon->SetSubRect( IntRect( xd, yd, xf, yf ) );
+    else
+        my_soundIcon->SetSubRect( IntRect( xd, yd, xf, yf ) );
+ }
+ */
 
 void
 GameView::setButtonHover( sf::Sprite* buttonToHover ) {
@@ -452,7 +481,7 @@ GameView::showWinLevel() {
 void
 GameView::showScore() {
     //Le titre
-    setTextAndDraw( my_titleString, my_messages[my_language][score] + " : ", 100, 80);
+    setTextAndDraw( my_titleScoreString, my_messages[my_language][score] + " : ", 100, 80);
     
     //Level et son num
     setTextAndDraw( my_scoreString, my_messages[my_language][level] + " : ", 20, 140);
@@ -712,7 +741,6 @@ GameView::treatGame( ) {
                         
                     } else if ( isPlaying ) {
                         if ( convertYPixel( event.MouseButton.Y ) != -1 && convertXPixel( event.MouseButton.X ) != -1 ) {
-                            //cout << " Souris case : " << convertYPixel(event.MouseButton.Y) << " " << convertXPixel(event.MouseButton.X) <<  " "  << endl;
                             my_model->orderMovement( convertYPixel( event.MouseButton.Y ), convertXPixel( event.MouseButton.X ) );
                         }
                         if ( isInZone ( event.MouseButton.X, event.MouseButton.Y, QUITONX, QUITONY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
@@ -741,7 +769,13 @@ GameView::treatGame( ) {
             if ( my_model->getLevel()->timeIsUp() ) {
                 my_model->getLevel()->lostLevel();
             }
-            if ( my_model->getLevel()->lose() ) {
+            if ( my_model->gameOver() ) {
+                if ( !isInBreak ) {
+                    pause.Reset();
+                }
+                showLoseLevel();
+                isInBreak = true;
+            } else if ( my_model->getLevel()->lose() ) {
                 if ( !isInBreak )
                     pause.Reset();
                 showLoseLevel();
@@ -761,7 +795,7 @@ GameView::treatGame( ) {
         my_window->Display();
         
         //Pour gérer l'affichage durant quelque seconde
-        if ( my_model->getLevel()->lose() || my_model->getLevel()->win() ) {
+        if ( isInBreak  ) {
             
             if ( pause.GetElapsedTime() > 1.5 ) {
                 
@@ -770,6 +804,10 @@ GameView::treatGame( ) {
                 my_model->getLevel()->resetTime();
                 isInBreak = false;
                 pause.Reset();
+                if ( my_model->gameOver() ) {
+                    isPlaying = false;
+                    isInPresentation = true;
+                }
             }
         }
     }
