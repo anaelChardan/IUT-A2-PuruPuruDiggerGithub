@@ -332,60 +332,61 @@
 1394379771 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/LanguageMessage.cpp
 	"LanguageMessage.h"
 
-1394288534 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/Bomb.cpp
+1395507424 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/Bomb.cpp
 	"Bomb.h"
 	"Constantes.h"
 
-1394288534 /home/jeremy/Bureau/purupurudigger/CodeCpp/Bomb.h
+1395507424 /home/jeremy/Bureau/purupurudigger/CodeCpp/Bomb.h
 	<iostream>
 	"CellBase.h"
 
-1394288534 /home/jeremy/Bureau/purupurudigger/CodeCpp/CellBase.h
+1395507424 /home/jeremy/Bureau/purupurudigger/CodeCpp/CellBase.h
 	<iostream>
 	<string>
 
-1394288534 /home/jeremy/Bureau/purupurudigger/CodeCpp/Constantes.h
+1396431260 /home/jeremy/Bureau/purupurudigger/CodeCpp/Constantes.h
 
-1394288534 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/CellBase.cpp
+1395507424 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/CellBase.cpp
 	"CellBase.h"
 
-1394288534 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/Digger.cpp
+1395507424 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/Digger.cpp
 	"Digger.h"
 	"Constantes.h"
 
-1394288534 /home/jeremy/Bureau/purupurudigger/CodeCpp/Digger.h
+1395507424 /home/jeremy/Bureau/purupurudigger/CodeCpp/Digger.h
 	<iostream>
 	"CellBase.h"
 
-1394288534 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/EmptyCell.cpp
+1395507424 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/EmptyCell.cpp
 	"EmptyCell.h"
 
-1394288534 /home/jeremy/Bureau/purupurudigger/CodeCpp/EmptyCell.h
+1395507424 /home/jeremy/Bureau/purupurudigger/CodeCpp/EmptyCell.h
 	<iostream>
 	"CellBase.h"
 
-1394288534 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/GameModel.cpp
+1396281074 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/GameModel.cpp
 	"GameModel.h"
 
-1394288534 /home/jeremy/Bureau/purupurudigger/CodeCpp/GameModel.h
+1396281074 /home/jeremy/Bureau/purupurudigger/CodeCpp/GameModel.h
 	<iostream>
 	<vector>
 	"Level.h"
 	"Score.h"
 
-1394288534 /home/jeremy/Bureau/purupurudigger/CodeCpp/Level.h
+1395507424 /home/jeremy/Bureau/purupurudigger/CodeCpp/Level.h
 	<iostream>
 	"Score.h"
 	"Digger.h"
 	"CellBase.h"
 	"Bomb.h"
 	"Constantes.h"
+	<ctime>
 
-1394288534 /home/jeremy/Bureau/purupurudigger/CodeCpp/Score.h
+1395507424 /home/jeremy/Bureau/purupurudigger/CodeCpp/Score.h
 	<iostream>
 	<vector>
 
-1394288534 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/GameView.cpp
+1395507424 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/GameView.cpp
 	"GameView.h"
 	"Constantes.h"
 	<fstream>
@@ -393,55 +394,62 @@
 	<string>
 	<sstream>
 	<cstdlib>
+	"Utils.h"
 
-1394288534 /home/jeremy/Bureau/purupurudigger/CodeCpp/GameView.h
+1395507424 /home/jeremy/Bureau/purupurudigger/CodeCpp/GameView.h
 	<iostream>
-	<SFML/System.hpp>
-	<SFML/Graphics.hpp>
-	<SFML/Window.hpp>
 	"GameModel.h"
 	"LanguageMessage.h"
 
-1394288534 /home/jeremy/Bureau/purupurudigger/CodeCpp/LanguageMessage.h
+1395507424 /home/jeremy/Bureau/purupurudigger/CodeCpp/LanguageMessage.h
 	<iostream>
 	<map>
 	<string>
 	"Constantes.h"
 
-1394288534 /home/jeremy/Bureau/purupurudigger/CodeCpp/IntDecFunctor.h
+1395507424 /home/jeremy/Bureau/purupurudigger/CodeCpp/IntDecFunctor.h
 	<iostream>
 
-1394288534 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/GoldCell.cpp
+1395507424 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/GoldCell.cpp
 	"GoldCell.h"
 
-1394288534 /home/jeremy/Bureau/purupurudigger/CodeCpp/GoldCell.h
+1395507424 /home/jeremy/Bureau/purupurudigger/CodeCpp/GoldCell.h
 	<iostream>
 	"ValueCell.h"
 
-1394288534 /home/jeremy/Bureau/purupurudigger/CodeCpp/ValueCell.h
+1395507424 /home/jeremy/Bureau/purupurudigger/CodeCpp/ValueCell.h
 	<iostream>
 	"Constantes.h"
 	"CellBase.h"
 	<cstdlib>
 
-1394288534 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/Level.cpp
+1395507424 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/Level.cpp
 	"Level.h"
 	"Bomb.h"
 	"GoldCell.h"
 	"EmptyCell.h"
 	<vector>
 	<algorithm>
-	<iomanip>
 
-1394288534 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/main.cpp
+1395507424 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/main.cpp
 	<iostream>
 	"GameModel.h"
 	"GameView.h"
+	<cstdlib>
 
-1394288534 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/Score.cpp
+1395507424 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/Score.cpp
 	"Score.h"
-	<iomanip>
 
-1394288534 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/ValueCell.cpp
+1395507424 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/ValueCell.cpp
 	"ValueCell.h"
+	<sstream>
+
+1395507424 /home/jeremy/Bureau/purupurudigger/CodeCpp/Utils.h
+	<string>
+
+1395507424 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/IntDecFunctor.cpp
+	"IntDecFunctor.h"
+
+1396281074 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/LanguageMessage.cpp
+	"LanguageMessage.h"
 

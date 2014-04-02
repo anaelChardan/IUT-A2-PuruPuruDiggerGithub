@@ -55,12 +55,16 @@
 		<Unit filename="GameView.h" />
 		<Unit filename="GoldCell.cpp" />
 		<Unit filename="GoldCell.h" />
+		<Unit filename="IntDecFunctor.cpp" />
+		<Unit filename="IntDecFunctor.h" />
 		<Unit filename="LanguageMessage.cpp" />
 		<Unit filename="LanguageMessage.h" />
 		<Unit filename="Level.cpp" />
 		<Unit filename="Level.h" />
 		<Unit filename="Score.cpp" />
 		<Unit filename="Score.h" />
+		<Unit filename="Utils.cpp" />
+		<Unit filename="Utils.h" />
 		<Unit filename="ValueCell.cpp" />
 		<Unit filename="ValueCell.h" />
 		<Unit filename="main.cpp" />
