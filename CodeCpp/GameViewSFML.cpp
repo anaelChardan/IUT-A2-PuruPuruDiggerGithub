@@ -109,8 +109,8 @@ GameView::setImageToSprite() {
     my_caseImage->CreateMaskFromColor( Color(0, 55, 97) );
     my_buttonImage->CreateMaskFromColor( Color(0, 55, 97) );
     my_spriteImage->CreateMaskFromColor( Color(0, 55, 97) );
-   // my_iconImage->CreateMaskFromColor( Color(0, 55, 97) );
 
+    my_iconImage->CreateMaskFromColor( Color(0, 55, 97) );
     //On set les sprites de nos images
     setSprite( my_backgroundSprite, my_backgroundImage, 0, 0, WINDOWWITDH, WINDOWHEIGHT, WINDOWWITDH, WINDOWHEIGHT );
 
@@ -175,19 +175,22 @@ GameView::setImageToSprite() {
 
     //Pour les icones
     //setSprite( my_musicIcon, my_iconImage,
+    setSprite( my_musicIcon, my_iconImage, MUSICONSX, ICONSPRITEBEGIN, MUSICONEX, ICONSPRITEHEIGHT, ICONWIDTH, ICONHEIGHT );
+    my_musicIcon->SetPosition( MUSICX, ICONY );
 
-
+    setSprite( my_soundIcon, my_iconImage, SOUNDSX, ICONSPRITEBEGIN, SOUNDONEX, ICONSPRITEHEIGHT, ICONWIDTH, ICONHEIGHT );
+    my_soundIcon->SetPosition( SOUNDX, ICONY );
 }
 
 //Pour mettre en place le thème ananas
 void
 GameView::setAnanasMode() {
 #ifdef __linux__
-    if (!my_backgroundImage->LoadFromFile("Pictures/wallpapper.png") || !my_caseImage->LoadFromFile("Pictures/case.png") || !my_buttonImage->LoadFromFile("Pictures/buttonAnanas.png") || !my_languageImage->LoadFromFile("Pictures/languages.png") || !my_spriteImage->LoadFromFile("Pictures/choiceSprite.png") || !my_fontScore->LoadFromFile("Font/scoreFont.ttf") || !my_fontTitle->LoadFromFile("Font/titleFont.ttf") || !my_fontValue->LoadFromFile("Font/valueFont.ttf") || !my_fontButton->LoadFromFile("Font/buttonFont.ttf") || !my_musicLevel->OpenFromFile("Music/gridMusic.wav")) {
+    if (!my_backgroundImage->LoadFromFile("Pictures/wallpapper.png") || !my_caseImage->LoadFromFile("Pictures/case.png") || !my_buttonImage->LoadFromFile("Pictures/buttonAnanas.png") || !my_languageImage->LoadFromFile("Pictures/languages.png") || !my_spriteImage->LoadFromFile("Pictures/choiceSprite.png") || !my_iconImage->LoadFromFile("Pictures/icon.png") || !my_fontScore->LoadFromFile("Font/scoreFont.ttf") || !my_fontTitle->LoadFromFile("Font/titleFont.ttf") || !my_fontValue->LoadFromFile("Font/valueFont.ttf") || !my_fontButton->LoadFromFile("Font/buttonFont.ttf") || !my_musicLevel->OpenFromFile("Music/gridMusic.wav")) {
         cout << "Error when loading image or font" << endl;
     }
 #else
-    if (!my_backgroundImage->LoadFromFile("wallpapper.png") || !my_caseImage->LoadFromFile("case.png") || !my_buttonImage->LoadFromFile("buttonAnanas.png") || !my_languageImage->LoadFromFile("languages.png") || !my_spriteImage->LoadFromFile("choiceSprite.png") || !my_fontScore->LoadFromFile("scoreFont.ttf") || !my_fontTitle->LoadFromFile("titleFont.ttf") || !my_fontValue->LoadFromFile("valueFont.ttf") || !my_fontButton->LoadFromFile("buttonFont.ttf") || !my_musicLevel->OpenFromFile("gridMusic.wav") ) {
+    if (!my_backgroundImage->LoadFromFile("wallpapper.png") || !my_caseImage->LoadFromFile("case.png") || !my_buttonImage->LoadFromFile("buttonAnanas.png") || !my_languageImage->LoadFromFile("languages.png") || !my_spriteImage->LoadFromFile("choiceSprite.png") || !my_iconImage->LoadFromFile("icon.png")|| !my_fontScore->LoadFromFile("scoreFont.ttf") || !my_fontTitle->LoadFromFile("titleFont.ttf") || !my_fontValue->LoadFromFile("valueFont.ttf") || !my_fontButton->LoadFromFile("buttonFont.ttf") || !my_musicLevel->OpenFromFile("gridMusic.wav") ) {
         cout << "Error when loading image or font" << endl;
     }
 #endif
@@ -218,10 +221,8 @@ GameView::setAnanasMode() {
         my_buttonString->SetSize(30);
         my_buttonString->SetColor(Color(251,210,98));
 
+        //Pour la musique
         my_musicLevel->SetLoop(true);
-
-
-
     }
 
     setImageToSprite();
@@ -245,11 +246,11 @@ GameView::configureSpriteAndDraw( sf::Sprite* s, int x, int y) {
 void
 GameView::setTeacherMode() {
 #ifdef __linux__
-    if (!my_backgroundImage->LoadFromFile("Pictures/wallpapperTeach.png") || !my_caseImage->LoadFromFile("Pictures/caseTeach.png") || !my_buttonImage->LoadFromFile("Pictures/buttonTeach.png") || !my_languageImage->LoadFromFile("Pictures/languages.png") || !my_spriteImage->LoadFromFile("Pictures/choiceSprite.png") ||!my_fontScore->LoadFromFile("Font/arial.ttf") || !my_fontTitle->LoadFromFile("Font/arial.ttf") || !my_fontValue->LoadFromFile("Font/arial.ttf") || !my_fontButton->LoadFromFile("Font/arial.ttf") || !my_musicLevel->OpenFromFile("Music/gridMusic.wav")) {
+    if (!my_backgroundImage->LoadFromFile("Pictures/wallpapperTeach.png") || !my_caseImage->LoadFromFile("Pictures/caseTeach.png") || !my_buttonImage->LoadFromFile("Pictures/buttonTeach.png") || !my_languageImage->LoadFromFile("Pictures/languages.png") || !my_spriteImage->LoadFromFile("Pictures/choiceSprite.png") || !my_iconImage->LoadFromFile("Pictures/icon.png") ||!my_fontScore->LoadFromFile("Font/arial.ttf") || !my_fontTitle->LoadFromFile("Font/arial.ttf") || !my_fontValue->LoadFromFile("Font/arial.ttf") || !my_fontButton->LoadFromFile("Font/arial.ttf") || !my_musicLevel->OpenFromFile("Music/gridMusic.wav")) {
         cout << "Error when loading image or font" << endl;
     }
 #else
-    if (!my_backgroundImage->LoadFromFile("wallpapperTeach.png") || !my_caseImage->LoadFromFile("caseTeach.png") || !my_buttonImage->LoadFromFile("buttonTeach.png") || !my_languageImage->LoadFromFile("languages.png") || !my_spriteImage->LoadFromFile("choiceSprite.png") ||!my_fontScore->LoadFromFile("arial.ttf") || !my_fontTitle->LoadFromFile("arial.ttf") || !my_fontValue->LoadFromFile("arial.ttf") || !my_fontButton->LoadFromFile("arial.ttf") || !my_musicLevel->OpenFromFile("gridMusic.wav")) {
+    if (!my_backgroundImage->LoadFromFile("wallpapperTeach.png") || !my_caseImage->LoadFromFile("caseTeach.png") || !my_buttonImage->LoadFromFile("buttonTeach.png") || !my_languageImage->LoadFromFile("languages.png") || !my_spriteImage->LoadFromFile("choiceSprite.png") || !my_iconImage->LoadFromFile("icon.png") ||!my_fontScore->LoadFromFile("arial.ttf") || !my_fontTitle->LoadFromFile("arial.ttf") || !my_fontValue->LoadFromFile("arial.ttf") || !my_fontButton->LoadFromFile("arial.ttf") || !my_musicLevel->OpenFromFile("gridMusic.wav")) {
         cout << "Error when loading image or font" << endl;
     }
 #endif
@@ -290,23 +291,23 @@ GameView::setTeacherMode() {
     setImageToSprite();
 }
 
-/*
+
 void
 GameView::reverseMusic( bool music ) {
     if ( music )
-        my_musicIcon->SetSubRect( IntRect( xd, yd, xf, yf ) );
+        my_musicIcon->SetSubRect( IntRect( MUSICONSX, ICONSPRITEBEGIN, MUSICONEX, ICONSPRITEHEIGHT ) );
     else
-        my_musicIcon->SetSubRect( IntRect( xd, yd, xf, yf ) );
+        my_musicIcon->SetSubRect( IntRect( MUSICOFFSX, ICONSPRITEBEGIN, MUSICOFFEX, ICONSPRITEHEIGHT ) );
 }
 
  void
  GameView::reverseSound( bool sound ) {
     if ( sound )
-        my_soundIcon->SetSubRect( IntRect( xd, yd, xf, yf ) );
+        my_soundIcon->SetSubRect( IntRect( SOUNDSX, ICONSPRITEBEGIN, SOUNDONEX, ICONSPRITEHEIGHT ) );
     else
-        my_soundIcon->SetSubRect( IntRect( xd, yd, xf, yf ) );
+        my_soundIcon->SetSubRect( IntRect( SOUNDSX, ICONSPRITEBEGIN, SOUNDOFFEX, ICONSPRITEHEIGHT ) );
  }
- */
+
 
 void
 GameView::setButtonHover( sf::Sprite* buttonToHover ) {
@@ -326,6 +327,8 @@ void
 GameView::newScreen() {
     my_window->Clear();
     my_window->Draw(*my_backgroundSprite);
+    my_window->Draw(*my_musicIcon);
+    my_window->Draw(*my_soundIcon);
 }
 
 void
@@ -578,7 +581,8 @@ GameView::treatGame( ) {
     bool isPlaying = false;        // Pour savoir si il est sur le jeu
     bool isChoosingOption = false; // Pour savoir si il est le menu du choix des options
     bool isViewingBestScore = false;
-
+    bool music = true;
+    bool sound = true;
     sf::Clock pause;        //La clock pour la pause
     bool isInBreak = false; //Pour savoir quand on est en pause
 
@@ -609,7 +613,6 @@ GameView::treatGame( ) {
 
                         else if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, QUITX, QUITY, BUTTONWIDTH, BUTTONHEIGHT ) )
                             setButtonHover( my_quitButtonSprite );
-
                         else
                             resetButtonNorm();
 
@@ -690,8 +693,8 @@ GameView::treatGame( ) {
                             isInPresentation = false;
                             isPlaying = true;
                             my_model->reset();
-//                            my_musicLevel->Play();
-
+                            if ( music )
+                                my_musicLevel->Play();
                         } else if ( isInZone ( event.MouseButton.X, event.MouseButton.Y, QUITX, QUITY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
                             my_window->Close();
 
@@ -702,6 +705,9 @@ GameView::treatGame( ) {
                         } else if ( isInZone ( event.MouseButton.X, event.MouseButton.Y, BESTX, BESTY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
                             isInPresentation = false;
                             isViewingBestScore = true;
+                        } else if ( isInZone( event.MouseButton.X, event.MouseButton.Y, MUSICX, ICONY, ICONWIDTH, ICONHEIGHT ) ) {
+                            music = !(music);
+                            reverseMusic( music );
                         }
 
                     } else if ( isChoosingOption ) {
@@ -730,6 +736,9 @@ GameView::treatGame( ) {
                         if ( isInZone ( event.MouseButton.X, event.MouseButton.Y, QUITONX, QUITONY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
                             isChoosingOption = false;
                             isInPresentation = true;
+                        } else if ( isInZone( event.MouseButton.X, event.MouseButton.Y, MUSICX, ICONY, ICONWIDTH, ICONHEIGHT ) ) {
+                            music = !(music);
+                            reverseMusic( music );
                         }
 
                     } else if ( isViewingBestScore ) {
@@ -737,6 +746,9 @@ GameView::treatGame( ) {
                         if ( isInZone ( event.MouseButton.X, event.MouseButton.Y, QUITONX, QUITONY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
                             isViewingBestScore = false;
                             isInPresentation = true;
+                        } else if ( isInZone( event.MouseButton.X, event.MouseButton.Y, MUSICX, ICONY, ICONWIDTH, ICONHEIGHT ) ) {
+                            music = !(music);
+                            reverseMusic( music );
                         }
 
                     } else if ( isPlaying ) {
@@ -747,6 +759,14 @@ GameView::treatGame( ) {
                             isPlaying = false;
                             isInPresentation = true;
                             my_musicLevel->Stop();
+                        } else if ( isInZone( event.MouseButton.X, event.MouseButton.Y, MUSICX, ICONY, ICONWIDTH, ICONHEIGHT ) ) {
+                            music = !(music);
+                            reverseMusic( music );
+
+                            if ( music )
+                                my_musicLevel->Play();
+                            else
+                                my_musicLevel->Stop();
                         }
                     }
                     break;
@@ -769,6 +789,7 @@ GameView::treatGame( ) {
             if ( my_model->getLevel()->timeIsUp() ) {
                 my_model->getLevel()->lostLevel();
             }
+
             if ( my_model->gameOver() ) {
                 if ( !isInBreak ) {
                     pause.Reset();
