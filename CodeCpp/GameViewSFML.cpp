@@ -232,8 +232,18 @@ GameView::setAnanasMode() {
 //Cette méthode sert à mettre un text à un string, le positionner, et le dessiner
 void
 GameView::setTextAndDraw( sf::String* s, string text, int x, int y ) {
+    bool sizeIsChanged = false;
     s->SetText(text);
     s->SetPosition(x, y);
+    
+    //Ce n'est que pour centrer que c'est trop grand
+    if ( s->GetRect().GetWidth() > WINDOWWITDH ) {
+        while ( s->GetRect().GetWidth() > WINDOWWITDH )
+            s->SetSize( s->GetSize() - 5 );
+        sizeIsChanged = true;
+    }
+    if ( sizeIsChanged )
+        s->SetPosition( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) , y );
     my_window->Draw(*s);
 }
 
@@ -492,11 +502,7 @@ GameView::enterScore( string nom ) const{
 void
 GameView::showIsEnteringABestScore( string player ) {
     newScreen();
-    my_titleString->SetSize(40);
-    
-    my_titleString->SetColor(Color(0,0,0));
-    
-    setTextAndDraw( my_titleString, player, ( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) ), WINDOWHEIGHT / 2 ) ;
+    setTextAndDraw( my_valueString, player, ( ( WINDOWWITDH / 2 ) - ( my_valueString->GetRect().GetWidth() / 2 ) ), WINDOWHEIGHT / 2 ) ;
 }
 
 void
@@ -905,6 +911,7 @@ GameView::treatGame( ) {
                 if ( !isInBreak ) {
                     pause.Reset();
                 }
+                over = true;
                 showLoseLevel(time, over);
                 isInBreak = true;
             } else if ( my_model->getLevel()->lose() ) {
@@ -943,6 +950,7 @@ GameView::treatGame( ) {
                     isPlaying = false;
                     isEnterABestScore = true;
                     over = false;
+                    my_musicLevel->Stop();
                 }
             }
         }
