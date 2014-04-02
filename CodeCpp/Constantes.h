@@ -116,18 +116,24 @@ const int BUTTONHEIGHT = 60;
 
 const int BUTTONCASEBEGIN = 3;
 const int BUTTONCASEHEIGHT = 68;
+
 const int BUTTONNORMSX = 2;
 const int BUTTONNORMEX = 143;
 const int BUTTONHOVESX = 157;
 const int BUTTONHOVEEX = 298;
 
 //Pour les icones de sons sur les sprites
-const int ICONWIDTH = 30;
-const int ICONHEIGHT = 30;
+const int ICONWIDTH = 50;
+const int ICONHEIGHT = 50;
+
+const int ICONSPRITEBEGIN = 0;
+const int ICONSPRITEHEIGHT = 143;
+
 const int MUSICONSX = 0;
 const int MUSICONEX = 130;
 const int MUSICOFFSX = 130;
 const int MUSICOFFEX = 270;
+
 const int SOUNDSX = 270;
 const int SOUNDONEX = 370 ;
 const int SOUNDOFFEX = 431;
@@ -135,8 +141,8 @@ const int SOUNDOFFEX = 431;
 
 //Pour le placement à l'écran des icones
 const int ICONY = 10;
-const int MUSICX = 10;
-const int SOUNDX = 40;
+const int MUSICX = WINDOWWITDH - ( 2 * ICONWIDTH ) - 100;
+const int SOUNDX = MUSICX + ICONWIDTH + 20;
 
 
 //L'emplacement des boutons à l'écran pour gérer les évent
