@@ -35,6 +35,17 @@
 					<Add option="-lsfml-window" />
 				</Linker>
 			</Target>
+			<Target title="SFMLMode">
+				<Option output="PuruPuruDigger" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Linker>
+					<Add option="-lsfml-graphics" />
+					<Add option="-lsfml-window" />
+					<Add option="-lsfml-system" />
+					<Add option="-lsfml-audio" />
+				</Linker>
+			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
@@ -51,8 +62,20 @@
 		<Unit filename="EmptyCell.h" />
 		<Unit filename="GameModel.cpp" />
 		<Unit filename="GameModel.h" />
-		<Unit filename="GameView.cpp" />
-		<Unit filename="GameView.h" />
+		<Unit filename="GameView.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="GameView.h">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="GameViewSFML.cpp">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="GameViewSFML.h">
+			<Option target="SFMLMode" />
+		</Unit>
 		<Unit filename="GoldCell.cpp" />
 		<Unit filename="GoldCell.h" />
 		<Unit filename="IntDecFunctor.cpp" />
@@ -67,7 +90,13 @@
 		<Unit filename="Utils.h" />
 		<Unit filename="ValueCell.cpp" />
 		<Unit filename="ValueCell.h" />
-		<Unit filename="main.cpp" />
+		<Unit filename="main.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="mainSFML.cpp">
+			<Option target="SFMLMode" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<debugger />
