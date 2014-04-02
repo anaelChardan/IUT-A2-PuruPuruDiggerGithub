@@ -135,8 +135,8 @@ const int MUSICOFFSX = 130;
 const int MUSICOFFEX = 270;
 
 const int SOUNDSX = 270;
-const int SOUNDONEX = 370 ;
-const int SOUNDOFFEX = 431;
+const int SOUNDOFFEX = 370 ;
+const int SOUNDONEX = 431;
 
 
 //Pour le placement à l'écran des icones

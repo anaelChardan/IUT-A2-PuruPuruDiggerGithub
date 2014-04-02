@@ -1,5 +1,6 @@
 #include "GameViewSFML.h"
 #include "Constantes.h"
+#include "IntDecFunctor.h"
 #include <sstream>
 #include <fstream>
 #include "Utils.h"
@@ -68,7 +69,7 @@ GameView::GameView() {
      my_musicLevel = new Music();
 
      //Chargement des images selon le mode
-     setTeacherMode();
+     setAnanasMode();
 }
 
 //Destructeur
@@ -445,6 +446,60 @@ GameView::showBestScore() {
 }
 
 void
+GameView::enterScore( string nom ) const{
+    ifstream scoreLect(FILEBESTSCORE.c_str(), ios::in );
+    if ( scoreLect ) {
+        string line;
+        int scoreligne;
+        string nomligne;
+        map< int, string, DecFunctor> Scores;
+        int scorePlayer = ( my_model->getScore() )->getGlobale() ;
+        
+        while ( !scoreLect.eof() ) {
+            //On lit le score et on le stocke dans une map
+            scoreLect >> scoreligne >> nomligne;
+            Scores[scoreligne] = nomligne.c_str();
+        }
+        
+        //On ajoute notre joueur à la map
+        Scores[scorePlayer] = nom;
+        
+        scoreLect.close();
+        
+        ofstream scoreEcr(FILEBESTSCORE.c_str(), ios::out | ios::trunc );
+        
+        map< int, string>::iterator i;
+        if ( Scores.size() < 5 ) {
+            i = Scores.end();
+        } else {
+            i = Scores.begin();
+            for ( int cpt = 0 ; cpt < 5; cpt ++ ) ++i;
+        }
+        
+        for ( map< int, string >::const_iterator it = Scores.begin() ; it!=i ; ++it) {
+            scoreEcr << it->first;
+            scoreEcr <<  " ";
+            scoreEcr <<  it->second;
+            scoreEcr << endl;
+        }
+        
+        scoreEcr.close();
+    } else {
+        cerr << " Error when program is openning text file " << endl;
+    }
+}
+
+void
+GameView::showIsEnteringABestScore( string player ) {
+    newScreen();
+    my_titleString->SetSize(40);
+    
+    my_titleString->SetColor(Color(0,0,0));
+    
+    setTextAndDraw( my_titleString, player, ( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) ), WINDOWHEIGHT / 2 ) ;
+}
+
+void
 GameView::showGrid() {
     for ( int i = 0; i < LIGNE ; i++ ) {
         for ( int j = 0; j < COLONNE; j++ ) {
@@ -460,13 +515,22 @@ GameView::showGrid() {
 }
 
 void
-GameView::showLoseLevel() {
+GameView::showLoseLevel( bool time, bool over) {
     newScreen();
     my_titleString->SetSize(40);
 
     my_titleString->SetColor(Color(0,0,0));
 
-    setTextAndDraw( my_titleString, my_messages[my_language][looselevel], ( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) ), WINDOWHEIGHT / 2 ) ;
+    if ( !time && !over )
+        setTextAndDraw( my_titleString, my_messages[my_language][looselevel], ( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) ), WINDOWHEIGHT / 2 ) ;
+    else if ( time )
+        setTextAndDraw( my_titleString, my_messages[my_language][timeup], ( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) ), WINDOWHEIGHT / 2 );
+    else if ( over )
+        setTextAndDraw( my_titleString, my_messages[my_language][loosegame], ( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) ), WINDOWHEIGHT / 2 );
+    else if ( time && over )
+        setTextAndDraw( my_titleString, my_messages[my_language][loosegame], ( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) ), WINDOWHEIGHT / 2 );
+    
+
 }
 
 void
@@ -582,6 +646,8 @@ GameView::treatGame( ) {
     bool isEnterABestScore = false;
     bool music = true;
     bool sound = true;
+    bool time = false;
+    bool over = false;
     
     string player = "";
     
@@ -662,29 +728,58 @@ GameView::treatGame( ) {
 
                 case Event::KeyPressed : // Appui sur une touche du clavier
                 {
-                    switch (event.Key.Code) // La touche qui a été appuyée
-                    {
-                        case Key::Escape : // Echap
-                            my_window->Close();
-                            break;
-                        case Key::Right :
-                            if ( !isInBreak && isPlaying )
-                                my_model->orderMovement(6);
-                            break;
-                        case Key::Up:
-                            if ( !isInBreak && isPlaying )
-                                my_model->orderMovement(8);
-                            break;
-                        case Key::Left :
-                            if ( !isInBreak  && isPlaying)
-                                my_model->orderMovement(4);
-                            break;
-                        case Key::Down:
-                            if ( !isInBreak && isPlaying )
-                                my_model->orderMovement(2);
-                            break;
-                        default :
-                            break;
+                    if ( isPlaying ) {
+                        // La touche qui a été appuyée
+                        switch (event.Key.Code) {
+                            case Key::Escape : // Echap
+                                my_window->Close();
+                                break;
+                            case Key::Right :
+                                if ( !isInBreak && isPlaying )
+                                    my_model->orderMovement(6);
+                                break;
+                            case Key::Up:
+                                if ( !isInBreak && isPlaying )
+                                    my_model->orderMovement(8);
+                                break;
+                            case Key::Left :
+                                if ( !isInBreak  && isPlaying)
+                                    my_model->orderMovement(4);
+                                break;
+                            case Key::Down:
+                                if ( !isInBreak && isPlaying )
+                                    my_model->orderMovement(2);
+                                break;
+                            default :
+                                break;
+                        }
+                    } else if ( isEnterABestScore ) {
+                        switch (event.Key.Code) {
+                            case Key::Return :
+                                if ( player.length() > 0 ) {
+                                    isEnterABestScore = false;
+                                    isViewingBestScore = true;
+                                    enterScore(player);
+                                    player = "";
+                                }
+                                break;
+                            case Key::Back :
+                                if ( player.length() > 0 )
+                                    player.erase( player.length() - 1, 1 );
+                                break;
+                            default :
+                                break;
+                        }
+                    }
+                }
+                    break;
+                    
+                case Event::TextEntered :
+                {
+                    if ( isEnterABestScore ) {
+                        if ( event.Text.Unicode >= 48 && event.Text.Unicode <127 ) {
+                            player += static_cast<char>(event.Text.Unicode);
+                        }
                     }
                 }
                     break;
@@ -711,6 +806,9 @@ GameView::treatGame( ) {
                         } else if ( isInZone( event.MouseButton.X, event.MouseButton.Y, MUSICX, ICONY, ICONWIDTH, ICONHEIGHT ) ) {
                             music = !(music);
                             reverseMusic( music );
+                        } else if ( isInZone( event.MouseButton.X, event.MouseButton.Y, SOUNDX, ICONY, ICONWIDTH, ICONHEIGHT ) ) {
+                            sound = !(sound);
+                            reverseSound( sound );
                         }
 
                     } else if ( isChoosingOption ) {
@@ -742,6 +840,9 @@ GameView::treatGame( ) {
                         } else if ( isInZone( event.MouseButton.X, event.MouseButton.Y, MUSICX, ICONY, ICONWIDTH, ICONHEIGHT ) ) {
                             music = !(music);
                             reverseMusic( music );
+                        } else if ( isInZone( event.MouseButton.X, event.MouseButton.Y, SOUNDX, ICONY, ICONWIDTH, ICONHEIGHT ) ) {
+                            sound = !(sound);
+                            reverseSound( sound );
                         }
 
                     } else if ( isViewingBestScore ) {
@@ -752,6 +853,9 @@ GameView::treatGame( ) {
                         } else if ( isInZone( event.MouseButton.X, event.MouseButton.Y, MUSICX, ICONY, ICONWIDTH, ICONHEIGHT ) ) {
                             music = !(music);
                             reverseMusic( music );
+                        } else if ( isInZone( event.MouseButton.X, event.MouseButton.Y, SOUNDX, ICONY, ICONWIDTH, ICONHEIGHT ) ) {
+                            sound = !(sound);
+                            reverseSound( sound );
                         }
 
                     } else if ( isPlaying ) {
@@ -760,16 +864,19 @@ GameView::treatGame( ) {
                         }
                         if ( isInZone ( event.MouseButton.X, event.MouseButton.Y, QUITONX, QUITONY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
                             isPlaying = false;
-                            isInPresentation = true;
+                            isEnterABestScore = true;
                             my_musicLevel->Stop();
+                            resetButtonNorm();
                         } else if ( isInZone( event.MouseButton.X, event.MouseButton.Y, MUSICX, ICONY, ICONWIDTH, ICONHEIGHT ) ) {
                             music = !(music);
                             reverseMusic( music );
-
                             if ( music )
                                 my_musicLevel->Play();
                             else
                                 my_musicLevel->Stop();
+                        } else if ( isInZone( event.MouseButton.X, event.MouseButton.Y, SOUNDX, ICONY, ICONWIDTH, ICONHEIGHT ) ) {
+                            sound = !(sound);
+                            reverseSound( sound );
                         }
                     }
                     break;
@@ -791,18 +898,19 @@ GameView::treatGame( ) {
             //On check le temps, et l'on peut perdre à cause de lui.
             if ( my_model->getLevel()->timeIsUp() ) {
                 my_model->getLevel()->lostLevel();
+                time = true;
             }
 
             if ( my_model->gameOver() ) {
                 if ( !isInBreak ) {
                     pause.Reset();
                 }
-                showLoseLevel();
+                showLoseLevel(time, over);
                 isInBreak = true;
             } else if ( my_model->getLevel()->lose() ) {
                 if ( !isInBreak )
                     pause.Reset();
-                showLoseLevel();
+                showLoseLevel(time, over);
                 isInBreak = true;
 
             } else if ( my_model->getLevel()->win()  ) {
@@ -813,6 +921,8 @@ GameView::treatGame( ) {
             } else {
                 showLevel();
             }
+        } else if ( isEnterABestScore ) {
+            showIsEnteringABestScore( player );
         }
 
         // Affichage du contenu de la fenêtre à l'écran
@@ -827,10 +937,12 @@ GameView::treatGame( ) {
                 my_model->getLevel()->resetWin();
                 my_model->getLevel()->resetTime();
                 isInBreak = false;
+                time = false;
                 pause.Reset();
                 if ( my_model->gameOver() ) {
                     isPlaying = false;
-                    isInPresentation = true;
+                    isEnterABestScore = true;
+                    over = false;
                 }
             }
         }
