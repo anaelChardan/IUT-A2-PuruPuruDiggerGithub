@@ -28,7 +28,7 @@ int
 Score::getGlobale() const {
     int sum = 0;
     int size = static_cast<int>( my_success.size() );
-    for ( int i = 0;  i < size; ++i )
+    for ( int i = 0;  i < size - 1; ++i )
         sum += my_success[i];
     return sum;
 }

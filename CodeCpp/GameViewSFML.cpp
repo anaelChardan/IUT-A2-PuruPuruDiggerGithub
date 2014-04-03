@@ -894,7 +894,7 @@ GameView::treatGame( ) {
                             if ( music )
                                 my_musicLevel->Play();
                             else
-                                my_musicLevel->Stop();
+                                my_musicLevel->Pause();
                         } else if ( isInZone( event.MouseButton.X, event.MouseButton.Y, SOUNDX, ICONY, ICONWIDTH, ICONHEIGHT ) ) {
                             sound = !(sound);
                             reverseSound( sound );

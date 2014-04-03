@@ -31,8 +31,6 @@
 		0382DB4018C9A36700E93483 /* Constantes.h in Sources */ = {isa = PBXBuildFile; fileRef = 03ED313F18B385BA00CF8AA1 /* Constantes.h */; };
 		0382DB4118C9A36700E93483 /* GameModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031D88D618BE5B2B0001686A /* GameModel.cpp */; };
 		0382DB4218C9A36700E93483 /* GameModel.h in Sources */ = {isa = PBXBuildFile; fileRef = 031D88D718BE5B2B0001686A /* GameModel.h */; };
-		0382DB4318C9A36700E93483 /* GameView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031D88D918BE5B670001686A /* GameView.cpp */; };
-		0382DB4418C9A36700E93483 /* GameView.h in Sources */ = {isa = PBXBuildFile; fileRef = 031D88DA18BE5B670001686A /* GameView.h */; };
 		0382DB4518C9A36700E93483 /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314618B385BA00CF8AA1 /* Level.cpp */; };
 		0382DB4618C9A36700E93483 /* Level.h in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314718B385BA00CF8AA1 /* Level.h */; };
 		0382DB4718C9A36700E93483 /* Score.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314818B385BA00CF8AA1 /* Score.cpp */; };
@@ -49,9 +47,6 @@
 		0382DB5218C9A36700E93483 /* ValueCell.h in Sources */ = {isa = PBXBuildFile; fileRef = 0377341318B9FFDF00D5AFA0 /* ValueCell.h */; };
 		0382DB5318C9A36700E93483 /* Digger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314018B385BA00CF8AA1 /* Digger.cpp */; };
 		0382DB5418C9A36700E93483 /* Digger.h in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314118B385BA00CF8AA1 /* Digger.h */; };
-		0382DB5518C9A36700E93483 /* IntDecFunctor.h in Sources */ = {isa = PBXBuildFile; fileRef = 0328235818C5FBAF006F43CC /* IntDecFunctor.h */; };
-		0382DB5618C9A36700E93483 /* LanguageMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 033D7D8318C8C6C400BA0091 /* LanguageMessage.cpp */; };
-		0382DB5718C9A36700E93483 /* LanguageMessage.h in Sources */ = {isa = PBXBuildFile; fileRef = 033D7D8418C8C6C400BA0091 /* LanguageMessage.h */; };
 		039F92B118E0A7FD008D3F85 /* gridMusic.wav in Resources */ = {isa = PBXBuildFile; fileRef = 039F92B018E0A7FD008D3F85 /* gridMusic.wav */; };
 		03A0EFC018C5D0B900F57E1A /* bestScores.txt in Resources */ = {isa = PBXBuildFile; fileRef = 03A0EFBF18C5D0B900F57E1A /* bestScores.txt */; };
 		03AF1FAE18DDC8880063D142 /* languages.png in Resources */ = {isa = PBXBuildFile; fileRef = 03AF1FAD18DDC8880063D142 /* languages.png */; };
@@ -470,8 +465,6 @@
 				0382DB4018C9A36700E93483 /* Constantes.h in Sources */,
 				0382DB4118C9A36700E93483 /* GameModel.cpp in Sources */,
 				0382DB4218C9A36700E93483 /* GameModel.h in Sources */,
-				0382DB4318C9A36700E93483 /* GameView.cpp in Sources */,
-				0382DB4418C9A36700E93483 /* GameView.h in Sources */,
 				0382DB4518C9A36700E93483 /* Level.cpp in Sources */,
 				0382DB4618C9A36700E93483 /* Level.h in Sources */,
 				0382DB4718C9A36700E93483 /* Score.cpp in Sources */,
@@ -489,9 +482,6 @@
 				0382DB5218C9A36700E93483 /* ValueCell.h in Sources */,
 				0382DB5318C9A36700E93483 /* Digger.cpp in Sources */,
 				0382DB5418C9A36700E93483 /* Digger.h in Sources */,
-				0382DB5518C9A36700E93483 /* IntDecFunctor.h in Sources */,
-				0382DB5618C9A36700E93483 /* LanguageMessage.cpp in Sources */,
-				0382DB5718C9A36700E93483 /* LanguageMessage.h in Sources */,
 				0382DB3818C9A28400E93483 /* test.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
