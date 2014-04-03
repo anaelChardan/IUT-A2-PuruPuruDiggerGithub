@@ -363,13 +363,13 @@ GameView::showPresentation() {
 
     my_window->Draw( *my_quitButtonSprite);
 
-    setTextAndDraw( my_buttonString, my_messages[my_language][best], BESTX + 40, (BESTY + (BUTTONHEIGHT / 5)), false );
+    setTextAndDraw( my_buttonString, my_messages[my_language][best], (BESTX + BUTTONWIDTH / 2 ), (BESTY + (BUTTONHEIGHT / 5)), true );
 
-    setTextAndDraw( my_buttonString, my_messages[my_language][play], PLAYX  + 40, PLAYY + (BUTTONHEIGHT / 5), false );
+    setTextAndDraw( my_buttonString, my_messages[my_language][play], (PLAYX  + BUTTONWIDTH / 2 ), PLAYY + (BUTTONHEIGHT / 5), true );
 
-    setTextAndDraw( my_buttonString, my_messages[my_language][stop], QUITX + 40, (QUITY + (BUTTONHEIGHT * 0.2 )), false );
+    setTextAndDraw( my_buttonString, my_messages[my_language][stop], ( QUITX + BUTTONWIDTH / 2 ), (QUITY + (BUTTONHEIGHT * 0.2 )), true );
 
-    setTextAndDraw( my_buttonString, my_messages[my_language][setting], OPTIONX + 40   , OPTIONY + (BUTTONHEIGHT * 0.2), false );
+    setTextAndDraw( my_buttonString, my_messages[my_language][setting], (OPTIONX + BUTTONWIDTH / 2 )   , OPTIONY + (BUTTONHEIGHT * 0.2), true );
 }
 
 void
@@ -398,7 +398,7 @@ GameView::showOption() {
     //Le bouton pour quitter et son text
     my_window->Draw( *my_buttonQuitSprite );
 
-    setTextAndDraw( my_buttonString, my_messages[my_language][stop], ( ( ( QUITONX + BUTTONWIDTH ) / 2.5 )  ), (QUITONY + (BUTTONHEIGHT / 5)), false  );
+    setTextAndDraw( my_buttonString, my_messages[my_language][stop], (  QUITONX + BUTTONWIDTH  / 2  ), (QUITONY + (BUTTONHEIGHT / 5)), true  );
 }
 
 void
@@ -447,6 +447,8 @@ GameView::showBestScore() {
 
         //Le contenu de notre fichier
         while ( getline(scoreLect, line) ) {
+            //Pour garantir la plus grand taille
+            my_valueString->SetSize(23);
             setTextAndDraw(my_valueString, line, ( WINDOWWITDH / 2 ) , i, true );
             i += 100;
         }
@@ -454,7 +456,7 @@ GameView::showBestScore() {
         //On affiche le bouton quitter avec son string
         my_window->Draw( *my_buttonQuitSprite );
 
-        setTextAndDraw( my_buttonString, my_messages[my_language][stop], ( ( ( QUITONX + BUTTONWIDTH ) / 2.5 )  ), (QUITONY + (BUTTONHEIGHT / 5)), false  );
+        setTextAndDraw( my_buttonString, my_messages[my_language][stop], (  QUITONX + BUTTONWIDTH  / 2  ), (QUITONY + (BUTTONHEIGHT / 5)), true  );
 
         scoreLect.close();
 
@@ -635,7 +637,7 @@ GameView::showLevel() {
 
     my_window->Draw( *my_buttonQuitSprite );
 
-    setTextAndDraw( my_buttonString, my_messages[my_language][stop], ( ( ( QUITONX + BUTTONWIDTH ) / 2.5 )  ), (QUITONY + (BUTTONHEIGHT / 5) ), false );
+    setTextAndDraw( my_buttonString, my_messages[my_language][stop], (  QUITONX + BUTTONWIDTH  / 2  ), (QUITONY + (BUTTONHEIGHT / 5)), true  );
 }
 
 //Injection de dépendance model
