@@ -5,5 +5,5 @@
 
 BOOST_AUTO_TEST_CASE ( inversement )
 {
-    BOOST_CHECK ( == 4) ;
+    BOOST_CHECK ( 4 == 4) ;
 }

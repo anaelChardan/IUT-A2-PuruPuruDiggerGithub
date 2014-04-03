@@ -698,7 +698,7 @@ GameView::treatGame( ) {
                         else if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, BESTX, BESTY, BUTTONWIDTH, BUTTONHEIGHT ) )
                             setButtonHover( my_bestButtonSprite );
 
-                        else if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, QUITX, QUITY, BUTTONWIDTH, BUTTONHEIGHT ) )
+                        else if ( isInZone ( event.MouseMove.X , event.MouseMove.Y, QUITX, QUITY, BUTTONWIDTH, BUTTONHEIGHT ) )
                             setButtonHover( my_quitButtonSprite );
                         else
                             resetButtonNorm();
@@ -767,6 +767,9 @@ GameView::treatGame( ) {
                             case Key::Down:
                                 if ( !isInBreak && isPlaying )
                                     my_model->orderMovement(2);
+                                break;
+                            case Key::Return:
+                                cout << my_window->GetWidth() << endl;
                                 break;
                             default :
                                 break;
