@@ -103,7 +103,8 @@ class GameView {
     void resetLanguageNorm();
     void showLanguage();
 
-    void setTextAndDraw( sf::String* s, std::string text, int x, int y );
+    void setTextAndDraw( sf::String* s, std::string text, int x, int y, bool useSizeRectX );
+
 
     void configureSpriteAndDraw( sf::Sprite* s, int x, int y );
     void setSprite( sf::Sprite* s, sf::Image* i, int subsX, int subsY, int subeX, int subeY, int w, int h );

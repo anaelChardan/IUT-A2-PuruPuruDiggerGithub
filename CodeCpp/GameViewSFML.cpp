@@ -231,21 +231,27 @@ GameView::setAnanasMode() {
 
 //Cette méthode sert à mettre un text à un string, le positionner, et le dessiner
 void
-GameView::setTextAndDraw( sf::String* s, string text, int x, int y ) {
+GameView::setTextAndDraw( sf::String* s, string text, int x, int y, bool useSizeRectX ) {
     bool sizeIsChanged = false;
+  
     s->SetText(text);
-    s->SetPosition(x, y);
     
-    //Ce n'est que pour centrer que c'est trop grand
     if ( s->GetRect().GetWidth() > WINDOWWITDH ) {
         while ( s->GetRect().GetWidth() > WINDOWWITDH )
             s->SetSize( s->GetSize() - 5 );
         sizeIsChanged = true;
     }
-    if ( sizeIsChanged )
-        s->SetPosition( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) , y );
+    
+    if ( useSizeRectX )
+        x -=  ( ( s->GetRect().GetWidth()  ) / 2 );
+    
+    s->SetPosition(x, y);
+    
+    
+    
     my_window->Draw(*s);
 }
+
 
 //Cette méthode sert à configurer à positionner un sprite et la dessiner
 void
@@ -347,7 +353,7 @@ GameView::showPresentation() {
     my_titleString->SetColor(Color(255,255,255));
     my_titleString->SetSize(60);
 
-    setTextAndDraw( my_titleString, "PURU PURU DIGGER ", ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) , 100 );
+    setTextAndDraw( my_titleString, "PURU PURU DIGGER ", ( WINDOWWITDH / 2 ), 100, true );
 
     my_window->Draw( *my_playButtonSprite );
 
@@ -357,13 +363,13 @@ GameView::showPresentation() {
 
     my_window->Draw( *my_quitButtonSprite);
 
-    setTextAndDraw( my_buttonString, my_messages[my_language][best], BESTX + 40, (BESTY + (BUTTONHEIGHT / 5)) );
+    setTextAndDraw( my_buttonString, my_messages[my_language][best], BESTX + 40, (BESTY + (BUTTONHEIGHT / 5)), false );
 
-    setTextAndDraw( my_buttonString, my_messages[my_language][play], PLAYX  + 40, PLAYY + (BUTTONHEIGHT / 5) );
+    setTextAndDraw( my_buttonString, my_messages[my_language][play], PLAYX  + 40, PLAYY + (BUTTONHEIGHT / 5), false );
 
-    setTextAndDraw( my_buttonString, my_messages[my_language][stop], QUITX + 40, (QUITY + (BUTTONHEIGHT * 0.2 )) );
+    setTextAndDraw( my_buttonString, my_messages[my_language][stop], QUITX + 40, (QUITY + (BUTTONHEIGHT * 0.2 )), false );
 
-    setTextAndDraw( my_buttonString, my_messages[my_language][setting], OPTIONX + 40   , OPTIONY + (BUTTONHEIGHT * 0.2) );
+    setTextAndDraw( my_buttonString, my_messages[my_language][setting], OPTIONX + 40   , OPTIONY + (BUTTONHEIGHT * 0.2), false );
 }
 
 void
@@ -371,14 +377,14 @@ GameView::showOption() {
     newScreen();
 
     //Le titre de la page
-    setTextAndDraw( my_titleString, my_messages[my_language][setting], ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) , 10);
+    setTextAndDraw( my_titleString, my_messages[my_language][setting], ( WINDOWWITDH / 2 ), 10, true);
 
     //L'énoncé langue
-    setTextAndDraw( my_scoreString, my_messages[my_language][language], QUITONX + 50, CHOICELANGUEHIGH);
+    setTextAndDraw( my_scoreString, my_messages[my_language][language], QUITONX + 50, CHOICELANGUEHIGH, false);
 
-    setTextAndDraw( my_scoreString, my_messages[my_language][actual], QUITONX + 50, MYLANGUEY );
+    setTextAndDraw( my_scoreString, my_messages[my_language][actual], QUITONX + 50, MYLANGUEY, false );
 
-    setTextAndDraw( my_scoreString, my_messages[my_language][theme], QUITONX + 50, CHOICESPRITEY );
+    setTextAndDraw( my_scoreString, my_messages[my_language][theme], QUITONX + 50, CHOICESPRITEY, false );
 
 
     showLanguage();
@@ -392,7 +398,7 @@ GameView::showOption() {
     //Le bouton pour quitter et son text
     my_window->Draw( *my_buttonQuitSprite );
 
-    setTextAndDraw( my_buttonString, my_messages[my_language][stop], ( ( ( QUITONX + BUTTONWIDTH ) / 2.5 )  ), (QUITONY + (BUTTONHEIGHT / 5))  );
+    setTextAndDraw( my_buttonString, my_messages[my_language][stop], ( ( ( QUITONX + BUTTONWIDTH ) / 2.5 )  ), (QUITONY + (BUTTONHEIGHT / 5)), false  );
 }
 
 void
@@ -435,20 +441,20 @@ GameView::showBestScore() {
         my_titleString->SetSize(60);
         
         //Le titre de la page
-        setTextAndDraw( my_titleString, my_messages[my_language][score], ( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) ), 10 ) ;
+        setTextAndDraw( my_titleString, my_messages[my_language][score], ( WINDOWWITDH / 2 ), 10, true ) ;
 
         int i = 200;
 
         //Le contenu de notre fichier
         while ( getline(scoreLect, line) ) {
-            setTextAndDraw(my_valueString, line, ( WINDOWWITDH / 2 ) - 40 , i );
+            setTextAndDraw(my_valueString, line, ( WINDOWWITDH / 2 ) , i, true );
             i += 100;
         }
 
         //On affiche le bouton quitter avec son string
         my_window->Draw( *my_buttonQuitSprite );
 
-        setTextAndDraw( my_buttonString, my_messages[my_language][stop], ( ( ( QUITONX + BUTTONWIDTH ) / 2.5 )  ), (QUITONY + (BUTTONHEIGHT / 5))  );
+        setTextAndDraw( my_buttonString, my_messages[my_language][stop], ( ( ( QUITONX + BUTTONWIDTH ) / 2.5 )  ), (QUITONY + (BUTTONHEIGHT / 5)), false  );
 
         scoreLect.close();
 
@@ -505,10 +511,10 @@ GameView::enterScore( string nom ) const{
 void
 GameView::showIsEnteringABestScore( string player ) {
     newScreen();
-    setTextAndDraw( my_scoreNum, my_messages[my_language][by], ( ( WINDOWWITDH / 2 ) - 100 ), 10 );
-    setTextAndDraw( my_scoreNum, my_messages[my_language][name], ( ( WINDOWWITDH / 2 ) - 100 ), 100 );
+    setTextAndDraw( my_scoreNum, my_messages[my_language][by], ( WINDOWWITDH / 2 ), 10, true );
+    setTextAndDraw( my_scoreNum, my_messages[my_language][name], ( WINDOWWITDH / 2 ), 100, true );
 
-    setTextAndDraw( my_valueString, player, ( ( WINDOWWITDH / 2 ) - ( my_valueString->GetRect().GetWidth() / 2 ) ), WINDOWHEIGHT / 2 ) ;
+    setTextAndDraw( my_valueString, player, ( WINDOWWITDH / 2 ) , WINDOWHEIGHT / 2, true ) ;
 }
 
 void
@@ -520,7 +526,7 @@ GameView::showGrid() {
             //Si c'est une case numérotée, on met son numéro
             if ( my_model->getLevel()->getGrid()[i][j]->getType() == "ValueCell" || my_model->getLevel()->getGrid()[i][j]->getType() == "GoldCell") {
 
-                setTextAndDraw( my_valueString, intToString( my_model->getLevel()->getGrid()[i][j]->getValue() ), ( convertIndiceXToPixel( j ) + CASEWITDH / 3 ), ( convertIndiceYToPixel( i ) + CASEHEIGHT / 6 ) );
+                setTextAndDraw( my_valueString, intToString( my_model->getLevel()->getGrid()[i][j]->getValue() ), ( convertIndiceXToPixel( j ) + CASEWITDH / 3 ), ( convertIndiceYToPixel( i ) + CASEHEIGHT / 6 ), false );
             }
         }
     }
@@ -534,13 +540,13 @@ GameView::showLoseLevel( bool time, bool over) {
     my_titleString->SetColor(Color(0,0,0));
 
     if ( !time && !over )
-        setTextAndDraw( my_titleString, my_messages[my_language][looselevel], ( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) ), WINDOWHEIGHT / 2 ) ;
+        setTextAndDraw( my_titleString, my_messages[my_language][looselevel],( WINDOWWITDH / 2 ), WINDOWHEIGHT / 2, true ) ;
     else if ( time )
-        setTextAndDraw( my_titleString, my_messages[my_language][timeup], ( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) ), WINDOWHEIGHT / 2 );
+        setTextAndDraw( my_titleString, my_messages[my_language][timeup], ( WINDOWWITDH / 2 ), WINDOWHEIGHT / 2, true );
     else if ( over )
-        setTextAndDraw( my_titleString, my_messages[my_language][loosegame], ( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) ), WINDOWHEIGHT / 2 );
+        setTextAndDraw( my_titleString, my_messages[my_language][loosegame], ( WINDOWWITDH / 2 ), WINDOWHEIGHT / 2, true );
     else if ( time && over )
-        setTextAndDraw( my_titleString, my_messages[my_language][loosegame], ( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) ), WINDOWHEIGHT / 2 );
+        setTextAndDraw( my_titleString, my_messages[my_language][loosegame], ( WINDOWWITDH / 2 ), WINDOWHEIGHT / 2, true );
     
 
 }
@@ -552,63 +558,63 @@ GameView::showWinLevel() {
     my_titleString->SetSize(40);
     my_titleString->SetColor(Color(0,0,0));
 
-    setTextAndDraw( my_titleString, my_messages[my_language][winlevel], ( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) ), WINDOWHEIGHT / 2 ) ;
+    setTextAndDraw( my_titleString, my_messages[my_language][winlevel], ( WINDOWWITDH / 2 ), WINDOWHEIGHT / 2, true ) ;
 }
 
 void
 GameView::showScore() {
     //Le titre
-    setTextAndDraw( my_titleScoreString, my_messages[my_language][score] + " : ", 100, 80);
+    setTextAndDraw( my_titleScoreString, my_messages[my_language][score] + " : ", 100, 80, false);
 
     //Level et son num
-    setTextAndDraw( my_scoreString, my_messages[my_language][level] + " : ", 20, 140);
+    setTextAndDraw( my_scoreString, my_messages[my_language][level] + " : ", 20, 140, false);
 
 
-    setTextAndDraw( my_scoreNum, intToString(my_model->getScore()->getCurrentStep() ), my_scoreString->GetRect().GetWidth() + 40, 140 );
+    setTextAndDraw( my_scoreNum, intToString(my_model->getScore()->getCurrentStep() ), my_scoreString->GetRect().GetWidth() + 40, 140, false );
 
     //Score Total
-    setTextAndDraw( my_scoreString, my_messages[my_language][global] + " : ", 20, 180);
+    setTextAndDraw( my_scoreString, my_messages[my_language][global] + " : ", 20, 180, false);
 
 
-    setTextAndDraw( my_scoreNum, intToString(my_model->getScore()->getGlobale() ), my_scoreString->GetRect().GetWidth() + 40, 180 );
+    setTextAndDraw( my_scoreNum, intToString(my_model->getScore()->getGlobale() ), my_scoreString->GetRect().GetWidth() + 40, 180, false );
 
     //Score en cours
-    setTextAndDraw( my_scoreString, my_messages[my_language][current] + " : ", 20, 220);
+    setTextAndDraw( my_scoreString, my_messages[my_language][current] + " : ", 20, 220, false);
 
 
-    setTextAndDraw( my_scoreNum, intToString(my_model->getScore()->getCurrent() ), my_scoreString->GetRect().GetWidth() + 40, 220 );
+    setTextAndDraw( my_scoreNum, intToString(my_model->getScore()->getCurrent() ), my_scoreString->GetRect().GetWidth() + 40, 220, false );
 
 
     //Objectif
-    setTextAndDraw( my_scoreString, my_messages[my_language][goal] + " : ", 20, 260);
+    setTextAndDraw( my_scoreString, my_messages[my_language][goal] + " : ", 20, 260, false);
 
 
-    setTextAndDraw( my_scoreNum, intToString(my_model->getLevel()->getGoal() ), my_scoreString->GetRect().GetWidth() + 40, 260 );
+    setTextAndDraw( my_scoreNum, intToString(my_model->getLevel()->getGoal() ), my_scoreString->GetRect().GetWidth() + 40, 260, false );
 
 
     //En cours
-    setTextAndDraw( my_scoreString, my_messages[my_language][step] + " : ", 20, 300);
+    setTextAndDraw( my_scoreString, my_messages[my_language][step] + " : ", 20, 300, false);
 
 
-    setTextAndDraw( my_scoreNum, intToString(my_model->getLevel()->getCurrentMove() ), my_scoreString->GetRect().GetWidth() + 40, 300 );
+    setTextAndDraw( my_scoreNum, intToString(my_model->getLevel()->getCurrentMove() ), my_scoreString->GetRect().GetWidth() + 40, 300 , false);
 
     //La vie
-    setTextAndDraw( my_scoreString, my_messages[my_language][life] + " : ", 20, 340);
+    setTextAndDraw( my_scoreString, my_messages[my_language][life] + " : ", 20, 340, false);
 
 
-    setTextAndDraw( my_scoreNum, intToString(my_model->getLevel()->getDigger()->getLife() ), my_scoreString->GetRect().GetWidth() + 40, 340 );
+    setTextAndDraw( my_scoreNum, intToString(my_model->getLevel()->getDigger()->getLife()), my_scoreString->GetRect().GetWidth() + 40, 340, false );
 
     //Le temps
-    setTextAndDraw( my_scoreString, my_messages[my_language][ltime] + " : ", 20, 380);
+    setTextAndDraw( my_scoreString, my_messages[my_language][ltime] + " : ", 20, 380, false);
 
 
-    setTextAndDraw( my_scoreNum, intToString( my_model->getLevel()->leftTime() ) , my_scoreString->GetRect().GetWidth() + 40, 380 );
+    setTextAndDraw( my_scoreNum, intToString( my_model->getLevel()->leftTime() ) , my_scoreString->GetRect().GetWidth() + 40, 380 , false);
 
     //La position
-    setTextAndDraw( my_scoreString, my_messages[my_language][position] + " : ", 20, 420);
+    setTextAndDraw( my_scoreString, my_messages[my_language][position] + " : ", 20, 420, false);
 
 
-    setTextAndDraw( my_scoreNum, "[ " + intToString( my_model->getLevel()->getDigger()->getX() ) + " ] [ " +  intToString( my_model->getLevel()->getDigger()->getY() )  + " ] " , my_scoreString->GetRect().GetWidth() + 40, 420 );
+    setTextAndDraw( my_scoreNum, "[ " + intToString( my_model->getLevel()->getDigger()->getX() ) + " ] [ " +  intToString( my_model->getLevel()->getDigger()->getY() )  + " ] " , my_scoreString->GetRect().GetWidth() + 40, 420, false );
 
 }
 
@@ -619,7 +625,7 @@ GameView::showLevel() {
     my_titleString->SetColor(Color(255,255,255));
     my_titleString->SetSize(60);
 
-    setTextAndDraw( my_titleString, " PURU PURU DIGGER " , ( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) ), 10 ) ;
+    setTextAndDraw( my_titleString, " PURU PURU DIGGER " , ( WINDOWWITDH / 2 ), 10, true ) ;
 
     //On dessine la grille
     showGrid();
@@ -629,7 +635,7 @@ GameView::showLevel() {
 
     my_window->Draw( *my_buttonQuitSprite );
 
-    setTextAndDraw( my_buttonString, my_messages[my_language][stop], ( ( ( QUITONX + BUTTONWIDTH ) / 2.5 )  ), (QUITONY + (BUTTONHEIGHT / 5))  );
+    setTextAndDraw( my_buttonString, my_messages[my_language][stop], ( ( ( QUITONX + BUTTONWIDTH ) / 2.5 )  ), (QUITONY + (BUTTONHEIGHT / 5) ), false );
 }
 
 //Injection de dépendance model
