@@ -430,7 +430,10 @@ GameView::showBestScore() {
     ifstream scoreLect(FILEBESTSCORE.c_str(), ios::in );
     if ( scoreLect ) {
         string line;
-
+        
+        my_titleString->SetColor(Color(255,255,255));
+        my_titleString->SetSize(60);
+        
         //Le titre de la page
         setTextAndDraw( my_titleString, my_messages[my_language][score], ( ( WINDOWWITDH / 2 ) - ( my_titleString->GetRect().GetWidth() / 2 ) ), 10 ) ;
 
@@ -438,7 +441,7 @@ GameView::showBestScore() {
 
         //Le contenu de notre fichier
         while ( getline(scoreLect, line) ) {
-            setTextAndDraw(my_valueString, line, ( WINDOWWITDH / 2 ) - ( my_valueString->GetRect().GetWidth() / 2 ), i );
+            setTextAndDraw(my_valueString, line, ( WINDOWWITDH / 2 ) - 40 , i );
             i += 100;
         }
 
@@ -502,6 +505,9 @@ GameView::enterScore( string nom ) const{
 void
 GameView::showIsEnteringABestScore( string player ) {
     newScreen();
+    setTextAndDraw( my_scoreNum, my_messages[my_language][by], ( ( WINDOWWITDH / 2 ) - 100 ), 10 );
+    setTextAndDraw( my_scoreNum, my_messages[my_language][name], ( ( WINDOWWITDH / 2 ) - 100 ), 100 );
+
     setTextAndDraw( my_valueString, player, ( ( WINDOWWITDH / 2 ) - ( my_valueString->GetRect().GetWidth() / 2 ) ), WINDOWHEIGHT / 2 ) ;
 }
 

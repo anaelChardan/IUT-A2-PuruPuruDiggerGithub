@@ -122,7 +122,7 @@ class GameView {
      */
     void showScore()  ;
     void showLevel();
-    void showLoseLevel( bool time, bool over );
+    void showLoseLevel( bool time, bool over);
     void showWinLevel();
 
     /*!

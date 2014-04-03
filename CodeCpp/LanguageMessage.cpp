@@ -35,7 +35,7 @@ LanguageMessage::LanguageMessage() {
     my_languages[francais][looselevel] = " Vous perdez une vie, recommencez un niveau ";
     my_languages[francais][loosegame] = " Vous avez perdu la partie ";
     my_languages[francais][name] = " Entrez votre nom ";
-    my_languages[francais][by] = " Vous arrêtez la partie " ;
+    my_languages[francais][by] = " Vous arretez la partie " ;
     my_languages[francais][ltime] = " Temps restant ";
     my_languages[francais][timeup] = " Vous avez mis trop de temps, vous perdez le niveau ";
     my_languages[francais][best] = " Scores ";
