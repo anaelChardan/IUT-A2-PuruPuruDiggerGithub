@@ -47,11 +47,7 @@ EmptyCell::~EmptyCell() {}
 
 void
 EmptyCell::toString( std::ostream& O) const {
-    #ifdef __linux__
-    O << "   ";
-    #else
-    O << "  ";
-    #endif
+    O << colorMessage( "  ", WHITE );
 }
 
 /*===========================

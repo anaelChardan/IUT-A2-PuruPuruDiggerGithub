@@ -11,6 +11,8 @@
 
 #include <iostream>
 #include <string>
+#include "Utils.h"
+#include "Constantes.h"
 
 /*! \class CellBase
  *  \brief Classe modélisant ce qu'est une case
