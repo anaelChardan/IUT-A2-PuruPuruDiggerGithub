@@ -13,7 +13,6 @@
 
 std::string colorMessage( const char* out , int color );
 std::string intToString(  int i );
-std::string intToStringWithBlank(  int i );
 int convertIndiceXToPixel( int i );
 int convertIndiceYToPixel( int j );
 int convertXPixel( int xpixel );
