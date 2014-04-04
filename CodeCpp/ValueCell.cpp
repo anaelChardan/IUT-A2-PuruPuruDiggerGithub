@@ -8,6 +8,7 @@
 
 #include "ValueCell.h"
 #include <sstream>
+#include <string>
 
 /*===========================
  Les Constructeurs
@@ -58,11 +59,9 @@ ValueCell::getPoints() const {
 
 void
 ValueCell::toString( std::ostream& O) const {
-    #ifdef __linux__
-    O << "\E[" << CYAN << ";1m"<<  " " << my_value << " " << "\E[m";
-    #else
-    O << " " << my_value;
-    #endif
+    std::string value = " " + intToString( my_value );
+    const char* out =  value.c_str();
+    O << colorMessage( out ,  CYAN );
 }
 
 
@@ -73,10 +72,8 @@ ValueCell::toString( std::ostream& O) const {
 ValueCell&
 ValueCell::operator=(const ValueCell &v) {
     if ( this != &v ){
-        my_type = v.my_type;
+        CellBase::operator=(v);
         my_value = v.my_value;
-        my_x = v.my_x;
-        my_y = v.my_y;
     }
     return *this;
 }
