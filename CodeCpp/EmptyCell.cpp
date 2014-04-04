@@ -15,16 +15,12 @@
  Les Constructeurs
  =============================*/
 
-EmptyCell::EmptyCell() {
+EmptyCell::EmptyCell() : CellBase() {
     my_type = "EmptyCell";
-    my_x = 0;
-    my_y = 0;
 }
 
-EmptyCell::EmptyCell( int x, int y ) {
+EmptyCell::EmptyCell( int x, int y ) : CellBase(x,y) {
     my_type = "EmptyCell";
-    my_x = x;
-    my_y = y;
 }
 
 EmptyCell::EmptyCell(const EmptyCell &b) {

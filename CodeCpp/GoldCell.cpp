@@ -12,21 +12,12 @@
  Les Constructeurs
  =============================*/
 
-GoldCell::GoldCell() {
+GoldCell::GoldCell() : ValueCell(), my_bonus(randomNumber(MINVALB, MAXVALB)) {
     my_type = "GoldCell";
-    my_x  = 0;
-    my_y = 0;
-    //Génération aléatoire de la valeur de la case entre 1 et 6
-    my_value = MINVAL + (rand() % (MAXVAL - MINVAL));
-    my_bonus =  MINVALB + (rand() % (MAXVALB - MINVALB));
 }
 
-GoldCell::GoldCell( int x, int y ) {
+GoldCell::GoldCell( int x, int y ) : ValueCell( x, y ), my_bonus(randomNumber(MINVALB, MAXVALB)) {
     my_type = "GoldCell";
-    my_x = x;
-    my_y = y;
-    my_value = MINVAL + (rand() % (MAXVAL - MINVAL));
-    my_bonus = MINVALB + (rand() % (MAXVALB - MINVALB));
 }
 
 GoldCell::GoldCell( const GoldCell &g ) {

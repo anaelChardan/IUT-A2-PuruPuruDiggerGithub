@@ -800,7 +800,7 @@ GameView::treatGame( ) {
                 case Event::TextEntered :
                 {
                     if ( isEnterABestScore ) {
-                        if ( event.Text.Unicode >= 48 && event.Text.Unicode <127 ) {
+                        if ( event.Text.Unicode >= 48 && event.Text.Unicode <127 && player.length() < 25 ) {
                             player += static_cast<char>(event.Text.Unicode);
                         }
                     }

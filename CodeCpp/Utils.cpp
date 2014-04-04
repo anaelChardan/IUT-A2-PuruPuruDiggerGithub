@@ -57,4 +57,8 @@ int convertYPixel( int ypixel ) {
         return -1;
 }
 
+int randomNumber( int min , int max ) {
+    return min + ( rand() % ( max + 1 - min ) );
+}
+
 

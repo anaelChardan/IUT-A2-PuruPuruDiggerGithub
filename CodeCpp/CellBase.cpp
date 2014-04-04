@@ -13,18 +13,9 @@
 Les Constructeurs
 =============================*/
 
-CellBase::CellBase()
-{
-    my_type = "CellBase";
-    my_x = 0;
-    my_y = 0;
-}
+CellBase::CellBase()  : my_type("CellBase") , my_x(0), my_y(0) { }
 
-CellBase::CellBase( int x, int y ) {
-    my_type = "CellBase";
-    my_x = x;
-    my_y = y;
-}
+CellBase::CellBase( int x, int y ) : my_type("CellBase"), my_x(x), my_y(y) { }
 
 
 CellBase::CellBase(const CellBase &c ) {

@@ -15,18 +15,12 @@ using namespace std;
  Les Constructeurs
  =============================*/
 
-Digger::Digger() {
+Digger::Digger() : CellBase(), my_life(3) {
     my_type = "Digger";
-    my_life = 3;
-    my_x = 0;
-    my_y = 0;
 }
 
-Digger::Digger( int x, int y ) {
+Digger::Digger( int x, int y ) : CellBase(x,y), my_life(3) {
     my_type = "Digger";
-    my_x = x;
-    my_y = y;
-    my_life = 3;
 }
 
 Digger::Digger( const Digger &d ) {

@@ -14,19 +14,12 @@
  Les Constructeurs
  =============================*/
 
-ValueCell::ValueCell() {
+ValueCell::ValueCell() : CellBase(), my_value(my_value =  randomNumber(MINVAL, MAXVAL)) {
     my_type = "ValueCell";
-    my_x = 0;
-    my_y = 0;
-    //Génération aléatoire de la valeur de la case entre 1 et 6
-    my_value =  MINVAL + (rand() % (MAXVAL - MINVAL));
 }
 
-ValueCell::ValueCell( int x, int y ) {
+ValueCell::ValueCell( int x, int y ) : CellBase(x,y), my_value(my_value =  randomNumber(MINVAL, MAXVAL)) {
     my_type = "ValueCell";
-    my_value = MINVAL + (rand() % (MAXVAL - MINVAL));
-    my_x = x;
-    my_y = y;
 }
 
 ValueCell::ValueCell( const ValueCell &v ) {

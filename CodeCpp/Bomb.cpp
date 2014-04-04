@@ -13,16 +13,12 @@
  Les Constructeurs
  =============================*/
 
-Bomb::Bomb() {
+Bomb::Bomb() : CellBase() {
     my_type = "Bomb";
-    my_x = 0;
-    my_y = 0;
 }
 
-Bomb::Bomb( int x, int y ) {
+Bomb::Bomb( int x, int y ) : CellBase(x,y) {
     my_type = "Bomb";
-    my_x = x;
-    my_y = y;
 }
 
 Bomb::Bomb(const Bomb &b) {
