@@ -58,14 +58,10 @@ GameView::showLanguage() const {
 
 void
 GameView::showGrid() const {
-    #ifdef __linux__
-        for ( int z = 0; z < (COLONNE * 6 + 3); z++ )
-            cout << colorMessage( "-", YELLOW );
-    #elif __APPLE__
-        for ( int z = 0; z < (COLONNE * 5 + 3); z++ )
-            cout << colorMessage( "-", YELLOW );
-    #endif
-   
+    for ( int z = 0; z < (COLONNE * 5 + 3); z++ )
+        cout << colorMessage( "-", YELLOW );
+
+
     cout << endl;
 
     for ( int i = 0; i < LIGNE; i++ ) {
@@ -74,16 +70,11 @@ GameView::showGrid() const {
             cout << *my_model->getLevel()->getGrid()[i][j] << colorMessage( " | ", YELLOW );
         }
         cout << endl;
-        
-        #ifdef __linux
-        for ( int z = 0; z < (COLONNE * 6 + 3); z++ )
-            cout << colorMessage( "-", YELLOW );
-        cout << endl;
-        #else
+
+
         for ( int z = 0; z < (COLONNE * 5 + 3); z++ )
             cout << colorMessage( "-", YELLOW );
         cout << endl;
-        #endif
     }
     cout << endl;
 }
@@ -98,7 +89,7 @@ GameView::showScore() {
     cout << my_messages[my_language][step] << ( my_model->getLevel() )->getCurrentMove() << endl;
     cout << my_messages[my_language][life] << " Digger : " <<  ( ( my_model->getLevel() )->getDigger() )->getLife() << endl;
     cout << my_messages[my_language][position] << " Digger :  [ " << my_model->getLevel()->getDigger()->getX() << " ] [ " << my_model->getLevel()->getDigger()->getY() << " ] " << endl << endl;
-    
+
     cout << my_messages[my_language][ltime];  for ( int i = 0; i < my_model->getLevel()->leftTime(); i++ ) { cout << colorMessage(":", CYAN ); }
     cout << " " << my_model->getLevel()->leftTime() << endl << endl;
 
@@ -229,14 +220,14 @@ GameView::treatGame() {
                     break;
             }
             my_model->reset();
-            
+
             while (isPlaying) {
                 showGrid();
                 showScore();
                 showInstruction();
-                
+
                 cin >> movechoice;
-                
+
                 //Pour ne pas rentrer des choses fausses
                 while ( !(movechoice >= 0 && movechoice <= 9) ) {
                     showInstruction();
@@ -253,7 +244,7 @@ GameView::treatGame() {
                         cout << my_messages[my_language][loosegame] << endl;
                         isPlaying = false;
                     }
-                    
+
                 } else {
                     if ( movechoice == 5 ) {
                         cout << my_messages[my_language][by] << endl;

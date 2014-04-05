@@ -1,9 +1,9 @@
 #define BOOST_TEST_DYN_LINK
-#define BOOST_TEST_MODULE Hello
+#define BOOST_TEST_MODULE PuruPuruTest
 
 #include<boost/test/unit_test.hpp>
-#include "Utils.h"
-#include "Constantes.h"
+#include "../Utils.h"
+#include "../Constantes.h"
 
 //Test des méthodes Utils
 

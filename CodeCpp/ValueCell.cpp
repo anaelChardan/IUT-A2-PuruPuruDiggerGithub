@@ -14,11 +14,11 @@
  Les Constructeurs
  =============================*/
 
-ValueCell::ValueCell() : CellBase(), my_value(my_value =  randomNumber(MINVAL, MAXVAL)) {
+ValueCell::ValueCell() : CellBase(), my_value(randomNumber(MINVAL, MAXVAL)) {
     my_type = "ValueCell";
 }
 
-ValueCell::ValueCell( int x, int y ) : CellBase(x,y), my_value(my_value =  randomNumber(MINVAL, MAXVAL)) {
+ValueCell::ValueCell( int x, int y ) : CellBase(x,y), my_value(randomNumber(MINVAL, MAXVAL)) {
     my_type = "ValueCell";
 }
 

@@ -46,6 +46,14 @@
 					<Add option="-lsfml-audio" />
 				</Linker>
 			</Target>
+			<Target title="UnitTest">
+				<Option output="PuruPuruDigger" prefix_auto="1" extension_auto="1" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Linker>
+					<Add library="boost_unit_test_framework" />
+				</Linker>
+			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
@@ -65,10 +73,12 @@
 		<Unit filename="GameView.cpp">
 			<Option target="Debug" />
 			<Option target="Release" />
+			<Option target="UnitTest" />
 		</Unit>
 		<Unit filename="GameView.h">
 			<Option target="Debug" />
 			<Option target="Release" />
+			<Option target="UnitTest" />
 		</Unit>
 		<Unit filename="GameViewSFML.cpp">
 			<Option target="SFMLMode" />
@@ -86,6 +96,9 @@
 		<Unit filename="Level.h" />
 		<Unit filename="Score.cpp" />
 		<Unit filename="Score.h" />
+		<Unit filename="UnitTest/test.cpp">
+			<Option target="UnitTest" />
+		</Unit>
 		<Unit filename="Utils.cpp" />
 		<Unit filename="Utils.h" />
 		<Unit filename="ValueCell.cpp" />
