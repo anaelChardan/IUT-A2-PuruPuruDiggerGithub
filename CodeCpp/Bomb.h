@@ -53,12 +53,6 @@ class Bomb : public CellBase
         virtual ~Bomb();
 
         /*!
-         *  \brief Avoir la représentation console de la case
-         *
-         */
-        virtual void toString( std::ostream& O) const;
-
-        /*!
          *  \brief Opérateur d'affectation pour recopier une case
          *
          *  \param[b] Bomb c   : opérateur d'affectation pour recopier une Bomb

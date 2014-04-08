@@ -34,16 +34,6 @@ Bomb::Bomb(const Bomb &b) {
 
 Bomb::~Bomb() {}
 
-
-/*===========================
- Les méthodes
- =============================*/
-
-void
-Bomb::toString( std::ostream& O) const {
-    O << colorMessage( "BB", RED);
-}
-
 /*===========================
 Pour éviter la classe abstraite
  =============================*/

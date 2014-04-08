@@ -59,13 +59,7 @@ class GoldCell : public ValueCell {
          *  \return my_points, retourne la valeur de la case
          */
         virtual int getPoints() const;
-    
-        /*!
-         *  \brief Avoir la représentation console de la case
-         *
-         */
-        virtual void toString( std::ostream& O ) const;
-    
+
         /*!
          *  \brief Opérateur d'affectation pour recopier une GoldCell
          *

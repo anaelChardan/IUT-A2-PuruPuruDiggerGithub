@@ -72,15 +72,3 @@ CellBase::operator=(const CellBase &c) {
     }
     return *this;
 }
-
-
-/*===========================
-Une fonction amie qui se fera héritée
- =============================*/
-
-std::ostream& operator<<( std::ostream& O, const CellBase &b ) {
-    b.toString(O);
-    return O;
-}
-
-

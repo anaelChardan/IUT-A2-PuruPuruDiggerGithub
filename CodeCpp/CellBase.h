@@ -135,19 +135,6 @@ class CellBase {
         virtual void lostLife() = 0;
     
         virtual void resetLife() = 0;
-
-         /*!
-          *  \brief Avoir la représentation console de la case
-          *
-          */
-        virtual void toString( std::ostream& O) const = 0;
-
-
-         /*!
-          *  \brief Pour pouvoir utiliser l'opérateur de redirection de flux
-          *
-          */
-        friend std::ostream& operator<<(std::ostream& O, const CellBase& B);
     
 };
 

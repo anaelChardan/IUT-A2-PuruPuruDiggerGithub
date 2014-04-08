@@ -68,13 +68,6 @@ class ValueCell : public CellBase {
         virtual int getPoints() const;
     
         /*!
-         *  \brief Avoir la représentation console de la case
-         *
-         */
-        virtual void toString( std::ostream& O ) const;
-    
-
-        /*!
          *  \brief Opérateur d'affectation pour recopier une ValueCell
          *
          *  \param[in] ValueCell v : opérateur d'affectation pour recopier une GoldCell

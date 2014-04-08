@@ -72,7 +72,6 @@ GameView::showGrid() const {
     for ( int i = 0; i < LIGNE; i++ ) {
         cout << colorMessage( " | ", YELLOW );
         for ( int j = 0; j < COLONNE; j++ ) {
-            {
             if ( dynamic_cast<Digger*>(my_model->getLevel()->getGrid()[i][j]) != NULL )
                 cout << colorMessage( "DD" , WHITE );
                 
@@ -94,9 +93,7 @@ GameView::showGrid() const {
                 cout << colorMessage( out ,  CYAN );
             }
             
-            }
             cout << colorMessage( " | ", YELLOW );
-            //cout << *my_model->getLevel()->getGrid()[i][j] << colorMessage( " | ", YELLOW );
         }
         cout << endl;
 

@@ -74,13 +74,6 @@
         void lostLife();
     
         /*!
-         *  \brief Avoir la représentation console de la case
-         *
-         */
-        virtual void toString( std::ostream& O ) const;
-
-
-        /*!
          *  \brief Opérateur d'affectation pour recopier une Digger
          *
          *  \param[in] Digger d : opérateur d'affectation pour recopier un Digger

@@ -50,14 +50,6 @@ ValueCell::getPoints() const {
     return my_value * 10;
 }
 
-void
-ValueCell::toString( std::ostream& O) const {
-    std::string value = " " + intToString( my_value );
-    const char* out =  value.c_str();
-    O << colorMessage( out ,  CYAN );
-}
-
-
 /*===========================
  Les opérateurs
  =============================*/

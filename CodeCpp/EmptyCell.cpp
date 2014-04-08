@@ -36,16 +36,6 @@ EmptyCell::EmptyCell(const EmptyCell &b) {
 
 EmptyCell::~EmptyCell() {}
 
-
-/*===========================
- Les méthodes
- =============================*/
-
-void
-EmptyCell::toString( std::ostream& O) const {
-    O << colorMessage( "  ", WHITE );
-}
-
 /*===========================
  Pour éviter la classe abstraite
  =============================*/

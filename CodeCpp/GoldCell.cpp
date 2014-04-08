@@ -44,13 +44,6 @@ GoldCell::getPoints() const {
     return ( ValueCell::getPoints() + my_bonus );
 }
 
-void
-GoldCell::toString( std::ostream& O) const {
-    std::string value = "*" + intToString( my_value );
-    const char* out =  value.c_str();
-    O << colorMessage( out ,  PINK );
-}
-
 /*===========================
  Les opérateurs
  =============================*/

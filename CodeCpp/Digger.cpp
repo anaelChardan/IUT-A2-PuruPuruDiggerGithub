@@ -74,11 +74,6 @@ Digger::operator=( const Digger &d ) {
     return *this;
 }
 
-void
-Digger::toString(std::ostream &O ) const {
-    O << colorMessage("DD", WHITE );
-}
-
 /*===========================
  Pour éviter la classe abstraite
  =============================*/
