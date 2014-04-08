@@ -92,7 +92,7 @@ Level::move(  int DeltaX,  int DeltaY ) {
     while ( cpt < nbStep && ( isCellClickable( ( my_digger->getX() + DeltaX ), ( my_digger->getY() + DeltaY ) ) ) ) {
         
         ///Si l'on rencontre un trésor pendant un déplacement
-        if ( my_grid[ ( my_digger->getX() + DeltaX ) ][ ( my_digger->getY() + DeltaY ) ]->getType() == "GoldCell" ) {
+        if ( dynamic_cast<GoldCell*>(my_grid[ ( my_digger->getX() + DeltaX ) ][ ( my_digger->getY() + DeltaY ) ]) !=NULL ) {
             ///On prend les points du bonus
             my_score->addPoints( my_grid[ ( my_digger->getX() + DeltaX ) ][ ( my_digger->getY() + DeltaY ) ]->getPoints() );
         }
@@ -306,21 +306,15 @@ Level::getDigger() const {
 
 bool
 Level::isCellClickable( int click_x, int click_y ) const {
-
-     int x = my_digger->getX();
-     int y = my_digger->getY();
-    
     
     /// Il faut vérifier si l'on ne sort pas du tableau
-    if ( click_x < 0 || click_x == LIGNE || click_y < 0 || click_y == COLONNE ) {
-        return false;
-    }
-
-    ///Il faut d'abord vérifier que la case est juste à côté de notre digger
-    if ( ( ( click_x <= x - 1 ) || ( click_x <= x + 1 ) ) && ( ( click_y <= y - 1 ) || ( click_y <= y + 1 ) ) ) {
-        ///On vérifie son type
-        if ( my_grid[click_x][click_y]->getType() == "ValueCell" || my_grid[click_x][click_y]->getType() == "GoldCell" ) {
-            return true;
+    if ( click_x >= 0 || click_x < LIGNE || click_y >= 0 || click_y < COLONNE ) {
+        ///Il faut d'abord vérifier que la case est juste à côté de notre digger
+        if ( ( ( click_x <= my_digger->getX() - 1 ) || ( click_x <= my_digger->getX() + 1 ) ) && ( ( click_y <= my_digger->getY() - 1 ) || ( click_y <= my_digger->getY() + 1 ) ) ) {
+            ///On vérifie son type
+            if ( dynamic_cast<ValueCell*>(my_grid[click_x][click_y]) != NULL || dynamic_cast<GoldCell*>(my_grid[click_x][click_y]) != NULL ) {
+                return true;
+            }
         }
     }
     return false;

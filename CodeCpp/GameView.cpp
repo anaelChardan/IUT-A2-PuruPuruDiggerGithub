@@ -14,6 +14,11 @@
 #include <sstream>
 #include <cstdlib>
 #include "Utils.h"
+#include "Digger.h"
+#include "Bomb.h"
+#include "EmptyCell.h"
+#include "ValueCell.h"
+#include "GoldCell.h"
 using namespace std;
 
 
@@ -67,7 +72,31 @@ GameView::showGrid() const {
     for ( int i = 0; i < LIGNE; i++ ) {
         cout << colorMessage( " | ", YELLOW );
         for ( int j = 0; j < COLONNE; j++ ) {
-            cout << *my_model->getLevel()->getGrid()[i][j] << colorMessage( " | ", YELLOW );
+            {
+            if ( dynamic_cast<Digger*>(my_model->getLevel()->getGrid()[i][j]) != NULL )
+                cout << colorMessage( "DD" , WHITE );
+                
+            else if ( dynamic_cast<Bomb*>(my_model->getLevel()->getGrid()[i][j]) != NULL )
+                cout << colorMessage( "BB", RED);
+                
+            else if ( dynamic_cast<EmptyCell*>(my_model->getLevel()->getGrid()[i][j]) != NULL )
+                cout << colorMessage( "  ", WHITE );
+                
+            else if ( dynamic_cast<GoldCell*>(my_model->getLevel()->getGrid()[i][j]) != NULL ) {
+                std::string value = "*" + intToString( my_model->getLevel()->getGrid()[i][j]->getValue() );
+                const char* out =  value.c_str();
+                cout << colorMessage( out ,  PINK );
+            }
+                
+            else if ( dynamic_cast<ValueCell*>(my_model->getLevel()->getGrid()[i][j]) != NULL ) {
+                std::string value = " " + intToString( my_model->getLevel()->getGrid()[i][j]->getValue() );
+                const char* out =  value.c_str();
+                cout << colorMessage( out ,  CYAN );
+            }
+            
+            }
+            cout << colorMessage( " | ", YELLOW );
+            //cout << *my_model->getLevel()->getGrid()[i][j] << colorMessage( " | ", YELLOW );
         }
         cout << endl;
 

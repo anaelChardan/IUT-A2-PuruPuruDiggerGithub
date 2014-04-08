@@ -167,6 +167,18 @@
 		03D783B718D09DCD00A1B8AE /* GameViewSFML.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameViewSFML.cpp; sourceTree = SOURCE_ROOT; };
 		03D783B818D09DCD00A1B8AE /* GameViewSFML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewSFML.h; sourceTree = SOURCE_ROOT; };
 		03D783BC18D0A07800A1B8AE /* mainSFML.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mainSFML.cpp; sourceTree = SOURCE_ROOT; };
+		03D8F4E218F3C389003A0948 /* GraphicElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphicElement.cpp; sourceTree = SOURCE_ROOT; };
+		03D8F4E318F3C389003A0948 /* GraphicElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicElement.h; sourceTree = SOURCE_ROOT; };
+		03D8F4E518F3C732003A0948 /* DiggerGraphic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DiggerGraphic.cpp; sourceTree = SOURCE_ROOT; };
+		03D8F4E618F3C732003A0948 /* DiggerGraphic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiggerGraphic.h; sourceTree = SOURCE_ROOT; };
+		03D8F4E818F3CBB6003A0948 /* BombGraphic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BombGraphic.cpp; sourceTree = SOURCE_ROOT; };
+		03D8F4E918F3CBB6003A0948 /* BombGraphic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BombGraphic.h; sourceTree = SOURCE_ROOT; };
+		03D8F4EB18F3CBF1003A0948 /* ValueGraphic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ValueGraphic.cpp; sourceTree = SOURCE_ROOT; };
+		03D8F4EC18F3CBF1003A0948 /* ValueGraphic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValueGraphic.h; sourceTree = SOURCE_ROOT; };
+		03D8F4EE18F3CC1D003A0948 /* GoldGraphic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GoldGraphic.cpp; sourceTree = SOURCE_ROOT; };
+		03D8F4EF18F3CC1D003A0948 /* GoldGraphic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoldGraphic.h; sourceTree = SOURCE_ROOT; };
+		03D8F4F118F3CC29003A0948 /* EmptyGraphic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EmptyGraphic.cpp; sourceTree = SOURCE_ROOT; };
+		03D8F4F218F3CC29003A0948 /* EmptyGraphic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyGraphic.h; sourceTree = SOURCE_ROOT; };
 		03E6822518D300BA004E125C /* case.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = case.png; sourceTree = "<group>"; };
 		03E6822818D306F9004E125C /* wallpapper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wallpapper.png; sourceTree = "<group>"; };
 		03ED313D18B385BA00CF8AA1 /* CellBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellBase.cpp; sourceTree = SOURCE_ROOT; };
@@ -334,6 +346,18 @@
 				03D783BC18D0A07800A1B8AE /* mainSFML.cpp */,
 				03229D1918D35E8A00027190 /* Utils.cpp */,
 				03229D1A18D35E8A00027190 /* Utils.h */,
+				03D8F4E218F3C389003A0948 /* GraphicElement.cpp */,
+				03D8F4E318F3C389003A0948 /* GraphicElement.h */,
+				03D8F4E518F3C732003A0948 /* DiggerGraphic.cpp */,
+				03D8F4E618F3C732003A0948 /* DiggerGraphic.h */,
+				03D8F4E818F3CBB6003A0948 /* BombGraphic.cpp */,
+				03D8F4E918F3CBB6003A0948 /* BombGraphic.h */,
+				03D8F4EB18F3CBF1003A0948 /* ValueGraphic.cpp */,
+				03D8F4EC18F3CBF1003A0948 /* ValueGraphic.h */,
+				03D8F4EE18F3CC1D003A0948 /* GoldGraphic.cpp */,
+				03D8F4EF18F3CC1D003A0948 /* GoldGraphic.h */,
+				03D8F4F118F3CC29003A0948 /* EmptyGraphic.cpp */,
+				03D8F4F218F3CC29003A0948 /* EmptyGraphic.h */,
 			);
 			path = PuruPuruDigger;
 			sourceTree = "<group>";

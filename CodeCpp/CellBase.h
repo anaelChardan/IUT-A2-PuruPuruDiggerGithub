@@ -148,6 +148,7 @@ class CellBase {
           *
           */
         friend std::ostream& operator<<(std::ostream& O, const CellBase& B);
+    
 };
 
 

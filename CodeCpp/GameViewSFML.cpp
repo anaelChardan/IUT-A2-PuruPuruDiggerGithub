@@ -232,14 +232,12 @@ GameView::setAnanasMode() {
 //Cette méthode sert à mettre un text à un string, le positionner, et le dessiner
 void
 GameView::setTextAndDraw( sf::String* s, string text, int x, int y, bool useSizeRectX ) {
-    bool sizeIsChanged = false;
   
     s->SetText(text);
     
     if ( s->GetRect().GetWidth() > WINDOWWITDH ) {
         while ( s->GetRect().GetWidth() > WINDOWWITDH )
             s->SetSize( s->GetSize() - 5 );
-        sizeIsChanged = true;
     }
     
     if ( useSizeRectX )
