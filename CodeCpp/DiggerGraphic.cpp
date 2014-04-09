@@ -10,23 +10,33 @@
 
 
 DiggerGraphic::DiggerGraphic() {
-    sprite.SetImage( image );
+    my_sprite.SetImage( my_image );
 }
 
 bool
 DiggerGraphic::setAnanasMode() {
 #ifdef __linux__
-    return image.LoadFromFile("Pictures/case.png");
+    return my_image.LoadFromFile("Pictures/case.png");
 #else
-    return image.LoadFromFile("case.png");
+    return my_image.LoadFromFile("case.png");
 #endif
 }
 
 bool
 DiggerGraphic::setTeacherMode() {
 #ifdef __linux__
-    return image.LoadFromFile("Pictures/caseTeach.png");
+    return my_image.LoadFromFile("Pictures/caseTeach.png");
 #else
-    return image.LoadFromFile("caseTeach.png");
+    return my_image.LoadFromFile("caseTeach.png");
 #endif
+}
+
+void
+DiggerGraphic::draw( sf::RenderWindow * _window ) {
+    _window->Draw(my_sprite);
+}
+
+void
+DiggerGraphic::setSpriteAndDraw(int x, int y, sf::RenderWindow* window ) {
+    my_sprite.SetPosition( x, y );
 }

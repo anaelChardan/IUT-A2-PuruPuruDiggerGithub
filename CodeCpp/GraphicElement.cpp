@@ -7,8 +7,3 @@
 //
 
 #include "GraphicElement.h"
-
-void
-GraphicElement::Render( sf::RenderTarget &target ) const {
-    target.Draw(sprite);
-}

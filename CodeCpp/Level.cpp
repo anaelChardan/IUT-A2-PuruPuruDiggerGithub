@@ -49,7 +49,7 @@ Level::Level(Score* score) {
     my_win = false;
     my_lose = false;
 
-    //On fait pointé notre Digger dessus cette case;
+    //On fait pointé notre case sur notre digger;
     my_grid[0][0] = my_digger;
 
     //On appelle la fonction n'initialisation
@@ -214,28 +214,44 @@ Level::winLevel() {
 void
 Level::reset() {
 
-    CellBase* temp = new Digger();
+    //Plusieurs tentatives;
     
+    //CellBase* temp = new Digger();
+    
+    //Digger* ptr_my_digger = dynamic_cast<Digger*>(my_digger);
+   
+    Digger* digger_temp = new Digger( *my_digger ) ;
+    
+    /*
+    if ( ptr_my_digger != NULL )
+        *digger_temp = *ptr_my_digger;
+     */
+     /*
     while ( temp->getLife() != my_digger->getLife() ) {
         temp->lostLife();
     }
+    */
     
-    
-    //On delete tout !!
+    //On delete tout sinon ça bug, et c'est désagréable d'éviter le digger
+    //ou de le déplacer à une case spécifique, au moins pas de risques !!
     for (  int i = 0; i < LIGNE; i++ ) {
         for (  int j = 0; j < COLONNE; j++ ) {
-            delete my_grid[i][j];
+            //if ( i != my_digger->getX() && j != my_digger->getY() )
+                delete my_grid[i][j];
         }
     }
     
-    my_digger = new Digger();
-    
+    my_digger = new Digger( *digger_temp );
+   
+    /*
     while ( temp->getLife() != my_digger->getLife() ) {
         my_digger->lostLife();
     }
+    */
     
     my_grid[0][0] = my_digger;
-    delete temp;
+    //delete temp;
+    delete digger_temp;
     resetTime();
     initGrid();
     
@@ -256,7 +272,17 @@ void Level::resetLose() {
 void
 Level::lostLevel() {
     my_lose = true;
+    
     //On fait perdre une vie au digger
+   
+    /* IDEE N°2 SI my_digger serait une CellBase*
+   
+     Digger *cloneDigger = dynamic_cast<Digger*>(my_digger);
+    if ( cloneDigger != NULL ) {
+        cloneDigger->lostLife();
+    }
+     */
+    
     my_digger->lostLife();
     //On reset le score actuel
     my_score->resetScore();
@@ -308,7 +334,7 @@ bool
 Level::isCellClickable( int click_x, int click_y ) const {
     
     /// Il faut vérifier si l'on ne sort pas du tableau
-    if ( click_x >= 0 || click_x < LIGNE || click_y >= 0 || click_y < COLONNE ) {
+    if ( click_x >= 0 && click_x < LIGNE && click_y >= 0 && click_y < COLONNE ) {
         ///Il faut d'abord vérifier que la case est juste à côté de notre digger
         if ( ( ( click_x <= my_digger->getX() - 1 ) || ( click_x <= my_digger->getX() + 1 ) ) && ( ( click_y <= my_digger->getY() - 1 ) || ( click_y <= my_digger->getY() + 1 ) ) ) {
             ///On vérifie son type

@@ -14,11 +14,13 @@
 #include "GraphicElement.h"
 class DiggerGraphic : public GraphicElement {
     protected :
-        static sf::Image image;
+        static sf::Image my_image;
     public :
         DiggerGraphic();
         virtual bool setAnanasMode();
         virtual bool setTeacherMode();
+        virtual void draw( sf::RenderWindow * _window );
+        virtual void setSpriteAndDraw( int x, int y, sf::RenderWindow * _window );
 };
 
 

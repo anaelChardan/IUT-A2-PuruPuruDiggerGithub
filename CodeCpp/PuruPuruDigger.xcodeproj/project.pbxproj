@@ -49,6 +49,12 @@
 		0382DB5418C9A36700E93483 /* Digger.h in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314118B385BA00CF8AA1 /* Digger.h */; };
 		039F92B118E0A7FD008D3F85 /* gridMusic.wav in Resources */ = {isa = PBXBuildFile; fileRef = 039F92B018E0A7FD008D3F85 /* gridMusic.wav */; };
 		03A0EFC018C5D0B900F57E1A /* bestScores.txt in Resources */ = {isa = PBXBuildFile; fileRef = 03A0EFBF18C5D0B900F57E1A /* bestScores.txt */; };
+		03AC0B5918F4403E006120CD /* GraphicElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D8F4E218F3C389003A0948 /* GraphicElement.cpp */; };
+		03AC0B5A18F4403E006120CD /* DiggerGraphic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D8F4E518F3C732003A0948 /* DiggerGraphic.cpp */; };
+		03AC0B5B18F4403E006120CD /* BombGraphic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D8F4E818F3CBB6003A0948 /* BombGraphic.cpp */; };
+		03AC0B5C18F4403E006120CD /* ValueGraphic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D8F4EB18F3CBF1003A0948 /* ValueGraphic.cpp */; };
+		03AC0B5D18F4403E006120CD /* GoldGraphic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D8F4EE18F3CC1D003A0948 /* GoldGraphic.cpp */; };
+		03AC0B5E18F4403E006120CD /* EmptyGraphic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D8F4F118F3CC29003A0948 /* EmptyGraphic.cpp */; };
 		03AF1FAE18DDC8880063D142 /* languages.png in Resources */ = {isa = PBXBuildFile; fileRef = 03AF1FAD18DDC8880063D142 /* languages.png */; };
 		03D7839918D097E100A1B8AE /* ValueCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0377341218B9FFDF00D5AFA0 /* ValueCell.cpp */; };
 		03D7839A18D097E100A1B8AE /* LanguageMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 033D7D8318C8C6C400BA0091 /* LanguageMessage.cpp */; };
@@ -514,6 +520,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03AC0B5918F4403E006120CD /* GraphicElement.cpp in Sources */,
+				03AC0B5A18F4403E006120CD /* DiggerGraphic.cpp in Sources */,
+				03AC0B5B18F4403E006120CD /* BombGraphic.cpp in Sources */,
+				03AC0B5C18F4403E006120CD /* ValueGraphic.cpp in Sources */,
+				03AC0B5D18F4403E006120CD /* GoldGraphic.cpp in Sources */,
+				03AC0B5E18F4403E006120CD /* EmptyGraphic.cpp in Sources */,
 				03D783BE18D0A07800A1B8AE /* mainSFML.cpp in Sources */,
 				03D7839918D097E100A1B8AE /* ValueCell.cpp in Sources */,
 				03D7839A18D097E100A1B8AE /* LanguageMessage.cpp in Sources */,

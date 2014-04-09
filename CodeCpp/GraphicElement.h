@@ -16,14 +16,14 @@
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
 
-class GraphicElement : public sf::Drawable {
+class GraphicElement {
     protected :
-        sf::Sprite sprite;
+        sf::Sprite my_sprite;
     public :
         virtual bool setTeacherMode() = 0;
         virtual bool setAnanasMode() = 0;
-        virtual void draw() = 0;
-        virtual void Render( sf::RenderTarget &target ) const;
+        virtual void draw( sf::RenderWindow * _window ) const = 0;
+        virtual void setSpriteAndDraw( int x, int y, sf::RenderWindow * _window ) = 0;
 };
 
 #endif /* defined(__PuruPuruDigger__GraphicElement__) */

@@ -28,7 +28,7 @@ class Level {
     
         //La composition de notre Level
         Score* my_score;        /*!<  Score de notre Level */
-        CellBase* my_digger;    /*!<  Digger de notre Level */
+        Digger* my_digger;    /*!<  Digger de notre Level */
         Grid my_grid;           /*!<  Grille de notre Level */
     
     
