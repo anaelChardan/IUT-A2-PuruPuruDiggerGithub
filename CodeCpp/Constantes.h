@@ -19,7 +19,6 @@ const int MAXOBJ = 10;
 const int MINVALB = 10;
 const int MAXVALB = 100;
 
-
 //Relatif aux couleurs consoles
 const int RED   = 31;
 const int GREEN = 32;

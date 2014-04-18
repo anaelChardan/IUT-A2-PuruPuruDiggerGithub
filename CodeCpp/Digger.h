@@ -15,11 +15,12 @@
 
 /*! \class CellBase
  *  \brief Classe modélisant ce qu'est un digger
-*/class Digger : public CellBase
-{
+*/
+class Digger : public CellBase {
     private :
         int my_life; /*!<  le nombre de vie du digger */
-
+        void toClone( const Digger &d);
+    
     public :
 
         //Les contructeurs
@@ -74,27 +75,18 @@
         void lostLife();
     
         /*!
+         *  \brief Remets à 3 la vie du digger
+         *
+         */
+        virtual void resetLife();
+        /*!
          *  \brief Opérateur d'affectation pour recopier une Digger
          *
          *  \param[in] Digger d : opérateur d'affectation pour recopier un Digger
          */
         virtual Digger& operator=( const Digger &d );
-
-        /*!
-         *  \brief Retourne les points que va ajouter la case dans les scores
-         *
-         *  \return my_value, retourne la valeur de la case
-         */
-        virtual int getValue() const;
+ 
     
-        /*!
-         *  \brief Retourne les points que va ajouter la case dans les scores
-         *
-         *  \return my_points, retourne la valeur de la case
-         */
-        virtual int getPoints() const;
-    
-        virtual void resetLife();
     
 };
 

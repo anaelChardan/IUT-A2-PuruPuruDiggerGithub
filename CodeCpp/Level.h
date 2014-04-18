@@ -13,6 +13,8 @@
 #include "Score.h"
 #include "Digger.h"
 #include "CellBase.h"
+#include "ValueCell.h"
+#include "GoldCell.h"
 #include "Bomb.h"
 #include "Constantes.h"
 #include <ctime>
@@ -34,7 +36,7 @@ class Level {
     
         //Les objectifs de notre Level
         int my_goal;            /*!<  Objectif en Point de notre Level */
-        int my_currentMove;     /*!<  Objectif en Point de notre Level */
+        int my_currentMove;     /*!<  Mouvement en cours */
         int my_bonus;           /*!<  Bonus en Point de notre Level */
     
         //Les attributs temporels
@@ -44,6 +46,9 @@ class Level {
         //La connaissance de ce qu'il se passe dans notre Level.
         bool my_win;            /*!<  Savoir si je viens de gagner un Level */
         bool my_lose;           /*!<  Savoir si je viens de perdre un Level */
+
+        ValueCell* ptr_valueCell;
+        GoldCell* ptr_goldCell;
 
     
         /*!
@@ -142,8 +147,7 @@ class Level {
          *
          * \return un pointeur sur notre digger
          */
-        CellBase* const getDigger() const ;
-    
+        Digger* const getDigger() const ;
     
         /*!
          *  \brief Connaître si la case est franchissable ( de type numérique et à côté du Digger

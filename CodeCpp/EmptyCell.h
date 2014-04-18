@@ -53,46 +53,7 @@ class EmptyCell : public CellBase {
          *  \param[b] EmptyCell b   : opérateur d'affectation pour recopier une EmptyCell
          */
         virtual EmptyCell& operator=(const EmptyCell & b);
-
-    private :
-    
-        /*!
-         *  \brief Retourne les points que va ajouter la case dans les scores
-         *
-         *  \return my_value, retourne la valeur de la case
-         */
-        virtual int getValue() const;
-        
-        /*!
-         *  \brief Retourne les points que va ajouter la case dans les scores
-         *
-         *  \return my_points, retourne la valeur de la case
-         */
-        virtual int getPoints() const;
-        
-        /*!
-         *  \brief Retourne la vie du Digger
-         *
-         *  \return my_life, la vie du digger pour éviter l'abstraction de la classe
-         */
-        virtual int getLife() const;
-        
-        /*!
-         *  \brief Ajouter une vie au digger
-         *  Pour éviter la classe abstraite
-         *
-         */
-        virtual void addLife();
-        
-        /*!
-         *  \brief Enlever une vie au digger
-         *  Pour éviter la classe abstraite
-         *
-         */
-        virtual void lostLife();
-    
-        virtual void resetLife();
-    
+  
 };
 
 #endif /* defined(__PuruPuruDigger__EmptyCell__) */

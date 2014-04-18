@@ -20,7 +20,8 @@ class GoldCell : public ValueCell {
     
     private :
     
-    int my_bonus; /*!<  Notre bonus */
+        int my_bonus; /*!<  Notre bonus */
+        virtual void toClone( const GoldCell& g);
     
     public :
     
@@ -66,32 +67,6 @@ class GoldCell : public ValueCell {
          *  \param[in] GoldCell g : opérateur d'affectation pour recopier une GoldCell
          */
         virtual GoldCell& operator=( const GoldCell &g );
-    
-    private :
-    
-        /*!
-         *  \brief Retourne la vie du Digger
-         *
-         *  \return my_life, la vie du digger pour éviter l'abstraction de la classe
-         */
-        virtual int getLife() const;
-    
-        /*!
-         *  \brief Ajouter une vie au digger
-         *  Pour éviter la classe abstraite
-         *
-         */
-        virtual void addLife();
-    
-    
-        /*!
-         *  \brief Enlever une vie au digger
-         *  Pour éviter la classe abstraite
-         *
-         */
-        virtual void lostLife();
-    
-     virtual void resetLife();
     
 };
 

@@ -1,11 +1,3 @@
-//
-//  GraphicElement.h
-//  PuruPuruDigger
-//
-//  Created by Ananas-Mac on 08/04/2014.
-//
-//
-
 #ifndef __PuruPuruDigger__GraphicElement__
 #define __PuruPuruDigger__GraphicElement__
 
@@ -20,10 +12,13 @@ class GraphicElement {
     protected :
         sf::Sprite my_sprite;
     public :
-        virtual bool setTeacherMode() = 0;
-        virtual bool setAnanasMode() = 0;
-        virtual void draw( sf::RenderWindow * _window ) const = 0;
-        virtual void setSpriteAndDraw( int x, int y, sf::RenderWindow * _window ) = 0;
+        virtual ~GraphicElement();
+        virtual void setTeacherMode() = 0; // On change l'image
+        virtual void setAnanasMode() = 0; // On change l'image
+        virtual void setImageToSprite() = 0; // On associt l'image à son sprite
+        virtual void setSpriteAndDraw( int x, int y, sf::RenderWindow * _window );
+        virtual void draw( sf::RenderWindow* _window ) const ;
+        bool isInZone( int x, int y ) const;
 };
 
 #endif /* defined(__PuruPuruDigger__GraphicElement__) */

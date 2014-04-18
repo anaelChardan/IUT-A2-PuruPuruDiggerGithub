@@ -15,19 +15,12 @@ using namespace std;
  Les Constructeurs
  =============================*/
 
-Digger::Digger() : CellBase(), my_life(3) {
-    my_type = "Digger";
-}
+Digger::Digger() : CellBase(), my_life(3) { }
 
-Digger::Digger( int x, int y ) : CellBase(x,y), my_life(3) {
-    my_type = "Digger";
-}
+Digger::Digger( int x, int y ) : CellBase(x,y), my_life(3) { }
 
 Digger::Digger( const Digger &d ) {
-    my_type = d.my_type;
-    my_x = d.my_x;
-    my_y = d.my_y;
-    my_life = d.my_life;
+    toClone(d);
 }
 
 /*===========================
@@ -66,25 +59,14 @@ Digger::resetLife() {
 Digger&
 Digger::operator=( const Digger &d ) {
     if ( this != &d ) {
-        my_x = d.my_x;
-        my_y = d.my_y;
-        my_type = d.my_type;
-        my_life = d.my_life;
+        toClone(d);
     }
     return *this;
 }
 
-/*===========================
- Pour éviter la classe abstraite
- =============================*/
-
-int
-Digger::getValue() const {
-    return -1;
-};
-
-int
-Digger::getPoints() const {
-    return -1;
-};
+void
+Digger::toClone( const Digger &d ) {
+    CellBase::toClone(d);
+    my_life = d.my_life;
+}
 

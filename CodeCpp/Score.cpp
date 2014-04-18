@@ -27,6 +27,7 @@ Score::getCurrentStep() const {
 int
 Score::getGlobale() const {
     int sum = 0;
+    //On prends pas la case en cours.
     int size = static_cast<int>( my_success.size() );
     for ( int i = 0;  i < size - 1; ++i )
         sum += my_success[i];

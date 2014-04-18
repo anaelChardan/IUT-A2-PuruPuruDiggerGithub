@@ -12,20 +12,12 @@
  Les Constructeurs
  =============================*/
 
-GoldCell::GoldCell() : ValueCell(), my_bonus(randomNumber(MINVALB, MAXVALB)) {
-    my_type = "GoldCell";
-}
+GoldCell::GoldCell() : ValueCell(), my_bonus(randomNumber(MINVALB, MAXVALB)) { }
 
-GoldCell::GoldCell( int x, int y ) : ValueCell( x, y ), my_bonus(randomNumber(MINVALB, MAXVALB)) {
-    my_type = "GoldCell";
-}
+GoldCell::GoldCell( int x, int y ) : ValueCell( x, y ), my_bonus(randomNumber(MINVALB, MAXVALB)) { }
 
 GoldCell::GoldCell( const GoldCell &g ) {
-    my_type = g.my_type;
-    my_x = g.my_x;
-    my_y = g.my_y;
-    my_value = g.my_value;
-    my_bonus = g.my_bonus;
+    toClone(g);
 }
 
 /*===========================
@@ -51,29 +43,13 @@ GoldCell::getPoints() const {
 GoldCell&
 GoldCell::operator=(const GoldCell &v) {
     if ( this != &v ){
-        my_type = v.my_type;
-        my_value = v.my_value;
-        my_bonus = v.my_bonus;
-        my_x = v.my_x;
-        my_y = v.my_y;
+        toClone(v);
     }
     return *this;
 }
 
-/*===========================
- Pour éviter la classe abstraite
- =============================*/
-
-int
-GoldCell::getLife() const {
-    return -1;
+void
+GoldCell::toClone(const GoldCell &g) {
+    ValueCell::toClone(g);
+    my_bonus = g.my_bonus;
 }
-
-void
-GoldCell::addLife() { }
-
-void
-GoldCell::lostLife() { }
-
-void
-GoldCell::resetLife() { }

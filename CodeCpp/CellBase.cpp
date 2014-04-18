@@ -13,15 +13,12 @@
 Les Constructeurs
 =============================*/
 
-CellBase::CellBase()  : my_type("CellBase") , my_x(0), my_y(0) { }
+CellBase::CellBase() :  my_x(0), my_y(0) { }
 
-CellBase::CellBase( int x, int y ) : my_type("CellBase"), my_x(x), my_y(y) { }
-
+CellBase::CellBase( int x, int y ) : my_x(x), my_y(y) { }
 
 CellBase::CellBase(const CellBase &c ) {
-    my_type = c.my_type;
-    my_x = c.my_x;
-    my_y = c.my_y;
+    toClone(c);
 }
 
 /*===========================
@@ -44,11 +41,6 @@ CellBase::getY() const {
     return my_y;
 }
 
-std::string
-CellBase::getType() const {
-    return my_type;
-}
-
 void
 CellBase::setX( int x ) {
     my_x = x;
@@ -66,9 +58,26 @@ CellBase::setY( int y ) {
 CellBase&
 CellBase::operator=(const CellBase &c) {
     if ( this != &c ) {
-        my_x = c.my_x;
-        my_y = c.my_y;
-        my_type = c.my_type;
+        toClone(c);
     }
     return *this;
 }
+
+std::string
+CellBase::getType() {
+    if ( my_type == "" ) {
+        my_type = typeid(*this).name();
+        while ( my_type[0] >= '0' && my_type[0] <= '9' ) {
+            my_type.erase(0,1);
+        }
+    }
+    return my_type;
+}
+
+void
+CellBase::toClone(const CellBase &c) {
+    my_x = c.my_x;
+    my_y = c.my_y;
+    my_type = c.my_type;
+}
+

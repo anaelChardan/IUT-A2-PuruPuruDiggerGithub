@@ -16,10 +16,22 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
+#include "CellBaseGraphic.h"
+#include "LanguageGraphic.h"
+#include "ButtonGraphic.h"
+#include "GraphicMusic.h"
+#include "GraphicSound.h"
+#include "BackgroundGraphic.h"
+#include "ValueGraphic.h"
+#include "GoldGraphic.h"
+
 #include <string>
 
 #include "GameModel.h"
 #include "LanguageMessage.h"
+#include "GraphicElement.h"
+#include "AnanasSprite.h"
+#include "TeacherSprite.h"
 
 class GameView {
     private :
@@ -28,86 +40,52 @@ class GameView {
         LanguageMessage my_messages; /*!<  La bibliothèque de message de notre partie */
         GameModel * my_model; /*!<  La modèle de notre vue */
 
-        std::map< std::string, sf::Sprite* > my_stringToSprite;
-        std::map< Language, sf::Sprite* > my_languageToSprite;
+        std::map< std::string, CellBaseGraphic* > my_stringToSprite;
+        std::map< Language, LanguageGraphic* > my_languageToSprite;
 
         sf::RenderWindow* my_window;
 
         sf::Font* my_fontScore;
         sf::Font* my_fontTitle;
-        sf::Font* my_fontValue;
-        sf::Font* my_fontButton;
 
-        sf::String* my_valueString; // Valeurs dans la grille
         sf::String* my_titleScoreString; // Titre des scores
         sf::String* my_scoreString; // Enoncé dans la grille
         sf::String* my_scoreNum; // Les scores en numéro
         sf::String* my_titleString; // Les titres de pages
-        sf::String* my_buttonString; // Pour les boutons
-
-        //Les images
-        sf::Image* my_backgroundImage;
-        sf::Image* my_caseImage;
-        sf::Image* my_buttonImage;
-        sf::Image* my_languageImage;
-        sf::Image* my_spriteImage;
-        sf::Image* my_iconImage;
-
-        //Mes sprites pour les cases
-        sf::Sprite* my_diggerSprite;
-        sf::Sprite* my_valueSprite;
-        sf::Sprite* my_goldSprite;
-        sf::Sprite* my_emptySprite;
-        sf::Sprite* my_bombSprite;
-
-        //Les boutons
-        sf::Sprite* my_optionButtonSprite;
-        sf::Sprite* my_playButtonSprite;
-        sf::Sprite* my_bestButtonSprite;
-        sf::Sprite* my_buttonQuitSprite;
-        sf::Sprite* my_quitButtonSprite;
-
-        //Mon sprite pour le background
-        sf::Sprite* my_backgroundSprite;
-
-        //Mes sprites pour les langues
-        sf::Sprite* my_frenchSprite;
-        sf::Sprite* my_englishSprite;
-        sf::Sprite* my_deutschSprite;
-        sf::Sprite* my_italianoSprite;
-        sf::Sprite* my_spanishSprite;
-
-        //Les sprites pour les choix de sprite
-        sf::Sprite* my_ananasSprite;
-        sf::Sprite* my_teacherSprite;
-
-        //Les sprites pour les icones
-        sf::Sprite* my_musicIcon;
-        sf::Sprite* my_soundIcon;
+    
+        ButtonGraphic my_playButton;
+        ButtonGraphic my_settingButton;
+        ButtonGraphic my_bestButton;
+        ButtonGraphic my_quitButton;
+    
+        GraphicMusic my_musicIcon;
+        GraphicSound my_soundIcon;
+    
+        AnanasSprite my_ananasSprite;
+        TeacherSprite my_teacherSprite;
+    
+        BackgroundGraphic my_background;
+    
+        GoldCell* ptr_goldCell;
+        ValueCell* ptr_valueCell;
+        GoldGraphic* ptr_goldGraphic;
+        ValueGraphic* ptr_valueGraphic;
 
         //Pour les sons
         sf::Music *my_musicLevel;
 
 
-    void setImageToSprite();
-
-    //Savoir si un point est dans une zone donnée
-    bool isInZone( int x, int y, int px, int py, int w, int h );
     /*!
      *  \brief Affichage Menu principal
      */
     void showPresentation();
     void setButtonHover( sf::Sprite* buttonToHover );
     void resetButtonNorm();
-    void setHoverLanguage( Language hover );
     void resetLanguageNorm();
     void showLanguage();
 
     void setTextAndDraw( sf::String* s, std::string text, int x, int y, bool useSizeRectX );
 
-
-    void configureSpriteAndDraw( sf::Sprite* s, int x, int y );
-    void setSprite( sf::Sprite* s, sf::Image* i, int subsX, int subsY, int subeX, int subeY, int w, int h );
     /*!
      *  \brief Affichage choix des langes
      */
@@ -150,8 +128,6 @@ class GameView {
      */
     void enterScore(std::string nom) const ;
 
-    void reverseMusic( bool music );
-    void reverseSound( bool sound );
 
 public:
 

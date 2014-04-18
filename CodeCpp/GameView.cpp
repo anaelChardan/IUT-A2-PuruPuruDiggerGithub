@@ -21,12 +21,18 @@
 #include "GoldCell.h"
 using namespace std;
 
-
-
-void GameView::setModel(GameModel *model) {
-    my_model = model;
+GameView::GameView() {
+    my_typeToString["Digger"] = colorMessage( "DD" , WHITE );
+    my_typeToString["Bomb"] = colorMessage( "BB", RED);
+    my_typeToString["EmptyCell"] = colorMessage( "  ", WHITE );
+    my_typeToString["GoldCell"] = colorMessage( "*",  PINK );
+    my_typeToString["ValueCell"] = colorMessage( " " ,  CYAN );
 }
 
+void
+GameView::setModel(GameModel *model) {
+    my_model = model;
+}
 
 void
 GameView::showPresentation() const {
@@ -62,9 +68,13 @@ GameView::showLanguage() const {
 }
 
 void
-GameView::showGrid() const {
-    for ( int z = 0; z < (COLONNE * 5 + 3); z++ )
-        cout << colorMessage( "-", YELLOW );
+GameView::showGrid() {
+    for ( int z = 0; z < (COLONNE * 5 + 3); z++ ) {
+        if ( z%5 == 1 )
+            cout << colorMessage( "+", YELLOW );
+        else
+            cout << colorMessage( "-", YELLOW );
+    }
 
 
     cout << endl;
@@ -72,25 +82,18 @@ GameView::showGrid() const {
     for ( int i = 0; i < LIGNE; i++ ) {
         cout << colorMessage( " | ", YELLOW );
         for ( int j = 0; j < COLONNE; j++ ) {
-            if ( dynamic_cast<Digger*>(my_model->getLevel()->getGrid()[i][j]) != NULL )
-                cout << colorMessage( "DD" , WHITE );
-                
-            else if ( dynamic_cast<Bomb*>(my_model->getLevel()->getGrid()[i][j]) != NULL )
-                cout << colorMessage( "BB", RED);
-                
-            else if ( dynamic_cast<EmptyCell*>(my_model->getLevel()->getGrid()[i][j]) != NULL )
-                cout << colorMessage( "  ", WHITE );
-                
-            else if ( dynamic_cast<GoldCell*>(my_model->getLevel()->getGrid()[i][j]) != NULL ) {
-                std::string value = "*" + intToString( my_model->getLevel()->getGrid()[i][j]->getValue() );
-                const char* out =  value.c_str();
-                cout << colorMessage( out ,  PINK );
+            
+            cout << my_typeToString.at(my_model->getLevel()->getGrid()[i][j]->getType());
+            
+            if ( (my_model->getLevel()->getGrid()[i][j])->getType()  == "GoldCell" ) {
+                //On copie le contenu du pointeur donné, qui ne renverra normalement pas nul
+                ptr_goldCell = dynamic_cast<GoldCell*>(my_model->getLevel()->getGrid()[i][j]);
+                cout << colorMessage( intToString( ptr_goldCell->getValue() ).c_str(), PINK);
             }
-                
-            else if ( dynamic_cast<ValueCell*>(my_model->getLevel()->getGrid()[i][j]) != NULL ) {
-                std::string value = " " + intToString( my_model->getLevel()->getGrid()[i][j]->getValue() );
-                const char* out =  value.c_str();
-                cout << colorMessage( out ,  CYAN );
+            else if ( (my_model->getLevel()->getGrid()[i][j])->getType()  == "ValueCell" ) {
+                //On copie le contenu du pointeur donné, qui ne renverra normalement pas nul
+                ptr_valueCell = dynamic_cast<ValueCell*>(my_model->getLevel()->getGrid()[i][j]);
+                cout << colorMessage( intToString( ptr_valueCell->getValue() ).c_str() ,  CYAN );
             }
             
             cout << colorMessage( " | ", YELLOW );
@@ -98,8 +101,12 @@ GameView::showGrid() const {
         cout << endl;
 
 
-        for ( int z = 0; z < (COLONNE * 5 + 3); z++ )
-            cout << colorMessage( "-", YELLOW );
+        for ( int z = 0; z < (COLONNE * 5 + 3); z++ ) {
+            if ( z%5 == 1 )
+                cout << colorMessage( "+", YELLOW );
+            else
+                cout << colorMessage( "-", YELLOW );
+        }
         cout << endl;
     }
     cout << endl;
@@ -139,10 +146,7 @@ GameView::showBestScore() const {
     if ( scoreLect ) {
         string line;
 
-        cout << endl;
-        cout << endl;
-
-        cout << " Best Scores " << endl << endl;
+        cout << endl << endl << " Best Scores " << endl << endl;
 
         while ( getline(scoreLect, line) ) {
             cout << line << endl;
@@ -173,7 +177,7 @@ GameView::enterScore( string nom ) const{
         }
 
 
-        //On ajoute notre joueur ‡ la map
+        //On ajoute notre joueur dans la map
         Scores[scorePlayer] = nom;
 
         scoreLect.close();

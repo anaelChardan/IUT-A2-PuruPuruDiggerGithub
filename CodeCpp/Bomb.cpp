@@ -9,71 +9,33 @@
 #include "Bomb.h"
 
 
-/*===========================
+/*============================
  Les Constructeurs
  =============================*/
 
-Bomb::Bomb() : CellBase() {
-    my_type = "Bomb";
-}
+Bomb::Bomb() : CellBase() { }
 
-Bomb::Bomb( int x, int y ) : CellBase(x,y) {
-    my_type = "Bomb";
-}
+Bomb::Bomb( int x, int y ) : CellBase(x,y) { }
 
 Bomb::Bomb(const Bomb &b) {
-    my_type = b.my_type;
-    my_x = b.my_x;
-    my_y = b.my_y;
+    CellBase::toClone(b);
 }
 
-
-/*===========================
+/*============================
  Le Destructeur
  =============================*/
 
 Bomb::~Bomb() {}
 
-/*===========================
-Pour éviter la classe abstraite
- =============================*/
-
-int
-Bomb::getPoints() const {
-    return -1;
-}
-
-int
-Bomb::getValue() const {
-    return -1;
-}
-
-int
-Bomb::getLife() const {
-    return -1;
-}
-
-void
-Bomb::addLife() { }
-
-void
-Bomb::lostLife() { }
-
-void
-Bomb::resetLife() { }
-
-
-
-/*===========================
+/*============================
  Les opérateurs
  =============================*/
 
 Bomb&
 Bomb::operator=(const Bomb &b) {
     if ( this != &b ){
-        my_type = b.my_type;
-        my_x = b.my_x;
-        my_y = b.my_y;
+        CellBase::toClone(b);
     }
     return *this;
 }
+

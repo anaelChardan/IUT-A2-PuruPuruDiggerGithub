@@ -16,9 +16,16 @@
 		03229D1C18D35E8A00027190 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03229D1918D35E8A00027190 /* Utils.cpp */; };
 		03229D1D18D35E8A00027190 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03229D1918D35E8A00027190 /* Utils.cpp */; };
 		0325500E18EBFD6A00496C08 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0325500D18EBFD6A00496C08 /* icon.png */; };
+		03315F4D18FE76F3009C4157 /* GraphicAudibleElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03315F4B18FE76F3009C4157 /* GraphicAudibleElement.cpp */; };
+		03315F5018FE7852009C4157 /* GraphicMusic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03315F4E18FE7852009C4157 /* GraphicMusic.cpp */; };
+		03315F5318FE7BF2009C4157 /* GraphicSound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03315F5118FE7BF2009C4157 /* GraphicSound.cpp */; };
 		033174D018E16B2700F2E406 /* choiceSprite.png in Resources */ = {isa = PBXBuildFile; fileRef = 033174CF18E16B2700F2E406 /* choiceSprite.png */; };
 		033D7D8518C8C6C400BA0091 /* LanguageMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 033D7D8318C8C6C400BA0091 /* LanguageMessage.cpp */; };
 		033F710B18D2213A0064FAF5 /* valueFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 033F710A18D2213A0064FAF5 /* valueFont.ttf */; };
+		036246D8190127650012039E /* BackgroundGraphic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 036246D6190127650012039E /* BackgroundGraphic.cpp */; };
+		036246DB190127900012039E /* SpriteGraphic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 036246D9190127900012039E /* SpriteGraphic.cpp */; };
+		036246DE1901442D0012039E /* AnanasSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 036246DC1901442D0012039E /* AnanasSprite.cpp */; };
+		036246E11901443B0012039E /* TeacherSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 036246DF1901443B0012039E /* TeacherSprite.cpp */; };
 		0366A59218DAC42A00BF3C02 /* buttonFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0366A59118DAC42A00BF3C02 /* buttonFont.ttf */; };
 		0368878B18D8228F00E63AFD /* arial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0368878A18D8228F00E63AFD /* arial.ttf */; };
 		0371150518D1889000EE9282 /* scoreFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0371150318D1889000EE9282 /* scoreFont.ttf */; };
@@ -87,6 +94,15 @@
 		03ED314F18B385BA00CF8AA1 /* Score.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314818B385BA00CF8AA1 /* Score.cpp */; };
 		03F388E718D78E03003A08BC /* wallpapperTeach.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F388E518D78E03003A08BC /* wallpapperTeach.png */; };
 		03F388E818D78E03003A08BC /* caseTeach.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F388E618D78E03003A08BC /* caseTeach.png */; };
+		03FAA2D918F94E3B00CDD8A6 /* CellBaseGraphic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03FAA2D718F94C2700CDD8A6 /* CellBaseGraphic.cpp */; };
+		03FAA2DC18F962A100CDD8A6 /* LanguageGraphic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03FAA2DA18F962A100CDD8A6 /* LanguageGraphic.cpp */; };
+		03FAA2DF18F962CB00CDD8A6 /* FrenchGraphic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03FAA2DD18F962CB00CDD8A6 /* FrenchGraphic.cpp */; };
+		03FAA2E218F962DA00CDD8A6 /* ItalianoGraphic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03FAA2E018F962DA00CDD8A6 /* ItalianoGraphic.cpp */; };
+		03FAA2E518F962EA00CDD8A6 /* SpanishGraphic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03FAA2E318F962EA00CDD8A6 /* SpanishGraphic.cpp */; };
+		03FAA2E818F962F600CDD8A6 /* DeutschGraphic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03FAA2E618F962F600CDD8A6 /* DeutschGraphic.cpp */; };
+		03FAA2EB18F9630700CDD8A6 /* EnglishGraphic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03FAA2E918F9630700CDD8A6 /* EnglishGraphic.cpp */; };
+		03FAA2EE18F963BB00CDD8A6 /* ButtonGraphic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03FAA2EC18F963BB00CDD8A6 /* ButtonGraphic.cpp */; };
+		03FAA2F118F9A00800CDD8A6 /* CellTextGraphic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03FAA2EF18F9A00800CDD8A6 /* CellTextGraphic.cpp */; };
 		936727F818B33B91009873DE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 936727F618B33B91009873DE /* main.cpp */; };
 		9367280918B35E8B009873DE /* sfml-audio.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 936727FF18B35E81009873DE /* sfml-audio.framework */; };
 		9367280A18B35E8B009873DE /* sfml-graphics.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 9367280018B35E81009873DE /* sfml-graphics.framework */; };
@@ -149,10 +165,24 @@
 		03229D1A18D35E8A00027190 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = SOURCE_ROOT; };
 		0325500D18EBFD6A00496C08 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		0328235818C5FBAF006F43CC /* IntDecFunctor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntDecFunctor.h; sourceTree = SOURCE_ROOT; };
+		03315F4B18FE76F3009C4157 /* GraphicAudibleElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphicAudibleElement.cpp; sourceTree = SOURCE_ROOT; };
+		03315F4C18FE76F3009C4157 /* GraphicAudibleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicAudibleElement.h; sourceTree = SOURCE_ROOT; };
+		03315F4E18FE7852009C4157 /* GraphicMusic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphicMusic.cpp; sourceTree = SOURCE_ROOT; };
+		03315F4F18FE7852009C4157 /* GraphicMusic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicMusic.h; sourceTree = SOURCE_ROOT; };
+		03315F5118FE7BF2009C4157 /* GraphicSound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphicSound.cpp; sourceTree = SOURCE_ROOT; };
+		03315F5218FE7BF2009C4157 /* GraphicSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicSound.h; sourceTree = SOURCE_ROOT; };
 		033174CF18E16B2700F2E406 /* choiceSprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = choiceSprite.png; sourceTree = "<group>"; };
 		033D7D8318C8C6C400BA0091 /* LanguageMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LanguageMessage.cpp; sourceTree = SOURCE_ROOT; };
 		033D7D8418C8C6C400BA0091 /* LanguageMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageMessage.h; sourceTree = SOURCE_ROOT; };
 		033F710A18D2213A0064FAF5 /* valueFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = valueFont.ttf; sourceTree = "<group>"; };
+		036246D6190127650012039E /* BackgroundGraphic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BackgroundGraphic.cpp; sourceTree = SOURCE_ROOT; };
+		036246D7190127650012039E /* BackgroundGraphic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundGraphic.h; sourceTree = SOURCE_ROOT; };
+		036246D9190127900012039E /* SpriteGraphic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteGraphic.cpp; sourceTree = SOURCE_ROOT; };
+		036246DA190127900012039E /* SpriteGraphic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteGraphic.h; sourceTree = SOURCE_ROOT; };
+		036246DC1901442D0012039E /* AnanasSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnanasSprite.cpp; sourceTree = SOURCE_ROOT; };
+		036246DD1901442D0012039E /* AnanasSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnanasSprite.h; sourceTree = SOURCE_ROOT; };
+		036246DF1901443B0012039E /* TeacherSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TeacherSprite.cpp; sourceTree = SOURCE_ROOT; };
+		036246E01901443B0012039E /* TeacherSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherSprite.h; sourceTree = SOURCE_ROOT; };
 		0366A59118DAC42A00BF3C02 /* buttonFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = buttonFont.ttf; sourceTree = "<group>"; };
 		0368878A18D8228F00E63AFD /* arial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = arial.ttf; sourceTree = "<group>"; };
 		0371150318D1889000EE9282 /* scoreFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = scoreFont.ttf; sourceTree = "<group>"; };
@@ -198,6 +228,24 @@
 		03ED314918B385BA00CF8AA1 /* Score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Score.h; sourceTree = SOURCE_ROOT; };
 		03F388E518D78E03003A08BC /* wallpapperTeach.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wallpapperTeach.png; sourceTree = "<group>"; };
 		03F388E618D78E03003A08BC /* caseTeach.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = caseTeach.png; sourceTree = "<group>"; };
+		03FAA2D718F94C2700CDD8A6 /* CellBaseGraphic.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CellBaseGraphic.cpp; sourceTree = SOURCE_ROOT; };
+		03FAA2D818F94C2700CDD8A6 /* CellBaseGraphic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CellBaseGraphic.h; sourceTree = SOURCE_ROOT; };
+		03FAA2DA18F962A100CDD8A6 /* LanguageGraphic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LanguageGraphic.cpp; sourceTree = SOURCE_ROOT; };
+		03FAA2DB18F962A100CDD8A6 /* LanguageGraphic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageGraphic.h; sourceTree = SOURCE_ROOT; };
+		03FAA2DD18F962CB00CDD8A6 /* FrenchGraphic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FrenchGraphic.cpp; sourceTree = SOURCE_ROOT; };
+		03FAA2DE18F962CB00CDD8A6 /* FrenchGraphic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrenchGraphic.h; sourceTree = SOURCE_ROOT; };
+		03FAA2E018F962DA00CDD8A6 /* ItalianoGraphic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItalianoGraphic.cpp; sourceTree = SOURCE_ROOT; };
+		03FAA2E118F962DA00CDD8A6 /* ItalianoGraphic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItalianoGraphic.h; sourceTree = SOURCE_ROOT; };
+		03FAA2E318F962EA00CDD8A6 /* SpanishGraphic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpanishGraphic.cpp; sourceTree = SOURCE_ROOT; };
+		03FAA2E418F962EA00CDD8A6 /* SpanishGraphic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpanishGraphic.h; sourceTree = SOURCE_ROOT; };
+		03FAA2E618F962F600CDD8A6 /* DeutschGraphic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DeutschGraphic.cpp; sourceTree = SOURCE_ROOT; };
+		03FAA2E718F962F600CDD8A6 /* DeutschGraphic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeutschGraphic.h; sourceTree = SOURCE_ROOT; };
+		03FAA2E918F9630700CDD8A6 /* EnglishGraphic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnglishGraphic.cpp; sourceTree = SOURCE_ROOT; };
+		03FAA2EA18F9630700CDD8A6 /* EnglishGraphic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnglishGraphic.h; sourceTree = SOURCE_ROOT; };
+		03FAA2EC18F963BB00CDD8A6 /* ButtonGraphic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ButtonGraphic.cpp; sourceTree = SOURCE_ROOT; };
+		03FAA2ED18F963BB00CDD8A6 /* ButtonGraphic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonGraphic.h; sourceTree = SOURCE_ROOT; };
+		03FAA2EF18F9A00800CDD8A6 /* CellTextGraphic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellTextGraphic.cpp; sourceTree = SOURCE_ROOT; };
+		03FAA2F018F9A00800CDD8A6 /* CellTextGraphic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellTextGraphic.h; sourceTree = SOURCE_ROOT; };
 		936727B518B33A9C009873DE /* PuruPuruDiggerConsole.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PuruPuruDiggerConsole.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		936727F618B33B91009873DE /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
 		936727FF18B35E81009873DE /* sfml-audio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-audio.framework"; path = "/Library/Frameworks/sfml-audio.framework"; sourceTree = "<absolute>"; };
@@ -354,16 +402,48 @@
 				03229D1A18D35E8A00027190 /* Utils.h */,
 				03D8F4E218F3C389003A0948 /* GraphicElement.cpp */,
 				03D8F4E318F3C389003A0948 /* GraphicElement.h */,
+				03FAA2EC18F963BB00CDD8A6 /* ButtonGraphic.cpp */,
+				03FAA2ED18F963BB00CDD8A6 /* ButtonGraphic.h */,
+				036246D6190127650012039E /* BackgroundGraphic.cpp */,
+				036246D7190127650012039E /* BackgroundGraphic.h */,
+				036246D9190127900012039E /* SpriteGraphic.cpp */,
+				036246DA190127900012039E /* SpriteGraphic.h */,
+				036246DF1901443B0012039E /* TeacherSprite.cpp */,
+				036246E01901443B0012039E /* TeacherSprite.h */,
+				036246DC1901442D0012039E /* AnanasSprite.cpp */,
+				036246DD1901442D0012039E /* AnanasSprite.h */,
+				03315F4B18FE76F3009C4157 /* GraphicAudibleElement.cpp */,
+				03315F4C18FE76F3009C4157 /* GraphicAudibleElement.h */,
+				03315F4E18FE7852009C4157 /* GraphicMusic.cpp */,
+				03315F4F18FE7852009C4157 /* GraphicMusic.h */,
+				03315F5118FE7BF2009C4157 /* GraphicSound.cpp */,
+				03315F5218FE7BF2009C4157 /* GraphicSound.h */,
+				03FAA2D718F94C2700CDD8A6 /* CellBaseGraphic.cpp */,
+				03FAA2D818F94C2700CDD8A6 /* CellBaseGraphic.h */,
 				03D8F4E518F3C732003A0948 /* DiggerGraphic.cpp */,
 				03D8F4E618F3C732003A0948 /* DiggerGraphic.h */,
 				03D8F4E818F3CBB6003A0948 /* BombGraphic.cpp */,
 				03D8F4E918F3CBB6003A0948 /* BombGraphic.h */,
+				03D8F4F218F3CC29003A0948 /* EmptyGraphic.h */,
+				03D8F4F118F3CC29003A0948 /* EmptyGraphic.cpp */,
+				03FAA2EF18F9A00800CDD8A6 /* CellTextGraphic.cpp */,
+				03FAA2F018F9A00800CDD8A6 /* CellTextGraphic.h */,
 				03D8F4EB18F3CBF1003A0948 /* ValueGraphic.cpp */,
 				03D8F4EC18F3CBF1003A0948 /* ValueGraphic.h */,
 				03D8F4EE18F3CC1D003A0948 /* GoldGraphic.cpp */,
 				03D8F4EF18F3CC1D003A0948 /* GoldGraphic.h */,
-				03D8F4F118F3CC29003A0948 /* EmptyGraphic.cpp */,
-				03D8F4F218F3CC29003A0948 /* EmptyGraphic.h */,
+				03FAA2DA18F962A100CDD8A6 /* LanguageGraphic.cpp */,
+				03FAA2DB18F962A100CDD8A6 /* LanguageGraphic.h */,
+				03FAA2DD18F962CB00CDD8A6 /* FrenchGraphic.cpp */,
+				03FAA2DE18F962CB00CDD8A6 /* FrenchGraphic.h */,
+				03FAA2E018F962DA00CDD8A6 /* ItalianoGraphic.cpp */,
+				03FAA2E118F962DA00CDD8A6 /* ItalianoGraphic.h */,
+				03FAA2E318F962EA00CDD8A6 /* SpanishGraphic.cpp */,
+				03FAA2E418F962EA00CDD8A6 /* SpanishGraphic.h */,
+				03FAA2E618F962F600CDD8A6 /* DeutschGraphic.cpp */,
+				03FAA2E718F962F600CDD8A6 /* DeutschGraphic.h */,
+				03FAA2E918F9630700CDD8A6 /* EnglishGraphic.cpp */,
+				03FAA2EA18F9630700CDD8A6 /* EnglishGraphic.h */,
 			);
 			path = PuruPuruDigger;
 			sourceTree = "<group>";
@@ -520,25 +600,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				036246DB190127900012039E /* SpriteGraphic.cpp in Sources */,
+				03FAA2D918F94E3B00CDD8A6 /* CellBaseGraphic.cpp in Sources */,
 				03AC0B5918F4403E006120CD /* GraphicElement.cpp in Sources */,
 				03AC0B5A18F4403E006120CD /* DiggerGraphic.cpp in Sources */,
 				03AC0B5B18F4403E006120CD /* BombGraphic.cpp in Sources */,
+				036246D8190127650012039E /* BackgroundGraphic.cpp in Sources */,
 				03AC0B5C18F4403E006120CD /* ValueGraphic.cpp in Sources */,
 				03AC0B5D18F4403E006120CD /* GoldGraphic.cpp in Sources */,
 				03AC0B5E18F4403E006120CD /* EmptyGraphic.cpp in Sources */,
+				03FAA2E518F962EA00CDD8A6 /* SpanishGraphic.cpp in Sources */,
 				03D783BE18D0A07800A1B8AE /* mainSFML.cpp in Sources */,
+				03315F4D18FE76F3009C4157 /* GraphicAudibleElement.cpp in Sources */,
 				03D7839918D097E100A1B8AE /* ValueCell.cpp in Sources */,
 				03D7839A18D097E100A1B8AE /* LanguageMessage.cpp in Sources */,
 				03D7839B18D097E100A1B8AE /* Level.cpp in Sources */,
+				03FAA2E218F962DA00CDD8A6 /* ItalianoGraphic.cpp in Sources */,
+				036246DE1901442D0012039E /* AnanasSprite.cpp in Sources */,
 				03D7839C18D097E100A1B8AE /* Bomb.cpp in Sources */,
 				03D7839D18D097E100A1B8AE /* Digger.cpp in Sources */,
+				036246E11901443B0012039E /* TeacherSprite.cpp in Sources */,
 				03D7839E18D097E100A1B8AE /* CellBase.cpp in Sources */,
+				03FAA2E818F962F600CDD8A6 /* DeutschGraphic.cpp in Sources */,
 				03D783A018D097E100A1B8AE /* EmptyCell.cpp in Sources */,
 				03D783B918D09DCD00A1B8AE /* GameViewSFML.cpp in Sources */,
+				03FAA2DC18F962A100CDD8A6 /* LanguageGraphic.cpp in Sources */,
+				03315F5318FE7BF2009C4157 /* GraphicSound.cpp in Sources */,
+				03FAA2EE18F963BB00CDD8A6 /* ButtonGraphic.cpp in Sources */,
+				03315F5018FE7852009C4157 /* GraphicMusic.cpp in Sources */,
 				03229D1D18D35E8A00027190 /* Utils.cpp in Sources */,
 				03D783A118D097E100A1B8AE /* Score.cpp in Sources */,
 				03D783A218D097E100A1B8AE /* GoldCell.cpp in Sources */,
+				03FAA2EB18F9630700CDD8A6 /* EnglishGraphic.cpp in Sources */,
+				03FAA2DF18F962CB00CDD8A6 /* FrenchGraphic.cpp in Sources */,
 				03D783A318D097E100A1B8AE /* GameModel.cpp in Sources */,
+				03FAA2F118F9A00800CDD8A6 /* CellTextGraphic.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

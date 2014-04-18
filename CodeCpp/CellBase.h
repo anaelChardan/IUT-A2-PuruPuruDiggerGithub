@@ -26,6 +26,7 @@ class CellBase {
         int my_x;                   /*!<  Le x de ma case */
         int my_y;                   /*!<  Le y de ma case */
 
+        virtual void toClone(const CellBase &c);
     public :
 
          /*!
@@ -71,13 +72,6 @@ class CellBase {
         int getY() const;
      
          /*!
-          *  \brief Le type de notre case
-          *
-          *  \return un string pour le type de notre case
-          */
-        std::string getType() const;
-     
-         /*!
           *  \brief Pour positionner notre case dans la grille
           *
           * param[in] int x   : la position verticale de notre case
@@ -90,6 +84,8 @@ class CellBase {
           * param[in] int x   : la position horizontale de notre case
           */
         void setY( int y );
+    
+    
 
 
          /*!
@@ -99,42 +95,8 @@ class CellBase {
           */
         virtual CellBase& operator=(const CellBase &c);
 
-     
-         /*!
-          *  \brief Retourne la valeur de la case si c'est un goldCell ou une ValueCell
-          *   
-          *  \return my_value, retourne la valeur de la case
-          */
-        virtual int getValue() const = 0;
-        
-         /*!
-          *  \brief Retourne les points que va ajouter la case dans les scores
-          *
-          *  \return my_points, retourne la valeur de la case
-          */
     
-        virtual int getPoints() const = 0;
-
-         /*!
-          *  \brief Retourne la vie du Digger
-          *
-          *  \return my_life, la vie du digger
-          */
-        virtual int getLife() const = 0; //Savoir la vie de notre Digger, return - 1 dans les autres
-
-         /*!
-          *  \brief Ajouter une vie au digger
-          *
-          */
-        virtual void addLife() = 0;
-     
-         /*!
-          *  \brief Faire perdre une vie au Digger
-          *
-          */
-        virtual void lostLife() = 0;
-    
-        virtual void resetLife() = 0;
+        std::string getType();
     
 };
 

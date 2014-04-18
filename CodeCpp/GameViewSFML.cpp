@@ -4,6 +4,16 @@
 #include <sstream>
 #include <fstream>
 #include "Utils.h"
+#include "DiggerGraphic.h"
+#include "EmptyGraphic.h"
+#include "ValueGraphic.h"
+#include "BombGraphic.h"
+#include "GoldGraphic.h"
+#include "FrenchGraphic.h"
+#include "ItalianoGraphic.h"
+#include "DeutschGraphic.h"
+#include "SpanishGraphic.h"
+#include "EnglishGraphic.h"
 
 using namespace std;
 using namespace sf;
@@ -22,185 +32,50 @@ GameView::GameView() {
      //La font pour les scores
      my_fontScore = new Font();
      my_fontTitle = new Font();
-     my_fontValue = new Font();
-     my_fontButton = new Font();
 
-     my_valueString = new String();
      my_scoreString = new String();
      my_titleScoreString = new String();
      my_scoreNum = new String();
      my_titleString = new String();
-     my_buttonString = new String();
-
-    //Les images
-     my_backgroundImage = new Image();
-     my_languageImage = new Image();
-     my_caseImage = new Image();
-     my_buttonImage = new Image();
-     my_spriteImage = new Image();
-     my_iconImage = new Image();
-
-     //On set les sprites
-     my_diggerSprite = new Sprite();
-     my_valueSprite = new Sprite();
-     my_goldSprite = new Sprite();
-     my_bombSprite = new Sprite();
-     my_backgroundSprite = new Sprite();
-     my_emptySprite = new Sprite();
-     my_frenchSprite = new Sprite();
-     my_englishSprite = new Sprite();
-     my_deutschSprite = new Sprite();
-     my_italianoSprite = new Sprite();
-     my_spanishSprite = new Sprite();
-     my_ananasSprite = new Sprite();
-     my_teacherSprite = new Sprite();
-
-     //Les boutons
-     my_buttonQuitSprite = new Sprite();
-     my_optionButtonSprite = new Sprite();
-     my_playButtonSprite = new Sprite();
-     my_bestButtonSprite = new Sprite();
-     my_quitButtonSprite = new Sprite();
-
-     //Les icones
-     my_musicIcon = new Sprite();
-     my_soundIcon = new Sprite();
 
      my_musicLevel = new Music();
-
+    
+     my_stringToSprite["Digger"]    = new DiggerGraphic();
+     my_stringToSprite["EmptyCell"] = new EmptyGraphic();
+     my_stringToSprite["GoldCell"]  = new GoldGraphic();
+     my_stringToSprite["ValueCell"] = new ValueGraphic();
+     my_stringToSprite["Bomb"]      = new BombGraphic();
+    
+     my_languageToSprite[english]  = new EnglishGraphic();
+     my_languageToSprite[francais] = new FrenchGraphic();
+     my_languageToSprite[italiano] = new ItalianoGraphic();
+     my_languageToSprite[espanol]  = new SpanishGraphic();
+     my_languageToSprite[deutsch]  = new DeutschGraphic();
+    
      //Chargement des images selon le mode
      setAnanasMode();
 }
 
 //Destructeur
 GameView::~GameView() {
-    delete my_window;
-    delete my_diggerSprite;
-    delete my_valueSprite;
-    delete my_goldSprite;
-    delete my_bombSprite;
-    delete my_backgroundSprite;
-    delete my_emptySprite;
-    delete my_fontScore;
-    delete my_fontTitle;
-    delete my_fontValue;
-
-    delete my_valueString;
-    delete my_scoreString;
-    delete my_titleString;
-
-    delete my_backgroundImage;
-
-    delete my_caseImage;
 }
 
-//Attribut une image à un sprite, avec rectangle de lecture et redimensionnement
-void
-GameView::setSprite( sf::Sprite* s, sf::Image* i, int subsX, int subsY, int subeX, int subeY, int w, int h ) {
-    s->SetImage( *i );
-    s->SetSubRect( IntRect ( subsX, subsY, subeX, subeY ) );
-    s->Resize( w, h);
-}
-
-//Attribut chaque image à un sprite
-void
-GameView::setImageToSprite() {
-
-    my_languageImage->CreateMaskFromColor(Color(0, 55, 97));
-    my_caseImage->CreateMaskFromColor( Color(0, 55, 97) );
-    my_buttonImage->CreateMaskFromColor( Color(0, 55, 97) );
-    my_spriteImage->CreateMaskFromColor( Color(0, 55, 97) );
-
-    my_iconImage->CreateMaskFromColor( Color(0, 55, 97) );
-    //On set les sprites de nos images
-    setSprite( my_backgroundSprite, my_backgroundImage, 0, 0, WINDOWWITDH, WINDOWHEIGHT, WINDOWWITDH, WINDOWHEIGHT );
-
-    //On set les choix des sprites
-
-    setSprite( my_ananasSprite, my_spriteImage, SPRITEANANASSX, SPRITECHOICEBEGIN, SPRITEANANASEX,SPRITECHOICEHEIGHT, SPRITECHOICEWIDTH,  SPRITECHOICEHEIGHT );
-    my_ananasSprite->SetPosition( CHOICEANANASX, CHOICESPRITEY);
-
-    setSprite( my_teacherSprite ,my_spriteImage , SPRITETEACHERSX, SPRITECHOICEBEGIN, SPRITETEACHEREX, SPRITECHOICEHEIGHT, SPRITECHOICEWIDTH, SPRITECHOICEHEIGHT );
-    my_teacherSprite->SetPosition( CHOICETEACHERX, CHOICESPRITEY);
-
-    //Mise en places des sprites case
-    setSprite( my_diggerSprite, my_caseImage , DIGGERSX, SPRITECASEBEGIN, DIGGEREX, SPRITECASEHEIGHT, CASEWITDH, CASEHEIGHT );
-
-    setSprite( my_valueSprite, my_caseImage, VALUESX, SPRITECASEBEGIN, VALUEEX, SPRITECASEHEIGHT,CASEWITDH, CASEHEIGHT );
-
-    setSprite( my_goldSprite, my_caseImage, GOLDSX, SPRITECASEBEGIN, GOLDEX, SPRITECASEHEIGHT,CASEWITDH, CASEHEIGHT );
-
-    setSprite( my_bombSprite, my_caseImage, BOMBSX, SPRITECASEBEGIN, BOMBEX, SPRITECASEHEIGHT,CASEWITDH, CASEHEIGHT );
-
-    setSprite( my_emptySprite, my_caseImage, EMPTYSX, SPRITECASEBEGIN, EMPTYEX, SPRITECASEHEIGHT,CASEWITDH, CASEHEIGHT );
-
-    my_stringToSprite["Digger"] = my_diggerSprite;
-    my_stringToSprite["EmptyCell"] = my_emptySprite;
-    my_stringToSprite["GoldCell"] = my_goldSprite;
-    my_stringToSprite["Bomb"] = my_bombSprite;
-    my_stringToSprite["ValueCell" ] = my_valueSprite;
-
-    //On set les boutons
-    setSprite( my_buttonQuitSprite, my_buttonImage, BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT, BUTTONWIDTH, BUTTONHEIGHT);
-    my_buttonQuitSprite->SetPosition( QUITONX, QUITONY);
-
-    setSprite( my_playButtonSprite, my_buttonImage, BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT, BUTTONWIDTH, BUTTONHEIGHT );
-    my_playButtonSprite->SetPosition( PLAYX, PLAYY );
-
-    setSprite( my_optionButtonSprite, my_buttonImage, BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT, BUTTONWIDTH, BUTTONHEIGHT );
-    my_optionButtonSprite->SetPosition(OPTIONX, OPTIONY);
-
-    setSprite( my_bestButtonSprite, my_buttonImage, BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT, BUTTONWIDTH, BUTTONHEIGHT );
-    my_bestButtonSprite->SetPosition(BESTX, BESTY);
-
-    setSprite( my_quitButtonSprite, my_buttonImage, BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT, BUTTONWIDTH, BUTTONHEIGHT );
-    my_quitButtonSprite->SetPosition(QUITX, QUITY);
-
-    //Pour les langues.
-
-    setSprite( my_englishSprite, my_languageImage, ENGLISHSX, SPRITELANGUEBEGIN, ENGLISHEX, SPRITELANGUEHEIGHT, LANGUEWIDTH, LANGUEHEIGHT );
-
-    setSprite( my_frenchSprite, my_languageImage, FRENCHSX, SPRITELANGUEBEGIN, FRENCHEX, SPRITELANGUEHEIGHT, LANGUEWIDTH, LANGUEHEIGHT );
-
-    setSprite( my_italianoSprite, my_languageImage, ITALIANOSX, SPRITELANGUEBEGIN, ITALIANOEX, SPRITELANGUEHEIGHT, LANGUEWIDTH, LANGUEHEIGHT );
-
-    setSprite( my_spanishSprite, my_languageImage, SPANISHSX, SPRITELANGUEBEGIN, SPANISHEX, SPRITELANGUEHEIGHT, LANGUEWIDTH, LANGUEHEIGHT );
-
-    setSprite( my_deutschSprite, my_languageImage, DEUTSCHSX, SPRITELANGUEBEGIN, DEUTSCHEX, SPRITELANGUEHEIGHT, LANGUEWIDTH, LANGUEHEIGHT );
-
-    my_languageToSprite[english] = my_englishSprite;
-    my_languageToSprite[francais] = my_frenchSprite;
-    my_languageToSprite[italiano] = my_italianoSprite;
-    my_languageToSprite[deutsch] = my_deutschSprite;
-    my_languageToSprite[espanol] = my_spanishSprite;
-
-    //Pour les icones
-    //setSprite( my_musicIcon, my_iconImage,
-    setSprite( my_musicIcon, my_iconImage, MUSICONSX, ICONSPRITEBEGIN, MUSICONEX, ICONSPRITEHEIGHT, ICONWIDTH, ICONHEIGHT );
-    my_musicIcon->SetPosition( MUSICX, ICONY );
-
-    setSprite( my_soundIcon, my_iconImage, SOUNDSX, ICONSPRITEBEGIN, SOUNDONEX, ICONSPRITEHEIGHT, ICONWIDTH, ICONHEIGHT );
-    my_soundIcon->SetPosition( SOUNDX, ICONY );
-}
 
 //Pour mettre en place le thème ananas
 void
 GameView::setAnanasMode() {
 #ifdef __linux__
-    if (!my_backgroundImage->LoadFromFile("Pictures/wallpapper.png") || !my_caseImage->LoadFromFile("Pictures/case.png") || !my_buttonImage->LoadFromFile("Pictures/buttonAnanas.png") || !my_languageImage->LoadFromFile("Pictures/languages.png") || !my_spriteImage->LoadFromFile("Pictures/choiceSprite.png") || !my_iconImage->LoadFromFile("Pictures/icon.png") || !my_fontScore->LoadFromFile("Font/scoreFont.ttf") || !my_fontTitle->LoadFromFile("Font/titleFont.ttf") || !my_fontValue->LoadFromFile("Font/valueFont.ttf") || !my_fontButton->LoadFromFile("Font/buttonFont.ttf") || !my_musicLevel->OpenFromFile("Music/gridMusic.wav")) {
+    if (!my_fontScore->LoadFromFile("Font/scoreFont.ttf") || !my_fontTitle->LoadFromFile("Font/titleFont.ttf") || !my_musicLevel->OpenFromFile("Music/gridMusic.wav")) {
         cout << "Error when loading image or font" << endl;
     }
 #else
-    if (!my_backgroundImage->LoadFromFile("wallpapper.png") || !my_caseImage->LoadFromFile("case.png") || !my_buttonImage->LoadFromFile("buttonAnanas.png") || !my_languageImage->LoadFromFile("languages.png") || !my_spriteImage->LoadFromFile("choiceSprite.png") || !my_iconImage->LoadFromFile("icon.png")|| !my_fontScore->LoadFromFile("scoreFont.ttf") || !my_fontTitle->LoadFromFile("titleFont.ttf") || !my_fontValue->LoadFromFile("valueFont.ttf") || !my_fontButton->LoadFromFile("buttonFont.ttf") || !my_musicLevel->OpenFromFile("gridMusic.wav") ) {
+    if (!my_fontScore->LoadFromFile("scoreFont.ttf") || !my_fontTitle->LoadFromFile("titleFont.ttf") || !my_musicLevel->OpenFromFile("gridMusic.wav") ) {
         cout << "Error when loading image or font" << endl;
     }
 #endif
     else {
 
-        //Les affichages de valeurs seront toujours identiques, du coup on les set direct
-        my_valueString->SetFont( *my_fontValue );
-        my_valueString->SetSize(23);
-        my_valueString->SetColor(Color(255,255,255) );
+        //Les affichages de valeurs seront toujours identiques, du coup on les set dir
 
 
         my_titleScoreString->SetFont( *my_fontScore );
@@ -218,15 +93,27 @@ GameView::setAnanasMode() {
 
         my_titleString->SetFont( *my_fontTitle );
 
-        my_buttonString->SetFont( *my_fontButton );
-        my_buttonString->SetSize(30);
-        my_buttonString->SetColor(Color(251,210,98));
-
+        my_playButton.setAnanasMode();
+        my_settingButton.setAnanasMode();
+        my_bestButton.setAnanasMode();
+        my_quitButton.setAnanasMode();
+        my_musicIcon.setAnanasMode();
+        my_soundIcon.setAnanasMode();
+        my_ananasSprite.setAnanasMode();
+        my_teacherSprite.setAnanasMode();
+        my_background.setAnanasMode();
+        
+        for ( map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite.begin() ; it!=my_languageToSprite.end(); ++it) {
+            my_languageToSprite[ it->first ]->setAnanasMode();
+        }
+        
+        for ( map<string, CellBaseGraphic*>::const_iterator it = my_stringToSprite.begin() ; it!=my_stringToSprite.end(); ++it) {
+            my_stringToSprite[ it->first ]->setAnanasMode();
+        }
+        
         //Pour la musique
         my_musicLevel->SetLoop(true);
     }
-
-    setImageToSprite();
 }
 
 //Cette méthode sert à mettre un text à un string, le positionner, et le dessiner
@@ -251,21 +138,14 @@ GameView::setTextAndDraw( sf::String* s, string text, int x, int y, bool useSize
 }
 
 
-//Cette méthode sert à configurer à positionner un sprite et la dessiner
-void
-GameView::configureSpriteAndDraw( sf::Sprite* s, int x, int y) {
-    s->SetPosition(x, y);
-    my_window->Draw(*s);
-}
-
 void
 GameView::setTeacherMode() {
 #ifdef __linux__
-    if (!my_backgroundImage->LoadFromFile("Pictures/wallpapperTeach.png") || !my_caseImage->LoadFromFile("Pictures/caseTeach.png") || !my_buttonImage->LoadFromFile("Pictures/buttonTeach.png") || !my_languageImage->LoadFromFile("Pictures/languages.png") || !my_spriteImage->LoadFromFile("Pictures/choiceSprite.png") || !my_iconImage->LoadFromFile("Pictures/icon.png") ||!my_fontScore->LoadFromFile("Font/arial.ttf") || !my_fontTitle->LoadFromFile("Font/arial.ttf") || !my_fontValue->LoadFromFile("Font/arial.ttf") || !my_fontButton->LoadFromFile("Font/arial.ttf") || !my_musicLevel->OpenFromFile("Music/gridMusic.wav")) {
+    if (!my_fontScore->LoadFromFile("Font/arial.ttf") || !my_fontTitle->LoadFromFile("Font/arial.ttf") || !my_musicLevel->OpenFromFile("Music/gridMusic.wav")) {
         cout << "Error when loading image or font" << endl;
     }
 #else
-    if (!my_backgroundImage->LoadFromFile("wallpapperTeach.png") || !my_caseImage->LoadFromFile("caseTeach.png") || !my_buttonImage->LoadFromFile("buttonTeach.png") || !my_languageImage->LoadFromFile("languages.png") || !my_spriteImage->LoadFromFile("choiceSprite.png") || !my_iconImage->LoadFromFile("icon.png") ||!my_fontScore->LoadFromFile("arial.ttf") || !my_fontTitle->LoadFromFile("arial.ttf") || !my_fontValue->LoadFromFile("arial.ttf") || !my_fontButton->LoadFromFile("arial.ttf") || !my_musicLevel->OpenFromFile("gridMusic.wav")) {
+    if ( !my_fontScore->LoadFromFile("arial.ttf") || !my_fontTitle->LoadFromFile("arial.ttf") ||!my_musicLevel->OpenFromFile("gridMusic.wav")) {
         cout << "Error when loading image or font" << endl;
     }
 #endif
@@ -274,12 +154,6 @@ GameView::setTeacherMode() {
 
         //Le string pour la page de présentation
         my_titleString->SetFont( *my_fontTitle );
-
-        //Le string pour les cases numérotées
-        my_valueString->SetFont( *my_fontValue );
-        my_valueString->SetColor(Color(0,0,0) );
-        my_valueString->SetSize(20);
-        my_valueString->SetStyle( String::Bold );
 
         //Le string pour le titre des scores
         my_titleScoreString->SetFont( *my_fontScore );
@@ -296,52 +170,44 @@ GameView::setTeacherMode() {
         //Le string pour le intToString
         my_scoreNum->SetFont( * my_fontScore );
         my_scoreNum->SetColor(Color(255,255,255));
+        
+        my_playButton.setTeacherMode();
+        my_settingButton.setTeacherMode();
+        my_bestButton.setTeacherMode();
+        my_quitButton.setTeacherMode();
+        my_musicIcon.setTeacherMode();
+        my_soundIcon.setTeacherMode();
+        my_ananasSprite.setTeacherMode();
+        my_teacherSprite.setTeacherMode();
+        my_background.setTeacherMode();
+        
+        for ( map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite.begin() ; it!=my_languageToSprite.end(); ++it) {
+            my_languageToSprite[ it->first ]->setTeacherMode();
+        }
+        
+        for ( map<string, CellBaseGraphic*>::const_iterator it = my_stringToSprite.begin() ; it!=my_stringToSprite.end(); ++it) {
+            my_stringToSprite[ it->first ]->setTeacherMode();
+        }
 
-        my_buttonString->SetFont( *my_fontButton );
-        my_buttonString->SetSize(30);
-        my_buttonString->SetColor(Color(0,0,0));
 
     }
-
-    setImageToSprite();
 }
 
-void
-GameView::reverseMusic( bool music ) {
-    if ( music )
-        my_musicIcon->SetSubRect( IntRect( MUSICONSX, ICONSPRITEBEGIN, MUSICONEX, ICONSPRITEHEIGHT ) );
-    else
-        my_musicIcon->SetSubRect( IntRect( MUSICOFFSX, ICONSPRITEBEGIN, MUSICOFFEX, ICONSPRITEHEIGHT ) );
-}
-
-void
-GameView::reverseSound( bool sound ) {
-    if ( sound )
-        my_soundIcon->SetSubRect( IntRect( SOUNDSX, ICONSPRITEBEGIN, SOUNDONEX, ICONSPRITEHEIGHT ) );
-    else
-        my_soundIcon->SetSubRect( IntRect( SOUNDSX, ICONSPRITEBEGIN, SOUNDOFFEX, ICONSPRITEHEIGHT ) );
- }
-
-void
-GameView::setButtonHover( sf::Sprite* buttonToHover ) {
-    buttonToHover->SetSubRect( IntRect( BUTTONHOVESX, BUTTONCASEBEGIN, BUTTONHOVEEX, BUTTONCASEHEIGHT ) );
-}
 
 void
 GameView::resetButtonNorm() {
-    my_playButtonSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
-    my_quitButtonSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
-    my_optionButtonSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
-    my_bestButtonSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
-    my_buttonQuitSprite->SetSubRect( IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
+    my_playButton.reset();
+    my_settingButton.reset();
+    my_bestButton.reset();
+    my_quitButton.reset();
 }
 
 void
 GameView::newScreen() {
     my_window->Clear();
-    my_window->Draw(*my_backgroundSprite);
-    my_window->Draw(*my_musicIcon);
-    my_window->Draw(*my_soundIcon);
+    my_background.draw(my_window);
+    my_musicIcon.draw(my_window);
+    my_soundIcon.draw(my_window);
 }
 
 void
@@ -352,22 +218,15 @@ GameView::showPresentation() {
     my_titleString->SetSize(60);
 
     setTextAndDraw( my_titleString, "PURU PURU DIGGER ", ( WINDOWWITDH / 2 ), 100, true );
+    
+    my_playButton.setSpriteAndDraw(PLAYX, PLAYY, my_window, my_messages[my_language][play]);
+    
+    my_settingButton.setSpriteAndDraw(OPTIONX, OPTIONY, my_window, my_messages[my_language][setting]);
+    
+    my_bestButton.setSpriteAndDraw(BESTX, BESTY, my_window, my_messages[my_language][best]);
+    
+    my_quitButton.setSpriteAndDraw(QUITX, QUITY, my_window, my_messages[my_language][stop]);
 
-    my_window->Draw( *my_playButtonSprite );
-
-    my_window->Draw( *my_optionButtonSprite );
-
-    my_window->Draw( *my_bestButtonSprite);
-
-    my_window->Draw( *my_quitButtonSprite);
-
-    setTextAndDraw( my_buttonString, my_messages[my_language][best], (BESTX + BUTTONWIDTH / 2 ), (BESTY + (BUTTONHEIGHT / 5)), true );
-
-    setTextAndDraw( my_buttonString, my_messages[my_language][play], (PLAYX  + BUTTONWIDTH / 2 ), PLAYY + (BUTTONHEIGHT / 5), true );
-
-    setTextAndDraw( my_buttonString, my_messages[my_language][stop], ( QUITX + BUTTONWIDTH / 2 ), (QUITY + (BUTTONHEIGHT * 0.2 )), true );
-
-    setTextAndDraw( my_buttonString, my_messages[my_language][setting], (OPTIONX + BUTTONWIDTH / 2 )   , OPTIONY + (BUTTONHEIGHT * 0.2), true );
 }
 
 void
@@ -388,43 +247,39 @@ GameView::showOption() {
     showLanguage();
 
     //On place notre langue en cours
-    configureSpriteAndDraw( my_languageToSprite[my_language], MYLANGUEX, MYLANGUEY );
+    
+    my_languageToSprite[my_language]->setSpriteAndDraw(MYLANGUEX, MYLANGUEY, my_window);
 
     showSpriteChoice();
+    
+    my_quitButton.setSpriteAndDraw(QUITONX, QUITONY, my_window, my_messages[my_language][stop]);
 
-
-    //Le bouton pour quitter et son text
-    my_window->Draw( *my_buttonQuitSprite );
-
-    setTextAndDraw( my_buttonString, my_messages[my_language][stop], (  QUITONX + BUTTONWIDTH  / 2  ), (QUITONY + (BUTTONHEIGHT / 5)), true  );
 }
 
-void
-GameView::setHoverLanguage( Language hover ) {
-    my_languageToSprite[hover]->SetColor(Color(255,255,255,128));
-}
+
 
 void
 GameView::resetLanguageNorm() {
-    for ( map<Language, Sprite*>::const_iterator it = my_languageToSprite.begin() ; it!=my_languageToSprite.end(); ++it) {
-        my_languageToSprite[ it->first ]->SetColor(Color(255,255,255,255));
+    for ( map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite.begin() ; it!=my_languageToSprite.end(); ++it) {
+        my_languageToSprite[ it->first ]->reset();
     }
 
 }
 
 void
 GameView::showLanguage() {
-    configureSpriteAndDraw( my_languageToSprite[english], ENGLISHX, CHOICELANGUEHIGH );
-    configureSpriteAndDraw( my_languageToSprite[francais], FRENCHX, CHOICELANGUEHIGH );
-    configureSpriteAndDraw( my_languageToSprite[italiano], ITALIANOX, CHOICELANGUEHIGH );
-    configureSpriteAndDraw( my_languageToSprite[deutsch], DEUTSCHX, CHOICELANGUEHIGH );
-    configureSpriteAndDraw( my_languageToSprite[espanol], SPANISHX, CHOICELANGUEHIGH );
+    my_languageToSprite[english]->setSpriteAndDraw(ENGLISHX, CHOICELANGUEHIGH, my_window);
+    my_languageToSprite[francais]->setSpriteAndDraw(FRENCHX, CHOICELANGUEHIGH, my_window);
+    my_languageToSprite[espanol]->setSpriteAndDraw(SPANISHX, CHOICELANGUEHIGH, my_window);
+    my_languageToSprite[deutsch]->setSpriteAndDraw(DEUTSCHX, CHOICELANGUEHIGH, my_window);
+    my_languageToSprite[italiano]->setSpriteAndDraw(ITALIANOX, CHOICELANGUEHIGH, my_window);
+
 }
 
 void
 GameView::showSpriteChoice() {
-    my_window->Draw(*my_ananasSprite);
-    my_window->Draw(*my_teacherSprite);
+    my_ananasSprite.setSpriteAndDraw(CHOICEANANASX, CHOICESPRITEY, my_window);
+    my_teacherSprite.setSpriteAndDraw(CHOICETEACHERX, CHOICESPRITEY, my_window);
 }
 
 void
@@ -446,15 +301,13 @@ GameView::showBestScore() {
         //Le contenu de notre fichier
         while ( getline(scoreLect, line) ) {
             //Pour garantir la plus grand taille
-            my_valueString->SetSize(23);
-            setTextAndDraw(my_valueString, line, ( WINDOWWITDH / 2 ) , i, true );
+            my_scoreNum->SetSize(23);
+            setTextAndDraw(my_scoreNum, line, ( WINDOWWITDH / 2 ) , i, true );
             i += 100;
         }
 
         //On affiche le bouton quitter avec son string
-        my_window->Draw( *my_buttonQuitSprite );
-
-        setTextAndDraw( my_buttonString, my_messages[my_language][stop], (  QUITONX + BUTTONWIDTH  / 2  ), (QUITONY + (BUTTONHEIGHT / 5)), true  );
+        my_quitButton.setSpriteAndDraw(QUITONX, QUITONY, my_window, my_messages[my_language][stop]);
 
         scoreLect.close();
 
@@ -514,7 +367,7 @@ GameView::showIsEnteringABestScore( string player ) {
     setTextAndDraw( my_scoreNum, my_messages[my_language][by], ( WINDOWWITDH / 2 ), 10, true );
     setTextAndDraw( my_scoreNum, my_messages[my_language][name], ( WINDOWWITDH / 2 ), 100, true );
 
-    setTextAndDraw( my_valueString, player, ( WINDOWWITDH / 2 ) , WINDOWHEIGHT / 2, true ) ;
+    setTextAndDraw( my_scoreNum, player, ( WINDOWWITDH / 2 ) , WINDOWHEIGHT / 2, true ) ;
 }
 
 void
@@ -522,12 +375,16 @@ GameView::showGrid() {
     for ( int i = 0; i < LIGNE ; i++ ) {
         for ( int j = 0; j < COLONNE; j++ ) {
             //On dessine le contenu de la case
-            configureSpriteAndDraw( my_stringToSprite[ my_model->getLevel()->getGrid()[i][j]->getType() ] ,  convertIndiceXToPixel( j ), convertIndiceYToPixel( i ) );
-            //Si c'est une case numérotée, on met son numéro
-            if ( my_model->getLevel()->getGrid()[i][j]->getType() == "ValueCell" || my_model->getLevel()->getGrid()[i][j]->getType() == "GoldCell") {
-
-                setTextAndDraw( my_valueString, intToString( my_model->getLevel()->getGrid()[i][j]->getValue() ), ( convertIndiceXToPixel( j ) + CASEWITDH / 3 ), ( convertIndiceYToPixel( i ) + CASEHEIGHT / 6 ), false );
-            }
+            if ( my_model->getLevel()->getGrid()[i][j]->getType() == "GoldCell" ) {
+                ptr_goldCell = dynamic_cast<GoldCell*>(my_model->getLevel()->getGrid()[i][j]);
+                ptr_goldGraphic = dynamic_cast<GoldGraphic*>(my_stringToSprite["GoldCell"]);
+                ptr_goldGraphic->setSpriteAndDraw( convertIndiceXToPixel( j ), convertIndiceYToPixel( i ), my_window, intToString(ptr_goldCell->getValue()) );
+            } else if ( my_model->getLevel()->getGrid()[i][j]->getType() == "ValueCell" ) {
+                ptr_valueCell = dynamic_cast<ValueCell*>(my_model->getLevel()->getGrid()[i][j]);
+                ptr_valueGraphic = dynamic_cast<ValueGraphic*>(my_stringToSprite["ValueCell"]);
+                ptr_valueGraphic->setSpriteAndDraw( convertIndiceXToPixel( j ), convertIndiceYToPixel( i ), my_window, intToString(ptr_valueCell->getValue()) );
+            } else
+                my_stringToSprite[my_model->getLevel()->getGrid()[i][j]->getType()]->setSpriteAndDraw(convertIndiceXToPixel( j ), convertIndiceYToPixel( i ), my_window);
         }
     }
 }
@@ -633,9 +490,7 @@ GameView::showLevel() {
     //On dessine le score
     showScore();
 
-    my_window->Draw( *my_buttonQuitSprite );
-
-    setTextAndDraw( my_buttonString, my_messages[my_language][stop], (  QUITONX + BUTTONWIDTH  / 2  ), (QUITONY + (BUTTONHEIGHT / 5)), true  );
+    my_quitButton.setSpriteAndDraw(QUITONX, QUITONY, my_window, my_messages[my_language][stop]);
 }
 
 //Injection de dépendance model
@@ -644,14 +499,6 @@ GameView::setModel(GameModel *model) {
     my_model = model;
 }
 
-//Pour savoir si c'est dans une zone
-bool
-GameView::isInZone( int x, int y, int px, int py, int w, int h ) {
-    if ( x > px && x < px + w && y > py && y < py + h )
-        return true;
-    else
-        return false;
-}
 
 //Boucle d'événement
 void
@@ -662,8 +509,6 @@ GameView::treatGame( ) {
     bool isChoosingOption = false; // Pour savoir si il est le menu du choix des options
     bool isViewingBestScore = false;
     bool isEnterABestScore = false;
-    bool music = true;
-    bool sound = true;
     bool time = false;
     bool over = false;
     
@@ -688,40 +533,39 @@ GameView::treatGame( ) {
 
                     if ( isInPresentation ) {
 
-                        if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, PLAYX, PLAYY, BUTTONWIDTH, BUTTONHEIGHT ) )
+                        if ( my_playButton.isInZone( event.MouseMove.X, event.MouseMove.Y ) )
+                            my_playButton.setHover();
 
-                            setButtonHover( my_playButtonSprite );
+                        else if ( my_settingButton.isInZone( event.MouseMove.X, event.MouseMove.Y) )
+                            my_settingButton.setHover();
+                        
+                        else if ( my_bestButton.isInZone ( event.MouseMove.X, event.MouseMove.Y) )
+                            my_bestButton.setHover();
 
-                        else if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, OPTIONX, OPTIONY, BUTTONWIDTH, BUTTONHEIGHT ) )
-                            setButtonHover( my_optionButtonSprite );
-
-                        else if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, BESTX, BESTY, BUTTONWIDTH, BUTTONHEIGHT ) )
-                            setButtonHover( my_bestButtonSprite );
-
-                        else if ( isInZone ( event.MouseMove.X , event.MouseMove.Y, QUITX, QUITY, BUTTONWIDTH, BUTTONHEIGHT ) )
-                            setButtonHover( my_quitButtonSprite );
+                        else if ( my_quitButton.isInZone ( event.MouseMove.X , event.MouseMove.Y) )
+                            my_quitButton.setHover();
                         else
                             resetButtonNorm();
 
                     } else if ( isChoosingOption ) {
 
-                        if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, ENGLISHX, CHOICELANGUEHIGH, LANGUEWIDTH, LANGUEHEIGHT ) )
-                            setHoverLanguage( english );
+                        if ( my_languageToSprite[english]->isInZone ( event.MouseMove.X, event.MouseMove.Y) )
+                            my_languageToSprite[english]->setHover();
 
-                        else if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, FRENCHX, CHOICELANGUEHIGH, LANGUEWIDTH, LANGUEHEIGHT ) )
-                            setHoverLanguage( francais );
+                        else if ( my_languageToSprite[francais]->isInZone ( event.MouseMove.X, event.MouseMove.Y) )
+                            my_languageToSprite[francais]->setHover();
 
-                        else if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, SPANISHX, CHOICELANGUEHIGH, LANGUEWIDTH,LANGUEHEIGHT ) )
-                            setHoverLanguage( espanol );
+                        else if ( my_languageToSprite[italiano]->isInZone ( event.MouseMove.X, event.MouseMove.Y) )
+                            my_languageToSprite[italiano]->setHover();
 
-                        else if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, DEUTSCHX, CHOICELANGUEHIGH, LANGUEWIDTH, LANGUEHEIGHT ) )
-                            setHoverLanguage( deutsch );
+                        else if ( my_languageToSprite[espanol]->isInZone ( event.MouseMove.X, event.MouseMove.Y) )
+                            my_languageToSprite[espanol]->setHover();
 
-                        else if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, ITALIANOX, CHOICELANGUEHIGH, LANGUEWIDTH, LANGUEHEIGHT ) )
-                            setHoverLanguage( italiano );
+                        else if ( my_languageToSprite[deutsch]->isInZone ( event.MouseMove.X, event.MouseMove.Y) )
+                            my_languageToSprite[deutsch]->setHover();
 
-                        else if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, QUITONX, QUITONY, BUTTONWIDTH, BUTTONHEIGHT )  )
-                            setButtonHover(my_buttonQuitSprite);
+                        else if ( my_quitButton.isInZone ( event.MouseMove.X , event.MouseMove.Y) )
+                            my_quitButton.setHover();
 
                         else {
                             resetButtonNorm();
@@ -729,15 +573,13 @@ GameView::treatGame( ) {
                         }
 
                     } else if ( isPlaying  ) {
-                        if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, QUITONX, QUITONY, BUTTONWIDTH, BUTTONHEIGHT ) )
-
-                            setButtonHover(my_buttonQuitSprite);
+                        if ( my_quitButton.isInZone ( event.MouseMove.X , event.MouseMove.Y) )
+                            my_quitButton.setHover();
                         else
                             resetButtonNorm();
                     } else if ( isViewingBestScore ) {
-                        if ( isInZone ( event.MouseMove.X, event.MouseMove.Y, QUITONX, QUITONY, BUTTONWIDTH, BUTTONHEIGHT ) )
-
-                            setButtonHover(my_buttonQuitSprite);
+                        if ( my_quitButton.isInZone ( event.MouseMove.X , event.MouseMove.Y) )
+                            my_quitButton.setHover();
                         else
                             resetButtonNorm();
                     }
@@ -808,96 +650,98 @@ GameView::treatGame( ) {
                 case Event::MouseButtonPressed :
 
                     if ( isInPresentation ) {
-                        if ( isInZone ( event.MouseButton.X, event.MouseButton.Y, PLAYX, PLAYY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
+                        if ( my_playButton.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
                             isInPresentation = false;
                             isPlaying = true;
                             my_model->reset();
-                            if ( music )
+                            if ( my_musicIcon.getOnOff() )
                                 my_musicLevel->Play();
-                        } else if ( isInZone ( event.MouseButton.X, event.MouseButton.Y, QUITX, QUITY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
+                            
+                        } else if ( my_quitButton.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
                             my_window->Close();
 
-                        } else if ( isInZone ( event.MouseButton.X, event.MouseButton.Y, OPTIONX, OPTIONY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
+                        } else if ( my_settingButton.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
                             isInPresentation = false;
                             isChoosingOption = true;
 
-                        } else if ( isInZone ( event.MouseButton.X, event.MouseButton.Y, BESTX, BESTY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
+                        } else if ( my_bestButton.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
                             isInPresentation = false;
                             isViewingBestScore = true;
-                        } else if ( isInZone( event.MouseButton.X, event.MouseButton.Y, MUSICX, ICONY, ICONWIDTH, ICONHEIGHT ) ) {
-                            music = !(music);
-                            reverseMusic( music );
-                        } else if ( isInZone( event.MouseButton.X, event.MouseButton.Y, SOUNDX, ICONY, ICONWIDTH, ICONHEIGHT ) ) {
-                            sound = !(sound);
-                            reverseSound( sound );
+                            
+                        } else if ( my_musicIcon.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
+                            my_musicIcon.reverse();
+                            
+                        } else if ( my_soundIcon.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
+                            my_soundIcon.reverse();
                         }
 
                     } else if ( isChoosingOption ) {
 
-                        if ( isInZone ( event.MouseButton.X, event.MouseButton.Y, ENGLISHX, CHOICELANGUEHIGH, LANGUEWIDTH, LANGUEHEIGHT ) )
+                        if ( my_languageToSprite[english]->isInZone ( event.MouseButton.X, event.MouseButton.Y ) )
                             my_language = english;
 
-                        if ( isInZone ( event.MouseButton.X, event.MouseButton.Y, FRENCHX, CHOICELANGUEHIGH, LANGUEWIDTH, LANGUEHEIGHT ) )
+                        else if ( my_languageToSprite[francais]->isInZone ( event.MouseButton.X, event.MouseButton.Y )  )
                             my_language = francais;
 
-                        if ( isInZone ( event.MouseButton.X, event.MouseButton.Y, ITALIANOX, CHOICELANGUEHIGH, LANGUEWIDTH, LANGUEHEIGHT ) )
+                        else if ( my_languageToSprite[italiano]->isInZone ( event.MouseButton.X, event.MouseButton.Y )  )
                             my_language = italiano;
 
-                        if ( isInZone ( event.MouseButton.X, event.MouseButton.Y, SPANISHX, CHOICELANGUEHIGH, LANGUEWIDTH,LANGUEHEIGHT ) )
+                        else if ( my_languageToSprite[espanol]->isInZone ( event.MouseButton.X, event.MouseButton.Y )  )
                             my_language = espanol;
 
-                        if ( isInZone ( event.MouseButton.X, event.MouseButton.Y, DEUTSCHX, CHOICELANGUEHIGH, LANGUEWIDTH, LANGUEHEIGHT ) )
+                        else if ( my_languageToSprite[deutsch]->isInZone ( event.MouseButton.X, event.MouseButton.Y )  )
                             my_language = deutsch;
 
-                        if ( isInZone( event.MouseButton.X, event.MouseButton.Y, CHOICEANANASX, CHOICESPRITEY, SPRITECHOICEWIDTH, SPRITECHOICEHEIGHT ) )
+                        else if ( my_ananasSprite.isInZone( event.MouseButton.X, event.MouseButton.Y ) )
                             setAnanasMode();
 
-                        if ( isInZone( event.MouseButton.X, event.MouseButton.Y, CHOICETEACHERX, CHOICESPRITEY, SPRITECHOICEWIDTH, SPRITECHOICEHEIGHT ) )
+                        else if ( my_teacherSprite.isInZone( event.MouseButton.X, event.MouseButton.Y) )
                             setTeacherMode();
 
-                        if ( isInZone ( event.MouseButton.X, event.MouseButton.Y, QUITONX, QUITONY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
+                        else if ( my_quitButton.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
                             isChoosingOption = false;
                             isInPresentation = true;
-                        } else if ( isInZone( event.MouseButton.X, event.MouseButton.Y, MUSICX, ICONY, ICONWIDTH, ICONHEIGHT ) ) {
-                            music = !(music);
-                            reverseMusic( music );
-                        } else if ( isInZone( event.MouseButton.X, event.MouseButton.Y, SOUNDX, ICONY, ICONWIDTH, ICONHEIGHT ) ) {
-                            sound = !(sound);
-                            reverseSound( sound );
+                            
+                        } else if ( my_musicIcon.isInZone( event.MouseButton.X, event.MouseButton.Y) ) {
+                            my_musicIcon.reverse();
+                            
+                        } else if ( my_soundIcon.isInZone( event.MouseButton.X, event.MouseButton.Y ) ) {
+                            my_soundIcon.reverse();
                         }
 
                     } else if ( isViewingBestScore ) {
 
-                        if ( isInZone ( event.MouseButton.X, event.MouseButton.Y, QUITONX, QUITONY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
+                        if ( my_quitButton.isInZone(event.MouseButton.X, event.MouseButton.Y ) ) {
                             isViewingBestScore = false;
                             isInPresentation = true;
-                        } else if ( isInZone( event.MouseButton.X, event.MouseButton.Y, MUSICX, ICONY, ICONWIDTH, ICONHEIGHT ) ) {
-                            music = !(music);
-                            reverseMusic( music );
-                        } else if ( isInZone( event.MouseButton.X, event.MouseButton.Y, SOUNDX, ICONY, ICONWIDTH, ICONHEIGHT ) ) {
-                            sound = !(sound);
-                            reverseSound( sound );
+                            
+                        } else if ( my_musicIcon.isInZone( event.MouseButton.X, event.MouseButton.Y) ) {
+                            my_musicIcon.reverse();
+                            
+                        } else if ( my_soundIcon.isInZone( event.MouseButton.X, event.MouseButton.Y ) ) {
+                            my_soundIcon.reverse();
                         }
 
                     } else if ( isPlaying ) {
                         if ( convertYPixel( event.MouseButton.Y ) != -1 && convertXPixel( event.MouseButton.X ) != -1 ) {
                             my_model->orderMovement( convertYPixel( event.MouseButton.Y ), convertXPixel( event.MouseButton.X ) );
                         }
-                        if ( isInZone ( event.MouseButton.X, event.MouseButton.Y, QUITONX, QUITONY, BUTTONWIDTH, BUTTONHEIGHT ) ) {
+                        if ( my_quitButton.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
                             isPlaying = false;
                             isEnterABestScore = true;
                             my_musicLevel->Stop();
                             resetButtonNorm();
-                        } else if ( isInZone( event.MouseButton.X, event.MouseButton.Y, MUSICX, ICONY, ICONWIDTH, ICONHEIGHT ) ) {
-                            music = !(music);
-                            reverseMusic( music );
-                            if ( music )
+                            
+                        } else if ( my_musicIcon.isInZone( event.MouseButton.X, event.MouseButton.Y) ) {
+                            my_musicIcon.reverse();
+                            
+                            if ( my_musicIcon.getOnOff() )
                                 my_musicLevel->Play();
                             else
                                 my_musicLevel->Pause();
-                        } else if ( isInZone( event.MouseButton.X, event.MouseButton.Y, SOUNDX, ICONY, ICONWIDTH, ICONHEIGHT ) ) {
-                            sound = !(sound);
-                            reverseSound( sound );
+                            
+                        } else if ( my_soundIcon.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
+                            my_soundIcon.reverse();
                         }
                     }
                     break;

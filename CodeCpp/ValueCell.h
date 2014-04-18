@@ -21,6 +21,7 @@ class ValueCell : public CellBase {
 
     protected :
         int my_value; /*!<  Nos points */
+        virtual void toClone( const ValueCell & v);
 
     public :
 
@@ -73,33 +74,6 @@ class ValueCell : public CellBase {
          *  \param[in] ValueCell v : opérateur d'affectation pour recopier une GoldCell
          */
         virtual ValueCell& operator=(const ValueCell &v);
-
-    private :
-
-        /*!
-         *  \brief Retourne la vie du Digger
-         *
-         *  \return my_life, la vie du digger pour éviter l'abstraction de la classe
-         */
-        virtual int getLife() const;
-        
-        /*!
-         *  \brief Ajouter une vie au digger
-         *  Pour éviter la classe abstraite
-         *
-         */
-        virtual void addLife();
-        
-        
-        /*!
-         *  \brief Enlever une vie au digger
-         *  Pour éviter la classe abstraite
-         *
-         */
-        virtual void lostLife();
-    
-        virtual void resetLife();
-
 
 };
 #endif /* defined(__PuruPuruDigger__ValueCell__) */

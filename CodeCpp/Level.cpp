@@ -78,11 +78,20 @@ Level::move(  int DeltaX,  int DeltaY ) {
     int pointInGame = -1;
 
     if ( isCellClickable( ( my_digger->getX() + DeltaX ), ( my_digger->getY() + DeltaY ) ) ) {
-        ///On veut savoir de combien de coup on veut se déplacer
-        nbStep = my_grid[ (my_digger->getX() + DeltaX) ][ (my_digger->getY() + DeltaY ) ]->getValue();
         
-        ///On veut connaître les points en jeu
-        pointInGame = my_grid[ (my_digger->getX() + DeltaX) ][ (my_digger->getY() + DeltaY ) ]->getPoints();
+        ///On transtype la case concerner, ce transtypage n'a pas besoin d'être vérifier
+        ptr_valueCell = dynamic_cast<ValueCell*>(my_grid[ (my_digger->getX() + DeltaX) ][ (my_digger->getY() + DeltaY ) ]);
+        
+        ///On prend les nbStep à faire
+        nbStep = ptr_valueCell->getValue();
+        
+        ///On regarde si c'est une goldCell
+        if ( my_grid[ (my_digger->getX() + DeltaX) ][ (my_digger->getY() + DeltaY ) ]->getType() == "GoldCell" ) {
+            ptr_goldCell = dynamic_cast<GoldCell*>(my_grid[ (my_digger->getX() + DeltaX) ][ (my_digger->getY() + DeltaY ) ]);
+            pointInGame = ptr_goldCell->getPoints();
+        } else {
+            pointInGame = ptr_valueCell->getPoints();
+        }
     }
     
     ///On met notre compteur à 0
@@ -92,9 +101,10 @@ Level::move(  int DeltaX,  int DeltaY ) {
     while ( cpt < nbStep && ( isCellClickable( ( my_digger->getX() + DeltaX ), ( my_digger->getY() + DeltaY ) ) ) ) {
         
         ///Si l'on rencontre un trésor pendant un déplacement
-        if ( dynamic_cast<GoldCell*>(my_grid[ ( my_digger->getX() + DeltaX ) ][ ( my_digger->getY() + DeltaY ) ]) !=NULL ) {
+        if ( my_grid[ ( my_digger->getX() + DeltaX ) ][ ( my_digger->getY() + DeltaY ) ]->getType() == "GoldCell" ) {
             ///On prend les points du bonus
-            my_score->addPoints( my_grid[ ( my_digger->getX() + DeltaX ) ][ ( my_digger->getY() + DeltaY ) ]->getPoints() );
+            ptr_goldCell = dynamic_cast<GoldCell*>(my_grid[ ( my_digger->getX() + DeltaX ) ][ ( my_digger->getY() + DeltaY ) ]);
+            my_score->addPoints( ptr_goldCell->getPoints() );
         }
         
         ///On delete la case suivante
@@ -170,7 +180,7 @@ void
 Level::initGrid() {
     //Calcul du nombre de bombe
     
-    int nbrB = MINOBJ + ( rand() % ( MAXOBJ - MINOBJ ) );
+    int nbrB = randomNumber(MINOBJ, MAXOBJ );
     
     //Remplissage du tableau avec des bombe
     for (  int i = 1 ; i <= nbrB; i++ ) {
@@ -205,52 +215,27 @@ Level::winLevel() {
     my_bonus += 500;
     //On augmente la difficulté
     my_goal +=10;
-    //On remet nos mouvements à 0
-    my_currentMove = 0;
     //On reset le level
     reset();
 }
 
 void
 Level::reset() {
-
-    //Plusieurs tentatives;
+    //On remet nos mouvements à 0
+    my_currentMove = 0;
     
-    //CellBase* temp = new Digger();
-    
-    //Digger* ptr_my_digger = dynamic_cast<Digger*>(my_digger);
-   
     Digger* digger_temp = new Digger( *my_digger ) ;
     
-    /*
-    if ( ptr_my_digger != NULL )
-        *digger_temp = *ptr_my_digger;
-     */
-     /*
-    while ( temp->getLife() != my_digger->getLife() ) {
-        temp->lostLife();
-    }
-    */
-    
-    //On delete tout sinon ça bug, et c'est désagréable d'éviter le digger
-    //ou de le déplacer à une case spécifique, au moins pas de risques !!
+    //On delete tout
     for (  int i = 0; i < LIGNE; i++ ) {
         for (  int j = 0; j < COLONNE; j++ ) {
-            //if ( i != my_digger->getX() && j != my_digger->getY() )
                 delete my_grid[i][j];
         }
     }
     
     my_digger = new Digger( *digger_temp );
-   
-    /*
-    while ( temp->getLife() != my_digger->getLife() ) {
-        my_digger->lostLife();
-    }
-    */
     
     my_grid[0][0] = my_digger;
-    //delete temp;
     delete digger_temp;
     resetTime();
     initGrid();
@@ -272,22 +257,10 @@ void Level::resetLose() {
 void
 Level::lostLevel() {
     my_lose = true;
-    
     //On fait perdre une vie au digger
-   
-    /* IDEE N°2 SI my_digger serait une CellBase*
-   
-     Digger *cloneDigger = dynamic_cast<Digger*>(my_digger);
-    if ( cloneDigger != NULL ) {
-        cloneDigger->lostLife();
-    }
-     */
-    
     my_digger->lostLife();
     //On reset le score actuel
     my_score->resetScore();
-    //On remet nos mouvements à 0
-    my_currentMove = 0;
     //On reset le level
     reset();
 }
@@ -324,21 +297,22 @@ Level::resetTime() {
     time(&my_depart);
 }
 
-CellBase* const
+Digger* const
 Level::getDigger() const {
     return my_digger;
 }
-
 
 bool
 Level::isCellClickable( int click_x, int click_y ) const {
     
     /// Il faut vérifier si l'on ne sort pas du tableau
     if ( click_x >= 0 && click_x < LIGNE && click_y >= 0 && click_y < COLONNE ) {
+       
         ///Il faut d'abord vérifier que la case est juste à côté de notre digger
         if ( ( ( click_x <= my_digger->getX() - 1 ) || ( click_x <= my_digger->getX() + 1 ) ) && ( ( click_y <= my_digger->getY() - 1 ) || ( click_y <= my_digger->getY() + 1 ) ) ) {
+            
             ///On vérifie son type
-            if ( dynamic_cast<ValueCell*>(my_grid[click_x][click_y]) != NULL || dynamic_cast<GoldCell*>(my_grid[click_x][click_y]) != NULL ) {
+            if ( my_grid[click_x][click_y]->getType() == "GoldCell" || my_grid[click_x][click_y]->getType()== "ValueCell" ) {
                 return true;
             }
         }

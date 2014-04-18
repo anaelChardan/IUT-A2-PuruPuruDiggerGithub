@@ -14,19 +14,12 @@
  Les Constructeurs
  =============================*/
 
-ValueCell::ValueCell() : CellBase(), my_value(randomNumber(MINVAL, MAXVAL)) {
-    my_type = "ValueCell";
-}
+ValueCell::ValueCell() : CellBase(), my_value(randomNumber(MINVAL, MAXVAL)) { }
 
-ValueCell::ValueCell( int x, int y ) : CellBase(x,y), my_value(randomNumber(MINVAL, MAXVAL)) {
-    my_type = "ValueCell";
-}
+ValueCell::ValueCell( int x, int y ) : CellBase(x,y), my_value(randomNumber(MINVAL, MAXVAL)) { }
 
 ValueCell::ValueCell( const ValueCell &v ) {
-    my_type = v.my_type;
-    my_value = v.my_value;
-    my_x = v.my_x;
-    my_y = v.my_y;
+    toClone(v);
 }
 
 /*===========================
@@ -57,27 +50,13 @@ ValueCell::getPoints() const {
 ValueCell&
 ValueCell::operator=(const ValueCell &v) {
     if ( this != &v ){
-        CellBase::operator=(v);
-        my_value = v.my_value;
+        toClone(v);
     }
     return *this;
 }
 
-/*===========================
- Pour éviter la classe abstraite
- =============================*/
-
-int
-ValueCell::getLife() const {
-    return -1;
+void
+ValueCell::toClone(const ValueCell &v) {
+    CellBase::toClone(v);
+    my_value = v.my_value;
 }
-
-void
-ValueCell::addLife() { }
-
-void
-ValueCell::lostLife() { }
-
-void
-ValueCell::resetLife() { }
-
