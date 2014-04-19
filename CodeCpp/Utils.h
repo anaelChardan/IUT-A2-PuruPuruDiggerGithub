@@ -1,11 +1,3 @@
-//
-//  Utils.h
-//  PuruPuruDigger
-//
-//  Created by Ananas-Mac on 14/03/2014.
-//
-//
-
 #ifndef __PuruPuruDigger__Utils__
 #define __PuruPuruDigger__Utils__
 

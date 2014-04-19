@@ -7,15 +7,15 @@ sf::Image BackgroundGraphic::my_image;
 void
 BackgroundGraphic::setTeacherMode() {
 #ifdef __linux
-    if ( my_image.LoadFromFile("Pictures/wallpapperTeach.png" ) )
-        setImageToSprite();
+    if ( !my_image.LoadFromFile("Pictures/wallpapperTeach.png" ) )
+        std::cerr << " Error when loading background image " << std::endl;
 #else
-    if ( my_image.LoadFromFile("wallpapperTeach.png") ) {
-        setImageToSprite();
+    if ( !my_image.LoadFromFile("wallpapperTeach.png") ) {
+        std::cerr << " Error when loading background image " << std::endl;
     }
 #endif
     else {
-        std::cerr << " Error when loading background image " << std::endl;
+        setImageToSprite();
     }
 }
 
@@ -23,15 +23,14 @@ void
 BackgroundGraphic::setAnanasMode() {
 #ifdef __linux
     if ( !my_image.LoadFromFile("Pictures/wallpapper.png" ) )
-        std::cerr << " Error when loading image " << std::endl;
+        std::cerr << " Error when loading background image " << std::endl;
 #else
     if ( !my_image.LoadFromFile("wallpapper.png") ) {
-        std::cerr << " Error when loading image " << std::endl;
+        std::cerr << " Error when loading background image " << std::endl;
     }
 #endif
     else {
         setImageToSprite();
-        std::cerr << " Error when loading image " << std::endl;
     }
 }
 

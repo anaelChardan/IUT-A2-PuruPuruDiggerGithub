@@ -66,11 +66,11 @@ void
 GameView::setAnanasMode() {
 #ifdef __linux__
     if (!my_fontScore->LoadFromFile("Font/scoreFont.ttf") || !my_fontTitle->LoadFromFile("Font/titleFont.ttf") || !my_musicLevel->OpenFromFile("Music/gridMusic.wav")) {
-        cout << "Error when loading image or font" << endl;
+        cout << "Error when loading font" << endl;
     }
 #else
     if (!my_fontScore->LoadFromFile("scoreFont.ttf") || !my_fontTitle->LoadFromFile("titleFont.ttf") || !my_musicLevel->OpenFromFile("gridMusic.wav") ) {
-        cout << "Error when loading image or font" << endl;
+        cout << "Error when loading font" << endl;
     }
 #endif
     else {
@@ -142,11 +142,11 @@ void
 GameView::setTeacherMode() {
 #ifdef __linux__
     if (!my_fontScore->LoadFromFile("Font/arial.ttf") || !my_fontTitle->LoadFromFile("Font/arial.ttf") || !my_musicLevel->OpenFromFile("Music/gridMusic.wav")) {
-        cout << "Error when loading image or font" << endl;
+        cout << "Error when loading font" << endl;
     }
 #else
     if ( !my_fontScore->LoadFromFile("arial.ttf") || !my_fontTitle->LoadFromFile("arial.ttf") ||!my_musicLevel->OpenFromFile("gridMusic.wav")) {
-        cout << "Error when loading image or font" << endl;
+        cout << "Error when loading font" << endl;
     }
 #endif
 
@@ -663,11 +663,13 @@ GameView::treatGame( ) {
                         } else if ( my_settingButton.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
                             isInPresentation = false;
                             isChoosingOption = true;
+                            resetButtonNorm();
 
                         } else if ( my_bestButton.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
                             isInPresentation = false;
                             isViewingBestScore = true;
-                            
+                            resetButtonNorm();
+
                         } else if ( my_musicIcon.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
                             my_musicIcon.reverse();
                             
@@ -677,30 +679,36 @@ GameView::treatGame( ) {
 
                     } else if ( isChoosingOption ) {
 
-                        if ( my_languageToSprite[english]->isInZone ( event.MouseButton.X, event.MouseButton.Y ) )
+                        if ( my_languageToSprite[english]->isInZone ( event.MouseButton.X, event.MouseButton.Y ) ) {
                             my_language = english;
-
-                        else if ( my_languageToSprite[francais]->isInZone ( event.MouseButton.X, event.MouseButton.Y )  )
+                            resetLanguageNorm();
+                            
+                        } else if ( my_languageToSprite[francais]->isInZone ( event.MouseButton.X, event.MouseButton.Y )  ) {
                             my_language = francais;
+                            resetLanguageNorm();
 
-                        else if ( my_languageToSprite[italiano]->isInZone ( event.MouseButton.X, event.MouseButton.Y )  )
+                        } else if ( my_languageToSprite[italiano]->isInZone ( event.MouseButton.X, event.MouseButton.Y )  ) {
                             my_language = italiano;
+                            resetLanguageNorm();
 
-                        else if ( my_languageToSprite[espanol]->isInZone ( event.MouseButton.X, event.MouseButton.Y )  )
+                        } else if ( my_languageToSprite[espanol]->isInZone ( event.MouseButton.X, event.MouseButton.Y )  ) {
                             my_language = espanol;
+                            resetLanguageNorm();
 
-                        else if ( my_languageToSprite[deutsch]->isInZone ( event.MouseButton.X, event.MouseButton.Y )  )
+                        } else if ( my_languageToSprite[deutsch]->isInZone ( event.MouseButton.X, event.MouseButton.Y )  ) {
                             my_language = deutsch;
+                            resetLanguageNorm();
 
-                        else if ( my_ananasSprite.isInZone( event.MouseButton.X, event.MouseButton.Y ) )
+                        } else if ( my_ananasSprite.isInZone( event.MouseButton.X, event.MouseButton.Y ) ) {
                             setAnanasMode();
 
-                        else if ( my_teacherSprite.isInZone( event.MouseButton.X, event.MouseButton.Y) )
+                        } else if ( my_teacherSprite.isInZone( event.MouseButton.X, event.MouseButton.Y) ) {
                             setTeacherMode();
 
-                        else if ( my_quitButton.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
+                        }else if ( my_quitButton.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
                             isChoosingOption = false;
                             isInPresentation = true;
+                            resetButtonNorm();
                             
                         } else if ( my_musicIcon.isInZone( event.MouseButton.X, event.MouseButton.Y) ) {
                             my_musicIcon.reverse();
@@ -714,6 +722,7 @@ GameView::treatGame( ) {
                         if ( my_quitButton.isInZone(event.MouseButton.X, event.MouseButton.Y ) ) {
                             isViewingBestScore = false;
                             isInPresentation = true;
+                            resetButtonNorm();
                             
                         } else if ( my_musicIcon.isInZone( event.MouseButton.X, event.MouseButton.Y) ) {
                             my_musicIcon.reverse();

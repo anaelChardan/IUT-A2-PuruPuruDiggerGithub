@@ -12,15 +12,15 @@ SpriteGraphic::setTeacherMode() {
 void
 SpriteGraphic::setAnanasMode() {
 #ifdef __linux
-    if ( my_image.LoadFromFile("Pictures/choiceSprite.png" ) )
-        setImageToSprite();
+    if ( !my_image.LoadFromFile("Pictures/choiceSprite.png" ) )
+        std::cerr << " Error when loading choiceSprite image " << std::endl;
 #else
-    if ( my_image.LoadFromFile("choiceSprite.png") ) {
-        setImageToSprite();
+    if ( !my_image.LoadFromFile("choiceSprite.png") ) {
+        std::cerr << " Error when loading choiceSprite image " << std::endl;
     }
 #endif
     else {
-        std::cerr << " Error when loading choiceSprite image " << std::endl;
+        setImageToSprite();
     }
 }
 

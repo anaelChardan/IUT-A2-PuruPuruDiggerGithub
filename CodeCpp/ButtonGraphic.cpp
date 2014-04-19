@@ -9,11 +9,11 @@ void
 ButtonGraphic::setTeacherMode() {
 #ifdef __linux
     if ( !my_image.LoadFromFile("Pictures/buttonTeach.png" ) || !my_font.LoadFromFile("Font/arial.ttf") )
-        std::cerr << " Error when loading image " << std::endl;
+        std::cerr << " Error when loading button image or button font" << std::endl;
 
 #else
     if ( !my_image.LoadFromFile("buttonTeach.png") || !my_font.LoadFromFile("arial.ttf") ) {
-        std::cerr << " Error when loading image " << std::endl;
+        std::cerr << " Error when loading button image or button font " << std::endl;
 
     }
 #endif
@@ -29,10 +29,10 @@ void
 ButtonGraphic::setAnanasMode() {
 #ifdef __linux
     if ( !my_image.LoadFromFile("Pictures/buttonAnanas.png" ) || !my_font.LoadFromFile("Font/buttonFont.ttf") )
-        std::cerr << " Error when loading image " << std::endl;
+        std::cerr << " Error when loading button image or button font " << std::endl;
 #else
     if ( !my_image.LoadFromFile("buttonAnanas.png") || !my_font.LoadFromFile("buttonFont.ttf") ) {
-        std::cerr << " Error when loading button image " << std::endl;
+        std::cerr << " Error when loading button image or button font " << std::endl;
     }
 #endif
     else {

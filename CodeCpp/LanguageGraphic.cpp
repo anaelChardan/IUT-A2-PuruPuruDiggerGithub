@@ -12,15 +12,16 @@ LanguageGraphic::setTeacherMode() {
 void
 LanguageGraphic::setAnanasMode() {
 #ifdef __linux
-    if ( my_image.LoadFromFile("Pictures/languages.png" ) )
-        setImageToSprite();
+    if ( !my_image.LoadFromFile("Pictures/languages.png" ) )
+        std::cerr << " Error when loading languages image " << std::endl;
 #else
-    if ( my_image.LoadFromFile("languages.png") ) {
-        setImageToSprite();
+    if ( !my_image.LoadFromFile("languages.png") ) {
+        std::cerr << " Error when loading languages image " << std::endl;
     }
 #endif
     else {
-        std::cerr << " Error when loading languages image " << std::endl;
+        setImageToSprite();
+
     }
 }
 

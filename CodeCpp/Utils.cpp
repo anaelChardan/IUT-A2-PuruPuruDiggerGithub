@@ -1,11 +1,3 @@
-//
-//  Utils.cpp
-//  PuruPuruDigger
-//
-//  Created by Ananas-Mac on 14/03/2014.
-//
-//
-
 #include "Utils.h"
 #include <iostream>
 #include <sstream>

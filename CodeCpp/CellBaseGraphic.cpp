@@ -12,30 +12,30 @@ CellBaseGraphic::~CellBaseGraphic() { }
 void
 CellBaseGraphic::setAnanasMode() {
 #ifdef __linux
-    if ( my_image.LoadFromFile("Pictures/case.png" ) )
-        setImageToSprite();
+    if ( !my_image.LoadFromFile("Pictures/case.png" ) )
+        std::cerr << " Error when loading case image " << std::endl;
 #else
-    if ( my_image.LoadFromFile("case.png") ) {
-        setImageToSprite();
+    if ( !my_image.LoadFromFile("case.png") ) {
+        std::cerr << " Error when loading case image " << std::endl;
     }
 #endif
     else {
-        std::cerr << " Error when loading case image " << std::endl;
+        setImageToSprite();
     }
 }
 
 void
 CellBaseGraphic::setTeacherMode() {
 #ifdef __linux
-    if ( my_image.LoadFromFile("Pictures/caseTeach.png" ) )
-        setImageToSprite();
+    if ( !my_image.LoadFromFile("Pictures/caseTeach.png" ) )
+        std::cerr << " Error when loading caseTeach image " << std::endl;
 #else
-    if ( my_image.LoadFromFile("caseTeach.png") ) {
-        setImageToSprite();
+    if ( !my_image.LoadFromFile("caseTeach.png") ) {
+        std::cerr << " Error when loading caseTeach image " << std::endl;
     }
 #endif
     else {
-        std::cerr << " Error when loading caseTeach image " << std::endl;
+        setImageToSprite();
     }
 }
 

@@ -15,15 +15,15 @@ GraphicAudibleElement::setTeacherMode() {
 void
 GraphicAudibleElement::setAnanasMode() {
 #ifdef __linux
-    if ( my_image.LoadFromFile("Pictures/icon.png" ) )
-        setImageToSprite();
+    if ( !my_image.LoadFromFile("Pictures/icon.png" ) )
+        std::cerr << " Error when loading icon image " << std::endl;
 #else
-    if ( my_image.LoadFromFile("icon.png") ) {
-        setImageToSprite();
+    if ( !my_image.LoadFromFile("icon.png") ) {
+        std::cerr << " Error when loading icon image " << std::endl;
     }
 #endif
     else {
-        std::cerr << " Error when loading icon image " << std::endl;
+        setImageToSprite();
     }
 }
 

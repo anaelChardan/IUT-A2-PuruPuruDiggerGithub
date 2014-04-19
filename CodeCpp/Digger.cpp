@@ -27,7 +27,7 @@ Digger::Digger( const Digger &d ) {
  Le Destructeur
  =============================*/
 
-Digger::~Digger() {}
+Digger::~Digger() { }
 
 /*===========================
  Les méthodes
@@ -46,9 +46,8 @@ Digger::addLife() {
 
 void
 Digger::lostLife() {
-    if ( my_life >= 0 ) {
+    if ( my_life >= 0 )
         my_life--;
-    }
 }
 
 void
