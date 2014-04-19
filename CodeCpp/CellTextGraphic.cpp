@@ -8,7 +8,7 @@ void
 CellTextGraphic::setAnanasMode() {
 #ifdef __linux__
     if ( !my_font.LoadFromFile("Font/valueFont.ttf") ) {
-        std::cerr << " Error when loading valueFont.ttf " << endl;
+        std::cerr << " Error when loading valueFont.ttf " << std::endl;
     }
 #else
     if ( !my_font.LoadFromFile("valueFont.ttf") )
@@ -26,7 +26,7 @@ void
 CellTextGraphic::setTeacherMode() {
 #ifdef __linux__
     if ( !my_font.LoadFromFile("Font/arial.ttf") ) {
-        cerr << " Error when loading valueFont.ttf " << endl;
+        std::cerr << " Error when loading valueFont.ttf " << std::endl;
     }
 #else
     if ( !my_font.LoadFromFile("arial.ttf") )
@@ -46,7 +46,7 @@ CellTextGraphic::setSpriteAndDraw(int x, int y, sf::RenderWindow* _window, std::
     my_string.SetText(_string);
     my_string.SetPosition( my_sprite.GetPosition().x + ( my_sprite.GetSize().x / 2 ) - ( my_string.GetRect().GetWidth() / 2 ), my_sprite.GetPosition().y + ( my_sprite.GetSize().y / 2 ) - ( my_string.GetRect().GetHeight() / 2 ) );
     _window->Draw(my_string);
-    
+
 }
 
 void
