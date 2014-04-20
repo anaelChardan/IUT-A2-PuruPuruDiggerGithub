@@ -29,6 +29,7 @@ GameView::GameView() {
 
      my_language = francais;
 
+    animation = false;
      //La font pour les scores
      my_fontScore = new Font();
      my_fontTitle = new Font();
@@ -370,21 +371,71 @@ GameView::showIsEnteringABestScore( string player ) {
     setTextAndDraw( my_scoreNum, player, ( WINDOWWITDH / 2 ) , WINDOWHEIGHT / 2, true ) ;
 }
 
+
+void
+GameView::toAnimate() {
+    int xScreen = my_model->getLevel()->getDigger()->getY(); // On parle en terme d'écran, le x et le y sont donc inversé
+    int yScreen = my_model->getLevel()->getDigger()->getX();
+    int PosDiggerSpriteX = convertXPixel( my_stringToSprite["Digger"]->getXPos() );
+    int PosDiggerSpriteY = convertYPixel( my_stringToSprite["Digger"]->getYPos() );
+    int diffX = xScreen - PosDiggerSpriteX;
+    int diffY = yScreen - PosDiggerSpriteY;
+    
+    if ( diffX == 0 && diffY == 0 )
+        animation = false;
+    else {
+        if ( my_model->getMovement() == SEast ) {
+            my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() + 2, my_stringToSprite["Digger"]->getYPos() + 2, my_window );
+            
+        } else if ( my_model->getMovement() == South ) {
+            my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel(PosDiggerSpriteX), convertIndiceYToPixel(PosDiggerSpriteY), my_window );
+           
+            my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos(), my_stringToSprite["Digger"]->getYPos() + 2, my_window );
+            
+        } else if ( my_model->getMovement() == SWest ) {
+            my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() - 2, my_stringToSprite["Digger"]->getYPos() + 2, my_window );
+            
+        } else if ( my_model->getMovement() == West ) {
+            my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel(PosDiggerSpriteX + CASEWITDH), convertIndiceYToPixel(PosDiggerSpriteY), my_window );
+            
+            my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() - 2, my_stringToSprite["Digger"]->getYPos(), my_window );
+            
+        } else if ( my_model->getMovement() == East ) {
+            my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel(PosDiggerSpriteX), convertIndiceYToPixel(PosDiggerSpriteY), my_window );
+            
+            my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() + 2, my_stringToSprite["Digger"]->getYPos(), my_window );
+            
+        } else if ( my_model->getMovement() == North ) {
+            my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos(), my_stringToSprite["Digger"]->getYPos() - 2, my_window );
+            
+        } else if ( my_model->getMovement() == NEast ) {
+            my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() + 1, my_stringToSprite["Digger"]->getYPos() - 2, my_window );
+            
+        } else if ( my_model->getMovement() == Nwest ) {
+            my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() - 2, my_stringToSprite["Digger"]->getYPos() - 2, my_window );
+        }
+    }
+    
+}
 void
 GameView::showGrid() {
-    for ( int i = 0; i < LIGNE ; i++ ) {
-        for ( int j = 0; j < COLONNE; j++ ) {
-            //On dessine le contenu de la case
-            if ( my_model->getLevel()->getGrid()[i][j]->getType() == "GoldCell" ) {
-                ptr_goldCell = dynamic_cast<GoldCell*>(my_model->getLevel()->getGrid()[i][j]);
-                ptr_goldGraphic = dynamic_cast<GoldGraphic*>(my_stringToSprite["GoldCell"]);
-                ptr_goldGraphic->setSpriteAndDraw( convertIndiceXToPixel( j ), convertIndiceYToPixel( i ), my_window, intToString(ptr_goldCell->getValue()) );
-            } else if ( my_model->getLevel()->getGrid()[i][j]->getType() == "ValueCell" ) {
-                ptr_valueCell = dynamic_cast<ValueCell*>(my_model->getLevel()->getGrid()[i][j]);
-                ptr_valueGraphic = dynamic_cast<ValueGraphic*>(my_stringToSprite["ValueCell"]);
-                ptr_valueGraphic->setSpriteAndDraw( convertIndiceXToPixel( j ), convertIndiceYToPixel( i ), my_window, intToString(ptr_valueCell->getValue()) );
-            } else
-                my_stringToSprite[my_model->getLevel()->getGrid()[i][j]->getType()]->setSpriteAndDraw(convertIndiceXToPixel( j ), convertIndiceYToPixel( i ), my_window);
+    if ( animation )
+        toAnimate();
+    else {
+        for ( int i = 0; i < LIGNE ; i++ ) {
+            for ( int j = 0; j < COLONNE; j++ ) {
+                //On dessine le contenu de la case
+                if ( my_model->getLevel()->getGrid()[i][j]->getType() == "GoldCell" ) {
+                    ptr_goldCell = dynamic_cast<GoldCell*>(my_model->getLevel()->getGrid()[i][j]);
+                    ptr_goldGraphic = dynamic_cast<GoldGraphic*>(my_stringToSprite["GoldCell"]);
+                    ptr_goldGraphic->setSpriteAndDraw( convertIndiceXToPixel( j ), convertIndiceYToPixel( i ), my_window, intToString(ptr_goldCell->getValue()) );
+                } else if ( my_model->getLevel()->getGrid()[i][j]->getType() == "ValueCell" ) {
+                    ptr_valueCell = dynamic_cast<ValueCell*>(my_model->getLevel()->getGrid()[i][j]);
+                    ptr_valueGraphic = dynamic_cast<ValueGraphic*>(my_stringToSprite["ValueCell"]);
+                    ptr_valueGraphic->setSpriteAndDraw( convertIndiceXToPixel( j ), convertIndiceYToPixel( i ), my_window, intToString(ptr_valueCell->getValue()) );
+                } else
+                    my_stringToSprite[my_model->getLevel()->getGrid()[i][j]->getType()]->setSpriteAndDraw(convertIndiceXToPixel( j ), convertIndiceYToPixel( i ), my_window);
+            }
         }
     }
 }
@@ -477,20 +528,24 @@ GameView::showScore() {
 
 void
 GameView::showLevel() {
-    newScreen();
+    if ( !animation ) {
+        newScreen();
 
-    my_titleString->SetColor(Color(255,255,255));
-    my_titleString->SetSize(60);
+        my_titleString->SetColor(Color(255,255,255));
+        my_titleString->SetSize(60);
 
-    setTextAndDraw( my_titleString, " PURU PURU DIGGER " , ( WINDOWWITDH / 2 ), 10, true ) ;
+        setTextAndDraw( my_titleString, " PURU PURU DIGGER " , ( WINDOWWITDH / 2 ), 10, true ) ;
+        
+        //On dessine le score
+        showScore();
+        
+        my_quitButton.setSpriteAndDraw(QUITONX, QUITONY, my_window, my_messages[my_language][stop]);
+    }
 
     //On dessine la grille
     showGrid();
 
-    //On dessine le score
-    showScore();
-
-    my_quitButton.setSpriteAndDraw(QUITONX, QUITONY, my_window, my_messages[my_language][stop]);
+    
 }
 
 //Injection de dépendance model
@@ -733,7 +788,10 @@ GameView::treatGame( ) {
 
                     } else if ( isPlaying ) {
                         if ( convertYPixel( event.MouseButton.Y ) != -1 && convertXPixel( event.MouseButton.X ) != -1 ) {
-                            my_model->orderMovement( convertYPixel( event.MouseButton.Y ), convertXPixel( event.MouseButton.X ) );
+                            if ( !animation ) {
+                                my_model->orderMovement( convertYPixel( event.MouseButton.Y ), convertXPixel( event.MouseButton.X ) );
+                                animation = true;
+                            }
                         }
                         if ( my_quitButton.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
                             isPlaying = false;
@@ -780,7 +838,6 @@ GameView::treatGame( ) {
                     pause.Reset();
                 }
                 over = true;
-                showLoseLevel(time, over);
                 isInBreak = true;
             } else if ( my_model->getLevel()->lose() ) {
                 if ( !isInBreak )
@@ -804,7 +861,7 @@ GameView::treatGame( ) {
         my_window->Display();
 
         //Pour gérer l'affichage durant quelque seconde
-        if ( isInBreak  ) {
+        if ( isInBreak ) {
 
             if ( pause.GetElapsedTime() > 1.5 ) {
 

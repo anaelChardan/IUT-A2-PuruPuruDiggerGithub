@@ -186,6 +186,10 @@ enum Message{
     theme
 };
 
+enum Movement {
+    Nwest, NEast, North, South, SWest, SEast, West, East
+};
+
 
 
 #endif

@@ -22,3 +22,12 @@ GraphicElement::draw(sf::RenderWindow *_window) const {
     _window->Draw(my_sprite);
 }
 
+int
+GraphicElement::getXPos() const {
+    return my_sprite.GetPosition().x;
+}
+
+int
+GraphicElement::getYPos() const {
+    return my_sprite.GetPosition().y;
+}

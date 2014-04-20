@@ -19,6 +19,8 @@ class GraphicElement {
         virtual void setSpriteAndDraw( int x, int y, sf::RenderWindow * _window );
         virtual void draw( sf::RenderWindow* _window ) const ;
         bool isInZone( int x, int y ) const;
+        int getXPos() const;
+        int getYPos() const;
 };
 
 #endif /* defined(__PuruPuruDigger__GraphicElement__) */

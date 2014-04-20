@@ -45,22 +45,31 @@ GameModel::orderMovement( int depl ) {
 void
 GameModel::orderMovement( int xclick, int yclick ) {
     if ( my_level->isCellClickable( xclick, yclick ) ) {
-        if ( xclick - my_level->getDigger()->getX() == 1 &&  yclick - my_level->getDigger()->getY() == -1 )
+        if ( xclick - my_level->getDigger()->getX() == 1 &&  yclick - my_level->getDigger()->getY() == -1 ) {
             my_level->moveSouthWest();
-        else if ( xclick - my_level->getDigger()->getX() == 1 &&  yclick - my_level->getDigger()->getY() == 0 )
+            my_movement = SWest;
+        } else if ( xclick - my_level->getDigger()->getX() == 1 &&  yclick - my_level->getDigger()->getY() == 0 ) {
             my_level->moveSouth();
-        else if ( xclick - my_level->getDigger()->getX() == 1 &&  yclick - my_level->getDigger()->getY() == 1 )
+            my_movement = South;
+        } else if ( xclick - my_level->getDigger()->getX() == 1 &&  yclick - my_level->getDigger()->getY() == 1 ) {
             my_level->moveSouthEast();
-        else if ( xclick - my_level->getDigger()->getX() == 0 &&  yclick - my_level->getDigger()->getY() == 1 )
+            my_movement = SEast;
+        } else if ( xclick - my_level->getDigger()->getX() == 0 &&  yclick - my_level->getDigger()->getY() == 1 ) {
             my_level->moveEast();
-        else if ( xclick - my_level->getDigger()->getX() == -1 &&  yclick - my_level->getDigger()->getY() == 1 )
+            my_movement = East;
+        } else if ( xclick - my_level->getDigger()->getX() == -1 &&  yclick - my_level->getDigger()->getY() == 1 ) {
             my_level->moveNorthEast();
-        else if ( xclick - my_level->getDigger()->getX() == -1 &&  yclick - my_level->getDigger()->getY() == 0 )
+            my_movement = NEast;
+        } else if ( xclick - my_level->getDigger()->getX() == -1 &&  yclick - my_level->getDigger()->getY() == 0 ) {
             my_level->moveNorth();
-        else if ( xclick - my_level->getDigger()->getX() == -1 &&  yclick - my_level->getDigger()->getY() == -1 )
+            my_movement = North;
+        } else if ( xclick - my_level->getDigger()->getX() == -1 &&  yclick - my_level->getDigger()->getY() == -1 ) {
             my_level->moveNorthWest();
-        else if ( xclick - my_level->getDigger()->getX() == 0 &&  yclick - my_level->getDigger()->getY() == -1 )
+            my_movement = Nwest;
+        } else if ( xclick - my_level->getDigger()->getX() == 0 &&  yclick - my_level->getDigger()->getY() == -1 ) {
             my_level->moveWest();
+            my_movement = West;
+        }
     }
 }
 
@@ -86,4 +95,9 @@ void
 GameModel::reset() {
     my_score = new Score();
     my_level = new Level( my_score);
+}
+
+Movement
+GameModel::getMovement() const {
+    return my_movement;
 }

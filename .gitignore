@@ -13,7 +13,7 @@ xcuserdata
 #other
 *.coredataeditor
 
-#PuruPuruDigger.depend
-#PuruPuruDigger.layout
+PuruPuruDigger.depend
+PuruPuruDigger.layout
 
-#CodeBlocksCompilation/*
+CodeBlocksCompilation/*

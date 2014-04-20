@@ -70,6 +70,8 @@ class GameView {
         ValueCell* ptr_valueCell;
         GoldGraphic* ptr_goldGraphic;
         ValueGraphic* ptr_valueGraphic;
+    
+        bool animation;
 
         //Pour les sons
         sf::Music *my_musicLevel;
@@ -127,6 +129,8 @@ class GameView {
      *  \param[in] nom le nom du joueur
      */
     void enterScore(std::string nom) const ;
+    
+    void toAnimate();
 
 
 public:

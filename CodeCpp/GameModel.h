@@ -22,6 +22,8 @@ class GameModel {
     private :
         Level* my_level; /*!<  Nos Levels ( en vérité un mais infini ) */
         Score* my_score; /*!<  Les scores de notre partie */
+        Movement my_movement;
+    
     
     public :
         /*!
@@ -60,6 +62,8 @@ class GameModel {
         void orderMovement( int depl );
     
         void orderMovement( int xclick , int yclick );
+    
+        Movement getMovement() const;
     
         /*!
          *  \brief Savoir si la partie est terminée
