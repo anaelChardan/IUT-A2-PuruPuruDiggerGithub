@@ -59,6 +59,23 @@ GameView::GameView() {
 
 //Destructeur
 GameView::~GameView() {
+    delete my_fontScore;
+    delete my_fontTitle;
+    delete my_window;
+    delete my_scoreString;
+    delete my_scoreNum;
+    delete my_titleScoreString;
+    delete my_titleString;
+    delete my_musicLevel;
+    
+    for ( map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite.begin() ; it!=my_languageToSprite.end(); ++it) {
+        delete my_languageToSprite[ it->first ];
+    }
+    
+    for ( map<string, CellBaseGraphic*>::const_iterator it = my_stringToSprite.begin() ; it!=my_stringToSprite.end(); ++it) {
+        delete my_stringToSprite[ it->first ];
+    }
+    
 }
 
 
@@ -374,44 +391,52 @@ GameView::showIsEnteringABestScore( string player ) {
 
 void
 GameView::toAnimate() {
-    int xScreen = my_model->getLevel()->getDigger()->getY(); // On parle en terme d'écran, le x et le y sont donc inversé
-    int yScreen = my_model->getLevel()->getDigger()->getX();
-    int PosDiggerSpriteX = convertXPixel( my_stringToSprite["Digger"]->getXPos() );
-    int PosDiggerSpriteY = convertYPixel( my_stringToSprite["Digger"]->getYPos() );
-    int diffX = xScreen - PosDiggerSpriteX;
-    int diffY = yScreen - PosDiggerSpriteY;
     
-    if ( diffX == 0 && diffY == 0 )
+    if ( ( convertIndiceXToPixel( my_model->getLevel()->getDigger()->getY() ) - my_stringToSprite["Digger"]->getXPos() ) == 0 && ( convertIndiceYToPixel( my_model->getLevel()->getDigger()->getX() ) - my_stringToSprite["Digger"]->getYPos() ) == 0 )
         animation = false;
     else {
+        
         if ( my_model->getMovement() == SEast ) {
+            my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() ) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos() ) ), my_window );
+            
             my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() + 2, my_stringToSprite["Digger"]->getYPos() + 2, my_window );
             
+            //Pour le sud -> OK
         } else if ( my_model->getMovement() == South ) {
-            my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel(PosDiggerSpriteX), convertIndiceYToPixel(PosDiggerSpriteY), my_window );
+            my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() ) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos() ) ), my_window );
            
             my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos(), my_stringToSprite["Digger"]->getYPos() + 2, my_window );
             
+            
         } else if ( my_model->getMovement() == SWest ) {
+            my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() + CASEWITDH  )  ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos() ) ), my_window );
+            
             my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() - 2, my_stringToSprite["Digger"]->getYPos() + 2, my_window );
             
+            //Pour l'ouest -> OK
         } else if ( my_model->getMovement() == West ) {
-            my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel(PosDiggerSpriteX + CASEWITDH), convertIndiceYToPixel(PosDiggerSpriteY), my_window );
-            
+            my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() + CASEWITDH) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos() ) ), my_window );
             my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() - 2, my_stringToSprite["Digger"]->getYPos(), my_window );
             
+            //Pour l'Est -> OK
         } else if ( my_model->getMovement() == East ) {
-            my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel(PosDiggerSpriteX), convertIndiceYToPixel(PosDiggerSpriteY), my_window );
-            
+            my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() ) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos() ) ), my_window );
             my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() + 2, my_stringToSprite["Digger"]->getYPos(), my_window );
             
+            //Pour le nord -> OK
         } else if ( my_model->getMovement() == North ) {
+            my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() ) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos()  + CASEHEIGHT ) ), my_window );
             my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos(), my_stringToSprite["Digger"]->getYPos() - 2, my_window );
             
+            //Pour le nord Est
         } else if ( my_model->getMovement() == NEast ) {
-            my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() + 1, my_stringToSprite["Digger"]->getYPos() - 2, my_window );
+            my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( my_stringToSprite["Digger"]->getXPos() ), convertIndiceYToPixel( my_stringToSprite["Digger"]->getYPos() + CASEHEIGHT ), my_window );
+        
+            my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() + 2, my_stringToSprite["Digger"]->getYPos() - 2, my_window );
             
         } else if ( my_model->getMovement() == Nwest ) {
+             my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( my_stringToSprite["Digger"]->getXPos() + CASEWITDH ), convertIndiceYToPixel( my_stringToSprite["Digger"]->getYPos() + CASEHEIGHT ), my_window );
+            
             my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() - 2, my_stringToSprite["Digger"]->getYPos() - 2, my_window );
         }
     }
@@ -671,6 +696,7 @@ GameView::treatGame( ) {
                             default :
                                 break;
                         }
+                        
                     } else if ( isEnterABestScore ) {
                         switch (event.Key.Code) {
                             case Key::Return :
@@ -787,17 +813,17 @@ GameView::treatGame( ) {
                         }
 
                     } else if ( isPlaying ) {
-                        if ( convertYPixel( event.MouseButton.Y ) != -1 && convertXPixel( event.MouseButton.X ) != -1 ) {
-                            if ( !animation ) {
-                                my_model->orderMovement( convertYPixel( event.MouseButton.Y ), convertXPixel( event.MouseButton.X ) );
-                                animation = true;
-                            }
+                        if ( convertYPixel( event.MouseButton.Y ) != -1 && convertXPixel( event.MouseButton.X ) != -1 && !animation) {
+                            my_model->orderMovement( convertYPixel( event.MouseButton.Y ), convertXPixel( event.MouseButton.X ) );
+                            animation = true;
+                            
                         }
                         if ( my_quitButton.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
                             isPlaying = false;
                             isEnterABestScore = true;
                             my_musicLevel->Stop();
                             resetButtonNorm();
+                            animation = false;
                             
                         } else if ( my_musicIcon.isInZone( event.MouseButton.X, event.MouseButton.Y) ) {
                             my_musicIcon.reverse();
@@ -822,11 +848,15 @@ GameView::treatGame( ) {
         //Gestion de tout l'affichage
         if ( isInPresentation ) {
             showPresentation();
+            
         } else if ( isChoosingOption ) {
             showOption();
+            
         } else if ( isViewingBestScore ) {
             showBestScore();
+            
         } else if ( isPlaying ) {
+            
             //On check le temps, et l'on peut perdre à cause de lui.
             if ( my_model->getLevel()->timeIsUp() ) {
                 my_model->getLevel()->lostLevel();
@@ -839,17 +869,22 @@ GameView::treatGame( ) {
                 }
                 over = true;
                 isInBreak = true;
+                animation = false;
+                
             } else if ( my_model->getLevel()->lose() ) {
                 if ( !isInBreak )
                     pause.Reset();
                 showLoseLevel(time, over);
                 isInBreak = true;
+                animation = false;
 
             } else if ( my_model->getLevel()->win()  ) {
                 if ( !isInBreak )
                     pause.Reset();
                 showWinLevel();
                 isInBreak = true;
+                animation = false;
+                
             } else {
                 showLevel();
             }
