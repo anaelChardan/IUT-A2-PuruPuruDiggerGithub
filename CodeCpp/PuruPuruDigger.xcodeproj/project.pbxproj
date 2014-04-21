@@ -13,6 +13,12 @@
 		031D88D818BE5B2B0001686A /* GameModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031D88D618BE5B2B0001686A /* GameModel.cpp */; };
 		031D88DB18BE5B670001686A /* GameView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031D88D918BE5B670001686A /* GameView.cpp */; };
 		031E007818B52B360045013D /* Bomb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031E007618B52B360045013D /* Bomb.cpp */; };
+		03220F3D19058C9B005037D3 /* soundButton.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03220F3719058C9B005037D3 /* soundButton.wav */; };
+		03220F3E19058C9B005037D3 /* soundEnterText.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03220F3819058C9B005037D3 /* soundEnterText.wav */; };
+		03220F3F19058C9B005037D3 /* soundGameOver.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03220F3919058C9B005037D3 /* soundGameOver.wav */; };
+		03220F4019058C9B005037D3 /* soundIsClickable.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03220F3A19058C9B005037D3 /* soundIsClickable.wav */; };
+		03220F4119058C9B005037D3 /* soundIsNotClickable.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03220F3B19058C9B005037D3 /* soundIsNotClickable.wav */; };
+		03220F4219058C9B005037D3 /* soundLoseLevel.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03220F3C19058C9B005037D3 /* soundLoseLevel.wav */; };
 		03229D1B18D35E8A00027190 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03229D1918D35E8A00027190 /* Utils.cpp */; };
 		03229D1C18D35E8A00027190 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03229D1918D35E8A00027190 /* Utils.cpp */; };
 		03229D1D18D35E8A00027190 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03229D1918D35E8A00027190 /* Utils.cpp */; };
@@ -163,6 +169,12 @@
 		031D88DA18BE5B670001686A /* GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameView.h; sourceTree = SOURCE_ROOT; };
 		031E007618B52B360045013D /* Bomb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bomb.cpp; sourceTree = SOURCE_ROOT; };
 		031E007718B52B360045013D /* Bomb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bomb.h; sourceTree = SOURCE_ROOT; };
+		03220F3719058C9B005037D3 /* soundButton.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = soundButton.wav; sourceTree = "<group>"; };
+		03220F3819058C9B005037D3 /* soundEnterText.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = soundEnterText.wav; sourceTree = "<group>"; };
+		03220F3919058C9B005037D3 /* soundGameOver.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = soundGameOver.wav; sourceTree = "<group>"; };
+		03220F3A19058C9B005037D3 /* soundIsClickable.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = soundIsClickable.wav; sourceTree = "<group>"; };
+		03220F3B19058C9B005037D3 /* soundIsNotClickable.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = soundIsNotClickable.wav; sourceTree = "<group>"; };
+		03220F3C19058C9B005037D3 /* soundLoseLevel.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = soundLoseLevel.wav; sourceTree = "<group>"; };
 		03229D1918D35E8A00027190 /* Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = SOURCE_ROOT; };
 		03229D1A18D35E8A00027190 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = SOURCE_ROOT; };
 		0325500D18EBFD6A00496C08 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
@@ -312,6 +324,12 @@
 		039F92AF18E0A7FD008D3F85 /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				03220F3719058C9B005037D3 /* soundButton.wav */,
+				03220F3819058C9B005037D3 /* soundEnterText.wav */,
+				03220F3919058C9B005037D3 /* soundGameOver.wav */,
+				03220F3A19058C9B005037D3 /* soundIsClickable.wav */,
+				03220F3B19058C9B005037D3 /* soundIsNotClickable.wav */,
+				03220F3C19058C9B005037D3 /* soundLoseLevel.wav */,
 				039F92B018E0A7FD008D3F85 /* gridMusic.wav */,
 			);
 			path = Music;
@@ -541,6 +559,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03220F3E19058C9B005037D3 /* soundEnterText.wav in Resources */,
 				0371150518D1889000EE9282 /* scoreFont.ttf in Resources */,
 				0366A59218DAC42A00BF3C02 /* buttonFont.ttf in Resources */,
 				03F388E818D78E03003A08BC /* caseTeach.png in Resources */,
@@ -550,13 +569,18 @@
 				031BE64A18D8E06B00476CBB /* buttonAnanas.png in Resources */,
 				03E6822918D306F9004E125C /* wallpapper.png in Resources */,
 				033174D018E16B2700F2E406 /* choiceSprite.png in Resources */,
+				03220F4019058C9B005037D3 /* soundIsClickable.wav in Resources */,
+				03220F4119058C9B005037D3 /* soundIsNotClickable.wav in Resources */,
 				03109566190547000056CFD0 /* BestFont.ttf in Resources */,
 				0368878B18D8228F00E63AFD /* arial.ttf in Resources */,
 				03D783AC18D097E100A1B8AE /* bestScores.txt in Resources */,
+				03220F3D19058C9B005037D3 /* soundButton.wav in Resources */,
 				03AF1FAE18DDC8880063D142 /* languages.png in Resources */,
 				03F388E718D78E03003A08BC /* wallpapperTeach.png in Resources */,
+				03220F3F19058C9B005037D3 /* soundGameOver.wav in Resources */,
 				031BE64B18D8E06B00476CBB /* buttonTeach.png in Resources */,
 				0371150618D1889000EE9282 /* titleFont.ttf in Resources */,
+				03220F4219058C9B005037D3 /* soundLoseLevel.wav in Resources */,
 				03E6822718D300BA004E125C /* case.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -42,6 +42,20 @@ GameView::GameView() {
 
     my_musicLevel = new Music();
     
+    my_buttonBuffer = new SoundBuffer();
+    my_buttonSound = new Sound();
+    my_textBuffer = new SoundBuffer();
+    my_textSound = new Sound();
+    my_gameOverBuffer = new SoundBuffer();
+    my_gameOverSound = new Sound();
+    my_clickableBuffer = new SoundBuffer();
+    my_clickableSoundCell = new Sound();
+    my_isNotClickableBuffer = new SoundBuffer();
+    my_isNotClickableSound = new Sound();
+    my_loseLevelBuffer= new SoundBuffer();
+    my_loseLevelSound = new Sound();
+
+    
     
     my_stringToSprite["Digger"]    = new DiggerGraphic();
     my_stringToSprite["EmptyCell"] = new EmptyGraphic();
@@ -86,11 +100,11 @@ GameView::~GameView() {
 void
 GameView::setAnanasMode() {
 #ifdef __linux__
-    if (!my_fontScore->LoadFromFile("Font/scoreFont.ttf") || !my_fontTitle->LoadFromFile("Font/titleFont.ttf") || !my_musicLevel->OpenFromFile("Music/gridMusic.wav") || !my_bestScoreFont->LoadFromFile("Font/BestFont.ttf") ) {
+    if (!my_fontScore->LoadFromFile("Font/scoreFont.ttf") || !my_fontTitle->LoadFromFile("Font/titleFont.ttf") || !my_musicLevel->OpenFromFile("Music/gridMusic.wav") || !my_bestScoreFont->LoadFromFile("Font/BestFont.ttf") || !my_buttonBuffer->LoadFromFile("Music/soundButton.wav") || !my_textBuffer->LoadFromFile->("Music/soundEnterText.wav") || !my_gameOverBuffer->LoadFromFile("Music/soundGameOver.wav") || !my_clickableBuffer->LoadFromFile("Music/soundIsClickable.wav") || !my_isNotClickableBuffer->LoadFromFile("Music/soundIsNotClickable.wav") || !my_loseLevelBuffer->LoadFromFile("Music/soundLoseLevel.wav") ) {
         cout << "Error when loading font" << endl;
     }
 #else
-    if (!my_fontScore->LoadFromFile("scoreFont.ttf") || !my_fontTitle->LoadFromFile("titleFont.ttf") || !my_musicLevel->OpenFromFile("gridMusic.wav") || !my_bestScoreFont->LoadFromFile("BestFont.ttf") ) {
+    if (!my_fontScore->LoadFromFile("scoreFont.ttf") || !my_fontTitle->LoadFromFile("titleFont.ttf") || !my_musicLevel->OpenFromFile("gridMusic.wav") || !my_bestScoreFont->LoadFromFile("BestFont.ttf") || !my_buttonBuffer->LoadFromFile("soundButton.wav") || !my_textBuffer->LoadFromFile("soundEnterText.wav") || !my_gameOverBuffer->LoadFromFile("soundGameOver.wav") || !my_clickableBuffer->LoadFromFile("soundIsClickable.wav") || !my_isNotClickableBuffer->LoadFromFile("soundIsNotClickable.wav") || !my_loseLevelBuffer->LoadFromFile("soundLoseLevel.wav") ) {
         cout << "Error when loading font" << endl;
     }
 #endif
@@ -138,6 +152,12 @@ GameView::setAnanasMode() {
         
         //Pour la musique
         my_musicLevel->SetLoop(true);
+        my_buttonSound->SetBuffer(*my_buttonBuffer);
+        my_textSound->SetBuffer(*my_textBuffer);
+        my_gameOverSound->SetBuffer(*my_gameOverBuffer);
+        my_clickableSoundCell->SetBuffer(*my_clickableBuffer);
+        my_isNotClickableSound->SetBuffer(*my_isNotClickableBuffer);
+        my_loseLevelSound->SetBuffer(*my_loseLevelBuffer);
     }
 }
 
@@ -165,11 +185,11 @@ GameView::setTextAndDraw( sf::String* s, string text, int x, int y, bool useSize
 void
 GameView::setTeacherMode() {
 #ifdef __linux__
-    if (!my_fontScore->LoadFromFile("Font/arial.ttf") || !my_fontTitle->LoadFromFile("Font/arial.ttf") || !my_bestScoreFont->LoadFromFile("Font/arial.ttf") || !my_musicLevel->OpenFromFile("Music/gridMusic.wav")) {
+    if (!my_fontScore->LoadFromFile("Font/arial.ttf") || !my_fontTitle->LoadFromFile("Font/arial.ttf") || !my_bestScoreFont->LoadFromFile("Font/arial.ttf") || !my_musicLevel->OpenFromFile("Music/gridMusic.wav") || !my_buttonBuffer->LoadFromFile("Music/soundButton.wav") || !my_textBuffer->LoadFromFile->("Music/soundEnterText.wav") || !my_gameOverBuffer->LoadFromFile("Music/soundGameOver.wav") || !my_clickableBuffer->LoadFromFile("Music/soundIsClickable.wav") || !my_isNotClickableBuffer->LoadFromFile("Music/soundIsNotClickable.wav") || !my_loseLevelBuffer->LoadFromFile("Music/soundLoseLevel.wav")) {
         cout << "Error when loading font" << endl;
     }
 #else
-    if ( !my_fontScore->LoadFromFile("arial.ttf") || !my_bestScoreFont->LoadFromFile("arial.ttf") || !my_fontTitle->LoadFromFile("arial.ttf") ||!my_musicLevel->OpenFromFile("gridMusic.wav")) {
+    if ( !my_fontScore->LoadFromFile("arial.ttf") || !my_bestScoreFont->LoadFromFile("arial.ttf") || !my_fontTitle->LoadFromFile("arial.ttf") ||!my_musicLevel->OpenFromFile("gridMusic.wav") || !my_textBuffer->LoadFromFile("soundEnterText.wav") || !my_gameOverBuffer->LoadFromFile("soundGameOver.wav") || !my_clickableBuffer->LoadFromFile("soundIsClickable.wav") || !my_isNotClickableBuffer->LoadFromFile("soundIsNotClickable.wav") || !my_loseLevelBuffer->LoadFromFile("soundLoseLevel.wav")) {
         cout << "Error when loading font" << endl;
     }
 #endif
@@ -208,6 +228,16 @@ GameView::setTeacherMode() {
         my_ananasSprite.setTeacherMode();
         my_teacherSprite.setTeacherMode();
         my_background.setTeacherMode();
+        
+        my_musicLevel->SetLoop(true);
+        my_buttonSound->SetBuffer(*my_buttonBuffer);
+        my_textSound->SetBuffer(*my_textBuffer);
+        my_gameOverSound->SetBuffer(*my_gameOverBuffer);
+        my_clickableSoundCell->SetBuffer(*my_clickableBuffer);
+        my_isNotClickableSound->SetBuffer(*my_isNotClickableBuffer);
+        my_loseLevelSound->SetBuffer(*my_loseLevelBuffer);
+        //Pour la musique
+        my_musicLevel->SetLoop(true);
         
         for ( map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite.begin() ; it!=my_languageToSprite.end(); ++it) {
             my_languageToSprite[ it->first ]->setTeacherMode();
@@ -480,12 +510,15 @@ GameView::showLoseLevel( bool time, bool over) {
 
     if ( !time && !over )
         setTextAndDraw( my_titleString, my_messages[my_language][looselevel],( WINDOWWITDH / 2 ), WINDOWHEIGHT / 2, true ) ;
-    else if ( time )
+    else if ( time ) {
         setTextAndDraw( my_titleString, my_messages[my_language][timeup], ( WINDOWWITDH / 2 ), WINDOWHEIGHT / 2, true );
-    else if ( over )
+        my_loseLevelSound->Play();
+    } else if ( over )
         setTextAndDraw( my_titleString, my_messages[my_language][loosegame], ( WINDOWWITDH / 2 ), WINDOWHEIGHT / 2, true );
-    else if ( time && over )
+    else if ( time && over ) {
         setTextAndDraw( my_titleString, my_messages[my_language][loosegame], ( WINDOWWITDH / 2 ), WINDOWHEIGHT / 2, true );
+        my_gameOverSound->Play();
+    }
     
 
 }
@@ -718,6 +751,7 @@ GameView::treatGame( ) {
                                     isViewingBestScore = true;
                                     enterScore(player);
                                     player = "";
+                                    //my_textSound->Play();
                                 }
                                 break;
                                 
@@ -829,6 +863,7 @@ GameView::treatGame( ) {
 
                     } else if ( isPlaying ) {
                         if ( convertYPixel( event.MouseButton.Y ) != -1 && convertXPixel( event.MouseButton.X ) != -1 && !animation) {
+                            my_textSound->Play();
                             my_model->orderMovement( convertYPixel( event.MouseButton.Y ), convertXPixel( event.MouseButton.X ) );
                             animation = true;
                             
