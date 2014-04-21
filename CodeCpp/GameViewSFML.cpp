@@ -22,49 +22,53 @@ using namespace sf;
 //Constructeur
 GameView::GameView() {
      //Le style de la fenêtres
-     my_window = new RenderWindow( VideoMode(WINDOWWITDH, WINDOWHEIGHT, BPP), "PuruPuruDigger", Style::Close);
+    my_window = new RenderWindow( VideoMode(WINDOWWITDH, WINDOWHEIGHT, BPP), "PuruPuruDigger", Style::Close);
 
      //On bloque le rafraichissement à 60 par seconde
-     my_window->SetFramerateLimit(60);
+    my_window->SetFramerateLimit(60);
 
-     my_language = francais;
+    my_language = francais;
 
     animation = false;
-     //La font pour les scores
-     my_fontScore = new Font();
-     my_fontTitle = new Font();
+    my_fontScore = new Font();
+    my_fontTitle = new Font();
+    my_bestScoreFont = new Font();
 
-     my_scoreString = new String();
-     my_titleScoreString = new String();
-     my_scoreNum = new String();
-     my_titleString = new String();
+    my_scoreString = new String();
+    my_titleScoreString = new String();
+    my_scoreNum = new String();
+    my_titleString = new String();
+    my_bestScoreString = new String();
 
-     my_musicLevel = new Music();
+    my_musicLevel = new Music();
     
-     my_stringToSprite["Digger"]    = new DiggerGraphic();
-     my_stringToSprite["EmptyCell"] = new EmptyGraphic();
-     my_stringToSprite["GoldCell"]  = new GoldGraphic();
-     my_stringToSprite["ValueCell"] = new ValueGraphic();
-     my_stringToSprite["Bomb"]      = new BombGraphic();
     
-     my_languageToSprite[english]  = new EnglishGraphic();
-     my_languageToSprite[francais] = new FrenchGraphic();
-     my_languageToSprite[italiano] = new ItalianoGraphic();
-     my_languageToSprite[espanol]  = new SpanishGraphic();
-     my_languageToSprite[deutsch]  = new DeutschGraphic();
+    my_stringToSprite["Digger"]    = new DiggerGraphic();
+    my_stringToSprite["EmptyCell"] = new EmptyGraphic();
+    my_stringToSprite["GoldCell"]  = new GoldGraphic();
+    my_stringToSprite["ValueCell"] = new ValueGraphic();
+    my_stringToSprite["Bomb"]      = new BombGraphic();
     
-     //Chargement des images selon le mode
-     setAnanasMode();
+    my_languageToSprite[english]  = new EnglishGraphic();
+    my_languageToSprite[francais] = new FrenchGraphic();
+    my_languageToSprite[italiano] = new ItalianoGraphic();
+    my_languageToSprite[espanol]  = new SpanishGraphic();
+    my_languageToSprite[deutsch]  = new DeutschGraphic();
+    
+    //Chargement des images selon le mode
+    setAnanasMode();
 }
 
 //Destructeur
 GameView::~GameView() {
     delete my_fontScore;
     delete my_fontTitle;
+    delete my_bestScoreFont;
     delete my_window;
     delete my_scoreString;
     delete my_scoreNum;
     delete my_titleScoreString;
+    delete my_bestScoreString;
     delete my_titleString;
     delete my_musicLevel;
     
@@ -78,16 +82,15 @@ GameView::~GameView() {
     
 }
 
-
 //Pour mettre en place le thème ananas
 void
 GameView::setAnanasMode() {
 #ifdef __linux__
-    if (!my_fontScore->LoadFromFile("Font/scoreFont.ttf") || !my_fontTitle->LoadFromFile("Font/titleFont.ttf") || !my_musicLevel->OpenFromFile("Music/gridMusic.wav")) {
+    if (!my_fontScore->LoadFromFile("Font/scoreFont.ttf") || !my_fontTitle->LoadFromFile("Font/titleFont.ttf") || !my_musicLevel->OpenFromFile("Music/gridMusic.wav") || !my_bestScoreFont->LoadFromFile("Font/BestFont.ttf") ) {
         cout << "Error when loading font" << endl;
     }
 #else
-    if (!my_fontScore->LoadFromFile("scoreFont.ttf") || !my_fontTitle->LoadFromFile("titleFont.ttf") || !my_musicLevel->OpenFromFile("gridMusic.wav") ) {
+    if (!my_fontScore->LoadFromFile("scoreFont.ttf") || !my_fontTitle->LoadFromFile("titleFont.ttf") || !my_musicLevel->OpenFromFile("gridMusic.wav") || !my_bestScoreFont->LoadFromFile("BestFont.ttf") ) {
         cout << "Error when loading font" << endl;
     }
 #endif
@@ -110,6 +113,10 @@ GameView::setAnanasMode() {
         my_scoreNum->SetColor(Color(255,100,100));
 
         my_titleString->SetFont( *my_fontTitle );
+        
+        my_bestScoreString->SetFont( *my_bestScoreFont );
+        my_bestScoreString->SetColor(Color(49,140,231));
+        my_bestScoreString->SetSize(30);
 
         my_playButton.setAnanasMode();
         my_settingButton.setAnanasMode();
@@ -155,15 +162,14 @@ GameView::setTextAndDraw( sf::String* s, string text, int x, int y, bool useSize
     my_window->Draw(*s);
 }
 
-
 void
 GameView::setTeacherMode() {
 #ifdef __linux__
-    if (!my_fontScore->LoadFromFile("Font/arial.ttf") || !my_fontTitle->LoadFromFile("Font/arial.ttf") || !my_musicLevel->OpenFromFile("Music/gridMusic.wav")) {
+    if (!my_fontScore->LoadFromFile("Font/arial.ttf") || !my_fontTitle->LoadFromFile("Font/arial.ttf") || !my_bestScoreFont->LoadFromFile("Font/arial.ttf") || !my_musicLevel->OpenFromFile("Music/gridMusic.wav")) {
         cout << "Error when loading font" << endl;
     }
 #else
-    if ( !my_fontScore->LoadFromFile("arial.ttf") || !my_fontTitle->LoadFromFile("arial.ttf") ||!my_musicLevel->OpenFromFile("gridMusic.wav")) {
+    if ( !my_fontScore->LoadFromFile("arial.ttf") || !my_bestScoreFont->LoadFromFile("arial.ttf") || !my_fontTitle->LoadFromFile("arial.ttf") ||!my_musicLevel->OpenFromFile("gridMusic.wav")) {
         cout << "Error when loading font" << endl;
     }
 #endif
@@ -189,6 +195,10 @@ GameView::setTeacherMode() {
         my_scoreNum->SetFont( * my_fontScore );
         my_scoreNum->SetColor(Color(255,255,255));
         
+        my_bestScoreString->SetFont( *my_bestScoreFont);
+        my_bestScoreString->SetColor(Color(255,255,255));
+        my_bestScoreString->SetSize(25);
+        
         my_playButton.setTeacherMode();
         my_settingButton.setTeacherMode();
         my_bestButton.setTeacherMode();
@@ -210,7 +220,6 @@ GameView::setTeacherMode() {
 
     }
 }
-
 
 void
 GameView::resetButtonNorm() {
@@ -274,8 +283,6 @@ GameView::showOption() {
 
 }
 
-
-
 void
 GameView::resetLanguageNorm() {
     for ( map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite.begin() ; it!=my_languageToSprite.end(); ++it) {
@@ -319,8 +326,7 @@ GameView::showBestScore() {
         //Le contenu de notre fichier
         while ( getline(scoreLect, line) ) {
             //Pour garantir la plus grand taille
-            my_scoreNum->SetSize(23);
-            setTextAndDraw(my_scoreNum, line, ( WINDOWWITDH / 2 ) , i, true );
+            setTextAndDraw(my_bestScoreString, line, ( WINDOWWITDH / 2 ) , i, true );
             i += 100;
         }
 
@@ -382,12 +388,11 @@ GameView::enterScore( string nom ) const{
 void
 GameView::showIsEnteringABestScore( string player ) {
     newScreen();
-    setTextAndDraw( my_scoreNum, my_messages[my_language][by], ( WINDOWWITDH / 2 ), 10, true );
-    setTextAndDraw( my_scoreNum, my_messages[my_language][name], ( WINDOWWITDH / 2 ), 100, true );
+    setTextAndDraw( my_bestScoreString, my_messages[my_language][by], ( WINDOWWITDH / 2 ), 10, true );
+    setTextAndDraw( my_bestScoreString, my_messages[my_language][name], ( WINDOWWITDH / 2 ), 100, true );
 
-    setTextAndDraw( my_scoreNum, player, ( WINDOWWITDH / 2 ) , WINDOWHEIGHT / 2, true ) ;
+    setTextAndDraw( my_bestScoreString, player, ( WINDOWWITDH / 2 ) , WINDOWHEIGHT / 2, true ) ;
 }
-
 
 void
 GameView::toAnimate() {
@@ -442,6 +447,7 @@ GameView::toAnimate() {
     }
     
 }
+
 void
 GameView::showGrid() {
     if ( animation )
@@ -579,7 +585,6 @@ GameView::setModel(GameModel *model) {
     my_model = model;
 }
 
-
 //Boucle d'événement
 void
 GameView::treatGame( ) {
@@ -593,7 +598,6 @@ GameView::treatGame( ) {
     bool over = false;
     
     string player = "";
-    
     
     sf::Clock pause;        //La clock pour la pause
     bool isInBreak = false; //Pour savoir quand on est en pause
@@ -624,6 +628,7 @@ GameView::treatGame( ) {
 
                         else if ( my_quitButton.isInZone ( event.MouseMove.X , event.MouseMove.Y) )
                             my_quitButton.setHover();
+                        
                         else
                             resetButtonNorm();
 
@@ -655,11 +660,14 @@ GameView::treatGame( ) {
                     } else if ( isPlaying  ) {
                         if ( my_quitButton.isInZone ( event.MouseMove.X , event.MouseMove.Y) )
                             my_quitButton.setHover();
+                        
                         else
                             resetButtonNorm();
+                        
                     } else if ( isViewingBestScore ) {
                         if ( my_quitButton.isInZone ( event.MouseMove.X , event.MouseMove.Y) )
                             my_quitButton.setHover();
+                        
                         else
                             resetButtonNorm();
                     }
@@ -674,22 +682,27 @@ GameView::treatGame( ) {
                             case Key::Escape : // Echap
                                 my_window->Close();
                                 break;
+                                
                             case Key::Right :
                                 if ( !isInBreak && isPlaying )
                                     my_model->orderMovement(6);
                                 break;
+                                
                             case Key::Up:
                                 if ( !isInBreak && isPlaying )
                                     my_model->orderMovement(8);
                                 break;
+                                
                             case Key::Left :
                                 if ( !isInBreak  && isPlaying)
                                     my_model->orderMovement(4);
                                 break;
+                                
                             case Key::Down:
                                 if ( !isInBreak && isPlaying )
                                     my_model->orderMovement(2);
                                 break;
+                                
                             case Key::Return:
                                 cout << my_window->GetWidth() << endl;
                                 break;
@@ -707,10 +720,12 @@ GameView::treatGame( ) {
                                     player = "";
                                 }
                                 break;
+                                
                             case Key::Back :
                                 if ( player.length() > 0 )
                                     player.erase( player.length() - 1, 1 );
                                 break;
+                                
                             default :
                                 break;
                         }

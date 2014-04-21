@@ -47,11 +47,13 @@ class GameView {
 
         sf::Font* my_fontScore;
         sf::Font* my_fontTitle;
+        sf::Font* my_bestScoreFont;
 
         sf::String* my_titleScoreString; // Titre des scores
         sf::String* my_scoreString; // Enoncé dans la grille
         sf::String* my_scoreNum; // Les scores en numéro
         sf::String* my_titleString; // Les titres de pages
+        sf::String* my_bestScoreString;
     
         ButtonGraphic my_playButton;
         ButtonGraphic my_settingButton;

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03109566190547000056CFD0 /* BestFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03109565190547000056CFD0 /* BestFont.ttf */; };
 		031BE64A18D8E06B00476CBB /* buttonAnanas.png in Resources */ = {isa = PBXBuildFile; fileRef = 031BE64818D8E06B00476CBB /* buttonAnanas.png */; };
 		031BE64B18D8E06B00476CBB /* buttonTeach.png in Resources */ = {isa = PBXBuildFile; fileRef = 031BE64918D8E06B00476CBB /* buttonTeach.png */; };
 		031D88D818BE5B2B0001686A /* GameModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031D88D618BE5B2B0001686A /* GameModel.cpp */; };
@@ -153,6 +154,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		03109565190547000056CFD0 /* BestFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BestFont.ttf; sourceTree = "<group>"; };
 		031BE64818D8E06B00476CBB /* buttonAnanas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonAnanas.png; sourceTree = "<group>"; };
 		031BE64918D8E06B00476CBB /* buttonTeach.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonTeach.png; sourceTree = "<group>"; };
 		031D88D618BE5B2B0001686A /* GameModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameModel.cpp; sourceTree = SOURCE_ROOT; };
@@ -289,6 +291,7 @@
 		0371150218D1889000EE9282 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				03109565190547000056CFD0 /* BestFont.ttf */,
 				0366A59118DAC42A00BF3C02 /* buttonFont.ttf */,
 				0368878A18D8228F00E63AFD /* arial.ttf */,
 				033F710A18D2213A0064FAF5 /* valueFont.ttf */,
@@ -547,6 +550,7 @@
 				031BE64A18D8E06B00476CBB /* buttonAnanas.png in Resources */,
 				03E6822918D306F9004E125C /* wallpapper.png in Resources */,
 				033174D018E16B2700F2E406 /* choiceSprite.png in Resources */,
+				03109566190547000056CFD0 /* BestFont.ttf in Resources */,
 				0368878B18D8228F00E63AFD /* arial.ttf in Resources */,
 				03D783AC18D097E100A1B8AE /* bestScores.txt in Resources */,
 				03AF1FAE18DDC8880063D142 /* languages.png in Resources */,
