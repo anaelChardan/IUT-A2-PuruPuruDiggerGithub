@@ -37,7 +37,7 @@ CellTextGraphic::setTeacherMode() {
         my_string.SetSize(20);
         my_string.SetColor(sf::Color(0,0,0));
         my_string.SetStyle( sf::String::Bold );
-        CellBaseGraphic::setAnanasMode();
+        CellBaseGraphic::setTeacherMode();
     }
 }
 void

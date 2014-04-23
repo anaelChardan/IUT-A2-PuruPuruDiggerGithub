@@ -244,7 +244,7 @@ GameView::setTeacherMode() {
         }
         
         for ( map<string, CellBaseGraphic*>::const_iterator it = my_stringToSprite.begin() ; it!=my_stringToSprite.end(); ++it) {
-            my_stringToSprite[ it->first ]->setTeacherMode();
+            my_stringToSprite[ (*it).first ]->setTeacherMode();
         }
 
 
@@ -430,49 +430,46 @@ GameView::toAnimate() {
     if ( ( convertIndiceXToPixel( my_model->getLevel()->getDigger()->getY() ) - my_stringToSprite["Digger"]->getXPos() ) == 0 && ( convertIndiceYToPixel( my_model->getLevel()->getDigger()->getX() ) - my_stringToSprite["Digger"]->getYPos() ) == 0 )
         animation = false;
     else {
-        
-        if ( my_model->getMovement() == SEast ) {
+        if ( my_model->getMovement() == South ) {
+            my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() ) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos() ) ), my_window );
+            
+            my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos(), my_stringToSprite["Digger"]->getYPos() + 2, my_window );
+            
+            
+        } else if ( my_model->getMovement() == North ) {
+            my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() ) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos()  + CASEHEIGHT ) ), my_window );
+            
+            my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos(), my_stringToSprite["Digger"]->getYPos() - 2, my_window );
+            
+        } else if ( my_model->getMovement() == West ) {
+            my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() + CASEWITDH) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos() ) ), my_window );
+            
+            my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() - 2, my_stringToSprite["Digger"]->getYPos(), my_window );
+            
+        } else if ( my_model->getMovement() == East ) {
+            my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() ) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos() ) ), my_window );
+            
+            my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() + 2, my_stringToSprite["Digger"]->getYPos(), my_window );
+            
+        } else if ( my_model->getMovement() == SEast ) {
             my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() ) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos() ) ), my_window );
             
             my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() + 2, my_stringToSprite["Digger"]->getYPos() + 2, my_window );
-            
-            //Pour le sud -> OK
-        } else if ( my_model->getMovement() == South ) {
-            my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() ) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos() ) ), my_window );
-           
-            my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos(), my_stringToSprite["Digger"]->getYPos() + 2, my_window );
-            
             
         } else if ( my_model->getMovement() == SWest ) {
             my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() + CASEWITDH  )  ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos() ) ), my_window );
             
             my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() - 2, my_stringToSprite["Digger"]->getYPos() + 2, my_window );
             
-            //Pour l'ouest -> OK
-        } else if ( my_model->getMovement() == West ) {
-            my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() + CASEWITDH) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos() ) ), my_window );
-            my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() - 2, my_stringToSprite["Digger"]->getYPos(), my_window );
-            
-            //Pour l'Est -> OK
-        } else if ( my_model->getMovement() == East ) {
-            my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() ) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos() ) ), my_window );
-            my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() + 2, my_stringToSprite["Digger"]->getYPos(), my_window );
-            
-            //Pour le nord -> OK
-        } else if ( my_model->getMovement() == North ) {
-            my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() ) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos()  + CASEHEIGHT ) ), my_window );
-            my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos(), my_stringToSprite["Digger"]->getYPos() - 2, my_window );
-            
-            //Pour le nord Est
-        } else if ( my_model->getMovement() == NEast ) {
-            my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( my_stringToSprite["Digger"]->getXPos() ), convertIndiceYToPixel( my_stringToSprite["Digger"]->getYPos() + CASEHEIGHT ), my_window );
+        }  else if ( my_model->getMovement() == NEast ) {
+            my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() ) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos() + CASEHEIGHT ) ), my_window );
         
             my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() + 2, my_stringToSprite["Digger"]->getYPos() - 2, my_window );
             
         } else if ( my_model->getMovement() == Nwest ) {
-             my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( my_stringToSprite["Digger"]->getXPos() + CASEWITDH ), convertIndiceYToPixel( my_stringToSprite["Digger"]->getYPos() + CASEHEIGHT ), my_window );
+             my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel(my_stringToSprite["Digger"]->getXPos() + CASEWITDH ) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos() + CASEHEIGHT) ), my_window );
             
-            my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() - 2, my_stringToSprite["Digger"]->getYPos() - 2, my_window );
+             my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() - 2, my_stringToSprite["Digger"]->getYPos() - 2, my_window);
         }
     }
     
@@ -508,16 +505,14 @@ GameView::showLoseLevel( bool time, bool over) {
 
     my_titleString->SetColor(Color(0,0,0));
 
-    if ( !time && !over )
+    if ( !time && !over ) {
         setTextAndDraw( my_titleString, my_messages[my_language][looselevel],( WINDOWWITDH / 2 ), WINDOWHEIGHT / 2, true ) ;
-    else if ( time ) {
+    } else if ( time ) {
         setTextAndDraw( my_titleString, my_messages[my_language][timeup], ( WINDOWWITDH / 2 ), WINDOWHEIGHT / 2, true );
-        my_loseLevelSound->Play();
-    } else if ( over )
+    } else if ( over ) {
         setTextAndDraw( my_titleString, my_messages[my_language][loosegame], ( WINDOWWITDH / 2 ), WINDOWHEIGHT / 2, true );
-    else if ( time && over ) {
+    } else if ( time && over ) {
         setTextAndDraw( my_titleString, my_messages[my_language][loosegame], ( WINDOWWITDH / 2 ), WINDOWHEIGHT / 2, true );
-        my_gameOverSound->Play();
     }
     
 
@@ -650,19 +645,19 @@ GameView::treatGame( ) {
 
                     if ( isInPresentation ) {
 
-                        if ( my_playButton.isInZone( event.MouseMove.X, event.MouseMove.Y ) )
+                        if ( my_playButton.isInZone( event.MouseMove.X, event.MouseMove.Y ) ) {
                             my_playButton.setHover();
 
-                        else if ( my_settingButton.isInZone( event.MouseMove.X, event.MouseMove.Y) )
+                        } else if ( my_settingButton.isInZone( event.MouseMove.X, event.MouseMove.Y) ) {
                             my_settingButton.setHover();
                         
-                        else if ( my_bestButton.isInZone ( event.MouseMove.X, event.MouseMove.Y) )
+                        } else if ( my_bestButton.isInZone ( event.MouseMove.X, event.MouseMove.Y) ) {
                             my_bestButton.setHover();
 
-                        else if ( my_quitButton.isInZone ( event.MouseMove.X , event.MouseMove.Y) )
+                        } else if ( my_quitButton.isInZone ( event.MouseMove.X , event.MouseMove.Y) ) {
                             my_quitButton.setHover();
                         
-                        else
+                        } else
                             resetButtonNorm();
 
                     } else if ( isChoosingOption ) {
@@ -751,7 +746,7 @@ GameView::treatGame( ) {
                                     isViewingBestScore = true;
                                     enterScore(player);
                                     player = "";
-                                    //my_textSound->Play();
+                                    
                                 }
                                 break;
                                 
@@ -772,6 +767,8 @@ GameView::treatGame( ) {
                     if ( isEnterABestScore ) {
                         if ( event.Text.Unicode >= 48 && event.Text.Unicode <127 && player.length() < 25 ) {
                             player += static_cast<char>(event.Text.Unicode);
+                            if ( my_soundIcon.getOnOff() )
+                                my_textSound->Play();
                         }
                     }
                 }
@@ -784,20 +781,29 @@ GameView::treatGame( ) {
                             isInPresentation = false;
                             isPlaying = true;
                             my_model->reset();
+                            if ( my_soundIcon.getOnOff())
+                                my_buttonSound->Play();
+                            
                             if ( my_musicIcon.getOnOff() )
                                 my_musicLevel->Play();
                             
                         } else if ( my_quitButton.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
+                            if ( my_soundIcon.getOnOff())
+                                my_buttonSound->Play();
                             my_window->Close();
 
                         } else if ( my_settingButton.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
                             isInPresentation = false;
                             isChoosingOption = true;
+                            if ( my_soundIcon.getOnOff())
+                                my_buttonSound->Play();
                             resetButtonNorm();
 
                         } else if ( my_bestButton.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
                             isInPresentation = false;
                             isViewingBestScore = true;
+                            if ( my_soundIcon.getOnOff())
+                                my_buttonSound->Play();
                             resetButtonNorm();
 
                         } else if ( my_musicIcon.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
@@ -836,6 +842,8 @@ GameView::treatGame( ) {
                             setTeacherMode();
 
                         }else if ( my_quitButton.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
+                            if ( my_soundIcon.getOnOff())
+                                my_buttonSound->Play();
                             isChoosingOption = false;
                             isInPresentation = true;
                             resetButtonNorm();
@@ -850,6 +858,8 @@ GameView::treatGame( ) {
                     } else if ( isViewingBestScore ) {
 
                         if ( my_quitButton.isInZone(event.MouseButton.X, event.MouseButton.Y ) ) {
+                            if ( my_soundIcon.getOnOff())
+                                my_buttonSound->Play();
                             isViewingBestScore = false;
                             isInPresentation = true;
                             resetButtonNorm();
@@ -863,12 +873,15 @@ GameView::treatGame( ) {
 
                     } else if ( isPlaying ) {
                         if ( convertYPixel( event.MouseButton.Y ) != -1 && convertXPixel( event.MouseButton.X ) != -1 && !animation) {
-                            my_textSound->Play();
+                            if ( my_soundIcon.getOnOff() )
+                                my_clickableSoundCell->Play();
                             my_model->orderMovement( convertYPixel( event.MouseButton.Y ), convertXPixel( event.MouseButton.X ) );
                             animation = true;
                             
                         }
                         if ( my_quitButton.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
+                            if ( my_soundIcon.getOnOff())
+                                my_buttonSound->Play();
                             isPlaying = false;
                             isEnterABestScore = true;
                             my_musicLevel->Stop();
@@ -916,14 +929,21 @@ GameView::treatGame( ) {
             if ( my_model->gameOver() ) {
                 if ( !isInBreak ) {
                     pause.Reset();
+                    if ( my_soundIcon.getOnOff() )
+                        my_gameOverSound->Play();
                 }
                 over = true;
                 isInBreak = true;
                 animation = false;
                 
-            } else if ( my_model->getLevel()->lose() ) {
-                if ( !isInBreak )
+            }
+            
+            if ( my_model->getLevel()->lose() ) {
+                if ( !isInBreak ) {
                     pause.Reset();
+                    if ( !over && my_soundIcon.getOnOff() )
+                        my_loseLevelSound->Play();
+                }
                 showLoseLevel(time, over);
                 isInBreak = true;
                 animation = false;

@@ -10,8 +10,8 @@ class CellBaseGraphic : public GraphicElement {
     public :
         CellBaseGraphic();
         virtual ~CellBaseGraphic();
-        virtual void setAnanasMode();
-        virtual void setTeacherMode();
+        void setAnanasMode();
+        void setTeacherMode();
         virtual void setImageToSprite();
 };
 

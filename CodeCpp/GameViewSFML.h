@@ -94,9 +94,9 @@ class GameView {
     
 
 
-    /*!
-     *  \brief Affichage Menu principal
-     */
+        /*!
+         *  \brief Affichage Menu principal
+         */
     void showPresentation();
     void setButtonHover( sf::Sprite* buttonToHover );
     void resetButtonNorm();

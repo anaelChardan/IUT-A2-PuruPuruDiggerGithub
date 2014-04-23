@@ -13,10 +13,10 @@ void
 CellBaseGraphic::setAnanasMode() {
 #ifdef __linux
     if ( !my_image.LoadFromFile("Pictures/case.png" ) )
-        std::cerr << " Error when loading case image " << std::endl;
+        std::cout << " Error when loading case image " << std::endl;
 #else
     if ( !my_image.LoadFromFile("case.png") ) {
-        std::cerr << " Error when loading case image " << std::endl;
+        std::cout << " Error when loading case image " << std::endl;
     }
 #endif
     else {
@@ -31,7 +31,7 @@ CellBaseGraphic::setTeacherMode() {
         std::cerr << " Error when loading caseTeach image " << std::endl;
 #else
     if ( !my_image.LoadFromFile("caseTeach.png") ) {
-        std::cerr << " Error when loading caseTeach image " << std::endl;
+        std::cout << " Error when loading caseTeach image " << std::endl;
     }
 #endif
     else {
