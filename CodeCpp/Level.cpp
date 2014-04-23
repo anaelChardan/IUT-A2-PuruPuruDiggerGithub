@@ -143,12 +143,11 @@ void
 Level::shuffle() {
 
     vector<CellBase*> tmp;
-     int taille = LIGNE * COLONNE;
-    tmp.resize( taille );
-     int z = 0;
+    tmp.resize( LIGNE * COLONNE );
+    int z = 0;
 
     //2D to 1D
-    while ( z < ( taille ) ) {
+    while ( z < ( LIGNE * COLONNE ) ) {
         for (  int i = 0 ; i < LIGNE ; i++ ){
             for ( int j = 0; j < COLONNE ; j++ ){
                 tmp[z] = my_grid[i][j];
@@ -161,7 +160,7 @@ Level::shuffle() {
 
     //1D to 2D
     z=0;
-    while ( z < taille ) {
+    while ( z < LIGNE * COLONNE ) {
         //Parcours en hauteur
         for (  int i = 0 ; i < LIGNE ; i++ ) {
             //Parcours en inteur
