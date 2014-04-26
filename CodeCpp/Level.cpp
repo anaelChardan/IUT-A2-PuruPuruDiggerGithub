@@ -19,10 +19,7 @@ using namespace std;
  Le constructeur
  =============================*/
 
-Level::Level(Score* score) {
-    //On fait pointé my_score sur l'adresse du score qu'on lui à donné
-    my_score = score;
-
+Level::Level(Score* score): my_score(score) {
     //On met nos mouvements courants à 0
     my_currentMove = 0;
 
@@ -37,7 +34,7 @@ Level::Level(Score* score) {
     timeGoal = 60;
 
     //On alloue le digger
-    my_digger = new Digger();
+    my_digger = new Digger(0,0);
 
     //On bloque la taille de notre vecteur
     my_grid.resize( LIGNE );
@@ -53,7 +50,7 @@ Level::Level(Score* score) {
     my_grid[0][0] = my_digger;
 
     //On appelle la fonction n'initialisation
-    initGrid();
+    reset();
 }
 
 /*===========================
@@ -178,7 +175,6 @@ Level::shuffle() {
 void
 Level::initGrid() {
     //Calcul du nombre de bombe
-    
     int nbrB = randomNumber(MINOBJ, MAXOBJ );
     
     //Remplissage du tableau avec des bombe

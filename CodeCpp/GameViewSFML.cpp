@@ -965,7 +965,7 @@ GameView::treatGame( ) {
         // Affichage du contenu de la fenêtre à l'écran
         my_window->Display();
 
-        //Pour gérer l'affichage durant quelque seconde
+        //Pour gérer l'affichage durant quelques secondes
         if ( isInBreak ) {
 
             if ( pause.GetElapsedTime() > 1.5 ) {

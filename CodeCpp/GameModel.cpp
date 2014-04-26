@@ -93,6 +93,8 @@ GameModel::getLevel() {
 
 void
 GameModel::reset() {
+    delete my_score;
+    delete my_level;
     my_score = new Score();
     my_level = new Level( my_score);
 }

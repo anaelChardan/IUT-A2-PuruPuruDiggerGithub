@@ -1,11 +1,3 @@
-//
-//  GameViewSFML.h
-//  PuruPuruDigger
-//
-//  Created by Ananas-Mac on 12/03/2014.
-//
-//
-
 #ifndef __PuruPuruDigger__GameViewSFML__
 #define __PuruPuruDigger__GameViewSFML__
 
@@ -53,7 +45,7 @@ class GameView {
         sf::String* my_scoreString; // Enoncé dans la grille
         sf::String* my_scoreNum; // Les scores en numéro
         sf::String* my_titleString; // Les titres de pages
-        sf::String* my_bestScoreString;
+        sf::String* my_bestScoreString; //Pour l'affichage des meilleurs scores
     
         ButtonGraphic my_playButton;
         ButtonGraphic my_settingButton;
@@ -97,73 +89,71 @@ class GameView {
         /*!
          *  \brief Affichage Menu principal
          */
-    void showPresentation();
-    void setButtonHover( sf::Sprite* buttonToHover );
-    void resetButtonNorm();
-    void resetLanguageNorm();
-    void showLanguage();
+        void showPresentation();
+        void resetButtonNorm();
+        void resetLanguageNorm();
 
-    void setTextAndDraw( sf::String* s, std::string text, int x, int y, bool useSizeRectX );
+        void setTextAndDraw( sf::String* s, std::string text, int x, int y, bool useSizeRectX );
 
-    /*!
-     *  \brief Affichage choix des langes
-     */
-    //void showLanguage();
-    void showSpriteChoice();
-    void showOption();
-    void setTeacherMode();
-    void setAnanasMode();
-    void showIsEnteringABestScore( std::string player );
+        /*!
+         *  \brief Affichage choix des langes
+         */
+        void showLanguage();
+        void showSpriteChoice();
+        void showOption();
+        void setTeacherMode();
+        void setAnanasMode();
+        void showIsEnteringABestScore( std::string player );
 
-    /*!
-     *  \brief Affichage des scores
-     */
-    void showScore()  ;
-    void showLevel();
-    void showLoseLevel( bool time, bool over);
-    void showWinLevel();
+        /*!
+         *  \brief Affichage des scores
+         */
+        void showScore()  ;
+        void showLevel();
+        void showLoseLevel( bool time, bool over);
+        void showWinLevel();
 
-    /*!
-     *  \brief Affichage de la grille
-     */
-    void showGrid();
+        /*!
+         *  \brief Affichage de la grille
+         */
+        void showGrid();
 
-    void newScreen();
+        void newScreen();
 
-    /*!
-     *  \brief Affichage des instructions de déplacement
-     */
-    void showInstruction() ;
+        /*!
+         *  \brief Affichage des instructions de déplacement
+         */
+        void showInstruction() ;
 
-    /*!
-     *  \brief Affichage des meilleurs scores
-     */
-    void showBestScore();
+        /*!
+         *  \brief Affichage des meilleurs scores
+         */
+        void showBestScore();
 
-    /*!
-     *  \brief Entrée d'un nouveau score
-     *
-     *  \param[in] nom le nom du joueur
-     */
-    void enterScore(std::string nom) const ;
-    
-    void toAnimate();
+        /*!
+         *  \brief Entrée d'un nouveau score
+         *
+         *  \param[in] nom le nom du joueur
+         */
+        void enterScore(std::string nom) const ;
+        
+        void toAnimate();
 
 
-public:
+    public:
 
-    GameView();
-    ~GameView();
-    /*!
-     *  \brief Injection du modèle à la vue
-     *
-     * param[in] model : le modèle à interpréter  */
-    void setModel(GameModel * model);
+         GameView();
+        ~GameView();
+        /*!
+         *  \brief Injection du modèle à la vue
+         *
+         * param[in] model : le modèle à interpréter  */
+        void setModel(GameModel * model);
 
     /*!
      *  \brief La boucle de jeu
      */
-    void treatGame();
+        void treatGame();
 };
 
 

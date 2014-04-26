@@ -36,17 +36,17 @@ GameView::setModel(GameModel *model) {
 
 void
 GameView::showPresentation() const {
-    cout << colorMessage( " -----------                           -----------                    ", CYAN ) << endl ;
+    cout << colorMessage( "+===========+                         +===========+                   ", CYAN ) << endl ;
     cout << colorMessage( "|           |      |           |      |           |      |           |", BLUE ) << endl ;
     cout << colorMessage( "|           |      |           |      |           |      |           |", CYAN ) << endl ;
     cout << colorMessage( "|           |      |           |      |           |      |           |", BLUE ) << endl ;
-    cout << colorMessage( "|-----------       |           |      |-----------       |           |", CYAN ) << endl ;
-    cout << colorMessage( "|                  |           |      |-                 |           |", BLUE ) << endl ;
-    cout << colorMessage( "|                  |           |      |  -               |           |", CYAN ) << endl ;
-    cout << colorMessage( "|                  |           |      |    -             |           |", BLUE ) << endl ;
-    cout << colorMessage( "|                  |           |      |      -           |           |", CYAN ) << endl ;
-    cout << colorMessage( "|                  |           |      |        -         |           |", BLUE )<< endl ;
-    cout << colorMessage( "|                  |___________|      |          -       |___________|", CYAN ) << endl << endl << endl;
+    cout << colorMessage( "+===========+      |           |      +===========+      |           |", CYAN ) << endl ;
+    cout << colorMessage( "|                  |           |      |=                 |           |", BLUE ) << endl ;
+    cout << colorMessage( "|                  |           |      |  =               |           |", CYAN ) << endl ;
+    cout << colorMessage( "|                  |           |      |    =             |           |", BLUE ) << endl ;
+    cout << colorMessage( "|                  |           |      |      =           |           |", CYAN ) << endl ;
+    cout << colorMessage( "|                  |           |      |        =         |           |", BLUE )<< endl ;
+    cout << colorMessage( "|                  |===========|      |          =       +===========+", CYAN ) << endl << endl << endl;
 
 
     cout << colorMessage( "                        PURU                DIGGER                    ", RED ) << endl << endl << endl;
