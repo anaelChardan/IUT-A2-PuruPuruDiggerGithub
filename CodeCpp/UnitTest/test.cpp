@@ -440,12 +440,6 @@ BOOST_AUTO_TEST_CASE(testgetGlobale) {
     BOOST_CHECK( l.leftTime() == 60 );
 }
 
- BOOST_AUTO_TEST_CASE( testisCellClickAble ) {
-    Score *s;
-    Level l(s);
-    BOOST_CHECK( l.isCellClickable(5,5) == true );
-}
-
  BOOST_AUTO_TEST_CASE( testisDead ) {
     Score *s;
     Level l(s);
