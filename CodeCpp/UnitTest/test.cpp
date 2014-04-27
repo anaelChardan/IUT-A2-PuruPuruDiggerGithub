@@ -9,6 +9,8 @@
 #include "../EmptyCell.h"
 #include "../Bomb.h"
 #include "../Score.h"
+#include "../Level.h"
+#include "../GameModel.h"
 
 using namespace std;
 
@@ -409,3 +411,76 @@ BOOST_AUTO_TEST_CASE(testgetGlobale) {
     s.addSuccess();
     BOOST_CHECK( s.getGlobale() == 10);
 }
+
+/*======================
+ Level
+ =======================*/
+
+ BOOST_AUTO_TEST_CASE( testgetGoal ) {
+    Score *s;
+    Level l(s);
+    BOOST_CHECK( l.getGoal() == 10 );
+}
+
+ BOOST_AUTO_TEST_CASE( testgetCurrentMove ) {
+    Score *s;
+    Level l(s);
+    BOOST_CHECK( l.getCurrentMove() == 0 );
+}
+
+ BOOST_AUTO_TEST_CASE( testtimeIsUp ) {
+    Score *s;
+    Level l(s);
+    BOOST_CHECK( l.timeIsUp() == 0 );
+}
+
+ BOOST_AUTO_TEST_CASE( testleftTime) {
+    Score *s;
+    Level l(s);
+    BOOST_CHECK( l.leftTime() == 60 );
+}
+
+ BOOST_AUTO_TEST_CASE( testisCellClickAble ) {
+    Score *s;
+    Level l(s);
+    BOOST_CHECK( l.isCellClickable(5,5) == true );
+}
+
+ BOOST_AUTO_TEST_CASE( testisDead ) {
+    Score *s;
+    Level l(s);
+    BOOST_CHECK( l.isDead() == false );
+}
+
+ BOOST_AUTO_TEST_CASE( testwin ) {
+    Score *s;
+    Level l(s);
+    BOOST_CHECK( l.win() == false );
+}
+
+ BOOST_AUTO_TEST_CASE( testlose ) {
+    Score *s;
+    Level l(s);
+    BOOST_CHECK( l.lose() == false );
+}
+
+/*======================
+ GameModel
+ =======================*/
+
+ BOOST_AUTO_TEST_CASE( testgameOver ) {
+    GameModel g;
+    BOOST_CHECK( g.gameOver() == false );
+}
+
+ /*BOOST_AUTO_TEST_CASE( testgetScore ) {
+    GameModel g;
+    BOOST_CHECK( g.getScore() == 0 );
+    cout << g.getScore() << endl;
+}
+
+ BOOST_AUTO_TEST_CASE( testgetLevel ) {
+    GameModel g;
+    BOOST_CHECK( g.getLevel() == 0 );
+    cout << g.getLevel() << endl;
+}*/
