@@ -41,7 +41,7 @@ GameView::GameView() {
     my_bestScoreString = new String();
 
     my_musicLevel = new Music();
-    
+
     my_buttonBuffer = new SoundBuffer();
     my_buttonSound = new Sound();
     my_textBuffer = new SoundBuffer();
@@ -55,20 +55,20 @@ GameView::GameView() {
     my_loseLevelBuffer= new SoundBuffer();
     my_loseLevelSound = new Sound();
 
-    
-    
+
+
     my_stringToSprite["Digger"]    = new DiggerGraphic();
     my_stringToSprite["EmptyCell"] = new EmptyGraphic();
     my_stringToSprite["GoldCell"]  = new GoldGraphic();
     my_stringToSprite["ValueCell"] = new ValueGraphic();
     my_stringToSprite["Bomb"]      = new BombGraphic();
-    
+
     my_languageToSprite[english]  = new EnglishGraphic();
     my_languageToSprite[francais] = new FrenchGraphic();
     my_languageToSprite[italiano] = new ItalianoGraphic();
     my_languageToSprite[espanol]  = new SpanishGraphic();
     my_languageToSprite[deutsch]  = new DeutschGraphic();
-    
+
     //Chargement des images selon le mode
     setAnanasMode();
 }
@@ -85,22 +85,22 @@ GameView::~GameView() {
     delete my_bestScoreString;
     delete my_titleString;
     delete my_musicLevel;
-    
+
     for ( map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite.begin() ; it!=my_languageToSprite.end(); ++it) {
         delete my_languageToSprite[ it->first ];
     }
-    
+
     for ( map<string, CellBaseGraphic*>::const_iterator it = my_stringToSprite.begin() ; it!=my_stringToSprite.end(); ++it) {
         delete my_stringToSprite[ it->first ];
     }
-    
+
 }
 
 //Pour mettre en place le thème ananas
 void
 GameView::setAnanasMode() {
 #ifdef __linux__
-    if (!my_fontScore->LoadFromFile("Font/scoreFont.ttf") || !my_fontTitle->LoadFromFile("Font/titleFont.ttf") || !my_musicLevel->OpenFromFile("Music/gridMusic.wav") || !my_bestScoreFont->LoadFromFile("Font/BestFont.ttf") || !my_buttonBuffer->LoadFromFile("Music/soundButton.wav") || !my_textBuffer->LoadFromFile->("Music/soundEnterText.wav") || !my_gameOverBuffer->LoadFromFile("Music/soundGameOver.wav") || !my_clickableBuffer->LoadFromFile("Music/soundIsClickable.wav") || !my_isNotClickableBuffer->LoadFromFile("Music/soundIsNotClickable.wav") || !my_loseLevelBuffer->LoadFromFile("Music/soundLoseLevel.wav") ) {
+    if (!my_fontScore->LoadFromFile("Font/scoreFont.ttf") || !my_fontTitle->LoadFromFile("Font/titleFont.ttf") || !my_musicLevel->OpenFromFile("Music/gridMusic.wav") || !my_bestScoreFont->LoadFromFile("Font/BestFont.ttf") || !my_buttonBuffer->LoadFromFile("Music/soundButton.wav") || !my_textBuffer->LoadFromFile("Music/soundEnterText.wav") || !my_gameOverBuffer->LoadFromFile("Music/soundGameOver.wav") || !my_clickableBuffer->LoadFromFile("Music/soundIsClickable.wav") || !my_isNotClickableBuffer->LoadFromFile("Music/soundIsNotClickable.wav") || !my_loseLevelBuffer->LoadFromFile("Music/soundLoseLevel.wav") ) {
         cout << "Error when loading font" << endl;
     }
 #else
@@ -127,7 +127,7 @@ GameView::setAnanasMode() {
         my_scoreNum->SetColor(Color(255,100,100));
 
         my_titleString->SetFont( *my_fontTitle );
-        
+
         my_bestScoreString->SetFont( *my_bestScoreFont );
         my_bestScoreString->SetColor(Color(49,140,231));
         my_bestScoreString->SetSize(30);
@@ -141,15 +141,15 @@ GameView::setAnanasMode() {
         my_ananasSprite.setAnanasMode();
         my_teacherSprite.setAnanasMode();
         my_background.setAnanasMode();
-        
+
         for ( map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite.begin() ; it!=my_languageToSprite.end(); ++it) {
             my_languageToSprite[ it->first ]->setAnanasMode();
         }
-        
+
         for ( map<string, CellBaseGraphic*>::const_iterator it = my_stringToSprite.begin() ; it!=my_stringToSprite.end(); ++it) {
             my_stringToSprite[ it->first ]->setAnanasMode();
         }
-        
+
         //Pour la musique
         my_musicLevel->SetLoop(true);
         my_buttonSound->SetBuffer(*my_buttonBuffer);
@@ -164,28 +164,28 @@ GameView::setAnanasMode() {
 //Cette méthode sert à mettre un text à un string, le positionner, et le dessiner
 void
 GameView::setTextAndDraw( sf::String* s, string text, int x, int y, bool useSizeRectX ) {
-  
+
     s->SetText(text);
-    
+
     if ( s->GetRect().GetWidth() > WINDOWWITDH ) {
         while ( s->GetRect().GetWidth() > WINDOWWITDH )
             s->SetSize( s->GetSize() - 5 );
     }
-    
+
     if ( useSizeRectX )
         x -=  ( ( s->GetRect().GetWidth()  ) / 2 );
-    
+
     s->SetPosition(x, y);
-    
-    
-    
+
+
+
     my_window->Draw(*s);
 }
 
 void
 GameView::setTeacherMode() {
 #ifdef __linux__
-    if (!my_fontScore->LoadFromFile("Font/arial.ttf") || !my_fontTitle->LoadFromFile("Font/arial.ttf") || !my_bestScoreFont->LoadFromFile("Font/arial.ttf") || !my_musicLevel->OpenFromFile("Music/gridMusic.wav") || !my_buttonBuffer->LoadFromFile("Music/soundButton.wav") || !my_textBuffer->LoadFromFile->("Music/soundEnterText.wav") || !my_gameOverBuffer->LoadFromFile("Music/soundGameOver.wav") || !my_clickableBuffer->LoadFromFile("Music/soundIsClickable.wav") || !my_isNotClickableBuffer->LoadFromFile("Music/soundIsNotClickable.wav") || !my_loseLevelBuffer->LoadFromFile("Music/soundLoseLevel.wav")) {
+    if ( !my_fontScore->LoadFromFile("Font/arial.ttf") || !my_bestScoreFont->LoadFromFile("Font/arial.ttf") || !my_fontTitle->LoadFromFile("Font/arial.ttf") ||!my_musicLevel->OpenFromFile("Music/gridMusic.wav") || !my_textBuffer->LoadFromFile("Music/soundEnterText.wav") || !my_gameOverBuffer->LoadFromFile("Music/soundGameOver.wav") || !my_clickableBuffer->LoadFromFile("Music/soundIsClickable.wav") || !my_isNotClickableBuffer->LoadFromFile("Music/soundIsNotClickable.wav") || !my_loseLevelBuffer->LoadFromFile("Music/soundLoseLevel.wav")) {
         cout << "Error when loading font" << endl;
     }
 #else
@@ -214,11 +214,11 @@ GameView::setTeacherMode() {
         //Le string pour le intToString
         my_scoreNum->SetFont( * my_fontScore );
         my_scoreNum->SetColor(Color(255,255,255));
-        
+
         my_bestScoreString->SetFont( *my_bestScoreFont);
         my_bestScoreString->SetColor(Color(255,255,255));
         my_bestScoreString->SetSize(25);
-        
+
         my_playButton.setTeacherMode();
         my_settingButton.setTeacherMode();
         my_bestButton.setTeacherMode();
@@ -228,7 +228,7 @@ GameView::setTeacherMode() {
         my_ananasSprite.setTeacherMode();
         my_teacherSprite.setTeacherMode();
         my_background.setTeacherMode();
-        
+
         my_musicLevel->SetLoop(true);
         my_buttonSound->SetBuffer(*my_buttonBuffer);
         my_textSound->SetBuffer(*my_textBuffer);
@@ -238,11 +238,11 @@ GameView::setTeacherMode() {
         my_loseLevelSound->SetBuffer(*my_loseLevelBuffer);
         //Pour la musique
         my_musicLevel->SetLoop(true);
-        
+
         for ( map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite.begin() ; it!=my_languageToSprite.end(); ++it) {
             my_languageToSprite[ it->first ]->setTeacherMode();
         }
-        
+
         for ( map<string, CellBaseGraphic*>::const_iterator it = my_stringToSprite.begin() ; it!=my_stringToSprite.end(); ++it) {
             my_stringToSprite[ (*it).first ]->setTeacherMode();
         }
@@ -275,13 +275,13 @@ GameView::showPresentation() {
     my_titleString->SetSize(60);
 
     setTextAndDraw( my_titleString, "PURU PURU DIGGER ", ( WINDOWWITDH / 2 ), 100, true );
-    
+
     my_playButton.setSpriteAndDraw(PLAYX, PLAYY, my_window, my_messages[my_language][play]);
-    
+
     my_settingButton.setSpriteAndDraw(OPTIONX, OPTIONY, my_window, my_messages[my_language][setting]);
-    
+
     my_bestButton.setSpriteAndDraw(BESTX, BESTY, my_window, my_messages[my_language][best]);
-    
+
     my_quitButton.setSpriteAndDraw(QUITX, QUITY, my_window, my_messages[my_language][stop]);
 
 }
@@ -304,11 +304,11 @@ GameView::showOption() {
     showLanguage();
 
     //On place notre langue en cours
-    
+
     my_languageToSprite[my_language]->setSpriteAndDraw(MYLANGUEX, MYLANGUEY, my_window);
 
     showSpriteChoice();
-    
+
     my_quitButton.setSpriteAndDraw(QUITONX, QUITONY, my_window, my_messages[my_language][stop]);
 
 }
@@ -344,10 +344,10 @@ GameView::showBestScore() {
     ifstream scoreLect(FILEBESTSCORE.c_str(), ios::in );
     if ( scoreLect ) {
         string line;
-        
+
         my_titleString->SetColor(Color(255,255,255));
         my_titleString->SetSize(60);
-        
+
         //Le titre de la page
         setTextAndDraw( my_titleString, my_messages[my_language][score], ( WINDOWWITDH / 2 ), 10, true ) ;
 
@@ -380,20 +380,20 @@ GameView::enterScore( string nom ) const{
         string nomligne;
         map< int, string, DecFunctor> Scores;
         int scorePlayer = ( my_model->getScore() )->getGlobale() ;
-        
+
         while ( !scoreLect.eof() ) {
             //On lit le score et on le stocke dans une map
             scoreLect >> scoreligne >> nomligne;
             Scores[scoreligne] = nomligne.c_str();
         }
-        
+
         //On ajoute notre joueur à la map
         Scores[scorePlayer] = nom;
-        
+
         scoreLect.close();
-        
+
         ofstream scoreEcr(FILEBESTSCORE.c_str(), ios::out | ios::trunc );
-        
+
         map< int, string>::iterator i;
         if ( Scores.size() < 5 ) {
             i = Scores.end();
@@ -401,14 +401,14 @@ GameView::enterScore( string nom ) const{
             i = Scores.begin();
             for ( int cpt = 0 ; cpt < 5; cpt ++ ) ++i;
         }
-        
+
         for ( map< int, string >::const_iterator it = Scores.begin() ; it!=i ; ++it) {
             scoreEcr << it->first;
             scoreEcr <<  " ";
             scoreEcr <<  it->second;
             scoreEcr << endl;
         }
-        
+
         scoreEcr.close();
     } else {
         cerr << " Error when program is openning text file " << endl;
@@ -426,53 +426,53 @@ GameView::showIsEnteringABestScore( string player ) {
 
 void
 GameView::toAnimate() {
-    
+
     if ( ( convertIndiceXToPixel( my_model->getLevel()->getDigger()->getY() ) - my_stringToSprite["Digger"]->getXPos() ) == 0 && ( convertIndiceYToPixel( my_model->getLevel()->getDigger()->getX() ) - my_stringToSprite["Digger"]->getYPos() ) == 0 )
         animation = false;
     else {
         if ( my_model->getMovement() == South ) {
             my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() ) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos() ) ), my_window );
-            
+
             my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos(), my_stringToSprite["Digger"]->getYPos() + 2, my_window );
-            
-            
+
+
         } else if ( my_model->getMovement() == North ) {
             my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() ) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos()  + CASEHEIGHT ) ), my_window );
-            
+
             my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos(), my_stringToSprite["Digger"]->getYPos() - 2, my_window );
-            
+
         } else if ( my_model->getMovement() == West ) {
             my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() + CASEWITDH) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos() ) ), my_window );
-            
+
             my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() - 2, my_stringToSprite["Digger"]->getYPos(), my_window );
-            
+
         } else if ( my_model->getMovement() == East ) {
             my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() ) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos() ) ), my_window );
-            
+
             my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() + 2, my_stringToSprite["Digger"]->getYPos(), my_window );
-            
+
         } else if ( my_model->getMovement() == SEast ) {
             my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() ) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos() ) ), my_window );
-            
+
             my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() + 2, my_stringToSprite["Digger"]->getYPos() + 2, my_window );
-            
+
         } else if ( my_model->getMovement() == SWest ) {
             my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() + CASEWITDH  )  ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos() ) ), my_window );
-            
+
             my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() - 2, my_stringToSprite["Digger"]->getYPos() + 2, my_window );
-            
+
         }  else if ( my_model->getMovement() == NEast ) {
             my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() ) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos() + CASEHEIGHT ) ), my_window );
-        
+
             my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() + 2, my_stringToSprite["Digger"]->getYPos() - 2, my_window );
-            
+
         } else if ( my_model->getMovement() == Nwest ) {
              my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel(my_stringToSprite["Digger"]->getXPos() + CASEWITDH ) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos() + CASEHEIGHT) ), my_window );
-            
+
              my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() - 2, my_stringToSprite["Digger"]->getYPos() - 2, my_window);
         }
     }
-    
+
 }
 
 void
@@ -514,7 +514,7 @@ GameView::showLoseLevel( bool time, bool over) {
     } else if ( time && over ) {
         setTextAndDraw( my_titleString, my_messages[my_language][loosegame], ( WINDOWWITDH / 2 ), WINDOWHEIGHT / 2, true );
     }
-    
+
 
 }
 
@@ -594,17 +594,17 @@ GameView::showLevel() {
         my_titleString->SetSize(60);
 
         setTextAndDraw( my_titleString, " PURU PURU DIGGER " , ( WINDOWWITDH / 2 ), 10, true ) ;
-        
+
         //On dessine le score
         showScore();
-        
+
         my_quitButton.setSpriteAndDraw(QUITONX, QUITONY, my_window, my_messages[my_language][stop]);
     }
 
     //On dessine la grille
     showGrid();
 
-    
+
 }
 
 //Injection de dépendance model
@@ -624,9 +624,9 @@ GameView::treatGame( ) {
     bool isEnterABestScore = false;
     bool time = false;
     bool over = false;
-    
+
     string player = "";
-    
+
     sf::Clock pause;        //La clock pour la pause
     bool isInBreak = false; //Pour savoir quand on est en pause
 
@@ -650,13 +650,13 @@ GameView::treatGame( ) {
 
                         } else if ( my_settingButton.isInZone( event.MouseMove.X, event.MouseMove.Y) ) {
                             my_settingButton.setHover();
-                        
+
                         } else if ( my_bestButton.isInZone ( event.MouseMove.X, event.MouseMove.Y) ) {
                             my_bestButton.setHover();
 
                         } else if ( my_quitButton.isInZone ( event.MouseMove.X , event.MouseMove.Y) ) {
                             my_quitButton.setHover();
-                        
+
                         } else
                             resetButtonNorm();
 
@@ -688,14 +688,14 @@ GameView::treatGame( ) {
                     } else if ( isPlaying  ) {
                         if ( my_quitButton.isInZone ( event.MouseMove.X , event.MouseMove.Y) )
                             my_quitButton.setHover();
-                        
+
                         else
                             resetButtonNorm();
-                        
+
                     } else if ( isViewingBestScore ) {
                         if ( my_quitButton.isInZone ( event.MouseMove.X , event.MouseMove.Y) )
                             my_quitButton.setHover();
-                        
+
                         else
                             resetButtonNorm();
                     }
@@ -710,34 +710,34 @@ GameView::treatGame( ) {
                             case Key::Escape : // Echap
                                 my_window->Close();
                                 break;
-                                
+
                             case Key::Right :
                                 if ( !isInBreak && isPlaying )
                                     my_model->orderMovement(6);
                                 break;
-                                
+
                             case Key::Up:
                                 if ( !isInBreak && isPlaying )
                                     my_model->orderMovement(8);
                                 break;
-                                
+
                             case Key::Left :
                                 if ( !isInBreak  && isPlaying)
                                     my_model->orderMovement(4);
                                 break;
-                                
+
                             case Key::Down:
                                 if ( !isInBreak && isPlaying )
                                     my_model->orderMovement(2);
                                 break;
-                                
+
                             case Key::Return:
                                 cout << my_window->GetWidth() << endl;
                                 break;
                             default :
                                 break;
                         }
-                        
+
                     } else if ( isEnterABestScore ) {
                         switch (event.Key.Code) {
                             case Key::Return :
@@ -746,22 +746,22 @@ GameView::treatGame( ) {
                                     isViewingBestScore = true;
                                     enterScore(player);
                                     player = "";
-                                    
+
                                 }
                                 break;
-                                
+
                             case Key::Back :
                                 if ( player.length() > 0 )
                                     player.erase( player.length() - 1, 1 );
                                 break;
-                                
+
                             default :
                                 break;
                         }
                     }
                 }
                     break;
-                    
+
                 case Event::TextEntered :
                 {
                     if ( isEnterABestScore ) {
@@ -783,10 +783,10 @@ GameView::treatGame( ) {
                             my_model->reset();
                             if ( my_soundIcon.getOnOff())
                                 my_buttonSound->Play();
-                            
+
                             if ( my_musicIcon.getOnOff() )
                                 my_musicLevel->Play();
-                            
+
                         } else if ( my_quitButton.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
                             if ( my_soundIcon.getOnOff())
                                 my_buttonSound->Play();
@@ -808,7 +808,7 @@ GameView::treatGame( ) {
 
                         } else if ( my_musicIcon.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
                             my_musicIcon.reverse();
-                            
+
                         } else if ( my_soundIcon.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
                             my_soundIcon.reverse();
                         }
@@ -818,7 +818,7 @@ GameView::treatGame( ) {
                         if ( my_languageToSprite[english]->isInZone ( event.MouseButton.X, event.MouseButton.Y ) ) {
                             my_language = english;
                             resetLanguageNorm();
-                            
+
                         } else if ( my_languageToSprite[francais]->isInZone ( event.MouseButton.X, event.MouseButton.Y )  ) {
                             my_language = francais;
                             resetLanguageNorm();
@@ -847,10 +847,10 @@ GameView::treatGame( ) {
                             isChoosingOption = false;
                             isInPresentation = true;
                             resetButtonNorm();
-                            
+
                         } else if ( my_musicIcon.isInZone( event.MouseButton.X, event.MouseButton.Y) ) {
                             my_musicIcon.reverse();
-                            
+
                         } else if ( my_soundIcon.isInZone( event.MouseButton.X, event.MouseButton.Y ) ) {
                             my_soundIcon.reverse();
                         }
@@ -863,10 +863,10 @@ GameView::treatGame( ) {
                             isViewingBestScore = false;
                             isInPresentation = true;
                             resetButtonNorm();
-                            
+
                         } else if ( my_musicIcon.isInZone( event.MouseButton.X, event.MouseButton.Y) ) {
                             my_musicIcon.reverse();
-                            
+
                         } else if ( my_soundIcon.isInZone( event.MouseButton.X, event.MouseButton.Y ) ) {
                             my_soundIcon.reverse();
                         }
@@ -877,7 +877,7 @@ GameView::treatGame( ) {
                                 my_clickableSoundCell->Play();
                             my_model->orderMovement( convertYPixel( event.MouseButton.Y ), convertXPixel( event.MouseButton.X ) );
                             animation = true;
-                            
+
                         }
                         if ( my_quitButton.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
                             if ( my_soundIcon.getOnOff())
@@ -887,15 +887,15 @@ GameView::treatGame( ) {
                             my_musicLevel->Stop();
                             resetButtonNorm();
                             animation = false;
-                            
+
                         } else if ( my_musicIcon.isInZone( event.MouseButton.X, event.MouseButton.Y) ) {
                             my_musicIcon.reverse();
-                            
+
                             if ( my_musicIcon.getOnOff() )
                                 my_musicLevel->Play();
                             else
                                 my_musicLevel->Pause();
-                            
+
                         } else if ( my_soundIcon.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
                             my_soundIcon.reverse();
                         }
@@ -911,15 +911,15 @@ GameView::treatGame( ) {
         //Gestion de tout l'affichage
         if ( isInPresentation ) {
             showPresentation();
-            
+
         } else if ( isChoosingOption ) {
             showOption();
-            
+
         } else if ( isViewingBestScore ) {
             showBestScore();
-            
+
         } else if ( isPlaying ) {
-            
+
             //On check le temps, et l'on peut perdre à cause de lui.
             if ( my_model->getLevel()->timeIsUp() ) {
                 my_model->getLevel()->lostLevel();
@@ -935,9 +935,9 @@ GameView::treatGame( ) {
                 over = true;
                 isInBreak = true;
                 animation = false;
-                
+
             }
-            
+
             if ( my_model->getLevel()->lose() ) {
                 if ( !isInBreak ) {
                     pause.Reset();
@@ -954,7 +954,7 @@ GameView::treatGame( ) {
                 showWinLevel();
                 isInBreak = true;
                 animation = false;
-                
+
             } else {
                 showLevel();
             }
