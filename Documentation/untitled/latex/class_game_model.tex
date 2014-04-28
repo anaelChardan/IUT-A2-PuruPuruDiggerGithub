@@ -1,0 +1,131 @@
+\hypertarget{class_game_model}{\section{Référence de la classe Game\-Model}
+\label{class_game_model}\index{Game\-Model@{Game\-Model}}
+}
+
+
+Classe modélisant une partie.  
+
+
+
+
+{\ttfamily \#include $<$Game\-Model.\-h$>$}
+
+\subsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_game_model_aa5637be937d4a2ffe81541d513838424}{Game\-Model} ()
+\begin{DoxyCompactList}\small\item\em Constructeur. \end{DoxyCompactList}\item 
+\hyperlink{class_game_model_ac72de76e47bb6be675de3c49c15ac4af}{$\sim$\-Game\-Model} ()
+\begin{DoxyCompactList}\small\item\em Destructeur. \end{DoxyCompactList}\item 
+\hyperlink{class_score}{Score} $\ast$const \hyperlink{class_game_model_ab678951d954d7b978be043a045536d08}{get\-Score} ()
+\begin{DoxyCompactList}\small\item\em Retourner notre score ( affichage ) \end{DoxyCompactList}\item 
+\hyperlink{class_level}{Level} $\ast$const \hyperlink{class_game_model_aa7f4029f9ae959c7a1f07e263d92cccd}{get\-Level} ()
+\begin{DoxyCompactList}\small\item\em Retourner notre \hyperlink{class_level}{Level} ( affichage ) \end{DoxyCompactList}\item 
+void \hyperlink{class_game_model_aae26e8164a296410e518c1eae486da0a}{order\-Movement} (int depl)
+\begin{DoxyCompactList}\small\item\em Ordonner un mouvement à notre grille. \end{DoxyCompactList}\item 
+\hypertarget{class_game_model_a835e35b513c8598ea4143a74dcc08be4}{void {\bfseries order\-Movement} (int xclick, int yclick)}\label{class_game_model_a835e35b513c8598ea4143a74dcc08be4}
+
+\item 
+\hypertarget{class_game_model_a8fb77b55b8f6bd052c965a95cd82e2f2}{Movement {\bfseries get\-Movement} () const }\label{class_game_model_a8fb77b55b8f6bd052c965a95cd82e2f2}
+
+\item 
+bool \hyperlink{class_game_model_a0693b7716ee4a7307a0ac8b60a3fea52}{game\-Over} () const 
+\begin{DoxyCompactList}\small\item\em Savoir si la partie est terminée. \end{DoxyCompactList}\item 
+\hypertarget{class_game_model_aaaf0476b35dca74a9c786f523f011ba2}{void {\bfseries reset} ()}\label{class_game_model_aaaf0476b35dca74a9c786f523f011ba2}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Classe modélisant une partie. 
+
+\subsection{Documentation des constructeurs et destructeur}
+\hypertarget{class_game_model_aa5637be937d4a2ffe81541d513838424}{\index{Game\-Model@{Game\-Model}!Game\-Model@{Game\-Model}}
+\index{Game\-Model@{Game\-Model}!GameModel@{Game\-Model}}
+\subsubsection[{Game\-Model}]{\setlength{\rightskip}{0pt plus 5cm}Game\-Model\-::\-Game\-Model (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_game_model_aa5637be937d4a2ffe81541d513838424}
+
+
+Constructeur. 
+
+Constructeur de la classe \hyperlink{class_game_model}{Game\-Model} \hypertarget{class_game_model_ac72de76e47bb6be675de3c49c15ac4af}{\index{Game\-Model@{Game\-Model}!$\sim$\-Game\-Model@{$\sim$\-Game\-Model}}
+\index{$\sim$\-Game\-Model@{$\sim$\-Game\-Model}!GameModel@{Game\-Model}}
+\subsubsection[{$\sim$\-Game\-Model}]{\setlength{\rightskip}{0pt plus 5cm}Game\-Model\-::$\sim$\-Game\-Model (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_game_model_ac72de76e47bb6be675de3c49c15ac4af}
+
+
+Destructeur. 
+
+Destructeur de la classe \hyperlink{class_game_model}{Game\-Model} 
+
+\subsection{Documentation des fonctions membres}
+\hypertarget{class_game_model_a0693b7716ee4a7307a0ac8b60a3fea52}{\index{Game\-Model@{Game\-Model}!game\-Over@{game\-Over}}
+\index{game\-Over@{game\-Over}!GameModel@{Game\-Model}}
+\subsubsection[{game\-Over}]{\setlength{\rightskip}{0pt plus 5cm}bool Game\-Model\-::game\-Over (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_game_model_a0693b7716ee4a7307a0ac8b60a3fea52}
+
+
+Savoir si la partie est terminée. 
+
+\begin{DoxyReturn}{Renvoie}
+true si la partie est finie 
+\end{DoxyReturn}
+\hypertarget{class_game_model_aa7f4029f9ae959c7a1f07e263d92cccd}{\index{Game\-Model@{Game\-Model}!get\-Level@{get\-Level}}
+\index{get\-Level@{get\-Level}!GameModel@{Game\-Model}}
+\subsubsection[{get\-Level}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Level} $\ast$const Game\-Model\-::get\-Level (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_game_model_aa7f4029f9ae959c7a1f07e263d92cccd}
+
+
+Retourner notre \hyperlink{class_level}{Level} ( affichage ) 
+
+\begin{DoxyReturn}{Renvoie}
+un pointeur constant sur le level 
+\end{DoxyReturn}
+\hypertarget{class_game_model_ab678951d954d7b978be043a045536d08}{\index{Game\-Model@{Game\-Model}!get\-Score@{get\-Score}}
+\index{get\-Score@{get\-Score}!GameModel@{Game\-Model}}
+\subsubsection[{get\-Score}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Score} $\ast$const Game\-Model\-::get\-Score (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_game_model_ab678951d954d7b978be043a045536d08}
+
+
+Retourner notre score ( affichage ) 
+
+\begin{DoxyReturn}{Renvoie}
+un pointeur constant sur le score 
+\end{DoxyReturn}
+\hypertarget{class_game_model_aae26e8164a296410e518c1eae486da0a}{\index{Game\-Model@{Game\-Model}!order\-Movement@{order\-Movement}}
+\index{order\-Movement@{order\-Movement}!GameModel@{Game\-Model}}
+\subsubsection[{order\-Movement}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-Model\-::order\-Movement (
+\begin{DoxyParamCaption}
+\item[{int}]{depl}
+\end{DoxyParamCaption}
+)}}\label{class_game_model_aae26e8164a296410e518c1eae486da0a}
+
+
+Ordonner un mouvement à notre grille. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\tt in}  & {\em le} & mouvement \\
+\hline
+\end{DoxyParams}
+
+
+La documentation de cette classe a été générée à partir des fichiers suivants \-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/\-Ananas/\-Desktop/\-Mes\-Projets\-Git/purupurudigger/\-Code\-Cpp/\hyperlink{_game_model_8h}{Game\-Model.\-h}\item 
+/\-Users/\-Ananas/\-Desktop/\-Mes\-Projets\-Git/purupurudigger/\-Code\-Cpp/\hyperlink{_game_model_8cpp}{Game\-Model.\-cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,115 @@
+\hypertarget{class_score}{\section{Référence de la classe Score}
+\label{class_score}\index{Score@{Score}}
+}
+
+
+Classe modélisant un score.  
+
+
+
+
+{\ttfamily \#include $<$Score.\-h$>$}
+
+\subsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_score_a039c99843551e5e4b512ecee99e46617}{Score} ()
+\begin{DoxyCompactList}\small\item\em Constructeur. \end{DoxyCompactList}\item 
+int \hyperlink{class_score_afcc13cb223fd905475a59693921451f8}{get\-Current} () const 
+\begin{DoxyCompactList}\small\item\em Connaître le score courant. \end{DoxyCompactList}\item 
+int \hyperlink{class_score_a68f116f8c2e0b732ee89949b0a403767}{get\-Current\-Step} () const 
+\begin{DoxyCompactList}\small\item\em Connaître le niveau. \end{DoxyCompactList}\item 
+int \hyperlink{class_score_a74a8797f08b2bbaa5883ec9daa4235a1}{get\-Globale} () const 
+\begin{DoxyCompactList}\small\item\em Connaître le score totale. \end{DoxyCompactList}\item 
+\hypertarget{class_score_a5c9ffcdf9765a29eb2ddf0d6dec622f6}{void \hyperlink{class_score_a5c9ffcdf9765a29eb2ddf0d6dec622f6}{add\-Success} ()}\label{class_score_a5c9ffcdf9765a29eb2ddf0d6dec622f6}
+
+\begin{DoxyCompactList}\small\item\em Ajoute une case à notre tableau. \end{DoxyCompactList}\item 
+\hypertarget{class_score_ade936f4b478e9b5b5188e5232b6f1a0f}{void \hyperlink{class_score_ade936f4b478e9b5b5188e5232b6f1a0f}{reset\-Score} ()}\label{class_score_ade936f4b478e9b5b5188e5232b6f1a0f}
+
+\begin{DoxyCompactList}\small\item\em Remet à 0 la valeur de la dernière case de notre tableau. \end{DoxyCompactList}\item 
+void \hyperlink{class_score_a5be24d8d1d1de90eaa68fec905b59ee6}{add\-Points} (const int \&i)
+\begin{DoxyCompactList}\small\item\em Ajoute des points à notre case courante. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Classe modélisant un score. 
+
+\subsection{Documentation des constructeurs et destructeur}
+\hypertarget{class_score_a039c99843551e5e4b512ecee99e46617}{\index{Score@{Score}!Score@{Score}}
+\index{Score@{Score}!Score@{Score}}
+\subsubsection[{Score}]{\setlength{\rightskip}{0pt plus 5cm}Score\-::\-Score (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_score_a039c99843551e5e4b512ecee99e46617}
+
+
+Constructeur. 
+
+Constructeur de la classe \hyperlink{class_score}{Score} 
+
+\subsection{Documentation des fonctions membres}
+\hypertarget{class_score_a5be24d8d1d1de90eaa68fec905b59ee6}{\index{Score@{Score}!add\-Points@{add\-Points}}
+\index{add\-Points@{add\-Points}!Score@{Score}}
+\subsubsection[{add\-Points}]{\setlength{\rightskip}{0pt plus 5cm}void Score\-::add\-Points (
+\begin{DoxyParamCaption}
+\item[{const int \&}]{i}
+\end{DoxyParamCaption}
+)}}\label{class_score_a5be24d8d1d1de90eaa68fec905b59ee6}
+
+
+Ajoute des points à notre case courante. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\tt in}  & {\em la} & valeur de ce que l'on doit ajouter à notre score courant \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_score_afcc13cb223fd905475a59693921451f8}{\index{Score@{Score}!get\-Current@{get\-Current}}
+\index{get\-Current@{get\-Current}!Score@{Score}}
+\subsubsection[{get\-Current}]{\setlength{\rightskip}{0pt plus 5cm}int Score\-::get\-Current (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_score_afcc13cb223fd905475a59693921451f8}
+
+
+Connaître le score courant. 
+
+\begin{DoxyReturn}{Renvoie}
+la valeur de la dernière case de notre tableau de score 
+\end{DoxyReturn}
+\hypertarget{class_score_a68f116f8c2e0b732ee89949b0a403767}{\index{Score@{Score}!get\-Current\-Step@{get\-Current\-Step}}
+\index{get\-Current\-Step@{get\-Current\-Step}!Score@{Score}}
+\subsubsection[{get\-Current\-Step}]{\setlength{\rightskip}{0pt plus 5cm}int Score\-::get\-Current\-Step (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_score_a68f116f8c2e0b732ee89949b0a403767}
+
+
+Connaître le niveau. 
+
+\begin{DoxyReturn}{Renvoie}
+la taille de notre tableau de score 
+\end{DoxyReturn}
+\hypertarget{class_score_a74a8797f08b2bbaa5883ec9daa4235a1}{\index{Score@{Score}!get\-Globale@{get\-Globale}}
+\index{get\-Globale@{get\-Globale}!Score@{Score}}
+\subsubsection[{get\-Globale}]{\setlength{\rightskip}{0pt plus 5cm}int Score\-::get\-Globale (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_score_a74a8797f08b2bbaa5883ec9daa4235a1}
+
+
+Connaître le score totale. 
+
+\begin{DoxyReturn}{Renvoie}
+la somme du contenu de notre tableau de score 
+\end{DoxyReturn}
+
+
+La documentation de cette classe a été générée à partir des fichiers suivants \-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/\-Ananas/\-Desktop/\-Mes\-Projets\-Git/purupurudigger/\-Code\-Cpp/\hyperlink{_score_8h}{Score.\-h}\item 
+/\-Users/\-Ananas/\-Desktop/\-Mes\-Projets\-Git/purupurudigger/\-Code\-Cpp/\hyperlink{_score_8cpp}{Score.\-cpp}\end{DoxyCompactItemize}

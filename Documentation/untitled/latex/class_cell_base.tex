@@ -1,0 +1,190 @@
+\hypertarget{class_cell_base}{\section{Référence de la classe Cell\-Base}
+\label{class_cell_base}\index{Cell\-Base@{Cell\-Base}}
+}
+
+
+Classe modélisant ce qu'est une case.  
+
+
+
+
+{\ttfamily \#include $<$Cell\-Base.\-h$>$}
+
+Graphe d'héritage de Cell\-Base\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_cell_base}
+\end{center}
+\end{figure}
+\subsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_cell_base_ac5cbc18d3f767bb91d9e052a3eb778b5}{Cell\-Base} ()
+\begin{DoxyCompactList}\small\item\em Constructeur. \end{DoxyCompactList}\item 
+\hyperlink{class_cell_base_a12169f30ca7038d58bdf810cb6314df0}{Cell\-Base} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Constructeur paramétré \end{DoxyCompactList}\item 
+\hyperlink{class_cell_base_ae2b545b0d403816ba1d572cee7f97ec9}{Cell\-Base} (const \hyperlink{class_cell_base}{Cell\-Base} \&c)
+\begin{DoxyCompactList}\small\item\em Constructeur par copie. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_cell_base_a91df7ce6090723939914fc08ae5dd25e}{$\sim$\-Cell\-Base} ()
+\begin{DoxyCompactList}\small\item\em Destructeur. \end{DoxyCompactList}\item 
+int \hyperlink{class_cell_base_a0df4af1a9faa0e1bc1d2ac22947b3281}{get\-X} () const 
+\begin{DoxyCompactList}\small\item\em retourne la position en X de la case \end{DoxyCompactList}\item 
+int \hyperlink{class_cell_base_a51f37b58bdf1ef4d51d956d02f35b411}{get\-Y} () const 
+\begin{DoxyCompactList}\small\item\em retourne la position en Y de la case \end{DoxyCompactList}\item 
+void \hyperlink{class_cell_base_a3280e04207e4419d425913d519fb867d}{set\-X} (int x)
+\begin{DoxyCompactList}\small\item\em Pour positionner notre case dans la grille. \end{DoxyCompactList}\item 
+void \hyperlink{class_cell_base_a5c2f67f6bb1ba06b42c90d81b5ed872a}{set\-Y} (int y)
+\begin{DoxyCompactList}\small\item\em Pour positionner notre case dans la grille. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_cell_base}{Cell\-Base} \& \hyperlink{class_cell_base_a31f5f4bcdc5e254476b376eadc8fa2f6}{operator=} (const \hyperlink{class_cell_base}{Cell\-Base} \&c)
+\begin{DoxyCompactList}\small\item\em Opérateur d'affectation pour recopier une case. \end{DoxyCompactList}\item 
+\hypertarget{class_cell_base_aae6d1d9ee7ad46d21c4ac6e698cd2754}{std\-::string {\bfseries get\-Type} ()}\label{class_cell_base_aae6d1d9ee7ad46d21c4ac6e698cd2754}
+
+\end{DoxyCompactItemize}
+\subsection*{Fonctions membres protégées}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_cell_base_a1f9036ed8d703f7b341b49eec4fd8882}{virtual void {\bfseries to\-Clone} (const \hyperlink{class_cell_base}{Cell\-Base} \&c)}\label{class_cell_base_a1f9036ed8d703f7b341b49eec4fd8882}
+
+\end{DoxyCompactItemize}
+\subsection*{Attributs protégés}
+\begin{DoxyCompactItemize}
+\item 
+std\-::string \hyperlink{class_cell_base_a4039c6141e348f927d90297d01e19509}{my\-\_\-type}
+\item 
+int \hyperlink{class_cell_base_a9dc2714aa92817ba6a6a23da19eb4fde}{my\-\_\-x}
+\item 
+int \hyperlink{class_cell_base_a39722b0f229e34f50c7b9d4d12d19a52}{my\-\_\-y}
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Classe modélisant ce qu'est une case. 
+
+\subsection{Documentation des constructeurs et destructeur}
+\hypertarget{class_cell_base_ac5cbc18d3f767bb91d9e052a3eb778b5}{\index{Cell\-Base@{Cell\-Base}!Cell\-Base@{Cell\-Base}}
+\index{Cell\-Base@{Cell\-Base}!CellBase@{Cell\-Base}}
+\subsubsection[{Cell\-Base}]{\setlength{\rightskip}{0pt plus 5cm}Cell\-Base\-::\-Cell\-Base (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_cell_base_ac5cbc18d3f767bb91d9e052a3eb778b5}
+
+
+Constructeur. 
+
+Constructeur de la classe \hyperlink{class_cell_base}{Cell\-Base} \hypertarget{class_cell_base_a12169f30ca7038d58bdf810cb6314df0}{\index{Cell\-Base@{Cell\-Base}!Cell\-Base@{Cell\-Base}}
+\index{Cell\-Base@{Cell\-Base}!CellBase@{Cell\-Base}}
+\subsubsection[{Cell\-Base}]{\setlength{\rightskip}{0pt plus 5cm}Cell\-Base\-::\-Cell\-Base (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)}}\label{class_cell_base_a12169f30ca7038d58bdf810cb6314df0}
+
+
+Constructeur paramétré 
+
+Constructeur paramétré de la classe \hyperlink{class_cell_base}{Cell\-Base} \hypertarget{class_cell_base_ae2b545b0d403816ba1d572cee7f97ec9}{\index{Cell\-Base@{Cell\-Base}!Cell\-Base@{Cell\-Base}}
+\index{Cell\-Base@{Cell\-Base}!CellBase@{Cell\-Base}}
+\subsubsection[{Cell\-Base}]{\setlength{\rightskip}{0pt plus 5cm}Cell\-Base\-::\-Cell\-Base (
+\begin{DoxyParamCaption}
+\item[{const {\bf Cell\-Base} \&}]{c}
+\end{DoxyParamCaption}
+)}}\label{class_cell_base_ae2b545b0d403816ba1d572cee7f97ec9}
+
+
+Constructeur par copie. 
+
+Constructeur par copie de la classe \hyperlink{class_cell_base}{Cell\-Base} \hypertarget{class_cell_base_a91df7ce6090723939914fc08ae5dd25e}{\index{Cell\-Base@{Cell\-Base}!$\sim$\-Cell\-Base@{$\sim$\-Cell\-Base}}
+\index{$\sim$\-Cell\-Base@{$\sim$\-Cell\-Base}!CellBase@{Cell\-Base}}
+\subsubsection[{$\sim$\-Cell\-Base}]{\setlength{\rightskip}{0pt plus 5cm}Cell\-Base\-::$\sim$\-Cell\-Base (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_cell_base_a91df7ce6090723939914fc08ae5dd25e}
+
+
+Destructeur. 
+
+Destructeur de la classe mère \hyperlink{class_cell_base}{Cell\-Base} 
+
+\subsection{Documentation des fonctions membres}
+\hypertarget{class_cell_base_a0df4af1a9faa0e1bc1d2ac22947b3281}{\index{Cell\-Base@{Cell\-Base}!get\-X@{get\-X}}
+\index{get\-X@{get\-X}!CellBase@{Cell\-Base}}
+\subsubsection[{get\-X}]{\setlength{\rightskip}{0pt plus 5cm}int Cell\-Base\-::get\-X (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_cell_base_a0df4af1a9faa0e1bc1d2ac22947b3281}
+
+
+retourne la position en X de la case 
+
+\begin{DoxyReturn}{Renvoie}
+l'entier positionnant notre case en X 
+\end{DoxyReturn}
+\hypertarget{class_cell_base_a51f37b58bdf1ef4d51d956d02f35b411}{\index{Cell\-Base@{Cell\-Base}!get\-Y@{get\-Y}}
+\index{get\-Y@{get\-Y}!CellBase@{Cell\-Base}}
+\subsubsection[{get\-Y}]{\setlength{\rightskip}{0pt plus 5cm}int Cell\-Base\-::get\-Y (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_cell_base_a51f37b58bdf1ef4d51d956d02f35b411}
+
+
+retourne la position en Y de la case 
+
+\begin{DoxyReturn}{Renvoie}
+l'entier positionnant notre case en Y 
+\end{DoxyReturn}
+\hypertarget{class_cell_base_a31f5f4bcdc5e254476b376eadc8fa2f6}{\index{Cell\-Base@{Cell\-Base}!operator=@{operator=}}
+\index{operator=@{operator=}!CellBase@{Cell\-Base}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Cell\-Base} \& Cell\-Base\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Cell\-Base} \&}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_cell_base_a31f5f4bcdc5e254476b376eadc8fa2f6}
+
+
+Opérateur d'affectation pour recopier une case. 
+
+param\mbox{[}c\mbox{]} \hyperlink{class_cell_base}{Cell\-Base} c \-: opérateur d'affectation pour recopier une case \hypertarget{class_cell_base_a3280e04207e4419d425913d519fb867d}{\index{Cell\-Base@{Cell\-Base}!set\-X@{set\-X}}
+\index{set\-X@{set\-X}!CellBase@{Cell\-Base}}
+\subsubsection[{set\-X}]{\setlength{\rightskip}{0pt plus 5cm}void Cell\-Base\-::set\-X (
+\begin{DoxyParamCaption}
+\item[{int}]{x}
+\end{DoxyParamCaption}
+)}}\label{class_cell_base_a3280e04207e4419d425913d519fb867d}
+
+
+Pour positionner notre case dans la grille. 
+
+param\mbox{[}in\mbox{]} int x \-: la position verticale de notre case \hypertarget{class_cell_base_a5c2f67f6bb1ba06b42c90d81b5ed872a}{\index{Cell\-Base@{Cell\-Base}!set\-Y@{set\-Y}}
+\index{set\-Y@{set\-Y}!CellBase@{Cell\-Base}}
+\subsubsection[{set\-Y}]{\setlength{\rightskip}{0pt plus 5cm}void Cell\-Base\-::set\-Y (
+\begin{DoxyParamCaption}
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)}}\label{class_cell_base_a5c2f67f6bb1ba06b42c90d81b5ed872a}
+
+
+Pour positionner notre case dans la grille. 
+
+param\mbox{[}in\mbox{]} int x \-: la position horizontale de notre case 
+
+\subsection{Documentation des données membres}
+\hypertarget{class_cell_base_a4039c6141e348f927d90297d01e19509}{\index{Cell\-Base@{Cell\-Base}!my\-\_\-type@{my\-\_\-type}}
+\index{my\-\_\-type@{my\-\_\-type}!CellBase@{Cell\-Base}}
+\subsubsection[{my\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Cell\-Base\-::my\-\_\-type\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_cell_base_a4039c6141e348f927d90297d01e19509}
+le type de ma case \hypertarget{class_cell_base_a9dc2714aa92817ba6a6a23da19eb4fde}{\index{Cell\-Base@{Cell\-Base}!my\-\_\-x@{my\-\_\-x}}
+\index{my\-\_\-x@{my\-\_\-x}!CellBase@{Cell\-Base}}
+\subsubsection[{my\-\_\-x}]{\setlength{\rightskip}{0pt plus 5cm}int Cell\-Base\-::my\-\_\-x\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_cell_base_a9dc2714aa92817ba6a6a23da19eb4fde}
+Le x de ma case \hypertarget{class_cell_base_a39722b0f229e34f50c7b9d4d12d19a52}{\index{Cell\-Base@{Cell\-Base}!my\-\_\-y@{my\-\_\-y}}
+\index{my\-\_\-y@{my\-\_\-y}!CellBase@{Cell\-Base}}
+\subsubsection[{my\-\_\-y}]{\setlength{\rightskip}{0pt plus 5cm}int Cell\-Base\-::my\-\_\-y\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_cell_base_a39722b0f229e34f50c7b9d4d12d19a52}
+Le y de ma case 
+
+La documentation de cette classe a été générée à partir des fichiers suivants \-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/\-Ananas/\-Desktop/\-Mes\-Projets\-Git/purupurudigger/\-Code\-Cpp/\hyperlink{_cell_base_8h}{Cell\-Base.\-h}\item 
+/\-Users/\-Ananas/\-Desktop/\-Mes\-Projets\-Git/purupurudigger/\-Code\-Cpp/\hyperlink{_cell_base_8cpp}{Cell\-Base.\-cpp}\end{DoxyCompactItemize}
