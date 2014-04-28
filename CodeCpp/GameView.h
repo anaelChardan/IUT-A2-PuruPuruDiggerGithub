@@ -15,6 +15,10 @@
 #include <map>
 #include <string>
 
+/*! \class GameView
+ *  \brief Classe modélisant ce qu'est une vue
+ */
+
 class GameView {
     private :
         Language my_language; /*!<  La langue de notre partie */

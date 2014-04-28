@@ -13,9 +13,10 @@
 #include "CellBase.h"
 
 
-/*! \class CellBase
+/*! \class Digger
  *  \brief Classe modélisant ce qu'est un digger
-*/
+ */
+
 class Digger : public CellBase {
     private :
         int my_life; /*!<  le nombre de vie du digger */

@@ -22,6 +22,7 @@
 using namespace std;
 
 GameView::GameView() {
+    ///On set notre map pour l'affichage
     my_typeToString["Digger"] = colorMessage( "DD" , WHITE );
     my_typeToString["Bomb"] = colorMessage( "BB", RED);
     my_typeToString["EmptyCell"] = colorMessage( "  ", WHITE );
@@ -69,6 +70,7 @@ GameView::showLanguage() const {
 
 void
 GameView::showGrid() {
+    ///Affichage de la première ligne
     for ( int z = 0; z < (COLONNE * 5 + 3); z++ ) {
         if ( z%5 == 1 )
             cout << colorMessage( "+", YELLOW );
@@ -79,6 +81,7 @@ GameView::showGrid() {
 
     cout << endl;
 
+    ///Affichage de la grille selon le getType bien utile
     for ( int i = 0; i < LIGNE; i++ ) {
         cout << colorMessage( " | ", YELLOW );
         for ( int j = 0; j < COLONNE; j++ ) {
@@ -86,12 +89,12 @@ GameView::showGrid() {
             cout << my_typeToString.at(my_model->getLevel()->getGrid()[i][j]->getType());
             
             if ( (my_model->getLevel()->getGrid()[i][j])->getType()  == "GoldCell" ) {
-                //On copie le contenu du pointeur donné, qui ne renverra normalement pas nul
+                ///On copie le contenu du pointeur donné, qui ne renverra normalement pas nul
                 ptr_goldCell = dynamic_cast<GoldCell*>(my_model->getLevel()->getGrid()[i][j]);
                 cout << colorMessage( intToString( ptr_goldCell->getValue() ).c_str(), PINK);
             }
             else if ( (my_model->getLevel()->getGrid()[i][j])->getType()  == "ValueCell" ) {
-                //On copie le contenu du pointeur donné, qui ne renverra normalement pas nul
+                ///On copie le contenu du pointeur donné, qui ne renverra normalement pas nul
                 ptr_valueCell = dynamic_cast<ValueCell*>(my_model->getLevel()->getGrid()[i][j]);
                 cout << colorMessage( intToString( ptr_valueCell->getValue() ).c_str() ,  CYAN );
             }
@@ -100,7 +103,7 @@ GameView::showGrid() {
         }
         cout << endl;
 
-
+        ///Affichage de la ligne en dessous de chaque case
         for ( int z = 0; z < (COLONNE * 5 + 3); z++ ) {
             if ( z%5 == 1 )
                 cout << colorMessage( "+", YELLOW );
