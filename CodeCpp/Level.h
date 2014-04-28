@@ -105,7 +105,18 @@ class Level {
          */
         void lostLevel();
     
+        /*!
+         *  \brief remettre win a false
+         *
+         *  remet l'attribut win  false
+         */
         void resetWin();
+    
+        /*!
+         *  \brief remettre lose a false
+         *
+         *  remet l'attribut lose  false
+         */
         void resetLose();
     
         /*!

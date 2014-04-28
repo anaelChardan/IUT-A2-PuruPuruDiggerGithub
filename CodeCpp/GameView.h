@@ -21,8 +21,8 @@ class GameView {
         LanguageMessage my_messages; /*!<  La bibliothèque de message de notre partie */
         std::map<std::string , std::string> my_typeToString;
     
-        GoldCell* ptr_goldCell;
-        ValueCell* ptr_valueCell;
+        GoldCell* ptr_goldCell; /*!<  Un pointeur de goldCell, pour que ce soit plus pratique */
+        ValueCell* ptr_valueCell; /*!<  Un pointeur de valueCell, pour que ce soit plus pratique */
     
         GameModel * my_model; /*!<  La modèle de notre vue */
         /*!

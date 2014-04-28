@@ -21,6 +21,12 @@ class GoldCell : public ValueCell {
     private :
     
         int my_bonus; /*!<  Notre bonus */
+    
+        /*!
+         *  \brief Action toClone
+         *
+         *  Action toClone pour copier une goldCell
+         */
         virtual void toClone( const GoldCell& g);
     
     public :
