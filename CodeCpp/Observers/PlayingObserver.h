@@ -12,7 +12,6 @@
 #include "EventObserver.h"
 
 class PlayingObserver : public EventObserver {
-    virtual void close(sf::Event event);
     virtual void mouseMoved(sf::Event event);
     virtual void keyPressed(sf::Event event);
     virtual void textEntered(sf::Event event);

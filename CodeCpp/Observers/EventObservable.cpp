@@ -12,10 +12,6 @@ void EventObservable::notify( Event event ) const {
         
         switch (event.Type) {
                 
-            case Event::Closed:
-                (*it)->close(event);
-                break;
-                
             case Event::MouseMoved:
                 (*it)->mouseMoved(event);
                 break;
@@ -25,7 +21,7 @@ void EventObservable::notify( Event event ) const {
                 break;
                 
             case Event::TextEntered:
-                (*it)->keyPressed(event);
+                (*it)->textEntered(event);
                 break;
 
             case Event::MouseButtonPressed:
@@ -36,6 +32,18 @@ void EventObservable::notify( Event event ) const {
                 break;
                 
         }
+    }
+}
+
+void EventObservable::preDisplay() const {
+    for (std::set<EventObserver*>::const_iterator it = list_observers.begin(); it != list_observers.end(); ++it) {
+        (*it)->preDisplay();
+    }
+}
+
+void EventObservable::postDisplay() const {
+    for (std::set<EventObserver*>::const_iterator it = list_observers.begin(); it != list_observers.end(); ++it) {
+        (*it)->postDisplay();
     }
 }
 

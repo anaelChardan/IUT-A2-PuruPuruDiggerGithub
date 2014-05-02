@@ -7,9 +7,6 @@
 
 #include "PlayingObserver.h"
 
-void PlayingObserver::close(sf::Event event) {
-
-}
 
 void PlayingObserver::mouseMoved(sf::Event event) {
 

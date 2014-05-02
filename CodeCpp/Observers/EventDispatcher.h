@@ -14,7 +14,8 @@
 
 class EventDispatcher : public EventObservable {
     public:
-    void dispatch( sf::Event event );
+        void dispatch( sf::Event event );
+        void show();
 };
 
 

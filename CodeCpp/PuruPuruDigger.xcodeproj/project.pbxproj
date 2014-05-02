@@ -42,7 +42,7 @@
 		03D783BE18D0A07800A1B8AE /* mainSFML.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D783BC18D0A07800A1B8AE /* mainSFML.cpp */; };
 		03ED314E18B385BA00CF8AA1 /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314618B385BA00CF8AA1 /* Level.cpp */; };
 		03ED314F18B385BA00CF8AA1 /* Score.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314818B385BA00CF8AA1 /* Score.cpp */; };
-		7FA5D392191398A60035B5DE /* PresentationObserver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5D389191398A60035B5DE /* PresentationObserver.cpp */; };
+		7FA5D392191398A60035B5DE /* InterfaceObserver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5D389191398A60035B5DE /* InterfaceObserver.cpp */; };
 		7FA5D393191398A60035B5DE /* PlayingObserver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5D38B191398A60035B5DE /* PlayingObserver.cpp */; };
 		7FA5D394191398A60035B5DE /* EventObserver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5D38D191398A60035B5DE /* EventObserver.cpp */; };
 		7FA5D395191398A60035B5DE /* EventObservable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5D38F191398A60035B5DE /* EventObservable.cpp */; };
@@ -181,8 +181,8 @@
 		03ED314718B385BA00CF8AA1 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = SOURCE_ROOT; };
 		03ED314818B385BA00CF8AA1 /* Score.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Score.cpp; sourceTree = SOURCE_ROOT; };
 		03ED314918B385BA00CF8AA1 /* Score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Score.h; sourceTree = SOURCE_ROOT; };
-		7FA5D388191398A60035B5DE /* PresentationObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PresentationObserver.h; path = Observers/PresentationObserver.h; sourceTree = SOURCE_ROOT; };
-		7FA5D389191398A60035B5DE /* PresentationObserver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PresentationObserver.cpp; path = Observers/PresentationObserver.cpp; sourceTree = SOURCE_ROOT; };
+		7FA5D388191398A60035B5DE /* InterfaceObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InterfaceObserver.h; path = Observers/InterfaceObserver.h; sourceTree = SOURCE_ROOT; };
+		7FA5D389191398A60035B5DE /* InterfaceObserver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InterfaceObserver.cpp; path = Observers/InterfaceObserver.cpp; sourceTree = SOURCE_ROOT; };
 		7FA5D38A191398A60035B5DE /* PlayingObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayingObserver.h; path = Observers/PlayingObserver.h; sourceTree = SOURCE_ROOT; };
 		7FA5D38B191398A60035B5DE /* PlayingObserver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PlayingObserver.cpp; path = Observers/PlayingObserver.cpp; sourceTree = SOURCE_ROOT; };
 		7FA5D38C191398A60035B5DE /* EventObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventObserver.h; path = Observers/EventObserver.h; sourceTree = SOURCE_ROOT; };
@@ -444,8 +444,8 @@
 		7FA5D387191397960035B5DE /* Observers */ = {
 			isa = PBXGroup;
 			children = (
-				7FA5D388191398A60035B5DE /* PresentationObserver.h */,
-				7FA5D389191398A60035B5DE /* PresentationObserver.cpp */,
+				7FA5D388191398A60035B5DE /* InterfaceObserver.h */,
+				7FA5D389191398A60035B5DE /* InterfaceObserver.cpp */,
 				7FA5D38A191398A60035B5DE /* PlayingObserver.h */,
 				7FA5D38B191398A60035B5DE /* PlayingObserver.cpp */,
 				7FA5D38C191398A60035B5DE /* EventObserver.h */,
@@ -706,7 +706,7 @@
 				7FA5D3C6191398EB0035B5DE /* SpanishGraphic.cpp in Sources */,
 				7FA5D393191398A60035B5DE /* PlayingObserver.cpp in Sources */,
 				7FA5D3D1191398EB0035B5DE /* DiggerGraphic.cpp in Sources */,
-				7FA5D392191398A60035B5DE /* PresentationObserver.cpp in Sources */,
+				7FA5D392191398A60035B5DE /* InterfaceObserver.cpp in Sources */,
 				7FA5D3D7191398EB0035B5DE /* BackgroundGraphic.cpp in Sources */,
 				03229D1D18D35E8A00027190 /* Utils.cpp in Sources */,
 				03D783A118D097E100A1B8AE /* Score.cpp in Sources */,

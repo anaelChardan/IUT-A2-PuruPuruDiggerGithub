@@ -16,11 +16,13 @@
 
 class EventObserver {
     public:
-        virtual void close(sf::Event event) = 0;
         virtual void mouseMoved(sf::Event event) = 0;
         virtual void keyPressed(sf::Event event) = 0;
         virtual void textEntered(sf::Event event) = 0;
         virtual void mouseButtonPressed(sf::Event event) = 0;
+    
+        virtual void preDisplay() = 0;
+        virtual void postDisplay() = 0;
 };
 
 

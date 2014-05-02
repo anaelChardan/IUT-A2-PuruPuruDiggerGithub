@@ -11,3 +11,7 @@
 void EventDispatcher::dispatch( sf::Event event ) {
     notify(event);
 }
+
+void EventDispatcher::show() {
+    show();
+}

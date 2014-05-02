@@ -20,6 +20,8 @@ class EventObservable {
     
     public:
         void notify( sf::Event event ) const;
+        void preDisplay() const;
+        void postDisplay() const;
 	
         void addObserver(EventObserver* observer);
     
