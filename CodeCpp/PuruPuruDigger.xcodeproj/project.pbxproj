@@ -23,9 +23,9 @@
 		0382DB4718C9A36700E93483 /* Score.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314818B385BA00CF8AA1 /* Score.cpp */; };
 		0382DB4818C9A36700E93483 /* Score.h in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314918B385BA00CF8AA1 /* Score.h */; };
 		03A0EFC018C5D0B900F57E1A /* bestScores.txt in Resources */ = {isa = PBXBuildFile; fileRef = 03A0EFBF18C5D0B900F57E1A /* bestScores.txt */; };
-		03BFB1981913CAAC00703F49 /* Context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03BFB1961913CAAC00703F49 /* Context.cpp */; };
-		03BFB1991913CAAC00703F49 /* Context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03BFB1961913CAAC00703F49 /* Context.cpp */; };
-		03BFB19A1913CAAC00703F49 /* Context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03BFB1961913CAAC00703F49 /* Context.cpp */; };
+		03BFB1981913CAAC00703F49 /* PuruContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03BFB1961913CAAC00703F49 /* PuruContext.cpp */; };
+		03BFB1991913CAAC00703F49 /* PuruContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03BFB1961913CAAC00703F49 /* PuruContext.cpp */; };
+		03BFB19A1913CAAC00703F49 /* PuruContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03BFB1961913CAAC00703F49 /* PuruContext.cpp */; };
 		03D7839A18D097E100A1B8AE /* LanguageMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 033D7D8318C8C6C400BA0091 /* LanguageMessage.cpp */; };
 		03D7839B18D097E100A1B8AE /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314618B385BA00CF8AA1 /* Level.cpp */; };
 		03D783A118D097E100A1B8AE /* Score.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314818B385BA00CF8AA1 /* Score.cpp */; };
@@ -175,8 +175,8 @@
 		0382DB3718C9A28400E93483 /* test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
 		0382DB3E18C9A31000E93483 /* libboost_unit_test_framework.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_unit_test_framework.dylib; path = ../../../../../../usr/local/Cellar/boost/1.55.0/lib/libboost_unit_test_framework.dylib; sourceTree = "<group>"; };
 		03A0EFBF18C5D0B900F57E1A /* bestScores.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = bestScores.txt; path = Ressources/bestScores.txt; sourceTree = SOURCE_ROOT; };
-		03BFB1961913CAAC00703F49 /* Context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Context.cpp; sourceTree = SOURCE_ROOT; };
-		03BFB1971913CAAC00703F49 /* Context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Context.h; sourceTree = SOURCE_ROOT; };
+		03BFB1961913CAAC00703F49 /* PuruContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PuruContext.cpp; sourceTree = SOURCE_ROOT; };
+		03BFB1971913CAAC00703F49 /* PuruContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PuruContext.h; sourceTree = SOURCE_ROOT; };
 		03D783B618D097E100A1B8AE /* PuruPuruDiggerSFML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PuruPuruDiggerSFML.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03D783B718D09DCD00A1B8AE /* GameViewSFML.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameViewSFML.cpp; sourceTree = SOURCE_ROOT; };
 		03D783B818D09DCD00A1B8AE /* GameViewSFML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewSFML.h; sourceTree = SOURCE_ROOT; };
@@ -521,8 +521,8 @@
 				03229D1918D35E8A00027190 /* Utils.cpp */,
 				03229D1A18D35E8A00027190 /* Utils.h */,
 				7FA5D385191397150035B5DE /* Ressources */,
-				03BFB1961913CAAC00703F49 /* Context.cpp */,
-				03BFB1971913CAAC00703F49 /* Context.h */,
+				03BFB1961913CAAC00703F49 /* PuruContext.cpp */,
+				03BFB1971913CAAC00703F49 /* PuruContext.h */,
 			);
 			path = PuruPuruDigger;
 			sourceTree = "<group>";
@@ -663,7 +663,7 @@
 				0382DB4218C9A36700E93483 /* GameModel.h in Sources */,
 				7FA5D3EF191399170035B5DE /* EmptyCell.cpp in Sources */,
 				7FA5D3F5191399170035B5DE /* ValueCell.cpp in Sources */,
-				03BFB1991913CAAC00703F49 /* Context.cpp in Sources */,
+				03BFB1991913CAAC00703F49 /* PuruContext.cpp in Sources */,
 				0382DB4518C9A36700E93483 /* Level.cpp in Sources */,
 				0382DB4618C9A36700E93483 /* Level.h in Sources */,
 				0382DB4718C9A36700E93483 /* Score.cpp in Sources */,
@@ -681,7 +681,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03BFB19A1913CAAC00703F49 /* Context.cpp in Sources */,
+				03BFB19A1913CAAC00703F49 /* PuruContext.cpp in Sources */,
 				7FA5D3D2191398EB0035B5DE /* DeutschGraphic.cpp in Sources */,
 				7FA5D3CB191398EB0035B5DE /* GraphicElement.cpp in Sources */,
 				7FA5D3D5191398EB0035B5DE /* ButtonGraphic.cpp in Sources */,
@@ -734,7 +734,7 @@
 				936727F818B33B91009873DE /* main.cpp in Sources */,
 				7FA5D3F1191399170035B5DE /* GoldCell.cpp in Sources */,
 				7FA5D3E5191399170035B5DE /* Bomb.cpp in Sources */,
-				03BFB1981913CAAC00703F49 /* Context.cpp in Sources */,
+				03BFB1981913CAAC00703F49 /* PuruContext.cpp in Sources */,
 				7FA5D3E8191399170035B5DE /* CellBase.cpp in Sources */,
 				7FA5D3EE191399170035B5DE /* EmptyCell.cpp in Sources */,
 				7FA5D3F4191399170035B5DE /* ValueCell.cpp in Sources */,

@@ -1,11 +1,11 @@
 
 
-#ifndef __PuruPuruDigger__Contexts__
-#define __PuruPuruDigger__Contexts__
+#ifndef __PuruPuruDigger__PuruContext__
+#define __PuruPuruDigger__PuruContext__
 
 #include <iostream>
 
-class Context {
+class PuruContext {
     private :
         bool my_isInBreak;
         bool my_isInPresentation;
@@ -15,9 +15,11 @@ class Context {
         bool my_isInAnimation;
         bool my_isOver;
         bool my_isTimeOver;
-    
+        bool my_isViewingBestScore;
+        bool my_isEnableSound;
+        bool my_isEnableMusic;
     public :
-        Context();
+        PuruContext();
         void setInBreak( bool set );
         void setInPresentation( bool set );
         void setChoosingOption( bool set );
@@ -26,6 +28,9 @@ class Context {
         void setAnimation( bool set );
         void setOver( bool set );
         void setTimeOver( bool set );
+        void setViewingBestScore( bool set );
+        void setSound( bool set );
+        void setMusic( bool set );
     
         bool isChoosingOption() const;
         bool isInBreak() const;
@@ -35,6 +40,9 @@ class Context {
         bool isInAnimation() const;
         bool isOver() const ;
         bool isTimeOver() const;
+        bool isViewingBestScore() const;
+        bool isEnableSound() const;
+        bool isEnableMusic() const;
 };
 
-#endif /* defined(__PuruPuruDigger__Contexts__) */
+#endif /* defined(__PuruPuruDigger__PuruContext__) */
