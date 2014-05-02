@@ -4,6 +4,7 @@
 #define __PuruPuruDigger__PuruContext__
 
 #include <iostream>
+#include "Constantes.h"
 
 class PuruContext {
     private :
@@ -18,6 +19,8 @@ class PuruContext {
         bool my_isViewingBestScore;
         bool my_isEnableSound;
         bool my_isEnableMusic;
+        Language my_language;
+    
     public :
         PuruContext();
         void setInBreak( bool set );
@@ -31,6 +34,7 @@ class PuruContext {
         void setViewingBestScore( bool set );
         void setSound( bool set );
         void setMusic( bool set );
+        void setLanguage( Language language );
     
         bool isChoosingOption() const;
         bool isInBreak() const;
@@ -43,6 +47,7 @@ class PuruContext {
         bool isViewingBestScore() const;
         bool isEnableSound() const;
         bool isEnableMusic() const;
+        Language getLanguage() const;
 };
 
 #endif /* defined(__PuruPuruDigger__PuruContext__) */

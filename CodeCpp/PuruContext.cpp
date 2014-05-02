@@ -13,6 +13,7 @@ PuruContext::PuruContext() {
     my_isViewingBestScore = false;
     my_isEnableSound = true;
     my_isEnableMusic = true;
+    my_language = francais;
 }
 
 /* ==================
@@ -41,6 +42,8 @@ void PuruContext::setSound( bool set ) { my_isEnableSound = set; }
 
 void PuruContext::setMusic( bool set ) { my_isEnableMusic = set; }
 
+void PuruContext::setLanguage( Language language ) { my_language = language; }
+
 
 /* ==================
  Les Guetteurs
@@ -67,3 +70,6 @@ bool PuruContext::isViewingBestScore() const { return my_isViewingBestScore; }
 bool PuruContext::isEnableSound() const { return my_isEnableSound; }
 
 bool PuruContext::isEnableMusic() const { return my_isEnableMusic; }
+
+Language PuruContext::getLanguage() const { return my_language; }
+
