@@ -38,3 +38,18 @@ bool
 GraphicAudibleElement::getOnOff() const {
     return isOn;
 }
+
+
+/** Events Subscriber */
+
+void GraphicAudibleElement::mouseMoved( sf::Event event ) {}
+void GraphicAudibleElement::keyPressed( sf::Event event ) {}
+void GraphicAudibleElement::textEntered( sf::Event event ) {}
+
+void GraphicAudibleElement::mouseButtonPressed( sf::Event event ) {
+    if ( isInZone( event.MouseButton.X, event.MouseButton.Y ) ) {
+        reverse();
+    }
+}
+void GraphicAudibleElement::postDisplay() {}
+void GraphicAudibleElement::preDisplay() {}

@@ -17,6 +17,13 @@ class GraphicAudibleElement : public GraphicElement {
         virtual void setAnanasMode();
         virtual void reverse() = 0;
         bool getOnOff() const ;
+    
+        virtual void mouseMoved(sf::Event event);
+        virtual void keyPressed(sf::Event event);
+        virtual void textEntered(sf::Event event);
+        virtual void mouseButtonPressed(sf::Event event);
+        virtual void preDisplay();
+        virtual void postDisplay();
 };
 
 #endif /* defined(__PuruPuruDigger__GraphicAudibleElement__) */

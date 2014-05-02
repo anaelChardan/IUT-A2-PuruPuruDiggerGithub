@@ -19,6 +19,9 @@ GameView::GameView() {
     my_settingButton = new ButtonGraphic();
     my_bestButton = new ButtonGraphic();
     my_quitButton = new ButtonGraphic();
+
+    my_soundIcon = new GraphicSound();
+    my_musicIcon = new GraphicMusic();
     
     // dispatch d'event en tout genre
     my_eventDispatcher = new EventDispatcher();
@@ -38,14 +41,16 @@ void GameView::setModel(GameModel *model) {
 //Boucle d'événement
 void GameView::treatGame( ) {
     
-    InterfaceObserver* interfaceObserver = new InterfaceObserver( my_window, my_model, my_playButton, my_settingButton, my_bestButton, my_quitButton );
+    InterfaceObserver* interfaceObserver = new InterfaceObserver( my_window, my_model, my_playButton, my_settingButton, my_bestButton, my_quitButton, my_musicIcon, my_soundIcon );
     
     my_eventDispatcher->addObserver( interfaceObserver );
     my_eventDispatcher->addObserver( my_playButton );
     my_eventDispatcher->addObserver( my_settingButton );
     my_eventDispatcher->addObserver( my_bestButton );
     my_eventDispatcher->addObserver( my_quitButton );
-    
+
+    my_eventDispatcher->addObserver( my_soundIcon );
+    my_eventDispatcher->addObserver( my_musicIcon );
     
 
     while ( my_window->IsOpened( ) ) {

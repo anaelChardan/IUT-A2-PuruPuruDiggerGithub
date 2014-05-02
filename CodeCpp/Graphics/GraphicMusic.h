@@ -9,6 +9,9 @@ class GraphicMusic : public GraphicAudibleElement {
         virtual void setImageToSprite();
         virtual ~GraphicMusic();
         virtual void reverse();
+    
+    
+        // lui passer un pointeur vers la musique
 };
 
 #endif /* defined(__PuruPuruDigger__GraphicMusic__) */

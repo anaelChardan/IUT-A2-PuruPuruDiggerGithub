@@ -18,7 +18,25 @@ using namespace std;
 using namespace sf;
 
 //Constructeur
-InterfaceObserver::InterfaceObserver( sf::RenderWindow* window, GameModel* model, ButtonGraphic *play, ButtonGraphic *setting, ButtonGraphic *best, ButtonGraphic *quit ) : my_window( window ), my_model( model ), my_playButton(play), my_settingButton(setting), my_bestButton(best), my_quitButton(quit) {
+InterfaceObserver::InterfaceObserver(
+                                     sf::RenderWindow* window,
+                                     GameModel* model,
+                                     ButtonGraphic *play,
+                                     ButtonGraphic *setting,
+                                     ButtonGraphic *best,
+                                     ButtonGraphic *quit,
+                                     GraphicMusic *music,
+                                     GraphicSound *sound
+                                     ) :
+                                        my_window( window ),
+                                        my_model( model ),
+                                        my_playButton(play),
+                                        my_settingButton(setting),
+                                        my_bestButton(best),
+                                        my_quitButton(quit),
+                                        my_musicIcon(music),
+                                        my_soundIcon(sound)
+    {
     
     
     isInPresentation = true;
@@ -159,8 +177,8 @@ void InterfaceObserver::setAnanasMode() {
         my_bestScoreString->SetSize(30);
         
         
-        my_musicIcon.setAnanasMode();
-        my_soundIcon.setAnanasMode();
+        my_musicIcon->setAnanasMode();
+        my_soundIcon->setAnanasMode();
         my_ananasSprite.setAnanasMode();
         my_teacherSprite.setAnanasMode();
         my_background.setAnanasMode();
@@ -229,8 +247,8 @@ void InterfaceObserver::setTeacherMode() {
         my_bestScoreString->SetSize(25);
         
         
-        my_musicIcon.setTeacherMode();
-        my_soundIcon.setTeacherMode();
+        my_musicIcon->setTeacherMode();
+        my_soundIcon->setTeacherMode();
         my_ananasSprite.setTeacherMode();
         my_teacherSprite.setTeacherMode();
         my_background.setTeacherMode();
@@ -254,8 +272,8 @@ void InterfaceObserver::setTeacherMode() {
 void InterfaceObserver::newScreen() {
     my_window->Clear();
     my_background.draw(my_window);
-    my_musicIcon.draw(my_window);
-    my_soundIcon.draw(my_window);
+    my_musicIcon->draw(my_window);
+    my_soundIcon->draw(my_window);
 }
 
 void InterfaceObserver::showPresentation() {
@@ -672,46 +690,42 @@ void InterfaceObserver::textEntered(sf::Event event) {
     if ( isEnterABestScore ) {
         if ( event.Text.Unicode >= 48 && event.Text.Unicode <127 && player.length() < 25 ) {
             player += static_cast<char>(event.Text.Unicode);
-            if ( my_soundIcon.getOnOff() )
+            if ( my_soundIcon->getOnOff() )
                 my_textSound->Play();
         }
     }
 }
 
 void InterfaceObserver::mouseButtonPressed(sf::Event event) {
+
+
     if ( isInPresentation ) {
         if ( my_playButton->isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
             isInPresentation = false;
             isPlaying = true;
             my_model->reset();
-            if ( my_soundIcon.getOnOff())
+            if ( my_soundIcon->getOnOff())
                 my_buttonSound->Play();
             
-            if ( my_musicIcon.getOnOff() )
+            if ( my_musicIcon->getOnOff() )
                 my_musicLevel->Play();
             
         } else if ( my_quitButton->isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
-            if ( my_soundIcon.getOnOff())
+            if ( my_soundIcon->getOnOff())
                 my_buttonSound->Play();
             my_window->Close();
             
         } else if ( my_settingButton->isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
             isInPresentation = false;
             isChoosingOption = true;
-            if ( my_soundIcon.getOnOff())
+            if ( my_soundIcon->getOnOff())
                 my_buttonSound->Play();
             
         } else if ( my_bestButton->isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
             isInPresentation = false;
             isViewingBestScore = true;
-            if ( my_soundIcon.getOnOff())
+            if ( my_soundIcon->getOnOff())
                 my_buttonSound->Play();
-            
-        } else if ( my_musicIcon.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
-            my_musicIcon.reverse();
-            
-        } else if ( my_soundIcon.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
-            my_soundIcon.reverse();
         }
         
     } else if ( isChoosingOption ) {
@@ -743,59 +757,42 @@ void InterfaceObserver::mouseButtonPressed(sf::Event event) {
             setTeacherMode();
             
         }else if ( my_quitButton->isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
-            if ( my_soundIcon.getOnOff())
+            if ( my_soundIcon->getOnOff())
                 my_buttonSound->Play();
             isChoosingOption = false;
             isInPresentation = true;
-            
-        } else if ( my_musicIcon.isInZone( event.MouseButton.X, event.MouseButton.Y) ) {
-            my_musicIcon.reverse();
-            
-        } else if ( my_soundIcon.isInZone( event.MouseButton.X, event.MouseButton.Y ) ) {
-            my_soundIcon.reverse();
         }
         
     } else if ( isViewingBestScore ) {
         
         if ( my_quitButton->isInZone(event.MouseButton.X, event.MouseButton.Y ) ) {
-            if ( my_soundIcon.getOnOff())
+            if ( my_soundIcon->getOnOff())
                 my_buttonSound->Play();
             isViewingBestScore = false;
             isInPresentation = true;
-            
-        } else if ( my_musicIcon.isInZone( event.MouseButton.X, event.MouseButton.Y) ) {
-            my_musicIcon.reverse();
-            
-        } else if ( my_soundIcon.isInZone( event.MouseButton.X, event.MouseButton.Y ) ) {
-            my_soundIcon.reverse();
         }
         
     } else if ( isPlaying ) {
         if ( convertYPixel( event.MouseButton.Y ) != -1 && convertXPixel( event.MouseButton.X ) != -1 && !animation) {
-            if ( my_soundIcon.getOnOff() )
+            if ( my_soundIcon->getOnOff() )
                 my_clickableSoundCell->Play();
             my_model->orderMovement( convertYPixel( event.MouseButton.Y ), convertXPixel( event.MouseButton.X ) );
             animation = true;
             
         }
         if ( my_quitButton->isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
-            if ( my_soundIcon.getOnOff())
+            if ( my_soundIcon->getOnOff())
                 my_buttonSound->Play();
             isPlaying = false;
             isEnterABestScore = true;
             my_musicLevel->Stop();
             animation = false;
             
-        } else if ( my_musicIcon.isInZone( event.MouseButton.X, event.MouseButton.Y) ) {
-            my_musicIcon.reverse();
-            
-            if ( my_musicIcon.getOnOff() )
+        } else if ( my_musicIcon->isInZone( event.MouseButton.X, event.MouseButton.Y) ) {
+            if ( my_musicIcon->getOnOff() )
                 my_musicLevel->Play();
             else
                 my_musicLevel->Pause();
-            
-        } else if ( my_soundIcon.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
-            my_soundIcon.reverse();
         }
     }
 }
@@ -822,7 +819,7 @@ void InterfaceObserver::preDisplay() {
         if ( my_model->gameOver() ) {
             if ( !isInBreak ) {
                 pause.Reset();
-                if ( my_soundIcon.getOnOff() )
+                if ( my_soundIcon->getOnOff() )
                     my_gameOverSound->Play();
             }
             over = true;
@@ -834,7 +831,7 @@ void InterfaceObserver::preDisplay() {
         if ( my_model->getLevel()->lose() ) {
             if ( !isInBreak ) {
                 pause.Reset();
-                if ( !over && my_soundIcon.getOnOff() )
+                if ( !over && my_soundIcon->getOnOff() )
                     my_loseLevelSound->Play();
             }
             showLoseLevel();
