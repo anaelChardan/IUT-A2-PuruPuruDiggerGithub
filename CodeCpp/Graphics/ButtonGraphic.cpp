@@ -1,20 +1,14 @@
 #include "ButtonGraphic.h"
 #include "../Constantes.h"
-#include <SFML/Audio.hpp>
 
 sf::Image ButtonGraphic::my_image;
 sf::Font ButtonGraphic::my_font;
 
-sf::SoundBuffer ButtonGraphic::my_buttonBuffer;
-sf::Sound ButtonGraphic::my_buttonSound;
+void ButtonGraphic::setTeacherMode() {
 
-void
-ButtonGraphic::setTeacherMode() {
-
-    if ( !my_image.LoadFromFile("buttonTeach.png" ) || !my_font.LoadFromFile("arial.ttf") || !my_buttonBuffer.LoadFromFile("soundButton.wav") )
+    if ( !my_image.LoadFromFile("buttonTeach.png" ) || !my_font.LoadFromFile("arial.ttf")  )
         std::cerr << " Error when loading button image or button font" << std::endl;
     else {
-        my_buttonSound.SetBuffer(my_buttonBuffer);
         my_string.SetFont( my_font );
         my_string.SetSize(30);
         my_string.SetColor(sf::Color(0,0,0));
@@ -24,10 +18,9 @@ ButtonGraphic::setTeacherMode() {
 
 void
 ButtonGraphic::setAnanasMode() {
-    if ( !my_image.LoadFromFile("buttonAnanas.png" ) || !my_font.LoadFromFile("buttonFont.ttf") || !my_buttonBuffer.LoadFromFile("soundButton.wav") )
+    if ( !my_image.LoadFromFile("buttonAnanas.png" ) || !my_font.LoadFromFile("buttonFont.ttf") )
         std::cerr << " Error when loading button image or button font " << std::endl;
     else {
-        my_buttonSound.SetBuffer(my_buttonBuffer);
         my_string.SetFont( my_font );
         my_string.SetSize(30);
         my_string.SetColor(sf::Color(251,210,98));
@@ -84,11 +77,7 @@ void ButtonGraphic::mouseMoved( sf::Event event ) {
 
 void ButtonGraphic::mouseButtonPressed( sf::Event event ) {
     if ( isInZone( event.MouseButton.X, event.MouseButton.Y ) ) {
-        if ( my_context->isEnableSound() ) {
-            my_buttonSound.Play();
-        }
-    } else {
-        // nothing
+        SoundManager::getInstance()->clickButton();
     }
 }
 

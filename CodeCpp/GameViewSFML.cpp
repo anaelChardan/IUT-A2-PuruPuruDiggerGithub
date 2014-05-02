@@ -6,6 +6,7 @@
 #include "Graphics/SpanishGraphic.h"
 #include "Graphics/DeutschGraphic.h"
 #include "Graphics/ItalianoGraphic.h"
+#include "Manager/SoundManager.h"
 
 using namespace sf;
 
@@ -42,14 +43,14 @@ GameView::GameView() {
     
     // dispatch d'event en tout genre
     my_context = new PuruContext();
+    SoundManager::getInstance()->setContext( my_context );
     my_eventDispatcher = new EventDispatcher( my_context );
-
-
 }
 
 //Destructeur
 GameView::~GameView() {
     delete my_window;
+    delete my_context;
 }
 
 //Injection de dépendance model
@@ -86,6 +87,7 @@ void GameView::treatGame( ) {
                             if ( my_playButton->isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
                                 my_context->setInPresentation( false );
                                 my_context->setPlaying( true );
+                                SoundManager::getInstance()->playMusic();
                                 my_model->reset();
                             } else if ( my_quitButton->isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
                                 my_window->Close();
@@ -120,6 +122,22 @@ void GameView::treatGame( ) {
                             if ( my_quitButton->isInZone(event.MouseButton.X, event.MouseButton.Y ) ) {
                                 my_context->setViewingBestScore( false );
                                 my_context->setInPresentation( true );
+                            }
+                        } else if ( my_context->isPlaying() ) {
+                            
+                            int valueY = convertYPixel( event.MouseButton.Y );
+                            int valueX = convertXPixel( event.MouseButton.X );
+                            
+                            if ( ( valueY != -1 ) && ( valueX != -1 ) && ( !my_context->isInAnimation() )  ) {
+                                SoundManager::getInstance()->clickCell();
+                                my_model->orderMovement( valueY, valueX );
+                                my_context->setAnimation( true );
+                            }
+                            if ( my_quitButton->isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
+                                my_context->setPlaying( false );
+                                my_context->setEnterABestScore( true );
+                                my_context->setMusic( false );
+                                my_context->setAnimation( false );
                             }
                         }
                         break;

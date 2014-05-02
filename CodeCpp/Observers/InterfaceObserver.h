@@ -17,7 +17,6 @@
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
-#include <SFML/Audio.hpp>
 #include "../Graphics/CellBaseGraphic.h"
 #include "../Graphics/GraphicMusic.h"
 #include "../Graphics/GraphicSound.h"
@@ -47,17 +46,6 @@ private:
     sf::String* my_bestScoreString; //Pour l'affichage des meilleurs scores
     
     
-    //Pour les sons
-    sf::SoundBuffer *my_textBuffer;
-    sf::Sound *my_textSound;
-    sf::SoundBuffer *my_gameOverBuffer;
-    sf::Sound *my_gameOverSound;
-    sf::SoundBuffer *my_clickableBuffer;
-    sf::Sound *my_clickableSoundCell;
-    sf::SoundBuffer *my_isNotClickableBuffer;
-    sf::Sound *my_isNotClickableSound;
-    sf::SoundBuffer *my_loseLevelBuffer;
-    sf::Sound *my_loseLevelSound;
     
     LanguageMessage my_messages; /*!<  La bibliothèque de message de notre partie */
     

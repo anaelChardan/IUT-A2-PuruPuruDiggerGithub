@@ -45,6 +45,7 @@
 		03D783BE18D0A07800A1B8AE /* mainSFML.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D783BC18D0A07800A1B8AE /* mainSFML.cpp */; };
 		03ED314E18B385BA00CF8AA1 /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314618B385BA00CF8AA1 /* Level.cpp */; };
 		03ED314F18B385BA00CF8AA1 /* Score.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314818B385BA00CF8AA1 /* Score.cpp */; };
+		7F84BF3019145A5A001E80B9 /* SoundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5D42419143B4D0035B5DE /* SoundManager.cpp */; };
 		7FA5D392191398A60035B5DE /* InterfaceObserver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5D389191398A60035B5DE /* InterfaceObserver.cpp */; };
 		7FA5D393191398A60035B5DE /* PlayingObserver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5D38B191398A60035B5DE /* PlayingObserver.cpp */; };
 		7FA5D394191398A60035B5DE /* EventObserver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5D38D191398A60035B5DE /* EventObserver.cpp */; };
@@ -274,6 +275,8 @@
 		7FA5D41A191399890035B5DE /* scoreFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = scoreFont.ttf; path = Ressources/Font/scoreFont.ttf; sourceTree = SOURCE_ROOT; };
 		7FA5D41B191399890035B5DE /* titleFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = titleFont.ttf; path = Ressources/Font/titleFont.ttf; sourceTree = SOURCE_ROOT; };
 		7FA5D41C191399890035B5DE /* valueFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = valueFont.ttf; path = Ressources/Font/valueFont.ttf; sourceTree = SOURCE_ROOT; };
+		7FA5D42419143B4D0035B5DE /* SoundManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoundManager.cpp; path = Manager/SoundManager.cpp; sourceTree = SOURCE_ROOT; };
+		7FA5D42519143B4D0035B5DE /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundManager.h; path = Manager/SoundManager.h; sourceTree = SOURCE_ROOT; };
 		936727B518B33A9C009873DE /* PuruPuruDiggerConsole.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PuruPuruDiggerConsole.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		936727F618B33B91009873DE /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
 		936727FF18B35E81009873DE /* sfml-audio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-audio.framework"; path = "/Library/Frameworks/sfml-audio.framework"; sourceTree = "<absolute>"; };
@@ -463,6 +466,15 @@
 			path = Observers;
 			sourceTree = "<group>";
 		};
+		7FA5D42319143B070035B5DE /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7FA5D42519143B4D0035B5DE /* SoundManager.h */,
+				7FA5D42419143B4D0035B5DE /* SoundManager.cpp */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		936727AC18B33A9C009873DE = {
 			isa = PBXGroup;
 			children = (
@@ -499,6 +511,7 @@
 		936727BE18B33A9C009873DE /* PuruPuruDigger */ = {
 			isa = PBXGroup;
 			children = (
+				7FA5D42319143B070035B5DE /* Manager */,
 				7FA5D387191397960035B5DE /* Observers */,
 				7FA5D386191397390035B5DE /* Graphics */,
 				7FA5D384191393090035B5DE /* Cell */,
@@ -706,6 +719,7 @@
 				03D7839B18D097E100A1B8AE /* Level.cpp in Sources */,
 				7FA5D3CD191398EB0035B5DE /* GoldGraphic.cpp in Sources */,
 				7FA5D3F0191399170035B5DE /* EmptyCell.cpp in Sources */,
+				7F84BF3019145A5A001E80B9 /* SoundManager.cpp in Sources */,
 				7FA5D3E7191399170035B5DE /* Bomb.cpp in Sources */,
 				7FA5D3C4191398EB0035B5DE /* TeacherSprite.cpp in Sources */,
 				7FA5D3D3191398EB0035B5DE /* CellTextGraphic.cpp in Sources */,
@@ -797,6 +811,7 @@
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
 				PRODUCT_NAME = PuruPuruDiggerSFML;
+				VALID_ARCHS = "i386 x86_64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -851,6 +866,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				VALID_ARCHS = i386;
 			};
 			name = Debug;
 		};

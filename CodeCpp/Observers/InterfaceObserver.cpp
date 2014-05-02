@@ -56,17 +56,6 @@ InterfaceObserver::InterfaceObserver(
     my_titleString = new String();
     my_bestScoreString = new String();
     
-    my_textBuffer = new SoundBuffer();
-    my_textSound = new Sound();
-    my_gameOverBuffer = new SoundBuffer();
-    my_gameOverSound = new Sound();
-    my_clickableBuffer = new SoundBuffer();
-    my_clickableSoundCell = new Sound();
-    my_isNotClickableBuffer = new SoundBuffer();
-    my_isNotClickableSound = new Sound();
-    my_loseLevelBuffer= new SoundBuffer();
-    my_loseLevelSound = new Sound();
-
     player = "";
 
     my_stringToSprite["Digger"]    = new DiggerGraphic();
@@ -113,7 +102,9 @@ void InterfaceObserver::resetLanguageNorm() {
 
 void InterfaceObserver::setAnanasMode() {
 
-    if (!my_fontScore->LoadFromFile("scoreFont.ttf") || !my_fontTitle->LoadFromFile("titleFont.ttf") || !my_bestScoreFont->LoadFromFile("BestFont.ttf") || !my_textBuffer->LoadFromFile("soundEnterText.wav") || !my_gameOverBuffer->LoadFromFile("soundGameOver.wav") || !my_clickableBuffer->LoadFromFile("soundIsClickable.wav") || !my_isNotClickableBuffer->LoadFromFile("soundIsNotClickable.wav") || !my_loseLevelBuffer->LoadFromFile("soundLoseLevel.wav") ) {
+    if (!my_fontScore->LoadFromFile("scoreFont.ttf") ||
+        !my_fontTitle->LoadFromFile("titleFont.ttf") ||
+        !my_bestScoreFont->LoadFromFile("BestFont.ttf") ) {
         cout << "Error when loading font" << endl;
     } else {
         
@@ -157,13 +148,7 @@ void InterfaceObserver::setAnanasMode() {
         my_teacherSprite->setAnanasMode();
         my_background.setAnanasMode();
     
-        
-        //Pour la musique
-        my_textSound->SetBuffer(*my_textBuffer);
-        my_gameOverSound->SetBuffer(*my_gameOverBuffer);
-        my_clickableSoundCell->SetBuffer(*my_clickableBuffer);
-        my_isNotClickableSound->SetBuffer(*my_isNotClickableBuffer);
-        my_loseLevelSound->SetBuffer(*my_loseLevelBuffer);
+    
     }
 
     
@@ -171,7 +156,11 @@ void InterfaceObserver::setAnanasMode() {
 
 void InterfaceObserver::setTeacherMode() {
 
-    if ( !my_fontScore->LoadFromFile("../Ressources/Font/arial.ttf") || !my_bestScoreFont->LoadFromFile("../Ressources/Font/arial.ttf") || !my_fontTitle->LoadFromFile("../Ressources/Font/arial.ttf") || !my_textBuffer->LoadFromFile("../Ressources/Music/soundEnterText.wav") || !my_gameOverBuffer->LoadFromFile("../Ressources/Music/soundGameOver.wav") || !my_clickableBuffer->LoadFromFile("../Ressources/Music/soundIsClickable.wav") || !my_isNotClickableBuffer->LoadFromFile("../Ressources/Music/soundIsNotClickable.wav") || !my_loseLevelBuffer->LoadFromFile("../Ressources/Music/soundLoseLevel.wav")) {
+    if (
+        !my_fontScore->LoadFromFile("../Ressources/Font/arial.ttf") ||
+        !my_bestScoreFont->LoadFromFile("../Ressources/Font/arial.ttf") ||
+        !my_fontTitle->LoadFromFile("../Ressources/Font/arial.ttf")
+        ) {
         cout << "Error when loading font" << endl;
     } else {
         
@@ -217,15 +206,6 @@ void InterfaceObserver::setTeacherMode() {
         my_ananasSprite->setTeacherMode();
         my_teacherSprite->setTeacherMode();
         my_background.setTeacherMode();
-        
-
-        my_textSound->SetBuffer(*my_textBuffer);
-        my_gameOverSound->SetBuffer(*my_gameOverBuffer);
-        my_clickableSoundCell->SetBuffer(*my_clickableBuffer);
-        my_isNotClickableSound->SetBuffer(*my_isNotClickableBuffer);
-        my_loseLevelSound->SetBuffer(*my_loseLevelBuffer);
-        
-                
         
     }
 }
@@ -585,8 +565,7 @@ void InterfaceObserver::toAnimate() {
 
 /** Events Subscriber */
 
-void InterfaceObserver::mouseMoved(sf::Event event) {
-}
+void InterfaceObserver::mouseMoved(sf::Event event) {}
 
 
 void InterfaceObserver::keyPressed(sf::Event event) {
@@ -652,27 +631,13 @@ void InterfaceObserver::textEntered(sf::Event event) {
     if ( my_context->isEnterABestScore() ) {
         if ( event.Text.Unicode >= 48 && event.Text.Unicode <127 && player.length() < 25 ) {
             player += static_cast<char>(event.Text.Unicode);
-            if ( my_soundIcon->getOnOff() )
-                my_textSound->Play();
+            SoundManager::getInstance()->touchPress();
         }
     }
 }
 
 void InterfaceObserver::mouseButtonPressed(sf::Event event) {
-    if ( my_context->isPlaying() ) {
-        if ( convertYPixel( event.MouseButton.Y ) != -1 && convertXPixel( event.MouseButton.X ) != -1 && !my_context->isInAnimation() ) {
-            if ( my_soundIcon->getOnOff() )
-                my_clickableSoundCell->Play();
-            my_model->orderMovement( convertYPixel( event.MouseButton.Y ), convertXPixel( event.MouseButton.X ) );
-            my_context->setAnimation( true );
-        }
-        if ( my_quitButton->isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
-            my_context->setPlaying( false );
-            my_context->setEnterABestScore( true );
-            my_context->setMusic( false );
-            my_context->setAnimation( false );
-        }
-    }
+
 }
 
 void InterfaceObserver::preDisplay() {
@@ -697,8 +662,7 @@ void InterfaceObserver::preDisplay() {
         if ( my_model->gameOver() ) {
             if ( !my_context->isInBreak() ) {
                 pause.Reset();
-                if ( my_soundIcon->getOnOff() )
-                    my_gameOverSound->Play();
+                SoundManager::getInstance()->gameOver();
             }
             my_context->setOver( true );
             my_context->setInBreak( true );
@@ -709,8 +673,7 @@ void InterfaceObserver::preDisplay() {
         if ( my_model->getLevel()->lose() ) {
             if ( !my_context->isInBreak() ) {
                 pause.Reset();
-                if ( !my_context->isTimeOver() && my_soundIcon->getOnOff() )
-                    my_loseLevelSound->Play();
+                SoundManager::getInstance()->youLoose();
             }
             showLoseLevel();
             my_context->setInBreak( true );

@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>A07570FB-6F76-4F9D-8996-8A5379CA2B9F</string>
+	<string>0B01805A-829F-4A7F-BBFB-88903D66E537</string>
 	<key>IDESourceControlProjectName</key>
 	<string>PuruPuruDigger</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>3C3ED10E-BEE3-49F8-A9C5-6A24295B1212</key>
-		<string>https://bitbucket.org/anaelChardan/purupurudigger.git</string>
+		<key>10C30E81-8190-4C66-B952-C6E30127EF65</key>
+		<string>ssh://bitbucket.org/anaelChardan/puruplopix.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>CodeCpp/PuruPuruDigger.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>3C3ED10E-BEE3-49F8-A9C5-6A24295B1212</key>
+		<key>10C30E81-8190-4C66-B952-C6E30127EF65</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://bitbucket.org/anaelChardan/purupurudigger.git</string>
+	<string>ssh://bitbucket.org/anaelChardan/puruplopix.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>3C3ED10E-BEE3-49F8-A9C5-6A24295B1212</string>
+	<string>10C30E81-8190-4C66-B952-C6E30127EF65</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>3C3ED10E-BEE3-49F8-A9C5-6A24295B1212</string>
+			<string>10C30E81-8190-4C66-B952-C6E30127EF65</string>
 			<key>IDESourceControlWCCName</key>
-			<string>purupurudigger</string>
+			<string>PuruPuruDigger</string>
 		</dict>
 	</array>
 </dict>

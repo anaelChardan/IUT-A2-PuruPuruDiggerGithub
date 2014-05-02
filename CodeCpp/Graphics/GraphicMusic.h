@@ -9,7 +9,6 @@ class GraphicMusic : public GraphicAudibleElement {
         virtual void setImageToSprite();
         GraphicMusic();
         virtual void reverse();
-        static sf::Music my_musicLevel;
   
         virtual void mouseMoved(sf::Event event);
         virtual void keyPressed(sf::Event event);

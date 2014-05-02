@@ -12,6 +12,7 @@
 #include "EventObservable.h"
 #include <SFML/Graphics.hpp>
 #include "PuruContext.h"
+#include "SoundManager.h"
 
 class EventDispatcher : public EventObservable {
     private:
@@ -21,7 +22,7 @@ class EventDispatcher : public EventObservable {
         void show();
         void addObserver( EventObserver* observer );
         void removeObserver( EventObserver* observer );
-    
+
         EventDispatcher( PuruContext *context );
 };
 
