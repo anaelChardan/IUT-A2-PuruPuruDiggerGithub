@@ -36,7 +36,7 @@ void Context::setTimeOver( bool set ) { my_isTimeOver = set; }
  Les Guetteurs
 =====================*/
 
-bool Context::isChoosingOption( bool set ) const { return set; }
+bool Context::isChoosingOption() const { return my_isChoosingOption; }
 
 bool Context::isInBreak() const { return my_isInBreak; }
 

@@ -19,7 +19,7 @@ class Context {
     public :
         Context();
         void setInBreak( bool set );
-        void setInPresentationm( bool set );
+        void setInPresentation( bool set );
         void setChoosingOption( bool set );
         void setEnterABestScore( bool set );
         void setPlaying( bool set );
