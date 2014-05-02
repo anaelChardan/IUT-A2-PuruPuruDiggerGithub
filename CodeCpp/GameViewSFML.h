@@ -7,6 +7,9 @@
 #include "GameModel.h"
 #include "Graphics/ButtonGraphic.h"
 #include "Observers/EventDispatcher.h"
+#include "Graphics/GraphicMusic.h"
+#include "Graphics/GraphicSound.h"
+
 
 class GameView {
     private :
@@ -19,6 +22,10 @@ class GameView {
         ButtonGraphic* my_settingButton;
         ButtonGraphic* my_bestButton;
         ButtonGraphic* my_quitButton;
+    
+        GraphicMusic *my_musicIcon;
+        GraphicSound *my_soundIcon;
+
     
     public :
 

@@ -7,8 +7,6 @@
 #include "../Constantes.h"
 #include "../Graphics/LanguageGraphic.h"
 #include "../LanguageMessage.h"
-#include "../Graphics/GraphicMusic.h"
-#include "../Graphics/GraphicSound.h"
 #include "../Graphics/AnanasSprite.h"
 #include "../Graphics/ValueGraphic.h"
 #include "../Graphics/GoldGraphic.h"
@@ -21,7 +19,8 @@
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
 #include "../Graphics/CellBaseGraphic.h"
-
+#include "../Graphics/GraphicMusic.h"
+#include "../Graphics/GraphicSound.h"
 
 class InterfaceObserver : public EventObserver {
     
@@ -36,6 +35,9 @@ private:
     ButtonGraphic* my_settingButton;
     ButtonGraphic* my_bestButton;
     ButtonGraphic* my_quitButton;
+    
+    GraphicMusic *my_musicIcon;
+    GraphicSound *my_soundIcon;
     
     std::map< Language, LanguageGraphic* > my_languageToSprite;
     
@@ -68,8 +70,6 @@ private:
     
     Language my_language; /*!<  La langue de notre partie */
     LanguageMessage my_messages; /*!<  La bibliothèque de message de notre partie */
-    GraphicMusic my_musicIcon;
-    GraphicSound my_soundIcon;
     
     AnanasSprite my_ananasSprite;
     TeacherSprite my_teacherSprite;
@@ -149,7 +149,17 @@ private:
     
 public:
     
-    InterfaceObserver( sf::RenderWindow* window, GameModel * model, ButtonGraphic *play, ButtonGraphic *setting, ButtonGraphic *best, ButtonGraphic *quit );
+    InterfaceObserver(
+                      sf::RenderWindow* window,
+                      GameModel * model,
+                      ButtonGraphic *play,
+                      ButtonGraphic *setting,
+                      ButtonGraphic *best,
+                      ButtonGraphic *quit,
+                      GraphicMusic *my_musicIcon,
+                      GraphicSound *my_soundIcon
+                      );
+    
     ~InterfaceObserver();
     
     virtual void mouseMoved(sf::Event event);
