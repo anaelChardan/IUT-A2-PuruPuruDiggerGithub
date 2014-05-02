@@ -18,8 +18,9 @@ using namespace std;
 using namespace sf;
 
 //Constructeur
-InterfaceObserver::InterfaceObserver( sf::RenderWindow* window, GameModel* model ) : my_window( window ), my_model( model ) {
-
+InterfaceObserver::InterfaceObserver( sf::RenderWindow* window, GameModel* model, ButtonGraphic *play, ButtonGraphic *setting, ButtonGraphic *best, ButtonGraphic *quit ) : my_window( window ), my_model( model ), my_playButton(play), my_settingButton(setting), my_bestButton(best), my_quitButton(quit) {
+    
+    
     isInPresentation = true;
     isChoosingOption = false;
     isViewingBestScore = false;
@@ -111,13 +112,6 @@ void InterfaceObserver::resetLanguageNorm() {
     
 }
 
-void InterfaceObserver::resetButtonNorm() {
-    my_playButton.reset();
-    my_settingButton.reset();
-    my_bestButton.reset();
-    my_quitButton.reset();
-}
-
 
 void InterfaceObserver::setAnanasMode() {
 #ifdef __linux__
@@ -132,10 +126,10 @@ void InterfaceObserver::setAnanasMode() {
     else {
         
         //Les affichages de valeurs seront toujours identiques, du coup on les set dir
-        my_playButton.setAnanasMode();
-        my_settingButton.setAnanasMode();
-        my_bestButton.setAnanasMode();
-        my_quitButton.setAnanasMode();
+        my_playButton->setAnanasMode();
+        my_settingButton->setAnanasMode();
+        my_bestButton->setAnanasMode();
+        my_quitButton->setAnanasMode();
         
         for ( std::map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite.begin() ; it!=my_languageToSprite.end(); ++it) {
             my_languageToSprite[ it->first ]->setAnanasMode();
@@ -198,10 +192,10 @@ void InterfaceObserver::setTeacherMode() {
     
     else {
         
-        my_playButton.setTeacherMode();
-        my_settingButton.setTeacherMode();
-        my_bestButton.setTeacherMode();
-        my_quitButton.setTeacherMode();
+        my_playButton->setTeacherMode();
+        my_settingButton->setTeacherMode();
+        my_bestButton->setTeacherMode();
+        my_quitButton->setTeacherMode();
         
         for ( std::map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite.begin() ; it!=my_languageToSprite.end(); ++it) {
             my_languageToSprite[ it->first ]->setTeacherMode();
@@ -272,13 +266,13 @@ void InterfaceObserver::showPresentation() {
     
     setTextAndDraw( my_titleString, "PURU PURU DIGGER ", ( WINDOWWITDH / 2 ), 100, true );
     
-    my_playButton.setSpriteAndDraw(PLAYX, PLAYY, my_window, my_messages[my_language][play]);
+    my_playButton->setSpriteAndDraw(PLAYX, PLAYY, my_window, my_messages[my_language][play]);
     
-    my_settingButton.setSpriteAndDraw(OPTIONX, OPTIONY, my_window, my_messages[my_language][setting]);
+    my_settingButton->setSpriteAndDraw(OPTIONX, OPTIONY, my_window, my_messages[my_language][setting]);
     
-    my_bestButton.setSpriteAndDraw(BESTX, BESTY, my_window, my_messages[my_language][best]);
+    my_bestButton->setSpriteAndDraw(BESTX, BESTY, my_window, my_messages[my_language][best]);
     
-    my_quitButton.setSpriteAndDraw(QUITX, QUITY, my_window, my_messages[my_language][stop]);
+    my_quitButton->setSpriteAndDraw(QUITX, QUITY, my_window, my_messages[my_language][stop]);
     
 }
 
@@ -304,7 +298,7 @@ void InterfaceObserver::showOption() {
     
     showSpriteChoice();
     
-    my_quitButton.setSpriteAndDraw(QUITONX, QUITONY, my_window, my_messages[my_language][stop]);
+    my_quitButton->setSpriteAndDraw(QUITONX, QUITONY, my_window, my_messages[my_language][stop]);
     
 }
 
@@ -345,7 +339,7 @@ void InterfaceObserver::showBestScore() {
         }
         
         //On affiche le bouton quitter avec son string
-        my_quitButton.setSpriteAndDraw(QUITONX, QUITONY, my_window, my_messages[my_language][stop]);
+        my_quitButton->setSpriteAndDraw(QUITONX, QUITONY, my_window, my_messages[my_language][stop]);
         
         scoreLect.close();
         
@@ -502,7 +496,7 @@ void InterfaceObserver::showLevel() {
         //On dessine le score
         showScore();
         
-        my_quitButton.setSpriteAndDraw(QUITONX, QUITONY, my_window, my_messages[my_language][stop]);
+        my_quitButton->setSpriteAndDraw(QUITONX, QUITONY, my_window, my_messages[my_language][stop]);
     }
     
     //On dessine la grille
@@ -609,69 +603,11 @@ void InterfaceObserver::toAnimate() {
     
 }
 
+/** Events Subscriber */
 
 void InterfaceObserver::mouseMoved(sf::Event event) {
-    
-    if ( isInPresentation ) {
-        
-        if ( my_playButton.isInZone( event.MouseMove.X, event.MouseMove.Y ) ) {
-            my_playButton.setHover();
-            
-        } else if ( my_settingButton.isInZone( event.MouseMove.X, event.MouseMove.Y) ) {
-            my_settingButton.setHover();
-            
-        } else if ( my_bestButton.isInZone ( event.MouseMove.X, event.MouseMove.Y) ) {
-            my_bestButton.setHover();
-            
-        } else if ( my_quitButton.isInZone ( event.MouseMove.X , event.MouseMove.Y) ) {
-            my_quitButton.setHover();
-            
-        } else
-            resetButtonNorm();
-        
-    } else if ( isChoosingOption ) {
-        
-        if ( my_languageToSprite[english]->isInZone ( event.MouseMove.X, event.MouseMove.Y) )
-            my_languageToSprite[english]->setHover();
-        
-        else if ( my_languageToSprite[francais]->isInZone ( event.MouseMove.X, event.MouseMove.Y) )
-            my_languageToSprite[francais]->setHover();
-        
-        else if ( my_languageToSprite[italiano]->isInZone ( event.MouseMove.X, event.MouseMove.Y) )
-            my_languageToSprite[italiano]->setHover();
-        
-        else if ( my_languageToSprite[espanol]->isInZone ( event.MouseMove.X, event.MouseMove.Y) )
-            my_languageToSprite[espanol]->setHover();
-        
-        else if ( my_languageToSprite[deutsch]->isInZone ( event.MouseMove.X, event.MouseMove.Y) )
-            my_languageToSprite[deutsch]->setHover();
-        
-        else if ( my_quitButton.isInZone ( event.MouseMove.X , event.MouseMove.Y) )
-            my_quitButton.setHover();
-        
-        else {
-            resetButtonNorm();
-            resetLanguageNorm();
-        }
-        
-    } else if ( isPlaying  ) {
-        if ( my_quitButton.isInZone ( event.MouseMove.X , event.MouseMove.Y) )
-            my_quitButton.setHover();
-        
-        else
-            resetButtonNorm();
-        
-    } else if ( isViewingBestScore ) {
-        if ( my_quitButton.isInZone ( event.MouseMove.X , event.MouseMove.Y) )
-            my_quitButton.setHover();
-        
-        else
-            resetButtonNorm();
-    }
-    
 }
 
-// not use events
 
 void InterfaceObserver::keyPressed(sf::Event event) {
     
@@ -744,7 +680,7 @@ void InterfaceObserver::textEntered(sf::Event event) {
 
 void InterfaceObserver::mouseButtonPressed(sf::Event event) {
     if ( isInPresentation ) {
-        if ( my_playButton.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
+        if ( my_playButton->isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
             isInPresentation = false;
             isPlaying = true;
             my_model->reset();
@@ -754,24 +690,22 @@ void InterfaceObserver::mouseButtonPressed(sf::Event event) {
             if ( my_musicIcon.getOnOff() )
                 my_musicLevel->Play();
             
-        } else if ( my_quitButton.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
+        } else if ( my_quitButton->isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
             if ( my_soundIcon.getOnOff())
                 my_buttonSound->Play();
             my_window->Close();
             
-        } else if ( my_settingButton.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
+        } else if ( my_settingButton->isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
             isInPresentation = false;
             isChoosingOption = true;
             if ( my_soundIcon.getOnOff())
                 my_buttonSound->Play();
-            resetButtonNorm();
             
-        } else if ( my_bestButton.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
+        } else if ( my_bestButton->isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
             isInPresentation = false;
             isViewingBestScore = true;
             if ( my_soundIcon.getOnOff())
                 my_buttonSound->Play();
-            resetButtonNorm();
             
         } else if ( my_musicIcon.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
             my_musicIcon.reverse();
@@ -808,12 +742,11 @@ void InterfaceObserver::mouseButtonPressed(sf::Event event) {
         } else if ( my_teacherSprite.isInZone( event.MouseButton.X, event.MouseButton.Y) ) {
             setTeacherMode();
             
-        }else if ( my_quitButton.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
+        }else if ( my_quitButton->isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
             if ( my_soundIcon.getOnOff())
                 my_buttonSound->Play();
             isChoosingOption = false;
             isInPresentation = true;
-            resetButtonNorm();
             
         } else if ( my_musicIcon.isInZone( event.MouseButton.X, event.MouseButton.Y) ) {
             my_musicIcon.reverse();
@@ -824,12 +757,11 @@ void InterfaceObserver::mouseButtonPressed(sf::Event event) {
         
     } else if ( isViewingBestScore ) {
         
-        if ( my_quitButton.isInZone(event.MouseButton.X, event.MouseButton.Y ) ) {
+        if ( my_quitButton->isInZone(event.MouseButton.X, event.MouseButton.Y ) ) {
             if ( my_soundIcon.getOnOff())
                 my_buttonSound->Play();
             isViewingBestScore = false;
             isInPresentation = true;
-            resetButtonNorm();
             
         } else if ( my_musicIcon.isInZone( event.MouseButton.X, event.MouseButton.Y) ) {
             my_musicIcon.reverse();
@@ -846,13 +778,12 @@ void InterfaceObserver::mouseButtonPressed(sf::Event event) {
             animation = true;
             
         }
-        if ( my_quitButton.isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
+        if ( my_quitButton->isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
             if ( my_soundIcon.getOnOff())
                 my_buttonSound->Play();
             isPlaying = false;
             isEnterABestScore = true;
             my_musicLevel->Stop();
-            resetButtonNorm();
             animation = false;
             
         } else if ( my_musicIcon.isInZone( event.MouseButton.X, event.MouseButton.Y) ) {

@@ -5,7 +5,7 @@
 #include <SFML/Window.hpp>
 
 #include "GameModel.h"
-
+#include "Graphics/ButtonGraphic.h"
 #include "Observers/EventDispatcher.h"
 
 class GameView {
@@ -15,6 +15,11 @@ class GameView {
         GameModel * my_model; /*!<  La modèle de notre vue */
         EventDispatcher* my_eventDispatcher;
 
+        ButtonGraphic* my_playButton;
+        ButtonGraphic* my_settingButton;
+        ButtonGraphic* my_bestButton;
+        ButtonGraphic* my_quitButton;
+    
     public :
 
          GameView();

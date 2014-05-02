@@ -40,3 +40,21 @@ void
 LanguageGraphic::reset() {
     my_sprite.SetColor(sf::Color(255,255,255,255));
 }
+
+
+/** Events Subscriber */
+
+void LanguageGraphic::mouseMoved( sf::Event event ) {
+    if ( isInZone( event.MouseMove.X, event.MouseMove.Y ) ) {
+        setHover();
+    } else {
+        reset();
+    }
+}
+
+
+void LanguageGraphic::keyPressed( sf::Event event ) {}
+void LanguageGraphic::textEntered( sf::Event event ) {}
+void LanguageGraphic::mouseButtonPressed( sf::Event event ) {}
+void LanguageGraphic::postDisplay() {}
+void LanguageGraphic::preDisplay() {}

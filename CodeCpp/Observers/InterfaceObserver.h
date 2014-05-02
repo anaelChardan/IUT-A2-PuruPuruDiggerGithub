@@ -32,10 +32,10 @@ private:
     bool isEnterABestScore;
     bool isPlaying;
     
-    ButtonGraphic my_playButton;
-    ButtonGraphic my_settingButton;
-    ButtonGraphic my_bestButton;
-    ButtonGraphic my_quitButton;
+    ButtonGraphic* my_playButton;
+    ButtonGraphic* my_settingButton;
+    ButtonGraphic* my_bestButton;
+    ButtonGraphic* my_quitButton;
     
     std::map< Language, LanguageGraphic* > my_languageToSprite;
     
@@ -102,7 +102,6 @@ private:
      *  \brief Affichage Menu principal
      */
     void showPresentation();
-    void resetButtonNorm();
     void resetLanguageNorm();
     
     void setTextAndDraw( sf::String* s, std::string text, int x, int y, bool useSizeRectX );
@@ -150,7 +149,7 @@ private:
     
 public:
     
-    InterfaceObserver( sf::RenderWindow* window, GameModel * model );
+    InterfaceObserver( sf::RenderWindow* window, GameModel * model, ButtonGraphic *play, ButtonGraphic *setting, ButtonGraphic *best, ButtonGraphic *quit );
     ~InterfaceObserver();
     
     virtual void mouseMoved(sf::Event event);

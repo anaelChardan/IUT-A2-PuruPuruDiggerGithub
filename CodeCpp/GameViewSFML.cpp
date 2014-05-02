@@ -13,6 +13,14 @@ GameView::GameView() {
      //On bloque le rafraichissement à 60 par seconde
     my_window->SetFramerateLimit(60);
     
+
+    // buttons
+    my_playButton = new ButtonGraphic();
+    my_settingButton = new ButtonGraphic();
+    my_bestButton = new ButtonGraphic();
+    my_quitButton = new ButtonGraphic();
+    
+    // dispatch d'event en tout genre
     my_eventDispatcher = new EventDispatcher();
 
 }
@@ -30,8 +38,14 @@ void GameView::setModel(GameModel *model) {
 //Boucle d'événement
 void GameView::treatGame( ) {
     
-    InterfaceObserver* interfaceObserver = new InterfaceObserver( my_window, my_model );
+    InterfaceObserver* interfaceObserver = new InterfaceObserver( my_window, my_model, my_playButton, my_settingButton, my_bestButton, my_quitButton );
+    
     my_eventDispatcher->addObserver( interfaceObserver );
+    my_eventDispatcher->addObserver( my_playButton );
+    my_eventDispatcher->addObserver( my_settingButton );
+    my_eventDispatcher->addObserver( my_bestButton );
+    my_eventDispatcher->addObserver( my_quitButton );
+    
     
 
     while ( my_window->IsOpened( ) ) {

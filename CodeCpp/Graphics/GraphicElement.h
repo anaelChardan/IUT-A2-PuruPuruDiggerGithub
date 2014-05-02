@@ -7,8 +7,9 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
+#include "../Observers/EventObserver.h"
 
-class GraphicElement {
+class GraphicElement : public EventObserver {
     protected :
         sf::Sprite my_sprite;
     public :
@@ -21,6 +22,15 @@ class GraphicElement {
         bool isInZone( int x, int y ) const;
         int getXPos() const;
         int getYPos() const;
+
+    
+        virtual void mouseMoved(sf::Event event);
+        virtual void keyPressed(sf::Event event);
+        virtual void textEntered(sf::Event event);
+        virtual void mouseButtonPressed(sf::Event event);
+        virtual void preDisplay();
+        virtual void postDisplay();
+    
 };
 
 #endif /* defined(__PuruPuruDigger__GraphicElement__) */

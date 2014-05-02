@@ -43,6 +43,7 @@ ButtonGraphic::setAnanasMode() {
     }
 }
 
+
 void
 ButtonGraphic::setImageToSprite() {
     my_image.CreateMaskFromColor(sf::Color(0, 55, 97));
@@ -76,3 +77,22 @@ ButtonGraphic::draw(sf::RenderWindow *_window) const {
     _window->Draw(my_sprite);
     _window->Draw(my_string);
 }
+
+
+
+/** Events Subscriber */
+
+void ButtonGraphic::mouseMoved( sf::Event event ) {
+    if ( isInZone( event.MouseMove.X, event.MouseMove.Y ) ) {
+        setHover();
+    } else {
+        reset();
+    }
+}
+
+
+void ButtonGraphic::keyPressed( sf::Event event ) {}
+void ButtonGraphic::textEntered( sf::Event event ) {}
+void ButtonGraphic::mouseButtonPressed( sf::Event event ) {}
+void ButtonGraphic::postDisplay() {}
+void ButtonGraphic::preDisplay() {}
