@@ -1,5 +1,5 @@
 #include "GoldGraphic.h"
-#include "Constantes.h"
+#include "../Constantes.h"
 
 GoldGraphic::~GoldGraphic() { }
 

@@ -1,5 +1,5 @@
 #include "DiggerGraphic.h"
-#include "Constantes.h"
+#include "../Constantes.h"
 
 DiggerGraphic::~DiggerGraphic() { }
 

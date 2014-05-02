@@ -1,5 +1,5 @@
 #include "GraphicSound.h"
-#include "Constantes.h"
+#include "../Constantes.h"
 
 GraphicSound::~GraphicSound() { }
 

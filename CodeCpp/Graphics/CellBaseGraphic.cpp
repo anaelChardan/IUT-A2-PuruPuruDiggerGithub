@@ -1,5 +1,5 @@
 #include "CellBaseGraphic.h"
-#include "Constantes.h"
+#include "../Constantes.h"
 
 sf::Image CellBaseGraphic::my_image;
 
@@ -12,7 +12,7 @@ CellBaseGraphic::~CellBaseGraphic() { }
 void
 CellBaseGraphic::setAnanasMode() {
 #ifdef __linux
-    if ( !my_image.LoadFromFile("Pictures/case.png" ) )
+    if ( !my_image.LoadFromFile("../Ressources/Pictures/case.png" ) )
         std::cout << " Error when loading case image " << std::endl;
 #else
     if ( !my_image.LoadFromFile("case.png") ) {
@@ -27,7 +27,7 @@ CellBaseGraphic::setAnanasMode() {
 void
 CellBaseGraphic::setTeacherMode() {
 #ifdef __linux
-    if ( !my_image.LoadFromFile("Pictures/caseTeach.png" ) )
+    if ( !my_image.LoadFromFile("../Ressources/Pictures/caseTeach.png" ) )
         std::cerr << " Error when loading caseTeach image " << std::endl;
 #else
     if ( !my_image.LoadFromFile("caseTeach.png") ) {

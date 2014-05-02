@@ -1,5 +1,5 @@
 #include "SpriteGraphic.h"
-#include "Constantes.h"
+#include "../Constantes.h"
 
 sf::Image SpriteGraphic::my_image;
 
@@ -12,7 +12,7 @@ SpriteGraphic::setTeacherMode() {
 void
 SpriteGraphic::setAnanasMode() {
 #ifdef __linux
-    if ( !my_image.LoadFromFile("Pictures/choiceSprite.png" ) )
+    if ( !my_image.LoadFromFile("../Ressources/Pictures/choiceSprite.png" ) )
         std::cerr << " Error when loading choiceSprite image " << std::endl;
 #else
     if ( !my_image.LoadFromFile("choiceSprite.png") ) {

@@ -1,5 +1,5 @@
 #include "LanguageGraphic.h"
-#include "Constantes.h"
+#include "../Constantes.h"
 
 sf::Image LanguageGraphic::my_image;
 
@@ -12,7 +12,7 @@ LanguageGraphic::setTeacherMode() {
 void
 LanguageGraphic::setAnanasMode() {
 #ifdef __linux
-    if ( !my_image.LoadFromFile("Pictures/languages.png" ) )
+    if ( !my_image.LoadFromFile("../Ressources/Pictures/languages.png" ) )
         std::cerr << " Error when loading languages image " << std::endl;
 #else
     if ( !my_image.LoadFromFile("languages.png") ) {

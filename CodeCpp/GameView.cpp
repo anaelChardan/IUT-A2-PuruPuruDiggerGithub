@@ -14,11 +14,11 @@
 #include <sstream>
 #include <cstdlib>
 #include "Utils.h"
-#include "Digger.h"
-#include "Bomb.h"
-#include "EmptyCell.h"
-#include "ValueCell.h"
-#include "GoldCell.h"
+#include "Cell/Digger.h"
+#include "Cell/Bomb.h"
+#include "Cell/EmptyCell.h"
+#include "Cell/ValueCell.h"
+#include "Cell/GoldCell.h"
 using namespace std;
 
 GameView::GameView() {

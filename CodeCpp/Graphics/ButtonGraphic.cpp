@@ -1,5 +1,5 @@
 #include "ButtonGraphic.h"
-#include "Constantes.h"
+#include "../Constantes.h"
 
 sf::Image ButtonGraphic::my_image;
 sf::Font ButtonGraphic::my_font;
@@ -8,7 +8,7 @@ sf::Font ButtonGraphic::my_font;
 void
 ButtonGraphic::setTeacherMode() {
 #ifdef __linux
-    if ( !my_image.LoadFromFile("Pictures/buttonTeach.png" ) || !my_font.LoadFromFile("Font/arial.ttf") )
+    if ( !my_image.LoadFromFile("../Ressources/Pictures/buttonTeach.png" ) || !my_font.LoadFromFile("../Ressources/Font/arial.ttf") )
         std::cerr << " Error when loading button image or button font" << std::endl;
 
 #else
@@ -28,7 +28,7 @@ ButtonGraphic::setTeacherMode() {
 void
 ButtonGraphic::setAnanasMode() {
 #ifdef __linux
-    if ( !my_image.LoadFromFile("Pictures/buttonAnanas.png" ) || !my_font.LoadFromFile("Font/buttonFont.ttf") )
+    if ( !my_image.LoadFromFile("../Ressources/Pictures/buttonAnanas.png" ) || !my_font.LoadFromFile("../Ressources/Font/buttonFont.ttf") )
         std::cerr << " Error when loading button image or button font " << std::endl;
 #else
     if ( !my_image.LoadFromFile("buttonAnanas.png") || !my_font.LoadFromFile("buttonFont.ttf") ) {

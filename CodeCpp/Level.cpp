@@ -8,9 +8,9 @@
 
 
 #include "Level.h"
-#include "Bomb.h"
-#include "GoldCell.h"
-#include "EmptyCell.h"
+#include "Cell/Bomb.h"
+#include "Cell/GoldCell.h"
+#include "Cell/EmptyCell.h"
 #include <vector>
 #include <algorithm>
 

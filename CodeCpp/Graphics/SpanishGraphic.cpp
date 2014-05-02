@@ -1,5 +1,5 @@
 #include "SpanishGraphic.h"
-#include "Constantes.h"
+#include "../Constantes.h"
 
 SpanishGraphic::~SpanishGraphic() { }
 

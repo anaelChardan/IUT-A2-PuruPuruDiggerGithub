@@ -1,10 +1,3 @@
-//
-//  InterfaceObserver.cpp
-//  PuruPuruDigger
-//
-//
-//
-
 #include "InterfaceObserver.h"
 #include "../Graphics/EnglishGraphic.h"
 #include "../Graphics/FrenchGraphic.h"
@@ -14,12 +7,12 @@
 #include "../Utils.h"
 #include <sstream>
 #include <fstream>
-#include "DiggerGraphic.h"
-#include "EmptyGraphic.h"
-#include "ValueGraphic.h"
-#include "BombGraphic.h"
-#include "GoldGraphic.h"
-#include "IntDecFunctor.h"
+#include "../Graphics/DiggerGraphic.h"
+#include "../Graphics/EmptyGraphic.h"
+#include "../Graphics/ValueGraphic.h"
+#include "../Graphics/BombGraphic.h"
+#include "../Graphics/GoldGraphic.h"
+#include "../IntDecFunctor.h"
 
 using namespace std;
 using namespace sf;
@@ -128,7 +121,7 @@ void InterfaceObserver::resetButtonNorm() {
 
 void InterfaceObserver::setAnanasMode() {
 #ifdef __linux__
-    if (!my_fontScore->LoadFromFile("Font/scoreFont.ttf") || !my_fontTitle->LoadFromFile("Font/titleFont.ttf") || !my_musicLevel->OpenFromFile("Music/gridMusic.wav") || !my_bestScoreFont->LoadFromFile("Font/BestFont.ttf") || !my_buttonBuffer->LoadFromFile("Music/soundButton.wav") || !my_textBuffer->LoadFromFile("Music/soundEnterText.wav") || !my_gameOverBuffer->LoadFromFile("Music/soundGameOver.wav") || !my_clickableBuffer->LoadFromFile("Music/soundIsClickable.wav") || !my_isNotClickableBuffer->LoadFromFile("Music/soundIsNotClickable.wav") || !my_loseLevelBuffer->LoadFromFile("Music/soundLoseLevel.wav") ) {
+    if (!my_fontScore->LoadFromFile("../Ressources/Font/scoreFont.ttf") || !my_fontTitle->LoadFromFile("../Ressources/Font/titleFont.ttf") || !my_musicLevel->OpenFromFile("../Ressources/Music/gridMusic.wav") || !my_bestScoreFont->LoadFromFile("../Ressources/Font/BestFont.ttf") || !my_buttonBuffer->LoadFromFile("../Ressources/Music/soundButton.wav") || !my_textBuffer->LoadFromFile("../Ressources/Music/soundEnterText.wav") || !my_gameOverBuffer->LoadFromFile("../Ressources/Music/soundGameOver.wav") || !my_clickableBuffer->LoadFromFile("../Ressources/Music/soundIsClickable.wav") || !my_isNotClickableBuffer->LoadFromFile("../Ressources/Music/soundIsNotClickable.wav") || !my_loseLevelBuffer->LoadFromFile("../Ressources/Music/soundLoseLevel.wav") ) {
         cout << "Error when loading font" << endl;
     }
 #else
@@ -194,7 +187,7 @@ void InterfaceObserver::setAnanasMode() {
 
 void InterfaceObserver::setTeacherMode() {
 #ifdef __linux__
-    if ( !my_fontScore->LoadFromFile("Font/arial.ttf") || !my_bestScoreFont->LoadFromFile("Font/arial.ttf") || !my_fontTitle->LoadFromFile("Font/arial.ttf") ||!my_musicLevel->OpenFromFile("Music/gridMusic.wav") || !my_textBuffer->LoadFromFile("Music/soundEnterText.wav") || !my_gameOverBuffer->LoadFromFile("Music/soundGameOver.wav") || !my_clickableBuffer->LoadFromFile("Music/soundIsClickable.wav") || !my_isNotClickableBuffer->LoadFromFile("Music/soundIsNotClickable.wav") || !my_loseLevelBuffer->LoadFromFile("Music/soundLoseLevel.wav")) {
+    if ( !my_fontScore->LoadFromFile("../Ressources/Font/arial.ttf") || !my_bestScoreFont->LoadFromFile("../Ressources/Font/arial.ttf") || !my_fontTitle->LoadFromFile("../Ressources/Font/arial.ttf") ||!my_musicLevel->OpenFromFile("Music/gridMusic.wav") || !my_textBuffer->LoadFromFile("../Ressources/Music/soundEnterText.wav") || !my_gameOverBuffer->LoadFromFile("../Ressources/Music/soundGameOver.wav") || !my_clickableBuffer->LoadFromFile("../Ressources/Music/soundIsClickable.wav") || !my_isNotClickableBuffer->LoadFromFile("../Ressources/Music/soundIsNotClickable.wav") || !my_loseLevelBuffer->LoadFromFile("../Ressources/Music/soundLoseLevel.wav")) {
         cout << "Error when loading font" << endl;
     }
 #else

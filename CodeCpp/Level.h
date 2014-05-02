@@ -11,11 +11,11 @@
 
 #include <iostream>
 #include "Score.h"
-#include "Digger.h"
-#include "CellBase.h"
-#include "ValueCell.h"
-#include "GoldCell.h"
-#include "Bomb.h"
+#include "Cell/Digger.h"
+#include "Cell/CellBase.h"
+#include "Cell/ValueCell.h"
+#include "Cell/GoldCell.h"
+#include "Cell/Bomb.h"
 #include "Constantes.h"
 #include <ctime>
 

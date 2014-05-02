@@ -1,5 +1,5 @@
 #include "AnanasSprite.h"
-#include "Constantes.h"
+#include "../Constantes.h"
 
 AnanasSprite::~AnanasSprite() { }
 

@@ -1,5 +1,5 @@
 #include "TeacherSprite.h"
-#include "Constantes.h"
+#include "../Constantes.h"
 
 TeacherSprite::~TeacherSprite() { }
 

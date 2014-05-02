@@ -1,5 +1,5 @@
 #include "BackgroundGraphic.h"
-#include "Constantes.h"
+#include "../Constantes.h"
 
 sf::Image BackgroundGraphic::my_image;
 
@@ -7,7 +7,7 @@ sf::Image BackgroundGraphic::my_image;
 void
 BackgroundGraphic::setTeacherMode() {
 #ifdef __linux
-    if ( !my_image.LoadFromFile("Pictures/wallpapperTeach.png" ) )
+    if ( !my_image.LoadFromFile("../Ressources/Pictures/wallpapperTeach.png" ) )
         std::cerr << " Error when loading background image " << std::endl;
 #else
     if ( !my_image.LoadFromFile("wallpapperTeach.png") ) {
@@ -22,7 +22,7 @@ BackgroundGraphic::setTeacherMode() {
 void
 BackgroundGraphic::setAnanasMode() {
 #ifdef __linux
-    if ( !my_image.LoadFromFile("Pictures/wallpapper.png" ) )
+    if ( !my_image.LoadFromFile("../Ressources/Pictures/wallpapper.png" ) )
         std::cerr << " Error when loading background image " << std::endl;
 #else
     if ( !my_image.LoadFromFile("wallpapper.png") ) {

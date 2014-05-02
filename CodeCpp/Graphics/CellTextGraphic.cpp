@@ -7,7 +7,7 @@ CellTextGraphic::~CellTextGraphic() { }
 void
 CellTextGraphic::setAnanasMode() {
 #ifdef __linux__
-    if ( !my_font.LoadFromFile("Font/valueFont.ttf") ) {
+    if ( !my_font.LoadFromFile("../Ressources/Font/valueFont.ttf") ) {
         std::cerr << " Error when loading valueFont.ttf " << std::endl;
     }
 #else
@@ -25,7 +25,7 @@ CellTextGraphic::setAnanasMode() {
 void
 CellTextGraphic::setTeacherMode() {
 #ifdef __linux__
-    if ( !my_font.LoadFromFile("Font/arial.ttf") ) {
+    if ( !my_font.LoadFromFile("../Ressources/Font/arial.ttf") ) {
         std::cerr << " Error when loading valueFont.ttf " << std::endl;
     }
 #else

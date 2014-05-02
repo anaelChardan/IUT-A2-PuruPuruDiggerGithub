@@ -1,5 +1,5 @@
 #include "ItalianoGraphic.h"
-#include "Constantes.h"
+#include "../Constantes.h"
 
 ItalianoGraphic::~ItalianoGraphic() { }
 

@@ -1,6 +1,6 @@
 #include "GameViewSFML.h"
 
-#include "InterfaceObserver.h"
+#include "Observers/InterfaceObserver.h"
 
 using namespace sf;
 

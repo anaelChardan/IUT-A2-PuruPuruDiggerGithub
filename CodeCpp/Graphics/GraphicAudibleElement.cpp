@@ -1,5 +1,5 @@
 #include "GraphicAudibleElement.h"
-#include "Constantes.h"
+#include "../Constantes.h"
 
 sf::Image GraphicAudibleElement::my_image;
 
@@ -15,7 +15,7 @@ GraphicAudibleElement::setTeacherMode() {
 void
 GraphicAudibleElement::setAnanasMode() {
 #ifdef __linux
-    if ( !my_image.LoadFromFile("Pictures/icon.png" ) )
+    if ( !my_image.LoadFromFile("../Ressources/Pictures/icon.png" ) )
         std::cerr << " Error when loading icon image " << std::endl;
 #else
     if ( !my_image.LoadFromFile("icon.png") ) {

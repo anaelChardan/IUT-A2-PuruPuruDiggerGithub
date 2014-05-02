@@ -4,11 +4,9 @@
 #include <iostream>
 #include <SFML/Window.hpp>
 
-
-
 #include "GameModel.h"
 
-#include "EventDispatcher.h"
+#include "Observers/EventDispatcher.h"
 
 class GameView {
     private :

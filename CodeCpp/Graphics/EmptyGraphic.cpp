@@ -1,5 +1,5 @@
 #include "EmptyGraphic.h"
-#include "Constantes.h"
+#include "../Constantes.h"
 
 EmptyGraphic::~EmptyGraphic() { }
 

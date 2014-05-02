@@ -1,27 +1,20 @@
-//
-//  InterfaceObserver.h
-//  PuruPuruDigger
-//
-//
-//
-
 #ifndef __PuruPuruDigger__InterfaceObserver__
 #define __PuruPuruDigger__InterfaceObserver__
 
 #include <iostream>
 #include "EventObserver.h"
-#include "ButtonGraphic.h"
+#include "../Graphics/ButtonGraphic.h"
 #include "../Constantes.h"
 #include "../Graphics/LanguageGraphic.h"
-#include "LanguageMessage.h"
-#include "GraphicMusic.h"
-#include "GraphicSound.h"
-#include "AnanasSprite.h"
-#include "ValueGraphic.h"
-#include "GoldGraphic.h"
-#include "TeacherSprite.h"
-#include "BackgroundGraphic.h"
-#include "GameModel.h"
+#include "../LanguageMessage.h"
+#include "../Graphics/GraphicMusic.h"
+#include "../Graphics/GraphicSound.h"
+#include "../Graphics/AnanasSprite.h"
+#include "../Graphics/ValueGraphic.h"
+#include "../Graphics/GoldGraphic.h"
+#include "../Graphics/TeacherSprite.h"
+#include "../Graphics/BackgroundGraphic.h"
+#include "../GameModel.h"
 #include <string>
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
