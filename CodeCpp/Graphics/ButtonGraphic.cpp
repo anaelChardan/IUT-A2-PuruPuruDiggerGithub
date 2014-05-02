@@ -1,23 +1,20 @@
 #include "ButtonGraphic.h"
 #include "../Constantes.h"
+#include <SFML/Audio.hpp>
 
 sf::Image ButtonGraphic::my_image;
 sf::Font ButtonGraphic::my_font;
 
+sf::SoundBuffer ButtonGraphic::my_buttonBuffer;
+sf::Sound ButtonGraphic::my_buttonSound;
 
 void
 ButtonGraphic::setTeacherMode() {
-#ifdef __linux
-    if ( !my_image.LoadFromFile("../Ressources/Pictures/buttonTeach.png" ) || !my_font.LoadFromFile("../Ressources/Font/arial.ttf") )
+
+    if ( !my_image.LoadFromFile("buttonTeach.png" ) || !my_font.LoadFromFile("arial.ttf") || !my_buttonBuffer.LoadFromFile("soundButton.wav") )
         std::cerr << " Error when loading button image or button font" << std::endl;
-
-#else
-    if ( !my_image.LoadFromFile("buttonTeach.png") || !my_font.LoadFromFile("arial.ttf") ) {
-        std::cerr << " Error when loading button image or button font " << std::endl;
-
-    }
-#endif
     else {
+        my_buttonSound.SetBuffer(my_buttonBuffer);
         my_string.SetFont( my_font );
         my_string.SetSize(30);
         my_string.SetColor(sf::Color(0,0,0));
@@ -27,15 +24,10 @@ ButtonGraphic::setTeacherMode() {
 
 void
 ButtonGraphic::setAnanasMode() {
-#ifdef __linux
-    if ( !my_image.LoadFromFile("../Ressources/Pictures/buttonAnanas.png" ) || !my_font.LoadFromFile("../Ressources/Font/buttonFont.ttf") )
+    if ( !my_image.LoadFromFile("buttonAnanas.png" ) || !my_font.LoadFromFile("buttonFont.ttf") || !my_buttonBuffer.LoadFromFile("soundButton.wav") )
         std::cerr << " Error when loading button image or button font " << std::endl;
-#else
-    if ( !my_image.LoadFromFile("buttonAnanas.png") || !my_font.LoadFromFile("buttonFont.ttf") ) {
-        std::cerr << " Error when loading button image or button font " << std::endl;
-    }
-#endif
     else {
+        my_buttonSound.SetBuffer(my_buttonBuffer);
         my_string.SetFont( my_font );
         my_string.SetSize(30);
         my_string.SetColor(sf::Color(251,210,98));
@@ -90,9 +82,17 @@ void ButtonGraphic::mouseMoved( sf::Event event ) {
     }
 }
 
+void ButtonGraphic::mouseButtonPressed( sf::Event event ) {
+    if ( isInZone( event.MouseButton.X, event.MouseButton.Y ) ) {
+        if ( my_context->isEnableSound() ) {
+            my_buttonSound.Play();
+        }
+    } else {
+        // nothing
+    }
+}
 
 void ButtonGraphic::keyPressed( sf::Event event ) {}
 void ButtonGraphic::textEntered( sf::Event event ) {}
-void ButtonGraphic::mouseButtonPressed( sf::Event event ) {}
 void ButtonGraphic::postDisplay() {}
 void ButtonGraphic::preDisplay() {}

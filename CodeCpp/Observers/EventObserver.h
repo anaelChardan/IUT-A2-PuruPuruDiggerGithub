@@ -12,9 +12,11 @@
 #include <set>
 #include <iostream>
 #include <SFML/Graphics.hpp>
-
+#include "PuruContext.h"
 
 class EventObserver {
+    protected:
+        PuruContext *my_context;
     public:
         virtual void mouseMoved(sf::Event event) = 0;
         virtual void keyPressed(sf::Event event) = 0;
@@ -23,6 +25,9 @@ class EventObserver {
     
         virtual void preDisplay() = 0;
         virtual void postDisplay() = 0;
+    
+        void setContext( PuruContext *context );
+        bool hasContext(); 
 };
 
 

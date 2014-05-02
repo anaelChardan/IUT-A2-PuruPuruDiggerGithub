@@ -7,11 +7,16 @@
 class GraphicMusic : public GraphicAudibleElement {
     public :
         virtual void setImageToSprite();
-        virtual ~GraphicMusic();
+        GraphicMusic();
         virtual void reverse();
-    
-    
-        // lui passer un pointeur vers la musique
+        static sf::Music my_musicLevel;
+  
+        virtual void mouseMoved(sf::Event event);
+        virtual void keyPressed(sf::Event event);
+        virtual void textEntered(sf::Event event);
+        virtual void mouseButtonPressed(sf::Event event);
+        virtual void preDisplay();
+        virtual void postDisplay();
 };
 
 #endif /* defined(__PuruPuruDigger__GraphicMusic__) */

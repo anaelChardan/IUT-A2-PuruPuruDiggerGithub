@@ -25,11 +25,6 @@
 class InterfaceObserver : public EventObserver {
     
 private:
-    bool isInPresentation;   // Pour savoir si il est sur le menu de départ
-    bool isChoosingOption; // Pour savoir si il est le menu du choix des options
-    bool isViewingBestScore;
-    bool isEnterABestScore;
-    bool isPlaying;
     
     ButtonGraphic* my_playButton;
     ButtonGraphic* my_settingButton;
@@ -39,7 +34,7 @@ private:
     GraphicMusic *my_musicIcon;
     GraphicSound *my_soundIcon;
     
-    std::map< Language, LanguageGraphic* > my_languageToSprite;
+    std::map< Language, LanguageGraphic* >* my_languageToSprite;
     
     sf::Font* my_fontScore;
     sf::Font* my_fontTitle;
@@ -53,9 +48,6 @@ private:
     
     
     //Pour les sons
-    sf::Music *my_musicLevel;
-    sf::SoundBuffer *my_buttonBuffer;
-    sf::Sound *my_buttonSound;
     sf::SoundBuffer *my_textBuffer;
     sf::Sound *my_textSound;
     sf::SoundBuffer *my_gameOverBuffer;
@@ -67,17 +59,16 @@ private:
     sf::SoundBuffer *my_loseLevelBuffer;
     sf::Sound *my_loseLevelSound;
     
-    
-    Language my_language; /*!<  La langue de notre partie */
     LanguageMessage my_messages; /*!<  La bibliothèque de message de notre partie */
     
-    AnanasSprite my_ananasSprite;
-    TeacherSprite my_teacherSprite;
+    AnanasSprite *my_ananasSprite;
+    TeacherSprite *my_teacherSprite;
     
     BackgroundGraphic my_background;
     
     
     std::map< std::string, CellBaseGraphic* > my_stringToSprite;
+    
     GoldCell* ptr_goldCell;
     ValueCell* ptr_valueCell;
     GoldGraphic* ptr_goldGraphic;
@@ -87,16 +78,9 @@ private:
     sf::RenderWindow* my_window;
     GameModel * my_model;
     
-    
-    
-    bool animation;
-    bool time;
-    bool over;
-    
     std::string player;
     
     sf::Clock pause;        //La clock pour la pause
-    bool isInBreak = false; //Pour savoir quand on est en pause
     
     /*!
      *  \brief Affichage Menu principal
@@ -156,8 +140,11 @@ public:
                       ButtonGraphic *setting,
                       ButtonGraphic *best,
                       ButtonGraphic *quit,
-                      GraphicMusic *my_musicIcon,
-                      GraphicSound *my_soundIcon
+                      GraphicMusic *music,
+                      GraphicSound *sound,
+                      std::map< Language, LanguageGraphic* >* languageToSprite,
+                      AnanasSprite *ananas,
+                      TeacherSprite *teacher
                       );
     
     ~InterfaceObserver();

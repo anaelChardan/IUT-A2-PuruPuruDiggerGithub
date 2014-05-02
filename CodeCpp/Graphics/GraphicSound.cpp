@@ -13,9 +13,12 @@ GraphicSound::setImageToSprite() {
 
 void
 GraphicSound::reverse() {
-    if ( !isOn )
+    
+    if ( !my_context->isEnableSound() ) {
         my_sprite.SetSubRect( sf::IntRect( SOUNDSX, ICONSPRITEBEGIN, SOUNDONEX, ICONSPRITEHEIGHT ) );
-    else
+        my_context->setSound( true );
+    } else {
         my_sprite.SetSubRect( sf::IntRect( SOUNDSX, ICONSPRITEBEGIN, SOUNDOFFEX, ICONSPRITEHEIGHT ) );
-    isOn = !isOn;
+        my_context->setSound( false );
+    }
 }

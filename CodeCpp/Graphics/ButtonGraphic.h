@@ -3,12 +3,17 @@
 
 #include <iostream>
 #include "GraphicElement.h"
+#include <SFML/Audio.hpp>
 
 class ButtonGraphic : public GraphicElement {
     protected :
         static sf::Image my_image ;
         static sf::Font my_font;
+        static sf::SoundBuffer my_buttonBuffer;
+        static sf::Sound my_buttonSound;
+    
         sf::String my_string;
+    
     public :
         virtual void setImageToSprite();
         virtual void setTeacherMode();
@@ -18,6 +23,9 @@ class ButtonGraphic : public GraphicElement {
         void reset();
         virtual void draw(sf::RenderWindow* _window) const;
 
+    
+    
+    
         virtual void mouseMoved(sf::Event event);
         virtual void keyPressed(sf::Event event);
         virtual void textEntered(sf::Event event);

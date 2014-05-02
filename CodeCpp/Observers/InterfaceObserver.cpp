@@ -26,7 +26,10 @@ InterfaceObserver::InterfaceObserver(
                                      ButtonGraphic *best,
                                      ButtonGraphic *quit,
                                      GraphicMusic *music,
-                                     GraphicSound *sound
+                                     GraphicSound *sound,
+                                     std::map< Language, LanguageGraphic* >* languageToSprite,
+                                     AnanasSprite *ananas,
+                                     TeacherSprite *teacher
                                      ) :
                                         my_window( window ),
                                         my_model( model ),
@@ -35,22 +38,13 @@ InterfaceObserver::InterfaceObserver(
                                         my_bestButton(best),
                                         my_quitButton(quit),
                                         my_musicIcon(music),
-                                        my_soundIcon(sound)
+                                        my_soundIcon(sound),
+                                        my_languageToSprite(languageToSprite),
+                                        my_ananasSprite( ananas ),
+                                        my_teacherSprite( teacher )
+
+
     {
-    
-    
-    isInPresentation = true;
-    isChoosingOption = false;
-    isViewingBestScore = false;
-    isEnterABestScore = false;
-    isPlaying = false;
-    
-    my_languageToSprite[english]  = new EnglishGraphic();
-    my_languageToSprite[francais] = new FrenchGraphic();
-    my_languageToSprite[italiano] = new ItalianoGraphic();
-    my_languageToSprite[espanol]  = new SpanishGraphic();
-    my_languageToSprite[deutsch]  = new DeutschGraphic();
-    
     
     my_fontScore = new Font();
     my_fontTitle = new Font();
@@ -62,10 +56,6 @@ InterfaceObserver::InterfaceObserver(
     my_titleString = new String();
     my_bestScoreString = new String();
     
-    my_musicLevel = new Music();
-    
-    my_buttonBuffer = new SoundBuffer();
-    my_buttonSound = new Sound();
     my_textBuffer = new SoundBuffer();
     my_textSound = new Sound();
     my_gameOverBuffer = new SoundBuffer();
@@ -76,17 +66,9 @@ InterfaceObserver::InterfaceObserver(
     my_isNotClickableSound = new Sound();
     my_loseLevelBuffer= new SoundBuffer();
     my_loseLevelSound = new Sound();
-    
 
-    my_language = francais;
-
-    
-    animation = false;
     player = "";
-    over = false;
-    time = false;
-    isInBreak = false;
-    
+
     my_stringToSprite["Digger"]    = new DiggerGraphic();
     my_stringToSprite["EmptyCell"] = new EmptyGraphic();
     my_stringToSprite["GoldCell"]  = new GoldGraphic();
@@ -109,11 +91,9 @@ InterfaceObserver::~InterfaceObserver() {
     delete my_titleScoreString;
     delete my_bestScoreString;
     delete my_titleString;
-    delete my_musicLevel;
-    
-    
-    for ( std::map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite.begin() ; it!=my_languageToSprite.end(); ++it) {
-        delete my_languageToSprite[ it->first ];
+
+    for ( std::map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite->begin() ; it!=my_languageToSprite->end(); ++it) {
+        delete (*my_languageToSprite)[ it->first ];
     }
     
     for ( map<string, CellBaseGraphic*>::const_iterator it = my_stringToSprite.begin() ; it!=my_stringToSprite.end(); ++it) {
@@ -124,24 +104,18 @@ InterfaceObserver::~InterfaceObserver() {
 
 
 void InterfaceObserver::resetLanguageNorm() {
-    for ( std::map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite.begin() ; it!=my_languageToSprite.end(); ++it) {
-        my_languageToSprite[ it->first ]->reset();
+    for ( std::map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite->begin() ; it!=my_languageToSprite->end(); ++it) {
+        (*my_languageToSprite)[ it->first ]->reset();
     }
     
 }
 
 
 void InterfaceObserver::setAnanasMode() {
-#ifdef __linux__
-    if (!my_fontScore->LoadFromFile("../Ressources/Font/scoreFont.ttf") || !my_fontTitle->LoadFromFile("../Ressources/Font/titleFont.ttf") || !my_musicLevel->OpenFromFile("../Ressources/Music/gridMusic.wav") || !my_bestScoreFont->LoadFromFile("../Ressources/Font/BestFont.ttf") || !my_buttonBuffer->LoadFromFile("../Ressources/Music/soundButton.wav") || !my_textBuffer->LoadFromFile("../Ressources/Music/soundEnterText.wav") || !my_gameOverBuffer->LoadFromFile("../Ressources/Music/soundGameOver.wav") || !my_clickableBuffer->LoadFromFile("../Ressources/Music/soundIsClickable.wav") || !my_isNotClickableBuffer->LoadFromFile("../Ressources/Music/soundIsNotClickable.wav") || !my_loseLevelBuffer->LoadFromFile("../Ressources/Music/soundLoseLevel.wav") ) {
+
+    if (!my_fontScore->LoadFromFile("scoreFont.ttf") || !my_fontTitle->LoadFromFile("titleFont.ttf") || !my_bestScoreFont->LoadFromFile("BestFont.ttf") || !my_textBuffer->LoadFromFile("soundEnterText.wav") || !my_gameOverBuffer->LoadFromFile("soundGameOver.wav") || !my_clickableBuffer->LoadFromFile("soundIsClickable.wav") || !my_isNotClickableBuffer->LoadFromFile("soundIsNotClickable.wav") || !my_loseLevelBuffer->LoadFromFile("soundLoseLevel.wav") ) {
         cout << "Error when loading font" << endl;
-    }
-#else
-    if (!my_fontScore->LoadFromFile("scoreFont.ttf") || !my_fontTitle->LoadFromFile("titleFont.ttf") || !my_musicLevel->OpenFromFile("gridMusic.wav") || !my_bestScoreFont->LoadFromFile("BestFont.ttf") || !my_buttonBuffer->LoadFromFile("soundButton.wav") || !my_textBuffer->LoadFromFile("soundEnterText.wav") || !my_gameOverBuffer->LoadFromFile("soundGameOver.wav") || !my_clickableBuffer->LoadFromFile("soundIsClickable.wav") || !my_isNotClickableBuffer->LoadFromFile("soundIsNotClickable.wav") || !my_loseLevelBuffer->LoadFromFile("soundLoseLevel.wav") ) {
-        cout << "Error when loading font" << endl;
-    }
-#endif
-    else {
+    } else {
         
         //Les affichages de valeurs seront toujours identiques, du coup on les set dir
         my_playButton->setAnanasMode();
@@ -149,8 +123,8 @@ void InterfaceObserver::setAnanasMode() {
         my_bestButton->setAnanasMode();
         my_quitButton->setAnanasMode();
         
-        for ( std::map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite.begin() ; it!=my_languageToSprite.end(); ++it) {
-            my_languageToSprite[ it->first ]->setAnanasMode();
+        for ( std::map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite->begin() ; it!=my_languageToSprite->end(); ++it) {
+            (*my_languageToSprite)[ it->first ]->setAnanasMode();
         }
         
         for ( map<string, CellBaseGraphic*>::const_iterator it = my_stringToSprite.begin() ; it!=my_stringToSprite.end(); ++it) {
@@ -179,14 +153,12 @@ void InterfaceObserver::setAnanasMode() {
         
         my_musicIcon->setAnanasMode();
         my_soundIcon->setAnanasMode();
-        my_ananasSprite.setAnanasMode();
-        my_teacherSprite.setAnanasMode();
+        my_ananasSprite->setAnanasMode();
+        my_teacherSprite->setAnanasMode();
         my_background.setAnanasMode();
     
         
         //Pour la musique
-        my_musicLevel->SetLoop(true);
-        my_buttonSound->SetBuffer(*my_buttonBuffer);
         my_textSound->SetBuffer(*my_textBuffer);
         my_gameOverSound->SetBuffer(*my_gameOverBuffer);
         my_clickableSoundCell->SetBuffer(*my_clickableBuffer);
@@ -198,25 +170,18 @@ void InterfaceObserver::setAnanasMode() {
 }
 
 void InterfaceObserver::setTeacherMode() {
-#ifdef __linux__
-    if ( !my_fontScore->LoadFromFile("../Ressources/Font/arial.ttf") || !my_bestScoreFont->LoadFromFile("../Ressources/Font/arial.ttf") || !my_fontTitle->LoadFromFile("../Ressources/Font/arial.ttf") ||!my_musicLevel->OpenFromFile("Music/gridMusic.wav") || !my_textBuffer->LoadFromFile("../Ressources/Music/soundEnterText.wav") || !my_gameOverBuffer->LoadFromFile("../Ressources/Music/soundGameOver.wav") || !my_clickableBuffer->LoadFromFile("../Ressources/Music/soundIsClickable.wav") || !my_isNotClickableBuffer->LoadFromFile("../Ressources/Music/soundIsNotClickable.wav") || !my_loseLevelBuffer->LoadFromFile("../Ressources/Music/soundLoseLevel.wav")) {
+
+    if ( !my_fontScore->LoadFromFile("../Ressources/Font/arial.ttf") || !my_bestScoreFont->LoadFromFile("../Ressources/Font/arial.ttf") || !my_fontTitle->LoadFromFile("../Ressources/Font/arial.ttf") || !my_textBuffer->LoadFromFile("../Ressources/Music/soundEnterText.wav") || !my_gameOverBuffer->LoadFromFile("../Ressources/Music/soundGameOver.wav") || !my_clickableBuffer->LoadFromFile("../Ressources/Music/soundIsClickable.wav") || !my_isNotClickableBuffer->LoadFromFile("../Ressources/Music/soundIsNotClickable.wav") || !my_loseLevelBuffer->LoadFromFile("../Ressources/Music/soundLoseLevel.wav")) {
         cout << "Error when loading font" << endl;
-    }
-#else
-    if ( !my_fontScore->LoadFromFile("arial.ttf") || !my_bestScoreFont->LoadFromFile("arial.ttf") || !my_fontTitle->LoadFromFile("arial.ttf") ||!my_musicLevel->OpenFromFile("gridMusic.wav") || !my_textBuffer->LoadFromFile("soundEnterText.wav") || !my_gameOverBuffer->LoadFromFile("soundGameOver.wav") || !my_clickableBuffer->LoadFromFile("soundIsClickable.wav") || !my_isNotClickableBuffer->LoadFromFile("soundIsNotClickable.wav") || !my_loseLevelBuffer->LoadFromFile("soundLoseLevel.wav")) {
-        cout << "Error when loading font" << endl;
-    }
-#endif
-    
-    else {
+    } else {
         
         my_playButton->setTeacherMode();
         my_settingButton->setTeacherMode();
         my_bestButton->setTeacherMode();
         my_quitButton->setTeacherMode();
         
-        for ( std::map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite.begin() ; it!=my_languageToSprite.end(); ++it) {
-            my_languageToSprite[ it->first ]->setTeacherMode();
+        for ( std::map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite->begin() ; it!=my_languageToSprite->end(); ++it) {
+            (*my_languageToSprite)[ it->first ]->setTeacherMode();
         }
         
         for ( map<string, CellBaseGraphic*>::const_iterator it = my_stringToSprite.begin() ; it!=my_stringToSprite.end(); ++it) {
@@ -249,19 +214,16 @@ void InterfaceObserver::setTeacherMode() {
         
         my_musicIcon->setTeacherMode();
         my_soundIcon->setTeacherMode();
-        my_ananasSprite.setTeacherMode();
-        my_teacherSprite.setTeacherMode();
+        my_ananasSprite->setTeacherMode();
+        my_teacherSprite->setTeacherMode();
         my_background.setTeacherMode();
         
-        my_musicLevel->SetLoop(true);
-        my_buttonSound->SetBuffer(*my_buttonBuffer);
+
         my_textSound->SetBuffer(*my_textBuffer);
         my_gameOverSound->SetBuffer(*my_gameOverBuffer);
         my_clickableSoundCell->SetBuffer(*my_clickableBuffer);
         my_isNotClickableSound->SetBuffer(*my_isNotClickableBuffer);
         my_loseLevelSound->SetBuffer(*my_loseLevelBuffer);
-        //Pour la musique
-        my_musicLevel->SetLoop(true);
         
                 
         
@@ -284,13 +246,13 @@ void InterfaceObserver::showPresentation() {
     
     setTextAndDraw( my_titleString, "PURU PURU DIGGER ", ( WINDOWWITDH / 2 ), 100, true );
     
-    my_playButton->setSpriteAndDraw(PLAYX, PLAYY, my_window, my_messages[my_language][play]);
+    my_playButton->setSpriteAndDraw(PLAYX, PLAYY, my_window, my_messages[my_context->getLanguage()][play]);
     
-    my_settingButton->setSpriteAndDraw(OPTIONX, OPTIONY, my_window, my_messages[my_language][setting]);
+    my_settingButton->setSpriteAndDraw(OPTIONX, OPTIONY, my_window, my_messages[my_context->getLanguage()][setting]);
     
-    my_bestButton->setSpriteAndDraw(BESTX, BESTY, my_window, my_messages[my_language][best]);
+    my_bestButton->setSpriteAndDraw(BESTX, BESTY, my_window, my_messages[my_context->getLanguage()][best]);
     
-    my_quitButton->setSpriteAndDraw(QUITX, QUITY, my_window, my_messages[my_language][stop]);
+    my_quitButton->setSpriteAndDraw(QUITX, QUITY, my_window, my_messages[my_context->getLanguage()][stop]);
     
 }
 
@@ -298,40 +260,40 @@ void InterfaceObserver::showOption() {
     newScreen();
     
     //Le titre de la page
-    setTextAndDraw( my_titleString, my_messages[my_language][setting], ( WINDOWWITDH / 2 ), 10, true);
+    setTextAndDraw( my_titleString, my_messages[my_context->getLanguage()][setting], ( WINDOWWITDH / 2 ), 10, true);
     
     //L'énoncé langue
-    setTextAndDraw( my_scoreString, my_messages[my_language][language], QUITONX + 50, CHOICELANGUEHIGH, false);
+    setTextAndDraw( my_scoreString, my_messages[my_context->getLanguage()][language], QUITONX + 50, CHOICELANGUEHIGH, false);
     
-    setTextAndDraw( my_scoreString, my_messages[my_language][actual], QUITONX + 50, MYLANGUEY, false );
+    setTextAndDraw( my_scoreString, my_messages[my_context->getLanguage()][actual], QUITONX + 50, MYLANGUEY, false );
     
-    setTextAndDraw( my_scoreString, my_messages[my_language][theme], QUITONX + 50, CHOICESPRITEY, false );
+    setTextAndDraw( my_scoreString, my_messages[my_context->getLanguage()][theme], QUITONX + 50, CHOICESPRITEY, false );
     
     
     showLanguage();
     
     //On place notre langue en cours
     
-    my_languageToSprite[my_language]->setSpriteAndDraw(MYLANGUEX, MYLANGUEY, my_window);
+    (*my_languageToSprite)[my_context->getLanguage()]->setSpriteAndDraw(MYLANGUEX, MYLANGUEY, my_window);
     
     showSpriteChoice();
     
-    my_quitButton->setSpriteAndDraw(QUITONX, QUITONY, my_window, my_messages[my_language][stop]);
+    my_quitButton->setSpriteAndDraw(QUITONX, QUITONY, my_window, my_messages[my_context->getLanguage()][stop]);
     
 }
 
 void InterfaceObserver::showLanguage() {
-    my_languageToSprite[english]->setSpriteAndDraw(ENGLISHX, CHOICELANGUEHIGH, my_window);
-    my_languageToSprite[francais]->setSpriteAndDraw(FRENCHX, CHOICELANGUEHIGH, my_window);
-    my_languageToSprite[espanol]->setSpriteAndDraw(SPANISHX, CHOICELANGUEHIGH, my_window);
-    my_languageToSprite[deutsch]->setSpriteAndDraw(DEUTSCHX, CHOICELANGUEHIGH, my_window);
-    my_languageToSprite[italiano]->setSpriteAndDraw(ITALIANOX, CHOICELANGUEHIGH, my_window);
+        (*my_languageToSprite)[english]->setSpriteAndDraw(ENGLISHX, CHOICELANGUEHIGH, my_window);
+        (*my_languageToSprite)[francais]->setSpriteAndDraw(FRENCHX, CHOICELANGUEHIGH, my_window);
+        (*my_languageToSprite)[espanol]->setSpriteAndDraw(SPANISHX, CHOICELANGUEHIGH, my_window);
+        (*my_languageToSprite)[deutsch]->setSpriteAndDraw(DEUTSCHX, CHOICELANGUEHIGH, my_window);
+        (*my_languageToSprite)[italiano]->setSpriteAndDraw(ITALIANOX, CHOICELANGUEHIGH, my_window);
     
 }
 
 void InterfaceObserver::showSpriteChoice() {
-    my_ananasSprite.setSpriteAndDraw(CHOICEANANASX, CHOICESPRITEY, my_window);
-    my_teacherSprite.setSpriteAndDraw(CHOICETEACHERX, CHOICESPRITEY, my_window);
+    my_ananasSprite->setSpriteAndDraw(CHOICEANANASX, CHOICESPRITEY, my_window);
+    my_teacherSprite->setSpriteAndDraw(CHOICETEACHERX, CHOICESPRITEY, my_window);
 }
 
 void InterfaceObserver::showBestScore() {
@@ -345,7 +307,7 @@ void InterfaceObserver::showBestScore() {
         my_titleString->SetSize(60);
         
         //Le titre de la page
-        setTextAndDraw( my_titleString, my_messages[my_language][score], ( WINDOWWITDH / 2 ), 10, true ) ;
+        setTextAndDraw( my_titleString, my_messages[my_context->getLanguage()][score], ( WINDOWWITDH / 2 ), 10, true ) ;
         
         int i = 200;
         
@@ -357,7 +319,7 @@ void InterfaceObserver::showBestScore() {
         }
         
         //On affiche le bouton quitter avec son string
-        my_quitButton->setSpriteAndDraw(QUITONX, QUITONY, my_window, my_messages[my_language][stop]);
+        my_quitButton->setSpriteAndDraw(QUITONX, QUITONY, my_window, my_messages[my_context->getLanguage()][stop]);
         
         scoreLect.close();
         
@@ -390,8 +352,8 @@ void InterfaceObserver::setTextAndDraw( sf::String* s, string text, int x, int y
 
 void InterfaceObserver::showIsEnteringABestScore( string player ) {
     newScreen();
-    setTextAndDraw( my_bestScoreString, my_messages[my_language][by], ( WINDOWWITDH / 2 ), 10, true );
-    setTextAndDraw( my_bestScoreString, my_messages[my_language][name], ( WINDOWWITDH / 2 ), 100, true );
+    setTextAndDraw( my_bestScoreString, my_messages[my_context->getLanguage()][by], ( WINDOWWITDH / 2 ), 10, true );
+    setTextAndDraw( my_bestScoreString, my_messages[my_context->getLanguage()][name], ( WINDOWWITDH / 2 ), 100, true );
     
     setTextAndDraw( my_bestScoreString, player, ( WINDOWWITDH / 2 ) , WINDOWHEIGHT / 2, true ) ;
 }
@@ -399,7 +361,7 @@ void InterfaceObserver::showIsEnteringABestScore( string player ) {
 
 
 void InterfaceObserver::showGrid() {
-    if ( animation )
+    if ( my_context->isInAnimation() )
         toAnimate();
     else {
         for ( int i = 0; i < LIGNE ; i++ ) {
@@ -426,14 +388,14 @@ void InterfaceObserver::showLoseLevel() {
     
     my_titleString->SetColor(Color(0,0,0));
     
-    if ( !time && !over ) {
-        setTextAndDraw( my_titleString, my_messages[my_language][looselevel],( WINDOWWITDH / 2 ), WINDOWHEIGHT / 2, true ) ;
-    } else if ( time ) {
-        setTextAndDraw( my_titleString, my_messages[my_language][timeup], ( WINDOWWITDH / 2 ), WINDOWHEIGHT / 2, true );
-    } else if ( over ) {
-        setTextAndDraw( my_titleString, my_messages[my_language][loosegame], ( WINDOWWITDH / 2 ), WINDOWHEIGHT / 2, true );
-    } else if ( time && over ) {
-        setTextAndDraw( my_titleString, my_messages[my_language][loosegame], ( WINDOWWITDH / 2 ), WINDOWHEIGHT / 2, true );
+    if ( !my_context->isTimeOver() && !my_context->isOver() ) {
+        setTextAndDraw( my_titleString, my_messages[my_context->getLanguage()][looselevel],( WINDOWWITDH / 2 ), WINDOWHEIGHT / 2, true ) ;
+    } else if ( my_context->isTimeOver() ) {
+        setTextAndDraw( my_titleString, my_messages[my_context->getLanguage()][timeup], ( WINDOWWITDH / 2 ), WINDOWHEIGHT / 2, true );
+    } else if ( my_context->isOver() ) {
+        setTextAndDraw( my_titleString, my_messages[my_context->getLanguage()][loosegame], ( WINDOWWITDH / 2 ), WINDOWHEIGHT / 2, true );
+    } else if ( my_context->isTimeOver() && my_context->isOver() ) {
+        setTextAndDraw( my_titleString, my_messages[my_context->getLanguage()][loosegame], ( WINDOWWITDH / 2 ), WINDOWHEIGHT / 2, true );
     }
 }
 
@@ -443,59 +405,59 @@ void InterfaceObserver::showWinLevel() {
     my_titleString->SetSize(40);
     my_titleString->SetColor(Color(0,0,0));
     
-    setTextAndDraw( my_titleString, my_messages[my_language][winlevel], ( WINDOWWITDH / 2 ), WINDOWHEIGHT / 2, true ) ;
+    setTextAndDraw( my_titleString, my_messages[my_context->getLanguage()][winlevel], ( WINDOWWITDH / 2 ), WINDOWHEIGHT / 2, true ) ;
 }
 
 void InterfaceObserver::showScore() {
     //Le titre
-    setTextAndDraw( my_titleScoreString, my_messages[my_language][score] + " : ", 100, 80, false);
+    setTextAndDraw( my_titleScoreString, my_messages[my_context->getLanguage()][score] + " : ", 100, 80, false);
     
     //Level et son num
-    setTextAndDraw( my_scoreString, my_messages[my_language][level] + " : ", 20, 140, false);
+    setTextAndDraw( my_scoreString, my_messages[my_context->getLanguage()][level] + " : ", 20, 140, false);
     
     
     setTextAndDraw( my_scoreNum, intToString(my_model->getScore()->getCurrentStep() ), my_scoreString->GetRect().GetWidth() + 40, 140, false );
     
     //Score Total
-    setTextAndDraw( my_scoreString, my_messages[my_language][global] + " : ", 20, 180, false);
+    setTextAndDraw( my_scoreString, my_messages[my_context->getLanguage()][global] + " : ", 20, 180, false);
     
     
     setTextAndDraw( my_scoreNum, intToString(my_model->getScore()->getGlobale() ), my_scoreString->GetRect().GetWidth() + 40, 180, false );
     
     //Score en cours
-    setTextAndDraw( my_scoreString, my_messages[my_language][current] + " : ", 20, 220, false);
+    setTextAndDraw( my_scoreString, my_messages[my_context->getLanguage()][current] + " : ", 20, 220, false);
     
     
     setTextAndDraw( my_scoreNum, intToString(my_model->getScore()->getCurrent() ), my_scoreString->GetRect().GetWidth() + 40, 220, false );
     
     
     //Objectif
-    setTextAndDraw( my_scoreString, my_messages[my_language][goal] + " : ", 20, 260, false);
+    setTextAndDraw( my_scoreString, my_messages[my_context->getLanguage()][goal] + " : ", 20, 260, false);
     
     
     setTextAndDraw( my_scoreNum, intToString(my_model->getLevel()->getGoal() ), my_scoreString->GetRect().GetWidth() + 40, 260, false );
     
     
     //En cours
-    setTextAndDraw( my_scoreString, my_messages[my_language][step] + " : ", 20, 300, false);
+    setTextAndDraw( my_scoreString, my_messages[my_context->getLanguage()][step] + " : ", 20, 300, false);
     
     
     setTextAndDraw( my_scoreNum, intToString(my_model->getLevel()->getCurrentMove() ), my_scoreString->GetRect().GetWidth() + 40, 300 , false);
     
     //La vie
-    setTextAndDraw( my_scoreString, my_messages[my_language][life] + " : ", 20, 340, false);
+    setTextAndDraw( my_scoreString, my_messages[my_context->getLanguage()][life] + " : ", 20, 340, false);
     
     
     setTextAndDraw( my_scoreNum, intToString(my_model->getLevel()->getDigger()->getLife()), my_scoreString->GetRect().GetWidth() + 40, 340, false );
     
     //Le temps
-    setTextAndDraw( my_scoreString, my_messages[my_language][ltime] + " : ", 20, 380, false);
+    setTextAndDraw( my_scoreString, my_messages[my_context->getLanguage()][ltime] + " : ", 20, 380, false);
     
     
     setTextAndDraw( my_scoreNum, intToString( my_model->getLevel()->leftTime() ) , my_scoreString->GetRect().GetWidth() + 40, 380 , false);
     
     //La position
-    setTextAndDraw( my_scoreString, my_messages[my_language][position] + " : ", 20, 420, false);
+    setTextAndDraw( my_scoreString, my_messages[my_context->getLanguage()][position] + " : ", 20, 420, false);
     
     
     setTextAndDraw( my_scoreNum, "[ " + intToString( my_model->getLevel()->getDigger()->getX() ) + " ] [ " +  intToString( my_model->getLevel()->getDigger()->getY() )  + " ] " , my_scoreString->GetRect().GetWidth() + 40, 420, false );
@@ -503,7 +465,7 @@ void InterfaceObserver::showScore() {
 }
 
 void InterfaceObserver::showLevel() {
-    if ( !animation ) {
+    if ( !my_context->isInAnimation() ) {
         newScreen();
         
         my_titleString->SetColor(Color(255,255,255));
@@ -514,7 +476,7 @@ void InterfaceObserver::showLevel() {
         //On dessine le score
         showScore();
         
-        my_quitButton->setSpriteAndDraw(QUITONX, QUITONY, my_window, my_messages[my_language][stop]);
+        my_quitButton->setSpriteAndDraw(QUITONX, QUITONY, my_window, my_messages[my_context->getLanguage()][stop]);
     }
     
     //On dessine la grille
@@ -574,7 +536,7 @@ void InterfaceObserver::enterScore() const{
 void InterfaceObserver::toAnimate() {
     
     if ( ( convertIndiceXToPixel( my_model->getLevel()->getDigger()->getY() ) - my_stringToSprite["Digger"]->getXPos() ) == 0 && ( convertIndiceYToPixel( my_model->getLevel()->getDigger()->getX() ) - my_stringToSprite["Digger"]->getYPos() ) == 0 )
-        animation = false;
+        my_context->setAnimation( false );
     else {
         if ( my_model->getMovement() == South ) {
             my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() ) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos() ) ), my_window );
@@ -629,7 +591,7 @@ void InterfaceObserver::mouseMoved(sf::Event event) {
 
 void InterfaceObserver::keyPressed(sf::Event event) {
     
-    if ( isPlaying ) {
+    if ( my_context->isPlaying() ) {
         // La touche qui a été appuyée
         switch (event.Key.Code) {
             case Key::Escape : // Echap
@@ -637,22 +599,22 @@ void InterfaceObserver::keyPressed(sf::Event event) {
                 break;
                 
             case Key::Right :
-                if ( !isInBreak && isPlaying )
+                if ( !my_context->isInBreak() )
                     my_model->orderMovement(6);
                 break;
                 
             case Key::Up:
-                if ( !isInBreak && isPlaying )
+                if ( !my_context->isInBreak() )
                     my_model->orderMovement(8);
                 break;
                 
             case Key::Left :
-                if ( !isInBreak  && isPlaying)
+                if ( !my_context->isInBreak() )
                     my_model->orderMovement(4);
                 break;
                 
             case Key::Down:
-                if ( !isInBreak && isPlaying )
+                if ( !my_context->isInBreak() )
                     my_model->orderMovement(2);
                 break;
                 
@@ -663,12 +625,12 @@ void InterfaceObserver::keyPressed(sf::Event event) {
                 break;
         }
         
-    } else if ( isEnterABestScore ) {
+    } else if ( my_context->isEnterABestScore() ) {
         switch (event.Key.Code) {
             case Key::Return :
                 if ( player.length() > 0 ) {
-                    isEnterABestScore = false;
-                    isViewingBestScore = true;
+                    my_context->setEnterABestScore( false );
+                    my_context->setViewingBestScore( true );
                     enterScore();
                     player = "";
                     
@@ -687,7 +649,7 @@ void InterfaceObserver::keyPressed(sf::Event event) {
 }
 
 void InterfaceObserver::textEntered(sf::Event event) {
-    if ( isEnterABestScore ) {
+    if ( my_context->isEnterABestScore() ) {
         if ( event.Text.Unicode >= 48 && event.Text.Unicode <127 && player.length() < 25 ) {
             player += static_cast<char>(event.Text.Unicode);
             if ( my_soundIcon->getOnOff() )
@@ -697,179 +659,94 @@ void InterfaceObserver::textEntered(sf::Event event) {
 }
 
 void InterfaceObserver::mouseButtonPressed(sf::Event event) {
-
-
-    if ( isInPresentation ) {
-        if ( my_playButton->isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
-            isInPresentation = false;
-            isPlaying = true;
-            my_model->reset();
-            if ( my_soundIcon->getOnOff())
-                my_buttonSound->Play();
-            
-            if ( my_musicIcon->getOnOff() )
-                my_musicLevel->Play();
-            
-        } else if ( my_quitButton->isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
-            if ( my_soundIcon->getOnOff())
-                my_buttonSound->Play();
-            my_window->Close();
-            
-        } else if ( my_settingButton->isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
-            isInPresentation = false;
-            isChoosingOption = true;
-            if ( my_soundIcon->getOnOff())
-                my_buttonSound->Play();
-            
-        } else if ( my_bestButton->isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
-            isInPresentation = false;
-            isViewingBestScore = true;
-            if ( my_soundIcon->getOnOff())
-                my_buttonSound->Play();
-        }
-        
-    } else if ( isChoosingOption ) {
-        
-        if ( my_languageToSprite[english]->isInZone ( event.MouseButton.X, event.MouseButton.Y ) ) {
-            my_language = english;
-            resetLanguageNorm();
-            
-        } else if ( my_languageToSprite[francais]->isInZone ( event.MouseButton.X, event.MouseButton.Y )  ) {
-            my_language = francais;
-            resetLanguageNorm();
-            
-        } else if ( my_languageToSprite[italiano]->isInZone ( event.MouseButton.X, event.MouseButton.Y )  ) {
-            my_language = italiano;
-            resetLanguageNorm();
-            
-        } else if ( my_languageToSprite[espanol]->isInZone ( event.MouseButton.X, event.MouseButton.Y )  ) {
-            my_language = espanol;
-            resetLanguageNorm();
-            
-        } else if ( my_languageToSprite[deutsch]->isInZone ( event.MouseButton.X, event.MouseButton.Y )  ) {
-            my_language = deutsch;
-            resetLanguageNorm();
-            
-        } else if ( my_ananasSprite.isInZone( event.MouseButton.X, event.MouseButton.Y ) ) {
-            setAnanasMode();
-            
-        } else if ( my_teacherSprite.isInZone( event.MouseButton.X, event.MouseButton.Y) ) {
-            setTeacherMode();
-            
-        }else if ( my_quitButton->isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
-            if ( my_soundIcon->getOnOff())
-                my_buttonSound->Play();
-            isChoosingOption = false;
-            isInPresentation = true;
-        }
-        
-    } else if ( isViewingBestScore ) {
-        
-        if ( my_quitButton->isInZone(event.MouseButton.X, event.MouseButton.Y ) ) {
-            if ( my_soundIcon->getOnOff())
-                my_buttonSound->Play();
-            isViewingBestScore = false;
-            isInPresentation = true;
-        }
-        
-    } else if ( isPlaying ) {
-        if ( convertYPixel( event.MouseButton.Y ) != -1 && convertXPixel( event.MouseButton.X ) != -1 && !animation) {
+    if ( my_context->isPlaying() ) {
+        if ( convertYPixel( event.MouseButton.Y ) != -1 && convertXPixel( event.MouseButton.X ) != -1 && !my_context->isInAnimation() ) {
             if ( my_soundIcon->getOnOff() )
                 my_clickableSoundCell->Play();
             my_model->orderMovement( convertYPixel( event.MouseButton.Y ), convertXPixel( event.MouseButton.X ) );
-            animation = true;
-            
+            my_context->setAnimation( true );
         }
         if ( my_quitButton->isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
-            if ( my_soundIcon->getOnOff())
-                my_buttonSound->Play();
-            isPlaying = false;
-            isEnterABestScore = true;
-            my_musicLevel->Stop();
-            animation = false;
-            
-        } else if ( my_musicIcon->isInZone( event.MouseButton.X, event.MouseButton.Y) ) {
-            if ( my_musicIcon->getOnOff() )
-                my_musicLevel->Play();
-            else
-                my_musicLevel->Pause();
+            my_context->setPlaying( false );
+            my_context->setEnterABestScore( true );
+            my_context->setMusic( false );
+            my_context->setAnimation( false );
         }
     }
 }
 
 void InterfaceObserver::preDisplay() {
     
-    if ( isInPresentation ) {
+    if ( my_context->isInPresentation() ) {
         showPresentation();
-        
-    } else if ( isChoosingOption ) {
+    
+    } else if ( my_context->isChoosingOption() ) {
         showOption();
         
-    } else if ( isViewingBestScore ) {
+    } else if ( my_context->isViewingBestScore() ) {
         showBestScore();
         
-    } else if ( isPlaying ) {
+    } else if ( my_context->isPlaying() ) {
         
         //On check le temps, et l'on peut perdre à cause de lui.
         if ( my_model->getLevel()->timeIsUp() ) {
             my_model->getLevel()->lostLevel();
-            time = true;
+            my_context->setTimeOver( true );
         }
         
         if ( my_model->gameOver() ) {
-            if ( !isInBreak ) {
+            if ( !my_context->isInBreak() ) {
                 pause.Reset();
                 if ( my_soundIcon->getOnOff() )
                     my_gameOverSound->Play();
             }
-            over = true;
-            isInBreak = true;
-            animation = false;
+            my_context->setOver( true );
+            my_context->setInBreak( true );
+            my_context->setAnimation( false );
             
         }
         
         if ( my_model->getLevel()->lose() ) {
-            if ( !isInBreak ) {
+            if ( !my_context->isInBreak() ) {
                 pause.Reset();
-                if ( !over && my_soundIcon->getOnOff() )
+                if ( !my_context->isTimeOver() && my_soundIcon->getOnOff() )
                     my_loseLevelSound->Play();
             }
             showLoseLevel();
-            isInBreak = true;
-            animation = false;
+            my_context->setInBreak( true );
+            my_context->setAnimation( false );
             
         } else if ( my_model->getLevel()->win()  ) {
-            if ( !isInBreak )
+            if ( !my_context->isInBreak() )
                 pause.Reset();
             showWinLevel();
-            isInBreak = true;
-            animation = false;
-            
+            my_context->setInBreak( true );
+            my_context->setAnimation( false );
         } else {
             showLevel();
         }
-    } else if ( isEnterABestScore ) {
+    } else if ( my_context->isEnterABestScore() ) {
         showIsEnteringABestScore( player );
     }
 
 }
 
 void InterfaceObserver::postDisplay() {
-    if ( isInBreak ) {
+    if ( my_context->isInBreak() ) {
         
         if ( pause.GetElapsedTime() > 1.5 ) {
             
             my_model->getLevel()->resetLose();
             my_model->getLevel()->resetWin();
             my_model->getLevel()->resetTime();
-            isInBreak = false;
-            time = false;
+            my_context->setInBreak( false );
+            my_context->setTimeOver( false );
             pause.Reset();
             if ( my_model->gameOver() ) {
-                isPlaying = false;
-                isEnterABestScore = true;
-                over = false;
-                my_musicLevel->Stop();
+                my_context->setPlaying( false );
+                my_context->setEnterABestScore( true );
+                my_context->setOver( false );
+                my_context->setMusic( false );
             }
         }
     }

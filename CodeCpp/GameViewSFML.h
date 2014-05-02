@@ -9,7 +9,10 @@
 #include "Observers/EventDispatcher.h"
 #include "Graphics/GraphicMusic.h"
 #include "Graphics/GraphicSound.h"
-
+#include "PuruContext.h"
+#include "Graphics/LanguageGraphic.h"
+#include "Graphics/AnanasSprite.h"
+#include "Graphics/TeacherSprite.h"
 
 class GameView {
     private :
@@ -25,7 +28,13 @@ class GameView {
     
         GraphicMusic *my_musicIcon;
         GraphicSound *my_soundIcon;
+    
+        AnanasSprite *my_ananasSprite;
+        TeacherSprite *my_teacherSprite;
+    
+        std::map< Language, LanguageGraphic* >* my_languageToSprite;
 
+        PuruContext* my_context;
     
     public :
 

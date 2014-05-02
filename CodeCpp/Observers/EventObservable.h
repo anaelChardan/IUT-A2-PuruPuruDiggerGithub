@@ -23,9 +23,9 @@ class EventObservable {
         void preDisplay() const;
         void postDisplay() const;
 	
-        void addObserver(EventObserver* observer);
+        virtual void addObserver( EventObserver* observer );
     
-        void removeObserver(EventObserver* observer);
+        virtual void removeObserver( EventObserver* observer );
 };
 
 #endif /* defined(__PuruPuruDigger__EventObservable__) */
