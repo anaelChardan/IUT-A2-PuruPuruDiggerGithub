@@ -24,6 +24,7 @@
 #include "GraphicElement.h"
 #include "AnanasSprite.h"
 #include "TeacherSprite.h"
+#include "EventDispatcher.h"
 
 class GameView {
     private :
@@ -64,6 +65,9 @@ class GameView {
         ValueCell* ptr_valueCell;
         GoldGraphic* ptr_goldGraphic;
         ValueGraphic* ptr_valueGraphic;
+    
+        EventDispatcher* my_eventDispatcher;
+    
     
         bool animation;
 

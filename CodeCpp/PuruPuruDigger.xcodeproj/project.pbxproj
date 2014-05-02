@@ -110,6 +110,11 @@
 		03FAA2EB18F9630700CDD8A6 /* EnglishGraphic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03FAA2E918F9630700CDD8A6 /* EnglishGraphic.cpp */; };
 		03FAA2EE18F963BB00CDD8A6 /* ButtonGraphic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03FAA2EC18F963BB00CDD8A6 /* ButtonGraphic.cpp */; };
 		03FAA2F118F9A00800CDD8A6 /* CellTextGraphic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03FAA2EF18F9A00800CDD8A6 /* CellTextGraphic.cpp */; };
+		7FA5D3771912524E0035B5DE /* EventObserver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5D3751912524E0035B5DE /* EventObserver.cpp */; };
+		7FA5D37A191252A70035B5DE /* EventObservable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5D378191252A70035B5DE /* EventObservable.cpp */; };
+		7FA5D37D1912540A0035B5DE /* EventDispatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5D37B1912540A0035B5DE /* EventDispatcher.cpp */; };
+		7FA5D380191257060035B5DE /* PresentationObserver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5D37E191257060035B5DE /* PresentationObserver.cpp */; };
+		7FA5D3831912585D0035B5DE /* PlayingObserver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5D3811912585D0035B5DE /* PlayingObserver.cpp */; };
 		936727F818B33B91009873DE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 936727F618B33B91009873DE /* main.cpp */; };
 		9367280918B35E8B009873DE /* sfml-audio.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 936727FF18B35E81009873DE /* sfml-audio.framework */; };
 		9367280A18B35E8B009873DE /* sfml-graphics.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 9367280018B35E81009873DE /* sfml-graphics.framework */; };
@@ -260,6 +265,16 @@
 		03FAA2ED18F963BB00CDD8A6 /* ButtonGraphic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonGraphic.h; sourceTree = SOURCE_ROOT; };
 		03FAA2EF18F9A00800CDD8A6 /* CellTextGraphic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CellTextGraphic.cpp; sourceTree = SOURCE_ROOT; };
 		03FAA2F018F9A00800CDD8A6 /* CellTextGraphic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellTextGraphic.h; sourceTree = SOURCE_ROOT; };
+		7FA5D3751912524E0035B5DE /* EventObserver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventObserver.cpp; sourceTree = SOURCE_ROOT; };
+		7FA5D3761912524E0035B5DE /* EventObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventObserver.h; sourceTree = SOURCE_ROOT; };
+		7FA5D378191252A70035B5DE /* EventObservable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventObservable.cpp; sourceTree = SOURCE_ROOT; };
+		7FA5D379191252A70035B5DE /* EventObservable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventObservable.h; sourceTree = SOURCE_ROOT; };
+		7FA5D37B1912540A0035B5DE /* EventDispatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventDispatcher.cpp; sourceTree = SOURCE_ROOT; };
+		7FA5D37C1912540A0035B5DE /* EventDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDispatcher.h; sourceTree = SOURCE_ROOT; };
+		7FA5D37E191257060035B5DE /* PresentationObserver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PresentationObserver.cpp; sourceTree = SOURCE_ROOT; };
+		7FA5D37F191257060035B5DE /* PresentationObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentationObserver.h; sourceTree = SOURCE_ROOT; };
+		7FA5D3811912585D0035B5DE /* PlayingObserver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayingObserver.cpp; sourceTree = SOURCE_ROOT; };
+		7FA5D3821912585D0035B5DE /* PlayingObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingObserver.h; sourceTree = SOURCE_ROOT; };
 		936727B518B33A9C009873DE /* PuruPuruDiggerConsole.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PuruPuruDiggerConsole.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		936727F618B33B91009873DE /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
 		936727FF18B35E81009873DE /* sfml-audio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-audio.framework"; path = "/Library/Frameworks/sfml-audio.framework"; sourceTree = "<absolute>"; };
@@ -351,6 +366,23 @@
 			path = Pictures;
 			sourceTree = SOURCE_ROOT;
 		};
+		7FA5D384191393090035B5DE /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0377340C18B9FFBC00D5AFA0 /* EmptyCell.cpp */,
+				0377340D18B9FFBC00D5AFA0 /* EmptyCell.h */,
+				0377340F18B9FFCA00D5AFA0 /* GoldCell.cpp */,
+				0377341018B9FFCA00D5AFA0 /* GoldCell.h */,
+				0377341218B9FFDF00D5AFA0 /* ValueCell.cpp */,
+				0377341318B9FFDF00D5AFA0 /* ValueCell.h */,
+				03FAA2EF18F9A00800CDD8A6 /* CellTextGraphic.cpp */,
+				03FAA2F018F9A00800CDD8A6 /* CellTextGraphic.h */,
+				03ED313D18B385BA00CF8AA1 /* CellBase.cpp */,
+				03ED313E18B385BA00CF8AA1 /* CellBase.h */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		936727AC18B33A9C009873DE = {
 			isa = PBXGroup;
 			children = (
@@ -387,6 +419,7 @@
 		936727BE18B33A9C009873DE /* PuruPuruDigger */ = {
 			isa = PBXGroup;
 			children = (
+				7FA5D384191393090035B5DE /* Cell */,
 				039F92AF18E0A7FD008D3F85 /* Music */,
 				03E6822318D300BA004E125C /* Pictures */,
 				0371150218D1889000EE9282 /* Font */,
@@ -400,16 +433,8 @@
 				03ED314718B385BA00CF8AA1 /* Level.h */,
 				03ED314818B385BA00CF8AA1 /* Score.cpp */,
 				03ED314918B385BA00CF8AA1 /* Score.h */,
-				03ED313D18B385BA00CF8AA1 /* CellBase.cpp */,
-				03ED313E18B385BA00CF8AA1 /* CellBase.h */,
 				031E007618B52B360045013D /* Bomb.cpp */,
 				031E007718B52B360045013D /* Bomb.h */,
-				0377340C18B9FFBC00D5AFA0 /* EmptyCell.cpp */,
-				0377340D18B9FFBC00D5AFA0 /* EmptyCell.h */,
-				0377340F18B9FFCA00D5AFA0 /* GoldCell.cpp */,
-				0377341018B9FFCA00D5AFA0 /* GoldCell.h */,
-				0377341218B9FFDF00D5AFA0 /* ValueCell.cpp */,
-				0377341318B9FFDF00D5AFA0 /* ValueCell.h */,
 				03ED314018B385BA00CF8AA1 /* Digger.cpp */,
 				03ED314118B385BA00CF8AA1 /* Digger.h */,
 				936727F618B33B91009873DE /* main.cpp */,
@@ -447,8 +472,6 @@
 				03D8F4E918F3CBB6003A0948 /* BombGraphic.h */,
 				03D8F4F218F3CC29003A0948 /* EmptyGraphic.h */,
 				03D8F4F118F3CC29003A0948 /* EmptyGraphic.cpp */,
-				03FAA2EF18F9A00800CDD8A6 /* CellTextGraphic.cpp */,
-				03FAA2F018F9A00800CDD8A6 /* CellTextGraphic.h */,
 				03D8F4EB18F3CBF1003A0948 /* ValueGraphic.cpp */,
 				03D8F4EC18F3CBF1003A0948 /* ValueGraphic.h */,
 				03D8F4EE18F3CC1D003A0948 /* GoldGraphic.cpp */,
@@ -465,6 +488,16 @@
 				03FAA2E718F962F600CDD8A6 /* DeutschGraphic.h */,
 				03FAA2E918F9630700CDD8A6 /* EnglishGraphic.cpp */,
 				03FAA2EA18F9630700CDD8A6 /* EnglishGraphic.h */,
+				7FA5D3751912524E0035B5DE /* EventObserver.cpp */,
+				7FA5D3761912524E0035B5DE /* EventObserver.h */,
+				7FA5D378191252A70035B5DE /* EventObservable.cpp */,
+				7FA5D379191252A70035B5DE /* EventObservable.h */,
+				7FA5D37B1912540A0035B5DE /* EventDispatcher.cpp */,
+				7FA5D37C1912540A0035B5DE /* EventDispatcher.h */,
+				7FA5D37E191257060035B5DE /* PresentationObserver.cpp */,
+				7FA5D37F191257060035B5DE /* PresentationObserver.h */,
+				7FA5D3811912585D0035B5DE /* PlayingObserver.cpp */,
+				7FA5D3821912585D0035B5DE /* PlayingObserver.h */,
 			);
 			path = PuruPuruDigger;
 			sourceTree = "<group>";
@@ -631,6 +664,7 @@
 				036246DB190127900012039E /* SpriteGraphic.cpp in Sources */,
 				03FAA2D918F94E3B00CDD8A6 /* CellBaseGraphic.cpp in Sources */,
 				03AC0B5918F4403E006120CD /* GraphicElement.cpp in Sources */,
+				7FA5D37A191252A70035B5DE /* EventObservable.cpp in Sources */,
 				03AC0B5A18F4403E006120CD /* DiggerGraphic.cpp in Sources */,
 				03AC0B5B18F4403E006120CD /* BombGraphic.cpp in Sources */,
 				036246D8190127650012039E /* BackgroundGraphic.cpp in Sources */,
@@ -638,10 +672,13 @@
 				03AC0B5D18F4403E006120CD /* GoldGraphic.cpp in Sources */,
 				03AC0B5E18F4403E006120CD /* EmptyGraphic.cpp in Sources */,
 				03FAA2E518F962EA00CDD8A6 /* SpanishGraphic.cpp in Sources */,
+				7FA5D380191257060035B5DE /* PresentationObserver.cpp in Sources */,
 				03D783BE18D0A07800A1B8AE /* mainSFML.cpp in Sources */,
 				03315F4D18FE76F3009C4157 /* GraphicAudibleElement.cpp in Sources */,
 				03D7839918D097E100A1B8AE /* ValueCell.cpp in Sources */,
 				03D7839A18D097E100A1B8AE /* LanguageMessage.cpp in Sources */,
+				7FA5D3831912585D0035B5DE /* PlayingObserver.cpp in Sources */,
+				7FA5D37D1912540A0035B5DE /* EventDispatcher.cpp in Sources */,
 				03D7839B18D097E100A1B8AE /* Level.cpp in Sources */,
 				03FAA2E218F962DA00CDD8A6 /* ItalianoGraphic.cpp in Sources */,
 				036246DE1901442D0012039E /* AnanasSprite.cpp in Sources */,
@@ -655,6 +692,7 @@
 				03FAA2DC18F962A100CDD8A6 /* LanguageGraphic.cpp in Sources */,
 				03315F5318FE7BF2009C4157 /* GraphicSound.cpp in Sources */,
 				03FAA2EE18F963BB00CDD8A6 /* ButtonGraphic.cpp in Sources */,
+				7FA5D3771912524E0035B5DE /* EventObserver.cpp in Sources */,
 				03315F5018FE7852009C4157 /* GraphicMusic.cpp in Sources */,
 				03229D1D18D35E8A00027190 /* Utils.cpp in Sources */,
 				03D783A118D097E100A1B8AE /* Score.cpp in Sources */,

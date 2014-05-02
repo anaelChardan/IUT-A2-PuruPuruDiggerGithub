@@ -14,6 +14,8 @@
 #include "DeutschGraphic.h"
 #include "SpanishGraphic.h"
 #include "EnglishGraphic.h"
+#include "PresentationObserver.h"
+#include "PlayingObserver.h"
 
 using namespace std;
 using namespace sf;
@@ -71,6 +73,10 @@ GameView::GameView() {
 
     //Chargement des images selon le mode
     setAnanasMode();
+    
+    my_eventDispatcher = new EventDispatcher();
+    
+    // this.eventDispatcher = new EventDispatcher
 }
 
 //Destructeur
@@ -629,14 +635,26 @@ GameView::treatGame( ) {
 
     sf::Clock pause;        //La clock pour la pause
     bool isInBreak = false; //Pour savoir quand on est en pause
-
+    
+    
+    PresentationObserver* presentationObserver = new PresentationObserver();
+    PlayingObserver* playingObserver = new PlayingObserver();
+    
+    
+    
+    
+    my_eventDispatcher->addObserver(presentationObserver);
+    my_eventDispatcher->addObserver(playingObserver);
+    
+    
     while ( my_window->IsOpened( ) ) {
-
         Event event;
-
         while ( my_window->GetEvent( event ) ) {
-            switch (event.Type) {
+            
+            my_eventDispatcher->dispatch( event );
 
+            
+            switch (event.Type) {
                 case Event::Closed :
                     my_window->Close();
                     break;
