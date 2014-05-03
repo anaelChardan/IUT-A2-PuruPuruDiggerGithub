@@ -14,22 +14,13 @@ class ButtonGraphic : public GraphicElement {
     
     public :
         virtual void setImageToSprite();
-        virtual void setTeacherMode();
-        virtual void setAnanasMode();
         virtual void setSpriteAndDraw( int x, int y, sf::RenderWindow * _window, std::string );
         void setHover();
         void reset();
-        virtual void draw(sf::RenderWindow* _window) const;
-
-    
-    
-    
+        virtual void draw(sf::RenderWindow* _window) const;    
         virtual void mouseMoved(sf::Event event);
-        virtual void keyPressed(sf::Event event);
-        virtual void textEntered(sf::Event event);
         virtual void mouseButtonPressed(sf::Event event);
-        virtual void preDisplay();
-        virtual void postDisplay();
+        virtual void changeTheme( std::string theme );
 };
 
 #endif /* defined(__PuruPuruDigger__ButtonGraphic__) */

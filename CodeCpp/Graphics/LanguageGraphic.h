@@ -9,18 +9,11 @@ class LanguageGraphic : public GraphicElement {
         static sf::Image my_image ;
     public :
         virtual void setImageToSprite();
-        virtual void setTeacherMode();
-        virtual void setAnanasMode();
         void setHover();
         void reset();
-    
-    
         virtual void mouseMoved(sf::Event event);
-        virtual void keyPressed(sf::Event event);
-        virtual void textEntered(sf::Event event);
-        virtual void mouseButtonPressed(sf::Event event);
-        virtual void preDisplay();
-        virtual void postDisplay();
+        virtual void changeTheme( std::string theme );
+
 };
 
 #endif /* defined(__PuruPuruDigger__LanguageGraphic__) */

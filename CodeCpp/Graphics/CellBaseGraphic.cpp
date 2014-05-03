@@ -3,44 +3,18 @@
 
 sf::Image CellBaseGraphic::my_image;
 
-CellBaseGraphic::CellBaseGraphic() {
-    setAnanasMode();
-}
-
-CellBaseGraphic::~CellBaseGraphic() { }
-
-void
-CellBaseGraphic::setAnanasMode() {
-#ifdef __linux
-    if ( !my_image.LoadFromFile("../Ressources/Pictures/case.png" ) )
-        std::cout << " Error when loading case image " << std::endl;
-#else
-    if ( !my_image.LoadFromFile("case.png") ) {
-        std::cout << " Error when loading case image " << std::endl;
-    }
-#endif
-    else {
+void CellBaseGraphic::changeTheme( std::string theme ) {
+    
+    std::string myimage = theme + "_case.png";
+    if ( !my_image.LoadFromFile( myimage.c_str() ) ) {
+        std::cerr << " Error when loading case image " << std::endl;
+    } else {
         setImageToSprite();
     }
 }
 
-void
-CellBaseGraphic::setTeacherMode() {
-#ifdef __linux
-    if ( !my_image.LoadFromFile("../Ressources/Pictures/caseTeach.png" ) )
-        std::cerr << " Error when loading caseTeach image " << std::endl;
-#else
-    if ( !my_image.LoadFromFile("caseTeach.png") ) {
-        std::cout << " Error when loading caseTeach image " << std::endl;
-    }
-#endif
-    else {
-        setImageToSprite();
-    }
-}
 
-void
-CellBaseGraphic::setImageToSprite() {
+void CellBaseGraphic::setImageToSprite() {
     my_image.CreateMaskFromColor(sf::Color(0, 55, 97));
     my_sprite.SetImage(my_image);
     my_sprite.Resize( CASEWITDH, CASEHEIGHT);

@@ -14,6 +14,7 @@
 #include "Graphics/AnanasSprite.h"
 #include "Graphics/TeacherSprite.h"
 #include "Manager/SoundManager.h"
+#include "Graphics/BackgroundGraphic.h"
 
 class GameView {
     private :
@@ -33,6 +34,8 @@ class GameView {
         AnanasSprite *my_ananasSprite;
         TeacherSprite *my_teacherSprite;
     
+        BackgroundGraphic *my_background;
+
         std::map< Language, LanguageGraphic* >* my_languageToSprite;
 
         PuruContext* my_context;

@@ -32,6 +32,8 @@ GameView::GameView() {
     my_ananasSprite = new AnanasSprite();
     my_teacherSprite = new TeacherSprite();
     
+    my_background = new BackgroundGraphic();
+
     my_languageToSprite = new std::map<Language, LanguageGraphic*>();
     
     my_languageToSprite->operator[](english) = new EnglishGraphic();
@@ -61,7 +63,7 @@ void GameView::setModel(GameModel *model) {
 //Boucle d'événement
 void GameView::treatGame( ) {
     
-    InterfaceObserver* interfaceObserver = new InterfaceObserver( my_window, my_model, my_playButton, my_settingButton, my_bestButton, my_quitButton, my_musicIcon, my_soundIcon, my_languageToSprite, my_ananasSprite, my_teacherSprite );
+    InterfaceObserver* interfaceObserver = new InterfaceObserver( my_window, my_model, my_playButton, my_settingButton, my_bestButton, my_quitButton, my_musicIcon, my_soundIcon, my_languageToSprite, my_ananasSprite, my_teacherSprite, my_background );
     
     my_eventDispatcher->addObserver( interfaceObserver );
     my_eventDispatcher->addObserver( my_playButton );
@@ -70,10 +72,18 @@ void GameView::treatGame( ) {
     my_eventDispatcher->addObserver( my_quitButton );
     my_eventDispatcher->addObserver( my_soundIcon );
     my_eventDispatcher->addObserver( my_musicIcon );
+    
+    my_eventDispatcher->addObserver( my_ananasSprite );
+    my_eventDispatcher->addObserver( my_teacherSprite );
+    my_eventDispatcher->addObserver( my_background );
+    
     for ( std::map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite->begin() ; it!=my_languageToSprite->end(); ++it) {
         my_eventDispatcher->addObserver( (*my_languageToSprite)[ it->first ] );
     }
 
+    // theme par defaut
+    my_eventDispatcher->changeTheme("ananas");
+    
     while ( my_window->IsOpened( ) ) {
         Event event;
         while ( my_window->GetEvent( event ) ) {
@@ -109,10 +119,10 @@ void GameView::treatGame( ) {
                             }
                             
                             if ( my_ananasSprite->isInZone( event.MouseButton.X, event.MouseButton.Y ) ) {
-//                                setAnanasMode();
+                                my_eventDispatcher->changeTheme("ananas");
                                 
                             } else if ( my_teacherSprite->isInZone( event.MouseButton.X, event.MouseButton.Y) ) {
-  //                              setTeacherMode();
+                                my_eventDispatcher->changeTheme("teacher");
                                 
                             } else if ( my_quitButton->isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
                                 my_context->setChoosingOption( false );
@@ -145,7 +155,7 @@ void GameView::treatGame( ) {
                         break;
                         
                 }
-                my_eventDispatcher->dispatch( event );
+                my_eventDispatcher->notify( event );
             }
         }
         

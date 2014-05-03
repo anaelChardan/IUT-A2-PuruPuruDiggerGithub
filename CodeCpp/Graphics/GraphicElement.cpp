@@ -36,3 +36,4 @@ void GraphicElement::textEntered( sf::Event event ) {}
 void GraphicElement::mouseButtonPressed( sf::Event event ) {}
 void GraphicElement::postDisplay() {}
 void GraphicElement::preDisplay() {}
+void GraphicElement::changeTheme( std::string theme ) {}

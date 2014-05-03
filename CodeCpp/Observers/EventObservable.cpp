@@ -47,6 +47,12 @@ void EventObservable::postDisplay() const {
     }
 }
 
+void EventObservable::changeTheme(std::string theme) const {
+    for (std::set<EventObserver*>::const_iterator it = list_observers.begin(); it != list_observers.end(); ++it) {
+        (*it)->changeTheme( theme );
+    }
+}
+
 void EventObservable::addObserver(EventObserver* observer) {
     list_observers.insert(observer);
 }

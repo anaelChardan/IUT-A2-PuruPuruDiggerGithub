@@ -3,29 +3,19 @@
 
 sf::Image SpriteGraphic::my_image;
 
-
-void
-SpriteGraphic::setTeacherMode() {
-    setAnanasMode();
-}
-
-void
-SpriteGraphic::setAnanasMode() {
-#ifdef __linux
-    if ( !my_image.LoadFromFile("../Ressources/Pictures/choiceSprite.png" ) )
+void SpriteGraphic::changeTheme( std::string theme ) {
+    
+    std::string myimage = "choiceSprite.png";
+    if ( !my_image.LoadFromFile( myimage.c_str() ) ) {
         std::cerr << " Error when loading choiceSprite image " << std::endl;
-#else
-    if ( !my_image.LoadFromFile("choiceSprite.png") ) {
-        std::cerr << " Error when loading choiceSprite image " << std::endl;
-    }
-#endif
-    else {
+    } else {
         setImageToSprite();
     }
 }
 
-void
-SpriteGraphic::setImageToSprite() {
+
+
+void SpriteGraphic::setImageToSprite() {
     my_image.CreateMaskFromColor(sf::Color(0, 55, 97));
     my_sprite.SetImage(my_image);
 }

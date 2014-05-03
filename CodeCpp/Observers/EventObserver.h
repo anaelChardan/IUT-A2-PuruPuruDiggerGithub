@@ -28,6 +28,8 @@ class EventObserver {
         virtual void preDisplay() = 0;
         virtual void postDisplay() = 0;
     
+        virtual void changeTheme( std::string theme ) = 0;
+    
         void setContext( PuruContext *context );
 
 };

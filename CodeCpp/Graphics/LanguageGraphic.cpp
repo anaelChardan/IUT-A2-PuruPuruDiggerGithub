@@ -4,40 +4,26 @@
 sf::Image LanguageGraphic::my_image;
 
 
-void
-LanguageGraphic::setTeacherMode() {
-    setAnanasMode();
-}
-
-void
-LanguageGraphic::setAnanasMode() {
-#ifdef __linux
-    if ( !my_image.LoadFromFile("../Ressources/Pictures/languages.png" ) )
+void LanguageGraphic::changeTheme( std::string theme ) {
+    
+    std::string myimage = "languages.png";
+    if ( !my_image.LoadFromFile( myimage.c_str() ) ) {
         std::cerr << " Error when loading languages image " << std::endl;
-#else
-    if ( !my_image.LoadFromFile("languages.png") ) {
-        std::cerr << " Error when loading languages image " << std::endl;
-    }
-#endif
-    else {
+    } else {
         setImageToSprite();
-
     }
 }
 
-void
-LanguageGraphic::setImageToSprite() {
+void LanguageGraphic::setImageToSprite() {
     my_image.CreateMaskFromColor(sf::Color(0, 55, 97));
     my_sprite.SetImage(my_image);
 }
 
-void
-LanguageGraphic::setHover() {
+void LanguageGraphic::setHover() {
    my_sprite.SetColor(sf::Color(255,255,255,128));
 }
 
-void
-LanguageGraphic::reset() {
+void LanguageGraphic::reset() {
     my_sprite.SetColor(sf::Color(255,255,255,255));
 }
 
@@ -51,10 +37,3 @@ void LanguageGraphic::mouseMoved( sf::Event event ) {
         reset();
     }
 }
-
-
-void LanguageGraphic::keyPressed( sf::Event event ) {}
-void LanguageGraphic::textEntered( sf::Event event ) {}
-void LanguageGraphic::mouseButtonPressed( sf::Event event ) {}
-void LanguageGraphic::postDisplay() {}
-void LanguageGraphic::preDisplay() {}

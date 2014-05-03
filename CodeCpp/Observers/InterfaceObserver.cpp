@@ -29,7 +29,8 @@ InterfaceObserver::InterfaceObserver(
                                      GraphicSound *sound,
                                      std::map< Language, LanguageGraphic* >* languageToSprite,
                                      AnanasSprite *ananas,
-                                     TeacherSprite *teacher
+                                     TeacherSprite *teacher,
+                                     BackgroundGraphic *background
                                      ) :
                                         my_window( window ),
                                         my_model( model ),
@@ -41,7 +42,8 @@ InterfaceObserver::InterfaceObserver(
                                         my_soundIcon(sound),
                                         my_languageToSprite(languageToSprite),
                                         my_ananasSprite( ananas ),
-                                        my_teacherSprite( teacher )
+                                        my_teacherSprite( teacher ),
+                                        my_background(background)
 
 
     {
@@ -64,9 +66,6 @@ InterfaceObserver::InterfaceObserver(
     my_stringToSprite["ValueCell"] = new ValueGraphic();
     my_stringToSprite["Bomb"]      = new BombGraphic();
     
-    
-    //Chargement des images selon le mode
-    setAnanasMode();
 }
 
 //Constructeur
@@ -99,121 +98,9 @@ void InterfaceObserver::resetLanguageNorm() {
     
 }
 
-
-void InterfaceObserver::setAnanasMode() {
-
-    if (!my_fontScore->LoadFromFile("scoreFont.ttf") ||
-        !my_fontTitle->LoadFromFile("titleFont.ttf") ||
-        !my_bestScoreFont->LoadFromFile("BestFont.ttf") ) {
-        cout << "Error when loading font" << endl;
-    } else {
-        
-        //Les affichages de valeurs seront toujours identiques, du coup on les set dir
-        my_playButton->setAnanasMode();
-        my_settingButton->setAnanasMode();
-        my_bestButton->setAnanasMode();
-        my_quitButton->setAnanasMode();
-        
-        for ( std::map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite->begin() ; it!=my_languageToSprite->end(); ++it) {
-            (*my_languageToSprite)[ it->first ]->setAnanasMode();
-        }
-        
-        for ( map<string, CellBaseGraphic*>::const_iterator it = my_stringToSprite.begin() ; it!=my_stringToSprite.end(); ++it) {
-            my_stringToSprite[ it->first ]->setAnanasMode();
-        }
-        
-        my_titleScoreString->SetFont( *my_fontScore );
-        my_titleScoreString->SetSize(40);
-        my_titleScoreString->SetColor(Color(50,50,150));
-        my_titleScoreString->SetStyle(String::Underlined | String::Bold | String::Italic );
-        
-        my_scoreString->SetFont( *my_fontScore );
-        my_scoreString->SetSize(30);
-        my_scoreString->SetColor(Color(251,210,98));
-        my_scoreString->SetStyle(String::Underlined);
-        
-        my_scoreNum->SetFont( * my_fontScore );
-        my_scoreNum->SetColor(Color(255,100,100));
-        
-        my_titleString->SetFont( *my_fontTitle );
-        
-        my_bestScoreString->SetFont( *my_bestScoreFont );
-        my_bestScoreString->SetColor(Color(49,140,231));
-        my_bestScoreString->SetSize(30);
-        
-        
-        my_musicIcon->setAnanasMode();
-        my_soundIcon->setAnanasMode();
-        my_ananasSprite->setAnanasMode();
-        my_teacherSprite->setAnanasMode();
-        my_background.setAnanasMode();
-    
-    
-    }
-
-    
-}
-
-void InterfaceObserver::setTeacherMode() {
-
-    if (
-        !my_fontScore->LoadFromFile("../Ressources/Font/arial.ttf") ||
-        !my_bestScoreFont->LoadFromFile("../Ressources/Font/arial.ttf") ||
-        !my_fontTitle->LoadFromFile("../Ressources/Font/arial.ttf")
-        ) {
-        cout << "Error when loading font" << endl;
-    } else {
-        
-        my_playButton->setTeacherMode();
-        my_settingButton->setTeacherMode();
-        my_bestButton->setTeacherMode();
-        my_quitButton->setTeacherMode();
-        
-        for ( std::map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite->begin() ; it!=my_languageToSprite->end(); ++it) {
-            (*my_languageToSprite)[ it->first ]->setTeacherMode();
-        }
-        
-        for ( map<string, CellBaseGraphic*>::const_iterator it = my_stringToSprite.begin() ; it!=my_stringToSprite.end(); ++it) {
-            my_stringToSprite[ (*it).first ]->setTeacherMode();
-        }
-        
-        //Le string pour la page de présentation
-        my_titleString->SetFont( *my_fontTitle );
-        
-        //Le string pour le titre des scores
-        my_titleScoreString->SetFont( *my_fontScore );
-        my_titleScoreString->SetSize(40);
-        my_titleScoreString->SetStyle(String::Underlined | String::Bold | String::Italic );
-        my_titleScoreString->SetColor(Color(255,255,255));
-        
-        //Le string pour l'énoncé des scores de la classe language message
-        my_scoreString->SetSize(30);
-        my_scoreString->SetFont( *my_fontScore );
-        my_scoreString->SetColor(Color(255, 255,255));
-        my_scoreString->SetStyle(String::Underlined);
-        
-        //Le string pour le intToString
-        my_scoreNum->SetFont( * my_fontScore );
-        my_scoreNum->SetColor(Color(255,255,255));
-        
-        my_bestScoreString->SetFont( *my_bestScoreFont);
-        my_bestScoreString->SetColor(Color(255,255,255));
-        my_bestScoreString->SetSize(25);
-        
-        
-        my_musicIcon->setTeacherMode();
-        my_soundIcon->setTeacherMode();
-        my_ananasSprite->setTeacherMode();
-        my_teacherSprite->setTeacherMode();
-        my_background.setTeacherMode();
-        
-    }
-}
-
-
 void InterfaceObserver::newScreen() {
     my_window->Clear();
-    my_background.draw(my_window);
+    my_background->draw(my_window);
     my_musicIcon->draw(my_window);
     my_soundIcon->draw(my_window);
 }
@@ -637,7 +524,9 @@ void InterfaceObserver::textEntered(sf::Event event) {
 }
 
 void InterfaceObserver::mouseButtonPressed(sf::Event event) {
-
+    if ( my_quitButton->isInZone( event.MouseButton.X, event.MouseButton.Y ) ) {
+        SoundManager::getInstance()->pauseMusic();
+    }
 }
 
 void InterfaceObserver::preDisplay() {
@@ -714,3 +603,55 @@ void InterfaceObserver::postDisplay() {
         }
     }
 }
+
+void InterfaceObserver::changeTheme( std::string theme ) {
+    
+    string fontScore = theme + "_scoreFont.ttf";
+    string fontTitle = theme + "_titleFont.ttf";
+    string bestScoreFont = theme + "_BestFont.ttf";
+
+    if ( theme == "teacher" ) {
+        fontScore = "arial.ttf";
+        fontTitle = "arial.ttf";
+        bestScoreFont = "arial.ttf";
+    }
+
+    
+    if (!my_fontScore->LoadFromFile( fontScore.c_str() ) ||
+        !my_fontTitle->LoadFromFile( fontTitle.c_str() ) ||
+        !my_bestScoreFont->LoadFromFile( bestScoreFont.c_str() ) ) {
+            cout << "Error when loading fonts" << endl;
+    } else {
+        for ( map<string, CellBaseGraphic*>::const_iterator it = my_stringToSprite.begin() ; it!=my_stringToSprite.end(); ++it) {
+            my_stringToSprite[ it->first ]->changeTheme( theme );
+        }
+        
+        my_titleScoreString->SetFont( *my_fontScore );
+        my_scoreString->SetFont( *my_fontScore );
+        my_scoreNum->SetFont( * my_fontScore );
+        my_titleString->SetFont( *my_fontTitle );
+        my_bestScoreString->SetFont( *my_bestScoreFont );
+        
+        my_titleScoreString->SetStyle(String::Underlined | String::Bold | String::Italic );
+        my_scoreString->SetStyle(String::Underlined);
+
+        my_scoreString->SetSize(30);
+        my_titleScoreString->SetSize(40);
+        my_bestScoreString->SetSize(28);
+        
+        if ( theme == "ananas" ) {
+
+            my_titleScoreString->SetColor(Color(50,50,150));
+            my_scoreString->SetColor(Color(251,210,98));
+            my_scoreNum->SetColor(Color(255,100,100));
+            my_bestScoreString->SetColor(Color(49,140,231));
+        } else {
+            my_titleScoreString->SetColor(Color(255,255,255));
+            my_scoreString->SetColor(Color(255, 255,255));
+            my_scoreNum->SetColor(Color(255,255,255));
+            my_bestScoreString->SetColor(Color(255,255,255));
+        }
+    }
+}
+
+

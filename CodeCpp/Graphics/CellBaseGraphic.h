@@ -7,12 +7,10 @@
 class CellBaseGraphic : public GraphicElement {
     protected :
         static sf::Image my_image;
+    
     public :
-        CellBaseGraphic();
-        virtual ~CellBaseGraphic();
-        void setAnanasMode();
-        void setTeacherMode();
         virtual void setImageToSprite();
+        virtual void changeTheme( std::string theme );
 };
 
 #endif /* defined(__PuruPuruDigger__CellBaseGraphic__) */

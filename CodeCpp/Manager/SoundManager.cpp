@@ -67,8 +67,7 @@ void SoundManager::clickCell() {
 }
 
 void SoundManager::playMusic() {
-    if ( my_context->isEnableMusic() )
-        my_musicLevel->Play();
+    my_musicLevel->Play();
 }
 
 void SoundManager::pauseMusic() {

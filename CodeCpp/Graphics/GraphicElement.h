@@ -14,8 +14,6 @@ class GraphicElement : public EventObserver {
         sf::Sprite my_sprite;
     public :
         virtual ~GraphicElement();
-        virtual void setTeacherMode() = 0; // On change l'image
-        virtual void setAnanasMode() = 0; // On change l'image
         virtual void setImageToSprite() = 0; // On associt l'image à son sprite
         virtual void setSpriteAndDraw( int x, int y, sf::RenderWindow * _window );
         virtual void draw( sf::RenderWindow* _window ) const ;
@@ -30,6 +28,7 @@ class GraphicElement : public EventObserver {
         virtual void mouseButtonPressed(sf::Event event);
         virtual void preDisplay();
         virtual void postDisplay();
+        virtual void changeTheme( std::string theme );
     
 };
 

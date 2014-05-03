@@ -22,7 +22,8 @@ class EventObservable {
         void notify( sf::Event event ) const;
         void preDisplay() const;
         void postDisplay() const;
-	
+        void changeTheme( std::string theme ) const;
+    
         virtual void addObserver( EventObserver* observer );
     
         virtual void removeObserver( EventObserver* observer );

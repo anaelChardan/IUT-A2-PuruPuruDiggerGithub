@@ -9,8 +9,7 @@ class BackgroundGraphic : public GraphicElement {
         static sf::Image my_image ;
     public :
         virtual void setImageToSprite();
-        virtual void setTeacherMode();
-        virtual void setAnanasMode();
+        void changeTheme( std::string theme );
 };
 
 #endif /* defined(__PuruPuruDigger__BackgroundGraphic__) */

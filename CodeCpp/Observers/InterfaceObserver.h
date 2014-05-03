@@ -52,7 +52,7 @@ private:
     AnanasSprite *my_ananasSprite;
     TeacherSprite *my_teacherSprite;
     
-    BackgroundGraphic my_background;
+    BackgroundGraphic *my_background;
     
     
     std::map< std::string, CellBaseGraphic* > my_stringToSprite;
@@ -84,8 +84,6 @@ private:
     void showLanguage();
     void showSpriteChoice();
     void showOption();
-    void setTeacherMode();
-    void setAnanasMode();
     void showIsEnteringABestScore( std::string player );
     
     /*!
@@ -132,7 +130,8 @@ public:
                       GraphicSound *sound,
                       std::map< Language, LanguageGraphic* >* languageToSprite,
                       AnanasSprite *ananas,
-                      TeacherSprite *teacher
+                      TeacherSprite *teacher,
+                      BackgroundGraphic *background
                       );
     
     ~InterfaceObserver();
@@ -143,7 +142,7 @@ public:
     virtual void mouseButtonPressed(sf::Event event);
     virtual void preDisplay();
     virtual void postDisplay();
-    
+    virtual void changeTheme( std::string theme );
     
     
 };

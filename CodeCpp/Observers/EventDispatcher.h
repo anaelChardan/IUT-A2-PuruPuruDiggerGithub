@@ -18,8 +18,6 @@ class EventDispatcher : public EventObservable {
     private:
         PuruContext *my_context;
     public:
-        void dispatch( sf::Event event );
-        void show();
         void addObserver( EventObserver* observer );
         void removeObserver( EventObserver* observer );
 

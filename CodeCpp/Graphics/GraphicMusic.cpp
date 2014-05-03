@@ -25,8 +25,6 @@ void GraphicMusic::reverse() {
 
 /** Events Subscriber */
 
-void GraphicMusic::mouseMoved( sf::Event event ) {}
-
 void GraphicMusic::mouseButtonPressed( sf::Event event ) {
     if ( isInZone( event.MouseButton.X, event.MouseButton.Y ) ) {
         reverse();
@@ -40,15 +38,3 @@ void GraphicMusic::mouseButtonPressed( sf::Event event ) {
     }
 }
 
-
-void GraphicMusic::postDisplay() {
-    if ( !my_context->isEnableMusic() ) {
-        SoundManager::getInstance()->pauseMusic();
-    }
-    
-}
-
-void GraphicMusic::keyPressed( sf::Event event ) {}
-void GraphicMusic::textEntered( sf::Event event ) {}
-
-void GraphicMusic::preDisplay() {}
