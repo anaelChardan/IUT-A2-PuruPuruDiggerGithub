@@ -41,6 +41,21 @@ class GameView {
         PuruContext* my_context;
         SoundManager *my_soundManager;
     
+        void goToPresentation();
+        void goToSettings();
+        void goToPlay();
+        void goToScore();
+        void goToEnterScore();
+    
+        void initView();
+        void initPresentation();
+        void initSettings();
+        void initBestScore();
+        void initEnterScore();
+        void initPlay();
+
+    
+    
     public :
 
          GameView();

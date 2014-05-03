@@ -60,29 +60,126 @@ void GameView::setModel(GameModel *model) {
     my_model = model;
 }
 
+
+void GameView::goToPresentation() {
+    my_context->setChoosingOption( false );
+    my_context->setViewingBestScore( false );
+    my_context->setInPresentation( true );
+}
+
+void GameView::goToSettings() {
+    my_context->setInPresentation( false );
+    my_context->setChoosingOption( true );
+}
+
+void GameView::goToPlay() {
+    my_context->setInPresentation( false );
+    my_context->setPlaying( true );
+    SoundManager::getInstance()->playMusic();
+    my_model->reset();
+   
+}
+
+void GameView::goToScore() {
+    my_context->setInPresentation( false );
+    my_context->setViewingBestScore( true);
+
+}
+
+void GameView::goToEnterScore() {
+    my_context->setPlaying( false );
+    my_context->setEnterABestScore( true );
+    my_context->setMusic( false );
+    my_context->setAnimation( false );
+}
+
+
+
+void GameView::initPresentation() {
+    my_eventDispatcher->addObserver( my_playButton );
+    my_eventDispatcher->addObserver( my_bestButton );
+    my_eventDispatcher->addObserver( my_settingButton );
+    my_eventDispatcher->addObserver( my_quitButton );
+    
+    for ( std::map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite->begin() ; it!=my_languageToSprite->end(); ++it) {
+        my_eventDispatcher->removeObserver( (*my_languageToSprite)[ it->first ] );
+    }
+
+    my_eventDispatcher->removeObserver(my_ananasSprite);
+    my_eventDispatcher->removeObserver(my_teacherSprite);
+}
+
+void GameView::initSettings() {
+    for ( std::map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite->begin() ; it!=my_languageToSprite->end(); ++it) {
+        my_eventDispatcher->addObserver( (*my_languageToSprite)[ it->first ] );
+    }
+    my_eventDispatcher->addObserver(my_ananasSprite);
+    my_eventDispatcher->addObserver(my_teacherSprite);
+
+    my_eventDispatcher->removeObserver( my_playButton );
+    my_eventDispatcher->removeObserver( my_bestButton );
+    my_eventDispatcher->removeObserver( my_settingButton );
+    
+}
+
+void GameView::initBestScore() {
+    my_eventDispatcher->removeObserver( my_playButton );
+    my_eventDispatcher->removeObserver( my_bestButton );
+    my_eventDispatcher->removeObserver( my_settingButton );
+}
+
+void GameView::initEnterScore() {
+    // nothing for now
+}
+
+void GameView::initPlay() {
+    my_eventDispatcher->removeObserver( my_playButton );
+    my_eventDispatcher->removeObserver( my_bestButton );
+    my_eventDispatcher->removeObserver( my_settingButton );
+};
+
+
+void GameView::initView() {
+    if ( my_context->isInPresentation() ) {
+        initPresentation();
+    } else if ( my_context->isChoosingOption() ) {
+        initSettings();
+    } else if ( my_context->isViewingBestScore() ) {
+        initBestScore();
+    } else if ( my_context->isPlaying() ) {
+        initPlay();
+    } else if ( my_context->isEnterABestScore() ) {
+        initEnterScore();
+    }
+}
+
+
 //Boucle d'événement
 void GameView::treatGame( ) {
     
     InterfaceObserver* interfaceObserver = new InterfaceObserver( my_window, my_model, my_playButton, my_settingButton, my_bestButton, my_quitButton, my_musicIcon, my_soundIcon, my_languageToSprite, my_ananasSprite, my_teacherSprite, my_background );
     
     my_eventDispatcher->addObserver( interfaceObserver );
-    my_eventDispatcher->addObserver( my_playButton );
-    my_eventDispatcher->addObserver( my_settingButton );
-    my_eventDispatcher->addObserver( my_bestButton );
-    my_eventDispatcher->addObserver( my_quitButton );
     my_eventDispatcher->addObserver( my_soundIcon );
     my_eventDispatcher->addObserver( my_musicIcon );
-    
-    my_eventDispatcher->addObserver( my_ananasSprite );
-    my_eventDispatcher->addObserver( my_teacherSprite );
     my_eventDispatcher->addObserver( my_background );
     
+    // On abonne quand meme pour le change theme
+    // cela sera desabommer dans le init
     for ( std::map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite->begin() ; it!=my_languageToSprite->end(); ++it) {
         my_eventDispatcher->addObserver( (*my_languageToSprite)[ it->first ] );
     }
-
+    my_eventDispatcher->addObserver(my_ananasSprite);
+    my_eventDispatcher->addObserver(my_teacherSprite);
+    my_eventDispatcher->addObserver( my_playButton );
+    my_eventDispatcher->addObserver( my_bestButton );
+    my_eventDispatcher->addObserver( my_settingButton );
+    my_eventDispatcher->addObserver( my_quitButton );
+    
     // theme par defaut
     my_eventDispatcher->changeTheme("ananas");
+    
+    initPresentation();
     
     while ( my_window->IsOpened( ) ) {
         Event event;
@@ -90,31 +187,25 @@ void GameView::treatGame( ) {
             if ( event.Type == Event::Closed ) {
                 my_window->Close();
             } else {
+                initView();
                 
                 switch (event.Type) {
                     case Event::MouseButtonPressed:
                         if ( my_context->isInPresentation() ) {
                             if ( my_playButton->isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
-                                my_context->setInPresentation( false );
-                                my_context->setPlaying( true );
-                                SoundManager::getInstance()->playMusic();
-                                my_model->reset();
+                                goToPlay();
                             } else if ( my_quitButton->isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
                                 my_window->Close();
                             } else if ( my_settingButton->isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
-                                my_context->setInPresentation( false );
-                                my_context->setChoosingOption( true );
+                                goToSettings();
                             } else if ( my_bestButton->isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
-                                my_context->setInPresentation( false );
-                                my_context->setViewingBestScore( true);
+                                goToScore();
                             }
                         } else if ( my_context->isChoosingOption() ) {
-                            
                             for ( std::map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite->begin() ; it!=my_languageToSprite->end(); ++it) {
                                 if (  (*my_languageToSprite)[ it->first ]->isInZone ( event.MouseButton.X, event.MouseButton.Y ) ) {
                                     my_context->setLanguage( it->first );
                                     break;
-
                                 }
                             }
                             
@@ -125,16 +216,13 @@ void GameView::treatGame( ) {
                                 my_eventDispatcher->changeTheme("teacher");
                                 
                             } else if ( my_quitButton->isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
-                                my_context->setChoosingOption( false );
-                                my_context->setInPresentation( true );
+                                goToPresentation();
                             }
                         } else if ( my_context->isViewingBestScore() ) {
                             if ( my_quitButton->isInZone(event.MouseButton.X, event.MouseButton.Y ) ) {
-                                my_context->setViewingBestScore( false );
-                                my_context->setInPresentation( true );
+                                goToPresentation();
                             }
                         } else if ( my_context->isPlaying() ) {
-                            
                             int valueY = convertYPixel( event.MouseButton.Y );
                             int valueX = convertXPixel( event.MouseButton.X );
                             
@@ -144,10 +232,7 @@ void GameView::treatGame( ) {
                                 my_context->setAnimation( true );
                             }
                             if ( my_quitButton->isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
-                                my_context->setPlaying( false );
-                                my_context->setEnterABestScore( true );
-                                my_context->setMusic( false );
-                                my_context->setAnimation( false );
+                                goToEnterScore();
                             }
                         }
                         break;

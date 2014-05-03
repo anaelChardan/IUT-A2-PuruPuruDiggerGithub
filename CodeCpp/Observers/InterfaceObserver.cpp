@@ -107,44 +107,29 @@ void InterfaceObserver::newScreen() {
 
 void InterfaceObserver::showPresentation() {
     newScreen();
-    
     my_titleString->SetColor(Color(255,255,255));
     my_titleString->SetSize(60);
-    
     setTextAndDraw( my_titleString, "PURU PURU DIGGER ", ( WINDOWWITDH / 2 ), 100, true );
-    
     my_playButton->setSpriteAndDraw(PLAYX, PLAYY, my_window, my_messages[my_context->getLanguage()][play]);
-    
     my_settingButton->setSpriteAndDraw(OPTIONX, OPTIONY, my_window, my_messages[my_context->getLanguage()][setting]);
-    
     my_bestButton->setSpriteAndDraw(BESTX, BESTY, my_window, my_messages[my_context->getLanguage()][best]);
-    
     my_quitButton->setSpriteAndDraw(QUITX, QUITY, my_window, my_messages[my_context->getLanguage()][stop]);
     
 }
 
 void InterfaceObserver::showOption() {
     newScreen();
-    
     //Le titre de la page
     setTextAndDraw( my_titleString, my_messages[my_context->getLanguage()][setting], ( WINDOWWITDH / 2 ), 10, true);
-    
     //L'énoncé langue
     setTextAndDraw( my_scoreString, my_messages[my_context->getLanguage()][language], QUITONX + 50, CHOICELANGUEHIGH, false);
-    
     setTextAndDraw( my_scoreString, my_messages[my_context->getLanguage()][actual], QUITONX + 50, MYLANGUEY, false );
-    
     setTextAndDraw( my_scoreString, my_messages[my_context->getLanguage()][theme], QUITONX + 50, CHOICESPRITEY, false );
-    
-    
     showLanguage();
     
     //On place notre langue en cours
-    
     (*my_languageToSprite)[my_context->getLanguage()]->setSpriteAndDraw(MYLANGUEX, MYLANGUEY, my_window);
-    
     showSpriteChoice();
-    
     my_quitButton->setSpriteAndDraw(QUITONX, QUITONY, my_window, my_messages[my_context->getLanguage()][stop]);
     
 }
@@ -175,9 +160,7 @@ void InterfaceObserver::showBestScore() {
         
         //Le titre de la page
         setTextAndDraw( my_titleString, my_messages[my_context->getLanguage()][score], ( WINDOWWITDH / 2 ), 10, true ) ;
-        
         int i = 200;
-        
         //Le contenu de notre fichier
         while ( getline(scoreLect, line) ) {
             //Pour garantir la plus grand taille
@@ -187,10 +170,7 @@ void InterfaceObserver::showBestScore() {
         
         //On affiche le bouton quitter avec son string
         my_quitButton->setSpriteAndDraw(QUITONX, QUITONY, my_window, my_messages[my_context->getLanguage()][stop]);
-        
         scoreLect.close();
-        
-        
     } else {
         cerr << " Error when program is openning text file " << endl;
     }
@@ -201,19 +181,14 @@ void InterfaceObserver::showBestScore() {
 void InterfaceObserver::setTextAndDraw( sf::String* s, string text, int x, int y, bool useSizeRectX ) {
     
     s->SetText(text);
-    
     if ( s->GetRect().GetWidth() > WINDOWWITDH ) {
         while ( s->GetRect().GetWidth() > WINDOWWITDH )
             s->SetSize( s->GetSize() - 5 );
     }
-    
     if ( useSizeRectX )
         x -=  ( ( s->GetRect().GetWidth()  ) / 2 );
     
     s->SetPosition(x, y);
-    
-    
-    
     my_window->Draw(*s);
 }
 
@@ -221,11 +196,8 @@ void InterfaceObserver::showIsEnteringABestScore( string player ) {
     newScreen();
     setTextAndDraw( my_bestScoreString, my_messages[my_context->getLanguage()][by], ( WINDOWWITDH / 2 ), 10, true );
     setTextAndDraw( my_bestScoreString, my_messages[my_context->getLanguage()][name], ( WINDOWWITDH / 2 ), 100, true );
-    
     setTextAndDraw( my_bestScoreString, player, ( WINDOWWITDH / 2 ) , WINDOWHEIGHT / 2, true ) ;
 }
-
-
 
 void InterfaceObserver::showGrid() {
     if ( my_context->isInAnimation() )
@@ -278,55 +250,31 @@ void InterfaceObserver::showWinLevel() {
 void InterfaceObserver::showScore() {
     //Le titre
     setTextAndDraw( my_titleScoreString, my_messages[my_context->getLanguage()][score] + " : ", 100, 80, false);
-    
     //Level et son num
     setTextAndDraw( my_scoreString, my_messages[my_context->getLanguage()][level] + " : ", 20, 140, false);
-    
-    
     setTextAndDraw( my_scoreNum, intToString(my_model->getScore()->getCurrentStep() ), my_scoreString->GetRect().GetWidth() + 40, 140, false );
-    
     //Score Total
     setTextAndDraw( my_scoreString, my_messages[my_context->getLanguage()][global] + " : ", 20, 180, false);
-    
-    
     setTextAndDraw( my_scoreNum, intToString(my_model->getScore()->getGlobale() ), my_scoreString->GetRect().GetWidth() + 40, 180, false );
-    
     //Score en cours
     setTextAndDraw( my_scoreString, my_messages[my_context->getLanguage()][current] + " : ", 20, 220, false);
-    
-    
     setTextAndDraw( my_scoreNum, intToString(my_model->getScore()->getCurrent() ), my_scoreString->GetRect().GetWidth() + 40, 220, false );
-    
-    
     //Objectif
     setTextAndDraw( my_scoreString, my_messages[my_context->getLanguage()][goal] + " : ", 20, 260, false);
-    
-    
     setTextAndDraw( my_scoreNum, intToString(my_model->getLevel()->getGoal() ), my_scoreString->GetRect().GetWidth() + 40, 260, false );
-    
-    
     //En cours
     setTextAndDraw( my_scoreString, my_messages[my_context->getLanguage()][step] + " : ", 20, 300, false);
-    
-    
     setTextAndDraw( my_scoreNum, intToString(my_model->getLevel()->getCurrentMove() ), my_scoreString->GetRect().GetWidth() + 40, 300 , false);
-    
     //La vie
     setTextAndDraw( my_scoreString, my_messages[my_context->getLanguage()][life] + " : ", 20, 340, false);
-    
-    
     setTextAndDraw( my_scoreNum, intToString(my_model->getLevel()->getDigger()->getLife()), my_scoreString->GetRect().GetWidth() + 40, 340, false );
     
     //Le temps
     setTextAndDraw( my_scoreString, my_messages[my_context->getLanguage()][ltime] + " : ", 20, 380, false);
-    
-    
     setTextAndDraw( my_scoreNum, intToString( my_model->getLevel()->leftTime() ) , my_scoreString->GetRect().GetWidth() + 40, 380 , false);
     
     //La position
     setTextAndDraw( my_scoreString, my_messages[my_context->getLanguage()][position] + " : ", 20, 420, false);
-    
-    
     setTextAndDraw( my_scoreNum, "[ " + intToString( my_model->getLevel()->getDigger()->getX() ) + " ] [ " +  intToString( my_model->getLevel()->getDigger()->getY() )  + " ] " , my_scoreString->GetRect().GetWidth() + 40, 420, false );
     
 }
@@ -334,22 +282,15 @@ void InterfaceObserver::showScore() {
 void InterfaceObserver::showLevel() {
     if ( !my_context->isInAnimation() ) {
         newScreen();
-        
         my_titleString->SetColor(Color(255,255,255));
         my_titleString->SetSize(60);
-        
         setTextAndDraw( my_titleString, " PURU PURU DIGGER " , ( WINDOWWITDH / 2 ), 10, true ) ;
-        
         //On dessine le score
         showScore();
-        
         my_quitButton->setSpriteAndDraw(QUITONX, QUITONY, my_window, my_messages[my_context->getLanguage()][stop]);
     }
-    
     //On dessine la grille
     showGrid();
-    
-    
 }
 
 
@@ -616,7 +557,6 @@ void InterfaceObserver::changeTheme( std::string theme ) {
         bestScoreFont = "arial.ttf";
     }
 
-    
     if (!my_fontScore->LoadFromFile( fontScore.c_str() ) ||
         !my_fontTitle->LoadFromFile( fontTitle.c_str() ) ||
         !my_bestScoreFont->LoadFromFile( bestScoreFont.c_str() ) ) {

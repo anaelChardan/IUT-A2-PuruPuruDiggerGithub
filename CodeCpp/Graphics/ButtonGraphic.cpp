@@ -77,4 +77,5 @@ void ButtonGraphic::mouseButtonPressed( sf::Event event ) {
     if ( isInZone( event.MouseButton.X, event.MouseButton.Y ) ) {
         SoundManager::getInstance()->clickButton();
     }
+    reset();
 }
