@@ -540,6 +540,7 @@ void InterfaceObserver::postDisplay() {
                 my_context->setEnterABestScore( true );
                 my_context->setOver( false );
                 my_context->setMusic( false );
+                SoundManager::getInstance()->pauseMusic();
             }
         }
     }
