@@ -1,9 +1,3 @@
-//
-//  EventObservable.cpp
-//  PuruPuruDigger
-//
-//
-//
 #include "EventObservable.h"
 using namespace sf;
 

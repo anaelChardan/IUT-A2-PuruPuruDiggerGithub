@@ -4,7 +4,9 @@
 sf::Image CellBaseGraphic::my_image;
 
 void CellBaseGraphic::changeTheme( std::string theme ) {
-    
+#ifdef __linux__
+    theme = "../Ressources/Pictures/" + theme;
+#endif
     std::string myimage = theme + "_case.png";
     if ( !my_image.LoadFromFile( myimage.c_str() ) ) {
         std::cerr << " Error when loading case image " << std::endl;

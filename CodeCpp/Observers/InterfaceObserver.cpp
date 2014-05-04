@@ -17,7 +17,6 @@
 using namespace std;
 using namespace sf;
 
-//Constructeur
 InterfaceObserver::InterfaceObserver(
                                      sf::RenderWindow* window,
                                      GameModel* model,
@@ -80,9 +79,6 @@ InterfaceObserver::~InterfaceObserver() {
     delete my_bestScoreString;
     delete my_titleString;
 
-    for ( std::map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite->begin() ; it!=my_languageToSprite->end(); ++it) {
-        delete (*my_languageToSprite)[ it->first ];
-    }
     
     for ( map<string, CellBaseGraphic*>::const_iterator it = my_stringToSprite.begin() ; it!=my_stringToSprite.end(); ++it) {
         delete my_stringToSprite[ it->first ];
@@ -393,46 +389,12 @@ void InterfaceObserver::toAnimate() {
 
 /** Events Subscriber */
 
-void InterfaceObserver::mouseMoved(sf::Event event) {}
+void InterfaceObserver::mouseMoved(sf::Event event) { }
 
 
 void InterfaceObserver::keyPressed(sf::Event event) {
     
-    if ( my_context->isPlaying() ) {
-        // La touche qui a été appuyée
-        switch (event.Key.Code) {
-            case Key::Escape : // Echap
-                my_window->Close();
-                break;
-                
-            case Key::Right :
-                if ( !my_context->isInBreak() )
-                    my_model->orderMovement(6);
-                break;
-                
-            case Key::Up:
-                if ( !my_context->isInBreak() )
-                    my_model->orderMovement(8);
-                break;
-                
-            case Key::Left :
-                if ( !my_context->isInBreak() )
-                    my_model->orderMovement(4);
-                break;
-                
-            case Key::Down:
-                if ( !my_context->isInBreak() )
-                    my_model->orderMovement(2);
-                break;
-                
-            case Key::Return:
-                cout << my_window->GetWidth() << endl;
-                break;
-            default :
-                break;
-        }
-        
-    } else if ( my_context->isEnterABestScore() ) {
+if ( my_context->isEnterABestScore() ) {
         switch (event.Key.Code) {
             case Key::Return :
                 if ( player.length() > 0 ) {
@@ -547,22 +509,25 @@ void InterfaceObserver::postDisplay() {
 }
 
 void InterfaceObserver::changeTheme( std::string theme ) {
-    
+    bool teacher = ( theme == "teacher" );
+#ifdef __linux__
+    theme  = "../Ressources/Font/" + theme;
+#endif
     string fontScore = theme + "_scoreFont.ttf";
     string fontTitle = theme + "_titleFont.ttf";
     string bestScoreFont = theme + "_BestFont.ttf";
 
-    if ( theme == "teacher" ) {
-        fontScore = "arial.ttf";
-        fontTitle = "arial.ttf";
-        bestScoreFont = "arial.ttf";
+    if ( teacher ) {
+        fontScore = theme + "_arial.ttf";
+        fontTitle = theme + "_arial.ttf";
+        bestScoreFont = theme + "_arial.ttf";
     }
 
-    if (!my_fontScore->LoadFromFile( fontScore.c_str() ) ||
-        !my_fontTitle->LoadFromFile( fontTitle.c_str() ) ||
-        !my_bestScoreFont->LoadFromFile( bestScoreFont.c_str() ) ) {
-            cout << "Error when loading fonts" << endl;
-    } else {
+    if (!my_fontScore->LoadFromFile( + fontScore.c_str() ) || !my_fontTitle->LoadFromFile( fontTitle.c_str() ) || !my_bestScoreFont->LoadFromFile( bestScoreFont.c_str() ) ) {
+        cout << "Error when loading fonts" << endl;
+    }
+
+    else {
         for ( map<string, CellBaseGraphic*>::const_iterator it = my_stringToSprite.begin() ; it!=my_stringToSprite.end(); ++it) {
             my_stringToSprite[ it->first ]->changeTheme( theme );
         }

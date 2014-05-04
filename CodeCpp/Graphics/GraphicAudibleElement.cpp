@@ -5,8 +5,11 @@ sf::Image GraphicAudibleElement::my_image;
 
 
 void GraphicAudibleElement::changeTheme( std::string theme ) {
-    
-    std::string myimage = "icon.png";
+    std::string myimage;
+#ifdef __linux__
+    my_image = "../Ressources/Pictures/";
+#endif
+    myimage += "icon.png";
     if ( !my_image.LoadFromFile( myimage.c_str() ) ) {
         std::cerr << " Error when loading icon image " << std::endl;
     } else {

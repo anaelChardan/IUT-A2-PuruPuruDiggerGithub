@@ -47,7 +47,6 @@
 		03ED314F18B385BA00CF8AA1 /* Score.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314818B385BA00CF8AA1 /* Score.cpp */; };
 		7F84BF3019145A5A001E80B9 /* SoundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5D42419143B4D0035B5DE /* SoundManager.cpp */; };
 		7FA5D392191398A60035B5DE /* InterfaceObserver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5D389191398A60035B5DE /* InterfaceObserver.cpp */; };
-		7FA5D393191398A60035B5DE /* PlayingObserver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5D38B191398A60035B5DE /* PlayingObserver.cpp */; };
 		7FA5D394191398A60035B5DE /* EventObserver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5D38D191398A60035B5DE /* EventObserver.cpp */; };
 		7FA5D395191398A60035B5DE /* EventObservable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5D38F191398A60035B5DE /* EventObservable.cpp */; };
 		7FA5D396191398A60035B5DE /* EventDispatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5D391191398A60035B5DE /* EventDispatcher.cpp */; };
@@ -107,7 +106,7 @@
 		7FA5D414191399730035B5DE /* languages.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5D40B191399730035B5DE /* languages.png */; };
 		7FA5D415191399730035B5DE /* ananas_wallpapper.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5D40C191399730035B5DE /* ananas_wallpapper.png */; };
 		7FA5D416191399730035B5DE /* teacher_wallpapper.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5D40D191399730035B5DE /* teacher_wallpapper.png */; };
-		7FA5D41D191399890035B5DE /* arial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5D417191399890035B5DE /* arial.ttf */; };
+		7FA5D41D191399890035B5DE /* teacher_arial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5D417191399890035B5DE /* teacher_arial.ttf */; };
 		7FA5D41E191399890035B5DE /* ananas_BestFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5D418191399890035B5DE /* ananas_BestFont.ttf */; };
 		7FA5D41F191399890035B5DE /* ananas_buttonFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5D419191399890035B5DE /* ananas_buttonFont.ttf */; };
 		7FA5D420191399890035B5DE /* ananas_scoreFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5D41A191399890035B5DE /* ananas_scoreFont.ttf */; };
@@ -189,8 +188,6 @@
 		03ED314918B385BA00CF8AA1 /* Score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Score.h; sourceTree = SOURCE_ROOT; };
 		7FA5D388191398A60035B5DE /* InterfaceObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InterfaceObserver.h; path = Observers/InterfaceObserver.h; sourceTree = SOURCE_ROOT; };
 		7FA5D389191398A60035B5DE /* InterfaceObserver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InterfaceObserver.cpp; path = Observers/InterfaceObserver.cpp; sourceTree = SOURCE_ROOT; };
-		7FA5D38A191398A60035B5DE /* PlayingObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayingObserver.h; path = Observers/PlayingObserver.h; sourceTree = SOURCE_ROOT; };
-		7FA5D38B191398A60035B5DE /* PlayingObserver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PlayingObserver.cpp; path = Observers/PlayingObserver.cpp; sourceTree = SOURCE_ROOT; };
 		7FA5D38C191398A60035B5DE /* EventObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventObserver.h; path = Observers/EventObserver.h; sourceTree = SOURCE_ROOT; };
 		7FA5D38D191398A60035B5DE /* EventObserver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventObserver.cpp; path = Observers/EventObserver.cpp; sourceTree = SOURCE_ROOT; };
 		7FA5D38E191398A60035B5DE /* EventObservable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventObservable.h; path = Observers/EventObservable.h; sourceTree = SOURCE_ROOT; };
@@ -269,7 +266,7 @@
 		7FA5D40B191399730035B5DE /* languages.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = languages.png; path = Ressources/Pictures/languages.png; sourceTree = SOURCE_ROOT; };
 		7FA5D40C191399730035B5DE /* ananas_wallpapper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ananas_wallpapper.png; path = Ressources/Pictures/ananas_wallpapper.png; sourceTree = SOURCE_ROOT; };
 		7FA5D40D191399730035B5DE /* teacher_wallpapper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = teacher_wallpapper.png; path = Ressources/Pictures/teacher_wallpapper.png; sourceTree = SOURCE_ROOT; };
-		7FA5D417191399890035B5DE /* arial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = arial.ttf; path = Ressources/Font/arial.ttf; sourceTree = SOURCE_ROOT; };
+		7FA5D417191399890035B5DE /* teacher_arial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = teacher_arial.ttf; path = Ressources/Font/teacher_arial.ttf; sourceTree = SOURCE_ROOT; };
 		7FA5D418191399890035B5DE /* ananas_BestFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ananas_BestFont.ttf; path = Ressources/Font/ananas_BestFont.ttf; sourceTree = SOURCE_ROOT; };
 		7FA5D419191399890035B5DE /* ananas_buttonFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ananas_buttonFont.ttf; path = Ressources/Font/ananas_buttonFont.ttf; sourceTree = SOURCE_ROOT; };
 		7FA5D41A191399890035B5DE /* ananas_scoreFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ananas_scoreFont.ttf; path = Ressources/Font/ananas_scoreFont.ttf; sourceTree = SOURCE_ROOT; };
@@ -320,7 +317,7 @@
 		0371150218D1889000EE9282 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				7FA5D417191399890035B5DE /* arial.ttf */,
+				7FA5D417191399890035B5DE /* teacher_arial.ttf */,
 				7FA5D418191399890035B5DE /* ananas_BestFont.ttf */,
 				7FA5D419191399890035B5DE /* ananas_buttonFont.ttf */,
 				7FA5D41A191399890035B5DE /* ananas_scoreFont.ttf */,
@@ -454,8 +451,6 @@
 			children = (
 				7FA5D388191398A60035B5DE /* InterfaceObserver.h */,
 				7FA5D389191398A60035B5DE /* InterfaceObserver.cpp */,
-				7FA5D38A191398A60035B5DE /* PlayingObserver.h */,
-				7FA5D38B191398A60035B5DE /* PlayingObserver.cpp */,
 				7FA5D38C191398A60035B5DE /* EventObserver.h */,
 				7FA5D38D191398A60035B5DE /* EventObserver.cpp */,
 				7FA5D38E191398A60035B5DE /* EventObservable.h */,
@@ -651,7 +646,7 @@
 				7FA5D40E191399730035B5DE /* ananas_button.png in Resources */,
 				7FA5D414191399730035B5DE /* languages.png in Resources */,
 				7FA5D4011913995A0035B5DE /* soundGameOver.wav in Resources */,
-				7FA5D41D191399890035B5DE /* arial.ttf in Resources */,
+				7FA5D41D191399890035B5DE /* teacher_arial.ttf in Resources */,
 				7FA5D413191399730035B5DE /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -727,7 +722,6 @@
 				7FA5D3C3191398EB0035B5DE /* ValueGraphic.cpp in Sources */,
 				03D783B918D09DCD00A1B8AE /* GameViewSFML.cpp in Sources */,
 				7FA5D3C6191398EB0035B5DE /* SpanishGraphic.cpp in Sources */,
-				7FA5D393191398A60035B5DE /* PlayingObserver.cpp in Sources */,
 				7FA5D3D1191398EB0035B5DE /* DiggerGraphic.cpp in Sources */,
 				7FA5D392191398A60035B5DE /* InterfaceObserver.cpp in Sources */,
 				7FA5D3D7191398EB0035B5DE /* BackgroundGraphic.cpp in Sources */,

@@ -53,6 +53,21 @@ GameView::GameView() {
 GameView::~GameView() {
     delete my_window;
     delete my_context;
+    delete my_playButton;
+    delete my_settingButton;
+    delete my_bestButton;
+    delete my_quitButton;
+    delete my_soundIcon;
+    delete my_ananasSprite;
+    delete my_teacherSprite;
+    delete my_background;
+    delete my_context;
+    delete my_eventDispatcher;
+    
+    for ( std::map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite->begin() ; it!=my_languageToSprite->end(); ++it) {
+        delete (*my_languageToSprite)[ it->first ];
+    }
+
 }
 
 //Injection de dépendance model
