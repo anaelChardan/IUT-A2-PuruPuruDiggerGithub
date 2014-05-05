@@ -7,7 +7,7 @@
  */
 
 #include "Digger.h"
-#include "Constantes.h"
+#include "../Constantes.h"
 
 using namespace std;
 

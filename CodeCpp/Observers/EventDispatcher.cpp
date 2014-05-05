@@ -11,6 +11,8 @@
 
 EventDispatcher::EventDispatcher( PuruContext *context ) : my_context( context ) { }
 
+EventDispatcher::~EventDispatcher() { }
+
 void EventDispatcher::addObserver( EventObserver* observer ) {
     observer->setContext( my_context );
     EventObservable::addObserver( observer );

@@ -11,13 +11,14 @@
 #include <iostream>
 #include "EventObservable.h"
 #include <SFML/Graphics.hpp>
-#include "PuruContext.h"
-#include "SoundManager.h"
+#include "../PuruContext.h"
+#include "../Manager/SoundManager.h"
 
 class EventDispatcher : public EventObservable {
     private:
         PuruContext *my_context;
     public:
+        virtual ~EventDispatcher();
         void addObserver( EventObserver* observer );
         void removeObserver( EventObserver* observer );
 

@@ -46,17 +46,17 @@ InterfaceObserver::InterfaceObserver(
 
 
     {
-    
+
     my_fontScore = new Font();
     my_fontTitle = new Font();
     my_bestScoreFont = new Font();
-    
+
     my_scoreString = new String();
     my_titleScoreString = new String();
     my_scoreNum = new String();
     my_titleString = new String();
     my_bestScoreString = new String();
-    
+
     player = "";
 
     my_stringToSprite["Digger"]    = new DiggerGraphic();
@@ -64,7 +64,7 @@ InterfaceObserver::InterfaceObserver(
     my_stringToSprite["GoldCell"]  = new GoldGraphic();
     my_stringToSprite["ValueCell"] = new ValueGraphic();
     my_stringToSprite["Bomb"]      = new BombGraphic();
-    
+
 }
 
 //Constructeur
@@ -72,18 +72,18 @@ InterfaceObserver::~InterfaceObserver() {
     delete my_fontScore;
     delete my_fontTitle;
     delete my_bestScoreFont;
-    
+
     delete my_scoreString;
     delete my_scoreNum;
     delete my_titleScoreString;
     delete my_bestScoreString;
     delete my_titleString;
 
-    
+
     for ( map<string, CellBaseGraphic*>::const_iterator it = my_stringToSprite.begin() ; it!=my_stringToSprite.end(); ++it) {
         delete my_stringToSprite[ it->first ];
     }
-    
+
 }
 
 
@@ -91,7 +91,7 @@ void InterfaceObserver::resetLanguageNorm() {
     for ( std::map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite->begin() ; it!=my_languageToSprite->end(); ++it) {
         (*my_languageToSprite)[ it->first ]->reset();
     }
-    
+
 }
 
 void InterfaceObserver::newScreen() {
@@ -110,7 +110,7 @@ void InterfaceObserver::showPresentation() {
     my_settingButton->setSpriteAndDraw(OPTIONX, OPTIONY, my_window, my_messages[my_context->getLanguage()][setting]);
     my_bestButton->setSpriteAndDraw(BESTX, BESTY, my_window, my_messages[my_context->getLanguage()][best]);
     my_quitButton->setSpriteAndDraw(QUITX, QUITY, my_window, my_messages[my_context->getLanguage()][stop]);
-    
+
 }
 
 void InterfaceObserver::showOption() {
@@ -122,12 +122,12 @@ void InterfaceObserver::showOption() {
     setTextAndDraw( my_scoreString, my_messages[my_context->getLanguage()][actual], QUITONX + 50, MYLANGUEY, false );
     setTextAndDraw( my_scoreString, my_messages[my_context->getLanguage()][theme], QUITONX + 50, CHOICESPRITEY, false );
     showLanguage();
-    
+
     //On place notre langue en cours
     (*my_languageToSprite)[my_context->getLanguage()]->setSpriteAndDraw(MYLANGUEX, MYLANGUEY, my_window);
     showSpriteChoice();
     my_quitButton->setSpriteAndDraw(QUITONX, QUITONY, my_window, my_messages[my_context->getLanguage()][stop]);
-    
+
 }
 
 void InterfaceObserver::showLanguage() {
@@ -136,7 +136,7 @@ void InterfaceObserver::showLanguage() {
         (*my_languageToSprite)[espanol]->setSpriteAndDraw(SPANISHX, CHOICELANGUEHIGH, my_window);
         (*my_languageToSprite)[deutsch]->setSpriteAndDraw(DEUTSCHX, CHOICELANGUEHIGH, my_window);
         (*my_languageToSprite)[italiano]->setSpriteAndDraw(ITALIANOX, CHOICELANGUEHIGH, my_window);
-    
+
 }
 
 void InterfaceObserver::showSpriteChoice() {
@@ -146,14 +146,14 @@ void InterfaceObserver::showSpriteChoice() {
 
 void InterfaceObserver::showBestScore() {
     newScreen();
-    
+
     ifstream scoreLect(FILEBESTSCORE.c_str(), ios::in );
     if ( scoreLect ) {
         string line;
-        
+
         my_titleString->SetColor(Color(255,255,255));
         my_titleString->SetSize(60);
-        
+
         //Le titre de la page
         setTextAndDraw( my_titleString, my_messages[my_context->getLanguage()][score], ( WINDOWWITDH / 2 ), 10, true ) ;
         int i = 200;
@@ -163,7 +163,7 @@ void InterfaceObserver::showBestScore() {
             setTextAndDraw(my_bestScoreString, line, ( WINDOWWITDH / 2 ) , i, true );
             i += 100;
         }
-        
+
         //On affiche le bouton quitter avec son string
         my_quitButton->setSpriteAndDraw(QUITONX, QUITONY, my_window, my_messages[my_context->getLanguage()][stop]);
         scoreLect.close();
@@ -175,7 +175,7 @@ void InterfaceObserver::showBestScore() {
 
 //Cette méthode sert à mettre un text à un string, le positionner, et le dessiner
 void InterfaceObserver::setTextAndDraw( sf::String* s, string text, int x, int y, bool useSizeRectX ) {
-    
+
     s->SetText(text);
     if ( s->GetRect().GetWidth() > WINDOWWITDH ) {
         while ( s->GetRect().GetWidth() > WINDOWWITDH )
@@ -183,7 +183,7 @@ void InterfaceObserver::setTextAndDraw( sf::String* s, string text, int x, int y
     }
     if ( useSizeRectX )
         x -=  ( ( s->GetRect().GetWidth()  ) / 2 );
-    
+
     s->SetPosition(x, y);
     my_window->Draw(*s);
 }
@@ -220,9 +220,9 @@ void InterfaceObserver::showGrid() {
 void InterfaceObserver::showLoseLevel() {
     newScreen();
     my_titleString->SetSize(40);
-    
+
     my_titleString->SetColor(Color(0,0,0));
-    
+
     if ( !my_context->isTimeOver() && !my_context->isOver() ) {
         setTextAndDraw( my_titleString, my_messages[my_context->getLanguage()][looselevel],( WINDOWWITDH / 2 ), WINDOWHEIGHT / 2, true ) ;
     } else if ( my_context->isTimeOver() ) {
@@ -236,10 +236,10 @@ void InterfaceObserver::showLoseLevel() {
 
 void InterfaceObserver::showWinLevel() {
     newScreen();
-    
+
     my_titleString->SetSize(40);
     my_titleString->SetColor(Color(0,0,0));
-    
+
     setTextAndDraw( my_titleString, my_messages[my_context->getLanguage()][winlevel], ( WINDOWWITDH / 2 ), WINDOWHEIGHT / 2, true ) ;
 }
 
@@ -264,15 +264,15 @@ void InterfaceObserver::showScore() {
     //La vie
     setTextAndDraw( my_scoreString, my_messages[my_context->getLanguage()][life] + " : ", 20, 340, false);
     setTextAndDraw( my_scoreNum, intToString(my_model->getLevel()->getDigger()->getLife()), my_scoreString->GetRect().GetWidth() + 40, 340, false );
-    
+
     //Le temps
     setTextAndDraw( my_scoreString, my_messages[my_context->getLanguage()][ltime] + " : ", 20, 380, false);
     setTextAndDraw( my_scoreNum, intToString( my_model->getLevel()->leftTime() ) , my_scoreString->GetRect().GetWidth() + 40, 380 , false);
-    
+
     //La position
     setTextAndDraw( my_scoreString, my_messages[my_context->getLanguage()][position] + " : ", 20, 420, false);
     setTextAndDraw( my_scoreNum, "[ " + intToString( my_model->getLevel()->getDigger()->getX() ) + " ] [ " +  intToString( my_model->getLevel()->getDigger()->getY() )  + " ] " , my_scoreString->GetRect().GetWidth() + 40, 420, false );
-    
+
 }
 
 void InterfaceObserver::showLevel() {
@@ -300,20 +300,20 @@ void InterfaceObserver::enterScore() const{
         string nomligne;
         map< int, string, DecFunctor> Scores;
         int scorePlayer = ( my_model->getScore() )->getGlobale() ;
-        
+
         while ( !scoreLect.eof() ) {
             //On lit le score et on le stocke dans une map
             scoreLect >> scoreligne >> nomligne;
             Scores[scoreligne] = nomligne.c_str();
         }
-        
+
         //On ajoute notre joueur à la map
         Scores[scorePlayer] = player;
-        
+
         scoreLect.close();
-        
+
         ofstream scoreEcr(FILEBESTSCORE.c_str(), ios::out | ios::trunc );
-        
+
         map< int, string>::iterator i;
         if ( Scores.size() < 5 ) {
             i = Scores.end();
@@ -321,14 +321,14 @@ void InterfaceObserver::enterScore() const{
             i = Scores.begin();
             for ( int cpt = 0 ; cpt < 5; cpt ++ ) ++i;
         }
-        
+
         for ( map< int, string >::const_iterator it = Scores.begin() ; it!=i ; ++it) {
             scoreEcr << it->first;
             scoreEcr <<  " ";
             scoreEcr <<  it->second;
             scoreEcr << endl;
         }
-        
+
         scoreEcr.close();
     } else {
         cerr << " Error when program is openning text file " << endl;
@@ -338,53 +338,53 @@ void InterfaceObserver::enterScore() const{
 
 
 void InterfaceObserver::toAnimate() {
-    
+
     if ( ( convertIndiceXToPixel( my_model->getLevel()->getDigger()->getY() ) - my_stringToSprite["Digger"]->getXPos() ) == 0 && ( convertIndiceYToPixel( my_model->getLevel()->getDigger()->getX() ) - my_stringToSprite["Digger"]->getYPos() ) == 0 )
         my_context->setAnimation( false );
     else {
         if ( my_model->getMovement() == South ) {
             my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() ) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos() ) ), my_window );
-            
+
             my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos(), my_stringToSprite["Digger"]->getYPos() + 2, my_window );
-            
-            
+
+
         } else if ( my_model->getMovement() == North ) {
             my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() ) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos()  + CASEHEIGHT ) ), my_window );
-            
+
             my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos(), my_stringToSprite["Digger"]->getYPos() - 2, my_window );
-            
+
         } else if ( my_model->getMovement() == West ) {
             my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() + CASEWITDH) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos() ) ), my_window );
-            
+
             my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() - 2, my_stringToSprite["Digger"]->getYPos(), my_window );
-            
+
         } else if ( my_model->getMovement() == East ) {
             my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() ) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos() ) ), my_window );
-            
+
             my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() + 2, my_stringToSprite["Digger"]->getYPos(), my_window );
-            
+
         } else if ( my_model->getMovement() == SEast ) {
             my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() ) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos() ) ), my_window );
-            
+
             my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() + 2, my_stringToSprite["Digger"]->getYPos() + 2, my_window );
-            
+
         } else if ( my_model->getMovement() == SWest ) {
             my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() + CASEWITDH  )  ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos() ) ), my_window );
-            
+
             my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() - 2, my_stringToSprite["Digger"]->getYPos() + 2, my_window );
-            
+
         }  else if ( my_model->getMovement() == NEast ) {
             my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel( my_stringToSprite["Digger"]->getXPos() ) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos() + CASEHEIGHT ) ), my_window );
-            
+
             my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() + 2, my_stringToSprite["Digger"]->getYPos() - 2, my_window );
-            
+
         } else if ( my_model->getMovement() == Nwest ) {
             my_stringToSprite["EmptyCell"]->setSpriteAndDraw( convertIndiceXToPixel( convertXPixel(my_stringToSprite["Digger"]->getXPos() + CASEWITDH ) ), convertIndiceYToPixel( convertYPixel( my_stringToSprite["Digger"]->getYPos() + CASEHEIGHT) ), my_window );
-            
+
             my_stringToSprite["Digger"]->setSpriteAndDraw( my_stringToSprite["Digger"]->getXPos() - 2, my_stringToSprite["Digger"]->getYPos() - 2, my_window);
         }
     }
-    
+
 }
 
 /** Events Subscriber */
@@ -393,7 +393,7 @@ void InterfaceObserver::mouseMoved(sf::Event event) { }
 
 
 void InterfaceObserver::keyPressed(sf::Event event) {
-    
+
 if ( my_context->isEnterABestScore() ) {
         switch (event.Key.Code) {
             case Key::Return :
@@ -402,15 +402,15 @@ if ( my_context->isEnterABestScore() ) {
                     my_context->setViewingBestScore( true );
                     enterScore();
                     player = "";
-                    
+
                 }
                 break;
-                
+
             case Key::Back :
                 if ( player.length() > 0 )
                     player.erase( player.length() - 1, 1 );
                 break;
-                
+
             default :
                 break;
         }
@@ -433,24 +433,24 @@ void InterfaceObserver::mouseButtonPressed(sf::Event event) {
 }
 
 void InterfaceObserver::preDisplay() {
-    
+
     if ( my_context->isInPresentation() ) {
         showPresentation();
-    
+
     } else if ( my_context->isChoosingOption() ) {
         showOption();
-        
+
     } else if ( my_context->isViewingBestScore() ) {
         showBestScore();
-        
+
     } else if ( my_context->isPlaying() ) {
-        
+
         //On check le temps, et l'on peut perdre à cause de lui.
         if ( my_model->getLevel()->timeIsUp() ) {
             my_model->getLevel()->lostLevel();
             my_context->setTimeOver( true );
         }
-        
+
         if ( my_model->gameOver() ) {
             if ( !my_context->isInBreak() ) {
                 pause.Reset();
@@ -459,9 +459,9 @@ void InterfaceObserver::preDisplay() {
             my_context->setOver( true );
             my_context->setInBreak( true );
             my_context->setAnimation( false );
-            
+
         }
-        
+
         if ( my_model->getLevel()->lose() ) {
             if ( !my_context->isInBreak() ) {
                 pause.Reset();
@@ -470,7 +470,7 @@ void InterfaceObserver::preDisplay() {
             showLoseLevel();
             my_context->setInBreak( true );
             my_context->setAnimation( false );
-            
+
         } else if ( my_model->getLevel()->win()  ) {
             if ( !my_context->isInBreak() )
                 pause.Reset();
@@ -488,9 +488,9 @@ void InterfaceObserver::preDisplay() {
 
 void InterfaceObserver::postDisplay() {
     if ( my_context->isInBreak() ) {
-        
+
         if ( pause.GetElapsedTime() > 1.5 ) {
-            
+
             my_model->getLevel()->resetLose();
             my_model->getLevel()->resetWin();
             my_model->getLevel()->resetTime();
@@ -511,7 +511,7 @@ void InterfaceObserver::postDisplay() {
 void InterfaceObserver::changeTheme( std::string theme ) {
     bool teacher = ( theme == "teacher" );
 #ifdef __linux__
-    theme  = "../Ressources/Font/" + theme;
+    theme  = "Ressources/Font/" + theme;
 #endif
     string fontScore = theme + "_scoreFont.ttf";
     string fontTitle = theme + "_titleFont.ttf";
@@ -531,20 +531,20 @@ void InterfaceObserver::changeTheme( std::string theme ) {
         for ( map<string, CellBaseGraphic*>::const_iterator it = my_stringToSprite.begin() ; it!=my_stringToSprite.end(); ++it) {
             my_stringToSprite[ it->first ]->changeTheme( theme );
         }
-        
+
         my_titleScoreString->SetFont( *my_fontScore );
         my_scoreString->SetFont( *my_fontScore );
         my_scoreNum->SetFont( * my_fontScore );
         my_titleString->SetFont( *my_fontTitle );
         my_bestScoreString->SetFont( *my_bestScoreFont );
-        
+
         my_titleScoreString->SetStyle(String::Underlined | String::Bold | String::Italic );
         my_scoreString->SetStyle(String::Underlined);
 
         my_scoreString->SetSize(30);
         my_titleScoreString->SetSize(40);
         my_bestScoreString->SetSize(28);
-        
+
         if ( theme == "ananas" ) {
 
             my_titleScoreString->SetColor(Color(50,50,150));

@@ -8,21 +8,23 @@ sf::Font ButtonGraphic::my_font;
 
 void ButtonGraphic::changeTheme( std::string theme ) {
 #ifdef  __linux__
-    std::string myimage = "../Ressources/Pictures/" + theme + "_button.png";
-    std::string myfont = "../Ressources/Font/" + theme + "_buttonfont.png";
-    
+    std::string myimage = "Ressources/Pictures/" + theme + "_button.png";
+    std::string myfont = "Ressources/Font/" + theme + "_buttonfont.ttf";
+
     if ( theme == "teacher" ) {
-        myfont = "../Ressources/Font/" + theme + "_arial.ttf";
+        myfont = "Ressources/Font/" + theme + "_arial.ttf";
     }
 #else
     std::string myimage = theme + "_button.png";
     std::string myfont = theme + "_buttonfont.ttf";
-    
+
     if ( theme == "teacher" ) {
         myfont = theme + "_arial.ttf";
     }
+
+    std::cout << " plop" << std::endl;
 #endif
-    
+
     if ( !my_image.LoadFromFile( myimage.c_str() ) || ( !my_font.LoadFromFile( myfont.c_str() ) )  ) {
         std::cerr << " Error when loading button images and fonts " << std::endl;
     } else {
@@ -34,7 +36,7 @@ void ButtonGraphic::changeTheme( std::string theme ) {
         } else {
             my_string.SetColor(sf::Color(0,0,0));
         }
-        
+
         setImageToSprite();
 
     }
@@ -61,7 +63,7 @@ void ButtonGraphic::setSpriteAndDraw(int x, int y, sf::RenderWindow* _window, st
     my_string.SetText(_string);
     my_string.SetPosition( my_sprite.GetPosition().x + ( my_sprite.GetSize().x / 2 ) - ( my_string.GetRect().GetWidth() / 2 ), my_sprite.GetPosition().y + ( my_sprite.GetSize().y / 2 ) - ( my_string.GetRect().GetHeight() / 2 ) );
     _window->Draw(my_string);
-    
+
 }
 
 void ButtonGraphic::draw(sf::RenderWindow *_window) const {

@@ -10,7 +10,7 @@
  */
 
 #include <iostream>
-#include "Constantes.h"
+#include "../Constantes.h"
 #include "CellBase.h"
 #include <cstdlib>
 
@@ -31,14 +31,14 @@ class ValueCell : public CellBase {
          *  Constructeur de la classe ValueCell
          */
         ValueCell();
-    
+
         /*!
          *  \brief Constructeur paramétré
          *
          *  Constructeur paramétré de la classe GoldCell
          */
         ValueCell( int x, int y);
-    
+
         /*!
          *  \brief Constructeur par copie
          *
@@ -67,7 +67,7 @@ class ValueCell : public CellBase {
          *  \return my_points, retourne la valeur de la case
          */
         virtual int getPoints() const;
-    
+
         /*!
          *  \brief Opérateur d'affectation pour recopier une ValueCell
          *
