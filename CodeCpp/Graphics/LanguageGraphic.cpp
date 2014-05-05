@@ -7,7 +7,7 @@ sf::Image LanguageGraphic::my_image;
 void LanguageGraphic::changeTheme( std::string theme ) {
     std::string myimage;
 #ifdef __linux__
-    myimage = "../Ressources/Pictures/";
+    myimage = "Ressources/Pictures/";
 #endif
     myimage += "languages.png";
     if ( !my_image.LoadFromFile( myimage.c_str() ) ) {

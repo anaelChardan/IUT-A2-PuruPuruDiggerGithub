@@ -11,10 +11,10 @@
 
 #include <iostream>
 #include <SFML/Audio.hpp>
-#include "PuruContext.h"
+#include "../PuruContext.h"
 
 class SoundManager {
-    
+
 public:
     static SoundManager* getInstance() {
         static SoundManager instance;   // Instantiated when this function is called
@@ -28,18 +28,18 @@ public:
     void youWin();
     void gameOver();
     void touchPress();
-    
+
     void setContext( PuruContext *context );
-    
+
 private:
 
     SoundManager();                                  // constructor is private
     SoundManager(SoundManager const&);                 // copy constructor is private
     SoundManager& operator=(SoundManager const&);  // assignment operator is private
     ~SoundManager();                                 // destructor is private
-    
+
     PuruContext *my_context;
-    
+
     sf::SoundBuffer *my_textBuffer;
     sf::Sound *my_textSound;
     sf::SoundBuffer *my_gameOverBuffer;
@@ -53,6 +53,6 @@ private:
     sf::SoundBuffer *my_buttonBuffer;
     sf::Sound *my_buttonSound;
     sf::Music *my_musicLevel;
-    
+
 };
 #endif /* defined(__PuruPuruDigger__SoundManager__) */

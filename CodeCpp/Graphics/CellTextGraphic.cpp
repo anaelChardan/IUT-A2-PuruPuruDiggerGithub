@@ -4,7 +4,7 @@ sf::Font CellTextGraphic::my_font;
 
 void CellTextGraphic::changeTheme( std::string theme ) {
 #ifdef __linux__
-    theme = "../Ressources/Pictures/" + theme;
+    theme = "Ressources/Pictures/" + theme;
 #endif
     std::string myfont;
     if ( theme == "teacher" ) {
@@ -12,7 +12,7 @@ void CellTextGraphic::changeTheme( std::string theme ) {
     } else {
         myfont = theme + "_value.ttf";
     }
- 
+
     if ( !my_font.LoadFromFile( myfont.c_str() ) ) {
         std::cerr << " Error when loading value font " << std::endl;
     } else {

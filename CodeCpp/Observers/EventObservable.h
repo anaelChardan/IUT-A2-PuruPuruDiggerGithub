@@ -14,18 +14,19 @@
 #include "EventObserver.h"
 
 class EventObservable {
-    
+
     private:
         std::set<EventObserver*> list_observers;
-    
+
     public:
+        virtual ~EventObservable();
         void notify( sf::Event event ) const;
         void preDisplay() const;
         void postDisplay() const;
         void changeTheme( std::string theme ) const;
-    
+
         virtual void addObserver( EventObserver* observer );
-    
+
         virtual void removeObserver( EventObserver* observer );
 };
 

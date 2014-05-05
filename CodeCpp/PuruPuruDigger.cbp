@@ -36,9 +36,11 @@
 				</Linker>
 			</Target>
 			<Target title="SFMLMode">
-				<Option output="PuruPuruDigger" prefix_auto="1" extension_auto="1" />
-				<Option type="0" />
+				<Option output="CodeBlocksCompilation/bin/SFML/PuruPuruDigger" prefix_auto="1" extension_auto="1" />
+				<Option object_output="CodeBlocksCompilation/obj/SFML/" />
+				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
 				<Linker>
 					<Add option="-lsfml-graphics" />
 					<Add option="-lsfml-window" />
@@ -59,92 +61,76 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="AnanasSprite.cpp">
+		<Unit filename="Cell/Bomb.cpp">
 			<Option target="SFMLMode" />
+			<Option target="Debug" />
+			<Option target="UnitTest" />
 		</Unit>
-		<Unit filename="AnanasSprite.h">
+		<Unit filename="Cell/Bomb.h">
 			<Option target="SFMLMode" />
+			<Option target="Debug" />
+			<Option target="UnitTest" />
 		</Unit>
-		<Unit filename="BackgroundGraphic.cpp">
+		<Unit filename="Cell/CellBase.cpp">
 			<Option target="SFMLMode" />
+			<Option target="Debug" />
+			<Option target="UnitTest" />
 		</Unit>
-		<Unit filename="BackgroundGraphic.h">
+		<Unit filename="Cell/CellBase.h">
 			<Option target="SFMLMode" />
+			<Option target="Debug" />
+			<Option target="UnitTest" />
 		</Unit>
-		<Unit filename="Bomb.cpp" />
-		<Unit filename="Bomb.h" />
-		<Unit filename="BombGraphic.cpp">
+		<Unit filename="Cell/Digger.cpp">
 			<Option target="SFMLMode" />
+			<Option target="Debug" />
+			<Option target="UnitTest" />
 		</Unit>
-		<Unit filename="BombGraphic.h">
+		<Unit filename="Cell/Digger.h">
 			<Option target="SFMLMode" />
+			<Option target="Debug" />
+			<Option target="UnitTest" />
 		</Unit>
-		<Unit filename="ButtonGraphic.cpp">
+		<Unit filename="Cell/EmptyCell.cpp">
 			<Option target="SFMLMode" />
+			<Option target="Debug" />
+			<Option target="UnitTest" />
 		</Unit>
-		<Unit filename="ButtonGraphic.h">
+		<Unit filename="Cell/EmptyCell.h">
 			<Option target="SFMLMode" />
+			<Option target="Debug" />
+			<Option target="UnitTest" />
 		</Unit>
-		<Unit filename="CellBase.cpp" />
-		<Unit filename="CellBase.h" />
-		<Unit filename="CellBaseGraphic.cpp">
+		<Unit filename="Cell/GoldCell.cpp">
 			<Option target="SFMLMode" />
+			<Option target="Debug" />
+			<Option target="UnitTest" />
 		</Unit>
-		<Unit filename="CellBaseGraphic.h">
+		<Unit filename="Cell/GoldCell.h">
 			<Option target="SFMLMode" />
+			<Option target="Debug" />
+			<Option target="UnitTest" />
 		</Unit>
-		<Unit filename="CellTextGraphic.cpp">
+		<Unit filename="Cell/ValueCell.cpp">
 			<Option target="SFMLMode" />
+			<Option target="Debug" />
+			<Option target="UnitTest" />
 		</Unit>
-		<Unit filename="CellTextGraphic.h">
+		<Unit filename="Cell/ValueCell.h">
 			<Option target="SFMLMode" />
+			<Option target="Debug" />
+			<Option target="UnitTest" />
 		</Unit>
 		<Unit filename="Constantes.h" />
-		<Unit filename="DeutschGraphic.cpp">
-			<Option target="SFMLMode" />
-		</Unit>
-		<Unit filename="DeutschGraphic.h">
-			<Option target="SFMLMode" />
-		</Unit>
-		<Unit filename="Digger.cpp" />
-		<Unit filename="Digger.h" />
-		<Unit filename="DiggerGraphic.cpp">
-			<Option target="SFMLMode" />
-		</Unit>
-		<Unit filename="DiggerGraphic.h">
-			<Option target="SFMLMode" />
-		</Unit>
-		<Unit filename="EmptyCell.cpp" />
-		<Unit filename="EmptyCell.h" />
-		<Unit filename="EmptyGraphic.cpp">
-			<Option target="SFMLMode" />
-		</Unit>
-		<Unit filename="EmptyGraphic.h">
-			<Option target="SFMLMode" />
-		</Unit>
-		<Unit filename="EnglishGraphic.cpp">
-			<Option target="SFMLMode" />
-		</Unit>
-		<Unit filename="EnglishGraphic.h">
-			<Option target="SFMLMode" />
-		</Unit>
-		<Unit filename="FrenchGraphic.cpp">
-			<Option target="SFMLMode" />
-		</Unit>
-		<Unit filename="FrenchGraphic.h">
-			<Option target="SFMLMode" />
-		</Unit>
 		<Unit filename="GameModel.cpp" />
 		<Unit filename="GameModel.h" />
 		<Unit filename="GameView.cpp">
 			<Option target="Debug" />
 			<Option target="Release" />
-			<Option target="UnitTest" />
 		</Unit>
 		<Unit filename="GameView.h">
 			<Option target="Debug" />
 			<Option target="Release" />
-			<Option target="UnitTest" />
 		</Unit>
 		<Unit filename="GameViewSFML.cpp">
 			<Option target="SFMLMode" />
@@ -152,89 +138,191 @@
 		<Unit filename="GameViewSFML.h">
 			<Option target="SFMLMode" />
 		</Unit>
-		<Unit filename="GoldCell.cpp" />
-		<Unit filename="GoldCell.h" />
-		<Unit filename="GoldGraphic.cpp">
+		<Unit filename="Graphics/AnanasSprite.cpp">
 			<Option target="SFMLMode" />
 		</Unit>
-		<Unit filename="GoldGraphic.h">
+		<Unit filename="Graphics/AnanasSprite.h">
 			<Option target="SFMLMode" />
 		</Unit>
-		<Unit filename="GraphicAudibleElement.cpp">
+		<Unit filename="Graphics/BackgroundGraphic.cpp">
 			<Option target="SFMLMode" />
 		</Unit>
-		<Unit filename="GraphicAudibleElement.h">
+		<Unit filename="Graphics/BackgroundGraphic.h">
 			<Option target="SFMLMode" />
 		</Unit>
-		<Unit filename="GraphicElement.cpp">
+		<Unit filename="Graphics/BombGraphic.cpp">
 			<Option target="SFMLMode" />
 		</Unit>
-		<Unit filename="GraphicElement.h">
+		<Unit filename="Graphics/BombGraphic.h">
 			<Option target="SFMLMode" />
 		</Unit>
-		<Unit filename="GraphicMusic.cpp">
+		<Unit filename="Graphics/ButtonGraphic.cpp">
 			<Option target="SFMLMode" />
 		</Unit>
-		<Unit filename="GraphicMusic.h">
+		<Unit filename="Graphics/ButtonGraphic.h">
 			<Option target="SFMLMode" />
 		</Unit>
-		<Unit filename="GraphicSound.cpp">
+		<Unit filename="Graphics/CellBaseGraphic.cpp">
 			<Option target="SFMLMode" />
 		</Unit>
-		<Unit filename="GraphicSound.h">
+		<Unit filename="Graphics/CellBaseGraphic.h">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/CellTextGraphic.cpp">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/CellTextGraphic.h">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/DeutschGraphic.cpp">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/DeutschGraphic.h">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/DiggerGraphic.cpp">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/DiggerGraphic.h">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/EmptyGraphic.cpp">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/EmptyGraphic.h">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/EnglishGraphic.cpp">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/EnglishGraphic.h">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/FrenchGraphic.cpp">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/FrenchGraphic.h">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/GoldGraphic.cpp">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/GoldGraphic.h">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/GraphicAudibleElement.cpp">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/GraphicAudibleElement.h">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/GraphicElement.cpp">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/GraphicElement.h">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/GraphicMusic.cpp">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/GraphicMusic.h">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/GraphicSound.cpp">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/GraphicSound.h">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/ItalianoGraphic.cpp">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/ItalianoGraphic.h">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/LanguageGraphic.cpp">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/LanguageGraphic.h">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/SpanishGraphic.cpp">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/SpanishGraphic.h">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/SpriteGraphic.cpp">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/SpriteGraphic.h">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/TeacherSprite.cpp">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/TeacherSprite.h">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/ValueGraphic.cpp">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Graphics/ValueGraphic.h">
 			<Option target="SFMLMode" />
 		</Unit>
 		<Unit filename="IntDecFunctor.cpp" />
 		<Unit filename="IntDecFunctor.h" />
-		<Unit filename="ItalianoGraphic.cpp">
-			<Option target="SFMLMode" />
-		</Unit>
-		<Unit filename="ItalianoGraphic.h">
-			<Option target="SFMLMode" />
-		</Unit>
-		<Unit filename="LanguageGraphic.cpp">
-			<Option target="SFMLMode" />
-		</Unit>
-		<Unit filename="LanguageGraphic.h">
-			<Option target="SFMLMode" />
-		</Unit>
 		<Unit filename="LanguageMessage.cpp" />
 		<Unit filename="LanguageMessage.h" />
 		<Unit filename="Level.cpp" />
 		<Unit filename="Level.h" />
+		<Unit filename="Manager/SoundManager.cpp">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Manager/SoundManager.h">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Observers/EventDispatcher.cpp">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Observers/EventDispatcher.h">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Observers/EventObservable.cpp">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Observers/EventObservable.h">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Observers/EventObserver.cpp">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Observers/EventObserver.h">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Observers/InterfaceObserver.cpp">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="Observers/InterfaceObserver.h">
+			<Option target="SFMLMode" />
+		</Unit>
+		<Unit filename="PuruContext.cpp">
+			<Option target="SFMLMode" />
+			<Option target="Debug" />
+			<Option target="UnitTest" />
+		</Unit>
+		<Unit filename="PuruContext.h">
+			<Option target="SFMLMode" />
+			<Option target="Debug" />
+			<Option target="UnitTest" />
+		</Unit>
 		<Unit filename="Score.cpp" />
 		<Unit filename="Score.h" />
-		<Unit filename="SpanishGraphic.cpp">
-			<Option target="SFMLMode" />
-		</Unit>
-		<Unit filename="SpanishGraphic.h">
-			<Option target="SFMLMode" />
-		</Unit>
-		<Unit filename="SpriteGraphic.cpp">
-			<Option target="SFMLMode" />
-		</Unit>
-		<Unit filename="SpriteGraphic.h">
-			<Option target="SFMLMode" />
-		</Unit>
-		<Unit filename="TeacherSprite.cpp">
-			<Option target="SFMLMode" />
-		</Unit>
-		<Unit filename="TeacherSprite.h">
-			<Option target="SFMLMode" />
-		</Unit>
 		<Unit filename="UnitTest/test.cpp">
 			<Option target="UnitTest" />
 		</Unit>
 		<Unit filename="Utils.cpp" />
 		<Unit filename="Utils.h" />
-		<Unit filename="ValueCell.cpp" />
-		<Unit filename="ValueCell.h" />
-		<Unit filename="ValueGraphic.cpp">
-			<Option target="SFMLMode" />
-		</Unit>
-		<Unit filename="ValueGraphic.h">
-			<Option target="SFMLMode" />
-		</Unit>
 		<Unit filename="main.cpp">
 			<Option target="Debug" />
 			<Option target="Release" />

@@ -1,63 +1,63 @@
 # depslib dependency file v1.0
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Bomb.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Bomb.cpp
 	"Bomb.h"
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Bomb.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Bomb.h
 	<iostream>
 	"CellBase.h"
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/CellBase.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/CellBase.h
 	<iostream>
 	<string>
 	"Utils.h"
 	"Constantes.h"
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/CellBase.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/CellBase.cpp
 	"CellBase.h"
 	<typeinfo>
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Digger.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Digger.cpp
 	"Digger.h"
 	"Constantes.h"
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Digger.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Digger.h
 	<iostream>
 	"CellBase.h"
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/EmptyCell.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/EmptyCell.cpp
 	"EmptyCell.h"
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/EmptyCell.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/EmptyCell.h
 	<iostream>
 	"CellBase.h"
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GameModel.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GameModel.cpp
 	"GameModel.h"
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GameModel.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GameModel.h
 	<iostream>
 	<vector>
 	"Level.h"
 	"Score.h"
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Level.h
+1399268659 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Level.h
 	<iostream>
 	"Score.h"
-	"Digger.h"
-	"CellBase.h"
-	"ValueCell.h"
-	"GoldCell.h"
-	"Bomb.h"
+	"Cell/Digger.h"
+	"Cell/CellBase.h"
+	"Cell/ValueCell.h"
+	"Cell/GoldCell.h"
+	"Cell/Bomb.h"
 	"Constantes.h"
 	<ctime>
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Score.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Score.h
 	<iostream>
 	<vector>
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Constantes.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Constantes.h
 
-1397914521 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GameView.cpp
+1399268659 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GameView.cpp
 	"GameView.h"
 	"Constantes.h"
 	<fstream>
@@ -66,51 +66,51 @@
 	<sstream>
 	<cstdlib>
 	"Utils.h"
-	"Digger.h"
-	"Bomb.h"
-	"EmptyCell.h"
-	"ValueCell.h"
-	"GoldCell.h"
+	"Cell/Digger.h"
+	"Cell/Bomb.h"
+	"Cell/EmptyCell.h"
+	"Cell/ValueCell.h"
+	"Cell/GoldCell.h"
 
-1397914521 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GameView.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GameView.h
 	<iostream>
 	"GameModel.h"
 	"LanguageMessage.h"
 	<map>
 	<string>
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GoldCell.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GoldCell.cpp
 	"GoldCell.h"
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GoldCell.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GoldCell.h
 	<iostream>
 	"ValueCell.h"
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/ValueCell.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/ValueCell.h
 	<iostream>
 	"Constantes.h"
 	"CellBase.h"
 	<cstdlib>
 
-1397914521 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/main.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/main.cpp
 	<iostream>
 	"GameModel.h"
 	"GameView.h"
 	<cstdlib>
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Score.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Score.cpp
 	"Score.h"
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/ValueCell.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/ValueCell.cpp
 	"ValueCell.h"
 	<sstream>
 	<string>
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Level.cpp
+1399268659 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Level.cpp
 	"Level.h"
-	"Bomb.h"
-	"GoldCell.h"
-	"EmptyCell.h"
+	"Cell/Bomb.h"
+	"Cell/GoldCell.h"
+	"Cell/EmptyCell.h"
 	<vector>
 	<algorithm>
 
@@ -332,16 +332,16 @@
 1394175182 source:/info-nfs/users/jdamey/purupurudigger/CodeCpp/LanguageMessage.cpp
 	"LanguageMessage.h"
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/LanguageMessage.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/LanguageMessage.h
 	<iostream>
 	<map>
 	<string>
 	"Constantes.h"
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/IntDecFunctor.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/IntDecFunctor.h
 	<iostream>
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/LanguageMessage.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/LanguageMessage.cpp
 	"LanguageMessage.h"
 
 1398499986 source:/home/jeremy/Bureau/purupurudigger/CodeCpp/Bomb.cpp
@@ -509,38 +509,31 @@
 	<fstream>
 	"Utils.h"
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/IntDecFunctor.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/IntDecFunctor.cpp
 	"IntDecFunctor.h"
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/mainSFML.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/mainSFML.cpp
 	<iostream>
 	"GameModel.h"
 	"GameViewSFML.h"
 	<cstdlib>
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GameViewSFML.h
+1399268659 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GameViewSFML.h
 	<iostream>
-	<iostream>
-	<SFML/System.hpp>
-	<SFML/Graphics.hpp>
 	<SFML/Window.hpp>
-	<SFML/Audio.hpp>
-	"CellBaseGraphic.h"
-	"LanguageGraphic.h"
-	"ButtonGraphic.h"
-	"GraphicMusic.h"
-	"GraphicSound.h"
-	"BackgroundGraphic.h"
-	"ValueGraphic.h"
-	"GoldGraphic.h"
-	<string>
 	"GameModel.h"
-	"LanguageMessage.h"
-	"GraphicElement.h"
-	"AnanasSprite.h"
-	"TeacherSprite.h"
+	"Graphics/ButtonGraphic.h"
+	"Observers/EventDispatcher.h"
+	"Graphics/GraphicMusic.h"
+	"Graphics/GraphicSound.h"
+	"PuruContext.h"
+	"Graphics/LanguageGraphic.h"
+	"Graphics/AnanasSprite.h"
+	"Graphics/TeacherSprite.h"
+	"Manager/SoundManager.h"
+	"Graphics/BackgroundGraphic.h"
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Utils.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Utils.cpp
 	"Utils.h"
 	<iostream>
 	<sstream>
@@ -549,142 +542,141 @@
 	"Constantes.h"
 	<cmath>
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Utils.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Utils.h
 	<string>
 
-1398617687 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GameViewSFML.cpp
+1399268659 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GameViewSFML.cpp
 	"GameViewSFML.h"
-	"Constantes.h"
-	"IntDecFunctor.h"
-	<sstream>
-	<fstream>
-	"Utils.h"
-	"DiggerGraphic.h"
-	"EmptyGraphic.h"
-	"ValueGraphic.h"
-	"BombGraphic.h"
-	"GoldGraphic.h"
-	"FrenchGraphic.h"
-	"ItalianoGraphic.h"
-	"DeutschGraphic.h"
-	"SpanishGraphic.h"
-	"EnglishGraphic.h"
+	"Observers/InterfaceObserver.h"
+	"Graphics/EnglishGraphic.h"
+	"Graphics/FrenchGraphic.h"
+	"Graphics/SpanishGraphic.h"
+	"Graphics/DeutschGraphic.h"
+	"Graphics/ItalianoGraphic.h"
+	"Manager/SoundManager.h"
 
-1396708370 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/UnitTest/test.cpp
+1399268860 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/UnitTest/test.cpp
 	<boost/test/unit_test.hpp>
 	"../Utils.h"
 	"../Constantes.h"
+	"../Cell/Digger.h"
+	"../Cell/GoldCell.h"
+	"../Cell/EmptyCell.h"
+	"../Cell/Bomb.h"
+	"../Score.h"
+	"../Level.h"
+	"../GameModel.h"
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/CellBaseGraphic.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/CellBaseGraphic.h
 	<iostream>
 	"GraphicElement.h"
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GraphicElement.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GraphicElement.h
 	<iostream>
 	<SFML/System.hpp>
 	<SFML/Graphics.hpp>
 	<SFML/Window.hpp>
 	<SFML/Audio.hpp>
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/LanguageGraphic.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/LanguageGraphic.h
 	<iostream>
 	"GraphicElement.h"
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/ButtonGraphic.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/ButtonGraphic.h
 	<iostream>
 	"GraphicElement.h"
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GraphicMusic.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GraphicMusic.h
 	<iostream>
 	"GraphicAudibleElement.h"
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GraphicAudibleElement.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GraphicAudibleElement.h
 	<iostream>
 	"GraphicElement.h"
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GraphicSound.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GraphicSound.h
 	<iostream>
 	"GraphicAudibleElement.h"
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/BackgroundGraphic.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/BackgroundGraphic.h
 	<iostream>
 	"GraphicElement.h"
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/ValueGraphic.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/ValueGraphic.h
 	<iostream>
 	"CellTextGraphic.h"
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/CellTextGraphic.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/CellTextGraphic.h
 	<iostream>
 	"CellBaseGraphic.h"
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GoldGraphic.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GoldGraphic.h
 	<iostream>
 	"CellTextGraphic.h"
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/AnanasSprite.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/AnanasSprite.h
 	<iostream>
 	"SpriteGraphic.h"
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/SpriteGraphic.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/SpriteGraphic.h
 	<iostream>
 	"GraphicElement.h"
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/TeacherSprite.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/TeacherSprite.h
 	<iostream>
 	"SpriteGraphic.h"
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/DiggerGraphic.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/DiggerGraphic.h
 	<iostream>
 	"CellBaseGraphic.h"
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/EmptyGraphic.h
-	<iostream>
-	"CellBaseGraphic.h"
-	"GraphicElement.h"
-
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/BombGraphic.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/EmptyGraphic.h
 	<iostream>
 	"CellBaseGraphic.h"
 	"GraphicElement.h"
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/FrenchGraphic.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/BombGraphic.h
+	<iostream>
+	"CellBaseGraphic.h"
+	"GraphicElement.h"
+
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/FrenchGraphic.h
 	<iostream>
 	"LanguageGraphic.h"
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/ItalianoGraphic.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/ItalianoGraphic.h
 	<iostream>
 	"LanguageGraphic.h"
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/DeutschGraphic.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/DeutschGraphic.h
 	<iostream>
 	"LanguageGraphic.h"
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/SpanishGraphic.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/SpanishGraphic.h
 	<iostream>
 	"LanguageGraphic.h"
 
-1398617330 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/EnglishGraphic.h
+1398858170 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/EnglishGraphic.h
 	<iostream>
 	"LanguageGraphic.h"
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/AnanasSprite.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/AnanasSprite.cpp
 	"AnanasSprite.h"
 	"Constantes.h"
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/BackgroundGraphic.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/BackgroundGraphic.cpp
 	"BackgroundGraphic.h"
 	"Constantes.h"
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/BombGraphic.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/BombGraphic.cpp
 	"BombGraphic.h"
 	"Constantes.h"
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/ButtonGraphic.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/ButtonGraphic.cpp
 	"ButtonGraphic.h"
 	"Constantes.h"
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/CellBaseGraphic.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/CellBaseGraphic.cpp
 	"CellBaseGraphic.h"
 	"Constantes.h"
 
@@ -804,69 +796,383 @@
 	"../Level.h"
 	"../GameModel.h"
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/CellTextGraphic.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/CellTextGraphic.cpp
 	"CellTextGraphic.h"
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/DeutschGraphic.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/DeutschGraphic.cpp
 	"DeutschGraphic.h"
 	"Constantes.h"
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/DiggerGraphic.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/DiggerGraphic.cpp
 	"DiggerGraphic.h"
 	"Constantes.h"
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/EmptyGraphic.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/EmptyGraphic.cpp
 	"EmptyGraphic.h"
 	"Constantes.h"
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/EnglishGraphic.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/EnglishGraphic.cpp
 	"EnglishGraphic.h"
 	"Constantes.h"
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/FrenchGraphic.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/FrenchGraphic.cpp
 	"FrenchGraphic.h"
 	"Constantes.h"
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GoldGraphic.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GoldGraphic.cpp
 	"GoldGraphic.h"
 	"Constantes.h"
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GraphicAudibleElement.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GraphicAudibleElement.cpp
 	"GraphicAudibleElement.h"
 	"Constantes.h"
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GraphicElement.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GraphicElement.cpp
 	"GraphicElement.h"
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GraphicMusic.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GraphicMusic.cpp
 	"GraphicMusic.h"
 	"Constantes.h"
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GraphicSound.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/GraphicSound.cpp
 	"GraphicSound.h"
 	"Constantes.h"
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/ItalianoGraphic.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/ItalianoGraphic.cpp
 	"ItalianoGraphic.h"
 	"Constantes.h"
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/LanguageGraphic.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/LanguageGraphic.cpp
 	"LanguageGraphic.h"
 	"Constantes.h"
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/SpanishGraphic.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/SpanishGraphic.cpp
 	"SpanishGraphic.h"
 	"Constantes.h"
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/SpriteGraphic.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/SpriteGraphic.cpp
 	"SpriteGraphic.h"
 	"Constantes.h"
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/TeacherSprite.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/TeacherSprite.cpp
 	"TeacherSprite.h"
 	"Constantes.h"
 
-1398617330 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/ValueGraphic.cpp
+1398858170 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/ValueGraphic.cpp
 	"ValueGraphic.h"
 	"Constantes.h"
+
+1399268659 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Cell/Bomb.cpp
+	"Bomb.h"
+
+1399268659 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Cell/Bomb.h
+	<iostream>
+	"CellBase.h"
+
+1399268878 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Cell/CellBase.h
+	<iostream>
+	<string>
+	"../Utils.h"
+	"../Constantes.h"
+
+1399268659 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Cell/CellBase.cpp
+	"CellBase.h"
+	<typeinfo>
+
+1399268886 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Cell/Digger.cpp
+	"Digger.h"
+	"../Constantes.h"
+
+1399268659 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Cell/Digger.h
+	<iostream>
+	"CellBase.h"
+
+1399268659 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Cell/EmptyCell.cpp
+	"EmptyCell.h"
+
+1399268659 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Cell/EmptyCell.h
+	<iostream>
+	"CellBase.h"
+
+1399268659 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Cell/GoldCell.cpp
+	"GoldCell.h"
+
+1399268659 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Cell/GoldCell.h
+	<iostream>
+	"ValueCell.h"
+
+1399268896 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Cell/ValueCell.h
+	<iostream>
+	"../Constantes.h"
+	"CellBase.h"
+	<cstdlib>
+
+1399268659 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Cell/ValueCell.cpp
+	"ValueCell.h"
+	<sstream>
+	<string>
+
+1399268659 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/ButtonGraphic.h
+	<iostream>
+	"GraphicElement.h"
+
+1399268659 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/GraphicElement.h
+	<iostream>
+	<SFML/System.hpp>
+	<SFML/Graphics.hpp>
+	<SFML/Window.hpp>
+	<SFML/Audio.hpp>
+	"../Observers/EventObserver.h"
+
+1399269861 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Observers/EventObserver.h
+	<string>
+	<set>
+	<iostream>
+	<SFML/Graphics.hpp>
+	"../PuruContext.h"
+	"../Manager/SoundManager.h"
+
+1399268659 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/PuruContext.h
+	<iostream>
+	"Constantes.h"
+
+1399268918 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Manager/SoundManager.h
+	<iostream>
+	<SFML/Audio.hpp>
+	"../PuruContext.h"
+
+1399269861 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Observers/EventDispatcher.h
+	<iostream>
+	"EventObservable.h"
+	<SFML/Graphics.hpp>
+	"../PuruContext.h"
+	"../Manager/SoundManager.h"
+
+1399269861 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Observers/EventObservable.h
+	<iostream>
+	<string>
+	<set>
+	"EventObserver.h"
+
+1399268659 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/GraphicMusic.h
+	<iostream>
+	"GraphicAudibleElement.h"
+
+1399268659 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/GraphicAudibleElement.h
+	<iostream>
+	"GraphicElement.h"
+
+1399268659 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/GraphicSound.h
+	<iostream>
+	"GraphicAudibleElement.h"
+
+1399268659 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/LanguageGraphic.h
+	<iostream>
+	"GraphicElement.h"
+
+1399268659 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/AnanasSprite.h
+	<iostream>
+	"SpriteGraphic.h"
+
+1399268659 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/SpriteGraphic.h
+	<iostream>
+	"GraphicElement.h"
+
+1399268659 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/TeacherSprite.h
+	<iostream>
+	"SpriteGraphic.h"
+
+1399268659 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/BackgroundGraphic.h
+	<iostream>
+	"GraphicElement.h"
+
+1399269859 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Observers/InterfaceObserver.h
+	<iostream>
+	"EventObserver.h"
+	"../Graphics/ButtonGraphic.h"
+	"../Constantes.h"
+	"../Graphics/LanguageGraphic.h"
+	"../LanguageMessage.h"
+	"../Graphics/AnanasSprite.h"
+	"../Graphics/ValueGraphic.h"
+	"../Graphics/GoldGraphic.h"
+	"../Graphics/TeacherSprite.h"
+	"../Graphics/BackgroundGraphic.h"
+	"../GameModel.h"
+	<string>
+	<SFML/System.hpp>
+	<SFML/Graphics.hpp>
+	<SFML/Window.hpp>
+	"../Graphics/CellBaseGraphic.h"
+	"../Graphics/GraphicMusic.h"
+	"../Graphics/GraphicSound.h"
+
+1399268659 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/ValueGraphic.h
+	<iostream>
+	"CellTextGraphic.h"
+
+1399268659 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/CellTextGraphic.h
+	<iostream>
+	"CellBaseGraphic.h"
+
+1399268659 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/CellBaseGraphic.h
+	<iostream>
+	"GraphicElement.h"
+
+1399268659 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/GoldGraphic.h
+	<iostream>
+	"CellTextGraphic.h"
+
+1399268659 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/EnglishGraphic.h
+	<iostream>
+	"LanguageGraphic.h"
+
+1399268659 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/FrenchGraphic.h
+	<iostream>
+	"LanguageGraphic.h"
+
+1399268659 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/SpanishGraphic.h
+	<iostream>
+	"LanguageGraphic.h"
+
+1399268659 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/DeutschGraphic.h
+	<iostream>
+	"LanguageGraphic.h"
+
+1399268659 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/ItalianoGraphic.h
+	<iostream>
+	"LanguageGraphic.h"
+
+1399268659 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/AnanasSprite.cpp
+	"AnanasSprite.h"
+	"../Constantes.h"
+
+1399289443 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/BackgroundGraphic.cpp
+	"BackgroundGraphic.h"
+	"../Constantes.h"
+
+1399268659 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/BombGraphic.cpp
+	"BombGraphic.h"
+	"../Constantes.h"
+
+1399268659 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/BombGraphic.h
+	<iostream>
+	"CellBaseGraphic.h"
+	"GraphicElement.h"
+
+1399291166 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/ButtonGraphic.cpp
+	"ButtonGraphic.h"
+	"../Constantes.h"
+
+1399290064 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/CellBaseGraphic.cpp
+	"CellBaseGraphic.h"
+	"../Constantes.h"
+
+1399290064 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/CellTextGraphic.cpp
+	"CellTextGraphic.h"
+
+1399268659 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/DeutschGraphic.cpp
+	"DeutschGraphic.h"
+	"../Constantes.h"
+
+1399268659 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/DiggerGraphic.cpp
+	"DiggerGraphic.h"
+	"../Constantes.h"
+
+1399268659 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/DiggerGraphic.h
+	<iostream>
+	"CellBaseGraphic.h"
+
+1399268659 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/EmptyGraphic.cpp
+	"EmptyGraphic.h"
+	"../Constantes.h"
+
+1399268659 /home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/EmptyGraphic.h
+	<iostream>
+	"CellBaseGraphic.h"
+	"GraphicElement.h"
+
+1399268659 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/EnglishGraphic.cpp
+	"EnglishGraphic.h"
+	"../Constantes.h"
+
+1399268659 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/FrenchGraphic.cpp
+	"FrenchGraphic.h"
+	"../Constantes.h"
+
+1399268659 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/GoldGraphic.cpp
+	"GoldGraphic.h"
+	"../Constantes.h"
+
+1399290028 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/GraphicAudibleElement.cpp
+	"GraphicAudibleElement.h"
+	"../Constantes.h"
+
+1399268659 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/GraphicElement.cpp
+	"GraphicElement.h"
+
+1399268659 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/GraphicMusic.cpp
+	"GraphicMusic.h"
+	"../Constantes.h"
+
+1399268659 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/GraphicSound.cpp
+	"GraphicSound.h"
+	"../Constantes.h"
+
+1399268659 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/ItalianoGraphic.cpp
+	"ItalianoGraphic.h"
+	"../Constantes.h"
+
+1399290064 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/LanguageGraphic.cpp
+	"LanguageGraphic.h"
+	"../Constantes.h"
+
+1399268659 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/SpanishGraphic.cpp
+	"SpanishGraphic.h"
+	"../Constantes.h"
+
+1399290064 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/SpriteGraphic.cpp
+	"SpriteGraphic.h"
+	"../Constantes.h"
+
+1399268659 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/TeacherSprite.cpp
+	"TeacherSprite.h"
+	"../Constantes.h"
+
+1399268659 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Graphics/ValueGraphic.cpp
+	"ValueGraphic.h"
+	"../Constantes.h"
+
+1399268659 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Manager/SoundManager.cpp
+	"SoundManager.h"
+
+1399269861 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Observers/EventDispatcher.cpp
+	"EventDispatcher.h"
+	<SFML/Graphics.hpp>
+
+1399269861 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Observers/EventObservable.cpp
+	"EventObservable.h"
+
+1399269861 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Observers/EventObserver.cpp
+	"EventObserver.h"
+
+1399290064 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/Observers/InterfaceObserver.cpp
+	"InterfaceObserver.h"
+	"../Graphics/EnglishGraphic.h"
+	"../Graphics/FrenchGraphic.h"
+	"../Graphics/SpanishGraphic.h"
+	"../Graphics/DeutschGraphic.h"
+	"../Graphics/ItalianoGraphic.h"
+	"../Utils.h"
+	<sstream>
+	<fstream>
+	"../Graphics/DiggerGraphic.h"
+	"../Graphics/EmptyGraphic.h"
+	"../Graphics/ValueGraphic.h"
+	"../Graphics/BombGraphic.h"
+	"../Graphics/GoldGraphic.h"
+	"../IntDecFunctor.h"
+
+1399268659 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/PuruContext.cpp
+	"PuruContext.h"
 

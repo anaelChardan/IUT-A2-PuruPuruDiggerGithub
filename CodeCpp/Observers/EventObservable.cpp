@@ -1,19 +1,21 @@
 #include "EventObservable.h"
 using namespace sf;
 
+EventObservable::~EventObservable() { }
+
 void EventObservable::notify( Event event ) const {
     for (std::set<EventObserver*>::const_iterator it = list_observers.begin(); it != list_observers.end(); ++it) {
-        
+
         switch (event.Type) {
-                
+
             case Event::MouseMoved:
                 (*it)->mouseMoved(event);
                 break;
-                
+
             case Event::KeyPressed:
                 (*it)->keyPressed(event);
                 break;
-                
+
             case Event::TextEntered:
                 (*it)->textEntered(event);
                 break;
@@ -21,10 +23,10 @@ void EventObservable::notify( Event event ) const {
             case Event::MouseButtonPressed:
                 (*it)->mouseButtonPressed(event);
                 break;
-                
+
             default:
                 break;
-                
+
         }
     }
 }

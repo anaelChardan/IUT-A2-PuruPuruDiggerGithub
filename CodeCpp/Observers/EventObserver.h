@@ -12,24 +12,25 @@
 #include <set>
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "PuruContext.h"
+#include "../PuruContext.h"
 #include "../Manager/SoundManager.h"
 
 class EventObserver {
     protected:
         PuruContext *my_context;
-    
+
     public:
+        virtual ~EventObserver();
         virtual void mouseMoved(sf::Event event) = 0;
         virtual void keyPressed(sf::Event event) = 0;
         virtual void textEntered(sf::Event event) = 0;
         virtual void mouseButtonPressed(sf::Event event) = 0;
-    
+
         virtual void preDisplay() = 0;
         virtual void postDisplay() = 0;
-    
+
         virtual void changeTheme( std::string theme ) = 0;
-    
+
         void setContext( PuruContext *context );
 
 };
