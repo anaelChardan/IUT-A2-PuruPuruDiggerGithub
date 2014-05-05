@@ -7,24 +7,23 @@ sf::Font ButtonGraphic::my_font;
 
 
 void ButtonGraphic::changeTheme( std::string theme ) {
+std::string myimage;
+std::string myfont;
 #ifdef  __linux__
-    std::string myimage = "Ressources/Pictures/" + theme + "_button.png";
-    std::string myfont = "Ressources/Font/" + theme + "_buttonfont.ttf";
+    myimage = "Ressources/Pictures/" + theme + "_button.png";
+    myfont = "Ressources/Font/" + theme + "_buttonfont.ttf";
 
     if ( theme == "teacher" ) {
         myfont = "Ressources/Font/" + theme + "_arial.ttf";
     }
 #else
-    std::string myimage = theme + "_button.png";
-    std::string myfont = theme + "_buttonfont.ttf";
+    myimage = theme + "_button.png";
+    myfont = theme + "_buttonfont.ttf";
 
     if ( theme == "teacher" ) {
         myfont = theme + "_arial.ttf";
     }
-
-    std::cout << " plop" << std::endl;
 #endif
-
     if ( !my_image.LoadFromFile( myimage.c_str() ) || ( !my_font.LoadFromFile( myfont.c_str() ) )  ) {
         std::cerr << " Error when loading button images and fonts " << std::endl;
     } else {

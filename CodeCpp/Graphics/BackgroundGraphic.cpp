@@ -6,10 +6,12 @@ sf::Image BackgroundGraphic::my_image;
 
 
 void BackgroundGraphic::changeTheme( std::string theme ) {
+    std::string myimage;
 #ifdef __linux__
-    theme = "Ressources/Pictures/" + theme;
+    myimage = "Ressources/Pictures/" + theme + "_wallpapper.png";
+#else
+    myimage = theme + "_wallpapper.png";
 #endif
-    std::string myimage = theme + "_wallpapper.png";
     if ( !my_image.LoadFromFile( myimage.c_str() ) ) {
         std::cerr << " Error when loading background image " << std::endl;
     } else {
