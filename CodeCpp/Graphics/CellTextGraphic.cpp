@@ -3,15 +3,20 @@
 sf::Font CellTextGraphic::my_font;
 
 void CellTextGraphic::changeTheme( std::string theme ) {
-#ifdef __linux__
-    theme = "Ressources/Pictures/" + theme;
-#endif
     std::string myfont;
+#ifdef __linux__
+    if ( theme == "teacher" ) {
+         myfont = "Ressources/Pictures/" + theme + "_arial.ttf";
+    } else {
+        myfont = "Ressources/Pictures/" + theme + "_value.ttf";
+    }
+#else
     if ( theme == "teacher" ) {
          myfont = theme + "_arial.ttf";
     } else {
         myfont = theme + "_value.ttf";
     }
+#endif
 
     if ( !my_font.LoadFromFile( myfont.c_str() ) ) {
         std::cerr << " Error when loading value font " << std::endl;

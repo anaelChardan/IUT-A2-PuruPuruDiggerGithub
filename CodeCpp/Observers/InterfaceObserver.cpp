@@ -509,25 +509,25 @@ void InterfaceObserver::postDisplay() {
 }
 
 void InterfaceObserver::changeTheme( std::string theme ) {
-    bool teacher = ( theme == "teacher" );
+    std::string mypath;
 #ifdef __linux__
-    theme  = "Ressources/Font/" + theme;
+    mypath = "Ressources/Font/" + theme;
+#else
+    mypath = theme;
 #endif
-    string fontScore = theme + "_scoreFont.ttf";
-    string fontTitle = theme + "_titleFont.ttf";
-    string bestScoreFont = theme + "_BestFont.ttf";
+    string fontScore = mypath + "_scoreFont.ttf";
+    string fontTitle = mypath + "_titleFont.ttf";
+    string bestScoreFont = mypath + "_BestFont.ttf";
 
-    if ( teacher ) {
-        fontScore = theme + "_arial.ttf";
-        fontTitle = theme + "_arial.ttf";
-        bestScoreFont = theme + "_arial.ttf";
+    if ( theme == "teacher" ) {
+        fontScore = mypath + "_arial.ttf";
+        fontTitle = mypath + "_arial.ttf";
+        bestScoreFont = mypath + "_arial.ttf";
     }
 
-    if (!my_fontScore->LoadFromFile( + fontScore.c_str() ) || !my_fontTitle->LoadFromFile( fontTitle.c_str() ) || !my_bestScoreFont->LoadFromFile( bestScoreFont.c_str() ) ) {
+    if (!my_fontScore->LoadFromFile( fontScore.c_str() ) || !my_fontTitle->LoadFromFile( fontTitle.c_str() ) || !my_bestScoreFont->LoadFromFile( bestScoreFont.c_str() ) ) {
         cout << "Error when loading fonts" << endl;
-    }
-
-    else {
+    } else {
         for ( map<string, CellBaseGraphic*>::const_iterator it = my_stringToSprite.begin() ; it!=my_stringToSprite.end(); ++it) {
             my_stringToSprite[ it->first ]->changeTheme( theme );
         }
