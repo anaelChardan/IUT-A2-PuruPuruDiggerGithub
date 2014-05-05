@@ -21,8 +21,6 @@ void ButtonGraphic::changeTheme( std::string theme ) {
     if ( theme == "teacher" ) {
         myfont = theme + "_arial.ttf";
     }
-
-    std::cout << " plop" << std::endl;
 #endif
 
     if ( !my_image.LoadFromFile( myimage.c_str() ) || ( !my_font.LoadFromFile( myfont.c_str() ) )  ) {
