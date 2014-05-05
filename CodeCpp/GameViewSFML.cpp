@@ -19,7 +19,6 @@ GameView::GameView() {
      //On bloque le rafraichissement à 60 par seconde
     my_window->SetFramerateLimit(60);
     
-
     // buttons
     my_playButton = new ButtonGraphic();
     my_settingButton = new ButtonGraphic();
@@ -61,8 +60,8 @@ GameView::~GameView() {
     delete my_ananasSprite;
     delete my_teacherSprite;
     delete my_background;
-    delete my_context;
     delete my_eventDispatcher;
+    
     
     for ( std::map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite->begin() ; it!=my_languageToSprite->end(); ++it) {
         delete (*my_languageToSprite)[ it->first ];

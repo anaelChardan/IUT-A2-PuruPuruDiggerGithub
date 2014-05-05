@@ -9,9 +9,7 @@
 #include <SFML/Graphics.hpp>
 
 
-EventDispatcher::EventDispatcher( PuruContext *context ) : my_context( context ) {
-    
-}
+EventDispatcher::EventDispatcher( PuruContext *context ) : my_context( context ) { }
 
 void EventDispatcher::addObserver( EventObserver* observer ) {
     observer->setContext( my_context );
