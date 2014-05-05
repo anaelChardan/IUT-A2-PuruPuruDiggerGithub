@@ -15,12 +15,12 @@ SoundManager::~SoundManager() {
 }
 
 SoundManager::SoundManager() {
-    
+
     my_loseLevelBuffer = new SoundBuffer();
     my_buttonBuffer= new SoundBuffer();
     my_buttonSound = new Sound();
     my_musicLevel = new Music();
-    
+
     my_textBuffer = new SoundBuffer();
     my_textSound = new Sound();
     my_gameOverBuffer = new SoundBuffer();
@@ -30,7 +30,18 @@ SoundManager::SoundManager() {
     my_isNotClickableBuffer = new SoundBuffer();
     my_isNotClickableSound = new Sound();
     my_loseLevelSound = new Sound();
-    
+#ifdef __linux__
+    if ( !my_buttonBuffer->LoadFromFile("Ressources/Music/soundButton.wav") ||
+        !my_textBuffer->LoadFromFile("Ressources/Music/soundEnterText.wav") ||
+        !my_gameOverBuffer->LoadFromFile("Ressources/Music/soundGameOver.wav") ||
+        !my_clickableBuffer->LoadFromFile("Ressources/Music/soundIsClickable.wav") ||
+        !my_isNotClickableBuffer->LoadFromFile("Ressources/Music/soundIsNotClickable.wav") ||
+        !my_musicLevel->OpenFromFile( "Ressources/Music/gridMusic.wav" ) ||
+        !my_loseLevelBuffer->LoadFromFile("Ressources/Music/soundLoseLevel.wav")
+        ) {
+        std::cout << "Error when loading font" << std::endl;
+    }
+#else
     if ( !my_buttonBuffer->LoadFromFile("soundButton.wav") ||
         !my_textBuffer->LoadFromFile("soundEnterText.wav") ||
         !my_gameOverBuffer->LoadFromFile("soundGameOver.wav") ||
@@ -40,7 +51,9 @@ SoundManager::SoundManager() {
         !my_loseLevelBuffer->LoadFromFile("soundLoseLevel.wav")
         ) {
         std::cout << "Error when loading font" << std::endl;
-    } else {
+    }
+#endif
+     else {
         my_textSound->SetBuffer(*my_textBuffer);
         my_gameOverSound->SetBuffer(*my_gameOverBuffer);
         my_clickableSoundCell->SetBuffer(*my_clickableBuffer);
@@ -49,7 +62,7 @@ SoundManager::SoundManager() {
         my_buttonSound->SetBuffer(*my_buttonBuffer);
         my_musicLevel->SetLoop( true );
     }
-    
+
 }
 
 void SoundManager::setContext( PuruContext *context ) {

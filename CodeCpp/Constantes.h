@@ -163,8 +163,11 @@ const int QUITONX = 100;
 const int QUITONY = 600;
 
 //Relatif à notre fichier de meilleurs scores
+#ifdef __linux__
+const std::string FILEBESTSCORE = "Ressources/bestScores.txt";
+#else
 const std::string FILEBESTSCORE = "bestScores.txt";
-
+#endif
 
 /*!
  * \enum Language

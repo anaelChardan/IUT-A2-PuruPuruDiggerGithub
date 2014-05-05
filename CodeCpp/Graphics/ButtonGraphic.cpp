@@ -11,14 +11,14 @@ void ButtonGraphic::changeTheme( std::string theme ) {
     std::string myfont;
 #ifdef  __linux__
     myimage = "Ressources/Pictures/" + theme + "_button.png";
-    myfont = "Ressources/Font/" + theme + "_buttonfont.ttf";
+    myfont = "Ressources/Font/" + theme + "_buttonFont.ttf";
 
     if ( theme == "teacher" ) {
         myfont = "Ressources/Font/" + theme + "_arial.ttf";
     }
 #else
     myimage = theme + "_button.png";
-    myfont = theme + "_buttonfont.ttf";
+    myfont = theme + "_buttonFont.ttf";
 
     if ( theme == "teacher" ) {
         myfont = theme + "_arial.ttf";

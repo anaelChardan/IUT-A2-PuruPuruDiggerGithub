@@ -6,9 +6,9 @@ void CellTextGraphic::changeTheme( std::string theme ) {
     std::string myfont;
 #ifdef __linux__
     if ( theme == "teacher" ) {
-         myfont = "Ressources/Pictures/" + theme + "_arial.ttf";
+         myfont = "Ressources/Font/" + theme + "_arial.ttf";
     } else {
-        myfont = "Ressources/Pictures/" + theme + "_value.ttf";
+        myfont = "Ressources/Font/" + theme + "_value.ttf";
     }
 #else
     if ( theme == "teacher" ) {
