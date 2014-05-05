@@ -7,8 +7,8 @@ sf::Font ButtonGraphic::my_font;
 
 
 void ButtonGraphic::changeTheme( std::string theme ) {
-std::string myimage;
-std::string myfont;
+    std::string myimage;
+    std::string myfont;
 #ifdef  __linux__
     myimage = "Ressources/Pictures/" + theme + "_button.png";
     myfont = "Ressources/Font/" + theme + "_buttonfont.ttf";
