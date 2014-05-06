@@ -1,11 +1,3 @@
-//
-//  SoundManager.cpp
-//  PuruPuruDigger
-//
-//  Created by Sebastien Morel on 5/2/14.
-//
-//
-
 #include "SoundManager.h"
 using namespace sf;
 
@@ -85,6 +77,10 @@ void SoundManager::playMusic() {
 
 void SoundManager::pauseMusic() {
     my_musicLevel->Pause();
+}
+
+void SoundManager::stopMusic() {
+    my_musicLevel->Stop();
 }
 
 void SoundManager::youLoose() {

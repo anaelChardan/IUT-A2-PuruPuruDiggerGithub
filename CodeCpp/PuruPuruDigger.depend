@@ -1176,3 +1176,412 @@
 1399268659 source:/home/ananas/Desktop/MesProjetGit/purupurudigger/CodeCpp/PuruContext.cpp
 	"PuruContext.h"
 
+1399356166 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Cell/Bomb.cpp
+	"Bomb.h"
+
+1399356166 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Cell/Bomb.h
+	<iostream>
+	"CellBase.h"
+
+1399356166 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Cell/CellBase.h
+	<iostream>
+	<string>
+	"../Utils.h"
+	"../Constantes.h"
+
+1399356171 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Utils.h
+	<string>
+
+1399356166 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Constantes.h
+
+1399356166 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Cell/CellBase.cpp
+	"CellBase.h"
+	<typeinfo>
+
+1399356166 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Cell/Digger.cpp
+	"Digger.h"
+	"../Constantes.h"
+
+1399356166 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Cell/Digger.h
+	<iostream>
+	"CellBase.h"
+
+1399356166 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Cell/EmptyCell.cpp
+	"EmptyCell.h"
+
+1399356166 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Cell/EmptyCell.h
+	<iostream>
+	"CellBase.h"
+
+1399356166 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Cell/GoldCell.cpp
+	"GoldCell.h"
+
+1399356166 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Cell/GoldCell.h
+	<iostream>
+	"ValueCell.h"
+
+1399356166 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Cell/ValueCell.h
+	<iostream>
+	"../Constantes.h"
+	"CellBase.h"
+	<cstdlib>
+
+1399356166 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Cell/ValueCell.cpp
+	"ValueCell.h"
+	<sstream>
+	<string>
+
+1399356166 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/GameModel.cpp
+	"GameModel.h"
+
+1399356166 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/GameModel.h
+	<iostream>
+	<vector>
+	"Level.h"
+	"Score.h"
+
+1399356167 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Level.h
+	<iostream>
+	"Score.h"
+	"Cell/Digger.h"
+	"Cell/CellBase.h"
+	"Cell/ValueCell.h"
+	"Cell/GoldCell.h"
+	"Cell/Bomb.h"
+	"Constantes.h"
+	<ctime>
+
+1399356171 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Score.h
+	<iostream>
+	<vector>
+
+1399356166 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/GameViewSFML.cpp
+	"GameViewSFML.h"
+	"Observers/InterfaceObserver.h"
+	"Graphics/EnglishGraphic.h"
+	"Graphics/FrenchGraphic.h"
+	"Graphics/SpanishGraphic.h"
+	"Graphics/DeutschGraphic.h"
+	"Graphics/ItalianoGraphic.h"
+	"Manager/SoundManager.h"
+
+1399356166 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/GameViewSFML.h
+	<iostream>
+	<SFML/Window.hpp>
+	"GameModel.h"
+	"Graphics/ButtonGraphic.h"
+	"Observers/EventDispatcher.h"
+	"Graphics/GraphicMusic.h"
+	"Graphics/GraphicSound.h"
+	"PuruContext.h"
+	"Graphics/LanguageGraphic.h"
+	"Graphics/AnanasSprite.h"
+	"Graphics/TeacherSprite.h"
+	"Manager/SoundManager.h"
+	"Graphics/BackgroundGraphic.h"
+
+1399356166 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/ButtonGraphic.h
+	<iostream>
+	"GraphicElement.h"
+
+1399356166 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/GraphicElement.h
+	<iostream>
+	<SFML/System.hpp>
+	<SFML/Graphics.hpp>
+	<SFML/Window.hpp>
+	<SFML/Audio.hpp>
+	"../Observers/EventObserver.h"
+
+1399356167 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Observers/EventObserver.h
+	<string>
+	<set>
+	<iostream>
+	<SFML/Graphics.hpp>
+	"../PuruContext.h"
+	"../Manager/SoundManager.h"
+
+1399356167 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/PuruContext.h
+	<iostream>
+	"Constantes.h"
+
+1399356528 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Manager/SoundManager.h
+	<iostream>
+	<SFML/Audio.hpp>
+	"../PuruContext.h"
+
+1399356167 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Observers/EventDispatcher.h
+	<iostream>
+	"EventObservable.h"
+	<SFML/Graphics.hpp>
+	"../PuruContext.h"
+	"../Manager/SoundManager.h"
+
+1399356167 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Observers/EventObservable.h
+	<iostream>
+	<string>
+	<set>
+	"EventObserver.h"
+
+1399356166 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/GraphicMusic.h
+	<iostream>
+	"GraphicAudibleElement.h"
+
+1399356166 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/GraphicAudibleElement.h
+	<iostream>
+	"GraphicElement.h"
+
+1399356167 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/GraphicSound.h
+	<iostream>
+	"GraphicAudibleElement.h"
+
+1399356167 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/LanguageGraphic.h
+	<iostream>
+	"GraphicElement.h"
+
+1399356166 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/AnanasSprite.h
+	<iostream>
+	"SpriteGraphic.h"
+
+1399356167 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/SpriteGraphic.h
+	<iostream>
+	"GraphicElement.h"
+
+1399356167 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/TeacherSprite.h
+	<iostream>
+	"SpriteGraphic.h"
+
+1399356166 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/BackgroundGraphic.h
+	<iostream>
+	"GraphicElement.h"
+
+1399356167 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Observers/InterfaceObserver.h
+	<iostream>
+	"EventObserver.h"
+	"../Graphics/ButtonGraphic.h"
+	"../Constantes.h"
+	"../Graphics/LanguageGraphic.h"
+	"../LanguageMessage.h"
+	"../Graphics/AnanasSprite.h"
+	"../Graphics/ValueGraphic.h"
+	"../Graphics/GoldGraphic.h"
+	"../Graphics/TeacherSprite.h"
+	"../Graphics/BackgroundGraphic.h"
+	"../GameModel.h"
+	<string>
+	<SFML/System.hpp>
+	<SFML/Graphics.hpp>
+	<SFML/Window.hpp>
+	"../Graphics/CellBaseGraphic.h"
+	"../Graphics/GraphicMusic.h"
+	"../Graphics/GraphicSound.h"
+
+1399356167 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/LanguageMessage.h
+	<iostream>
+	<map>
+	<string>
+	"Constantes.h"
+
+1399356167 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/ValueGraphic.h
+	<iostream>
+	"CellTextGraphic.h"
+
+1399356166 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/CellTextGraphic.h
+	<iostream>
+	"CellBaseGraphic.h"
+
+1399356166 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/CellBaseGraphic.h
+	<iostream>
+	"GraphicElement.h"
+
+1399356166 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/GoldGraphic.h
+	<iostream>
+	"CellTextGraphic.h"
+
+1399356166 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/EnglishGraphic.h
+	<iostream>
+	"LanguageGraphic.h"
+
+1399356166 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/FrenchGraphic.h
+	<iostream>
+	"LanguageGraphic.h"
+
+1399356167 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/SpanishGraphic.h
+	<iostream>
+	"LanguageGraphic.h"
+
+1399356166 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/DeutschGraphic.h
+	<iostream>
+	"LanguageGraphic.h"
+
+1399356167 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/ItalianoGraphic.h
+	<iostream>
+	"LanguageGraphic.h"
+
+1399356166 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/AnanasSprite.cpp
+	"AnanasSprite.h"
+	"../Constantes.h"
+
+1399356166 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/BackgroundGraphic.cpp
+	"BackgroundGraphic.h"
+	"../Constantes.h"
+
+1399356166 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/BombGraphic.cpp
+	"BombGraphic.h"
+	"../Constantes.h"
+
+1399356166 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/BombGraphic.h
+	<iostream>
+	"CellBaseGraphic.h"
+	"GraphicElement.h"
+
+1399356166 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/ButtonGraphic.cpp
+	"ButtonGraphic.h"
+	"../Constantes.h"
+
+1399356166 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/CellBaseGraphic.cpp
+	"CellBaseGraphic.h"
+	"../Constantes.h"
+
+1399356166 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/CellTextGraphic.cpp
+	"CellTextGraphic.h"
+
+1399356166 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/DeutschGraphic.cpp
+	"DeutschGraphic.h"
+	"../Constantes.h"
+
+1399356166 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/DiggerGraphic.cpp
+	"DiggerGraphic.h"
+	"../Constantes.h"
+
+1399356166 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/DiggerGraphic.h
+	<iostream>
+	"CellBaseGraphic.h"
+
+1399356166 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/EmptyGraphic.cpp
+	"EmptyGraphic.h"
+	"../Constantes.h"
+
+1399356166 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/EmptyGraphic.h
+	<iostream>
+	"CellBaseGraphic.h"
+	"GraphicElement.h"
+
+1399356166 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/EnglishGraphic.cpp
+	"EnglishGraphic.h"
+	"../Constantes.h"
+
+1399356166 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/FrenchGraphic.cpp
+	"FrenchGraphic.h"
+	"../Constantes.h"
+
+1399356166 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/GoldGraphic.cpp
+	"GoldGraphic.h"
+	"../Constantes.h"
+
+1399356166 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/GraphicAudibleElement.cpp
+	"GraphicAudibleElement.h"
+	"../Constantes.h"
+
+1399356166 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/GraphicElement.cpp
+	"GraphicElement.h"
+
+1399356166 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/GraphicMusic.cpp
+	"GraphicMusic.h"
+	"../Constantes.h"
+
+1399356166 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/GraphicSound.cpp
+	"GraphicSound.h"
+	"../Constantes.h"
+
+1399356167 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/ItalianoGraphic.cpp
+	"ItalianoGraphic.h"
+	"../Constantes.h"
+
+1399356167 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/LanguageGraphic.cpp
+	"LanguageGraphic.h"
+	"../Constantes.h"
+
+1399356167 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/SpanishGraphic.cpp
+	"SpanishGraphic.h"
+	"../Constantes.h"
+
+1399356167 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/SpriteGraphic.cpp
+	"SpriteGraphic.h"
+	"../Constantes.h"
+
+1399356167 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/TeacherSprite.cpp
+	"TeacherSprite.h"
+	"../Constantes.h"
+
+1399356167 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Graphics/ValueGraphic.cpp
+	"ValueGraphic.h"
+	"../Constantes.h"
+
+1399356167 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/IntDecFunctor.cpp
+	"IntDecFunctor.h"
+
+1399356167 /info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/IntDecFunctor.h
+	<iostream>
+
+1399356167 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/LanguageMessage.cpp
+	"LanguageMessage.h"
+
+1399356167 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Level.cpp
+	"Level.h"
+	"Cell/Bomb.h"
+	"Cell/GoldCell.h"
+	"Cell/EmptyCell.h"
+	<vector>
+	<algorithm>
+
+1399356171 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/mainSFML.cpp
+	<iostream>
+	"GameModel.h"
+	"GameViewSFML.h"
+	<cstdlib>
+
+1399356167 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Manager/SoundManager.cpp
+	"SoundManager.h"
+
+1399356167 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Observers/EventDispatcher.cpp
+	"EventDispatcher.h"
+	<SFML/Graphics.hpp>
+
+1399356167 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Observers/EventObservable.cpp
+	"EventObservable.h"
+
+1399356167 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Observers/EventObserver.cpp
+	"EventObserver.h"
+
+1399356167 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Observers/InterfaceObserver.cpp
+	"InterfaceObserver.h"
+	"../Graphics/EnglishGraphic.h"
+	"../Graphics/FrenchGraphic.h"
+	"../Graphics/SpanishGraphic.h"
+	"../Graphics/DeutschGraphic.h"
+	"../Graphics/ItalianoGraphic.h"
+	"../Utils.h"
+	<sstream>
+	<fstream>
+	"../Graphics/DiggerGraphic.h"
+	"../Graphics/EmptyGraphic.h"
+	"../Graphics/ValueGraphic.h"
+	"../Graphics/BombGraphic.h"
+	"../Graphics/GoldGraphic.h"
+	"../IntDecFunctor.h"
+
+1399356167 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/PuruContext.cpp
+	"PuruContext.h"
+
+1399356171 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Score.cpp
+	"Score.h"
+
+1399356171 source:/info-nfs/users/anachardan/MesProjetsGIT/purupurudigger/CodeCpp/Utils.cpp
+	"Utils.h"
+	<iostream>
+	<sstream>
+	<cstdlib>
+	<string>
+	"Constantes.h"
+	<cmath>
+

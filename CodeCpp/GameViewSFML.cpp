@@ -18,30 +18,30 @@ GameView::GameView() {
 
      //On bloque le rafraichissement à 60 par seconde
     my_window->SetFramerateLimit(60);
-    
+
     // buttons
     my_playButton = new ButtonGraphic();
     my_settingButton = new ButtonGraphic();
     my_bestButton = new ButtonGraphic();
     my_quitButton = new ButtonGraphic();
-    
+
     my_soundIcon = new GraphicSound();
     my_musicIcon = new GraphicMusic();
 
     my_ananasSprite = new AnanasSprite();
     my_teacherSprite = new TeacherSprite();
-    
+
     my_background = new BackgroundGraphic();
 
     my_languageToSprite = new std::map<Language, LanguageGraphic*>();
-    
+
     my_languageToSprite->operator[](english) = new EnglishGraphic();
     my_languageToSprite->operator[](francais) = new FrenchGraphic();
     my_languageToSprite->operator[](italiano) = new ItalianoGraphic();
     my_languageToSprite->operator[](espanol) = new SpanishGraphic();
     my_languageToSprite->operator[](deutsch) = new DeutschGraphic();
-    
-    
+
+
     // dispatch d'event en tout genre
     my_context = new PuruContext();
     SoundManager::getInstance()->setContext( my_context );
@@ -61,8 +61,8 @@ GameView::~GameView() {
     delete my_teacherSprite;
     delete my_background;
     delete my_eventDispatcher;
-    
-    
+
+
     for ( std::map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite->begin() ; it!=my_languageToSprite->end(); ++it) {
         delete (*my_languageToSprite)[ it->first ];
     }
@@ -89,9 +89,10 @@ void GameView::goToSettings() {
 void GameView::goToPlay() {
     my_context->setInPresentation( false );
     my_context->setPlaying( true );
-    SoundManager::getInstance()->playMusic();
+    if ( my_context->isEnableMusic() )
+        SoundManager::getInstance()->playMusic();
     my_model->reset();
-   
+
 }
 
 void GameView::goToScore() {
@@ -114,7 +115,7 @@ void GameView::initPresentation() {
     my_eventDispatcher->addObserver( my_bestButton );
     my_eventDispatcher->addObserver( my_settingButton );
     my_eventDispatcher->addObserver( my_quitButton );
-    
+
     for ( std::map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite->begin() ; it!=my_languageToSprite->end(); ++it) {
         my_eventDispatcher->removeObserver( (*my_languageToSprite)[ it->first ] );
     }
@@ -133,7 +134,7 @@ void GameView::initSettings() {
     my_eventDispatcher->removeObserver( my_playButton );
     my_eventDispatcher->removeObserver( my_bestButton );
     my_eventDispatcher->removeObserver( my_settingButton );
-    
+
 }
 
 void GameView::initBestScore() {
@@ -170,14 +171,14 @@ void GameView::initView() {
 
 //Boucle d'événement
 void GameView::treatGame( ) {
-    
+
     InterfaceObserver* interfaceObserver = new InterfaceObserver( my_window, my_model, my_playButton, my_settingButton, my_bestButton, my_quitButton, my_musicIcon, my_soundIcon, my_languageToSprite, my_ananasSprite, my_teacherSprite, my_background );
-    
+
     my_eventDispatcher->addObserver( interfaceObserver );
     my_eventDispatcher->addObserver( my_soundIcon );
     my_eventDispatcher->addObserver( my_musicIcon );
     my_eventDispatcher->addObserver( my_background );
-    
+
     // On abonne quand meme pour le change theme
     // cela sera desabommer dans le init
     for ( std::map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite->begin() ; it!=my_languageToSprite->end(); ++it) {
@@ -189,12 +190,12 @@ void GameView::treatGame( ) {
     my_eventDispatcher->addObserver( my_bestButton );
     my_eventDispatcher->addObserver( my_settingButton );
     my_eventDispatcher->addObserver( my_quitButton );
-    
+
     // theme par defaut
     my_eventDispatcher->changeTheme("ananas");
-    
+
     initPresentation();
-    
+
     while ( my_window->IsOpened( ) ) {
         Event event;
         while ( my_window->GetEvent( event ) ) {
@@ -202,7 +203,7 @@ void GameView::treatGame( ) {
                 my_window->Close();
             } else {
                 initView();
-                
+
                 switch (event.Type) {
                     case Event::MouseButtonPressed:
                         if ( my_context->isInPresentation() ) {
@@ -222,13 +223,13 @@ void GameView::treatGame( ) {
                                     break;
                                 }
                             }
-                            
+
                             if ( my_ananasSprite->isInZone( event.MouseButton.X, event.MouseButton.Y ) ) {
                                 my_eventDispatcher->changeTheme("ananas");
-                                
+
                             } else if ( my_teacherSprite->isInZone( event.MouseButton.X, event.MouseButton.Y) ) {
                                 my_eventDispatcher->changeTheme("teacher");
-                                
+
                             } else if ( my_quitButton->isInZone(event.MouseButton.X, event.MouseButton.Y) ) {
                                 goToPresentation();
                             }
@@ -239,7 +240,7 @@ void GameView::treatGame( ) {
                         } else if ( my_context->isPlaying() ) {
                             int valueY = convertYPixel( event.MouseButton.Y );
                             int valueX = convertXPixel( event.MouseButton.X );
-                            
+
                             if ( ( valueY != -1 ) && ( valueX != -1 ) && ( !my_context->isInAnimation() )  ) {
                                 SoundManager::getInstance()->clickCell();
                                 my_model->orderMovement( valueY, valueX );
@@ -252,12 +253,12 @@ void GameView::treatGame( ) {
                         break;
                     default:
                         break;
-                        
+
                 }
                 my_eventDispatcher->notify( event );
             }
         }
-        
+
         my_eventDispatcher->preDisplay();
         my_window->Display();
         my_eventDispatcher->postDisplay();

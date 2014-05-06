@@ -24,6 +24,7 @@ public:
     void clickCell();
     void playMusic();
     void pauseMusic();
+    void stopMusic();
     void youLoose();
     void youWin();
     void gameOver();
