@@ -26,22 +26,23 @@ class Bomb : public CellBase {
          *  Constructeur de la classe Bomb
          */
         Bomb();
-    
+
         /*!
          *  \brief Constructeur paramétré
          *
          *  Constructeur paramétré de la classe Bomb
+         *  \param[in] int x
+         *  \param[in] int y
          */
         Bomb( int x, int y );
-    
+
         /*!
          *  \brief Constructeur par copie
          *
          *  Constructeur par copie de la classe Bomb
          *  \param[in] Bomb b
-         *  \param[out] Bomb b
          */
-        Bomb( const Bomb &b); 
+        Bomb( const Bomb &b);
 
         /*!
          *  \brief Destructeur
@@ -53,10 +54,10 @@ class Bomb : public CellBase {
         /*!
          *  \brief Opérateur d'affectation pour recopier une case
          *
-         *  \param[b] Bomb c   : opérateur d'affectation pour recopier une Bomb
+         *  \param[b] Bomb b   : opérateur d'affectation pour recopier une Bomb
          */
         virtual Bomb& operator=(const Bomb & b);
-    
+
 };
 
 #endif /* defined(__PuruPuruDigger__Bomb__) */
