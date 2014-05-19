@@ -31,6 +31,8 @@ class BackgroundGraphic : public GraphicElement {
          *  \brief Permet de changer le thème du jeu
          *
          *  Prise en compte du nouveau thème choisi
+         *
+         * \param[in] std::string theme
          */
         void changeTheme( std::string theme );
 };

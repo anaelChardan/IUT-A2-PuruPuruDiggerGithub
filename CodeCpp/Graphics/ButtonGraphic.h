@@ -44,15 +44,45 @@ class ButtonGraphic : public GraphicElement {
         virtual void setSpriteAndDraw( int x, int y, sf::RenderWindow * _window, std::string );
 
         /*!
-         *  \brief Configurer le sprite par rapport à l'image
+         *  \brief Affichage des informations du sprite demandé
          *
-         *  Affichage du bouton
+         *  Affichage des informations du sprite demandé
          */
         void setHover();
+
+        /*!
+         *  \brief Affichage du sprite à sa position initiale
+         *
+         *  Affiche le sprite demandé à sa position de depart
+         */
         void reset();
+
+        /*!
+         *  \brief Dessine le sprite et affiche le texte associé
+         *
+         *  Dessine le sprite et affiche le texte associé
+         */
         virtual void draw(sf::RenderWindow* _window) const;
+
+        /*!
+         *  \brief Change le boutton de couleur
+         *
+         *  Le boutton change de couleur quand on passe dessus avec la souris
+         */
         virtual void mouseMoved(sf::Event event);
+
+        /*!
+         *  \brief Ecoute d'un son
+         *
+         *  Un son est associé en fonction du bouton
+         */
         virtual void mouseButtonPressed(sf::Event event);
+
+        /*!
+         *  \brief Changelent de thème
+         *
+         *  Possibilité dans le menu option de changer de thème
+         */
         virtual void changeTheme( std::string theme );
 };
 
