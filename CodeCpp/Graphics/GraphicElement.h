@@ -17,7 +17,7 @@
 #include <SFML/Audio.hpp>
 #include "../Observers/EventObserver.h"
 
-/*! \class BacgroundGraphicElement
+/*! \class GraphicElement
  *  \brief Classe pour l'affichage des element graphique
  */
 
@@ -29,7 +29,7 @@ class GraphicElement : public EventObserver {
         /*!
          *  \brief Destructeur
          *
-         *  Destructeur de la classe GraohicElement
+         *  Destructeur de la classe GraphicElement
          */
         virtual ~GraphicElement();
 
@@ -80,16 +80,50 @@ class GraphicElement : public EventObserver {
         int getYPos() const;
 
         /*!
-         *  \brief Affichage des coordonnees
+         *  \brief Exécuter le mouvement choisi à la souris
          *
-         *  Affichage des coordonnées en x de l'image
+         * \param[in] sf::Event event
          */
         virtual void mouseMoved(sf::Event event);
+
+        /*!
+         *  \brief Executer le mouvement choisi au clavier
+         *
+         *  \param[in] sf::Event event
+         */
         virtual void keyPressed(sf::Event event);
+
+        /*!
+         *  \brief Ecrire le texte
+         *
+         *  \param[in] sf::Event event
+         */
         virtual void textEntered(sf::Event event);
+
+        /*!
+         *  \brief Executer le mouvement choisi à la souris
+         *
+         *  \param[in] sf::Event event
+         */
         virtual void mouseButtonPressed(sf::Event event);
+
+        /*!
+         *  \brief Gestion de l'evenement avant le click
+         *
+         */
         virtual void preDisplay();
+
+        /*!
+         *  \brief Gestion de l'evenement après le click
+         *
+         */
         virtual void postDisplay();
+
+        /*!
+         *  \brief Changer le theme
+         *
+         *  \param[in] std::string theme
+         */
         virtual void changeTheme( std::string theme );
 
 };

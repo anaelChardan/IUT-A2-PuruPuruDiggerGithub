@@ -19,6 +19,7 @@
 class BackgroundGraphic : public GraphicElement {
     protected :
         static sf::Image my_image; /*!< image de fond */
+
     public :
         /*!
          *  \brief Configurer le sprite par rapport à l'image
