@@ -67,7 +67,10 @@ class GameView {
         void enterScore(std::string nom) const ;
 
     public:
+    
+    
         GameView();
+    
         /*!
          *  \brief Injection du modèle à la vue
          *

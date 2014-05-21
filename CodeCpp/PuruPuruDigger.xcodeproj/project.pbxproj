@@ -23,6 +23,7 @@
 		0382DB4718C9A36700E93483 /* Score.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314818B385BA00CF8AA1 /* Score.cpp */; };
 		0382DB4818C9A36700E93483 /* Score.h in Sources */ = {isa = PBXBuildFile; fileRef = 03ED314918B385BA00CF8AA1 /* Score.h */; };
 		03A0EFC018C5D0B900F57E1A /* bestScores.txt in Resources */ = {isa = PBXBuildFile; fileRef = 03A0EFBF18C5D0B900F57E1A /* bestScores.txt */; };
+		03AA583F1923F4E70034A5FD /* ananas_wallpapper.png in Resources */ = {isa = PBXBuildFile; fileRef = 03AA583E1923F4E70034A5FD /* ananas_wallpapper.png */; };
 		03BFB1981913CAAC00703F49 /* PuruContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03BFB1961913CAAC00703F49 /* PuruContext.cpp */; };
 		03BFB1991913CAAC00703F49 /* PuruContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03BFB1961913CAAC00703F49 /* PuruContext.cpp */; };
 		03BFB19A1913CAAC00703F49 /* PuruContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03BFB1961913CAAC00703F49 /* PuruContext.cpp */; };
@@ -104,7 +105,6 @@
 		7FA5D412191399730035B5DE /* choiceSprite.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5D409191399730035B5DE /* choiceSprite.png */; };
 		7FA5D413191399730035B5DE /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5D40A191399730035B5DE /* icon.png */; };
 		7FA5D414191399730035B5DE /* languages.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5D40B191399730035B5DE /* languages.png */; };
-		7FA5D415191399730035B5DE /* ananas_wallpapper.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5D40C191399730035B5DE /* ananas_wallpapper.png */; };
 		7FA5D416191399730035B5DE /* teacher_wallpapper.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5D40D191399730035B5DE /* teacher_wallpapper.png */; };
 		7FA5D41D191399890035B5DE /* teacher_arial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5D417191399890035B5DE /* teacher_arial.ttf */; };
 		7FA5D41E191399890035B5DE /* ananas_BestFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5D418191399890035B5DE /* ananas_BestFont.ttf */; };
@@ -175,6 +175,7 @@
 		0382DB3718C9A28400E93483 /* test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
 		0382DB3E18C9A31000E93483 /* libboost_unit_test_framework.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_unit_test_framework.dylib; path = ../../../../../../usr/local/Cellar/boost/1.55.0/lib/libboost_unit_test_framework.dylib; sourceTree = "<group>"; };
 		03A0EFBF18C5D0B900F57E1A /* bestScores.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = bestScores.txt; path = Ressources/bestScores.txt; sourceTree = SOURCE_ROOT; };
+		03AA583E1923F4E70034A5FD /* ananas_wallpapper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ananas_wallpapper.png; sourceTree = "<group>"; };
 		03BFB1961913CAAC00703F49 /* PuruContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PuruContext.cpp; sourceTree = SOURCE_ROOT; };
 		03BFB1971913CAAC00703F49 /* PuruContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PuruContext.h; sourceTree = SOURCE_ROOT; };
 		03D783B618D097E100A1B8AE /* PuruPuruDiggerSFML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PuruPuruDiggerSFML.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -264,7 +265,6 @@
 		7FA5D409191399730035B5DE /* choiceSprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = choiceSprite.png; path = Ressources/Pictures/choiceSprite.png; sourceTree = SOURCE_ROOT; };
 		7FA5D40A191399730035B5DE /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = Ressources/Pictures/icon.png; sourceTree = SOURCE_ROOT; };
 		7FA5D40B191399730035B5DE /* languages.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = languages.png; path = Ressources/Pictures/languages.png; sourceTree = SOURCE_ROOT; };
-		7FA5D40C191399730035B5DE /* ananas_wallpapper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ananas_wallpapper.png; path = Ressources/Pictures/ananas_wallpapper.png; sourceTree = SOURCE_ROOT; };
 		7FA5D40D191399730035B5DE /* teacher_wallpapper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = teacher_wallpapper.png; path = Ressources/Pictures/teacher_wallpapper.png; sourceTree = SOURCE_ROOT; };
 		7FA5D417191399890035B5DE /* teacher_arial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = teacher_arial.ttf; path = Ressources/Font/teacher_arial.ttf; sourceTree = SOURCE_ROOT; };
 		7FA5D418191399890035B5DE /* ananas_BestFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ananas_BestFont.ttf; path = Ressources/Font/ananas_BestFont.ttf; sourceTree = SOURCE_ROOT; };
@@ -352,6 +352,7 @@
 		03E6822318D300BA004E125C /* Pictures */ = {
 			isa = PBXGroup;
 			children = (
+				03AA583E1923F4E70034A5FD /* ananas_wallpapper.png */,
 				7FA5D405191399730035B5DE /* ananas_button.png */,
 				7FA5D406191399730035B5DE /* teacher_button.png */,
 				7FA5D407191399730035B5DE /* ananas_case.png */,
@@ -359,7 +360,6 @@
 				7FA5D409191399730035B5DE /* choiceSprite.png */,
 				7FA5D40A191399730035B5DE /* icon.png */,
 				7FA5D40B191399730035B5DE /* languages.png */,
-				7FA5D40C191399730035B5DE /* ananas_wallpapper.png */,
 				7FA5D40D191399730035B5DE /* teacher_wallpapper.png */,
 			);
 			path = Pictures;
@@ -398,50 +398,50 @@
 		7FA5D386191397390035B5DE /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				7FA5D3A7191398EB0035B5DE /* GraphicElement.h */,
+				7FA5D3A8191398EB0035B5DE /* GraphicElement.cpp */,
+				7FA5D3B9191398EB0035B5DE /* CellBaseGraphic.h */,
+				7FA5D3BA191398EB0035B5DE /* CellBaseGraphic.cpp */,
 				7FA5D397191398EB0035B5DE /* ValueGraphic.h */,
 				7FA5D398191398EB0035B5DE /* ValueGraphic.cpp */,
+				7FA5D3B3191398EB0035B5DE /* DiggerGraphic.h */,
+				7FA5D3B4191398EB0035B5DE /* DiggerGraphic.cpp */,
+				7FA5D39C191398EB0035B5DE /* SpriteGraphic.cpp */,
+				7FA5D39B191398EB0035B5DE /* SpriteGraphic.h */,
 				7FA5D399191398EB0035B5DE /* TeacherSprite.h */,
 				7FA5D39A191398EB0035B5DE /* TeacherSprite.cpp */,
-				7FA5D39B191398EB0035B5DE /* SpriteGraphic.h */,
-				7FA5D39C191398EB0035B5DE /* SpriteGraphic.cpp */,
+				7FA5D3C1191398EB0035B5DE /* AnanasSprite.h */,
+				7FA5D3C2191398EB0035B5DE /* AnanasSprite.cpp */,
+				7FA5D3A0191398EB0035B5DE /* LanguageGraphic.cpp */,
+				7FA5D39F191398EB0035B5DE /* LanguageGraphic.h */,
 				7FA5D39D191398EB0035B5DE /* SpanishGraphic.h */,
 				7FA5D39E191398EB0035B5DE /* SpanishGraphic.cpp */,
-				7FA5D39F191398EB0035B5DE /* LanguageGraphic.h */,
-				7FA5D3A0191398EB0035B5DE /* LanguageGraphic.cpp */,
 				7FA5D3A1191398EB0035B5DE /* ItalianoGraphic.h */,
 				7FA5D3A2191398EB0035B5DE /* ItalianoGraphic.cpp */,
+				7FA5D3AF191398EB0035B5DE /* EnglishGraphic.h */,
+				7FA5D3B0191398EB0035B5DE /* EnglishGraphic.cpp */,
+				7FA5D3AE191398EB0035B5DE /* FrenchGraphic.cpp */,
+				7FA5D3AD191398EB0035B5DE /* FrenchGraphic.h */,
+				7FA5D3B5191398EB0035B5DE /* DeutschGraphic.h */,
 				7FA5D3A3191398EB0035B5DE /* GraphicSound.h */,
 				7FA5D3A4191398EB0035B5DE /* GraphicSound.cpp */,
 				7FA5D3A5191398EB0035B5DE /* GraphicMusic.h */,
 				7FA5D3A6191398EB0035B5DE /* GraphicMusic.cpp */,
-				7FA5D3A7191398EB0035B5DE /* GraphicElement.h */,
-				7FA5D3A8191398EB0035B5DE /* GraphicElement.cpp */,
 				7FA5D3A9191398EB0035B5DE /* GraphicAudibleElement.h */,
 				7FA5D3AA191398EB0035B5DE /* GraphicAudibleElement.cpp */,
 				7FA5D3AB191398EB0035B5DE /* GoldGraphic.h */,
 				7FA5D3AC191398EB0035B5DE /* GoldGraphic.cpp */,
-				7FA5D3AD191398EB0035B5DE /* FrenchGraphic.h */,
-				7FA5D3AE191398EB0035B5DE /* FrenchGraphic.cpp */,
-				7FA5D3AF191398EB0035B5DE /* EnglishGraphic.h */,
-				7FA5D3B0191398EB0035B5DE /* EnglishGraphic.cpp */,
 				7FA5D3B1191398EB0035B5DE /* EmptyGraphic.h */,
 				7FA5D3B2191398EB0035B5DE /* EmptyGraphic.cpp */,
-				7FA5D3B3191398EB0035B5DE /* DiggerGraphic.h */,
-				7FA5D3B4191398EB0035B5DE /* DiggerGraphic.cpp */,
-				7FA5D3B5191398EB0035B5DE /* DeutschGraphic.h */,
 				7FA5D3B6191398EB0035B5DE /* DeutschGraphic.cpp */,
 				7FA5D3B7191398EB0035B5DE /* CellTextGraphic.h */,
 				7FA5D3B8191398EB0035B5DE /* CellTextGraphic.cpp */,
-				7FA5D3B9191398EB0035B5DE /* CellBaseGraphic.h */,
-				7FA5D3BA191398EB0035B5DE /* CellBaseGraphic.cpp */,
 				7FA5D3BB191398EB0035B5DE /* ButtonGraphic.h */,
 				7FA5D3BC191398EB0035B5DE /* ButtonGraphic.cpp */,
 				7FA5D3BD191398EB0035B5DE /* BombGraphic.h */,
 				7FA5D3BE191398EB0035B5DE /* BombGraphic.cpp */,
 				7FA5D3BF191398EB0035B5DE /* BackgroundGraphic.h */,
 				7FA5D3C0191398EB0035B5DE /* BackgroundGraphic.cpp */,
-				7FA5D3C1191398EB0035B5DE /* AnanasSprite.h */,
-				7FA5D3C2191398EB0035B5DE /* AnanasSprite.cpp */,
 			);
 			path = Graphics;
 			sourceTree = "<group>";
@@ -515,6 +515,8 @@
 				031D88D718BE5B2B0001686A /* GameModel.h */,
 				031D88D918BE5B670001686A /* GameView.cpp */,
 				031D88DA18BE5B670001686A /* GameView.h */,
+				03BFB1961913CAAC00703F49 /* PuruContext.cpp */,
+				03BFB1971913CAAC00703F49 /* PuruContext.h */,
 				03ED314618B385BA00CF8AA1 /* Level.cpp */,
 				03ED314718B385BA00CF8AA1 /* Level.h */,
 				03ED314818B385BA00CF8AA1 /* Score.cpp */,
@@ -529,8 +531,6 @@
 				03229D1918D35E8A00027190 /* Utils.cpp */,
 				03229D1A18D35E8A00027190 /* Utils.h */,
 				7FA5D385191397150035B5DE /* Ressources */,
-				03BFB1961913CAAC00703F49 /* PuruContext.cpp */,
-				03BFB1971913CAAC00703F49 /* PuruContext.h */,
 			);
 			path = PuruPuruDigger;
 			sourceTree = "<group>";
@@ -634,8 +634,8 @@
 				7FA5D422191399890035B5DE /* ananas_value.ttf in Resources */,
 				7FA5D4001913995A0035B5DE /* soundEnterText.wav in Resources */,
 				7FA5D4031913995A0035B5DE /* soundIsNotClickable.wav in Resources */,
-				7FA5D415191399730035B5DE /* ananas_wallpapper.png in Resources */,
 				7FA5D411191399730035B5DE /* teacher_case.png in Resources */,
+				03AA583F1923F4E70034A5FD /* ananas_wallpapper.png in Resources */,
 				7FA5D3FF1913995A0035B5DE /* soundButton.wav in Resources */,
 				7FA5D40F191399730035B5DE /* teacher_button.png in Resources */,
 				03D783AC18D097E100A1B8AE /* bestScores.txt in Resources */,

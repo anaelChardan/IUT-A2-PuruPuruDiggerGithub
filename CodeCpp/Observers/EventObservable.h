@@ -1,10 +1,3 @@
-//
-//  Observable.h
-//  PuruPuruDigger
-//
-//
-//
-
 #ifndef __PuruPuruDigger__EventObservable__
 #define __PuruPuruDigger__EventObservable__
 
@@ -12,6 +5,8 @@
 #include <string>
 #include <set>
 #include "EventObserver.h"
+
+
 
 class EventObservable {
 

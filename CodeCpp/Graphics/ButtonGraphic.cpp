@@ -4,8 +4,6 @@
 sf::Image ButtonGraphic::my_image;
 sf::Font ButtonGraphic::my_font;
 
-
-
 void ButtonGraphic::changeTheme( std::string theme ) {
     std::string myimage;
     std::string myfont;
@@ -56,7 +54,6 @@ void ButtonGraphic::reset() {
     my_sprite.SetSubRect( sf::IntRect( BUTTONNORMSX, BUTTONCASEBEGIN, BUTTONNORMEX, BUTTONCASEHEIGHT ) );
 }
 
-
 void ButtonGraphic::setSpriteAndDraw(int x, int y, sf::RenderWindow* _window, std::string _string) {
     GraphicElement::setSpriteAndDraw( x, y, _window);
     my_string.SetText(_string);
@@ -69,8 +66,6 @@ void ButtonGraphic::draw(sf::RenderWindow *_window) const {
     _window->Draw(my_sprite);
     _window->Draw(my_string);
 }
-
-
 
 /** Events Subscriber */
 

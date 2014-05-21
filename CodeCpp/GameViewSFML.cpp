@@ -263,4 +263,5 @@ void GameView::treatGame( ) {
         my_window->Display();
         my_eventDispatcher->postDisplay();
     }
+    delete interfaceObserver;
 }

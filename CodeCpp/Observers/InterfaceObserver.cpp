@@ -86,7 +86,6 @@ InterfaceObserver::~InterfaceObserver() {
 
 }
 
-
 void InterfaceObserver::resetLanguageNorm() {
     for ( std::map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite->begin() ; it!=my_languageToSprite->end(); ++it) {
         (*my_languageToSprite)[ it->first ]->reset();
@@ -171,7 +170,6 @@ void InterfaceObserver::showBestScore() {
         cerr << " Error when program is openning text file " << endl;
     }
 }
-
 
 //Cette méthode sert à mettre un text à un string, le positionner, et le dessiner
 void InterfaceObserver::setTextAndDraw( sf::String* s, string text, int x, int y, bool useSizeRectX ) {
@@ -276,6 +274,7 @@ void InterfaceObserver::showScore() {
 }
 
 void InterfaceObserver::showLevel() {
+    
     if ( !my_context->isInAnimation() ) {
         newScreen();
         my_titleString->SetColor(Color(255,255,255));
@@ -288,9 +287,6 @@ void InterfaceObserver::showLevel() {
     //On dessine la grille
     showGrid();
 }
-
-
-
 
 void InterfaceObserver::enterScore() const{
     ifstream scoreLect(FILEBESTSCORE.c_str(), ios::in );
@@ -335,10 +331,7 @@ void InterfaceObserver::enterScore() const{
     }
 }
 
-
-
 void InterfaceObserver::toAnimate() {
-
     if ( ( convertIndiceXToPixel( my_model->getLevel()->getDigger()->getY() ) - my_stringToSprite["Digger"]->getXPos() ) == 0 && ( convertIndiceYToPixel( my_model->getLevel()->getDigger()->getX() ) - my_stringToSprite["Digger"]->getYPos() ) == 0 )
         my_context->setAnimation( false );
     else {
@@ -390,7 +383,6 @@ void InterfaceObserver::toAnimate() {
 /** Events Subscriber */
 
 void InterfaceObserver::mouseMoved(sf::Event event) { }
-
 
 void InterfaceObserver::keyPressed(sf::Event event) {
 
