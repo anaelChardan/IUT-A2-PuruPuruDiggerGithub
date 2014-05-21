@@ -15,6 +15,7 @@
 /*! \class Score
  *  \brief Classe modélisant un score
  */
+ 
 class Score {
     private :
         std::vector<int> my_success; /*!<  Notre tableau de succès */
