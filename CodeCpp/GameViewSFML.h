@@ -1,6 +1,14 @@
 #ifndef __PuruPuruDigger__GameViewSFML__
 #define __PuruPuruDigger__GameViewSFML__
 
+/**
+ * \file GameViewSFML.h
+ * \brief Notre classe GameViewSFML
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include <iostream>
 #include <SFML/Window.hpp>
 
@@ -16,53 +24,109 @@
 #include "Manager/SoundManager.h"
 #include "Graphics/BackgroundGraphic.h"
 
+/*! \class GameViewSFML
+ *  \brief Classe qui gere tout l'affichage du jeu
+ */
+
 class GameView {
     private :
-    
-        sf::RenderWindow* my_window; /*!< La fenêtre */
-        GameModel * my_model; /*!<  Le modèle */
-        EventDispatcher* my_eventDispatcher; /*!<  Le dispatcher*/
+        sf::RenderWindow* my_window; /*!<  La fenetre de notre jeu */
+        GameModel * my_model; /*!<  La modèle de notre vue */
+        EventDispatcher* my_eventDispatcher;
 
         ButtonGraphic* my_playButton; /*!<  Le bouton play */
-        ButtonGraphic* my_settingButton;/*!<  Le bouton des options */
-        ButtonGraphic* my_bestButton;/*!<  Le bouton des best scores */
-        ButtonGraphic* my_quitButton;/*!<  Le bouton quitter */
-    
-        GraphicMusic *my_musicIcon;/*!<  L'icône de musique */
-        GraphicSound *my_soundIcon;/*!<  L'icône de son */
-    
-        AnanasSprite *my_ananasSprite;/*!<  La vue de notre sprite*/
-        TeacherSprite *my_teacherSprite;/*!<  La vue du sprite du prof */
-    
-        BackgroundGraphic *my_background; /*!<  Le fond  */
+        ButtonGraphic* my_settingButton; /*!<  Le bouton option */
+        ButtonGraphic* my_bestButton; /*!<  Le bouton meilleur score */
+        ButtonGraphic* my_quitButton; /*!<  Le bouton quitter */
 
-        std::map< Language, LanguageGraphic* >* my_languageToSprite; /*!<  Associer une image à son sprite */
+        GraphicMusic *my_musicIcon; /*!<  Le bouton pour la musique */
+        GraphicSound *my_soundIcon; /*!<  Le bouton pour le son */
 
-        PuruContext* my_context; /*!<  Le contexte de notre jeu de notre vue */
-    
-        void goToPresentation(); /*!<  Les transitions on va en mode Presentation */
-        void goToSettings(); /*!<  La modèle de notre vue */
+        AnanasSprite *my_ananasSprite; /*!<  Le mode ananas */
+        TeacherSprite *my_teacherSprite; /*!<  Le mode du professeur */
+
+        BackgroundGraphic *my_background; /*!<  Le fond de notre jeu */
+
+        std::map< Language, LanguageGraphic* >* my_languageToSprite; /*!<  Le choix des langages */
+
+        PuruContext* my_context; /*!<  Le context */
+        SoundManager *my_soundManager; /*!<  Le choix du son */
+
+        /*!
+         *  \brief Permet d'aaceder au menu
+         */
+        void goToPresentation();
+
+        /*!
+         *  \brief Permet d'acceder au menu option
+         */
+        void goToSettings();
+
+        /*!
+         *  \brief Permet de jouer
+         */
         void goToPlay();
+
+        /*!
+         *  \brief Permet d'acceder au score
+         */
         void goToScore();
+
+        /*!
+         *  \brief Permet de rentrer un score
+         */
         void goToEnterScore();
-    
+
+        /*!
+         *  \brief Initialise le jeu
+         */
         void initView();
+
+        /*!
+         *  \brief Initialise le menu
+         */
         void initPresentation();
+
+        /*!
+         *  \brief Initialise le menu option
+         */
         void initSettings();
+
+        /*!
+         *  \brief Initailise le smeilleurs score
+         */
         void initBestScore();
+
+        /*!
+         *  \brief Initialise le fait de saisir un score
+         */
         void initEnterScore();
+
+        /*!
+         *  \brief Initialise le jeu
+         */
         void initPlay();
 
-    
-    
-    public :
 
+
+    public :
+         /*!
+         *  \brief Constructeur
+         *
+         *  Constructeur de la classe GameViewSFML
+         */
          GameView();
+
+         /*!
+         *  \brief Destructeur
+         *
+         *  Destructeur de la classe GameViewSFML
+         */
         ~GameView();
         /*!
          *  \brief Injection du modèle à la vue
          *
-         * param[in] model : le modèle à interpréter  */
+         * \param[in] model : le modèle à interpréter  */
         void setModel(GameModel * model);
 
     /*!
