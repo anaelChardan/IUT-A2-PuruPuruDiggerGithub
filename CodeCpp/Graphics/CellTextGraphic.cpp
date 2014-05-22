@@ -1,3 +1,11 @@
+/**
+ * \file CellTextGraphic.cpp
+ * \brief Notre classe CellTextGraphic
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include "CellTextGraphic.h"
 
 sf::Font CellTextGraphic::my_font;

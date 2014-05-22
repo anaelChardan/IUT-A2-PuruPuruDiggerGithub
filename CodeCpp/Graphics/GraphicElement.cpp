@@ -1,3 +1,12 @@
+
+/**
+ * \file GraphicElement.cpp
+ * \brief Notre classe GraphicElement
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include "GraphicElement.h"
 
 void GraphicElement::setSpriteAndDraw(int x, int y, sf::RenderWindow *_window ) {

@@ -1,3 +1,12 @@
+
+/**
+ * \file ValueGraphic.cpp
+ * \brief Notre classe ValueGraphic
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include "ValueGraphic.h"
 #include "../Constantes.h"
 

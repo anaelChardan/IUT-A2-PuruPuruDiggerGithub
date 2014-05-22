@@ -1,3 +1,11 @@
+/**
+ * \file SpriteGraphic.cpp
+ * \brief Notre classe SpriteGraphic
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include "SpriteGraphic.h"
 #include "../Constantes.h"
 

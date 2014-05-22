@@ -3,7 +3,7 @@
 
 /**
  * \file ItalianoGraphic.h
- * \brief Notre classe Italiano
+ * \brief Notre classe ItalianoGraphic
  * \author CHARDAN Anaël
  * \author DAMEY Jérémy
  * \date 09/03/2014

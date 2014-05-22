@@ -1,3 +1,11 @@
+/**
+ * \file GoldGraphic.pdf
+ * \brief Notre classe GoldGraphic
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include "GoldGraphic.h"
 #include "../Constantes.h"
 

@@ -1,3 +1,11 @@
+/**
+ * \file LanguageGraphic.cpp
+ * \brief Notre classe LanguageGraphic
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include "LanguageGraphic.h"
 #include "../Constantes.h"
 

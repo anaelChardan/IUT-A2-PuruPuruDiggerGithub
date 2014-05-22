@@ -3,7 +3,7 @@
 
 /**
  * \file InterfaceObserver.h
- * \brief Notre classe Interface observer
+ * \brief Notre classe InterfaceObserver
  * \author CHARDAN Anaël
  * \author DAMEY Jérémy
  * \date 09/03/2014

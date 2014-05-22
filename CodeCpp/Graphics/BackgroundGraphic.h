@@ -2,7 +2,7 @@
 #define __PuruPuruDigger__BackgroundGraphic__
 
 /**
- * \file BacgroundGraphic.h
+ * \file BackgroundGraphic.h
  * \brief Notre classe BacgroundGraphic
  * \author CHARDAN Anaël
  * \author DAMEY Jérémy

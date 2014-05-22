@@ -1,3 +1,11 @@
+/**
+ * \file GraphicSound.cpp
+ * \brief Notre classe GraphicSound
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include "GraphicSound.h"
 #include "../Constantes.h"
 

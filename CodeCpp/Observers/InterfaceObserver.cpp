@@ -1,5 +1,6 @@
 /**
  * \file InterfaceObserver.cpp
+ * \brief Notre Classe InterfaceObserver
  * \author CHARDAN Anaël
  * \author DAMEY Jérémy
  * \date 09/03/2014

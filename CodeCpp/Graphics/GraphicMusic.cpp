@@ -1,3 +1,11 @@
+/**
+ * \file GraphicMusic.cpp
+ * \brief Notre classe GraphicMusic
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include "GraphicMusic.h"
 #include "../Constantes.h"
 

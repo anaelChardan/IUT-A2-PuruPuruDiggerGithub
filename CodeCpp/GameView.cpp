@@ -1,6 +1,6 @@
 /**
  * \file GameView.cpp
- * \brief Méthode liée à l'affichage de notre partie
+ * \brief Méthode liée à l'affichage de notre partie en mode terminal
  * \author CHARDAN Anaël
  * \author DAMEY Jérémy
  * \date 09/03/2014

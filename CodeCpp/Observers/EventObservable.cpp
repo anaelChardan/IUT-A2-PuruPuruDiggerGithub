@@ -1,5 +1,6 @@
 /**
  * \file EventObservable.cpp
+ * \brief Notre classe EventObservable
  * \author CHARDAN Anaël
  * \author DAMEY Jérémy
  * \date 09/03/2014

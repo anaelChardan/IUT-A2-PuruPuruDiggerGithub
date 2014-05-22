@@ -1,3 +1,11 @@
+/**
+ * \file ButtonGraphic.cpp
+ * \brief Notre classe ButtonGraphic
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include "ButtonGraphic.h"
 #include "../Constantes.h"
 

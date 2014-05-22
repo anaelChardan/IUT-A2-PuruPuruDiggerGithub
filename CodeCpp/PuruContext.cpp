@@ -1,3 +1,11 @@
+/**
+ * \file PuruContext.h
+ * \brief Notre classe PuruContext
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include "PuruContext.h"
 
 

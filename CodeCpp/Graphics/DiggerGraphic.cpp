@@ -1,3 +1,11 @@
+/**
+ * \file DiggerGraphic.cpp
+ * \brief Notre classe DiggerGraphic
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include "DiggerGraphic.h"
 #include "../Constantes.h"
 

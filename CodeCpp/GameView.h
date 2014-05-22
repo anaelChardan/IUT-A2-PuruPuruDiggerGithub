@@ -2,7 +2,7 @@
 #define __PuruPuruDigger__GameView__
 /**
  * \file GameView.h
- * \brief Affichage de notre partie
+ * \brief Affichage de notre partie en mode terminal
  * \author CHARDAN Anaël
  * \author DAMEY Jérémy
  * \date 09/03/2014

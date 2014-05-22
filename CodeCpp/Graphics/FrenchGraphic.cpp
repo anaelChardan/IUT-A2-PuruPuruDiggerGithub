@@ -1,3 +1,11 @@
+/**
+ * \file FrenchGraphic.cpp
+ * \brief Notre classe FrenchGraphic
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include "FrenchGraphic.h"
 #include "../Constantes.h"
 

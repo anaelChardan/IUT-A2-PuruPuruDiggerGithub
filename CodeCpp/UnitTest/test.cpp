@@ -1,6 +1,14 @@
 #define BOOST_TEST_DYN_LINK
 #define BOOST_TEST_MODULE PuruPuruTest
 
+/**
+ * \file test.cpp
+ * \brief Nos test unitaires
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include<boost/test/unit_test.hpp>
 #include "../Utils.h"
 #include "../Constantes.h"

@@ -1,3 +1,12 @@
+/**
+ * \file BackgroundGraphic.cpp
+ * \brief Notre classe BackgroundGraphic
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
+
 #include "BackgroundGraphic.h"
 #include "../Constantes.h"
 

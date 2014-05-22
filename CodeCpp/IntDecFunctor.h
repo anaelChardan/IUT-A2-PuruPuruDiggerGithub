@@ -3,7 +3,7 @@
 
 /**
  * \file IntDecFunctor.h
- * \brief Notre classe Digger
+ * \brief Notre foncteur pour trier une map a l'enver
  * \author CHARDAN Anaël
  * \author DAMEY Jérémy
  * \date 09/03/2014

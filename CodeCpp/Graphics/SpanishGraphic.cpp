@@ -1,3 +1,11 @@
+/**
+ * \file SpanishGraphic.cpp
+ * \brief Notre classe SpanishGraphic
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include "SpanishGraphic.h"
 #include "../Constantes.h"
 

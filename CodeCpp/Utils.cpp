@@ -1,3 +1,11 @@
+/**
+ * \file Utils.h
+ * \brief Notre utilitaire
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include "Utils.h"
 #include <iostream>
 #include <sstream>

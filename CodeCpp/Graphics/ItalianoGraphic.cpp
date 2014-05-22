@@ -1,3 +1,11 @@
+/**
+ * \file ItalianoGraphic.cpp
+ * \brief Notre classe ItalianoGraphic
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include "ItalianoGraphic.h"
 #include "../Constantes.h"
 

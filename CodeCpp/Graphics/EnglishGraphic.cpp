@@ -1,3 +1,11 @@
+/**
+ * \file EnglishGraphic.cpp
+ * \brief Notre classe EnglishGraphic
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include "EnglishGraphic.h"
 #include "../Constantes.h"
 

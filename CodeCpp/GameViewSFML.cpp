@@ -1,3 +1,11 @@
+/**
+ * \file GameViewSFML.cpp
+ * \brief Notre classe GameViewSFML
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include "GameViewSFML.h"
 
 #include "Observers/InterfaceObserver.h"

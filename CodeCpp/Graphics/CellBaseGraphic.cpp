@@ -1,3 +1,12 @@
+
+/**
+ * \file CellBaseGraphic.cpp
+ * \brief Notre classe CellBaseGraphic
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include "CellBaseGraphic.h"
 #include "../Constantes.h"
 

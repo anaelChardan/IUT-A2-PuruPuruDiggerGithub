@@ -1,3 +1,12 @@
+/**
+ * \file BombGraphic.cpp
+ * \brief Notre classe BombGraphic
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
+
 #include "BombGraphic.h"
 #include "../Constantes.h"
 

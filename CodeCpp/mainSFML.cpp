@@ -1,7 +1,7 @@
 
 /**
- * \file main.cpp
- * \brief Notre main
+ * \file mainSFML.cpp
+ * \brief Notre main SFML
  * \author CHARDAN Anaël
  * \author DAMEY Jérémy
  * \date 09/03/2014

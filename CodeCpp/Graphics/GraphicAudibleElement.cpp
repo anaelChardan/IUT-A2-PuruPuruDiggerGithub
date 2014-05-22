@@ -1,3 +1,11 @@
+/**
+ * \file GraphicAudibleElement.cpp
+ * \brief Notre classe GraphicAudibleElement
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include "GraphicAudibleElement.h"
 #include "../Constantes.h"
 

@@ -1,3 +1,11 @@
+/**
+ * \file DeutschGraphic.cpp
+ * \brief Notre classe DeutschGraphic
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include "DeutschGraphic.h"
 #include "../Constantes.h"
 
