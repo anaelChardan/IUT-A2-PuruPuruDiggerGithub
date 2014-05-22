@@ -12,7 +12,7 @@
 #include <iostream>
 #include "GraphicElement.h"
 
-/*! \class LanguagaGraphic
+/*! \class LanguageGraphic
  *  \brief Classe pour l'affichage de la charte graphique des langages
  */
 

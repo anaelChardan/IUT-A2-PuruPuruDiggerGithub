@@ -14,7 +14,9 @@
 #include <set>
 #include "EventObserver.h"
 
-/*! \class EventObservable
+/*! 
+ * \class EventObservable
+ * \brief Classe décrivant un observable
  */
 
 class EventObservable {

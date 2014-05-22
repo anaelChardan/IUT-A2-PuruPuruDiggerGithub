@@ -15,7 +15,9 @@
 #include "../Manager/SoundManager.h"
 
 
-/*! \class EventDispatcher
+/*! 
+ * \class EventDispatcher
+ * \brief Classe décrivant l'eventDispatcher
  */
 class EventDispatcher : public EventObservable {
     private:

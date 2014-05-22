@@ -12,7 +12,7 @@
 #include <iostream>
 #include "GraphicElement.h"
 
-/*! \class BacgroundGraphic
+/*! \class BackgroundGraphic
  *  \brief Classe pour le changement de thème
  */
 

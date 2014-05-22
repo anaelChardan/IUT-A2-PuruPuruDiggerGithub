@@ -31,7 +31,7 @@
 
 typedef char KonamiCode[10]; /*!<  Typedef pour faciliter l'écriture */
 
-/*! \class InstanceObserver
+/*! \class InterfaceObserver
  *  \brief Classe pour la gestion de l'interface
  */
 
