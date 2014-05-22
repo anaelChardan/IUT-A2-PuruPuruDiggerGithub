@@ -131,9 +131,6 @@ class SoundManager {
         sf::SoundBuffer *my_clickableBuffer; /*!< son quand on clique */
         sf::Sound *my_clickableSoundCell;
 
-        sf::SoundBuffer *my_isNotClickableBuffer; /*!< son quand on déclique */
-        sf::Sound *my_isNotClickableSound;
-
         sf::SoundBuffer *my_loseLevelBuffer; /*!< son quand perd un niveau */
         sf::Sound *my_loseLevelSound;
 

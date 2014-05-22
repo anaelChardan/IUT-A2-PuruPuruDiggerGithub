@@ -23,8 +23,6 @@ SoundManager::~SoundManager() {
     delete my_gameOverSound;
     delete my_clickableBuffer;
     delete my_clickableSoundCell;
-    delete my_isNotClickableBuffer;
-    delete my_isNotClickableSound;
     delete my_loseLevelSound;
     delete my_winBuffer;
     delete my_winSound;
@@ -38,15 +36,12 @@ SoundManager::SoundManager() {
     my_buttonBuffer= new SoundBuffer();
     my_buttonSound = new Sound();
     my_musicLevel = new Music();
-
     my_textBuffer = new SoundBuffer();
     my_textSound = new Sound();
     my_gameOverBuffer = new SoundBuffer();
     my_gameOverSound = new Sound();
     my_clickableBuffer = new SoundBuffer();
     my_clickableSoundCell = new Sound();
-    my_isNotClickableBuffer = new SoundBuffer();
-    my_isNotClickableSound = new Sound();
     my_loseLevelSound = new Sound();
     my_winBuffer = new SoundBuffer();
     my_winSound= new Sound();
@@ -56,7 +51,6 @@ SoundManager::SoundManager() {
         !my_textBuffer->LoadFromFile("Ressources/Music/soundEnterText.wav") ||
         !my_gameOverBuffer->LoadFromFile("Ressources/Music/soundGameOver.wav") ||
         !my_clickableBuffer->LoadFromFile("Ressources/Music/soundIsClickable.wav") ||
-        !my_isNotClickableBuffer->LoadFromFile("Ressources/Music/soundIsNotClickable.wav") ||
         !my_musicLevel->OpenFromFile( "Ressources/Music/gridMusic.wav" ) ||
         !my_loseLevelBuffer->LoadFromFile("Ressources/Music/soundLoseLevel.wav") ||
         !my_winBuffer->LoadFromFile("Ressources/Music/youWin.wav")
@@ -68,7 +62,6 @@ SoundManager::SoundManager() {
         !my_textBuffer->LoadFromFile("soundEnterText.wav") ||
         !my_gameOverBuffer->LoadFromFile("soundGameOver.wav") ||
         !my_clickableBuffer->LoadFromFile("soundIsClickable.wav") ||
-        !my_isNotClickableBuffer->LoadFromFile("soundIsNotClickable.wav") ||
         !my_musicLevel->OpenFromFile( "gridMusic.wav" ) ||
         !my_loseLevelBuffer->LoadFromFile("soundLoseLevel.wav") ||
         !my_winBuffer->LoadFromFile("youWin.wav")
@@ -80,7 +73,6 @@ SoundManager::SoundManager() {
         my_textSound->SetBuffer(*my_textBuffer);
         my_gameOverSound->SetBuffer(*my_gameOverBuffer);
         my_clickableSoundCell->SetBuffer(*my_clickableBuffer);
-        my_isNotClickableSound->SetBuffer(*my_isNotClickableBuffer);
         my_loseLevelSound->SetBuffer(*my_loseLevelBuffer);
         my_buttonSound->SetBuffer(*my_buttonBuffer);
         my_winSound->SetBuffer(*my_winBuffer);
