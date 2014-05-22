@@ -1,9 +1,10 @@
-//
-//  EventDispatcher.cpp
-//  PuruPuruDigger
-//
-//
-//
+/**
+ * \file EventDispatcher.cpp
+ * \brief Notre classe EventDispatcher
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
 
 #include "EventDispatcher.h"
 #include <SFML/Graphics.hpp>

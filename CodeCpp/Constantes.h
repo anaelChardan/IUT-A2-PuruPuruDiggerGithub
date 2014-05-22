@@ -186,7 +186,7 @@ enum Message{
     choice, move, nwest, north, neast, west, east, swest, south, seast, stop,
     score, level, global, current, goal, step, life, position,
     winlevel, looselevel, loosegame, name, ltime, timeup, by, play, best, setting, language, actual,
-    theme
+    theme, cheater
 };
 
 enum Movement {

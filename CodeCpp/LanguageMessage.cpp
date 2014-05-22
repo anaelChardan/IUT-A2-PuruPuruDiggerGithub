@@ -44,6 +44,7 @@ LanguageMessage::LanguageMessage() {
     my_languages[francais][language] = " Langues ";
     my_languages[francais][actual] = " En cours ";
     my_languages[francais][theme] = " Themes ";
+    my_languages[francais][cheater] = " Tricheur ";
     
     
 
@@ -80,6 +81,8 @@ LanguageMessage::LanguageMessage() {
     my_languages[english][language] = " Languages ";
     my_languages[english][actual] = " Ongoing ";
     my_languages[english][theme] = " Theme " ;
+    my_languages[english][cheater] = " Cheater ";
+
     
 
     //les messages espagnol
@@ -115,6 +118,8 @@ LanguageMessage::LanguageMessage() {
     my_languages[espanol][language] = " Idiomas ";
     my_languages[espanol][actual] = " En marcha ";
     my_languages[espanol][theme] = " Tema " ;
+    my_languages[espanol][cheater] = " Tramposo ";
+
 
     //les messages italien
     my_languages[italiano][choice] = " Scelta ";
@@ -149,6 +154,8 @@ LanguageMessage::LanguageMessage() {
     my_languages[italiano][language] = " Lingue ";
     my_languages[italiano][actual] = " In corso ";
     my_languages[italiano][theme] = " Tema" ;
+    my_languages[italiano][cheater] = " Baro ";
+
 
     //les messages allemands
     my_languages[deutsch][choice] = " Walh ";
@@ -183,6 +190,8 @@ LanguageMessage::LanguageMessage() {
     my_languages[deutsch][language] = " Sprachen ";
     my_languages[deutsch][actual] = " Laufend ";
     my_languages[deutsch][theme] = " Thema ";
+    my_languages[deutsch][cheater] = " Betruger ";
+
 
 }
 

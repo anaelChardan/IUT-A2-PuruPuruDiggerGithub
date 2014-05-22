@@ -1,9 +1,35 @@
+/**
+ * \file SoundManager.cpp
+ * \brief Notre classe SoundManager
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
 #include "SoundManager.h"
 using namespace sf;
 
 
 SoundManager::~SoundManager() {
 
+    delete my_loseLevelBuffer;
+    delete my_buttonBuffer;
+    delete my_buttonSound;
+    delete my_musicLevel;
+    
+    delete my_textBuffer;
+    delete my_textSound;
+    delete my_gameOverBuffer;
+    delete my_gameOverSound;
+    delete my_clickableBuffer;
+    delete my_clickableSoundCell;
+    delete my_isNotClickableBuffer;
+    delete my_isNotClickableSound;
+    delete my_loseLevelSound;
+    delete my_winBuffer;
+    delete my_winSound;
+    
+    
 }
 
 SoundManager::SoundManager() {
@@ -22,6 +48,9 @@ SoundManager::SoundManager() {
     my_isNotClickableBuffer = new SoundBuffer();
     my_isNotClickableSound = new Sound();
     my_loseLevelSound = new Sound();
+    my_winBuffer = new SoundBuffer();
+    my_winSound= new Sound();
+    
 #ifdef __linux__
     if ( !my_buttonBuffer->LoadFromFile("Ressources/Music/soundButton.wav") ||
         !my_textBuffer->LoadFromFile("Ressources/Music/soundEnterText.wav") ||
@@ -29,7 +58,8 @@ SoundManager::SoundManager() {
         !my_clickableBuffer->LoadFromFile("Ressources/Music/soundIsClickable.wav") ||
         !my_isNotClickableBuffer->LoadFromFile("Ressources/Music/soundIsNotClickable.wav") ||
         !my_musicLevel->OpenFromFile( "Ressources/Music/gridMusic.wav" ) ||
-        !my_loseLevelBuffer->LoadFromFile("Ressources/Music/soundLoseLevel.wav")
+        !my_loseLevelBuffer->LoadFromFile("Ressources/Music/soundLoseLevel.wav") ||
+        !my_winBuffer->LoadFromFile("Ressources/Music/youWin.wav")
         ) {
         std::cout << "Error when loading font" << std::endl;
     }
@@ -40,7 +70,8 @@ SoundManager::SoundManager() {
         !my_clickableBuffer->LoadFromFile("soundIsClickable.wav") ||
         !my_isNotClickableBuffer->LoadFromFile("soundIsNotClickable.wav") ||
         !my_musicLevel->OpenFromFile( "gridMusic.wav" ) ||
-        !my_loseLevelBuffer->LoadFromFile("soundLoseLevel.wav")
+        !my_loseLevelBuffer->LoadFromFile("soundLoseLevel.wav") ||
+        !my_winBuffer->LoadFromFile("youWin.wav")
         ) {
         std::cout << "Error when loading font" << std::endl;
     }
@@ -52,6 +83,7 @@ SoundManager::SoundManager() {
         my_isNotClickableSound->SetBuffer(*my_isNotClickableBuffer);
         my_loseLevelSound->SetBuffer(*my_loseLevelBuffer);
         my_buttonSound->SetBuffer(*my_buttonBuffer);
+        my_winSound->SetBuffer(*my_winBuffer);
         my_musicLevel->SetLoop( true );
     }
 
@@ -90,7 +122,8 @@ void SoundManager::youLoose() {
 
 
 void SoundManager::youWin() {
-    // todo
+    if ( my_context->isEnableSound() )
+        my_winSound->Play();
 }
 
 void SoundManager::gameOver() {

@@ -13,10 +13,9 @@
 #include <SFML/Audio.hpp>
 #include "../PuruContext.h"
 
-/*! \class GraphicElement
+/*! \class SoundManager
  *  \brief Classe pour la gestion des sons
  */
-
 
 class SoundManager {
 
@@ -37,25 +36,25 @@ class SoundManager {
         void clickButton();
 
         /*!
-         *  \brief Selectionne ou non le son
+         *  \brief joue le son du clic
          *
          */
         void clickCell();
 
         /*!
-         *  \brief Active le son
+         *  \brief Active la musique
          *
          */
         void playMusic();
 
         /*!
-         *  \brief Met le son en pause
+         *  \brief Met la musique en pause
          *
          */
         void pauseMusic();
 
         /*!
-         *  \brief Stop entierement le son
+         *  \brief Stop entierement la musique
          *
          */
         void stopMusic();
@@ -140,6 +139,9 @@ class SoundManager {
 
         sf::SoundBuffer *my_buttonBuffer; /*!< son quand on clique sur un bouton */
         sf::Sound *my_buttonSound;
+    
+        sf::SoundBuffer* my_winBuffer;
+        sf::Sound* my_winSound;
 
         sf::Music *my_musicLevel; /*!< music quand on joue un niveau */
 

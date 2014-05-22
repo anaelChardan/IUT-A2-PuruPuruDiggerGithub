@@ -16,10 +16,12 @@ bool GraphicElement::isInZone(int x, int y) const {
 }
 
 void GraphicElement::draw(sf::RenderWindow *_window) const {
+    ///On affiche à l'écran notre sprite
     _window->Draw(my_sprite);
 }
 
 int GraphicElement::getXPos() const {
+    ///On retourne la position du sprite
     return my_sprite.GetPosition().x;
 }
 

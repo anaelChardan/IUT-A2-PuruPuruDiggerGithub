@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03099F44192E18AD00769D46 /* youWin.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03099F43192E18AD00769D46 /* youWin.wav */; };
 		031D88D818BE5B2B0001686A /* GameModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031D88D618BE5B2B0001686A /* GameModel.cpp */; };
 		031D88DB18BE5B670001686A /* GameView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031D88D918BE5B670001686A /* GameView.cpp */; };
 		03229D1B18D35E8A00027190 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03229D1918D35E8A00027190 /* Utils.cpp */; };
@@ -96,7 +97,6 @@
 		7FA5D4001913995A0035B5DE /* soundEnterText.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5D3F91913995A0035B5DE /* soundEnterText.wav */; };
 		7FA5D4011913995A0035B5DE /* soundGameOver.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5D3FA1913995A0035B5DE /* soundGameOver.wav */; };
 		7FA5D4021913995A0035B5DE /* soundIsClickable.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5D3FB1913995A0035B5DE /* soundIsClickable.wav */; };
-		7FA5D4031913995A0035B5DE /* soundIsNotClickable.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5D3FC1913995A0035B5DE /* soundIsNotClickable.wav */; };
 		7FA5D4041913995A0035B5DE /* soundLoseLevel.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5D3FD1913995A0035B5DE /* soundLoseLevel.wav */; };
 		7FA5D40E191399730035B5DE /* ananas_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5D405191399730035B5DE /* ananas_button.png */; };
 		7FA5D40F191399730035B5DE /* teacher_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5D406191399730035B5DE /* teacher_button.png */; };
@@ -162,6 +162,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		03099F43192E18AD00769D46 /* youWin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = youWin.wav; path = Ressources/Music/youWin.wav; sourceTree = SOURCE_ROOT; };
 		031D88D618BE5B2B0001686A /* GameModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameModel.cpp; sourceTree = SOURCE_ROOT; };
 		031D88D718BE5B2B0001686A /* GameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameModel.h; sourceTree = SOURCE_ROOT; };
 		031D88D918BE5B670001686A /* GameView.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = GameView.cpp; sourceTree = SOURCE_ROOT; };
@@ -256,7 +257,6 @@
 		7FA5D3F91913995A0035B5DE /* soundEnterText.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = soundEnterText.wav; path = Ressources/Music/soundEnterText.wav; sourceTree = SOURCE_ROOT; };
 		7FA5D3FA1913995A0035B5DE /* soundGameOver.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = soundGameOver.wav; path = Ressources/Music/soundGameOver.wav; sourceTree = SOURCE_ROOT; };
 		7FA5D3FB1913995A0035B5DE /* soundIsClickable.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = soundIsClickable.wav; path = Ressources/Music/soundIsClickable.wav; sourceTree = SOURCE_ROOT; };
-		7FA5D3FC1913995A0035B5DE /* soundIsNotClickable.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = soundIsNotClickable.wav; path = Ressources/Music/soundIsNotClickable.wav; sourceTree = SOURCE_ROOT; };
 		7FA5D3FD1913995A0035B5DE /* soundLoseLevel.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = soundLoseLevel.wav; path = Ressources/Music/soundLoseLevel.wav; sourceTree = SOURCE_ROOT; };
 		7FA5D405191399730035B5DE /* ananas_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ananas_button.png; path = Ressources/Pictures/ananas_button.png; sourceTree = SOURCE_ROOT; };
 		7FA5D406191399730035B5DE /* teacher_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = teacher_button.png; path = Ressources/Pictures/teacher_button.png; sourceTree = SOURCE_ROOT; };
@@ -338,12 +338,12 @@
 		039F92AF18E0A7FD008D3F85 /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				03099F43192E18AD00769D46 /* youWin.wav */,
 				7FA5D3F71913995A0035B5DE /* gridMusic.wav */,
 				7FA5D3F81913995A0035B5DE /* soundButton.wav */,
 				7FA5D3F91913995A0035B5DE /* soundEnterText.wav */,
 				7FA5D3FA1913995A0035B5DE /* soundGameOver.wav */,
 				7FA5D3FB1913995A0035B5DE /* soundIsClickable.wav */,
-				7FA5D3FC1913995A0035B5DE /* soundIsNotClickable.wav */,
 				7FA5D3FD1913995A0035B5DE /* soundLoseLevel.wav */,
 			);
 			path = Music;
@@ -632,8 +632,8 @@
 				7FA5D4021913995A0035B5DE /* soundIsClickable.wav in Resources */,
 				7FA5D4041913995A0035B5DE /* soundLoseLevel.wav in Resources */,
 				7FA5D422191399890035B5DE /* ananas_value.ttf in Resources */,
+				03099F44192E18AD00769D46 /* youWin.wav in Resources */,
 				7FA5D4001913995A0035B5DE /* soundEnterText.wav in Resources */,
-				7FA5D4031913995A0035B5DE /* soundIsNotClickable.wav in Resources */,
 				7FA5D411191399730035B5DE /* teacher_case.png in Resources */,
 				03AA583F1923F4E70034A5FD /* ananas_wallpapper.png in Resources */,
 				7FA5D3FF1913995A0035B5DE /* soundButton.wav in Resources */,
