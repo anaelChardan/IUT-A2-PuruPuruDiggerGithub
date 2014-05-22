@@ -1,3 +1,11 @@
+/**
+ * \file InterfaceObserver.cpp
+ * \author CHARDAN Anaël
+ * \author DAMEY Jérémy
+ * \date 09/03/2014
+ */
+
+
 #include "InterfaceObserver.h"
 #include "../Graphics/EnglishGraphic.h"
 #include "../Graphics/FrenchGraphic.h"
@@ -64,6 +72,21 @@ InterfaceObserver::InterfaceObserver(
     my_stringToSprite["GoldCell"]  = new GoldGraphic();
     my_stringToSprite["ValueCell"] = new ValueGraphic();
     my_stringToSprite["Bomb"]      = new BombGraphic();
+        
+    ///On initialise le vrai konamiCode
+        
+    my_trueKonamiCode[0] = my_trueKonamiCode[1] = 'U';
+    my_trueKonamiCode[2] = my_trueKonamiCode[3] ='D';
+    my_trueKonamiCode[4] = my_trueKonamiCode[6] ='L';
+    my_trueKonamiCode[5] = my_trueKonamiCode[7] ='R';
+    my_trueKonamiCode[8] = 'B';
+    my_trueKonamiCode[9] = 'A';
+        
+        
+    ///On initialise le cheater
+    my_cheater = false;
+        
+    initKonamiCode();
 
 }
 
@@ -86,6 +109,13 @@ InterfaceObserver::~InterfaceObserver() {
 
 }
 
+void InterfaceObserver::initKonamiCode() {
+    //On initialise notre konamiCode
+    for ( unsigned int i = 0; i < 10; ++i ) {
+        my_konamiCode[i] = 'Z';
+    }
+}
+
 void InterfaceObserver::resetLanguageNorm() {
     for ( std::map<Language, LanguageGraphic*>::const_iterator it = my_languageToSprite->begin() ; it!=my_languageToSprite->end(); ++it) {
         (*my_languageToSprite)[ it->first ]->reset();
@@ -101,7 +131,9 @@ void InterfaceObserver::newScreen() {
 }
 
 void InterfaceObserver::showPresentation() {
+    ///On affiche un écran "propre"
     newScreen();
+    ///On affiche tout sce dont on a besoin
     my_titleString->SetColor(Color(255,255,255));
     my_titleString->SetSize(60);
     setTextAndDraw( my_titleString, "PURU PURU DIGGER ", ( WINDOWWITDH / 2 ), 100, true );
@@ -175,10 +207,14 @@ void InterfaceObserver::showBestScore() {
 void InterfaceObserver::setTextAndDraw( sf::String* s, string text, int x, int y, bool useSizeRectX ) {
 
     s->SetText(text);
+    
+    ///Si le texte est plus grand que la fenêtre, on le réduit
     if ( s->GetRect().GetWidth() > WINDOWWITDH ) {
         while ( s->GetRect().GetWidth() > WINDOWWITDH )
             s->SetSize( s->GetSize() - 5 );
     }
+    
+    ///Si l'on veut centrer
     if ( useSizeRectX )
         x -=  ( ( s->GetRect().GetWidth()  ) / 2 );
 
@@ -239,6 +275,10 @@ void InterfaceObserver::showWinLevel() {
     my_titleString->SetColor(Color(0,0,0));
 
     setTextAndDraw( my_titleString, my_messages[my_context->getLanguage()][winlevel], ( WINDOWWITDH / 2 ), WINDOWHEIGHT / 2, true ) ;
+    
+    if ( my_cheater ) {
+        setTextAndDraw( my_titleString, my_messages[my_context->getLanguage()][cheater] , ( WINDOWWITDH / 2 ), 70 + WINDOWHEIGHT / 2, true ) ;
+    }
 }
 
 void InterfaceObserver::showScore() {
@@ -394,14 +434,90 @@ void InterfaceObserver::toAnimate() {
 
 }
 
+bool InterfaceObserver::konamiCode( Event event ) {
+
+    
+    bool check;
+    int lastElement = 0;
+    
+    while ( my_konamiCode[lastElement] != 'Z') {
+        lastElement++;
+    }
+    
+    switch (event.Key.Code ) {
+        case Key::A :
+            my_konamiCode[lastElement] = 'A';
+            check = true;
+            break;
+            
+        case Key::B :
+            my_konamiCode[lastElement] = 'B';
+            check = true;
+            break;
+            
+        case Key::Up :
+            my_konamiCode[lastElement] = 'U';
+            check = true;
+            break;
+            
+        case Key::Down :
+            my_konamiCode[lastElement] = 'D';
+            check = true;
+            break;
+            
+        case Key::Left :
+            my_konamiCode[lastElement] = 'L';
+            check = true;
+            break;
+            
+        case Key::Right :
+            my_konamiCode[lastElement] = 'R';
+            check = true;
+            break;
+            
+        default:
+            check = false;
+            break;
+    }
+    
+    if ( check ) {
+        unsigned int z = 0;
+        
+        while ( check && z <= lastElement ) {
+            if ( my_konamiCode [z] != my_trueKonamiCode[z] ) {
+                check =false;
+            } else
+                z++;
+        }
+        
+    }
+    
+    
+    if ( check == false || lastElement == 9 ) {
+        for ( unsigned int i = 0; i < 10; ++i )
+            my_konamiCode[i] = 'Z';
+    }
+    
+    return ( check && lastElement == 9 );
+}
+
 /** Events Subscriber */
 
 void InterfaceObserver::mouseMoved(sf::Event event) { }
 
 void InterfaceObserver::keyPressed(sf::Event event) {
-
-if ( my_context->isEnterABestScore() ) {
+    
+    ///Si l'on joue, on peu faire le code konami
+    if ( my_context->isPlaying() ) {
+        if ( konamiCode( event ) ) {
+            my_model->getLevel()->winLevel();
+            my_cheater = true;
+        }
+        
+        ///Si l'on est en train de taper notre nom
+    } else if ( my_context->isEnterABestScore() ) {
         switch (event.Key.Code) {
+            ///Entrer pour valider
             case Key::Return :
                 if ( player.length() > 0 ) {
                     my_context->setEnterABestScore( false );
@@ -411,7 +527,8 @@ if ( my_context->isEnterABestScore() ) {
 
                 }
                 break;
-
+            
+            ///BackSpace pour effacer des lettres
             case Key::Back :
                 if ( player.length() > 0 )
                     player.erase( player.length() - 1, 1 );
@@ -424,8 +541,11 @@ if ( my_context->isEnterABestScore() ) {
 }
 
 void InterfaceObserver::textEntered(sf::Event event) {
+    ///Si l'on est en train de rentrer notre nom
     if ( my_context->isEnterABestScore() ) {
+        ///On bloque les caractères selon la table ascii
         if ( event.Text.Unicode >= 48 && event.Text.Unicode <127 && player.length() < 25 ) {
+            ///On transtype et on ajoute au bout de notre nom de joueur
             player += static_cast<char>(event.Text.Unicode);
             SoundManager::getInstance()->touchPress();
         }
@@ -434,6 +554,7 @@ void InterfaceObserver::textEntered(sf::Event event) {
 
 void InterfaceObserver::mouseButtonPressed(sf::Event event) {
     if ( my_quitButton->isInZone( event.MouseButton.X, event.MouseButton.Y ) ) {
+        initKonamiCode();
         SoundManager::getInstance()->stopMusic();
         my_context->setMusic( my_context->isEnableMusic() );
     }
@@ -479,8 +600,10 @@ void InterfaceObserver::preDisplay() {
             my_context->setAnimation( false );
 
         } else if ( my_model->getLevel()->win()  ) {
-            if ( !my_context->isInBreak() )
+            if ( !my_context->isInBreak() ) {
                 pause.Reset();
+                SoundManager::getInstance()->youWin();
+            }
             showWinLevel();
             my_context->setInBreak( true );
             my_context->setAnimation( false );
@@ -500,11 +623,13 @@ void InterfaceObserver::postDisplay() {
 
             my_model->getLevel()->resetLose();
             my_model->getLevel()->resetWin();
+            my_cheater = false;
             my_model->getLevel()->resetTime();
             my_context->setInBreak( false );
             my_context->setTimeOver( false );
             pause.Reset();
             if ( my_model->gameOver() ) {
+                initKonamiCode();
                 my_context->setPlaying( false );
                 my_context->setEnterABestScore( true );
                 my_context->setOver( false );
