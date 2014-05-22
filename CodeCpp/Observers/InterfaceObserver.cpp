@@ -439,7 +439,7 @@ bool InterfaceObserver::konamiCode( Event event ) {
 
     
     bool check;
-    int lastElement = 0;
+    unsigned int lastElement = 0;
     
     while ( my_konamiCode[lastElement] != 'Z') {
         lastElement++;
