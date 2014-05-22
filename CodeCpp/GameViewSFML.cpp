@@ -89,8 +89,10 @@ void GameView::goToSettings() {
 void GameView::goToPlay() {
     my_context->setInPresentation( false );
     my_context->setPlaying( true );
-    if ( my_context->isEnableMusic() )
+
+    if ( my_context->isEnableMusic() ) {
         SoundManager::getInstance()->playMusic();
+    }
     my_model->reset();
 
 }
@@ -104,7 +106,6 @@ void GameView::goToScore() {
 void GameView::goToEnterScore() {
     my_context->setPlaying( false );
     my_context->setEnterABestScore( true );
-    my_context->setMusic( false );
     my_context->setAnimation( false );
 }
 
@@ -138,13 +139,14 @@ void GameView::initSettings() {
 }
 
 void GameView::initBestScore() {
+    my_eventDispatcher->addObserver( my_quitButton );
     my_eventDispatcher->removeObserver( my_playButton );
     my_eventDispatcher->removeObserver( my_bestButton );
     my_eventDispatcher->removeObserver( my_settingButton );
 }
 
 void GameView::initEnterScore() {
-    // nothing for now
+    my_eventDispatcher->removeObserver( my_quitButton );
 }
 
 void GameView::initPlay() {

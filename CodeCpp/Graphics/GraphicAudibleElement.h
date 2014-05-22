@@ -18,7 +18,6 @@
 
 class GraphicAudibleElement : public GraphicElement {
     protected :
-        bool isOn; /*!< booleen pour savoir s'il y la musique */
         static sf::Image my_image ; /*!< image de pour la musique */
 
     public :
